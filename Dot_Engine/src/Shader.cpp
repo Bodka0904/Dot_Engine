@@ -2,8 +2,11 @@
 
 
 
-Shader::Shader(const std::string& filename)
+Shader::Shader(const std::string& filename,unsigned int NUM_UNIFORMS)
+	:
+	this.NUM_UNIFORMS(NUM_UNIFORMS)
 {
+	
 	m_program = glCreateProgram();
 	m_shaders[0] = CreateShader(LoadShader(filename + ".vs"), GL_VERTEX_SHADER);
 	m_shaders[1] = CreateShader(LoadShader(filename + ".fs"), GL_FRAGMENT_SHADER);
@@ -13,6 +16,7 @@ Shader::Shader(const std::string& filename)
 		glAttachShader(m_program, m_shaders[i]);
 	}
 	LOG_INFO("Shader", "constructed");
+	
 
 }
 
