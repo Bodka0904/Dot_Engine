@@ -13,7 +13,7 @@
 class Shader
 {
 public:
-	Shader(const std::string& filename);
+	Shader(const std::string& filename,unsigned int NUM_UNIFORMS);
 
 	void SetAttrib(unsigned int location, const GLchar* name);
 	void SetUniform(unsigned int uniform, const GLchar* name);
@@ -31,14 +31,7 @@ public:
 
 private:
 	static const unsigned int NUM_SHADER = 2;
-
-	enum
-	{
-		TRANSFORM_U,
-
-		NUM_UNIFORMS
-	};
-
+	unsigned int NUM_UNIFORMS;
 
 	GLuint m_program;
 	GLuint m_shaders[NUM_SHADER];
