@@ -33,12 +33,14 @@ void Window::Init()
 {
 	if (!glfwInit())
 	{
-		LOG_ERR(("Window: Could not initialize GLFW"))
+		LOG_ERR("Window: Could not initialize GLFW",NULL)
 		glfwTerminate();
 	}
 
 	m_window = glfwCreateWindow(m_width, m_height, m_title, NULL, NULL);
-	LOG_INFO(("Window: Create window width:%d height:%d", m_height, m_width));
+	LOG_INFO("Window: Created window", NULL);
+	LOG_INFO("Window: width:%d",m_width);
+	LOG_INFO("Window: height:%d", m_height);
 
 	glfwMakeContextCurrent(m_window);
 	glfwWindowHint(GLFW_DEPTH_BITS, 16);
@@ -82,7 +84,9 @@ void ResizeWindow(GLFWwindow *window,int width, int height)
 
 	
 	glViewport(0, 0, width, height);
-	LOG_INFO(("Window: resized width:%d height:%d", width, height));
+	LOG_INFO("Window: Resized window", NULL);
+	LOG_INFO("Window: width:%d", width);
+	LOG_INFO("Window: height:%d", height);
 	
 }
 

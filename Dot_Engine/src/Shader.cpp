@@ -4,7 +4,7 @@
 
 Shader::Shader(const std::string& filename)
 {
-	
+
 	m_program = glCreateProgram();
 	m_shaders[0] = CreateShader(LoadShader(filename + ".vs"), GL_VERTEX_SHADER);
 	m_shaders[1] = CreateShader(LoadShader(filename + ".fs"), GL_FRAGMENT_SHADER);
@@ -13,7 +13,7 @@ Shader::Shader(const std::string& filename)
 	{
 		glAttachShader(m_program, m_shaders[i]);
 	}
-	LOG_INFO(("Shader: Constructed"));
+	LOG_INFO("Shader: Constructed",NULL);
 	
 
 }
@@ -29,7 +29,7 @@ Shader::~Shader()
 		glDeleteShader(m_shaders[i]);
 
 	}
-	LOG_INFO(("Shader: Destroyed"));
+	LOG_INFO("Shader: Destroyed",NULL);
 }
 
 
@@ -55,16 +55,16 @@ void Shader::Update(const Transform & transform, const Camera& camera)
 
 	glm::mat4 model = camera.GetViewProjection() * transform.GetModel();
 	glUniformMatrix4fv(m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
-	glUniform1f(m_uniforms[LIGHT_STR_U], Light::lightStrength);
-	glUniform3fv(m_uniforms[LIGHT_COLOR_U], sizeof(glm::vec3), &Light::lightColor[0]);
-	glUniform3fv(m_uniforms[LIGHT_POS_U], sizeof(glm::vec3), &Light::lightPos[0]);
-	glUniform3fv(m_uniforms[LIGHT_DIR_U], sizeof(glm::vec3), &Light::lightDir[0]);
+	glUniform1f(m_uniforms[LIGHT_STR_U], BasicLight.lightStrength);
+	glUniform3fv(m_uniforms[LIGHT_COLOR_U], sizeof(glm::vec3), &BasicLight.lightColor[0]);
+	glUniform3fv(m_uniforms[LIGHT_POS_U], sizeof(glm::vec3), &BasicLight.lightPos[0]);
+	glUniform3fv(m_uniforms[LIGHT_DIR_U], sizeof(glm::vec3), &BasicLight.lightDir[0]);
 
 }
 
 void Shader::Bind()
 {
-	LOG_INFO(("Shader: BIND"));
+	LOG_INFO("Shader: BIND",NULL);
 	glUseProgram(m_program);
 }
 
@@ -93,7 +93,7 @@ std::string Shader::LoadShader(const std::string & filename)
 	}
 	else
 	{
-		LOG_ERR(("Shader: unable to load shader file"));
+		LOG_ERR("Shader: unable to load shader file",NULL);
 	}
 	return output;
 }
@@ -104,7 +104,7 @@ GLuint Shader::CreateShader(const std::string & text, GLenum shaderType)
 
 	if (shader == 0)
 	{
-		LOG_ERR(("Shader: unable to create shader"));
+		LOG_ERR("Shader: unable to create shader",NULL);
 	}
 	const GLchar* shaderSourceStrings[1];
 	GLint shaderSourceStringLength[1];

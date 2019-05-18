@@ -512,8 +512,8 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ParticleSystem.cpp" />
     <ClCompile Include="src\Log.cpp" />
+    <ClCompile Include="src\ParticleSystem.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\ObjLoader.cpp" />
     <ClCompile Include="src\Shader.cpp" />

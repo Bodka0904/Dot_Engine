@@ -1,17 +1,53 @@
-#pragma once
 #include <windows.h>
 #include <string>
 #include <iostream>
 
-
-class Log {
+class LogCore {
 
 public:
+	inline static void SetLevel(unsigned int Level) {
+		if (Level > TRACE)
+		{
+			LEVEL = TRACE;
+		}
+		else
+		{
+			LEVEL = Level;
+		}
 
-	inline static void SetLevel(unsigned int Level);
-	inline static void SetColor(unsigned int color);
-	
-	enum 
+	}
+	static inline void SetColor(unsigned int color) {
+
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hConsole, color);
+	}
+
+	template <typename dataType>
+	static void PrintINFO(const char *message, dataType arg = 0) {
+		if (LEVEL == INFO || TRACE)
+		{
+			SetColor(WHITE);
+			printf(message, arg);
+		}
+	}
+	template <typename dataType>
+	static void PrintWARN(const char *message, dataType arg = 0) {
+		if (LEVEL == WARN || TRACE)
+		{
+			SetColor(YELLOW);
+			printf(message, arg);
+		}
+	}
+	template <typename dataType>
+	static void PrintERR(const char *message, dataType arg = 0) {
+		if (LEVEL == ERR || TRACE)
+		{
+			SetColor(RED);
+			printf(message, arg);
+		}
+	}
+
+	enum
 	{
 		INFO,
 
@@ -22,17 +58,28 @@ public:
 		TRACE
 	};
 
-	static unsigned int LEVEL;
-	
+private:
 	enum
 	{
 		RED = 20,
 		YELLOW = 14,
 		WHITE = 15
 	};
-	
+
+	static int LEVEL;
 };
 
-#define LOG_INFO(pargs) {if(Log::LEVEL == Log::INFO || Log::LEVEL == Log::TRACE) {Log::SetColor(Log::WHITE); printf pargs;}}
-#define LOG_WARN(pargs) {if(Log::LEVEL == Log::WARN || Log::LEVEL == Log::TRACE) {Log::SetColor(Log::YELLOW);printf pargs;}}
-#define LOG_ERR(pargs) {if(Log::LEVEL == Log::ERR || Log::LEVEL == Log::TRACE) {Log::SetColor(Log::RED);printf pargs;}}
+class Log {
+
+public:
+	static inline std::shared_ptr<LogCore> &GetLogCore() { return log; }
+
+private:
+	static std::shared_ptr<LogCore> log;
+};
+
+
+
+#define LOG_INFO(...) Log::GetLogCore()->PrintINFO(__VA_ARGS__);
+#define LOG_WARN(...) Log::GetLogCore()->PrintWARN(__VA_ARGS__);
+#define LOG_ERR(...)  Log::GetLogCore()->PrintWARN(__VA_ARGS__);

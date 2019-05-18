@@ -9,21 +9,17 @@
 #include <GLFW\glfw3.h>
 #include "Log.h"
 
+struct Light
+{
+	float	 lightStrength;
+	glm::vec3 lightColor;
+	glm::vec3 lightPos;
+	glm::vec3 lightDir;
+
+};
 
 class Shader
 {
-private:
-	struct Light
-	{
-		static float	 lightStrength;
-		static glm::vec3 lightColor;
-		static glm::vec3 lightPos;
-		static glm::vec3 lightDir;
-
-		static glm::vec3 sunLight;
-
-	};
-
 public:
 	Shader(const std::string& filename);
 
@@ -59,6 +55,7 @@ private:
 		NUM_UNIFORMS
 	};
 
+	Light BasicLight;
 
 	GLuint m_program;
 	GLuint m_shaders[NUM_SHADER];
