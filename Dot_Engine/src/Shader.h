@@ -12,8 +12,20 @@
 
 class Shader
 {
+private:
+	struct Light
+	{
+		static float	 lightStrength;
+		static glm::vec3 lightColor;
+		static glm::vec3 lightPos;
+		static glm::vec3 lightDir;
+
+		static glm::vec3 sunLight;
+
+	};
+
 public:
-	Shader(const std::string& filename,unsigned int NUM_UNIFORMS);
+	Shader(const std::string& filename);
 
 	void SetAttrib(unsigned int location, const GLchar* name);
 	void SetUniform(unsigned int uniform, const GLchar* name);
@@ -31,7 +43,22 @@ public:
 
 private:
 	static const unsigned int NUM_SHADER = 2;
-	unsigned int NUM_UNIFORMS;
+	
+	enum
+	{
+		TRANSFORM_U,
+
+		LIGHT_STR_U,
+
+		LIGHT_COLOR_U,
+
+		LIGHT_POS_U,
+
+		LIGHT_DIR_U,
+
+		NUM_UNIFORMS
+	};
+
 
 	GLuint m_program;
 	GLuint m_shaders[NUM_SHADER];

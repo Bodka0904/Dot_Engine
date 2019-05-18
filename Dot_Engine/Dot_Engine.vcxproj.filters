@@ -744,9 +744,6 @@
     <ClInclude Include="src\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\EventHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -768,7 +765,7 @@
     <ClInclude Include="src\KeyCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\EventsHandler.h">
+    <ClInclude Include="src\ParticleSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1177,9 +1174,6 @@
     <ClCompile Include="src\vendor\stb_image\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EventHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1195,7 +1189,7 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EventsHandler.cpp">
+    <ClCompile Include="src\ParticleSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

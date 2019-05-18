@@ -10,7 +10,7 @@ public:
 
 	inline static void SetLevel(unsigned int Level);
 	inline static void SetColor(unsigned int color);
-
+	
 	enum 
 	{
 		INFO,
@@ -21,7 +21,7 @@ public:
 
 		TRACE
 	};
-private:
+
 	static unsigned int LEVEL;
 	
 	enum

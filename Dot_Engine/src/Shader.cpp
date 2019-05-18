@@ -2,9 +2,7 @@
 
 
 
-Shader::Shader(const std::string& filename,unsigned int NUM_UNIFORMS)
-	:
-	this.NUM_UNIFORMS(NUM_UNIFORMS)
+Shader::Shader(const std::string& filename)
 {
 	
 	m_program = glCreateProgram();
@@ -15,7 +13,7 @@ Shader::Shader(const std::string& filename,unsigned int NUM_UNIFORMS)
 	{
 		glAttachShader(m_program, m_shaders[i]);
 	}
-	LOG_INFO("Shader", "constructed");
+	LOG_INFO(("Shader: Constructed"));
 	
 
 }
@@ -31,7 +29,7 @@ Shader::~Shader()
 		glDeleteShader(m_shaders[i]);
 
 	}
-	LOG_INFO("Shader", "destructed");
+	LOG_INFO(("Shader: Destroyed"));
 }
 
 
@@ -57,12 +55,16 @@ void Shader::Update(const Transform & transform, const Camera& camera)
 
 	glm::mat4 model = camera.GetViewProjection() * transform.GetModel();
 	glUniformMatrix4fv(m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
+	glUniform1f(m_uniforms[LIGHT_STR_U], Light::lightStrength);
+	glUniform3fv(m_uniforms[LIGHT_COLOR_U], sizeof(glm::vec3), &Light::lightColor[0]);
+	glUniform3fv(m_uniforms[LIGHT_POS_U], sizeof(glm::vec3), &Light::lightPos[0]);
+	glUniform3fv(m_uniforms[LIGHT_DIR_U], sizeof(glm::vec3), &Light::lightDir[0]);
 
 }
 
 void Shader::Bind()
 {
-	LOG_INFO("Shader", "Bind")
+	LOG_INFO(("Shader: BIND"));
 	glUseProgram(m_program);
 }
 
@@ -91,7 +93,7 @@ std::string Shader::LoadShader(const std::string & filename)
 	}
 	else
 	{
-		LOG_ERR("Shader","unable to load shader file")
+		LOG_ERR(("Shader: unable to load shader file"));
 	}
 	return output;
 }
@@ -102,7 +104,7 @@ GLuint Shader::CreateShader(const std::string & text, GLenum shaderType)
 
 	if (shader == 0)
 	{
-		LOG_ERR("Shade","unable to create shder")
+		LOG_ERR(("Shader: unable to create shader"));
 	}
 	const GLchar* shaderSourceStrings[1];
 	GLint shaderSourceStringLength[1];

@@ -7,6 +7,7 @@
 #include "Log.h"
 
 
+
 class Window
 {
 public:
@@ -30,9 +31,9 @@ public:
 	GLFWwindow* GetWindow() const;
 private:
 	GLFWwindow * m_window;
-	
 	int m_width;
 	int m_height;
 	const char* m_title;
+	
 
 };
