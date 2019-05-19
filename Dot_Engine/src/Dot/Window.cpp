@@ -1,25 +1,22 @@
 #include "Window.h"
 
 
-
+static bool GLFWInitialized = false;
 void ResizeWindow(GLFWwindow *window, int width, int height);
 
-Window::Window(int width, int height, const char* title)
+Window::Window(const WindowProps& props = WindowProps())
 {
 
-	m_width = width;
-	m_height = height;
-	m_title = title;
+	m_data.width = props.Width;
+	m_data.height = props.Height;
+	m_data.title = props.Title;
 	Init();
 
 	glewInit();
-
-	glViewport(0, 0, width, height);
+	glViewport(0, 0, m_data.width, m_data.height);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
-
-
 
 }
 
@@ -31,20 +28,18 @@ Window::~Window()
 
 void Window::Init()
 {
-	if (!glfwInit())
+	if (!GLFWInitialized)
 	{
-		LOG_ERR("Window: Could not initialize GLFW",NULL)
-		glfwTerminate();
+		int success = glfwInit();
+		D_ASSERT(success, "Could not initialize GLFW!");
+		GLFWInitialized = true;
 	}
 
-	m_window = glfwCreateWindow(m_width, m_height, m_title, NULL, NULL);
-	LOG_INFO("Window: Created window", NULL);
-	LOG_INFO("Window: width:%d",m_width);
-	LOG_INFO("Window: height:%d", m_height);
+	m_window = glfwCreateWindow(m_data.width, m_data.height, m_data.title, NULL, NULL);
+	LOG_INFO("Window: Created window width:%d height:%d", m_data.width, m_data.height);
 
 	glfwMakeContextCurrent(m_window);
 	glfwWindowHint(GLFW_DEPTH_BITS, 16);
-
 	glfwSetFramebufferSizeCallback(m_window, ResizeWindow);
 
 
@@ -54,11 +49,12 @@ void Window::Update()
 {
 	glfwPollEvents();
 	glfwSwapBuffers(m_window);
-	
+
 }
 
 bool Window::IsClosed()
 {
+	LOG_INFO("Window: Close")
 	return glfwWindowShouldClose(m_window);
 }
 
@@ -79,15 +75,10 @@ void Window::Clear()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void ResizeWindow(GLFWwindow *window,int width, int height)
+void ResizeWindow(GLFWwindow *window, int width, int height)
 {
-
-	
 	glViewport(0, 0, width, height);
-	LOG_INFO("Window: Resized window", NULL);
-	LOG_INFO("Window: width:%d", width);
-	LOG_INFO("Window: height:%d", height);
-	
+	LOG_INFO("Window: Resized window width:%d height:%d", width, height);
 }
 
 
@@ -95,12 +86,12 @@ void ResizeWindow(GLFWwindow *window,int width, int height)
 
 inline int Window::GetWidth() const
 {
-	return m_width;
+	return m_data.width;
 }
 
 inline int Window::GetHeight() const
 {
-	return m_height;
+	return m_data.height;
 }
 
 GLFWwindow * Window::GetWindow() const

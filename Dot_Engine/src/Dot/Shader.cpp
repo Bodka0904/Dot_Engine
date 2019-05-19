@@ -13,8 +13,8 @@ Shader::Shader(const std::string& filename)
 	{
 		glAttachShader(m_program, m_shaders[i]);
 	}
-	LOG_INFO("Shader: Constructed",NULL);
-	
+	LOG_INFO("Shader: Constructed");
+
 
 }
 
@@ -29,7 +29,7 @@ Shader::~Shader()
 		glDeleteShader(m_shaders[i]);
 
 	}
-	LOG_INFO("Shader: Destroyed",NULL);
+	LOG_INFO("Shader: Destroyed");
 }
 
 
@@ -47,7 +47,7 @@ void Shader::LinkShader()
 {
 	glLinkProgram(m_program);
 	glValidateProgram(m_program);
-	
+
 }
 
 void Shader::Update(const Transform & transform, const Camera& camera)
@@ -64,7 +64,7 @@ void Shader::Update(const Transform & transform, const Camera& camera)
 
 void Shader::Bind()
 {
-	LOG_INFO("Shader: BIND",NULL);
+	LOG_INFO("Shader: BIND");
 	glUseProgram(m_program);
 }
 
@@ -93,7 +93,7 @@ std::string Shader::LoadShader(const std::string & filename)
 	}
 	else
 	{
-		LOG_ERR("Shader: unable to load shader file",NULL);
+		LOG_ERR("Shader: unable to load shader file");
 	}
 	return output;
 }
@@ -104,7 +104,7 @@ GLuint Shader::CreateShader(const std::string & text, GLenum shaderType)
 
 	if (shader == 0)
 	{
-		LOG_ERR("Shader: unable to create shader",NULL);
+		LOG_ERR("Shader: unable to create shader");
 	}
 	const GLchar* shaderSourceStrings[1];
 	GLint shaderSourceStringLength[1];
