@@ -2,20 +2,8 @@
 
 
 
-Shader::Shader(const std::string& filename)
+Shader::Shader()
 {
-
-	m_program = glCreateProgram();
-	m_shaders[0] = CreateShader(LoadShader(filename + ".vs"), GL_VERTEX_SHADER);
-	m_shaders[1] = CreateShader(LoadShader(filename + ".fs"), GL_FRAGMENT_SHADER);
-
-	for (unsigned int i = 0; i < NUM_SHADER; i++)
-	{
-		glAttachShader(m_program, m_shaders[i]);
-	}
-	LOG_INFO("Shader: Constructed");
-
-
 }
 
 
@@ -32,15 +20,34 @@ Shader::~Shader()
 	LOG_INFO("Shader: Destroyed");
 }
 
-
-void Shader::SetAttrib(unsigned int location, const GLchar* name)
+void Shader::Init(std::string &filename)
 {
-	glBindAttribLocation(m_program, location, name);
+	m_program = glCreateProgram();
+	m_shaders[0] = CreateShader(LoadShader(filename + ".vs"), GL_VERTEX_SHADER);
+	m_shaders[1] = CreateShader(LoadShader(filename + ".fs"), GL_FRAGMENT_SHADER);
+
+	for (unsigned int i = 0; i < NUM_SHADER; i++)
+	{
+		glAttachShader(m_program, m_shaders[i]);
+	}
+	LOG_INFO("Shader: Inited");	
 }
 
-void Shader::SetUniform(unsigned int uniform, const GLchar * name)
+
+void Shader::SetAttribs()
 {
-	m_uniforms[uniform] = glGetUniformLocation(m_program, name);
+	glBindAttribLocation(m_program, 0, "position");
+	glBindAttribLocation(m_program, 1, "texCoord");
+	glBindAttribLocation(m_program, 2, "normal");
+}
+
+void Shader::SetUniforms()
+{
+	m_uniforms[TRANSFORM_U] = glGetUniformLocation(m_program, "transform");
+	m_uniforms[LIGHT_STR_U] = glGetUniformLocation(m_program, "lightStrength");
+	m_uniforms[LIGHT_COLOR_U] = glGetUniformLocation(m_program, "lightColor");
+	m_uniforms[LIGHT_POS_U] = glGetUniformLocation(m_program, "lightPos");
+	m_uniforms[LIGHT_DIR_U] = glGetUniformLocation(m_program, "lightDir");
 }
 
 void Shader::LinkShader()
