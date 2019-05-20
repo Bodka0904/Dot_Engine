@@ -6,7 +6,7 @@
 
 
 struct Particle {
-	glm::vec3 emit;
+	
 	glm::vec3 offset;
 	glm::vec3 velocity;
 	float timeAlive;
@@ -20,7 +20,7 @@ class ParticleSystem
 public:
 	ParticleSystem(unsigned int numParticles,float size,glm::vec3 color);
 	~ParticleSystem();
-
+	virtual void Init(){};
 	void Update();
 	void Draw();
 
