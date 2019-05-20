@@ -21,8 +21,10 @@ struct Light
 class Shader
 {
 public:
-	Shader(const std::string& filename);
-
+	Shader();
+	
+	void Init(const std::string& filename);
+	
 	virtual void SetAttribs();
 	virtual void SetUniforms();
 	virtual void Update(const Transform& transform, const Camera& camera);
