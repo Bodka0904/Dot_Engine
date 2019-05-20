@@ -23,10 +23,11 @@ class Shader
 public:
 	Shader(const std::string& filename);
 
-	void SetAttrib(unsigned int location, const GLchar* name);
-	void SetUniform(unsigned int uniform, const GLchar* name);
+	virtual void SetAttribs();
+	virtual void SetUniforms();
+	virtual void Update(const Transform& transform, const Camera& camera);
+	
 	void LinkShader();
-	void Update(const Transform& transform, const Camera& camera);
 	void Bind();
 	void UnBind();
 
