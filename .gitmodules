@@ -1,0 +1,3 @@
+[submodule "Dot_Engine/vendor/GLFV"]
+	path = Dot_Engine/vendor/GLFV
+	url = https://github.com/TheCherno/GLFW
