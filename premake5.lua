@@ -10,6 +10,16 @@ workspace "Dot_Engine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Dot_Engine/vendor/GLFW/include"
+IncludeDir["GLEW"] = "Dot_Engine/vendor/GLEW/include"
+
+
+include "Dot_Engine/vendor/GLFW"
+include "Dot_Engine/vendor/GLEW"
+
+
 project "Dot_Engine"
 		location "Dot_Engine"
 		kind "StaticLib"
@@ -26,30 +36,30 @@ project "Dot_Engine"
 			"%{prj.name}/src/**.cpp",
 			"%{prj.name}/vendor/glm/glm/**.hpp",
 			"%{prj.name}/vendor/glm/glm/**.inl",
+			"%{prj.name}/vendor/stb_image/**.h",
+			"%{prj.name}/vendor/stb_image/**.cpp"
 		}
 
 		defines
 		{
-			"_CRT_SECURE_NO_WARNINGS"
+			"_CRT_SECURE_NO_WARNINGS",
+			"GLEW_STATIC"
 		}
 
 		includedirs
 		{
 			"%{prj.name}/src",
-			"%{prj.name}/vendor/GLFW/include",
-			"%{prj.name}/vendor/glew-2.1.0/include",
-			"%{prj.name}/vendor/glm"
+			"%{IncludeDir.GLFW}",	
+			"%{IncludeDir.GLEW}",
+			"%{prj.name}/vendor/glm",
+			"%{prj.name}/vendor/stb_image"
 		}
-		libdirs
-		{
-			"%{prj.name}/vendor/GLFW/lib-vc2017",
-			"%{prj.name}/vendor/glew-2.1.0/lib/Release/x64"
-		}
-	
+
+
 		links 
 		{ 
-			"glfw3",
-			"glew32s",
+			"GLEW",
+			"GLFW",
 			"opengl32"
 		}
 		
@@ -57,6 +67,12 @@ project "Dot_Engine"
 		filter "system:windows"
 				cppdialect "C++17"
 				systemversion "latest"
+			defines
+			{
+				"GLFW_INCLUDE_NONE",
+				"GLEW_STATIC"
+			}
+
 
 
 		filter "configurations:Debug"
@@ -87,10 +103,13 @@ project "SandBox"
 
 		includedirs
 		{
+			"Dot_Engine/vendor/GLFW/include",
+			"Dot_Engine/vendor/GLEW/include",
 			"Dot_Engine/vendor",
 			"Dot_Engine/src",
-			"Dot_Engine/vendor/glm}"
+			"Dot_Engine/vendor/glm"
 		}
+		
 
 		links
 		{

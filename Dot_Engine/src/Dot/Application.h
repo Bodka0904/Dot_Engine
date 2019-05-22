@@ -1,5 +1,9 @@
-#include "Window.h"
+#include "Graphics/Window.h"
 #include "Layer.h"
+#include "Dot/Graphics/Camera.h"
+
+#include "Dot/Graphics/Shader.h"
+#include "Dot/Graphics/Transform.h"
 #include <vector>
 
 
@@ -26,8 +30,13 @@ private:
 
 	std::vector<Layer*> m_Layers;
 	unsigned int m_LayerInsertIndex = 0;
+	unsigned int m_VertexArray;
+	unsigned int m_VertexBuffer;
+	unsigned int m_IndexBuffer;
+
+	static Application* s_Instance;
 
 };
 
 // To be defined in CLIENT
-Application* CreateApplication();
+Application *CreateApplication();

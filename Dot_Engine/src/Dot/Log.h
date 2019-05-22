@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 
+#ifndef LOG_H
+#define LOG_H
 class Log {
 
 public:
@@ -46,6 +48,8 @@ private:
 
 
 
-#define LOG_INFO(...) Log::SetColor(Log::WHITE);if(Log::GetLevel() == Log::INFO || Log::TRACE)printf(__VA_ARGS__);
-#define LOG_WARN(...) Log::SetColor(Log::YELLOW);if(Log::GetLevel() == Log::WARN || Log::TRACE)printf(__VA_ARGS__);
-#define LOG_ERR(...)  Log::SetColor(Log::RED);if(Log::GetLevel() == Log::ERR || Log::TRACE)printf(__VA_ARGS__);
+#define LOG_INFO(...) Log::SetColor(Log::WHITE);if(Log::GetLevel() == Log::INFO || Log::TRACE)printf(__VA_ARGS__);printf("\n");
+#define LOG_WARN(...) Log::SetColor(Log::YELLOW);if(Log::GetLevel() == Log::WARN || Log::TRACE)printf(__VA_ARGS__);printf("\n");
+#define LOG_ERR(...)  Log::SetColor(Log::RED);if(Log::GetLevel() == Log::ERR || Log::TRACE)printf(__VA_ARGS__);printf("\n");
+
+#endif

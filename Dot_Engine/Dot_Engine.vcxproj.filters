@@ -7,6 +7,9 @@
     <Filter Include="src\Dot">
       <UniqueIdentifier>{836F2FA9-EF4E-AE44-F866-391B64C514A6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Graphics">
+      <UniqueIdentifier>{235B582F-0F54-7781-3886-5C0624DE568D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -28,36 +31,48 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Dot\Camera.h">
+    <ClInclude Include="src\Dot\Application.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Core.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Camera.h">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Mesh.h">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\ObjLoader.h">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\ParticleSystem.h">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Shader.h">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Texture.h">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Transform.h">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Window.h">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\KeyCodes.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Layer.h">
+      <Filter>src\Dot</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Log.h">
-      <Filter>src\Dot</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Mesh.h">
-      <Filter>src\Dot</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\ObjLoader.h">
-      <Filter>src\Dot</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\ParticleSystem.h">
-      <Filter>src\Dot</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Shader.h">
-      <Filter>src\Dot</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Transform.h">
-      <Filter>src\Dot</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Window.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
@@ -1152,29 +1167,41 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Application.h" />
-    <ClInclude Include="src\Dot\Layer.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Dot\Application.cpp">
+      <Filter>src\Dot</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Mesh.cpp">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\ParticleSystem.cpp">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Shader.cpp">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Texture.cpp">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Window.cpp">
+      <Filter>src\Dot\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Layer.cpp">
+      <Filter>src\Dot</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Log.cpp">
       <Filter>src\Dot</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Mesh.cpp">
-      <Filter>src\Dot</Filter>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\ObjLoader.cpp">
-      <Filter>src\Dot</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\ParticleSystem.cpp">
-      <Filter>src\Dot</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Shader.cpp">
-      <Filter>src\Dot</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Window.cpp">
-      <Filter>src\Dot</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Application.cpp" />
-    <ClCompile Include="src\Dot\Layer.cpp" />
+    <ClCompile Include="src\Dot\EntryPoint.h" />
   </ItemGroup>
 </Project>

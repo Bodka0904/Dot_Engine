@@ -1,15 +1,9 @@
-#include "Dot/Log.h"
+#pragma once
 #include "Dot/Application.h"
+#include "Dot/EntryPoint.h"
 #include <iostream>
 
-int main()
-{
 
-	LOG_INFO("test");
-	std::cin.get();
-
-	return 0;
-}
 
 class SandBox : public Application
 {
@@ -23,9 +17,45 @@ public:
 	{
 
 	}
+
+private:
+	
 };
+
+
+class TestLayer : public Layer
+{
+public:
+	TestLayer() 
+	{
+		
+	};
+	void OnAttach()
+	{
+		
+	}
+
+	void OnUpdate()
+	{
+		
+		
+	}
+
+
+	
+private:
+
+	
+};
+
+
 
 Application* CreateApplication()
 {
 	return new SandBox();
 }
+
+
+
+
+
