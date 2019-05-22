@@ -2,9 +2,11 @@
 #include <string>
 #include <fstream>
 #include <GL\glew.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 #include <GLFW\glfw3.h>
 #include "Dot/Log.h"
 #include "Dot/Core.h"
+
 
 struct WindowProps
 {
@@ -28,8 +30,7 @@ public:
 	void Init();
 	void Update();
 	bool IsClosed();
-	void Terminate();
-	void ShowWindow();
+	void Destroy();
 	void Clear();
 
 	inline int GetWidth() const;
@@ -50,6 +51,7 @@ private:
 	};
 
 	WindowData m_data;
+	OpenGLContext* m_Context;
 
 
 };

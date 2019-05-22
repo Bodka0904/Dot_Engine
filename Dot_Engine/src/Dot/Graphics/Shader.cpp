@@ -32,10 +32,14 @@ void Shader::Init(const std::string &filename)
 	{
 		glAttachShader(m_program, m_shaders[i]);
 	}
-	
-	SetAttribs();
-	LinkShader();
-	SetUniforms();
+	glBindAttribLocation(m_program, 0, "position");
+	glBindAttribLocation(m_program, 1, "texCoord");
+	glBindAttribLocation(m_program, 2, "normal");
+
+	glLinkProgram(m_program);
+	//SetAttribs();
+	//LinkShader();
+	//SetUniforms();
 }
 
 
@@ -90,10 +94,10 @@ void Shader::Update(const Transform & transform, const Camera& camera)
 
 	glm::mat4 model = camera.GetViewProjection() * transform.GetModel();
 	glUniformMatrix4fv(m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
-	//glUniform1f(m_uniforms[LIGHT_STR_U], BasicLight.lightStrength);
-	//glUniform3fv(m_uniforms[LIGHT_COLOR_U], sizeof(glm::vec3), &BasicLight.lightColor[0]);
-	//glUniform3fv(m_uniforms[LIGHT_POS_U], sizeof(glm::vec3), &BasicLight.lightPos[0]);
-	//glUniform3fv(m_uniforms[LIGHT_DIR_U], sizeof(glm::vec3), &BasicLight.lightDir[0]);
+	glUniform1f(m_uniforms[LIGHT_STR_U], BasicLight.lightStrength);
+	glUniform3fv(m_uniforms[LIGHT_COLOR_U], sizeof(glm::vec3), &BasicLight.lightColor[0]);
+	glUniform3fv(m_uniforms[LIGHT_POS_U], sizeof(glm::vec3), &BasicLight.lightPos[0]);
+	glUniform3fv(m_uniforms[LIGHT_DIR_U], sizeof(glm::vec3), &BasicLight.lightDir[0]);
 
 }
 

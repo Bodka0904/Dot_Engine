@@ -4,9 +4,10 @@ Application* Application::s_Instance = nullptr;
 
 Application::Application()
 {
+	
 	s_Instance = this;
 	m_Window = std::unique_ptr<Window>(Window::Create());
-
+	
 	glGenVertexArrays(1, &m_VertexArray);
 	glBindVertexArray(m_VertexArray);
 
@@ -41,9 +42,8 @@ Application::~Application()
 void Application::Run()
 {
 	
-	while (m_Running)
+	while (!m_Window->IsClosed())
 	{
-		
 		m_Window->Clear();
 		
 		glBindVertexArray(m_VertexArray);
@@ -55,6 +55,7 @@ void Application::Run()
 		
 		m_Window->Update();
 	}
+	m_Window->Destroy();
 }
 
 void Application::PushLayer(Layer * layer)

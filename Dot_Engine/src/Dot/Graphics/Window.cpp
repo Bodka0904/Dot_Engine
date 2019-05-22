@@ -6,20 +6,12 @@ void ResizeWindow(GLFWwindow *window, int width, int height);
 
 Window::Window(const WindowProps& props)
 {
-
 	m_data.width = props.Width;
 	m_data.height = props.Height;
 	m_data.title = props.Title;
 	Init();
-	glewExperimental = true;
-	glewInit();
-	glViewport(0, 0, m_data.width, m_data.height);
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	
-}
 
+}
 
 Window::~Window()
 {
@@ -34,18 +26,16 @@ void Window::Init()
 		D_ASSERT(success, "Could not initialize GLFW!");
 		GLFWInitialized = true;
 	}
-
 	m_window = glfwCreateWindow(m_data.width, m_data.height, m_data.title, NULL, NULL);
-	LOG_INFO("Window: Created window width:%d height:%d", m_data.width, m_data.height);
 	
+	m_Context = new OpenGLContext(m_window);
+	m_Context->Init();
 	
-	glfwMakeContextCurrent(m_window);
-	glfwWindowHint(GLFW_DEPTH_BITS, 16);
 	glfwSetFramebufferSizeCallback(m_window, ResizeWindow);
+
+	glfwSetWindowUserPointer(m_window, &m_data);
+
 	
-	LOG_WARN((char*)glGetString(GL_VENDOR));
-	LOG_WARN((char*)glGetString(GL_RENDERER));
-	LOG_WARN((char*)glGetString(GL_VERSION));
 
 }
 
@@ -53,26 +43,23 @@ void Window::Update()
 {
 
 	glfwPollEvents();
-	glfwSwapBuffers(m_window);
-
+	m_Context->SwapBuffers();
+	
 }
 
 bool Window::IsClosed()
 {
-	LOG_INFO("Window: Close")
 	return glfwWindowShouldClose(m_window);
 }
 
 
-void Window::Terminate()
+void Window::Destroy()
 {
-	glfwTerminate();
+	LOG_WARN("Window: Close")
+	glfwDestroyWindow(m_window);
 }
 
-void Window::ShowWindow()
-{
-	glfwShowWindow(m_window);
-}
+
 
 void Window::Clear()
 {

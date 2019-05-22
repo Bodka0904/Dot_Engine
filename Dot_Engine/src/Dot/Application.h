@@ -26,7 +26,6 @@ public:
 
 private:
 	std::unique_ptr<Window> m_Window;
-	bool m_Running = true;
 
 	std::vector<Layer*> m_Layers;
 	unsigned int m_LayerInsertIndex = 0;
@@ -35,7 +34,7 @@ private:
 	unsigned int m_IndexBuffer;
 
 	static Application* s_Instance;
-
+	
 };
 
 // To be defined in CLIENT
