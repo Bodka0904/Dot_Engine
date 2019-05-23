@@ -1,9 +1,10 @@
 #include "Graphics/Window.h"
 #include "Layer.h"
 #include "Dot/Graphics/Camera.h"
-
+#include "Dot/Graphics/Mesh.h"
 #include "Dot/Graphics/Shader.h"
 #include "Dot/Graphics/Transform.h"
+#include "Dot/Graphics/Texture.h"
 #include <vector>
 
 
@@ -34,7 +35,11 @@ private:
 	unsigned int m_IndexBuffer;
 
 	static Application* s_Instance;
-	
+	Shader shader;
+	Camera camera;
+	Transform transform;
+	Texture texture;
+	Mesh *mesh;
 };
 
 // To be defined in CLIENT

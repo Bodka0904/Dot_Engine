@@ -42,7 +42,7 @@ public:
 	virtual~Mesh();
 	void Draw();
 	
-
+	static Mesh* CreateMesh(const std::string& filename) { return new Mesh(filename);}
 
 private:
 	enum

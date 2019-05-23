@@ -3,49 +3,55 @@
 #include <math.h>
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
-#include "GL\glew.h"
+
 
 
 
 class Camera
 {
 public:
-	Camera(const glm::vec3& pos = glm::vec3(0, 0.5, -2), 
-		float fov = 70.0f, float aspect = 1, float zNear = 0.01f, float zFar = 1000.0f)
+	Camera(glm::mat4& projectionMatrix = glm::perspective(70.0f,1280.0f/720.0f,0.01f,1000.0f))
+		:
+		m_projectionMatrix(projectionMatrix),
+		m_position(glm::vec3(0, 0, 0)),
+		m_rotation(glm::vec3(0, 0, 0)),
+		m_up(glm::vec3(0, 1, 0)),
+		m_cameraTarget(glm::vec3(0, 0, -1))
 	{
-		m_perspective = glm::perspective(fov, aspect, zNear, zFar);
-		m_position = pos;
-		m_forward = glm::vec3(0, 0, 1);
-		m_up = glm::vec3(0, 0.5, 0);
-		
 	}
 
-	inline glm::mat4 GetViewProjection() const
+	inline glm::mat4 GetViewProjection() const 
 	{
-		return m_perspective * glm::lookAt(m_position, cameraCenter, m_up);
-	}
+		glm::mat4 posMatrix = glm::translate(m_position);
+		glm::mat4 rotXMatrix = glm::rotate(m_rotation.x, glm::vec3(1, 0, 0));
+		glm::mat4 rotYMatrix = glm::rotate(m_rotation.y, glm::vec3(0, 1, 0));
+		glm::mat4 rotZMatrix = glm::rotate(m_rotation.z, glm::vec3(0, 0, 1));
 
+		glm::mat4 rotMatrix = rotZMatrix * rotYMatrix * rotXMatrix;
+
+
+		return m_projectionMatrix * glm::lookAt(m_position,m_position + m_cameraTarget, m_up)  * posMatrix * rotMatrix;
+	}
 	
+	inline const glm::mat4& GetProjectionMatrix() const { return m_projectionMatrix; }
+	inline void SetProjectionMatrix(glm::mat4 projectionMatrix) { m_projectionMatrix = projectionMatrix; }
 	inline glm::vec3& GetPos() { return m_position; }
-	inline glm::vec3& GetForward() { return m_forward; }
+	inline glm::vec3& GetRot() { return m_rotation; }
+	inline glm::vec3& GetCameraTarget() { return m_cameraTarget; }
 	inline glm::vec3& GetUp() { return m_up; }
+
 	
 
 
-private:
-	
-	glm::mat4 m_perspective;
+
+
+protected:
+	glm::mat4 m_projectionMatrix;
+	glm::mat4 m_viewMatrix;
 	glm::vec3 m_position;
-	glm::vec3 m_forward;
+	glm::vec3 m_rotation;
 	glm::vec3 m_up;
-	glm::vec3 cameraCenter;
-	
-	
-
-
-
-
-
+	glm::vec3 m_cameraTarget;
 
 
 

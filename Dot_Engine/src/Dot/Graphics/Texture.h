@@ -6,22 +6,27 @@
 
 
 
+struct TextureData
+{
+	GLuint texture;
+	unsigned char* imageData;
+	int width;
+	int height;
+	int numComponents;
+};
+
 class Texture
 {
 public:
-	Texture(const std::string& fileName);
+	Texture(int numTextures);
 	virtual ~Texture();
 	
-
+	void Create(std::string fileName);
 	void Bind(unsigned int unit);
 
 private:
-	std::string m_fileName;
-	GLuint m_texture;
-	unsigned char* m_imageData;
-	int m_width;
-	int m_height;
-	int m_numComponents;
+	TextureData * data;
+	int texIndex = 0;
 	
 };
 

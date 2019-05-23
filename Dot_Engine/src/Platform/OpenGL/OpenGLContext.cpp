@@ -25,10 +25,12 @@ void OpenGLContext::Init()
 	LOG_WARN("Renderer: %s", (char*)glGetString(GL_RENDERER));
 	LOG_WARN("Version: %s", (char*)glGetString(GL_VERSION));
 
-	glewInit();
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	if (glewInit() != GLEW_OK)
+	{
+		LOG_ERR("OpenGLContext: Could not initialize glew")
+	};
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 }
 
 void OpenGLContext::SwapBuffers()

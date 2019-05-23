@@ -1,7 +1,8 @@
-#version 330 core
+#version 400 core
 
 in vec2 texCoord0;
 in vec3 normal0;
+out vec4 FragColor;
 
 float lightStrength;
 uniform vec3 lightColor;
@@ -20,7 +21,8 @@ void main()
 	vec3 diffuse = diff * lightColor;
 	vec3 result = ambient + diffuse;
 
-	gl_FragColor = texture2D(Texture,texCoord0) * vec4(result,1.0);
-			
+
+	FragColor = texture2D(Texture,texCoord0) 
+			* vec4(result,1.0);
 	
 }
