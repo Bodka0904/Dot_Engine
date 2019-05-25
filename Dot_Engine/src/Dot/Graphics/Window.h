@@ -2,10 +2,13 @@
 #include <string>
 #include <fstream>
 #include <GL\glew.h>
+#include <functional>
 #include "Platform/OpenGL/OpenGLContext.h"
 #include <GLFW\glfw3.h>
+#include "Dot/Events/Event.h"
 #include "Dot/Log.h"
 #include "Dot/Core.h"
+
 
 
 struct WindowProps
@@ -35,10 +38,14 @@ public:
 
 	inline int GetWidth() const;
 	inline int GetHeight() const;
+	inline Event GetEvent() { return m_data.event; }
 
 	static Window* Create(const WindowProps& props = WindowProps()) { return new Window(props); }
 
 	GLFWwindow* GetWindow() const;
+
+	
+
 private:
 	GLFWwindow * m_window;
 	
@@ -47,7 +54,7 @@ private:
 		const char* title;
 		unsigned int width;
 		unsigned int height;
-
+		Event event;
 	};
 
 	WindowData m_data;

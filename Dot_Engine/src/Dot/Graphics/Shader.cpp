@@ -53,10 +53,12 @@ void Shader::SetAttribs()
 void Shader::SetUniforms()
 {
 	m_uniforms[TRANSFORM_U] = glGetUniformLocation(m_program, "transform");
+	m_uniforms[VIEW_POS_U] = glGetUniformLocation(m_program, "viewPos");
 	m_uniforms[LIGHT_STR_U] = glGetUniformLocation(m_program, "lightStrength");
+	m_uniforms[SPEC_STR_U] = glGetUniformLocation(m_program, "specStrength");
 	m_uniforms[LIGHT_COLOR_U] = glGetUniformLocation(m_program, "lightColor");
 	m_uniforms[LIGHT_POS_U] = glGetUniformLocation(m_program, "lightPos");
-	m_uniforms[LIGHT_DIR_U] = glGetUniformLocation(m_program, "lightDir");
+	
 }
 
 void Shader::LinkShader()
@@ -89,16 +91,17 @@ void Shader::LinkShader()
 	glDetachShader(m_program, m_shaders[1]);
 }
 
-void Shader::Update(const Transform & transform,const Camera& camera)
+void Shader::Update(const Transform & transform, Camera& camera)
 {
 
 	glm::mat4 model = camera.GetViewProjection() * transform.GetModel();
 	glUniformMatrix4fv(m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]);
 	glUniform1f(m_uniforms[LIGHT_STR_U], BasicLight.lightStrength);
+	glUniform1f(m_uniforms[SPEC_STR_U], BasicLight.specStrength);
+	glUniform3fv(m_uniforms[VIEW_POS_U], 1, &camera.GetPos()[0]);
 	glUniform3fv(m_uniforms[LIGHT_COLOR_U], 1, &BasicLight.lightColor[0]);
 	glUniform3fv(m_uniforms[LIGHT_POS_U], 1, &BasicLight.lightPos[0]);
-	glUniform3fv(m_uniforms[LIGHT_DIR_U], 1, &BasicLight.lightDir[0]);
-
+	
 }
 
 void Shader::Bind()

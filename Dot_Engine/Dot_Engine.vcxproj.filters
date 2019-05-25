@@ -7,8 +7,17 @@
     <Filter Include="src\Dot">
       <UniqueIdentifier>{836F2FA9-EF4E-AE44-F866-391B64C514A6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Events">
+      <UniqueIdentifier>{072AC2DA-F3F7-B5E0-DC8B-2607C8F89145}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Dot\Graphics">
       <UniqueIdentifier>{235B582F-0F54-7781-3886-5C0624DE568D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -42,6 +51,12 @@
     <ClInclude Include="src\Dot\Core.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\EntryPoint.h">
+      <Filter>src\Dot</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Events\Event.h">
+      <Filter>src\Dot\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Camera.h">
       <Filter>src\Dot\Graphics</Filter>
     </ClInclude>
@@ -74,6 +89,12 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Log.h">
       <Filter>src\Dot</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\MouseButtonCodes.h">
+      <Filter>src\Dot</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
       <Filter>vendor\glm\glm</Filter>
@@ -1170,7 +1191,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1200,10 +1220,11 @@
     <ClCompile Include="src\Dot\Log.cpp">
       <Filter>src\Dot</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\EntryPoint.h" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

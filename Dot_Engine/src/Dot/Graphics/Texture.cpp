@@ -23,7 +23,7 @@ void Texture::Create(std::string fileName)
 	{
 		LOG_ERR("Texture: Could not load texture index: %d",texIndex)
 	}
-
+	
 	glGenTextures(1, &data[texIndex].texture);
 	glBindTexture(GL_TEXTURE_2D, data[texIndex].texture);
 
@@ -54,7 +54,8 @@ void Texture::Create(std::string fileName)
 void Texture::Bind(unsigned int unit)
 {
 	assert(unit >= 0 && unit <= 31);
-
+	glEnable(GL_TEXTURE_2D);
 	glActiveTexture(GL_TEXTURE0 + unit);
 	glBindTexture(GL_TEXTURE_2D, data[unit].texture);
+	 
 }

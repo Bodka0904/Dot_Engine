@@ -1,10 +1,11 @@
 #include "Graphics/Window.h"
 #include "Layer.h"
-#include "Dot/Graphics/Camera.h"
-#include "Dot/Graphics/Mesh.h"
-#include "Dot/Graphics/Shader.h"
-#include "Dot/Graphics/Transform.h"
-#include "Dot/Graphics/Texture.h"
+#include "Graphics/Camera.h"
+#include "Graphics/Mesh.h"
+#include "Graphics/Shader.h"
+#include "Graphics/Transform.h"
+#include "Graphics/Texture.h"
+#include "Events/Event.h"
 #include <vector>
 
 
@@ -21,9 +22,12 @@ public:
 	void PushOverlay(Layer* overlay);
 	void PopLayer(Layer* layer);
 	void PopOverlay(Layer* overlay);
+	void OnEvent(Event &e);
 
+	Window GetWin() { return *m_Window; }
 
-	static Application  *Create() { return new Application(); }
+	//inline static Application& Get() { return *s_Instance; }
+	static Application *Create() { return new Application(); }
 
 private:
 	std::unique_ptr<Window> m_Window;

@@ -13,7 +13,7 @@ Application::Application()
 
 	shader.Init("res/shaders/BasicShader");
 	shader.Bind();
-	mesh = Mesh::CreateMesh("res/models/player.obj");
+	mesh = Mesh::CreateMesh("res/models/test.obj");
 	texture.Create("res/textures/robotTex.jpg");
 	texture.Bind(0);
 	
@@ -33,13 +33,17 @@ void Application::Run()
 	{
 		m_Window->Clear();
 
-		camera.GetRot().z -= 0.01;
-		transform.GetPos().z -= 0.2;
+	
+		transform.GetPos().z = -50;
+		transform.GetRot().y += 0.01;
 		mesh->Draw();
 		shader.Update(transform, camera);
 		
 		for (Layer* layer : m_Layers)
+		{
 			layer->OnUpdate();
+		}
+		OnEvent(m_Window->GetEvent());
 		m_Window->Update();
 	}
 	m_Window->Destroy();
@@ -73,4 +77,14 @@ void Application::PopOverlay(Layer * overlay)
 	auto it = std::find(m_Layers.begin(), m_Layers.end(), overlay);
 	if (it != m_Layers.end())
 		m_Layers.erase(it);
+}
+
+void Application::OnEvent(Event & event)
+{
+	for (auto it = m_Layers.end(); it != m_Layers.begin(); )
+	{
+		(*--it)->OnEvent(event);
+		if (event.Handled)
+			break;
+	}
 }

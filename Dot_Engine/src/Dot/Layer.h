@@ -1,4 +1,5 @@
 #pragma once
+#include "Events/Event.h"
 #include <string>
 
 class Layer
@@ -12,6 +13,8 @@ public:
 
 	virtual void OnUpdate() {} //Update
 	virtual void ImGuiRender() {} 
+
+	virtual void OnEvent(Event& event){}
 
 };
 

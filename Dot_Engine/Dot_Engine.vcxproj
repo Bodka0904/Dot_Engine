@@ -95,9 +95,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Dot\Application.h" />
     <ClInclude Include="src\Dot\Core.h" />
+    <ClInclude Include="src\Dot\EntryPoint.h" />
+    <ClInclude Include="src\Dot\Events\Event.h" />
     <ClInclude Include="src\Dot\Graphics\Camera.h" />
     <ClInclude Include="src\Dot\Graphics\Mesh.h" />
     <ClInclude Include="src\Dot\Graphics\ObjLoader.h" />
@@ -109,6 +110,8 @@
     <ClInclude Include="src\Dot\KeyCodes.h" />
     <ClInclude Include="src\Dot\Layer.h" />
     <ClInclude Include="src\Dot\Log.h" />
+    <ClInclude Include="src\Dot\MouseButtonCodes.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
@@ -476,9 +479,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Dot\Application.cpp" />
-    <ClCompile Include="src\Dot\EntryPoint.h" />
     <ClCompile Include="src\Dot\Graphics\Mesh.cpp" />
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp" />
     <ClCompile Include="src\Dot\Graphics\ParticleSystem.cpp" />
@@ -487,6 +488,7 @@
     <ClCompile Include="src\Dot\Graphics\Window.cpp" />
     <ClCompile Include="src\Dot\Layer.cpp" />
     <ClCompile Include="src\Dot\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -500,4 +502,4 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-</Project>
+</Project> 

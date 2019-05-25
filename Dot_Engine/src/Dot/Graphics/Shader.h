@@ -14,14 +14,15 @@
 struct Light
 {
 	float	 lightStrength;
+	float	 specStrength;
 	glm::vec3 lightColor;
 	glm::vec3 lightPos;
-	glm::vec3 lightDir;
+	
 
-	Light(float lightStr = 0.8, glm::vec3 lightC = glm::vec3(0.5, 0.5, 0.5),
-		glm::vec3 lightP = glm::vec3(0, 1, 0), glm::vec3 lightD = glm::vec3(0,0,0))
+	Light(float lightStr = 0.5, float specStr = 2, glm::vec3 lightC = glm::vec3(0.2, 0.2, 0.2),
+		glm::vec3 lightP = glm::vec3(-5, 10, 0))
 		:
-		lightStrength(lightStr),lightColor(lightC),lightPos(lightP),lightDir(lightD)
+		lightStrength(lightStr),specStrength(specStr),lightColor(lightC),lightPos(lightP)
 	{}
 
 };
@@ -35,7 +36,7 @@ public:
 	
 	virtual void SetAttribs();
 	virtual void SetUniforms();
-	virtual void Update(const Transform& transform, const Camera& camera);
+	virtual void Update(const Transform& transform, Camera& camera);
 	
 	void LinkShader();
 	void Bind();
@@ -55,13 +56,15 @@ private:
 	{
 		TRANSFORM_U,
 
+		VIEW_POS_U,
+
 		LIGHT_STR_U,
+
+		SPEC_STR_U,
 
 		LIGHT_COLOR_U,
 
 		LIGHT_POS_U,
-
-		LIGHT_DIR_U,
 
 		NUM_UNIFORMS
 	};
