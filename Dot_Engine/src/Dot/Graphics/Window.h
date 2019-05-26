@@ -5,6 +5,7 @@
 #include "Dot/Events/Event.h"
 #include "Dot/Log.h"
 #include "Dot/Core.h"
+#include "Dot_GUI/src/WinGui.h"
 
 
 
@@ -32,8 +33,8 @@ public:
 	bool IsClosed();
 	void Destroy();
 	void Clear();
-
 	void Attach();
+
 
 	inline int GetWidth() const;
 	inline int GetHeight() const;
@@ -47,7 +48,8 @@ public:
 
 private:
 	GLFWwindow * m_window;
-	
+	WinGui * GUI;
+
 	struct WindowData
 	{
 		const char* title;

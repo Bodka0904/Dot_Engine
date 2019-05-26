@@ -4,7 +4,7 @@
 #include "Dot/EntryPoint.h"
 #include "Dot/KeyCodes.h"
 #include "Dot/Events/Event.h"
-#include "Dot/Gui/GuiLayer.h"
+
 
 
 
@@ -59,7 +59,7 @@ public:
 	SandBox()
 	{
 		PushLayer(new TestLayer());
-		PushOverlay(new GuiLayer());
+	
 	}
 
 	~SandBox()

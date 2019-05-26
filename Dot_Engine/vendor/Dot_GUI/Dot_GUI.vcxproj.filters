@@ -7,10 +7,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dot_GUI\src\WinGui.h" />
-    <ClInclude Include="Button.h" />
+    <ClInclude Include="Dot_GUI\src\Button.h" />
+    <ClInclude Include="Dot_GUI\src\Widget.h" />
+    <ClInclude Include="Dot_GUI\src\Types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\WinGui.cpp" />
-    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Dot_GUI\src\Button.cpp" />
   </ItemGroup>
 </Project>

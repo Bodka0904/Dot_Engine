@@ -1,55 +1,31 @@
 #pragma once
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
-#include "Dot/Log.h"
-#include "Dot/Events/Event.h"
+#include "Types.h"
+#include "Widget.h"
+#include "Button.h"
 
 
-
-struct GuiWinProps
-{
-	const char* Title;
-	unsigned int Width;
-	unsigned int Height;
-
-	GuiWinProps(const char* title = "Dot GUI",
-		unsigned int width = 720,
-		unsigned int height = 720)
-		: Title(title), Width(width), Height(height)
-	{
-	}
-};
 
 class WinGui
 {
 public:
-	WinGui(const GuiWinProps& props = GuiWinProps());
-	~WinGui();
-	void Init();
+	WinGui(GLFWwindow* mainWnd,WinGuiParams params);
 	
-	void Clear();
-	void Attach();
 	void Update();
 	
-		
-	static WinGui* Create(const GuiWinProps& props = GuiWinProps()) { return new WinGui(props); }
+	void Attach();
 
-	void SetupGLFW();
-	void SetupGL();
+	Widget &GetWidgets() { return g_widgets; }
+	static WinGui* CreateWinGui(GLFWwindow* mainWnd,WinGuiParams params) { return new WinGui(mainWnd,params); }
+	
+	GLFWwindow* GetWindow() const;
+
 
 private:
-	GLFWwindow * m_window;
-	
-
-	struct WindowData
-	{
-		const char* title;
-		unsigned int width;
-		unsigned int height;
-		Event event;
-	};
-
-	WindowData m_data;
+	GLFWwindow * g_window;
+	WinGuiParams g_data;
+	Widget g_widgets;
 
 };
 

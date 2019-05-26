@@ -27,15 +27,18 @@ void Window::Init()
 		GLFWInitialized = true;
 	}
 
-	glfwWindowHint(GLFW_FOCUSED, GLFW_TRUE);
+	//glfwWindowHint(GLFW_FOCUSED, GLFW_TRUE);
 	m_window = glfwCreateWindow(m_data.width, m_data.height, m_data.title, NULL, NULL);
+	GUI = WinGui::CreateWinGui(m_window,WinGuiParams(400,400,200,200));
 	
+
 	m_Context = new OpenGLContext(m_window);
 	m_Context->Init();
 	
-
+	glfwMakeContextCurrent(m_window);
 	glfwSetWindowUserPointer(m_window, &m_data);
 
+	
 	glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
 	{
 		LOG_INFO("Window: Resized window width: %d height: %d", width, height);
@@ -151,13 +154,8 @@ void Window::Clear()
 
 void Window::Attach()
 {
-	
 	glfwMakeContextCurrent(m_window);
-	glfwSetWindowUserPointer(m_window, &m_data);
 }
-
-
-
 
 
 

@@ -2,13 +2,13 @@
 #include "Application.h"
 
 
+
 Application* Application::s_Instance = nullptr;
 
 Application::Application()
 	:
 	texture(1)	
 {
-	
 	s_Instance = this;
 	m_Window = std::unique_ptr<Window>(Window::Create());
 	
@@ -34,7 +34,6 @@ void Application::Run()
 	
 	while (!m_Window->IsClosed())
 	{	
-		m_Window->Attach();
 		m_Window->Clear();
 
 		
@@ -52,9 +51,6 @@ void Application::Run()
 		
 
 		OnEvent(m_Window->GetEvent());
-
-
-		m_Window->Attach();
 		m_Window->Update();
 	}
 	m_Window->Destroy();

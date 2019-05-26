@@ -88,9 +88,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Dot_GUI\src\Button.h" />
+    <ClInclude Include="Dot_GUI\src\Types.h" />
+    <ClInclude Include="Dot_GUI\src\Widget.h" />
     <ClInclude Include="Dot_GUI\src\WinGui.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dot_GUI\src\Button.cpp" />
     <ClCompile Include="Dot_GUI\src\WinGui.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

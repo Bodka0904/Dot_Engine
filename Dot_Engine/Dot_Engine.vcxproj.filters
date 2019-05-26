@@ -84,9 +84,6 @@
     <ClInclude Include="src\Dot\Graphics\Window.h">
       <Filter>src\Dot\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Gui\GuiLayer.h">
-      <Filter>src\Dot\Gui</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\KeyCodes.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
@@ -1222,9 +1219,6 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Window.cpp">
       <Filter>src\Dot\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Gui\GuiLayer.cpp">
-      <Filter>src\Dot\Gui</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Layer.cpp">
       <Filter>src\Dot</Filter>
