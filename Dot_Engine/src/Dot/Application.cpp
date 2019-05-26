@@ -1,4 +1,6 @@
+#include "stdafx.h"
 #include "Application.h"
+
 
 Application* Application::s_Instance = nullptr;
 
@@ -10,13 +12,14 @@ Application::Application()
 	s_Instance = this;
 	m_Window = std::unique_ptr<Window>(Window::Create());
 	
+	
 
 	shader.Init("res/shaders/BasicShader");
 	shader.Bind();
 	mesh = Mesh::CreateMesh("res/models/test.obj");
 	texture.Create("res/textures/robotTex.jpg");
 	texture.Bind(0);
-	
+
 }
 
 
@@ -30,20 +33,28 @@ void Application::Run()
 {
 	
 	while (!m_Window->IsClosed())
-	{
+	{	
+		m_Window->Attach();
 		m_Window->Clear();
 
-	
-		transform.GetPos().z = -50;
+		
+		transform.GetPos().z = -100;
 		transform.GetRot().y += 0.01;
 		mesh->Draw();
 		shader.Update(transform, camera);
 		
+
 		for (Layer* layer : m_Layers)
 		{
 			layer->OnUpdate();
 		}
+		
+		
+
 		OnEvent(m_Window->GetEvent());
+
+
+		m_Window->Attach();
 		m_Window->Update();
 	}
 	m_Window->Destroy();
@@ -88,3 +99,4 @@ void Application::OnEvent(Event & event)
 			break;
 	}
 }
+

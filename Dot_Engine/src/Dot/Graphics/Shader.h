@@ -1,10 +1,6 @@
 #pragma once
-#include <string>
-#include <iostream>
 #include <conio.h>
 #include "Dot/Log.h"
-#include <vector>
-#include <fstream>
 #include "Transform.h"
 #include "Camera.h"
 #include <GL/glew.h>

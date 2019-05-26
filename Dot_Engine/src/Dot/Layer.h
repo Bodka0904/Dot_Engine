@@ -2,6 +2,7 @@
 #include "Events/Event.h"
 #include <string>
 
+
 class Layer
 {
 public:
@@ -12,7 +13,7 @@ public:
 	virtual void OnDetach() {} //Destroy
 
 	virtual void OnUpdate() {} //Update
-	virtual void ImGuiRender() {} 
+	virtual void OnGuiRender() {} 
 
 	virtual void OnEvent(Event& event){}
 

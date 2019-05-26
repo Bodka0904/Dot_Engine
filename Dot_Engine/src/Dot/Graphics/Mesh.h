@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "ObjLoader.h"
 #include "Transform.h"
 #include <glm/glm.hpp>

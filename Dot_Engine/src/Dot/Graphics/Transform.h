@@ -1,7 +1,5 @@
 #pragma once
 #define GLM_ENABLE_EXPERIMENTAL
-#include <iostream>
-#include <math.h>
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 

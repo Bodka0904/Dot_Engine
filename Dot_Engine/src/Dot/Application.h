@@ -23,14 +23,17 @@ public:
 	void PopLayer(Layer* layer);
 	void PopOverlay(Layer* overlay);
 	void OnEvent(Event &e);
+	
+	
 
 	Window GetWin() { return *m_Window; }
 
-	//inline static Application& Get() { return *s_Instance; }
+	inline static Application& Get() { return *s_Instance; }
 	static Application *Create() { return new Application(); }
 
 private:
 	std::unique_ptr<Window> m_Window;
+	
 
 	std::vector<Layer*> m_Layers;
 	unsigned int m_LayerInsertIndex = 0;

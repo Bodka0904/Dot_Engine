@@ -1,6 +1,5 @@
 #pragma once
 #include "Transform.h"
-#include <math.h>
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 
@@ -34,12 +33,13 @@ public:
 	}
 	
 	inline const glm::mat4& GetProjectionMatrix() const { return m_projectionMatrix; }
-	inline void SetProjectionMatrix(glm::mat4 projectionMatrix) { m_projectionMatrix = projectionMatrix; }
+	inline void SetProjectionMatrix(glm::mat4 projection_mat) { m_projectionMatrix = projection_mat;}
+	
 	inline glm::vec3& GetPos() { return m_position; }
 	inline glm::vec3& GetRot() { return m_rotation; }
 	inline glm::vec3& GetCameraTarget() { return m_cameraTarget; }
 	inline glm::vec3& GetUp() { return m_up; }
-
+	
 	
 
 

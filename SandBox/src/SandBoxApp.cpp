@@ -1,9 +1,12 @@
 #pragma once
+#include "stdafx.h"
 #include "Dot/Application.h"
 #include "Dot/EntryPoint.h"
 #include "Dot/KeyCodes.h"
 #include "Dot/Events/Event.h"
-#include <iostream>
+#include "Dot/Gui/GuiLayer.h"
+
+
 
 
 
@@ -31,11 +34,11 @@ public:
 	{
 		if (event.GetEventType() == EventType::KeyPressed)
 		{
-			if (event.GetKeyCode() == KEY_TAB)
+			if (event.GetKeyCode() == D_KEY_TAB)
 			{
 				LOG_INFO("TAB PRESSED")
 			}
-			if (event.GetKeyCode() == KEY_LEFT)
+			if (event.GetKeyCode() == D_KEY_LEFT)
 			{
 				LOG_INFO("LEFT PRESSED")
 			}
@@ -56,6 +59,7 @@ public:
 	SandBox()
 	{
 		PushLayer(new TestLayer());
+		PushOverlay(new GuiLayer());
 	}
 
 	~SandBox()

@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "OpenGLContext.h"
 #include <GLFW\glfw3.h>
 #include <GL\glew.h>
@@ -32,6 +33,7 @@ void OpenGLContext::Init()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
+
 }
 
 void OpenGLContext::SwapBuffers()

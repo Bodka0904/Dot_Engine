@@ -1,8 +1,5 @@
 #pragma once
-#include <string>
-#include <fstream>
 #include <GL\glew.h>
-#include <functional>
 #include "Platform/OpenGL/OpenGLContext.h"
 #include <GLFW\glfw3.h>
 #include "Dot/Events/Event.h"
@@ -25,7 +22,7 @@ struct WindowProps
 	}
 };
 
-class Window
+class __declspec(dllexport)Window
 {
 public:
 	Window(const WindowProps& props = WindowProps());
@@ -35,6 +32,8 @@ public:
 	bool IsClosed();
 	void Destroy();
 	void Clear();
+
+	void Attach();
 
 	inline int GetWidth() const;
 	inline int GetHeight() const;

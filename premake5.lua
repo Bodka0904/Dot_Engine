@@ -14,10 +14,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Dot_Engine/vendor/GLFW/include"
 IncludeDir["GLEW"] = "Dot_Engine/vendor/GLEW/include"
+IncludeDir["Dot_GUI"] = "Dot_Engine/vendor/Dot_GUI"
 
 
 include "Dot_Engine/vendor/GLFW"
 include "Dot_Engine/vendor/GLEW"
+include "Dot_Engine/vendor/Dot_GUI"
 
 
 project "Dot_Engine"
@@ -29,7 +31,10 @@ project "Dot_Engine"
 
 		targetdir("bin/" .. outputdir .. "/%{prj.name}")
 		objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
+		
+		pchheader "stdafx.h"
+		pchsource "Dot_Engine/src/stdafx.cpp"
+		
 		files
 		{
 			"%{prj.name}/src/**.h",
@@ -51,6 +56,7 @@ project "Dot_Engine"
 			"%{prj.name}/src",
 			"%{IncludeDir.GLFW}",	
 			"%{IncludeDir.GLEW}",
+			"%{IncludeDir.Dot_GUI}",
 			"%{prj.name}/vendor/glm",
 			"%{prj.name}/vendor/stb_image"
 		}
@@ -60,6 +66,7 @@ project "Dot_Engine"
 		{ 
 			"GLEW",
 			"GLFW",
+			"Dot_GUI",
 			"opengl32"
 		}
 		
@@ -105,6 +112,7 @@ project "SandBox"
 		{
 			"Dot_Engine/vendor/GLFW/include",
 			"Dot_Engine/vendor/GLEW/include",
+			"Dot_Engine/vendor/Dot_GUI",
 			"Dot_Engine/vendor",
 			"Dot_Engine/src",
 			"Dot_Engine/vendor/glm"

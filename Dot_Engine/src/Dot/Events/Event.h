@@ -6,6 +6,9 @@ enum class EventType
 {
 	None = 0,
 
+	WindowClosed,
+	WindowResized,
+
 	KeyPressed,
 	KeyReleased,
 	

@@ -1,8 +1,8 @@
+#include "stdafx.h"
 #include "Window.h"
 
 
 static bool GLFWInitialized = false;
-void ResizeWindow(GLFWwindow *window, int width, int height);
 
 Window::Window(const WindowProps& props)
 {
@@ -26,24 +26,27 @@ void Window::Init()
 		D_ASSERT(success, "Could not initialize GLFW!");
 		GLFWInitialized = true;
 	}
+
+	glfwWindowHint(GLFW_FOCUSED, GLFW_TRUE);
 	m_window = glfwCreateWindow(m_data.width, m_data.height, m_data.title, NULL, NULL);
 	
 	m_Context = new OpenGLContext(m_window);
 	m_Context->Init();
 	
-	//glfwSetFramebufferSizeCallback(m_window, ResizeWindow);
 
 	glfwSetWindowUserPointer(m_window, &m_data);
 
-	glfwSetWindowSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
+	glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
 	{
 		LOG_INFO("Window: Resized window width: %d height: %d", width, height);
 		WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 		data.width = width;
 		data.height = height;
-		glViewport(0, 0, width, height);
+	
+		glViewport(0, 0, width,height);
 	});
 
+	
 	glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 		WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -144,6 +147,13 @@ void Window::Clear()
 {
 	glClearColor(0.0f, 0.2f, 0.2f, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void Window::Attach()
+{
+	
+	glfwMakeContextCurrent(m_window);
+	glfwSetWindowUserPointer(m_window, &m_data);
 }
 
 
