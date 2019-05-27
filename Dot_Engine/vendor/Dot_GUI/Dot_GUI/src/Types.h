@@ -1,33 +1,42 @@
 #pragma once
 #include "stdafx.h"
+#include "GL/glew.h"
+#include <glm/glm.hpp>
+#include <glm/gtx/transform.hpp>
 
-enum class WidgetType
+
+struct ButtonParams
 {
-	WINDOW,
-
-	BUTTON
-};
-
-struct WidgetParams
-{
-	WidgetParams(WidgetType Type, int Width, int Height, std::string Name)
-		: type(Type), width(Width), height(Height), name(Name)
+	ButtonParams(glm::vec2 Position, std::string Name)
+		: position(Position), name(Name)
 	{};
-	int width;
-	int height;
+	
 	std::string name;
-	WidgetType type;
+	glm::vec2 position;
+	
+	
+	glm::vec2 vertices[4] = {
+		glm::vec2((0 + position.x),(0 + position.y)),
+		glm::vec2((0 + position.x),(1 + position.y)),
+		glm::vec2((1 + position.x),(1 + position.y)),
+		glm::vec2((1 + position.x),(0 + position.y))
+	};
+	glm::vec3 color = glm::vec3(0.5, 0.5, 0.5);
 
+	unsigned int indices[4] = {
+		0,1,2,3
+	};
+	
 };
 
 
 struct WinGuiParams
 {
-	WinGuiParams(int Width,int Height,int PosX,int PosY)
-		: width(Width),height(Height),posX(PosX),posY(PosY)
+	WinGuiParams(const char* Title,int Width,int Height,glm::vec2 Position)
+		: title(Title),width(Width),height(Height),position(Position)
 	{}
+	const char*title;
 	int width;
 	int height;
-	int posX;
-	int posY;
+	glm::vec2 position;
 };
