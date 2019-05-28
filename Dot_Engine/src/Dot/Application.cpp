@@ -12,8 +12,11 @@ Application::Application()
 	s_Instance = this;
 	m_Window = std::unique_ptr<Window>(Window::Create());
 	
+	GUI = WinGui::CreateWinGui(WinGuiParams("Gui", 400, 400, glm::vec2(200, 200)));
+	GUI->AddButton(ButtonParams(glm::vec2(0, 0), glm::vec2(100, 100), glm::vec3(0.5, 0.5, 0.5), "test"));
+	GUI->InitWidgets();
 	
-
+	m_Window->Attach();
 	shader.Init("res/shaders/BasicShader");
 	shader.Bind();
 	mesh = Mesh::CreateMesh("res/models/test.obj");
@@ -40,6 +43,8 @@ void Application::Run()
 		transform.GetPos().z = -100;
 		transform.GetRot().y += 0.01;
 		mesh->Draw();
+		
+		
 		shader.Update(transform, camera);
 		
 

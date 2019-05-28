@@ -43,12 +43,12 @@ public:
 	static Window* Create(const WindowProps& props = WindowProps()) { return new Window(props); }
 
 	GLFWwindow* GetWindow() const;
-
+	
 	
 
 private:
 	GLFWwindow * m_window;
-	WinGui * GUI;
+	
 
 	struct WindowData
 	{

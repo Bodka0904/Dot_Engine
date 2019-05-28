@@ -10,16 +10,20 @@
 class WinGui
 {
 public:
-	WinGui(GLFWwindow* mainWnd,WinGuiParams params);
-	void Update();
+	WinGui(WinGuiParams params);
 	
+	void InitWidgets();
+	void DrawWidgets();
+	void Update();
+	void AddButton(ButtonParams params) { buttons.push_back(new Button(params));}
+
 	void OnCursorEnter(bool entered) 
 	{
 		Update();
 	}
 
 	
-	static WinGui* CreateWinGui(GLFWwindow* mainWnd,WinGuiParams params) { return new WinGui(mainWnd,params); }
+	static WinGui* CreateWinGui(WinGuiParams params) { return new WinGui(params); }
 	
 	GLFWwindow* GetWindow() const;
 	
@@ -27,6 +31,10 @@ public:
 private:
 	GLFWwindow * g_window;
 	WinGuiParams g_data;
+
+	std::vector<Button*> buttons;
+	GLuint button_VBO[3];
+
 
 };
 

@@ -34,7 +34,7 @@ public:
 private:
 	std::unique_ptr<Window> m_Window;
 	std::vector<Layer*> m_Layers;
-	
+	WinGui * GUI;
 
 	unsigned int m_LayerInsertIndex = 0;
 	unsigned int m_VertexArray;

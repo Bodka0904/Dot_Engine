@@ -5,32 +5,18 @@
 class Button
 {
 public:
-	Button();
+	Button(ButtonParams Params);
 	~Button();
 
-	static ButtonParams* Create(ButtonParams params) { return new ButtonParams(params ); }
-	static void Init();
-	static void Draw();
-	static void SetColor();
-	static void SetSize();
+	void Draw();
+	void SetColor();
+	void SetSize();
 
-	static void AddButton(ButtonParams* button);
+	ButtonParams& GetParams() { return params; }
+
 
 private:
-	static std::vector<ButtonParams*> buttons;
-	static int NumButtons;
+	ButtonParams params;
 	
-
-	enum {
-		POSITION_VB,
-
-		COLOR_VB,
-
-		OFFSET_VB,
-
-		NUM_BUFFERS
-	};
-	static GLuint VAO;
-	static GLuint VBO[NUM_BUFFERS];
 };
 

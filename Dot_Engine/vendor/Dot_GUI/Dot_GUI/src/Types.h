@@ -7,24 +7,26 @@
 
 struct ButtonParams
 {
-	ButtonParams(glm::vec2 Position, std::string Name)
-		: position(Position), name(Name)
+	ButtonParams(glm::vec2 Position,glm::vec2 Size,glm::vec3 Color, std::string Name)
+		: position(Position),size(Size),color(Color), name(Name)
 	{};
 	
 	std::string name;
+
 	glm::vec2 position;
-	
-	
+	glm::vec2 size;
+	glm::vec3 color;
+
+	GLuint VAO;
+
 	glm::vec2 vertices[4] = {
 		glm::vec2((0 + position.x),(0 + position.y)),
 		glm::vec2((0 + position.x),(1 + position.y)),
 		glm::vec2((1 + position.x),(1 + position.y)),
 		glm::vec2((1 + position.x),(0 + position.y))
 	};
-	glm::vec3 color = glm::vec3(0.5, 0.5, 0.5);
-
-	unsigned int indices[4] = {
-		0,1,2,3
+	unsigned int indices[5] = {
+		0,1,2,1,3
 	};
 	
 };

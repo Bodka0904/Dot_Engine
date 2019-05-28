@@ -29,12 +29,10 @@ void Window::Init()
 
 	//glfwWindowHint(GLFW_FOCUSED, GLFW_TRUE);
 	m_window = glfwCreateWindow(m_data.width, m_data.height, m_data.title, NULL, NULL);
-	GUI = WinGui::CreateWinGui(m_window,WinGuiParams("Gui",400,400,glm::vec2(200,200));
-	
-
 	m_Context = new OpenGLContext(m_window);
 	m_Context->Init();
 	
+
 	glfwMakeContextCurrent(m_window);
 	glfwSetWindowUserPointer(m_window, &m_data);
 
@@ -173,3 +171,4 @@ GLFWwindow * Window::GetWindow() const
 {
 	return m_window;
 }
+
