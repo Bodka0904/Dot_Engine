@@ -33,7 +33,7 @@ void OpenGLContext::Init()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
-
+	
 }
 
 void OpenGLContext::SwapBuffers()

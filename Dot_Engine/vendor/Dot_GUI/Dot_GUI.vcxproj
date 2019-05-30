@@ -88,13 +88,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Dot_GUI\src\Button.h" />
-    <ClInclude Include="Dot_GUI\src\Types.h" />
-    <ClInclude Include="Dot_GUI\src\WinGui.h" />
+    <ClInclude Include="Dot_GUI\src\GuiButton.h" />
+    <ClInclude Include="Dot_GUI\src\GuiInfo.h" />
+    <ClInclude Include="Dot_GUI\src\GuiWindow.h" />
+    <ClInclude Include="Dot_GUI\src\shaders\GuiShader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dot_GUI\src\Button.cpp" />
-    <ClCompile Include="Dot_GUI\src\WinGui.cpp" />
+    <ClCompile Include="Dot_GUI\src\GuiButton.cpp" />
+    <ClCompile Include="Dot_GUI\src\GuiWindow.cpp" />
+    <ClCompile Include="Dot_GUI\src\shaders\GuiShader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dot_GUI\res\shaders\GuiShader.fs" />
+    <None Include="Dot_GUI\res\shaders\GuiShader.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

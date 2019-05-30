@@ -36,7 +36,6 @@ void Window::Init()
 	glfwMakeContextCurrent(m_window);
 	glfwSetWindowUserPointer(m_window, &m_data);
 
-	
 	glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
 	{
 		LOG_INFO("Window: Resized window width: %d height: %d", width, height);

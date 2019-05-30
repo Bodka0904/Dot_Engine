@@ -5,7 +5,7 @@
 #include "Dot/Events/Event.h"
 #include "Dot/Log.h"
 #include "Dot/Core.h"
-#include "Dot_GUI/src/WinGui.h"
+
 
 
 
@@ -15,7 +15,7 @@ struct WindowProps
 	unsigned int Width;
 	unsigned int Height;
 
-	WindowProps(const char* title = "Dot Engine",
+	WindowProps(const char* title = "Gui",
 		unsigned int width = 1280,
 		unsigned int height = 720)
 		: Title(title), Width(width), Height(height)

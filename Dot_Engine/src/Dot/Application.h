@@ -6,7 +6,12 @@
 #include "Graphics/Transform.h"
 #include "Graphics/Texture.h"
 #include "Events/Event.h"
-#include <vector>
+#include "Dot_GUI/src/GuiWindow.h"
+#include "Dot_GUI/src/GuiButton.h"
+#include "Dot_GUI/src/shaders/GuiShader.h"
+
+
+
 
 
 #pragma once
@@ -34,7 +39,9 @@ public:
 private:
 	std::unique_ptr<Window> m_Window;
 	std::vector<Layer*> m_Layers;
-	WinGui * GUI;
+	
+	GuiWindow * test;
+	GuiShader guiShader;
 
 	unsigned int m_LayerInsertIndex = 0;
 	unsigned int m_VertexArray;
@@ -48,6 +55,7 @@ private:
 	Transform transform;
 	Texture texture;
 	Mesh *mesh;
+	
 };
 
 // To be defined in CLIENT

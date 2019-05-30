@@ -7,9 +7,6 @@
 
 
 
-
-
-
 class TestLayer : public Layer
 {
 public:
