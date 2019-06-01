@@ -2,18 +2,11 @@
 #include <glm/glm.hpp>
 
 
-enum class GuiState
-{
-	NONE,
-	CLICKED,
-	ON,
-	OFF
-	
-};
 
 struct Button {
-
-	const float scale = 0.2f;
+	
+	bool clicked = false;
+	const float scale = 0.1f;
 
 	glm::vec2 vertices[4]
 	{

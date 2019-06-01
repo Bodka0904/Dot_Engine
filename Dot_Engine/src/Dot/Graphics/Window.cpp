@@ -15,7 +15,8 @@ Window::Window(const WindowProps& props)
 
 Window::~Window()
 {
-	glfwTerminate();
+	//Destructor was called when i used win handle in different class;
+	//glfwTerminate();
 }
 
 void Window::Init()
@@ -56,24 +57,11 @@ void Window::Init()
 		
 			case GLFW_PRESS:
 			{
-				data.event.Handled = false;
-				data.event.GetEventType() = EventType::KeyPressed;
-				data.event.GetKeyCode() = key;
-				data.event.Handled = true;
-				if (data.event.Handled)
-				{
-					break;
-				}
+				
 			}
 			case GLFW_RELEASE:
 			{
-				data.event.Handled = false;
-				data.event.GetEventType() = EventType::KeyReleased;
-				data.event.GetKeyCode() = key;
-				if (data.event.Handled)
-				{
-					break;
-				}
+				
 			}
 		
 		}
@@ -87,24 +75,15 @@ void Window::Init()
 		{
 			case GLFW_PRESS:
 			{
-				data.event.Handled = false;
-				data.event.GetEventType() = EventType::MouseButtonPressed;
-				data.event.GetMouseButton() = button;
-				if (data.event.Handled)
-				{
-					break;
-				}
-		
+				MouseButtonPressEvent e(button);
+				data.EventCallback(e);
+				break;
 			}
 			case GLFW_RELEASE:
 			{
-				data.event.Handled = false;
-				data.event.GetEventType() = EventType::MouseButtonReleased;
-				data.event.GetMouseButton() = button;
-				if (data.event.Handled)
-				{
-					break;
-				}
+				MouseButtonReleaseEvent e(button);
+				data.EventCallback(e);
+				break;
 			}
 		}
 	});
@@ -113,9 +92,7 @@ void Window::Init()
 	{
 		WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-		data.event.GetEventType() = EventType::MouseMoved;
-		data.event.GetMouseX() = xPos;
-		data.event.GetMouseY() = yPos;
+		
 
 	});
 }

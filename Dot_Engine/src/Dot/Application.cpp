@@ -2,6 +2,7 @@
 #include "Application.h"
 
 
+#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 Application* Application::s_Instance = nullptr;
 
@@ -16,7 +17,7 @@ Application::Application()
 
 	Gui::AddButton();
 	Gui::Init(m_Window->GetWindow(),m_Window->GetWidth(),m_Window->GetHeight());
-	
+	m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	
 
 
@@ -57,7 +58,7 @@ void Application::Run()
 		Gui::Render();
 		Gui::Update();
 		
-
+		
 
 		for (Layer* layer : m_Layers)
 		{
@@ -66,7 +67,7 @@ void Application::Run()
 		
 
 		
-		OnEvent(m_Window->GetEvent());
+		
 		m_Window->Update();
 	}
 	m_Window->Destroy();
@@ -107,8 +108,6 @@ void Application::OnEvent(Event & event)
 	for (auto it = m_Layers.end(); it != m_Layers.begin(); )
 	{
 		(*--it)->OnEvent(event);
-		if (event.Handled)
-			break;
 	}
 }
 

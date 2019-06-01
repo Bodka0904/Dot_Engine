@@ -109,6 +109,7 @@
     <ClInclude Include="src\Dot\Graphics\Texture.h" />
     <ClInclude Include="src\Dot\Graphics\Transform.h" />
     <ClInclude Include="src\Dot\Graphics\Window.h" />
+    <ClInclude Include="src\Dot\Input.h" />
     <ClInclude Include="src\Dot\KeyCodes.h" />
     <ClInclude Include="src\Dot\Layer.h" />
     <ClInclude Include="src\Dot\Log.h" />
@@ -489,6 +490,7 @@
     <ClCompile Include="src\Dot\Graphics\Shader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Texture.cpp" />
     <ClCompile Include="src\Dot\Graphics\Window.cpp" />
+    <ClCompile Include="src\Dot\Input.cpp" />
     <ClCompile Include="src\Dot\Layer.cpp" />
     <ClCompile Include="src\Dot\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />

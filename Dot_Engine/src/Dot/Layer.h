@@ -15,7 +15,7 @@ public:
 	virtual void OnUpdate() {} //Update
 	virtual void OnGuiRender() {} 
 
-	virtual void OnEvent(Event& event){}
+	virtual void OnEvent(Event& event) {}
 
 };
 

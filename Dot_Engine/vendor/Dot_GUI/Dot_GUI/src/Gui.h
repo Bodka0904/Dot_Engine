@@ -14,7 +14,7 @@ public:
 	static void Update();
 	static void Clear();
 
-	static void TranslateWidgets();
+	static void UpdateWidgets();
 	static void Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 	static void Gui_MousePositionCallback(GLFWwindow* window,double xPos, double yPos);
 	static void Gui_WindowSizeCallback(GLFWwindow* window, int width, int height);
@@ -40,7 +40,7 @@ private:
 	static bool m_mouseButtonPressedL;
 	static bool m_mouseButtonPressedR;
 	static int m_mousePressesR;
-
+	static int *test;
 
 	static float m_mousePosX;
 	static float m_mousePosY;

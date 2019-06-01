@@ -26,6 +26,8 @@ struct WindowProps
 class __declspec(dllexport)Window
 {
 public:
+	using EventCallbackFn = std::function<void(Event&)>;
+
 	Window(const WindowProps& props = WindowProps());
 	virtual~Window();
 	void Init();
@@ -35,10 +37,11 @@ public:
 	void Clear();
 	void Attach();
 
+	void SetEventCallback(const EventCallbackFn& callback) { m_data.EventCallback = callback; }
 
 	inline int GetWidth() const;
 	inline int GetHeight() const;
-	inline Event GetEvent() { return m_data.event; }
+	//inline Event GetEvent() { return m_data.event; }
 
 	static Window* Create(const WindowProps& props = WindowProps()) { return new Window(props); }
 
@@ -48,14 +51,14 @@ public:
 
 private:
 	GLFWwindow * m_window;
-	
 
 	struct WindowData
 	{
 		const char* title;
 		unsigned int width;
 		unsigned int height;
-		Event event;
+
+		EventCallbackFn EventCallback;
 	};
 
 	WindowData m_data;

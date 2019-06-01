@@ -15,12 +15,13 @@ float Gui::m_mousePosX = 0;
 float Gui::m_mousePosY = 0;
 int Gui::winWidth = 0;
 int Gui::winHeight = 0;
+int* Gui::test = 0;
 
 void Gui::Init(GLFWwindow * handler,int widthWin,int heightWin)
 {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+	test = new int();
 	m_handler = handler;
 	m_handler_mouseButtonCLB = glfwSetMouseButtonCallback(handler, Gui::Gui_MouseButtonCallback);
 	m_handler_cursorPosCLB = glfwSetCursorPosCallback(handler, Gui::Gui_MousePositionCallback);
@@ -51,8 +52,28 @@ void Gui::Render()
 	
 }
 
-void Gui::TranslateWidgets()
+void Gui::UpdateWidgets()
 {
+	if (*test == 1)
+	{
+		LOG_INFO("test %d", *test)
+	}
+	
+	if (m_mouseButtonPressedL)
+	{
+		for (auto i : m_buttons)
+		{
+			if (i->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
+			{
+				if (i->Clicked())
+				{
+					
+				}
+			}
+		}
+	}
+
+
 	if (m_mouseButtonPressedR)
 	{
 		for (auto i : m_buttons)
@@ -60,8 +81,8 @@ void Gui::TranslateWidgets()
 
 			if (i->MouseHoover(glm::vec2(m_mousePosX,m_mousePosY)))
 			{
-				i->GetTranslation().x = m_mousePosX - 0.1;
-				i->GetTranslation().y = m_mousePosY - 0.1;
+				i->GetTranslation().x = m_mousePosX - i->GetData()->scale/2;
+				i->GetTranslation().y = m_mousePosY - i->GetData()->scale/2;
 				guiShader->Update(i->GetTranslation());
 			}
 			else
@@ -75,7 +96,7 @@ void Gui::TranslateWidgets()
 
 void Gui::Update()
 {
-	Gui::TranslateWidgets();
+	Gui::UpdateWidgets();
 }
 
 void Gui::Clear()
@@ -96,14 +117,17 @@ void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, in
 		{
 		case GLFW_PRESS:
 		{
+	
 			if (button == GLFW_MOUSE_BUTTON_1)
 			{
 				Gui::m_mouseButtonPressedL = true;
-				
+				*test = 1;
 			}
+			
 			if (button == GLFW_MOUSE_BUTTON_2)
 			{
 				Gui::m_mouseButtonPressedR = true;
+				
 				Gui::m_mousePressesR++;
 				if (Gui::m_mousePressesR == 2)
 				{
@@ -117,12 +141,13 @@ void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, in
 			if (button == GLFW_MOUSE_BUTTON_1)
 			{
 				Gui::m_mouseButtonPressedL = false;
-		
+				*test = 0;
 			}
 			
 		}
 
 		}
+		
 
 	}
 }
@@ -133,7 +158,7 @@ void Gui::Gui_MousePositionCallback(GLFWwindow * window, double xPos, double yPo
 	{
 		Gui::m_handler_cursorPosCLB(window, xPos, yPos);
 		
-		
+		//Recalculated to world coords instead of window pixels
 		m_mousePosX = (xPos/winWidth - 0.5)*2;
 		m_mousePosY = -(yPos/winHeight - 0.5)*2;
 

@@ -90,8 +90,8 @@
   <ItemGroup>
     <ClInclude Include="Dot_GUI\src\Gui.h" />
     <ClInclude Include="Dot_GUI\src\GuiButton.h" />
-    <ClInclude Include="Dot_GUI\src\shaders\GuiShader.h" />
     <ClInclude Include="Dot_GUI\src\GuiWidgets.h" />
+    <ClInclude Include="Dot_GUI\src\shaders\GuiShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />

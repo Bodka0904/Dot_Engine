@@ -14,14 +14,15 @@ public:
 	void Init();
 	void Draw();
 
-	void Refresh();
-	bool MouseHoover(glm::vec2 mousePos);
 	
+	bool MouseHoover(glm::vec2 mousePos);
+	bool Clicked() { return m_data->clicked; }
+
 	glm::vec2 &GetTranslation() { return b_translation; }
 	glm::vec4 GetCoords() const;
 
-	GuiState &GetState() { return b_state; }
 
+	Button *GetData() const { return m_data; }
 
 private:
 	Button *m_data;
@@ -31,7 +32,6 @@ private:
 	const float transparency = 0.7;
 
 private:
-	GuiState b_state = GuiState::NONE;
 	glm::vec2 b_translation = glm::vec2(0, 0);
 
 };
