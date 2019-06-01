@@ -9,24 +9,26 @@ Application::Application()
 	:
 	texture(1)
 {
+
 	s_Instance = this;
 	m_Window = std::unique_ptr<Window>(Window::Create());
-	test = GuiWindow::CreateWin(glm::vec2(1, 1), glm::vec3(1, 1, 1));
-	test->AddButton(glm::vec2(0.2, 0.2), glm::vec3(0.8, 0.2, 0.8));
 	
-	guiShader.Init("res/shaders/GuiShader");
-	guiShader.Bind();
-	//shader.Init("res/shaders/BasicShader");
-	//shader.Bind()
+
+	Gui::AddButton();
+	Gui::Init(m_Window->GetWindow(),m_Window->GetWidth(),m_Window->GetHeight());
 	
+	
+
+
+	shader.Init("res/shaders/BasicShader");
 	mesh = Mesh::CreateMesh("res/models/test.obj");
 	texture.Create("res/textures/robotTex.jpg");
 	texture.Bind(0);
 
-	test->Init();
 
-	test->GetTranslation().x -= 0.5;
-	guiShader.Update(test->GetTranslation());
+	
+
+	
 	
 }
 
@@ -42,20 +44,21 @@ void Application::Run()
 	
 	while (!m_Window->IsClosed())
 	{
-	
+		
 		m_Window->Clear();
-	
 		
-		//transform.GetPos().z = -100;
-		//transform.GetRot().y += 0.01;
-	
-		
-		//mesh->Draw();
-		//shader.Update(transform, camera);
+		shader.Bind();
+		transform.GetPos().z = -100;
+		transform.GetRot().y += 0.01;
+		mesh->Draw();
+		shader.Update(transform, camera);
 		
 		
-		test->Draw();
+		Gui::Render();
+		Gui::Update();
 		
+
+
 		for (Layer* layer : m_Layers)
 		{
 			layer->OnUpdate();

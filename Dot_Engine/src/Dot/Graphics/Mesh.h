@@ -5,33 +5,6 @@
 #include <GL/glew.h>
 
 
-class Vertex
-{
-public:
-	Vertex() = default;
-
-	Vertex(const glm::vec3& pos, const glm::vec2& texCoord, const glm::vec3& model = glm::vec3(0, 0, 0))
-	{
-		this->pos = pos;
-		this->texCoord = texCoord;
-		this->normal = normal;
-
-	}
-
-	inline glm::vec3 * GetPos() { return &pos; }
-	inline glm::vec2 * GetTexCoord() { return &texCoord; }
-	inline glm::vec3 * GetNormal() { return &normal; }
-	inline void SetTexCoord(const glm::vec2& tex) { texCoord = tex; }
-
-private:
-	glm::vec3 pos;
-	glm::vec2 texCoord;
-	glm::vec3 normal;
-
-};
-
-
-
 class Mesh
 {
 public:

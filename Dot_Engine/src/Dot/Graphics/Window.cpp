@@ -94,6 +94,7 @@ void Window::Init()
 				{
 					break;
 				}
+		
 			}
 			case GLFW_RELEASE:
 			{

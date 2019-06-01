@@ -4,24 +4,25 @@
     <Filter Include="shaders">
       <UniqueIdentifier>{0F45D591-7B24-542D-843C-DF03F09ABA8E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="widgets">
+      <UniqueIdentifier>{9C4F4BC8-082F-CA63-1147-553A7DA530C5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dot_GUI\src\Gui.h" />
     <ClInclude Include="Dot_GUI\src\GuiButton.h" />
-    <ClInclude Include="Dot_GUI\src\GuiInfo.h" />
-    <ClInclude Include="Dot_GUI\src\GuiWindow.h" />
     <ClInclude Include="Dot_GUI\src\shaders\GuiShader.h">
       <Filter>shaders</Filter>
     </ClInclude>
+    <ClInclude Include="Dot_GUI\src\GuiWidgets.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dot_GUI\src\Gui.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiButton.cpp" />
-    <ClCompile Include="Dot_GUI\src\GuiWindow.cpp" />
     <ClCompile Include="Dot_GUI\src\shaders\GuiShader.cpp">
       <Filter>shaders</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Dot_GUI\res\shaders\GuiShader.fs" />
-    <None Include="Dot_GUI\res\shaders\GuiShader.vs" />
   </ItemGroup>
 </Project>

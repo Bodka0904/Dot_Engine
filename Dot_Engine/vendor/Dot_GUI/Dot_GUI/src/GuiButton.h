@@ -1,32 +1,38 @@
 #pragma once
-#include "GuiInfo.h"
+#include "stdafx.h"
+#include "GuiWidgets.h"
+#include <GL/glew.h>
 #include "Dot/Log.h"
+
 
 
 class GuiButton
 {
 public:
-	GuiButton(glm::vec2 size, glm::vec3 color);
+	GuiButton();
 	~GuiButton();
 	void Init();
-	void Update();
 	void Draw();
-	glm::vec2 &GetTranslation() { return m_translation; }
 
 	void Refresh();
+	bool MouseHoover(glm::vec2 mousePos);
+	
+	glm::vec2 &GetTranslation() { return b_translation; }
+	glm::vec4 GetCoords() const;
 
-	GuiState &GetState() { return state; }
-	GuiData &GetData() { return data ; }
+	GuiState &GetState() { return b_state; }
 
-
-private:
-	GuiState state = GuiState::NONE;
-	GuiData data;
-	glm::vec2 m_translation = glm::vec2(0, 0);
 
 private:
+	Button *m_data;
+
 	GLuint m_vao;
 	GLuint m_vbo[3];
 	const float transparency = 0.7;
+
+private:
+	GuiState b_state = GuiState::NONE;
+	glm::vec2 b_translation = glm::vec2(0, 0);
+
 };
 
