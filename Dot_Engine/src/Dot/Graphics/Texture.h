@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "Mesh.h"
 #include "Dot/Log.h"
 

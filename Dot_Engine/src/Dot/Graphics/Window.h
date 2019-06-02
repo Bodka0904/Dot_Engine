@@ -26,7 +26,9 @@ struct WindowProps
 class __declspec(dllexport)Window
 {
 public:
+	//It is function that takes Event and return nothing
 	using EventCallbackFn = std::function<void(Event&)>;
+	
 
 	Window(const WindowProps& props = WindowProps());
 	virtual~Window();
@@ -37,11 +39,11 @@ public:
 	void Clear();
 	void Attach();
 
+	//I can set what this function will represent
 	void SetEventCallback(const EventCallbackFn& callback) { m_data.EventCallback = callback; }
 
 	inline int GetWidth() const;
 	inline int GetHeight() const;
-	//inline Event GetEvent() { return m_data.event; }
 
 	static Window* Create(const WindowProps& props = WindowProps()) { return new Window(props); }
 

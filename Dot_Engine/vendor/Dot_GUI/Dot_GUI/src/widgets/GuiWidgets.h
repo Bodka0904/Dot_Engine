@@ -6,7 +6,10 @@
 struct Button {
 	
 	bool clicked = false;
+
 	const float scale = 0.1f;
+
+	glm::vec2 gridPosition;
 
 	glm::vec2 vertices[4]
 	{

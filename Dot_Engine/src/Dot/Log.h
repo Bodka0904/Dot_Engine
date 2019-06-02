@@ -1,6 +1,3 @@
-#include <windows.h>
-#include <string>
-#include <iostream>
 
 #ifndef LOG_H
 #define LOG_H

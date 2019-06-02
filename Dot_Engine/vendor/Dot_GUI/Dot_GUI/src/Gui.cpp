@@ -1,34 +1,39 @@
 #include "Gui.h"
+#include "stdafx.h"
+
+typedef std::function<void()> func_ptr;
+
+std::vector<func_ptr> Gui::m_user_callbacks_B;
 
 std::vector<GuiButton*> Gui::m_buttons;
 GuiShader* Gui::guiShader = NULL;
 GLFWwindow* Gui::m_handler = NULL;
+
 GLFWmousebuttonfun Gui::m_handler_mouseButtonCLB = NULL;
 GLFWcursorposfun Gui::m_handler_cursorPosCLB = NULL;
 GLFWframebuffersizefun Gui::m_handler_winSizeCLB = NULL;
 
-bool Gui::m_mouseButtonPressedL = false;
-bool Gui::m_mouseButtonPressedR = false;
-int Gui::m_mousePressesR = 0;
+bool Gui::EDIT_MODE = false;
+
+int Gui::winWidth = 0;
+int Gui::winHeight = 0;
 
 float Gui::m_mousePosX = 0;
 float Gui::m_mousePosY = 0;
-int Gui::winWidth = 0;
-int Gui::winHeight = 0;
-int* Gui::test = 0;
 
-void Gui::Init(GLFWwindow * handler,int widthWin,int heightWin)
+void Gui::Init(GLFWwindow * handler)
 {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	test = new int();
+	
+	
 	m_handler = handler;
 	m_handler_mouseButtonCLB = glfwSetMouseButtonCallback(handler, Gui::Gui_MouseButtonCallback);
 	m_handler_cursorPosCLB = glfwSetCursorPosCallback(handler, Gui::Gui_MousePositionCallback);
 	m_handler_winSizeCLB = glfwSetFramebufferSizeCallback(handler, Gui::Gui_WindowSizeCallback);
 
-	winWidth = widthWin;
-	winHeight = heightWin;
+	//winWidth = widthWin;
+	//winHeight = heightWin;
 
 	guiShader = new GuiShader();
 	guiShader->Init("res/shaders/GuiShader");
@@ -44,59 +49,25 @@ void Gui::Init(GLFWwindow * handler,int widthWin,int heightWin)
 void Gui::Render()
 {
 	guiShader->Bind();
-
 	for (auto i : m_buttons)
 	{
+
+		guiShader->Update(i->GetTranslation());
 		i->Draw();
 	}
 	
 }
 
-void Gui::UpdateWidgets()
-{
-	if (*test == 1)
-	{
-		LOG_INFO("test %d", *test)
-	}
-	
-	if (m_mouseButtonPressedL)
-	{
-		for (auto i : m_buttons)
-		{
-			if (i->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
-			{
-				if (i->Clicked())
-				{
-					
-				}
-			}
-		}
-	}
 
 
-	if (m_mouseButtonPressedR)
-	{
-		for (auto i : m_buttons)
-		{
-
-			if (i->MouseHoover(glm::vec2(m_mousePosX,m_mousePosY)))
-			{
-				i->GetTranslation().x = m_mousePosX - i->GetData()->scale/2;
-				i->GetTranslation().y = m_mousePosY - i->GetData()->scale/2;
-				guiShader->Update(i->GetTranslation());
-			}
-			else
-			{
-				m_mouseButtonPressedR = false;
-				m_mousePressesR = 0;
-			}
-		}
-	}
-}
 
 void Gui::Update()
 {
-	Gui::UpdateWidgets();
+	if (EDIT_MODE)
+	{
+		m_buttons[GuiButton::GetAttachedButton()]->GetTranslation().x = m_mousePosX - m_buttons[GuiButton::GetAttachedButton()]->GetData()->scale / 2;
+		m_buttons[GuiButton::GetAttachedButton()]->GetTranslation().y = m_mousePosY - m_buttons[GuiButton::GetAttachedButton()]->GetData()->scale / 2;		
+	}
 }
 
 void Gui::Clear()
@@ -108,8 +79,68 @@ void Gui::Clear()
 	delete m_handler;
 }
 
+
+
+void Gui::HandleButtonCallbacks()
+{
+	for (int i = 0; i < m_buttons.size(); i++)
+	{
+		if (m_buttons[i]->Clicked())
+		{
+			m_user_callbacks_B[i]();
+		}
+	}
+}
+
+void Gui::HandleButtons(GuiEvent & event)
+{
+	if (event.GetEventType() == GuiEventType::MouseButtonPressed)
+	{
+		for (int i = 0; i < m_buttons.size(); ++i)
+		{
+			if (m_buttons[i]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
+			{
+				GuiMouseButtonPressEvent& e = (GuiMouseButtonPressEvent&)event;
+				if (e.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
+				{
+					if (GuiButton::GetAttachedButton() == i)
+					{
+					
+						EDIT_MODE = false;
+					}
+					else
+					{
+						GuiButton::GetAttachedButton() = i;
+						EDIT_MODE = true;
+					}
+				}
+				if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
+				{
+					m_buttons[i]->GetData()->clicked = true;
+				}
+			
+			}
+		}
+	
+	}
+	if (event.GetEventType() == GuiEventType::MouseButtonReleased)
+	for (int i = 0; i < m_buttons.size(); ++i)
+	{
+		if (m_buttons[i]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
+		{
+			GuiMouseButtonReleaseEvent& e = (GuiMouseButtonReleaseEvent&)event;
+			if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
+			{
+				m_buttons[i]->GetData()->clicked = false;
+			}
+		}
+	}
+	
+}
+
 void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
+
 	if (Gui::m_handler_mouseButtonCLB != NULL)
 	{
 		Gui::m_handler_mouseButtonCLB(window, button, action, mods);
@@ -117,33 +148,17 @@ void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, in
 		{
 		case GLFW_PRESS:
 		{
-	
-			if (button == GLFW_MOUSE_BUTTON_1)
-			{
-				Gui::m_mouseButtonPressedL = true;
-				*test = 1;
-			}
-			
-			if (button == GLFW_MOUSE_BUTTON_2)
-			{
-				Gui::m_mouseButtonPressedR = true;
-				
-				Gui::m_mousePressesR++;
-				if (Gui::m_mousePressesR == 2)
-				{
-					m_mouseButtonPressedR = false;
-					Gui::m_mousePressesR = 0;
-				}
-			}
+			glfwGetWindowSize(window, &winWidth, &winHeight);
+			GuiMouseButtonPressEvent e(button);
+			HandleButtons(e);
+			HandleButtonCallbacks();
 		}
 		case GLFW_RELEASE:
 		{
-			if (button == GLFW_MOUSE_BUTTON_1)
-			{
-				Gui::m_mouseButtonPressedL = false;
-				*test = 0;
-			}
-			
+			glfwGetWindowSize(window, &winWidth, &winHeight);
+			GuiMouseButtonReleaseEvent e(button);
+			HandleButtons(e);
+			HandleButtonCallbacks();
 		}
 
 		}
@@ -158,10 +173,9 @@ void Gui::Gui_MousePositionCallback(GLFWwindow * window, double xPos, double yPo
 	{
 		Gui::m_handler_cursorPosCLB(window, xPos, yPos);
 		
-		//Recalculated to world coords instead of window pixels
-		m_mousePosX = (xPos/winWidth - 0.5)*2;
-		m_mousePosY = -(yPos/winHeight - 0.5)*2;
-
+		
+		m_mousePosX = (xPos / winWidth - 0.5) * 2;
+		m_mousePosY = -(yPos / winHeight - 0.5) * 2;
 	}
 }
 
@@ -176,4 +190,10 @@ void Gui::Gui_WindowSizeCallback(GLFWwindow* window, int width, int height)
 
 		
 	}
+}
+
+void Gui::AddButton(func_ptr func)
+{
+	m_user_callbacks_B.push_back(func); 
+	m_buttons.push_back(new GuiButton());
 }

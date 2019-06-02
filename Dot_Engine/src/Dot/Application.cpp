@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "Application.h"
 
-
+//0th argument stands for Function to call,
+//1th must be called because it is class member function,
+//2th is placeholder for agument
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 Application* Application::s_Instance = nullptr;
@@ -14,13 +16,16 @@ Application::Application()
 	s_Instance = this;
 	m_Window = std::unique_ptr<Window>(Window::Create());
 	
-
-	Gui::AddButton();
-	Gui::Init(m_Window->GetWindow(),m_Window->GetWidth(),m_Window->GetHeight());
-	m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+	
+	m_GuiLayer = new GuiLayer();
+	PushOverlay(m_GuiLayer);
+	
 	
 
-
+	//It makes from OnEvent() callback that is invoked when glfwwindow receive some callback
+	m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+	
+	
 	shader.Init("res/shaders/BasicShader");
 	mesh = Mesh::CreateMesh("res/models/test.obj");
 	texture.Create("res/textures/robotTex.jpg");
@@ -54,9 +59,6 @@ void Application::Run()
 		mesh->Draw();
 		shader.Update(transform, camera);
 		
-		
-		Gui::Render();
-		Gui::Update();
 		
 		
 

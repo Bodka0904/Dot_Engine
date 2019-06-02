@@ -24,9 +24,6 @@ class Event
 {
 public:
 	virtual EventType GetEventType() const = 0;
-	//virtual int GetButton() const = 0;
-	//virtual int GetKey() const = 0;
-	//virtual std::pair<int, int>GetWinSize() const = 0;
 
 private:
 	EventType type = EventType::None;

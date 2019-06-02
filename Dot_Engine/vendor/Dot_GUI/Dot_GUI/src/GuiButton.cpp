@@ -1,6 +1,6 @@
 #include "GuiButton.h"
 
-
+int GuiButton::attachedButton = -1;
 
 
 GuiButton::GuiButton()

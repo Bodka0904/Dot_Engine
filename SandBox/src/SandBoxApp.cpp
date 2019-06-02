@@ -80,3 +80,7 @@ Application* CreateApplication()
 
 
 
+void Test()
+{
+	printf("test");
+}

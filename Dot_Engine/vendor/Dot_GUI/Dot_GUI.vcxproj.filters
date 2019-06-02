@@ -8,10 +8,11 @@
   <ItemGroup>
     <ClInclude Include="Dot_GUI\src\Gui.h" />
     <ClInclude Include="Dot_GUI\src\GuiButton.h" />
-    <ClInclude Include="Dot_GUI\src\GuiWidgets.h" />
     <ClInclude Include="Dot_GUI\src\shaders\GuiShader.h">
       <Filter>shaders</Filter>
     </ClInclude>
+    <ClInclude Include="Dot_GUI\src\events\GuiEvent.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiWidgets.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
@@ -19,5 +20,8 @@
     <ClCompile Include="Dot_GUI\src\shaders\GuiShader.cpp">
       <Filter>shaders</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="premake5.lua" />
   </ItemGroup>
 </Project>

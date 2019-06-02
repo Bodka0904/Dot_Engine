@@ -6,8 +6,7 @@
 #include "Graphics/Transform.h"
 #include "Graphics/Texture.h"
 #include "Events/Event.h"
-#include "Dot_GUI/src/Gui.h"
-#include "Dot_GUI/src/shaders/GuiShader.h"
+#include "Gui/GuiLayer.h"
 
 
 
@@ -28,7 +27,6 @@ public:
 	void PopOverlay(Layer* overlay);
 	void OnEvent(Event &e);
 	
-	
 
 	Window GetWin() { return *m_Window; }
 
@@ -38,6 +36,7 @@ public:
 private:
 	std::unique_ptr<Window> m_Window;
 	std::vector<Layer*> m_Layers;
+	GuiLayer *m_GuiLayer;
 
 	unsigned int m_LayerInsertIndex = 0;
 	unsigned int m_VertexArray;
