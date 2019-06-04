@@ -1,2 +1,2 @@
 # Dot_Engine
-DLL library to render content 
+Simple game engine 
