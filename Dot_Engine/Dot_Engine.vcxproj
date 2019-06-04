@@ -97,19 +97,20 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Dot\Gui\GuiLayer.h" />
     <ClInclude Include="src\Dot\Application.h" />
     <ClInclude Include="src\Dot\Core.h" />
     <ClInclude Include="src\Dot\EntryPoint.h" />
     <ClInclude Include="src\Dot\Events\Event.h" />
     <ClInclude Include="src\Dot\Graphics\Camera.h" />
-    <ClInclude Include="src\Dot\Graphics\Mesh.h" />
     <ClInclude Include="src\Dot\Graphics\ObjLoader.h" />
     <ClInclude Include="src\Dot\Graphics\ParticleSystem.h" />
-    <ClInclude Include="src\Dot\Graphics\Shader.h" />
-    <ClInclude Include="src\Dot\Graphics\Texture.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Buffer.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Texture.h" />
+    <ClInclude Include="src\Dot\Graphics\Shaders\Shader.h" />
     <ClInclude Include="src\Dot\Graphics\Transform.h" />
     <ClInclude Include="src\Dot\Graphics\Window.h" />
+    <ClInclude Include="src\Dot\Gui\GuiLayer.h" />
     <ClInclude Include="src\Dot\Input.h" />
     <ClInclude Include="src\Dot\KeyCodes.h" />
     <ClInclude Include="src\Dot\Layer.h" />
@@ -484,14 +485,15 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Dot\Gui\GuiLayer.cpp" />
     <ClCompile Include="src\Dot\Application.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Mesh.cpp" />
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp" />
     <ClCompile Include="src\Dot\Graphics\ParticleSystem.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Shader.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Texture.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Shaders\Shader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Window.cpp" />
+    <ClCompile Include="src\Dot\Gui\GuiLayer.cpp" />
     <ClCompile Include="src\Dot\Input.cpp" />
     <ClCompile Include="src\Dot\Layer.cpp" />
     <ClCompile Include="src\Dot\Log.cpp" />

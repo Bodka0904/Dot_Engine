@@ -1,6 +1,6 @@
-
 #ifndef LOG_H
 #define LOG_H
+
 class Log {
 
 public:
@@ -10,16 +10,9 @@ public:
 			LEVEL = TRACE;
 			return LEVEL;
 		}
-
 		return LEVEL;
 
 	}
-	static inline void SetColor(unsigned int color) {
-
-		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		SetConsoleTextAttribute(hConsole, color);
-	}
-
 	enum
 	{
 		INFO,
@@ -30,12 +23,6 @@ public:
 
 		TRACE
 	};
-	enum
-	{
-		RED = 12,
-		YELLOW = 14,
-		WHITE = 15
-	};
 
 private:
 
@@ -45,8 +32,8 @@ private:
 
 
 
-#define LOG_INFO(...) Log::SetColor(Log::WHITE);if(Log::GetLevel() == Log::INFO || Log::TRACE)printf(__VA_ARGS__);printf("\n");
-#define LOG_WARN(...) Log::SetColor(Log::YELLOW);if(Log::GetLevel() == Log::WARN || Log::TRACE)printf(__VA_ARGS__);printf("\n");
-#define LOG_ERR(...)  Log::SetColor(Log::RED);if(Log::GetLevel() == Log::ERR || Log::TRACE)printf(__VA_ARGS__);printf("\n");
+#define LOG_INFO(...) if(Log::GetLevel() == Log::INFO || Log::TRACE) printf("%c[1;0m",27);printf(__VA_ARGS__);printf("\n");
+#define LOG_WARN(...) if(Log::GetLevel() == Log::WARN || Log::TRACE) printf("%c[1;33m",27);printf(__VA_ARGS__);printf("\n");
+#define LOG_ERR(...)  if(Log::GetLevel() == Log::ERR || Log::TRACE) printf("%c[1;31m",27);printf(__VA_ARGS__);printf("\n");
 
 #endif

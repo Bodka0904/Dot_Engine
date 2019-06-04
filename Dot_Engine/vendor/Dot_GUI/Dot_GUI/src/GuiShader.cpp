@@ -1,5 +1,5 @@
+#include "stdafx.h"
 #include "GuiShader.h"
-
 
 
 GuiShader::GuiShader()
@@ -71,7 +71,7 @@ void GuiShader::LinkShader()
 		glDeleteShader(m_shaders[1]);
 
 
-		LOG_ERR("GuiShader: Could not link shader ", &infoLog[0])
+	
 
 	}
 	glValidateProgram(m_program);
@@ -112,7 +112,7 @@ std::string GuiShader::LoadShader(const std::string & filename)
 	}
 	else
 	{
-		LOG_ERR("GuiShader: Could not open file: %s", filename);
+		
 	}
 	return output;
 }
@@ -123,7 +123,7 @@ GLuint GuiShader::CreateShader(const std::string & text, GLenum shaderType)
 
 	if (shader == 0)
 	{
-		LOG_ERR("Shader: Could not create shader")
+		
 	}
 	const GLchar* shaderSourceStrings[1];
 	GLint shaderSourceStringLength[1];
@@ -144,7 +144,7 @@ GLuint GuiShader::CreateShader(const std::string & text, GLenum shaderType)
 		std::vector<GLchar> errorLog(maxLength);
 		glGetShaderInfoLog(shader, maxLength, &maxLength, &errorLog[0]);
 
-		LOG_ERR("GuiShader: Could not compile shader: %s", &errorLog[0]);
+	
 
 		glDeleteShader(shader);
 	}

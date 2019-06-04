@@ -1,8 +1,8 @@
 #pragma once
 #include <conio.h>
 #include "Dot/Log.h"
-#include "Transform.h"
-#include "Camera.h"
+#include "Dot/Graphics/Transform.h"
+#include "Dot/Graphics/Camera.h"
 #include <GL/glew.h>
 #include <GLFW\glfw3.h>
 
@@ -27,23 +27,24 @@ class Shader
 {
 public:
 	Shader();
-	
+	~Shader();
+
 	void Init(const std::string& filename);
 	
 	virtual void SetAttribs();
 	virtual void SetUniforms();
 	virtual void Update(const Transform& transform, Camera& camera);
 	
-	void LinkShader();
-	void Bind();
-	void UnBind();
+	virtual void LinkShader();
+	virtual void Bind();
+	virtual void UnBind();
 
 
 
 	static std::string LoadShader(const std::string& filename);
 	static GLuint CreateShader(const std::string& text, GLenum shaderType);
 
-	virtual ~Shader();
+
 
 private:
 	static const unsigned int NUM_SHADER = 2;

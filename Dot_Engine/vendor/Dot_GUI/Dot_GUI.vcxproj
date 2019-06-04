@@ -88,19 +88,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Dot_GUI\src\events\GuiEvent.h" />
     <ClInclude Include="Dot_GUI\src\Gui.h" />
     <ClInclude Include="Dot_GUI\src\GuiButton.h" />
+    <ClInclude Include="Dot_GUI\src\GuiShader.h" />
+    <ClInclude Include="Dot_GUI\src\events\GuiEvent.h" />
     <ClInclude Include="Dot_GUI\src\widgets\GuiWidgets.h" />
-    <ClInclude Include="Dot_GUI\src\shaders\GuiShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiButton.cpp" />
-    <ClCompile Include="Dot_GUI\src\shaders\GuiShader.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="premake5.lua" />
+    <ClCompile Include="Dot_GUI\src\GuiShader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

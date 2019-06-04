@@ -1,9 +1,9 @@
 #pragma once
-#include "shaders/GuiShader.h"
+#include "GuiShader.h"
 #include "events/GuiEvent.h"
 #include "GuiButton.h"
 #include <GLFW\glfw3.h>
-#include "Dot/Log.h"
+
 
 
 class Gui
@@ -12,7 +12,6 @@ public:
 
 	typedef std::function<void()> func_ptr;
 	
-
 
 	static void Init(GLFWwindow* handler);
 
@@ -23,7 +22,8 @@ public:
 
 
 	static void HandleButtonCallbacks();
-	static void HandleButtons(GuiEvent& event);
+	static void HandleButtonsPress(GuiEvent& event);
+	static void HandleButtonsRelease(GuiEvent& event);
 	
 
 

@@ -32,8 +32,6 @@ void Gui::Init(GLFWwindow * handler)
 	m_handler_cursorPosCLB = glfwSetCursorPosCallback(handler, Gui::Gui_MousePositionCallback);
 	m_handler_winSizeCLB = glfwSetFramebufferSizeCallback(handler, Gui::Gui_WindowSizeCallback);
 
-	//winWidth = widthWin;
-	//winHeight = heightWin;
 
 	guiShader = new GuiShader();
 	guiShader->Init("res/shaders/GuiShader");
@@ -65,8 +63,8 @@ void Gui::Update()
 {
 	if (EDIT_MODE)
 	{
-		m_buttons[GuiButton::GetAttachedButton()]->GetTranslation().x = m_mousePosX - m_buttons[GuiButton::GetAttachedButton()]->GetData()->scale / 2;
-		m_buttons[GuiButton::GetAttachedButton()]->GetTranslation().y = m_mousePosY - m_buttons[GuiButton::GetAttachedButton()]->GetData()->scale / 2;		
+		m_buttons[GuiButton::GetAttachedButton()]->GetTranslation().x = m_mousePosX - m_buttons[GuiButton::GetAttachedButton()]->GetData().scale / 2;
+		m_buttons[GuiButton::GetAttachedButton()]->GetTranslation().y = m_mousePosY - m_buttons[GuiButton::GetAttachedButton()]->GetData().scale / 2;		
 	}
 }
 
@@ -92,7 +90,7 @@ void Gui::HandleButtonCallbacks()
 	}
 }
 
-void Gui::HandleButtons(GuiEvent & event)
+void Gui::HandleButtonsPress(GuiEvent & event)
 {
 	if (event.GetEventType() == GuiEventType::MouseButtonPressed)
 	{
@@ -105,7 +103,7 @@ void Gui::HandleButtons(GuiEvent & event)
 				{
 					if (GuiButton::GetAttachedButton() == i)
 					{
-					
+						GuiButton::GetAttachedButton() = -1;
 						EDIT_MODE = false;
 					}
 					else
@@ -116,9 +114,13 @@ void Gui::HandleButtons(GuiEvent & event)
 				}
 				if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
 				{
-					m_buttons[i]->GetData()->clicked = true;
+					m_buttons[i]->GetData().clicked = true;
 				}
 			
+			}
+			else
+			{
+				m_buttons[i]->GetData().clicked = false;
 			}
 		}
 	
@@ -131,11 +133,20 @@ void Gui::HandleButtons(GuiEvent & event)
 			GuiMouseButtonReleaseEvent& e = (GuiMouseButtonReleaseEvent&)event;
 			if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
 			{
-				m_buttons[i]->GetData()->clicked = false;
+				m_buttons[i]->GetData().clicked = true;
 			}
 		}
 	}
 	
+}
+
+void Gui::HandleButtonsRelease(GuiEvent& event)
+{
+	for (int i = 0; i < m_buttons.size(); i++)
+	{
+		m_buttons[i]->GetData().clicked = false;
+	}
+
 }
 
 void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
@@ -150,14 +161,14 @@ void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, in
 		{
 			glfwGetWindowSize(window, &winWidth, &winHeight);
 			GuiMouseButtonPressEvent e(button);
-			HandleButtons(e);
+			HandleButtonsPress(e);
 			HandleButtonCallbacks();
 		}
 		case GLFW_RELEASE:
 		{
 			glfwGetWindowSize(window, &winWidth, &winHeight);
 			GuiMouseButtonReleaseEvent e(button);
-			HandleButtons(e);
+			HandleButtonsRelease(e);
 			HandleButtonCallbacks();
 		}
 

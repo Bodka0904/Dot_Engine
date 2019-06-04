@@ -13,6 +13,15 @@
     <Filter Include="src\Dot\Graphics">
       <UniqueIdentifier>{235B582F-0F54-7781-3886-5C0624DE568D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Graphics\Renderer">
+      <UniqueIdentifier>{29D6EBB7-9598-1F42-DE48-AECE4A4AF81F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Graphics\Shaders">
+      <UniqueIdentifier>{FCF26A7F-E817-BAFF-1163-9F8FFDE6B81D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Gui">
+      <UniqueIdentifier>{577CAC8A-C331-2580-4C26-1F57B8DA1B84}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -60,26 +69,32 @@
     <ClInclude Include="src\Dot\Graphics\Camera.h">
       <Filter>src\Dot\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Mesh.h">
-      <Filter>src\Dot\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\ObjLoader.h">
       <Filter>src\Dot\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\ParticleSystem.h">
       <Filter>src\Dot\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Shader.h">
-      <Filter>src\Dot\Graphics</Filter>
+    <ClInclude Include="src\Dot\Graphics\Renderer\Buffer.h">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Texture.h">
-      <Filter>src\Dot\Graphics</Filter>
+    <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\Texture.h">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Shaders\Shader.h">
+      <Filter>src\Dot\Graphics\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Transform.h">
       <Filter>src\Dot\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Window.h">
       <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Gui\GuiLayer.h">
+      <Filter>src\Dot\Gui</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Input.h">
       <Filter>src\Dot</Filter>
@@ -1197,14 +1212,10 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Gui\GuiLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
       <Filter>src\Dot</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Mesh.cpp">
-      <Filter>src\Dot\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp">
       <Filter>src\Dot\Graphics</Filter>
@@ -1212,14 +1223,23 @@
     <ClCompile Include="src\Dot\Graphics\ParticleSystem.cpp">
       <Filter>src\Dot\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Shader.cpp">
-      <Filter>src\Dot\Graphics</Filter>
+    <ClCompile Include="src\Dot\Graphics\Renderer\Buffer.cpp">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Texture.cpp">
-      <Filter>src\Dot\Graphics</Filter>
+    <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Renderer\Texture.cpp">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Shaders\Shader.cpp">
+      <Filter>src\Dot\Graphics\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Window.cpp">
       <Filter>src\Dot\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Gui\GuiLayer.cpp">
+      <Filter>src\Dot\Gui</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Input.cpp">
       <Filter>src\Dot</Filter>
@@ -1239,6 +1259,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Gui\GuiLayer.cpp" />
   </ItemGroup>
 </Project>

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="shaders">
-      <UniqueIdentifier>{0F45D591-7B24-542D-843C-DF03F09ABA8E}</UniqueIdentifier>
+    <Filter Include="events">
+      <UniqueIdentifier>{5A9D08FC-463F-33D2-2FFA-46261B3BBA22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widgets">
+      <UniqueIdentifier>{9C4F4BC8-082F-CA63-1147-553A7DA530C5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dot_GUI\src\Gui.h" />
     <ClInclude Include="Dot_GUI\src\GuiButton.h" />
-    <ClInclude Include="Dot_GUI\src\shaders\GuiShader.h">
-      <Filter>shaders</Filter>
+    <ClInclude Include="Dot_GUI\src\GuiShader.h" />
+    <ClInclude Include="Dot_GUI\src\events\GuiEvent.h">
+      <Filter>events</Filter>
     </ClInclude>
-    <ClInclude Include="Dot_GUI\src\events\GuiEvent.h" />
-    <ClInclude Include="Dot_GUI\src\widgets\GuiWidgets.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiWidgets.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiButton.cpp" />
-    <ClCompile Include="Dot_GUI\src\shaders\GuiShader.cpp">
-      <Filter>shaders</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="premake5.lua" />
+    <ClCompile Include="Dot_GUI\src\GuiShader.cpp" />
   </ItemGroup>
 </Project>

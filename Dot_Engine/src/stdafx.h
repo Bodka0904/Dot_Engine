@@ -2,7 +2,7 @@
 // or project specific include files that are used frequently, but
 // are changed infrequently
 #pragma once
-#include <windows.h>
+#include <stdio.h>
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -12,3 +12,4 @@
 #include <fstream>
 #include <vector>
 #include <functional>
+#include <sstream>

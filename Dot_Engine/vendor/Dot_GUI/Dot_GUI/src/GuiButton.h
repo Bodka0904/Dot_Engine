@@ -1,8 +1,7 @@
 #pragma once
-#include "stdafx.h"
 #include "widgets/GuiWidgets.h"
 #include <GL/glew.h>
-#include "Dot/Log.h"
+
 
 
 
@@ -16,16 +15,16 @@ public:
 
 	
 	bool MouseHoover(glm::vec2 mousePos);
-	bool Clicked() { return m_data->clicked; }
+	bool Clicked() { return m_data.clicked; }
 	
 	glm::vec2 &GetTranslation() { return b_translation; }
 	glm::vec4 GetCoords() const;
 
 	static int &GetAttachedButton() { return attachedButton; }
-	Button *GetData() const { return m_data; }
+	Button &GetData() { return m_data; }
 
 private:
-	Button *m_data;
+	Button m_data;
 	GLuint m_vao;
 	GLuint m_vbo[3];
 	

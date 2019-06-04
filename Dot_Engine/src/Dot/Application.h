@@ -1,18 +1,15 @@
+#pragma once
 #include "Graphics/Window.h"
 #include "Layer.h"
 #include "Graphics/Camera.h"
-#include "Graphics/Mesh.h"
-#include "Graphics/Shader.h"
+#include "Graphics/Renderer/Mesh.h"
+#include "Graphics/Shaders/Shader.h"
+#include "Graphics/Renderer/Texture.h"
 #include "Graphics/Transform.h"
-#include "Graphics/Texture.h"
 #include "Events/Event.h"
 #include "Gui/GuiLayer.h"
 
 
-
-
-
-#pragma once
 class Application
 {
 public:

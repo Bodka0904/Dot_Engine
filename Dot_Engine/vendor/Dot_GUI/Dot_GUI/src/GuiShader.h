@@ -1,8 +1,7 @@
 #pragma once
-#include "stdafx.h"
-#include "Dot/Log.h"
 #include <glm/glm.hpp>
 #include <GL/glew.h>
+#include <string>
 
 class GuiShader
 {
