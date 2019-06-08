@@ -1,5 +1,5 @@
 #pragma once 
-#include "Dot/Log.h"
+#include "Dot/Debug/Log.h"
 
 
 enum class EventType

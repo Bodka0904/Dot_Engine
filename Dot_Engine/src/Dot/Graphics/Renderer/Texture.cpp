@@ -13,7 +13,6 @@ Texture::Texture(int numTextures)
 
 Texture::~Texture()
 {
-
 	glDeleteTextures(texIndex, &data->texture);
 }
 

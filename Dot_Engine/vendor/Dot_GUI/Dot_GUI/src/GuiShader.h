@@ -2,6 +2,7 @@
 #include <glm/glm.hpp>
 #include <GL/glew.h>
 #include <string>
+#include "GuiTransform.h"
 
 class GuiShader
 {
@@ -18,8 +19,7 @@ public:
 	void Bind();
 	void UnBind();
 
-	void Update(glm::vec2& translate);
-
+	void Update(GuiTransform& transform);
 
 	static std::string LoadShader(const std::string& filename);
 	static GLuint CreateShader(const std::string& text, GLenum shaderType);
@@ -31,7 +31,7 @@ private:
 
 	GLuint m_program;
 	GLuint m_shaders[NUM_SHADER];
-	GLuint m_uniforms[1];
+	GLuint m_uniforms[2];
 
 };
 

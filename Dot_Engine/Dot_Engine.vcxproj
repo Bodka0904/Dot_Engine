@@ -98,6 +98,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Dot\Application.h" />
+    <ClInclude Include="src\Dot\ColorCodes.h" />
     <ClInclude Include="src\Dot\Core.h" />
     <ClInclude Include="src\Dot\EntryPoint.h" />
     <ClInclude Include="src\Dot\Events\Event.h" />
@@ -114,8 +115,9 @@
     <ClInclude Include="src\Dot\Input.h" />
     <ClInclude Include="src\Dot\KeyCodes.h" />
     <ClInclude Include="src\Dot\Layer.h" />
-    <ClInclude Include="src\Dot\Log.h" />
+    <ClInclude Include="src\Dot\Debug\Log.h" />
     <ClInclude Include="src\Dot\MouseButtonCodes.h" />
+    <ClInclude Include="src\Dot\Debug\Timer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -496,7 +498,7 @@
     <ClCompile Include="src\Dot\Gui\GuiLayer.cpp" />
     <ClCompile Include="src\Dot\Input.cpp" />
     <ClCompile Include="src\Dot\Layer.cpp" />
-    <ClCompile Include="src\Dot\Log.cpp" />
+    <ClCompile Include="src\Dot\Debug\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

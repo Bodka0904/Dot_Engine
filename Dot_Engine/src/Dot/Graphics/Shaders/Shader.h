@@ -1,6 +1,6 @@
 #pragma once
 #include <conio.h>
-#include "Dot/Log.h"
+#include "Dot/Debug/Log.h"
 #include "Dot/Graphics/Transform.h"
 #include "Dot/Graphics/Camera.h"
 #include <GL/glew.h>

@@ -1,6 +1,6 @@
 #pragma once
 #include "Mesh.h"
-#include "Dot/Log.h"
+#include "Dot/Debug/Log.h"
 
 
 
@@ -24,7 +24,7 @@ public:
 
 private:
 	TextureData * data;
-	int texIndex = 0;
+	unsigned int texIndex = 0;
 	
 };
 

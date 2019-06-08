@@ -12,7 +12,7 @@ Application::Application()
 	:
 	texture(1)
 {
-
+	
 	s_Instance = this;
 	m_Window = std::unique_ptr<Window>(Window::Create());
 	
@@ -20,7 +20,7 @@ Application::Application()
 	m_GuiLayer = new GuiLayer();
 	PushOverlay(m_GuiLayer);
 	
-	
+
 
 	//It makes from OnEvent() callback that is invoked when glfwwindow receive some callback
 	m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
@@ -29,13 +29,10 @@ Application::Application()
 	shader.Init("res/shaders/BasicShader");
 	mesh = Mesh::CreateMesh("res/models/test.obj");
 	texture.Create("res/textures/robotTex.jpg");
+	
 	texture.Bind(0);
-
-
 	
 
-	
-	
 }
 
 
@@ -48,14 +45,19 @@ Application::~Application()
 void Application::Run()
 {
 	
+	Timer time;
+	float timer = 0;
+	unsigned int frames = 0;
 	while (!m_Window->IsClosed())
 	{
-		
+	
 		m_Window->Clear();
 		
 		shader.Bind();
+		texture.Bind(0);
 		transform.GetPos().z = -100;
 		transform.GetRot().y += 0.01;
+		
 		mesh->Draw();
 		shader.Update(transform, camera);
 		
@@ -67,10 +69,17 @@ void Application::Run()
 			layer->OnUpdate();
 		}
 		
-
+		frames ++;
+		if (time.Elapsed() - timer > 1.0f)
+		{
+			timer += 1.0f;
+			LOG_INFO("FPS: %d", frames);
+			frames = 0;
+		}
 		
 		
 		m_Window->Update();
+
 	}
 	m_Window->Destroy();
 }

@@ -4,6 +4,9 @@
     <Filter Include="events">
       <UniqueIdentifier>{5A9D08FC-463F-33D2-2FFA-46261B3BBA22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="glText">
+      <UniqueIdentifier>{5D81F4FF-4923-1FD6-32DE-322A1E1FA626}</UniqueIdentifier>
+    </Filter>
     <Filter Include="widgets">
       <UniqueIdentifier>{9C4F4BC8-082F-CA63-1147-553A7DA530C5}</UniqueIdentifier>
     </Filter>
@@ -15,13 +18,19 @@
     <ClInclude Include="Dot_GUI\src\events\GuiEvent.h">
       <Filter>events</Filter>
     </ClInclude>
+    <ClInclude Include="Dot_GUI\src\glText\gltext.h">
+      <Filter>glText</Filter>
+    </ClInclude>
     <ClInclude Include="Dot_GUI\src\widgets\GuiWidgets.h">
       <Filter>widgets</Filter>
     </ClInclude>
+    <ClInclude Include="Dot_GUI\src\glText\GuiText.h" />
+    <ClInclude Include="Dot_GUI\src\GuiTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiButton.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiShader.cpp" />
+    <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp" />
   </ItemGroup>
 </Project>

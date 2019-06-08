@@ -57,6 +57,9 @@
     <ClInclude Include="src\Dot\Application.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\ColorCodes.h">
+      <Filter>src\Dot</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Core.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
@@ -103,9 +106,6 @@
       <Filter>src\Dot</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Layer.h">
-      <Filter>src\Dot</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Log.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\MouseButtonCodes.h">
@@ -1212,6 +1212,10 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Debug\Log.h">
+      <Filter>src\Dot</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Debug\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1247,9 +1251,6 @@
     <ClCompile Include="src\Dot\Layer.cpp">
       <Filter>src\Dot</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Log.cpp">
-      <Filter>src\Dot</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1258,6 +1259,9 @@
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Debug\Log.cpp">
+      <Filter>src\Dot</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

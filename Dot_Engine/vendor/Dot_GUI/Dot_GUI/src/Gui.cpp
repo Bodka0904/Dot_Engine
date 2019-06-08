@@ -1,5 +1,4 @@
 #include "Gui.h"
-#include "stdafx.h"
 
 typedef std::function<void()> func_ptr;
 
@@ -7,6 +6,7 @@ std::vector<func_ptr> Gui::m_user_callbacks_B;
 
 std::vector<GuiButton*> Gui::m_buttons;
 GuiShader* Gui::guiShader = NULL;
+GuiTransform* Gui::transform = NULL;
 GLFWwindow* Gui::m_handler = NULL;
 
 GLFWmousebuttonfun Gui::m_handler_mouseButtonCLB = NULL;
@@ -32,41 +32,51 @@ void Gui::Init(GLFWwindow * handler)
 	m_handler_cursorPosCLB = glfwSetCursorPosCallback(handler, Gui::Gui_MousePositionCallback);
 	m_handler_winSizeCLB = glfwSetFramebufferSizeCallback(handler, Gui::Gui_WindowSizeCallback);
 
+	GuiText::Init();
 
 	guiShader = new GuiShader();
 	guiShader->Init("res/shaders/GuiShader");
 
+	transform = new GuiTransform();
+
 	for (auto i : m_buttons)
 	{
 		i->Init();
-	}
-}
-
-
-
-void Gui::Render()
-{
-	guiShader->Bind();
-	for (auto i : m_buttons)
-	{
-
-		guiShader->Update(i->GetTranslation());
-		i->Draw();
+		i->GetText()->SetData(glm::vec2(0, 0));
+		i->SetData(glm::vec2(0, 0));
 	}
 	
 }
 
 
 
+void Gui::Render()
+{
+	
+	for (auto i : m_buttons)
+	{
+		GuiText::StartDraw();
+		i->GetText()->UpdateData(*transform);
+		i->GetText()->Draw();
+		
+		
+		guiShader->Bind();	
+		i->UpdateData(*transform);	
+		guiShader->Update(*transform);
+		i->Draw();
+	}
+
+}
 
 void Gui::Update()
 {
 	if (EDIT_MODE)
 	{
-		m_buttons[GuiButton::GetAttachedButton()]->GetTranslation().x = m_mousePosX - m_buttons[GuiButton::GetAttachedButton()]->GetData().scale / 2;
-		m_buttons[GuiButton::GetAttachedButton()]->GetTranslation().y = m_mousePosY - m_buttons[GuiButton::GetAttachedButton()]->GetData().scale / 2;		
+		m_buttons[GuiButton::GetAttachedButton()]->SetData(glm::vec2(m_mousePosX,m_mousePosY));
+		m_buttons[GuiButton::GetAttachedButton()]->GetText()->SetData(glm::vec2(m_mousePosX, m_mousePosY));
 	}
 }
+
 
 void Gui::Clear()
 {
@@ -78,7 +88,6 @@ void Gui::Clear()
 }
 
 
-
 void Gui::HandleButtonCallbacks()
 {
 	for (int i = 0; i < m_buttons.size(); i++)
@@ -86,46 +95,46 @@ void Gui::HandleButtonCallbacks()
 		if (m_buttons[i]->Clicked())
 		{
 			m_user_callbacks_B[i]();
+			m_buttons[i]->GetData().clicked = false;
 		}
 	}
 }
 
-void Gui::HandleButtonsPress(GuiEvent & event)
+void Gui::HandlePressButtons(GuiEvent& event)
 {
-	if (event.GetEventType() == GuiEventType::MouseButtonPressed)
+	for (int i = 0; i < m_buttons.size(); ++i)
 	{
-		for (int i = 0; i < m_buttons.size(); ++i)
+		if (m_buttons[i]->MouseHoover(glm::vec2(m_mousePosX,m_mousePosY)))
 		{
-			if (m_buttons[i]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
+			GuiMouseButtonPressEvent& e = (GuiMouseButtonPressEvent&)event;
+			if (e.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
 			{
-				GuiMouseButtonPressEvent& e = (GuiMouseButtonPressEvent&)event;
-				if (e.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
+				
+				if (GuiButton::GetAttachedButton() == i)
 				{
-					if (GuiButton::GetAttachedButton() == i)
-					{
-						GuiButton::GetAttachedButton() = -1;
-						EDIT_MODE = false;
-					}
-					else
-					{
-						GuiButton::GetAttachedButton() = i;
-						EDIT_MODE = true;
-					}
+					GuiButton::GetAttachedButton() = -1;
+					EDIT_MODE = false;
 				}
-				if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
+				else
 				{
-					m_buttons[i]->GetData().clicked = true;
+
+					GuiButton::GetAttachedButton() = i;
+					EDIT_MODE = true;
 				}
+			}
+			if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
+			{
+				m_buttons[i]->GetData().clicked = true;
 			
 			}
-			else
-			{
-				m_buttons[i]->GetData().clicked = false;
-			}
+
 		}
-	
+		
 	}
-	if (event.GetEventType() == GuiEventType::MouseButtonReleased)
+}
+
+void Gui::HandleReleaseButtons(GuiEvent& event)
+{
 	for (int i = 0; i < m_buttons.size(); ++i)
 	{
 		if (m_buttons[i]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
@@ -133,21 +142,12 @@ void Gui::HandleButtonsPress(GuiEvent & event)
 			GuiMouseButtonReleaseEvent& e = (GuiMouseButtonReleaseEvent&)event;
 			if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
 			{
-				m_buttons[i]->GetData().clicked = true;
+				m_buttons[i]->GetData().clicked = false;
 			}
 		}
 	}
-	
 }
 
-void Gui::HandleButtonsRelease(GuiEvent& event)
-{
-	for (int i = 0; i < m_buttons.size(); i++)
-	{
-		m_buttons[i]->GetData().clicked = false;
-	}
-
-}
 
 void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
@@ -161,14 +161,14 @@ void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, in
 		{
 			glfwGetWindowSize(window, &winWidth, &winHeight);
 			GuiMouseButtonPressEvent e(button);
-			HandleButtonsPress(e);
+			HandlePressButtons(e);
 			HandleButtonCallbacks();
 		}
 		case GLFW_RELEASE:
 		{
 			glfwGetWindowSize(window, &winWidth, &winHeight);
 			GuiMouseButtonReleaseEvent e(button);
-			HandleButtonsRelease(e);
+			HandleReleaseButtons(e);
 			HandleButtonCallbacks();
 		}
 
@@ -199,12 +199,12 @@ void Gui::Gui_WindowSizeCallback(GLFWwindow* window, int width, int height)
 		winWidth = width;
 		winHeight = height;
 
-		
+		GuiText::UpdateViewPort(width, height);
 	}
 }
 
-void Gui::AddButton(func_ptr func)
+void Gui::AddButton(func_ptr func, const std::string& name, glm::vec3 color)
 {
 	m_user_callbacks_B.push_back(func); 
-	m_buttons.push_back(new GuiButton());
+	m_buttons.push_back(new GuiButton(name,color));
 }

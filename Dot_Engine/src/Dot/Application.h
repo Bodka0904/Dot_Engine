@@ -8,6 +8,9 @@
 #include "Graphics/Transform.h"
 #include "Events/Event.h"
 #include "Gui/GuiLayer.h"
+#include "Debug/Timer.h"
+
+
 
 
 class Application
@@ -34,7 +37,7 @@ private:
 	std::unique_ptr<Window> m_Window;
 	std::vector<Layer*> m_Layers;
 	GuiLayer *m_GuiLayer;
-
+	
 	unsigned int m_LayerInsertIndex = 0;
 	unsigned int m_VertexArray;
 	unsigned int m_VertexBuffer;
@@ -47,6 +50,9 @@ private:
 	Transform transform;
 	Texture texture;
 	Mesh *mesh;
+
+
+
 	
 };
 

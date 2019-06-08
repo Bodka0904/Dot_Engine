@@ -78,8 +78,9 @@ project "Dot_Engine"
 			{
 				"GLFW_INCLUDE_NONE",
 				"GLEW_STATIC"
+				"D_PLATFORM_WINDOWS"
 			}
-
+			
 
 
 		filter "configurations:Debug"

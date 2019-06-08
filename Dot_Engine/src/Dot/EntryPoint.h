@@ -1,4 +1,4 @@
-#include "Log.h"
+#include "Debug/Log.h"
 #include "Application.h"
 
 extern Application* CreateApplication();

@@ -4,14 +4,15 @@
 int GuiButton::attachedButton = -1;
 
 
-GuiButton::GuiButton()
+GuiButton::GuiButton(const std::string& name,glm::vec3 color)
+	: m_data(color),m_text(new GuiText(name))
 {
-	
+
 }
 
 GuiButton::~GuiButton()
 {
-
+	delete m_text;
 }
 
 void GuiButton::Init()
@@ -38,12 +39,15 @@ void GuiButton::Init()
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
+
 	glBindVertexArray(0);
+
 }
 
 
 void GuiButton::Draw()
 {
+	
 	
 	glBindVertexArray(m_vao);
 
@@ -52,26 +56,44 @@ void GuiButton::Draw()
 	glBindVertexArray(0);
 }
 
+void GuiButton::UpdateData(GuiTransform& transform)
+{
+	transform.SetRot(m_rotation);
+	transform.SetScale(m_scale);
+	transform.SetPos(glm::vec2(m_position.x - m_scale.x/2,
+							   m_position.y + m_scale.y/2));
+}
+
+void GuiButton::SetData(glm::vec2 pos,glm::vec2 scale,glm::vec2 rot)
+{
+	m_rotation = rot;
+	m_scale = scale;
+	m_position = pos;
+}
+
+
+
 bool GuiButton::MouseHoover(glm::vec2 mousePos)
 {
 	
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
-		&& mousePos.y >= GetCoords().y && mousePos.y <= GetCoords().w)
+		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)
 	{
 		return true;
+		
 	}
-	else
+	else 
 	{
 		return false;	
 	}
 }
 
 
-glm::vec4 GuiButton::GetCoords() const
+glm::vec4 GuiButton::GetCoords() 
 {
-	return glm::vec4(b_translation.x,
-					 b_translation.y,
-					 b_translation.x + m_data.scale,
-					 b_translation.y + m_data.scale);
+	return glm::vec4(m_position.x - m_scale.x/2,
+					 m_position.y + m_scale.y/2,
+					 m_position.x + m_scale.x,
+					 m_position.y - m_scale.y);
 }
 

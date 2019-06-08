@@ -1,8 +1,10 @@
 #pragma once
 #include "GuiShader.h"
 #include "events/GuiEvent.h"
+#include "glText/GuiText.h"
 #include "GuiButton.h"
 #include <GLFW\glfw3.h>
+#include "GuiTransform.h"
 
 
 
@@ -15,6 +17,7 @@ public:
 
 	static void Init(GLFWwindow* handler);
 
+
 	static void Render();
 	static void Update();
 	static void Clear();
@@ -22,8 +25,8 @@ public:
 
 
 	static void HandleButtonCallbacks();
-	static void HandleButtonsPress(GuiEvent& event);
-	static void HandleButtonsRelease(GuiEvent& event);
+	static void HandlePressButtons(GuiEvent& event);
+	static void HandleReleaseButtons(GuiEvent& event);
 	
 
 
@@ -32,7 +35,7 @@ public:
 	static void Gui_WindowSizeCallback(GLFWwindow* window, int width, int height);
 	
 	
-	static void AddButton(func_ptr func);
+	static void AddButton(func_ptr func,const std::string& name,glm::vec3 color);
 	static GuiButton *GetButton(int index) { return m_buttons[index]; }
 
 private:
@@ -40,6 +43,7 @@ private:
 	static std::vector<func_ptr> m_user_callbacks_B;
 
 	static GuiShader* guiShader;
+	static GuiTransform *transform;
 	static GLFWwindow* m_handler;
 	static GLFWmousebuttonfun m_handler_mouseButtonCLB;
 	static GLFWcursorposfun m_handler_cursorPosCLB;
@@ -53,7 +57,7 @@ private:
 
 	static float m_mousePosX;
 	static float m_mousePosY;
-
+	
 	static int m_numWidgets;
 };
 
