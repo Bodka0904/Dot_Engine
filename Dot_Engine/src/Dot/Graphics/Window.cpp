@@ -24,6 +24,7 @@ void Window::Init()
 	if (!GLFWInitialized)
 	{
 		int success = glfwInit();
+		
 		D_ASSERT(success, "Could not initialize GLFW!");
 		GLFWInitialized = true;
 	}
@@ -44,6 +45,7 @@ void Window::Init()
 		data.width = width;
 		data.height = height;
 		
+
 		glViewport(0, 0, width,height);
 	});
 
@@ -123,7 +125,7 @@ void Window::Destroy()
 
 void Window::Clear()
 {
-	glClearColor(0.0f, 0.2f, 0.2f, 0.0);
+	glClearColor(0.5f, 0.7f, 0.8f, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
@@ -147,5 +149,10 @@ inline int Window::GetHeight() const
 GLFWwindow * Window::GetWindow() const
 {
 	return m_window;
+}
+
+void Window::vSync(bool enabled)
+{
+	glfwSwapInterval(enabled);
 }
 

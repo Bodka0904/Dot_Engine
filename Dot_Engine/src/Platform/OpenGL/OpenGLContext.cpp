@@ -30,6 +30,7 @@ void OpenGLContext::Init()
 	{
 		LOG_ERR("OpenGLContext: Could not initialize glew")
 	};
+	
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);

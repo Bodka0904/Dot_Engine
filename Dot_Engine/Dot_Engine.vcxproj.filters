@@ -7,6 +7,9 @@
     <Filter Include="src\Dot">
       <UniqueIdentifier>{836F2FA9-EF4E-AE44-F866-391B64C514A6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Debug">
+      <UniqueIdentifier>{39D07DE7-A590-F91D-6ECB-429BDA4A3EFA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Dot\Events">
       <UniqueIdentifier>{072AC2DA-F3F7-B5E0-DC8B-2607C8F89145}</UniqueIdentifier>
     </Filter>
@@ -62,6 +65,12 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Core.h">
       <Filter>src\Dot</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Debug\Log.h">
+      <Filter>src\Dot\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Debug\Timer.h">
+      <Filter>src\Dot\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\EntryPoint.h">
       <Filter>src\Dot</Filter>
@@ -1212,14 +1221,13 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Debug\Log.h">
-      <Filter>src\Dot</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Debug\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
       <Filter>src\Dot</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Debug\Log.cpp">
+      <Filter>src\Dot\Debug</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp">
       <Filter>src\Dot\Graphics</Filter>
@@ -1260,8 +1268,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Debug\Log.cpp">
-      <Filter>src\Dot</Filter>
-    </ClCompile>
+    <ClCompile Include="src\Dot\Debug\Windows\WinTimer.cpp" />
   </ItemGroup>
 </Project>

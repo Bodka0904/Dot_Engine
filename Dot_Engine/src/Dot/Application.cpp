@@ -20,9 +20,8 @@ Application::Application()
 	m_GuiLayer = new GuiLayer();
 	PushOverlay(m_GuiLayer);
 	
+	m_Window->vSync(false);
 
-
-	//It makes from OnEvent() callback that is invoked when glfwwindow receive some callback
 	m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	
 	
@@ -45,9 +44,7 @@ Application::~Application()
 void Application::Run()
 {
 	
-	Timer time;
-	float timer = 0;
-	unsigned int frames = 0;
+	Timer timer;
 	while (!m_Window->IsClosed())
 	{
 	
@@ -69,17 +66,10 @@ void Application::Run()
 			layer->OnUpdate();
 		}
 		
-		frames ++;
-		if (time.Elapsed() - timer > 1.0f)
-		{
-			timer += 1.0f;
-			LOG_INFO("FPS: %d", frames);
-			frames = 0;
-		}
-		
-		
 		m_Window->Update();
 
+		
+		timer.FrameCount();
 	}
 	m_Window->Destroy();
 }

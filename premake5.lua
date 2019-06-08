@@ -77,7 +77,7 @@ project "Dot_Engine"
 			defines
 			{
 				"GLFW_INCLUDE_NONE",
-				"GLEW_STATIC"
+				"GLEW_STATIC",
 				"D_PLATFORM_WINDOWS"
 			}
 			

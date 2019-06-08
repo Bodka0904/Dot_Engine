@@ -15,8 +15,12 @@
     <ClInclude Include="Dot_GUI\src\Gui.h" />
     <ClInclude Include="Dot_GUI\src\GuiButton.h" />
     <ClInclude Include="Dot_GUI\src\GuiShader.h" />
+    <ClInclude Include="Dot_GUI\src\GuiTransform.h" />
     <ClInclude Include="Dot_GUI\src\events\GuiEvent.h">
       <Filter>events</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\glText\GuiText.h">
+      <Filter>glText</Filter>
     </ClInclude>
     <ClInclude Include="Dot_GUI\src\glText\gltext.h">
       <Filter>glText</Filter>
@@ -24,13 +28,13 @@
     <ClInclude Include="Dot_GUI\src\widgets\GuiWidgets.h">
       <Filter>widgets</Filter>
     </ClInclude>
-    <ClInclude Include="Dot_GUI\src\glText\GuiText.h" />
-    <ClInclude Include="Dot_GUI\src\GuiTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiButton.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiShader.cpp" />
-    <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp" />
+    <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp">
+      <Filter>glText</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

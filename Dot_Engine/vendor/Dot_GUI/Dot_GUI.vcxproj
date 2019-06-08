@@ -91,11 +91,11 @@
     <ClInclude Include="Dot_GUI\src\Gui.h" />
     <ClInclude Include="Dot_GUI\src\GuiButton.h" />
     <ClInclude Include="Dot_GUI\src\GuiShader.h" />
-    <ClInclude Include="Dot_GUI\src\events\GuiEvent.h" />
-    <ClInclude Include="Dot_GUI\src\glText\gltext.h" />
     <ClInclude Include="Dot_GUI\src\GuiTransform.h" />
-    <ClInclude Include="Dot_GUI\src\widgets\GuiWidgets.h" />
+    <ClInclude Include="Dot_GUI\src\events\GuiEvent.h" />
     <ClInclude Include="Dot_GUI\src\glText\GuiText.h" />
+    <ClInclude Include="Dot_GUI\src\glText\gltext.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiWidgets.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
