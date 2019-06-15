@@ -28,9 +28,8 @@ Application::Application()
 	shader.Init("res/shaders/BasicShader");
 	mesh = Mesh::CreateMesh("res/models/test.obj");
 	texture.Create("res/textures/robotTex.jpg");
-	
 	texture.Bind(0);
-	
+
 
 }
 
@@ -49,7 +48,7 @@ void Application::Run()
 	{
 	
 		m_Window->Clear();
-		
+	
 		shader.Bind();
 		texture.Bind(0);
 		transform.GetPos().z = -100;
@@ -57,8 +56,6 @@ void Application::Run()
 		
 		mesh->Draw();
 		shader.Update(transform, camera);
-		
-		
 		
 
 		for (Layer* layer : m_Layers)
@@ -68,7 +65,6 @@ void Application::Run()
 		
 		m_Window->Update();
 
-		
 		timer.FrameCount();
 	}
 	m_Window->Destroy();

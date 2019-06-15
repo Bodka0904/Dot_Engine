@@ -1,5 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
+#include "Renderer/Buffer.h"
 
 
 struct OBJIndex
@@ -17,7 +18,9 @@ public:
 	std::vector<glm::vec3> positions;
 	std::vector<glm::vec2> texCoords;
 	std::vector<glm::vec3> normals;
+	std::vector<VertexTexture> m_vertex;
 	std::vector<unsigned int> indices;
+
 
 	void CalcNormals();
 };
@@ -29,6 +32,8 @@ public:
 	std::vector<glm::vec3> vertices;
 	std::vector<glm::vec2> uvs;
 	std::vector<glm::vec3> normals;
+	std::vector<VertexTexture> m_vertex;
+
 	bool hasUVs;
 	bool hasNormals;
 

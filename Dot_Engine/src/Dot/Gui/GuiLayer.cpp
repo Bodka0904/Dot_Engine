@@ -22,10 +22,12 @@ void GuiLayer::OnAttach()
 	
 
 
-	Gui::AddButton(BIND_FN(ButtonActions),"test",glm::vec3(COLOR_BLACK));
-	Gui::AddButton(BIND_FN(ButtonActions),"test2",glm::vec3(COLOR_PURPLE));
+	Gui::AddButton(BIND_FN(ButtonAction),"test");
+	Gui::AddButton(BIND_FN(ButtonAction),"test2");
+	Gui::AddCheckBox(BIND_FN(CheckBoxAction),"test3");
 
-	Gui::Init(app.GetWin().GetWindow());
+
+	Gui::Init(app.GetWin().GetWindow(),glm::vec3(COLOR_BLACK));
 	
 
 }
@@ -36,15 +38,16 @@ void GuiLayer::OnUpdate()
 	Gui::Render();
 }
 
-void GuiLayer::ButtonActions()
+void GuiLayer::ButtonAction()
 {
-	if (Gui::GetButton(0)->Clicked())
-	{
-		LOG_INFO("HHH")
-	}
+	LOG_INFO("HHH")
 
-	if (Gui::GetButton(1)->Clicked())
-	{
-		LOG_INFO("KRAVA")
-	}
+	LOG_INFO("KRAVA")
+	
+	LOG_INFO("WORKING");
+}
+
+void GuiLayer::CheckBoxAction()
+{
+	LOG_WARN("ACTIVATED");
 }

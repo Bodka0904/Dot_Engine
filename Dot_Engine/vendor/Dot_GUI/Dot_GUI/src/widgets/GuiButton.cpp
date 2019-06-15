@@ -1,11 +1,10 @@
 #include "GuiButton.h"
-#include "stdafx.h"
-
-int GuiButton::attachedButton = -1;
 
 
-GuiButton::GuiButton(const std::string& name,glm::vec3 color)
-	: m_data(color),m_text(new GuiText(name))
+
+
+GuiButton::GuiButton(const std::string& name)
+	: m_text(new GuiText(name))
 {
 
 }
@@ -13,33 +12,27 @@ GuiButton::GuiButton(const std::string& name,glm::vec3 color)
 GuiButton::~GuiButton()
 {
 	delete m_text;
+	
 }
 
-void GuiButton::Init()
+void GuiButton::Init(unsigned int& VBO, unsigned int& IBO)
 {
 
 	glGenVertexArrays(1, &m_vao);
 	glBindVertexArray(m_vao);
 
-	glGenBuffers(1, &m_vbo[0]);
-	glBindBuffer(GL_ARRAY_BUFFER, m_vbo[0]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(m_data.vertices), m_data.vertices, GL_STATIC_DRAW);
 
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-	glGenBuffers(1, &m_vbo[1]);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vbo[1]);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(m_data.indices), m_data.indices, GL_STATIC_DRAW);
-
-	glGenBuffers(1, &m_vbo[2]);
-	glBindBuffer(GL_ARRAY_BUFFER, m_vbo[2]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(m_data.colors), m_data.colors, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 24, 0);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 24,(const void*)8);
 
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
 
+	
 	glBindVertexArray(0);
 
 }
@@ -47,11 +40,9 @@ void GuiButton::Init()
 
 void GuiButton::Draw()
 {
-	
-	
 	glBindVertexArray(m_vao);
 
-	glDrawElements(GL_TRIANGLES, sizeof(m_data.indices) / sizeof(m_data.indices[0]), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(indices[0]), GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0);
 }

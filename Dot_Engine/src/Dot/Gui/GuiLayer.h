@@ -14,7 +14,7 @@ public:
 	void OnAttach() override;
 	void OnUpdate() override;
 
-	void ButtonActions();
-
+	void ButtonAction();
+	void CheckBoxAction();
 };
 

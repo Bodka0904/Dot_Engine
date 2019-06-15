@@ -6,6 +6,7 @@ Mesh::Mesh(const std::string & filename)
 {
 
 	IndexedModel model = OBJModel(filename).ToIndexedModel();
+
 	InitMesh(model, filename);
 }
 
@@ -13,6 +14,10 @@ Mesh::Mesh(const std::string & filename)
 Mesh::~Mesh()
 {
 	glDeleteVertexArrays(1, &m_VAO);
+
+	delete m_VertexB;
+	delete m_IndexB;
+	
 }
 
 void Mesh::Draw()
@@ -32,11 +37,32 @@ void Mesh::InitMesh(const IndexedModel & model, std::string filename)
 	
 	glGenVertexArrays(1, &m_VAO);
 	glBindVertexArray(m_VAO);
+	
+	BufferLayout layout = {
+				{ ShaderDataType::Float3, "position" },
+				{ ShaderDataType::Float3, "normal" },
+				{ ShaderDataType::Float2, "texCoord" },
+				
+	};
+	
+	
+	
+	m_VertexB = new VertexBuffer((VertexTexture*)&model.m_vertex[0], model.m_vertex.size() * sizeof(VertexTexture));
+	m_VertexB->SetLayout(layout);
 
-	m_VertexB = new VertexBuffer((glm::vec3*)&model.positions[0], model.positions.size() * sizeof(model.positions[0]),0);
-	m_TextureB = new TextureBuffer((glm::vec2*)&model.texCoords[0], model.positions.size() * sizeof(model.texCoords[0]), 1);
-	m_NormalB = new NormalBuffer((glm::vec3*)&model.normals[0], model.normals.size() * sizeof(model.normals[0]), 2);
-	m_IndexB = new IndexBuffer((unsigned int*)&model.indices[0],model.indices.size());
+	
+	uint32_t index = 0;
+	for (const auto& element : m_VertexB->GetLayout())
+	{
+		glEnableVertexAttribArray(index);
+		glVertexAttribPointer(index,
+			element.GetComponentCount(),
+			GL_FLOAT,
+			GL_FALSE,
+			layout.GetStride(),
+			(const void*)element.offset);
+		index++;
+	}
+	m_IndexB = new IndexBuffer((unsigned int*)&model.indices[0], model.indices.size());
 
-	glBindVertexArray(0); //we unbind it;
 }

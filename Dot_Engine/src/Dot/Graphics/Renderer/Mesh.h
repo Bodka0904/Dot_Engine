@@ -1,6 +1,5 @@
 #pragma once
 #include "Dot/Graphics/ObjLoader.h"
-#include "Dot/Graphics/Transform.h"
 #include "Buffer.h"
 #include <glm/glm.hpp>
 #include <GL/glew.h>
@@ -22,8 +21,6 @@ private:
 	unsigned int m_VAO;
 	VertexBuffer *m_VertexB;
 	IndexBuffer *m_IndexB;
-	NormalBuffer *m_NormalB;
-	TextureBuffer *m_TextureB;
 
 };
 

@@ -89,19 +89,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Dot_GUI\src\Gui.h" />
-    <ClInclude Include="Dot_GUI\src\GuiButton.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiButton.h" />
     <ClInclude Include="Dot_GUI\src\GuiShader.h" />
     <ClInclude Include="Dot_GUI\src\GuiTransform.h" />
     <ClInclude Include="Dot_GUI\src\events\GuiEvent.h" />
     <ClInclude Include="Dot_GUI\src\glText\GuiText.h" />
     <ClInclude Include="Dot_GUI\src\glText\gltext.h" />
-    <ClInclude Include="Dot_GUI\src\widgets\GuiWidgets.h" />
+    <ClInclude Include="Dot_GUI\src\data\GuiData.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiCheckBox.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiWidget.h" />
+    <ClInclude Include="Dot_GUI\src\GuiBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
-    <ClCompile Include="Dot_GUI\src\GuiButton.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiButton.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiShader.cpp" />
     <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiCheckBox.cpp" />
+    <ClCompile Include="Dot_GUI\src\GuiBuffer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

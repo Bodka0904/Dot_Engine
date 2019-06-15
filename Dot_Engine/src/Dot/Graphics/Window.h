@@ -16,7 +16,7 @@ struct WindowProps
 	unsigned int Width;
 	unsigned int Height;
 
-	WindowProps(const char* title = "Dot_Engine",
+	WindowProps(const char* title = "Dot Engine",
 		unsigned int width = 1280,
 		unsigned int height = 720)
 		: Title(title), Width(width), Height(height)
@@ -24,7 +24,7 @@ struct WindowProps
 	}
 };
 
-class __declspec(dllexport)Window
+class Window
 {
 public:
 	//It is function that takes Event and return nothing

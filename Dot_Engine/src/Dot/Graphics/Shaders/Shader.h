@@ -4,7 +4,7 @@
 #include "Dot/Graphics/Transform.h"
 #include "Dot/Graphics/Camera.h"
 #include <GL/glew.h>
-#include <GLFW\glfw3.h>
+
 
 
 struct Light
@@ -27,9 +27,9 @@ class Shader
 {
 public:
 	Shader();
-	~Shader();
+	virtual ~Shader();
 
-	void Init(const std::string& filename);
+	virtual void Init(const std::string& filename);
 	
 	virtual void SetAttribs();
 	virtual void SetUniforms();

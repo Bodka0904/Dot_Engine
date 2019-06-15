@@ -136,6 +136,7 @@ IndexedModel OBJModel::ToIndexedModel()
 			result.positions.push_back(currentPosition);
 			result.texCoords.push_back(currentTexCoord);
 			result.normals.push_back(currentNormal);
+			result.m_vertex.push_back(VertexTexture(currentPosition, currentNormal, currentTexCoord));
 		}
 		else
 			resultModelIndex = previousVertexLocation;
@@ -150,7 +151,7 @@ IndexedModel OBJModel::ToIndexedModel()
 		normalModel.CalcNormals();
 
 		for (unsigned int i = 0; i < result.positions.size(); i++)
-			result.normals[i] = normalModel.normals[indexMap[i]];
+			result.m_vertex[i].normal = normalModel.normals[indexMap[i]];
 	}
 
 	return result;

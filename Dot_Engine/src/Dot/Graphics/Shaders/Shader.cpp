@@ -32,21 +32,28 @@ void Shader::Init(const std::string &filename)
 		glAttachShader(m_program, m_shaders[i]);
 	}
 	
-
+	
 	
 	SetAttribs();
 	LinkShader();
 
 	glUseProgram(m_program);
 	SetUniforms();
+
+	for (unsigned int i = 0; i < NUM_SHADER; i++)
+	{
+		glDetachShader(m_program, m_shaders[i]);
+		glDeleteShader(m_shaders[i]);
+
+	}
 }
 
 
 void Shader::SetAttribs()
 {
 	glBindAttribLocation(m_program, 0, "position");
-	glBindAttribLocation(m_program, 1, "texCoord");
-	glBindAttribLocation(m_program, 2, "normal");
+	glBindAttribLocation(m_program, 1, "normal");
+	glBindAttribLocation(m_program, 2, "texCoord");
 }
 
 void Shader::SetUniforms()

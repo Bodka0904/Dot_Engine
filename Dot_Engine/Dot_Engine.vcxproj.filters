@@ -84,9 +84,6 @@
     <ClInclude Include="src\Dot\Graphics\ObjLoader.h">
       <Filter>src\Dot\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\ParticleSystem.h">
-      <Filter>src\Dot\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffer.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
@@ -1221,6 +1218,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Particle\ParticleEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1230,9 +1228,6 @@
       <Filter>src\Dot\Debug</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp">
-      <Filter>src\Dot\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\ParticleSystem.cpp">
       <Filter>src\Dot\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffer.cpp">
@@ -1269,5 +1264,6 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Debug\Windows\WinTimer.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Particle\ParticleEffect.cpp" />
   </ItemGroup>
 </Project>

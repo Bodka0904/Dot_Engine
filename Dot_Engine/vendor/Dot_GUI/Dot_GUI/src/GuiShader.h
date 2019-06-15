@@ -20,7 +20,7 @@ public:
 	void UnBind();
 
 	void Update(GuiTransform& transform);
-
+	
 	static std::string LoadShader(const std::string& filename);
 	static GLuint CreateShader(const std::string& text, GLenum shaderType);
 
@@ -31,6 +31,7 @@ private:
 
 	GLuint m_program;
 	GLuint m_shaders[NUM_SHADER];
+
 	GLuint m_uniforms[2];
 
 };

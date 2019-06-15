@@ -46,7 +46,7 @@ void GuiShader::SetAttribs()
 
 void GuiShader::SetUniforms()
 {
-	m_uniforms[0] = glGetUniformLocation(m_program, "transform");
+	m_uniforms[0] = glGetUniformLocation(m_program, "transparent");
 	m_uniforms[1] = glGetUniformLocation(m_program, "mvp");
 }
 
@@ -93,9 +93,11 @@ void GuiShader::UnBind()
 
 
 void GuiShader::Update(GuiTransform & transform)
-{
+{	
 	glUniformMatrix4fv(m_uniforms[1], 1, GL_FALSE, &transform.GetModel()[0][0]);
 }
+
+
 
 std::string GuiShader::LoadShader(const std::string & filename)
 {

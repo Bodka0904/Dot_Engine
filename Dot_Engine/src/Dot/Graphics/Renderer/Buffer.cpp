@@ -2,13 +2,19 @@
 #include "Buffer.h"
 
 
-VertexBuffer::VertexBuffer(glm::vec3 * vertices, unsigned int size, unsigned int sPos)
+VertexBuffer::VertexBuffer(VertexTexture *vertices, unsigned int size)
 {
 	glCreateBuffers(1,&m_VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 	glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
-	glEnableVertexAttribArray(sPos);
-	glVertexAttribPointer(sPos, 3, GL_FLOAT, GL_FALSE, 0, 0);
+}
+
+
+VertexBuffer::VertexBuffer(VertexColor * vertices, unsigned int size)
+{
+	glCreateBuffers(1, &m_VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+	glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 }
 
 VertexBuffer::~VertexBuffer()
@@ -27,12 +33,14 @@ void VertexBuffer::UnBind() const
 }
 
 
+
 IndexBuffer::IndexBuffer(unsigned int* indices, unsigned int count)
 	:m_Count(count)
 {
 	glCreateBuffers(1, &m_VBO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_VBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,count * sizeof(unsigned int),indices,GL_STATIC_DRAW);
+
 }
 
 IndexBuffer::~IndexBuffer()
@@ -55,56 +63,28 @@ unsigned int IndexBuffer::GetCount() const
 	return m_Count;
 }
 
-
-
-TextureBuffer::TextureBuffer(glm::vec2 *texCoords, unsigned int size, unsigned int sPos)
+	
+OffsetBuffer::OffsetBuffer(glm::vec3 * offsets,unsigned int size,unsigned int sPos)
 {
 	glCreateBuffers(1, &m_VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-	glBufferData(GL_ARRAY_BUFFER, size, texCoords, GL_STATIC_DRAW);
-	glEnableVertexAttribArray(sPos);
-	glVertexAttribPointer(sPos, 2, GL_FLOAT, GL_FALSE, 0, 0);
-}
-
-TextureBuffer::~TextureBuffer()
-{
-	glDeleteBuffers(1, &m_VBO);
-}
-
-void TextureBuffer::Bind() const
-{
-	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-}
-
-void TextureBuffer::UnBind() const
-{
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-}
-
-
-
-NormalBuffer::NormalBuffer(glm::vec3 * normals, unsigned int size, unsigned int sPos)
-{
-	glCreateBuffers(1, &m_VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-	glBufferData(GL_ARRAY_BUFFER, size, normals, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, size, 0, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(sPos);
 	glVertexAttribPointer(sPos, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
+	glVertexAttribDivisor(sPos, 1);
 }
 
-NormalBuffer::~NormalBuffer()
+OffsetBuffer::~OffsetBuffer()
 {
 	glDeleteBuffers(1, &m_VBO);
 }
 
-void NormalBuffer::Bind() const
+void OffsetBuffer::Bind() const
 {
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 }
 
-void NormalBuffer::UnBind() const
+void OffsetBuffer::UnBind() const
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
-	
