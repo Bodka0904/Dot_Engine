@@ -53,3 +53,22 @@ unsigned int GuiIndexBuffer::GetCount() const
 {
 	return m_Count;
 }
+
+GuiVertexBufferMultiObj::GuiVertexBufferMultiObj(GuiVertex * vertices_one,GuiVertex * vertices_two, unsigned int size)
+{
+	glCreateBuffers(1, &m_VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+	glBufferData(GL_ARRAY_BUFFER, size, vertices_one, GL_STATIC_DRAW);
+}
+
+GuiVertexBufferMultiObj::~GuiVertexBufferMultiObj()
+{
+}
+
+void GuiVertexBufferMultiObj::Bind() const
+{
+}
+
+void GuiVertexBufferMultiObj::UnBind() const
+{
+}

@@ -97,7 +97,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Dot\Graphics\Particle\ParticleEffect.h" />
     <ClInclude Include="src\Dot\Application.h" />
     <ClInclude Include="src\Dot\ColorCodes.h" />
     <ClInclude Include="src\Dot\Core.h" />
@@ -487,7 +486,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Dot\Graphics\Particle\ParticleEffect.cpp" />
     <ClCompile Include="src\Dot\Debug\Windows\WinTimer.cpp" />
     <ClCompile Include="src\Dot\Application.cpp" />
     <ClCompile Include="src\Dot\Debug\Log.cpp" />

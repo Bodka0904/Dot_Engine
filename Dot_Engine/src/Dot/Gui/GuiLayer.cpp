@@ -25,7 +25,7 @@ void GuiLayer::OnAttach()
 	Gui::AddButton(BIND_FN(ButtonAction),"test");
 	Gui::AddButton(BIND_FN(ButtonAction),"test2");
 	Gui::AddCheckBox(BIND_FN(CheckBoxAction),"test3");
-
+	Gui::AddSlider("HOLA");
 
 	Gui::Init(app.GetWin().GetWindow(),glm::vec3(COLOR_BLACK));
 	

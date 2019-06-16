@@ -51,6 +51,24 @@ struct GuiVertex
 
 };
 
+class GuiVertexBufferMultiObj
+{
+	GuiVertexBufferMultiObj(GuiVertex *vertices_one, GuiVertex *vertices_two, unsigned int size);
+	~GuiVertexBufferMultiObj();
+
+	void Bind() const;
+	void UnBind() const;
+
+	void SetLayout(const GuiBufferLayout& layout) { m_layout = layout; }
+	inline const  GuiBufferLayout &GetLayout() const { return m_layout; }
+
+	unsigned int &GetVBO() { return m_VBO; }
+
+private:
+	unsigned int m_VBO;
+	GuiBufferLayout m_layout;
+};
+
 
 class GuiVertexBuffer
 {
@@ -61,7 +79,7 @@ public:
 	void Bind() const;
 	void UnBind() const;
 
-	void SetLayout(const  GuiBufferLayout& layout) { m_layout = layout; }
+	void SetLayout(const GuiBufferLayout& layout) { m_layout = layout; }
 	inline const  GuiBufferLayout &GetLayout() const { return m_layout; }
 
 	unsigned int &GetVBO() { return m_VBO; }

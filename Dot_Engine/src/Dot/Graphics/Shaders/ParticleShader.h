@@ -1,5 +1,6 @@
 #pragma once
 #include "Shader.h"
+#include "Dot/Graphics/Particle/ParticleEffect.h"
 #include "Dot/Graphics/Transform.h"
 #include "Dot/Graphics/Camera.h"
 
@@ -21,15 +22,9 @@ public:
 private:
 	static const unsigned int NUM_SHADER = 2;
 
-	enum
-	{
-		TRANSFORM_U,
-
-		NUM_UNIFORMS
-	};
 
 	GLuint m_program;
 	GLuint m_shaders[NUM_SHADER];
-	GLuint m_uniforms[NUM_UNIFORMS];
+	GLuint m_uniforms[MAX_PARTICLES];
 };
 

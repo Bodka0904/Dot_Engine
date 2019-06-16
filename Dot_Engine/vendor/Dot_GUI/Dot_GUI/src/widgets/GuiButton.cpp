@@ -47,7 +47,7 @@ void GuiButton::Draw()
 	glBindVertexArray(0);
 }
 
-void GuiButton::UpdateData(GuiTransform& transform)
+void GuiButton::UpdateData(GuiTransform& transform, glm::vec3 color)
 {
 	transform.SetRot(m_rotation);
 	transform.SetScale(m_scale);
@@ -60,6 +60,10 @@ void GuiButton::SetData(glm::vec2 pos,glm::vec2 scale,glm::vec2 rot)
 	m_rotation = rot;
 	m_scale = scale;
 	m_position = pos;
+}
+
+void GuiButton::SetColor(glm::vec3 color)
+{
 }
 
 
@@ -80,11 +84,12 @@ bool GuiButton::MouseHoover(glm::vec2 mousePos)
 }
 
 
+
 glm::vec4 GuiButton::GetCoords() 
 {
 	return glm::vec4(m_position.x - m_scale.x/2,
 					 m_position.y + m_scale.y/2,
-					 m_position.x + m_scale.x,
-					 m_position.y - m_scale.y);
+					 m_position.x + m_scale.x/2,
+					 m_position.y - m_scale.y/2);
 }
 

@@ -32,7 +32,9 @@ private:
 
 	};
 	unsigned int indices[1] = {
-		0 };
+		0 
+	};
+
 	enum
 	{
 		POSITION_VB,
@@ -50,5 +52,6 @@ private:
 	GLuint m_vertexArrayObject;
 	GLuint m_vertexArrayBuffers[NUM_BUFFERS];
 
+	
 };
 

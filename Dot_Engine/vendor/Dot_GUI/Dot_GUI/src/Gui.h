@@ -7,6 +7,7 @@
 #include "widgets/GuiWidget.h"
 #include "widgets/GuiButton.h"
 #include "widgets/GuiCheckBox.h"
+#include "widgets/GuiSlider.h"
 #include <GLFW\glfw3.h>
 #include "GuiTransform.h"
 
@@ -35,6 +36,7 @@ public:
 	
 	static void AddButton(func_ptr func,const std::string& name);
 	static void AddCheckBox(func_ptr func, const std::string& name);
+	static void AddSlider(const std::string& name);
 
 	static void SetDarkTheme();
 
@@ -45,6 +47,7 @@ private:
 
 	static unsigned int num_buttons;
 	static unsigned int num_checkboxes;
+	static unsigned int num_sliders;
 	
 	
 
@@ -67,10 +70,12 @@ private:
 	static float m_mousePosY;
 	
 	static GuiIndexBuffer* m_index;
+
 	static GuiVertexBuffer* m_vertex_b;
-
-
 	static GuiVertexBuffer* m_vertex_chb;
+	static GuiVertexBuffer* m_vertex_sl;
 	
+
+	static float test;
 };
 

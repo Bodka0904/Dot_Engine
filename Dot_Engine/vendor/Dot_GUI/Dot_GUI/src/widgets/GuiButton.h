@@ -20,13 +20,14 @@ public:
 	virtual void Draw() override;
 
 
-	virtual void UpdateData(GuiTransform& transform) override;
+	virtual void UpdateData(GuiTransform& transform, glm::vec3 color) override;
 	virtual void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(0.1, 0.1),glm::vec2 rot = glm::vec2(3.14,0)) override;
-	
+	virtual void SetColor(glm::vec3 color)override;
+
 	virtual bool MouseHoover(glm::vec2 mousePos) override;
 	virtual bool &Clicked() override { return clicked; }
 	
-	
+
 	virtual glm::vec2 GetPosition() const override { return m_position; }
 	virtual GuiText *GetText() override { return m_text; }
 
@@ -50,5 +51,8 @@ private:
 	const unsigned int indices[6] = {
 		0,1,2,0,3,2
 	};
+
+	static constexpr unsigned int LENGTH = 1;
+	static constexpr unsigned int HEIGHT = 1;
 };
 

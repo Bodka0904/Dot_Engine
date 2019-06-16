@@ -4,6 +4,8 @@
 #include <string>
 #include "GuiTransform.h"
 
+
+
 class GuiShader
 {
 public:
@@ -20,7 +22,8 @@ public:
 	void UnBind();
 
 	void Update(GuiTransform& transform);
-	
+	void UpdateColor(glm::vec3 color);
+
 	static std::string LoadShader(const std::string& filename);
 	static GLuint CreateShader(const std::string& text, GLenum shaderType);
 
@@ -29,10 +32,20 @@ public:
 private:
 	static const unsigned int NUM_SHADER = 2;
 
-	GLuint m_program;
-	GLuint m_shaders[NUM_SHADER];
 
-	GLuint m_uniforms[2];
+	enum
+	{
+		MVP_U,
+
+		COLOR_U,
+
+		NUM_UNIFORMS
+	};
+
+	GLuint m_program;
+
+	GLuint m_shaders[NUM_SHADER];
+	GLuint m_uniforms[NUM_UNIFORMS];
 
 };
 

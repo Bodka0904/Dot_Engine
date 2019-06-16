@@ -8,7 +8,7 @@ std::vector<func_ptr> Gui::m_user_callbacks;
 GuiIndexBuffer* Gui::m_index = NULL;
 GuiVertexBuffer* Gui::m_vertex_b = NULL;
 GuiVertexBuffer* Gui::m_vertex_chb = NULL;
-
+GuiVertexBuffer* Gui::m_vertex_sl = NULL;
 
 GuiShader* Gui::guiShader = NULL;
 GuiTransform* Gui::transform = NULL;
@@ -29,6 +29,10 @@ float Gui::m_mousePosY = 0;
 
 unsigned int Gui::num_buttons = 0;
 unsigned int Gui::num_checkboxes = 0;
+unsigned int Gui::num_sliders = 0;
+
+
+float Gui::test = 0.0f;
 
 void Gui::Init(GLFWwindow * handler, glm::vec3 color)
 {
@@ -50,12 +54,12 @@ void Gui::Init(GLFWwindow * handler, glm::vec3 color)
 
 	Button m_button_data = Button(color);
 	CheckBox m_checkbox_data = CheckBox(color);
+	Slider m_slider_data = Slider(color, color);
 
 	GuiBufferLayout layout = {
 		{ GuiShaderDataType::Float2, "position" },
 		{ GuiShaderDataType::Float4, "color" },
 	};
-
 
 	m_index = new GuiIndexBuffer((unsigned int*)&m_button_data.indices[0], 6);
 	
@@ -73,35 +77,54 @@ void Gui::Init(GLFWwindow * handler, glm::vec3 color)
 	m_vertex_chb = new GuiVertexBuffer((GuiVertex*)&m_checkbox_data.m_vertices[0], 4 * sizeof(GuiVertex));
 	m_vertex_chb->SetLayout(layout);
 
-	for (int i = num_buttons; i < m_widgets.size(); ++i)
+	for (int i = num_buttons; i < m_widgets.size() - num_sliders; ++i)
 	{
 		m_widgets[i]->Init(m_vertex_chb->GetVBO(), m_index->GetVBO());
 		m_widgets[i]->GetText()->SetData(glm::vec2(0, 0));
 		m_widgets[i]->SetData(glm::vec2(0, 0));
 	}
 
+	m_vertex_sl = new GuiVertexBuffer((GuiVertex*)&m_slider_data.m_vertices[0], 8 * sizeof(GuiVertex));
+	m_vertex_chb->SetLayout(layout);
 	
+
+	for (int i = num_sliders + num_buttons; i < m_widgets.size(); ++i)
+	{
+		m_widgets[i]->Init(m_vertex_sl->GetVBO(), m_index->GetVBO());
+		m_widgets[i]->GetText()->SetData(glm::vec2(0, 0));
+		m_widgets[i]->SetData(glm::vec2(0, 0));
+	}
 }
 
 
 void Gui::Render()
 {	
 	GuiText::StartDraw();
+	
 	for (auto i : m_widgets)
 	{
 		i->GetText()->UpdateData(*transform);
 		i->GetText()->Draw();
-
-	}
-
-	guiShader->Bind();
-	for (auto i : m_widgets)
-	{
-		i->UpdateData(*transform);
-		guiShader->Update(*transform);
-		i->Draw();
 		
 	}
+
+
+	guiShader->Bind();
+	
+	for (auto i : m_widgets)
+	{
+		i->UpdateData(*transform,glm::vec3(1,1,1));
+		guiShader->Update(*transform);
+	
+		//guiShader->UpdateColor(glm::vec3(test, test, test));
+		i->Draw();
+				test += 0.001;
+		if (test >= 1)
+		{
+			test = 0;
+		}
+	}
+	
 }
 
 void Gui::Update()
@@ -277,8 +300,13 @@ void Gui::AddCheckBox(func_ptr func, const std::string & name)
 	num_checkboxes++;
 }
 
+void Gui::AddSlider(const std::string & name)
+{
+	m_widgets.emplace(m_widgets.begin() + num_buttons + num_checkboxes, new GuiSlider(name));
+	num_sliders++;
+}
+
 void Gui::SetDarkTheme()
 {
 
-	
 }

@@ -99,6 +99,7 @@
     <ClInclude Include="Dot_GUI\src\widgets\GuiCheckBox.h" />
     <ClInclude Include="Dot_GUI\src\widgets\GuiWidget.h" />
     <ClInclude Include="Dot_GUI\src\GuiBuffer.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiSlider.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
@@ -107,6 +108,7 @@
     <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp" />
     <ClCompile Include="Dot_GUI\src\widgets\GuiCheckBox.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiBuffer.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiSlider.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

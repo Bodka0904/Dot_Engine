@@ -1,5 +1,6 @@
 #pragma once
 #include "GuiWidget.h"
+#include "../GuiShader.h"
 #include "../GuiBuffer.h"
 #include "../GuiTransform.h"
 #include "../glText/GuiText.h"
@@ -18,11 +19,13 @@ public:
 	virtual void Draw()override;
 	
 	
-	virtual void UpdateData(GuiTransform& transform)override;
+	virtual void UpdateData(GuiTransform& transform,glm::vec3 color)override;
 	virtual void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(0.1, 0.1), glm::vec2 rot = glm::vec2(3.14, 0))override;
+	virtual void SetColor(glm::vec3 color)override;
 
 	virtual bool MouseHoover(glm::vec2 mousePos)override;
 	virtual bool &Clicked()override { return checked; }
+	
 	
 
 	virtual glm::vec2 GetPosition() const override { return m_position; }
@@ -40,11 +43,15 @@ private:
 	glm::vec2 m_position = glm::vec2(0, 0);
 	glm::vec2 m_scale;
 	glm::vec2 m_rotation;
+	glm::vec3 m_color;
 
+	
 	bool checked = false;
 	const unsigned int indices[6] = {
 		0,1,2,0,3,2
 	};
 
+	static constexpr unsigned int LENGTH = 1;
+	static constexpr unsigned int HEIGHT = 1;
 };
 

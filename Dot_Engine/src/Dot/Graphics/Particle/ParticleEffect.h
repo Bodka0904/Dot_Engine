@@ -1,4 +1,6 @@
 #pragma once
+#define MAX_PARTICLES 10000
+
 #include <glm/glm.hpp>
 
 class ParticleEffect

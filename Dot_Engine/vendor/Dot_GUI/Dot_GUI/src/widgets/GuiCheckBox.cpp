@@ -44,7 +44,7 @@ void GuiCheckBox::Draw()
 	glBindVertexArray(0);
 }
 
-void GuiCheckBox::UpdateData(GuiTransform & transform)
+void GuiCheckBox::UpdateData(GuiTransform & transform, glm::vec3 color)
 {
 	transform.SetRot(m_rotation);
 	transform.SetScale(m_scale);
@@ -57,6 +57,11 @@ void GuiCheckBox::SetData(glm::vec2 pos, glm::vec2 scale, glm::vec2 rot)
 	m_rotation = rot;
 	m_scale = scale;
 	m_position = pos;
+}
+
+void GuiCheckBox::SetColor(glm::vec3 color)
+{
+	m_color = color;
 }
 
 bool GuiCheckBox::MouseHoover(glm::vec2 mousePos)
@@ -73,10 +78,12 @@ bool GuiCheckBox::MouseHoover(glm::vec2 mousePos)
 	}
 }
 
+
+
 glm::vec4 GuiCheckBox::GetCoords()
 {
 	return glm::vec4(m_position.x - m_scale.x / 2,
 		m_position.y + m_scale.y / 2,
-		m_position.x + m_scale.x,
-		m_position.y - m_scale.y);
+		m_position.x + m_scale.x / 2,
+		m_position.y - m_scale.y / 2);
 }
