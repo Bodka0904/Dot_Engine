@@ -59,11 +59,15 @@ void Window::Init()
 		
 			case GLFW_PRESS:
 			{
-				
+				KeyPressedEvent e(key);
+				data.EventCallback(e);
+				break;
 			}
 			case GLFW_RELEASE:
 			{
-				
+				KeyReleasedEvent e(key);
+				data.EventCallback(e);
+				break;
 			}
 		
 		}

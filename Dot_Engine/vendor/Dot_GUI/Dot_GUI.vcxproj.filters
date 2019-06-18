@@ -32,6 +32,7 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="Dot_GUI\src\widgets\GuiSlider.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
@@ -43,5 +44,6 @@
     <ClCompile Include="Dot_GUI\src\widgets\GuiButton.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiBuffer.cpp" />
     <ClCompile Include="Dot_GUI\src\widgets\GuiSlider.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiWindow.cpp" />
   </ItemGroup>
 </Project>

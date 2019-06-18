@@ -4,6 +4,7 @@
 #include "glText/GuiText.h"
 #include "GuiBuffer.h"
 #include "data/GuiData.h"
+#include "widgets/GuiWindow.h"
 #include "widgets/GuiWidget.h"
 #include "widgets/GuiButton.h"
 #include "widgets/GuiCheckBox.h"
@@ -13,20 +14,23 @@
 
 
 
+
 class Gui
 {
 public:
 
 	typedef std::function<void()> func_ptr;
 
-	static void Init(GLFWwindow* handler, glm::vec3 color);
+	static void Init(GLFWwindow* handler);
 	
 	static void Render();
 	static void Update();
 	static void Clear();
 	
-	static void HandleWidgetCallbacks();
-	static void HandlePressWidget(GuiEvent& event);
+	static void HandleWidgetClick(GuiEvent& event);
+	static void HandleButtonCallbacks();
+
+	static void HandleCheckBoxCallbacks();
 	static void HandleReleaseButtons(GuiEvent& event);
 
 	static void Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
@@ -34,9 +38,10 @@ public:
 	static void Gui_WindowSizeCallback(GLFWwindow* window, int width, int height);
 	
 	
-	static void AddButton(func_ptr func,const std::string& name);
-	static void AddCheckBox(func_ptr func, const std::string& name);
-	static void AddSlider(const std::string& name);
+	static void AddWindow(const std::string& name);
+	static void AddButton(func_ptr func,const std::string& name,int winID);
+	static void AddCheckBox(func_ptr func, const std::string& name,int winID);
+	static void AddSlider(const std::string& name, int winID);
 
 	static void SetDarkTheme();
 
@@ -45,6 +50,7 @@ private:
 	static std::vector<func_ptr> m_user_callbacks;
 
 
+	static unsigned int num_windows;
 	static unsigned int num_buttons;
 	static unsigned int num_checkboxes;
 	static unsigned int num_sliders;
@@ -69,13 +75,15 @@ private:
 	static float m_mousePosX;
 	static float m_mousePosY;
 	
+	static int m_counter;
+
 	static GuiIndexBuffer* m_index;
 
+	static GuiVertexBuffer* m_vertex_w;
 	static GuiVertexBuffer* m_vertex_b;
 	static GuiVertexBuffer* m_vertex_chb;
 	static GuiVertexBuffer* m_vertex_sl;
 	
 
-	static float test;
 };
 

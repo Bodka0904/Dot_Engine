@@ -3,6 +3,28 @@
 #include "../GuiBuffer.h"
 
 
+struct Win
+{
+	Win(glm::vec3 Color)
+		: color(Color)
+	{}
+
+	glm::vec3 color;
+
+	GuiVertex m_vertices[4] = {
+		GuiVertex(glm::vec2(0,0),glm::vec4(color,0.5)),
+		GuiVertex(glm::vec2(5,0),glm::vec4(color,0.5)),
+		GuiVertex(glm::vec2(5,7),glm::vec4(color,0.5)),
+		GuiVertex(glm::vec2(0,7),glm::vec4(color,0.5))
+	};
+
+	const unsigned int indices[6] = {
+		0,1,2,0,3,2
+	};
+};
+
+
+
 struct Button 
 {
 	Button(glm::vec3 Color)
@@ -23,7 +45,6 @@ struct Button
 		0,1,2,0,3,2
 	};
 
-	
 };
 
 
@@ -40,8 +61,8 @@ struct CheckBox
 		GuiVertex(glm::vec2(1,0),glm::vec4(color,0.8)),
 		GuiVertex(glm::vec2(1,1),glm::vec4(color,0.8)),
 		GuiVertex(glm::vec2(0,1),glm::vec4(color,0.8))
-	};
 
+	};
 
 	const unsigned int indices[6] = {
 		0,1,2,0,3,2
@@ -62,13 +83,13 @@ struct Slider
 	glm::vec3 dynamic_color;
 
 	GuiVertex m_vertices[8] = {
-		GuiVertex(glm::vec2(0, 0),glm::vec4(static_color,0.8)),
-		GuiVertex(glm::vec2(4, 0),glm::vec4(static_color,0.8)),
-		GuiVertex(glm::vec2(4, 0.2),glm::vec4(static_color,0.8)),
-		GuiVertex(glm::vec2(0, 0.2),glm::vec4(static_color,0.8)),
+		GuiVertex(glm::vec2(0, 0.4),glm::vec4(static_color,0.8)),
+		GuiVertex(glm::vec2(4, 0.4),glm::vec4(static_color,0.8)),
+		GuiVertex(glm::vec2(4, 0.6),glm::vec4(static_color,0.8)),
+		GuiVertex(glm::vec2(0, 0.6),glm::vec4(static_color,0.8)),
 	
-		GuiVertex(glm::vec2(0,  0),glm::vec4(dynamic_color,0.8)),
-		GuiVertex(glm::vec2(0.4,0),glm::vec4(dynamic_color,0.8)),
+		GuiVertex(glm::vec2(0,  0.2),glm::vec4(dynamic_color,0.8)),
+		GuiVertex(glm::vec2(0.4,0.2),glm::vec4(dynamic_color,0.8)),
 		GuiVertex(glm::vec2(0.4,0.8),glm::vec4(dynamic_color,0.8)),
 		GuiVertex(glm::vec2(0,  0.8),glm::vec4(dynamic_color,0.8))
 

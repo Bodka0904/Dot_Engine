@@ -37,7 +37,7 @@ void GuiText::SetData(glm::vec2 pos)
 
 void GuiText::Draw()
 {
-	gltColor(0.1f, 0.2f, 0.5f, 1.0f);
+	gltColor(0.5f, 0.0f, 0.5f, 1.0f);
 	gltDrawText2D(text, -35, -40, 1);
 	
 }

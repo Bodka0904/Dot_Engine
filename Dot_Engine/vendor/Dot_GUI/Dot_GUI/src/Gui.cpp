@@ -6,6 +6,7 @@ std::vector<GuiWidget*> Gui::m_widgets;
 std::vector<func_ptr> Gui::m_user_callbacks;
 
 GuiIndexBuffer* Gui::m_index = NULL;
+GuiVertexBuffer* Gui::m_vertex_w = NULL;
 GuiVertexBuffer* Gui::m_vertex_b = NULL;
 GuiVertexBuffer* Gui::m_vertex_chb = NULL;
 GuiVertexBuffer* Gui::m_vertex_sl = NULL;
@@ -27,14 +28,15 @@ int Gui::winHeight = 0;
 float Gui::m_mousePosX = 0;
 float Gui::m_mousePosY = 0;
 
+unsigned int Gui::num_windows = 0;
 unsigned int Gui::num_buttons = 0;
 unsigned int Gui::num_checkboxes = 0;
 unsigned int Gui::num_sliders = 0;
 
 
-float Gui::test = 0.0f;
+int Gui::m_counter = 0;
 
-void Gui::Init(GLFWwindow * handler, glm::vec3 color)
+void Gui::Init(GLFWwindow * handler)
 {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -52,9 +54,11 @@ void Gui::Init(GLFWwindow * handler, glm::vec3 color)
 
 	transform = new GuiTransform();
 
-	Button m_button_data = Button(color);
-	CheckBox m_checkbox_data = CheckBox(color);
-	Slider m_slider_data = Slider(color, color);
+	Win m_window_data = Win(glm::vec3(0, 0, 0));
+	Button m_button_data = Button(glm::vec3(0,0,0));
+	CheckBox m_checkbox_data = CheckBox(glm::vec3(0, 0, 0));
+	Slider m_slider_data = Slider(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0));
+
 
 	GuiBufferLayout layout = {
 		{ GuiShaderDataType::Float2, "position" },
@@ -63,10 +67,20 @@ void Gui::Init(GLFWwindow * handler, glm::vec3 color)
 
 	m_index = new GuiIndexBuffer((unsigned int*)&m_button_data.indices[0], 6);
 	
+	m_vertex_w = new GuiVertexBuffer((GuiVertex*)&m_window_data.m_vertices[0], 4 * sizeof(GuiVertex));
+	m_vertex_w->SetLayout(layout);
+
+	for (int i = 0; i < num_windows; ++i)
+	{
+		m_widgets[i]->Init(m_vertex_w->GetVBO(), m_index->GetVBO());
+		m_widgets[i]->GetText()->SetData(glm::vec2(0, 0));
+		m_widgets[i]->SetData(glm::vec2(0, 0));
+	}
+
 	m_vertex_b = new GuiVertexBuffer((GuiVertex*)&m_button_data.m_vertices[0], 4 * sizeof(GuiVertex));
 	m_vertex_b->SetLayout(layout);
 
-	for (int i = 0; i < num_buttons; ++i)
+	for (int i = num_windows; i < num_buttons; ++i)
 	{
 		m_widgets[i]->Init(m_vertex_b->GetVBO(), m_index->GetVBO());
 		m_widgets[i]->GetText()->SetData(glm::vec2(0, 0));
@@ -74,7 +88,7 @@ void Gui::Init(GLFWwindow * handler, glm::vec3 color)
 	}
 
 
-	m_vertex_chb = new GuiVertexBuffer((GuiVertex*)&m_checkbox_data.m_vertices[0], 4 * sizeof(GuiVertex));
+	m_vertex_chb = new GuiVertexBuffer((GuiVertex*)&m_checkbox_data.m_vertices[0], 8 * sizeof(GuiVertex));
 	m_vertex_chb->SetLayout(layout);
 
 	for (int i = num_buttons; i < m_widgets.size() - num_sliders; ++i)
@@ -84,16 +98,16 @@ void Gui::Init(GLFWwindow * handler, glm::vec3 color)
 		m_widgets[i]->SetData(glm::vec2(0, 0));
 	}
 
-	m_vertex_sl = new GuiVertexBuffer((GuiVertex*)&m_slider_data.m_vertices[0], 8 * sizeof(GuiVertex));
-	m_vertex_chb->SetLayout(layout);
-	
-
-	for (int i = num_sliders + num_buttons; i < m_widgets.size(); ++i)
-	{
-		m_widgets[i]->Init(m_vertex_sl->GetVBO(), m_index->GetVBO());
-		m_widgets[i]->GetText()->SetData(glm::vec2(0, 0));
-		m_widgets[i]->SetData(glm::vec2(0, 0));
-	}
+	//m_vertex_sl = new GuiVertexBuffer((GuiVertex*)&m_slider_data.m_vertices[0], 8 * sizeof(GuiVertex));
+	//m_vertex_sl->SetLayout(layout);
+	//
+	//
+	//for (int i = num_checkboxes + num_buttons; i < m_widgets.size(); ++i)
+	//{
+	//	m_widgets[i]->Init(m_vertex_sl->GetVBO(), m_index->GetVBO());
+	//	m_widgets[i]->GetText()->SetData(glm::vec2(0, 0));
+	//	m_widgets[i]->SetData(glm::vec2(0, 0));
+	//}
 }
 
 
@@ -104,25 +118,14 @@ void Gui::Render()
 	for (auto i : m_widgets)
 	{
 		i->GetText()->UpdateData(*transform);
-		i->GetText()->Draw();
-		
+		i->GetText()->Draw();		
 	}
 
 
-	guiShader->Bind();
-	
+	guiShader->Bind();	
 	for (auto i : m_widgets)
 	{
-		i->UpdateData(*transform,glm::vec3(1,1,1));
-		guiShader->Update(*transform);
-	
-		//guiShader->UpdateColor(glm::vec3(test, test, test));
-		i->Draw();
-				test += 0.001;
-		if (test >= 1)
-		{
-			test = 0;
-		}
+		i->Draw(*guiShader,*transform);
 	}
 	
 }
@@ -135,7 +138,12 @@ void Gui::Update()
 		m_widgets[attachedWidget]->GetText()->SetData(glm::vec2(m_mousePosX, m_mousePosY));		
 	}
 
-	for (int i = num_buttons; i < m_widgets.size(); ++i)
+	HandleCheckBoxCallbacks();
+}
+
+void Gui::HandleCheckBoxCallbacks()
+{
+	for (int i = num_windows + num_buttons; i < m_widgets.size() - num_sliders; ++i)
 	{
 		if (m_widgets[i]->Clicked())
 		{
@@ -156,26 +164,28 @@ void Gui::Clear()
 	delete transform;
 
 	delete m_index;
+	delete m_vertex_w;
 	delete m_vertex_b;
 	delete m_vertex_chb;
-	
+	delete m_vertex_sl;
 }
 
 
-void Gui::HandleWidgetCallbacks()
+void Gui::HandleButtonCallbacks()
 {
-	for (int i = 0; i < num_buttons; i++)
+	for (int i = num_windows; i < num_buttons; i++)
 	{
 		if (m_widgets[i]->Clicked())
 		{
 			m_user_callbacks[i]();
 
+			m_widgets[i]->GetColor() = 1;
 			m_widgets[i]->Clicked() = false;
 		}
 	}
 }
 
-void Gui::HandlePressWidget(GuiEvent& event)
+void Gui::HandleWidgetClick(GuiEvent& event)
 {
 	for (int i = 0; i < m_widgets.size(); ++i)
 	{
@@ -214,13 +224,14 @@ void Gui::HandlePressWidget(GuiEvent& event)
 
 void Gui::HandleReleaseButtons(GuiEvent& event)
 {
-	for (int i = 0; i < num_buttons; ++i)
+	for (int i = num_windows; i < num_buttons; ++i)
 	{
 		if (m_widgets[i]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
 		{
 			GuiMouseButtonReleaseEvent& e = (GuiMouseButtonReleaseEvent&)event;
 			if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
 			{
+				m_widgets[i]->GetColor() = 0;
 				m_widgets[i]->Clicked() = false;
 			}
 		}
@@ -243,18 +254,22 @@ void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, in
 		{
 			glfwGetWindowSize(window, &winWidth, &winHeight);
 			GuiMouseButtonPressEvent e(button);
-			HandlePressWidget(e);
-			HandleWidgetCallbacks();
+			HandleWidgetClick(e);
+			HandleButtonCallbacks();
 		
 		
 		}
 		case GLFW_RELEASE:
-		{
-			glfwGetWindowSize(window, &winWidth, &winHeight);
-			GuiMouseButtonReleaseEvent e(button);
-			HandleReleaseButtons(e);
-			
-		}
+		{	
+			m_counter++;
+			if (m_counter == 2)
+			{
+				m_counter = 0;
+
+				GuiMouseButtonReleaseEvent e(button);
+				HandleReleaseButtons(e);
+			}
+		}	
 
 		}
 		
@@ -286,23 +301,29 @@ void Gui::Gui_WindowSizeCallback(GLFWwindow* window, int width, int height)
 	}
 }
 
-void Gui::AddButton(func_ptr func, const std::string& name)
+void Gui::AddWindow(const std::string& name)
+{
+	m_widgets.emplace_back(m_widgets.begin(), new GuiWindow(name));
+	num_windows++;
+}
+
+void Gui::AddButton(func_ptr func, const std::string& name, int winID)
 {
 	m_user_callbacks.emplace(m_user_callbacks.begin(), func);
-	m_widgets.emplace(m_widgets.begin(),new GuiButton(name));
+	m_widgets.emplace(m_widgets.begin() + num_windows,new GuiButton(name,winID));
 	num_buttons++;
 }
 
-void Gui::AddCheckBox(func_ptr func, const std::string & name)
+void Gui::AddCheckBox(func_ptr func, const std::string & name, int winID)
 {	
 	m_user_callbacks.emplace(m_user_callbacks.begin() + num_buttons, func);
-	m_widgets.emplace(m_widgets.begin() + num_buttons,new GuiCheckBox(name));
+	m_widgets.emplace(m_widgets.begin()+ num_windows + num_buttons,new GuiCheckBox(name,winID));
 	num_checkboxes++;
 }
 
-void Gui::AddSlider(const std::string & name)
+void Gui::AddSlider(const std::string & name, int winID)
 {
-	m_widgets.emplace(m_widgets.begin() + num_buttons + num_checkboxes, new GuiSlider(name));
+	m_widgets.emplace(m_widgets.begin()+ num_windows + num_buttons + num_checkboxes, new GuiSlider(name,winID));
 	num_sliders++;
 }
 

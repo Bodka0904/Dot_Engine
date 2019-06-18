@@ -2,8 +2,8 @@
 
 
 
-GuiSlider::GuiSlider(const std::string& name)
-	: m_text(new GuiText(name))
+GuiSlider::GuiSlider(const std::string& name, int winID)
+	: m_text(new GuiText(name)),m_winID(winID)
 {
 }
 
@@ -43,17 +43,21 @@ void GuiSlider::Init(unsigned int & VBO, unsigned int & IBO)
 	glBindVertexArray(0);
 }
 
-void GuiSlider::Draw()
+void GuiSlider::Draw(GuiShader& shader, GuiTransform& transform)
 {
+	UpdateData(transform);
+	shader.Update(transform);
+
 	glBindVertexArray(m_vao[0]);
 
-	glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(indices[0]), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0);
 
+
 	glBindVertexArray(m_vao[1]);
 
-	glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(indices[0]), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0);
 }
@@ -65,12 +69,9 @@ void GuiSlider::SetData(glm::vec2 pos, glm::vec2 scale, glm::vec2 rot)
 	m_position = pos;
 }
 
-void GuiSlider::SetColor(glm::vec3 color)
-{
-	m_color = color;
-}
 
-void GuiSlider::UpdateData(GuiTransform & transform, glm::vec3 color)
+
+void GuiSlider::UpdateData(GuiTransform & transform)
 {
 	transform.SetRot(m_rotation);
 	transform.SetScale(m_scale);
@@ -92,16 +93,13 @@ bool GuiSlider::MouseHoover(glm::vec2 mousePos)
 	}
 }
 
-glm::vec2 GuiSlider::GetPosition() const
-{
-	return glm::vec2();
-}
 
 
 glm::vec4 GuiSlider::GetCoords()
 {
-	return glm::vec4(m_position.x - m_scale.x / 2,
-		m_position.y + m_scale.y / 2,
-		m_position.x + (m_scale.x / 2 * 4),
+	return glm::vec4(
+		m_position.x - (m_scale.x / 2 * 7),
+		m_position.y + (m_scale.y / 2 * 0.2),
+		m_position.x + (m_scale.x / 2 * 7),
 		m_position.y - (m_scale.y / 2 * 0.2));
 }

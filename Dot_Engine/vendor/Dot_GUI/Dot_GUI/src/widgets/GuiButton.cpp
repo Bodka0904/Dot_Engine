@@ -3,8 +3,8 @@
 
 
 
-GuiButton::GuiButton(const std::string& name)
-	: m_text(new GuiText(name))
+GuiButton::GuiButton(const std::string& name, int winID)
+	: m_text(new GuiText(name)),m_winID(winID)
 {
 
 }
@@ -38,16 +38,22 @@ void GuiButton::Init(unsigned int& VBO, unsigned int& IBO)
 }
 
 
-void GuiButton::Draw()
+void GuiButton::Draw(GuiShader& shader, GuiTransform& transform)
 {
+	UpdateData(transform);
+	shader.Update(transform);
+	shader.UpdateColor(glm::vec3(m_color, m_color, m_color));
+	
 	glBindVertexArray(m_vao);
 
-	glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(indices[0]), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0);
+
+	
 }
 
-void GuiButton::UpdateData(GuiTransform& transform, glm::vec3 color)
+void GuiButton::UpdateData(GuiTransform& transform)
 {
 	transform.SetRot(m_rotation);
 	transform.SetScale(m_scale);
@@ -61,11 +67,6 @@ void GuiButton::SetData(glm::vec2 pos,glm::vec2 scale,glm::vec2 rot)
 	m_scale = scale;
 	m_position = pos;
 }
-
-void GuiButton::SetColor(glm::vec3 color)
-{
-}
-
 
 
 bool GuiButton::MouseHoover(glm::vec2 mousePos)

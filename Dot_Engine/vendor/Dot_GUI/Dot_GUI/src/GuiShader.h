@@ -22,7 +22,7 @@ public:
 	void UnBind();
 
 	void Update(GuiTransform& transform);
-	void UpdateColor(glm::vec3 color);
+	void UpdateColor(glm::vec3& color);
 
 	static std::string LoadShader(const std::string& filename);
 	static GLuint CreateShader(const std::string& text, GLenum shaderType);

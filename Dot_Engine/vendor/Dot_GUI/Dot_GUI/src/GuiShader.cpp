@@ -95,14 +95,15 @@ void GuiShader::UnBind()
 void GuiShader::Update(GuiTransform & transform)
 {	
 	glUniformMatrix4fv(m_uniforms[MVP_U], 1, GL_FALSE, &transform.GetModel()[0][0]);
+	
 }
 
-void GuiShader::UpdateColor(glm::vec3 color)
+
+
+void GuiShader::UpdateColor(glm::vec3 & color)
 {
-	glUniform3fv(m_uniforms[COLOR_U], 1, (float*)&color);
+	glUniform3fv(m_uniforms[COLOR_U], 1, &color[0]);
 }
-
-
 
 std::string GuiShader::LoadShader(const std::string & filename)
 {
