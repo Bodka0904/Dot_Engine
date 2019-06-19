@@ -1,10 +1,11 @@
 #include "GuiButton.h"
 
 
+float Button::BUTTON_SIZE_X = 60;
+float Button::BUTTON_SIZE_Y = 40;
 
-
-GuiButton::GuiButton(const std::string& name, int winID)
-	: m_text(new GuiText(name)),m_winID(winID)
+GuiButton::GuiButton(const std::string& name)
+	: m_text(new GuiText(name))
 {
 
 }
@@ -55,15 +56,14 @@ void GuiButton::Draw(GuiShader& shader, GuiTransform& transform)
 
 void GuiButton::UpdateData(GuiTransform& transform)
 {
-	transform.SetRot(m_rotation);
+
 	transform.SetScale(m_scale);
-	transform.SetPos(glm::vec2(m_position.x - m_scale.x/2,
-							   m_position.y + m_scale.y/2));
+	transform.SetPos(glm::vec2(m_position.x,
+							   m_position.y));
 }
 
-void GuiButton::SetData(glm::vec2 pos,glm::vec2 scale,glm::vec2 rot)
+void GuiButton::SetData(glm::vec2 pos,glm::vec2 scale)
 {
-	m_rotation = rot;
 	m_scale = scale;
 	m_position = pos;
 }
@@ -75,8 +75,7 @@ bool GuiButton::MouseHoover(glm::vec2 mousePos)
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
 		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)
 	{
-		return true;
-		
+		return true;		
 	}
 	else 
 	{
@@ -85,12 +84,11 @@ bool GuiButton::MouseHoover(glm::vec2 mousePos)
 }
 
 
-
 glm::vec4 GuiButton::GetCoords() 
 {
-	return glm::vec4(m_position.x - m_scale.x/2,
-					 m_position.y + m_scale.y/2,
-					 m_position.x + m_scale.x/2,
-					 m_position.y - m_scale.y/2);
+	return glm::vec4(m_position.x,
+					 m_position.y + Button::BUTTON_SIZE_Y,
+					 m_position.x + Button::BUTTON_SIZE_X,
+					 m_position.y);
 }
 

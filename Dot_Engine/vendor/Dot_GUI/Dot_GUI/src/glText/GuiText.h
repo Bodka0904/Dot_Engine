@@ -28,7 +28,6 @@ public:
 private:
 	GLTtext *text;
 	glm::vec2 m_position;
-	glm::vec2 m_rotation;
 	glm::vec2 m_scale;
 
 	

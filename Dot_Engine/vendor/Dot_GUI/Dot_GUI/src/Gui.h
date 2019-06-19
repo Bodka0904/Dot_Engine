@@ -4,7 +4,7 @@
 #include "glText/GuiText.h"
 #include "GuiBuffer.h"
 #include "data/GuiData.h"
-#include "widgets/GuiWindow.h"
+#include "widgets/GuiWrapper.h"
 #include "widgets/GuiWidget.h"
 #include "widgets/GuiButton.h"
 #include "widgets/GuiCheckBox.h"
@@ -26,31 +26,39 @@ public:
 	static void Render();
 	static void Update();
 	static void Clear();
-	
-	static void HandleWidgetClick(GuiEvent& event);
-	static void HandleButtonCallbacks();
 
-	static void HandleCheckBoxCallbacks();
+	
+	static void HandleWrapperClick(GuiEvent& event);
+	static void HandleWidgetClick(GuiEvent& event);
+
+	static void HandleReleaseWrapper(GuiEvent& event);
+	static void HandleReleaseWidget(GuiEvent& event);
 	static void HandleReleaseButtons(GuiEvent& event);
+
+	static void HandleButtonCallbacks();
+	static void HandleCheckBoxCallbacks();
+	
 
 	static void Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 	static void Gui_MousePositionCallback(GLFWwindow* window,double xPos, double yPos);
 	static void Gui_WindowSizeCallback(GLFWwindow* window, int width, int height);
 	
 	
-	static void AddWindow(const std::string& name);
-	static void AddButton(func_ptr func,const std::string& name,int winID);
-	static void AddCheckBox(func_ptr func, const std::string& name,int winID);
-	static void AddSlider(const std::string& name, int winID);
+	static void AddWrapper();
+	static void AddButton(func_ptr func,const std::string& name);
+	static void AddCheckBox(func_ptr func, const std::string& name);
+	static void AddSlider(const std::string& name);
 
 	static void SetDarkTheme();
 
 private:
+	static std::vector<GuiWrapper*> m_wrappers;
+	static unsigned int lastWidgetID;
+
 	static std::vector<GuiWidget*> m_widgets;
 	static std::vector<func_ptr> m_user_callbacks;
 
 
-	static unsigned int num_windows;
 	static unsigned int num_buttons;
 	static unsigned int num_checkboxes;
 	static unsigned int num_sliders;
@@ -65,8 +73,10 @@ private:
 	static GLFWcursorposfun m_handler_cursorPosCLB;
 	static GLFWframebuffersizefun m_handler_winSizeCLB;
 
-	
-	static bool EDIT_MODE;
+	static bool EDIT_WRAPPER;
+	static int attachedWrapper;
+
+	static bool EDIT_WIDGET;
 	static int attachedWidget;
 
 	static int winWidth;
@@ -74,8 +84,9 @@ private:
 
 	static float m_mousePosX;
 	static float m_mousePosY;
-	
-	static int m_counter;
+	static int m_left_btn_counter;
+	static int m_right_btn_counter;
+
 
 	static GuiIndexBuffer* m_index;
 
@@ -83,6 +94,11 @@ private:
 	static GuiVertexBuffer* m_vertex_b;
 	static GuiVertexBuffer* m_vertex_chb;
 	static GuiVertexBuffer* m_vertex_sl;
+	
+	
+	
+
+	
 	
 
 };

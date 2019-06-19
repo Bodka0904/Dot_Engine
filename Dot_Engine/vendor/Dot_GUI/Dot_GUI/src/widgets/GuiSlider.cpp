@@ -2,8 +2,8 @@
 
 
 
-GuiSlider::GuiSlider(const std::string& name, int winID)
-	: m_text(new GuiText(name)),m_winID(winID)
+GuiSlider::GuiSlider(const std::string& name)
+	: m_text(new GuiText(name))
 {
 }
 
@@ -62,9 +62,8 @@ void GuiSlider::Draw(GuiShader& shader, GuiTransform& transform)
 	glBindVertexArray(0);
 }
 
-void GuiSlider::SetData(glm::vec2 pos, glm::vec2 scale, glm::vec2 rot)
+void GuiSlider::SetData(glm::vec2 pos, glm::vec2 scale)
 {
-	m_rotation = rot;
 	m_scale = scale;
 	m_position = pos;
 }
@@ -73,7 +72,6 @@ void GuiSlider::SetData(glm::vec2 pos, glm::vec2 scale, glm::vec2 rot)
 
 void GuiSlider::UpdateData(GuiTransform & transform)
 {
-	transform.SetRot(m_rotation);
 	transform.SetScale(m_scale);
 	transform.SetPos(glm::vec2(m_position.x - m_scale.x / 2,
 		m_position.y + m_scale.y / 2));

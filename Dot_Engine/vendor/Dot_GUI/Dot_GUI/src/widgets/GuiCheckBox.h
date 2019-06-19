@@ -1,5 +1,6 @@
 #pragma once
 #include "GuiWidget.h"
+#include "../data/GuiData.h"
 #include "../GuiShader.h"
 #include "../GuiBuffer.h"
 #include "../GuiTransform.h"
@@ -13,19 +14,19 @@ class GuiCheckBox : public GuiWidget
 {
 public:
 
-	GuiCheckBox(const std::string& name, int winID);
+	GuiCheckBox(const std::string& name);
 	virtual ~GuiCheckBox() override;
 	virtual void Init(unsigned int& VBO, unsigned int& IBO)override;
 	virtual void Draw(GuiShader& shader, GuiTransform& transform)override;
 	
 	
 	virtual void UpdateData(GuiTransform& transformr)override;
-	virtual void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(0.1, 0.1), glm::vec2 rot = glm::vec2(3.14, 0))override;
+	virtual void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(1, 1))override;
 	virtual float &GetColor() override { return m_color; }
 
 	virtual bool MouseHoover(glm::vec2 mousePos)override;
 	virtual bool &Clicked()override { return checked; }
-	virtual int GetWinID()const override { return m_winID; }
+	
 	
 
 	virtual glm::vec2 GetPosition() const override { return m_position; }
@@ -42,7 +43,7 @@ private:
 
 	glm::vec2 m_position = glm::vec2(0, 0);
 	glm::vec2 m_scale;
-	glm::vec2 m_rotation;
+
 	float m_color = 0;
 
 	

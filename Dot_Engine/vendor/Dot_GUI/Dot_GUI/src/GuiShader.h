@@ -37,6 +37,10 @@ private:
 	{
 		MVP_U,
 
+		POS_U,
+
+		SCALE_U,
+
 		COLOR_U,
 
 		NUM_UNIFORMS

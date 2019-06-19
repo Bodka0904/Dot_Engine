@@ -47,6 +47,8 @@ void GuiShader::SetAttribs()
 void GuiShader::SetUniforms()
 {
 	m_uniforms[MVP_U] = glGetUniformLocation(m_program, "mvp_u");
+	m_uniforms[POS_U] = glGetUniformLocation(m_program, "pos_u");
+	m_uniforms[SCALE_U] = glGetUniformLocation(m_program, "scale_u");
 	m_uniforms[COLOR_U] = glGetUniformLocation(m_program, "color_u");
 }
 
@@ -94,8 +96,9 @@ void GuiShader::UnBind()
 
 void GuiShader::Update(GuiTransform & transform)
 {	
-	glUniformMatrix4fv(m_uniforms[MVP_U], 1, GL_FALSE, &transform.GetModel()[0][0]);
-	
+	glUniformMatrix4fv(m_uniforms[MVP_U], 1, GL_FALSE, &transform.GetOrtho()[0][0]);
+	glUniform2fv(m_uniforms[POS_U], 1, &transform.GetPos()[0]);
+	glUniform2fv(m_uniforms[SCALE_U], 1, &transform.GetScale()[0]);
 }
 
 

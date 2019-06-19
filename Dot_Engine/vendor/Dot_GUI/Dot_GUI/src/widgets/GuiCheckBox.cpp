@@ -1,9 +1,11 @@
 #include "GuiCheckBox.h"
 
 
+float CheckBox::CHECKBOX_SIZE_X = 60;
+float CheckBox::CHECKBOX_SIZE_Y = 40;
 
-GuiCheckBox::GuiCheckBox(const std::string& name, int winID)
-	: m_text(new GuiText(name)),m_winID(winID)
+GuiCheckBox::GuiCheckBox(const std::string& name)
+	: m_text(new GuiText(name))
 {
 }
 
@@ -58,15 +60,14 @@ void GuiCheckBox::Draw(GuiShader& shader, GuiTransform& transform)
 
 void GuiCheckBox::UpdateData(GuiTransform & transform)
 {
-	transform.SetRot(m_rotation);
+	
 	transform.SetScale(m_scale);
-	transform.SetPos(glm::vec2(m_position.x - m_scale.x / 2,
-		m_position.y + m_scale.y / 2));
+	transform.SetPos(glm::vec2(m_position.x,
+		m_position.y));
 }
 
-void GuiCheckBox::SetData(glm::vec2 pos, glm::vec2 scale, glm::vec2 rot)
+void GuiCheckBox::SetData(glm::vec2 pos, glm::vec2 scale)
 {
-	m_rotation = rot;
 	m_scale = scale;
 	m_position = pos;
 }
@@ -92,8 +93,8 @@ bool GuiCheckBox::MouseHoover(glm::vec2 mousePos)
 glm::vec4 GuiCheckBox::GetCoords()
 {
 	return glm::vec4(
-		m_position.x - m_scale.x / 2,
-		m_position.y + m_scale.y / 2,
-		m_position.x + m_scale.x / 2,
-		m_position.y - m_scale.y / 2);
+		m_position.x,
+		m_position.y + CheckBox::CHECKBOX_SIZE_Y,
+		m_position.x + CheckBox::CHECKBOX_SIZE_X,
+		m_position.y);
 }

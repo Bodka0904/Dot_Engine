@@ -30,22 +30,20 @@ void GuiText::StartDraw()
 
 void GuiText::SetData(glm::vec2 pos)
 {
-	m_position = glm::vec2(pos.x - 0.05, pos.y + 0.1);
-	m_rotation = glm::vec2(3.14, 0.8);
-	m_scale = glm::vec2(0.0025, 0.0025);
+	m_position = glm::vec2(pos.x + 5, pos.y + 10);
+	m_scale = glm::vec2(1, 1);
 }
 
 void GuiText::Draw()
 {
 	gltColor(0.5f, 0.0f, 0.5f, 1.0f);
-	gltDrawText2D(text, -35, -40, 1);
+	gltDrawText2D(text, 0, 0, 1);
 	
 }
 
 void GuiText::UpdateData(GuiTransform& transform)
 {
 	transform.SetScale(m_scale);
-	transform.SetRot(m_rotation);
 	transform.SetPos(m_position);
 
 	gltUpdateShader(transform);

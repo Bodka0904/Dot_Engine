@@ -167,7 +167,8 @@ static GLuint _gltText2DFontTexture = GLT_NULL_HANDLE;
 
 static GLint _gltText2DShaderMVPUniformLocation = -1;
 static GLint _gltText2DShaderColorUniformLocation = -1;
-static GLint _gltText2DShaderTransformLocation = -1;
+static GLint _gltText2DShaderScaleLocation = -1;
+static GLint _gltText2DShaderPosLocation = -1;
 
 static GLfloat _gltText2DProjectionMatrix[16];
 
@@ -358,8 +359,9 @@ GLT_API void gltEndDraw()
 
 inline GLT_API void gltUpdateShader(GuiTransform& transform)
 {
-	//glUniform2f(_gltText2DShaderTransformLocation, x, y);
-	glUniformMatrix4fv(_gltText2DShaderMVPUniformLocation, 1, GL_FALSE,&transform.GetModel()[0][0]);
+	glUniform2fv(_gltText2DShaderPosLocation, 1, &transform.GetPos()[0]);
+	glUniform2fv(_gltText2DShaderScaleLocation, 1, &transform.GetScale()[0]);
+	glUniformMatrix4fv(_gltText2DShaderMVPUniformLocation, 1, GL_FALSE,&transform.GetOrtho()[0][0]);
 }
 
 #define _gltDrawText() \
@@ -808,7 +810,8 @@ static const GLchar* _gltText2DVertexShaderSource =
 "in vec2 position;\n"
 "in vec2 texCoord;\n"
 "\n"
-"uniform vec2 transform;"
+"uniform vec2 pos_u;"
+"uniform vec2 scale_u;"
 "uniform mat4 mvp;\n"
 "\n"
 "out vec2 fTexCoord;\n"
@@ -817,7 +820,7 @@ static const GLchar* _gltText2DVertexShaderSource =
 "{\n"
 "	fTexCoord = texCoord;\n"
 "	\n"
-"	gl_Position = mvp * vec4(position, 0.0, 1.0);\n"
+"	gl_Position = mvp * vec4((scale_u * position) + pos_u,0, 1.0);\n"
 "}\n";
 
 static const GLchar* _gltText2DFragmentShaderSource =
@@ -833,6 +836,10 @@ static const GLchar* _gltText2DFragmentShaderSource =
 "\n"
 "void main()\n"
 "{\n"
+" vec4 texColor = texture(diffuse,fTexCoord);\n"
+"if (texColor.a < 0.1)\n"
+"discard;\n"
+"\n"
 "	fragColor = texture(diffuse, fTexCoord) * color;\n"
 "}\n";
 
@@ -976,7 +983,8 @@ GLT_API GLboolean _gltCreateText2DShader(void)
 
 	_gltText2DShaderMVPUniformLocation = glGetUniformLocation(_gltText2DShader, "mvp");
 	_gltText2DShaderColorUniformLocation = glGetUniformLocation(_gltText2DShader, "color");
-	_gltText2DShaderTransformLocation = glGetUniformLocation(_gltText2DShader, "transform");
+	_gltText2DShaderPosLocation = glGetUniformLocation(_gltText2DShader, "pos_u");
+	_gltText2DShaderScaleLocation = glGetUniformLocation(_gltText2DShader, "scale_u");
 	glUniform1i(glGetUniformLocation(_gltText2DShader, "diffuse"), 0);
 
 	glUseProgram(0);
@@ -1286,9 +1294,11 @@ GLT_API GLboolean _gltCreateText2DFontTexture(void)
 #undef _GLT_TEX_PIXEL_INDEX
 #undef _GLT_TEX_SET_PIXEL
 
+
 	glGenTextures(1, &_gltText2DFontTexture);
 	glBindTexture(GL_TEXTURE_2D, _gltText2DFontTexture);
 
+	
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, texData);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -1296,7 +1306,6 @@ GLT_API GLboolean _gltCreateText2DFontTexture(void)
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
 	free(texData);
 
 	free(glyphsData);

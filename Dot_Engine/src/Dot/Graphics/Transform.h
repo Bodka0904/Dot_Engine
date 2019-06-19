@@ -24,6 +24,7 @@ public:
 		glm::mat4 scaleMatrix = glm::scale(m_scale);
 
 		glm::mat4 rotMatrix = rotZMatrix * rotYMatrix * rotXMatrix;
+		
 
 		return posMatrix * rotMatrix * scaleMatrix;
 	}

@@ -53,9 +53,9 @@ void Application::Run()
 		texture.Bind(0);
 		transform.GetPos().z = -100;
 		transform.GetRot().y += 0.01;
-		
-		mesh->Draw();
 		shader.Update(transform, camera);
+		mesh->Draw();
+	
 		
 
 		for (Layer* layer : m_Layers)
