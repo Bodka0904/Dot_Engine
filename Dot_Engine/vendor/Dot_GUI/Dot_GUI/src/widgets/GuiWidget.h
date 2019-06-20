@@ -15,7 +15,7 @@ public:
 	
 	virtual void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(1, 1)) = 0;
 	virtual float &GetColor() = 0;
-
+	
 	virtual bool MouseHoover(glm::vec2 mousePos) = 0;
 	virtual bool &Clicked() = 0;
 

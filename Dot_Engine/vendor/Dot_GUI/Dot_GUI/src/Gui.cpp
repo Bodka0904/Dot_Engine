@@ -153,7 +153,7 @@ void Gui::Update()
 	if (EDIT_WIDGET)
 	{
 		m_widgets[attachedWidget]->SetData(glm::vec2(m_mousePosX,m_mousePosY));
-		m_widgets[attachedWidget]->GetText()->SetData(glm::vec2(m_mousePosX, m_mousePosY));		
+	
 	}
 	if (EDIT_WRAPPER)
 	{
@@ -161,8 +161,7 @@ void Gui::Update()
 	
 		for (int i = m_wrappers[attachedWrapper]->GetWidgetIndex().x; i < m_wrappers[attachedWrapper]->GetWidgetIndex().y; ++i)
 		{	
-			m_widgets[i]->SetData(glm::vec2(m_mousePosX - Wrapper::WRAPPER_SIZE_X/2, m_mousePosY - Wrapper::WRAPPER_SIZE_Y/2));
-			m_widgets[i]->GetText()->SetData(glm::vec2(m_mousePosX - Wrapper::WRAPPER_SIZE_X/2, m_mousePosY - Wrapper::WRAPPER_SIZE_Y/2));
+			m_widgets[i]->SetData(m_wrappers[attachedWrapper]->GetCenter());
 		}
 	}
 
@@ -229,19 +228,20 @@ void Gui::HandleWrapperClick(GuiEvent & event)
 			GuiMouseButtonPressEvent& e = (GuiMouseButtonPressEvent&)event;
 			if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
 			{
-				if (m_wrappers[i]->Clicked() == true)
+				if (!m_wrappers[i]->GetPinned())
 				{
-					m_wrappers[i]->Clicked() = false;
-				}
-				else
-				{
-					m_wrappers[i]->Clicked() = true;
+					m_wrappers[i]->PinToSide(glm::vec2(winWidth, winHeight));
+					for (int j = m_wrappers[i]->GetWidgetIndex().x; j < m_wrappers[i]->GetWidgetIndex().y; ++j)
+					{
+						m_widgets[j]->SetData(m_wrappers[i]->GetCenter());
+					}
 				}
 			}
 			if (e.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
 			{
 				if (!EDIT_WIDGET)
 				{
+					m_wrappers[i]->GetPinned() = false;
 					attachedWrapper = i;
 					EDIT_WRAPPER = true;
 				}

@@ -31,6 +31,7 @@ void GuiWrapper::Init(unsigned int & VBO, unsigned int & IBO)
 
 void GuiWrapper::Draw(GuiShader & shader, GuiTransform & transform)
 {
+
 	UpdateData(transform);
 	shader.Update(transform);
 	shader.UpdateColor(glm::vec3(m_color, m_color, m_color));
@@ -52,33 +53,55 @@ void GuiWrapper::UpdateData(GuiTransform & transform)
 void GuiWrapper::SetData(glm::vec2 pos, glm::vec2 scale)
 {
 	m_scale = scale;
-	m_position = glm::vec2(pos.x - (Wrapper::WRAPPER_SIZE_X/2)*m_scale.x, pos.y - (Wrapper::WRAPPER_SIZE_Y / 2)*m_scale.y);
+	m_position = glm::vec2(pos.x - Wrapper::WRAPPER_SIZE_X/2*m_scale.x, pos.y - Wrapper::WRAPPER_SIZE_Y / 2*m_scale.y);
 }
 
-bool GuiWrapper::Resize(glm::vec2 mousePos)
+void GuiWrapper::PinToSide(glm::vec2 winSize)
 {
-	if (mousePos.x >= GetCoords().x + (Wrapper::WRAPPER_SIZE_X - 5)*m_scale.x  && mousePos.x <= GetCoords().z
-		&& mousePos.y <= GetCoords().y + (Wrapper::WRAPPER_SIZE_Y - 5)*m_scale.y && mousePos.y >= GetCoords().w)
+	m_pinned = true;
+	if (m_position.x > winSize.x/2 - Wrapper::WRAPPER_SIZE_X/2)
 	{
-		return true;
+		m_position.x = winSize.x - (Wrapper::WRAPPER_SIZE_X*m_scale.x);
+		m_position.y = 0;
+
+		m_scale.y = winSize.y / Wrapper::WRAPPER_SIZE_Y;
 	}
-	else
+	else if (m_position.x < winSize.x / 2 + Wrapper::WRAPPER_SIZE_X / 2)
 	{
-		return false;
+		m_position.x = 0;
+		m_position.y = 0;
+
+		m_scale.y = winSize.y / Wrapper::WRAPPER_SIZE_Y;
 	}
+	
 }
+
+
 
 bool GuiWrapper::MouseHoover(glm::vec2 mousePos)
 {
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
 		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)
 	{
+		
+	
 		return true;
 	}
 	else
 	{
 		return false;
 	}
+}
+
+glm::vec2 GuiWrapper::GetCenter() const
+{
+	return glm::vec2(m_position.x + (Wrapper::WRAPPER_SIZE_X/2 * m_scale.x), m_position.y + (Wrapper::WRAPPER_SIZE_Y/2 * m_scale.y));
+}
+
+glm::vec2 GuiWrapper::GetPosition() const
+{
+	return glm::vec2(m_position.x , m_position.y);
+
 }
 
 
@@ -86,7 +109,7 @@ glm::vec4 GuiWrapper::GetCoords()
 {
 	return glm::vec4(
 		m_position.x,
-		(m_position.y + Wrapper::WRAPPER_SIZE_Y)*m_scale.y,
-		(m_position.x + Wrapper::WRAPPER_SIZE_X)*m_scale.x,
+		m_position.y + (Wrapper::WRAPPER_SIZE_Y*m_scale.y),
+		m_position.x + (Wrapper::WRAPPER_SIZE_X*m_scale.x),
 		m_position.y);
 }

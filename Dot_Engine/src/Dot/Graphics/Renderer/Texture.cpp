@@ -34,9 +34,7 @@ void Texture::Create(std::string fileName)
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); //reading texture width
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); //reading texture height
-
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, data[texIndex].width, data[texIndex].height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data[texIndex].imageData);
-
 
 
 	glBindTexture(GL_TEXTURE_2D, 0);

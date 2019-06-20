@@ -18,18 +18,21 @@ public:
 	void UpdateData(GuiTransform& transform);
 
 	void SetWidgetIndex(glm::vec2 rangeID) { m_widgetID = rangeID; }
-	void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(1, 1));
+	void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(0.5, 1));
 	void SetSize(glm::vec2 scale) { m_scale = scale; };
-
+	void PinToSide(glm::vec2 winSize);
+	
+	
 	float &GetColor() { return m_color; }
+	bool &GetPinned() { return m_pinned; }
+	bool MouseHoover(glm::vec2 mousePos);
+	
 
-	bool Resize(glm::vec2 mousePos);
-	bool MouseHoover(glm::vec2 mousePos) ;
-	bool &Clicked() { return clicked; };
-
-	glm::vec2 GetPosition() const { return m_position; }
+	glm::vec2 GetCenter() const;
+	glm::vec2 GetPosition() const;
+	glm::vec2 GetScale() const { return m_scale; }
 	glm::vec2 GetWidgetIndex() const { return m_widgetID; }
-
+	
 
 private:
 	glm::vec4 GetCoords();
@@ -42,8 +45,7 @@ private:
 
 	float m_color = 0;
 
-
-	bool clicked = false;
+	bool m_pinned = false;
 
 	unsigned int m_width;
 	unsigned int m_height;

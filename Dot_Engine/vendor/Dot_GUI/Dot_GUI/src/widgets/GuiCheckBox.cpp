@@ -69,7 +69,10 @@ void GuiCheckBox::UpdateData(GuiTransform & transform)
 void GuiCheckBox::SetData(glm::vec2 pos, glm::vec2 scale)
 {
 	m_scale = scale;
-	m_position = pos;
+	m_position = glm::vec2(pos.x - (CheckBox::CHECKBOX_SIZE_X / 2 * m_scale.x),
+		pos.y - (CheckBox::CHECKBOX_SIZE_Y / 2 * m_scale.y));
+
+	m_text->SetData(m_position);
 }
 
 
@@ -80,7 +83,6 @@ bool GuiCheckBox::MouseHoover(glm::vec2 mousePos)
 		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)
 	{
 		return true;
-
 	}
 	else
 	{

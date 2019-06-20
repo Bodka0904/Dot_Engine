@@ -26,8 +26,8 @@ Application::Application()
 	
 	
 	shader.Init("res/shaders/BasicShader");
-	mesh = Mesh::CreateMesh("res/models/test.obj");
-	texture.Create("res/textures/robotTex.jpg");
+	mesh = Mesh::CreateMesh("res/models/head.obj");
+	texture.Create("res/textures/button.jpg");
 	texture.Bind(0);
 
 
@@ -51,8 +51,11 @@ void Application::Run()
 	
 		shader.Bind();
 		texture.Bind(0);
-		transform.GetPos().z = -100;
+		transform.GetPos().z = -5;
+		transform.GetPos().y = -3;
 		transform.GetRot().y += 0.01;
+		//transform.GetRot().x += 0.01;
+		//transform.GetRot().z += 0.01;
 		shader.Update(transform, camera);
 		mesh->Draw();
 	

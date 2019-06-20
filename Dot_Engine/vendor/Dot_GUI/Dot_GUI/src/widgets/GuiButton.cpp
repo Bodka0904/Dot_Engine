@@ -58,14 +58,16 @@ void GuiButton::UpdateData(GuiTransform& transform)
 {
 
 	transform.SetScale(m_scale);
-	transform.SetPos(glm::vec2(m_position.x,
-							   m_position.y));
+	transform.SetPos(m_position);
 }
 
 void GuiButton::SetData(glm::vec2 pos,glm::vec2 scale)
 {
 	m_scale = scale;
-	m_position = pos;
+	m_position = glm::vec2(pos.x - (Button::BUTTON_SIZE_X /2 * m_scale.x),
+		pos.y - (Button::BUTTON_SIZE_Y / 2 * m_scale.y));
+
+	m_text->SetData(m_position);
 }
 
 
