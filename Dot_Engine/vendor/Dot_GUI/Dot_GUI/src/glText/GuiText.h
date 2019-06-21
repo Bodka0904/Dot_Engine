@@ -10,7 +10,7 @@
 class GuiText
 {
 public:
-	GuiText(const std::string & rendText);
+	GuiText(const std::string & rendText, glm::vec2 Offset);
 	~GuiText();
 
 	static void Init();
@@ -29,6 +29,7 @@ private:
 	GLTtext *text;
 	glm::vec2 m_position;
 	glm::vec2 m_scale;
+	glm::vec2 offset;
 
 	
 	std::string m_text;

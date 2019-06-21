@@ -3,8 +3,8 @@
 
 glm::vec2 GuiText::m_windowSize = glm::vec2(1200, 720);
 
-GuiText::GuiText(const std::string & rendText)
-	:m_text(rendText)
+GuiText::GuiText(const std::string & rendText,glm::vec2 Offset)
+	:m_text(rendText),offset(Offset)
 {
 	text = gltCreateText();
 	gltSetText(text, m_text.c_str());
@@ -30,8 +30,8 @@ void GuiText::StartDraw()
 
 void GuiText::SetData(glm::vec2 pos)
 {
-	m_position = glm::vec2(pos.x + 5, pos.y + 10);
-	m_scale = glm::vec2(1, 1);
+	m_position = glm::vec2(pos.x + +offset.x, pos.y + offset.y);
+	m_scale = glm::vec2(0.8, 0.8);
 }
 
 void GuiText::Draw()

@@ -54,6 +54,7 @@ project "Dot_Engine"
 		includedirs
 		{
 			"%{prj.name}/src",
+			"%{prj.name}/res",
 			"%{IncludeDir.GLFW}",	
 			"%{IncludeDir.GLEW}",
 			"%{IncludeDir.Dot_GUI}",

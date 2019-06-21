@@ -10,11 +10,17 @@
     <Filter Include="src\Dot\Debug">
       <UniqueIdentifier>{39D07DE7-A590-F91D-6ECB-429BDA4A3EFA}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Debug\Windows">
+      <UniqueIdentifier>{73A310A6-DF0F-CCA0-A803-64FE142FEE08}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Dot\Events">
       <UniqueIdentifier>{072AC2DA-F3F7-B5E0-DC8B-2607C8F89145}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Graphics">
       <UniqueIdentifier>{235B582F-0F54-7781-3886-5C0624DE568D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Graphics\Particle">
+      <UniqueIdentifier>{8656F7B5-F218-2B40-3BC9-B9CCA7CA031E}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Graphics\Renderer">
       <UniqueIdentifier>{29D6EBB7-9598-1F42-DE48-AECE4A4AF81F}</UniqueIdentifier>
@@ -1226,6 +1232,9 @@
     <ClCompile Include="src\Dot\Debug\Log.cpp">
       <Filter>src\Dot\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Debug\Windows\WinTimer.cpp">
+      <Filter>src\Dot\Debug\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp">
       <Filter>src\Dot\Graphics</Filter>
     </ClCompile>
@@ -1262,6 +1271,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Debug\Windows\WinTimer.cpp" />
   </ItemGroup>
 </Project>

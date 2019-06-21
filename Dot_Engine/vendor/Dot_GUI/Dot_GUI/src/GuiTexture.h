@@ -1,10 +1,8 @@
 #pragma once
-#include "Mesh.h"
-#include "Dot/Debug/Log.h"
+#include "GL/glew.h"
+#include <string>
 
-
-
-struct TextureData
+struct GuiTextureData
 {
 	GLuint texture;
 	unsigned char* imageData;
@@ -13,17 +11,16 @@ struct TextureData
 	int numComponents;
 };
 
-class Texture
+class GuiTexture
 {
 public:
-	Texture();
-	virtual ~Texture();
-	
+	GuiTexture();
+	~GuiTexture();
+
 	void Create(std::string fileName);
 	void Bind(unsigned int unit);
 
 private:
-	TextureData data;
-	
+	GuiTextureData data;
 };
 

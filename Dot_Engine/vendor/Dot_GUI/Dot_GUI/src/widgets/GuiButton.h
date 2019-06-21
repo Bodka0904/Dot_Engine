@@ -1,9 +1,9 @@
 #pragma once
 #include "GuiWidget.h"
-#include "../data/GuiData.h"
-#include "../GuiBuffer.h"
-#include "../GuiTransform.h"
-#include "../glText/GuiText.h"
+#include "data/GuiData.h"
+#include "GuiBuffer.h"
+#include "GuiTransform.h"
+#include "glText/GuiText.h"
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <string>
@@ -29,6 +29,7 @@ public:
 	virtual bool &Clicked() override { return clicked; }
 	
 
+
 	virtual glm::vec2 GetPosition() const override { return m_position; }
 	virtual GuiText *GetText() override { return m_text; }
 
@@ -36,6 +37,8 @@ public:
 
 private:
 	glm::vec4 GetCoords();
+	virtual bool &LeftClicked() override { return clicked; };
+	virtual bool &RightClicked() override { return clicked; };
 
 private:
 	GLuint m_vao;
@@ -49,9 +52,6 @@ private:
 	float m_color = 0.0f;
 
 	bool clicked = false;
-	int m_winID;
 
-	static constexpr unsigned int LENGTH = 1;
-	static constexpr unsigned int HEIGHT = 1;
 };
 

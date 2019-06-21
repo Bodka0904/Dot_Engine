@@ -11,6 +11,7 @@ GuiVertexBuffer::GuiVertexBuffer(GuiVertex *vertices, unsigned int size)
 }
 
 
+
 GuiVertexBuffer::~GuiVertexBuffer()
 {
 	glDeleteBuffers(1, &m_VBO);

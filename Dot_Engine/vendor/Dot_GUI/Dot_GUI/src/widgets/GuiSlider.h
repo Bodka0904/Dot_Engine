@@ -1,6 +1,6 @@
 #pragma once
 #include "GuiWidget.h"
-#include "../data/GuiData.h"
+#include "data/GuiData.h"
 
 class GuiSlider : public GuiWidget
 {
@@ -26,6 +26,8 @@ public:
 
 private:
 	glm::vec4 GetCoords();
+	virtual bool &LeftClicked() override { return clicked; };
+	virtual bool &RightClicked() override { return clicked; };
 
 private:
 	GLuint m_vao[2];
@@ -37,9 +39,7 @@ private:
 	glm::vec2 m_scale;
 
 	float m_color = 0.0f;
-
 	bool clicked = false;
-	int m_winID;
 
 };
 

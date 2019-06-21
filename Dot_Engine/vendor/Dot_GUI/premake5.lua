@@ -15,10 +15,13 @@ project "Dot_GUI"
 
 		includedirs
 		{
+			"%{prj.name}/src",
+			"%{prj.name}/res",
 			"../../vendor/GLEW/include",
 			"../../vendor/GLFW/include",
 			"../../src",
-			"../../vendor/glm"
+			"../../vendor/glm",
+			"%{prj.name}/vendor/stb_image"
 					
 		}
 

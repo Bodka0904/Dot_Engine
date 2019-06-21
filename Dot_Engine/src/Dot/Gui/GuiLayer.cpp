@@ -20,9 +20,10 @@ void GuiLayer::OnAttach()
 {
 	Application& app = Application::Get();
 	
-	Gui::AddButton(BIND_FN(ButtonAction),"test");
-	Gui::AddButton(BIND_FN(ButtonAction),"test2");
-	Gui::AddCheckBox(BIND_FN(CheckBoxAction),"test3");
+	Gui::AddButton(BIND_FN(ButtonAction),"button1");
+	Gui::AddButton(BIND_FN(ButtonAction),"button2");
+	Gui::AddArrowButton(BIND_FN(ArrowButtonAction), "arrow btn");
+	Gui::AddCheckBox(BIND_FN(CheckBoxAction),"checkbox");
 	Gui::AddWrapper();
 
 	Gui::Init(app.GetWin().GetWindow());
@@ -48,4 +49,12 @@ void GuiLayer::ButtonAction()
 void GuiLayer::CheckBoxAction()
 {
 	LOG_WARN("ACTIVATED");
+}
+
+void GuiLayer::ArrowButtonAction()
+{
+	if (Gui::GetArrowButton(0).LeftClicked())
+	{
+		LOG_INFO("KOLIBRIK");
+	}
 }

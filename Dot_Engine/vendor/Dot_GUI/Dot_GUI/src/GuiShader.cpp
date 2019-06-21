@@ -42,6 +42,7 @@ void GuiShader::SetAttribs()
 {
 	glBindAttribLocation(m_program, 0, "position");
 	glBindAttribLocation(m_program, 1, "color");
+	glBindAttribLocation(m_program, 2, "texCoords");
 }
 
 void GuiShader::SetUniforms()

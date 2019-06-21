@@ -9,8 +9,6 @@
 Application* Application::s_Instance = nullptr;
 
 Application::Application()
-	:
-	texture(1)
 {
 	
 	s_Instance = this;
@@ -26,8 +24,8 @@ Application::Application()
 	
 	
 	shader.Init("res/shaders/BasicShader");
-	mesh = Mesh::CreateMesh("res/models/head.obj");
-	texture.Create("res/textures/button.jpg");
+	mesh = Mesh::CreateMesh("res/models/test.obj");
+	texture.Create("res/textures/grass.jpg");
 	texture.Bind(0);
 
 
@@ -51,8 +49,7 @@ void Application::Run()
 	
 		shader.Bind();
 		texture.Bind(0);
-		transform.GetPos().z = -5;
-		transform.GetPos().y = -3;
+		transform.GetPos().z = -100;
 		transform.GetRot().y += 0.01;
 		//transform.GetRot().x += 0.01;
 		//transform.GetRot().z += 0.01;

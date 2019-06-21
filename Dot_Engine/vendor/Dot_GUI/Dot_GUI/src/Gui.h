@@ -7,8 +7,10 @@
 #include "widgets/GuiWrapper.h"
 #include "widgets/GuiWidget.h"
 #include "widgets/GuiButton.h"
+#include "widgets/GuiArrowButton.h"
 #include "widgets/GuiCheckBox.h"
 #include "widgets/GuiSlider.h"
+#include "GuiTexture.h"
 #include <GLFW\glfw3.h>
 #include "GuiTransform.h"
 
@@ -46,8 +48,14 @@ public:
 	
 	static void AddWrapper();
 	static void AddButton(func_ptr func,const std::string& name);
+	static void AddArrowButton(func_ptr func, const std::string& name);
 	static void AddCheckBox(func_ptr func, const std::string& name);
 	static void AddSlider(const std::string& name);
+
+	static GuiWidget& GetButton(int index);
+	static GuiWidget& GetArrowButton(int index);
+	static GuiWidget& GetCheckBox(int index);
+	static GuiWidget& GetSlider(int index);
 
 	static void SetDarkTheme();
 
@@ -62,12 +70,16 @@ private:
 	static unsigned int num_buttons;
 	static unsigned int num_checkboxes;
 	static unsigned int num_sliders;
+	static unsigned int num_arrow_btns;
 	
 	
-
 	static GuiShader* guiShader;
 	static GuiTransform *transform;
+	static GuiTexture* btn_texture;
+	static GuiTexture* abtn_texture;
+
 	static GLFWwindow* m_handler;
+
 
 	static GLFWmousebuttonfun m_handler_mouseButtonCLB;
 	static GLFWcursorposfun m_handler_cursorPosCLB;
@@ -92,8 +104,10 @@ private:
 
 	static GuiVertexBuffer* m_vertex_w;
 	static GuiVertexBuffer* m_vertex_b;
+	static GuiVertexBuffer* m_vertex_ab;
 	static GuiVertexBuffer* m_vertex_chb;
 	static GuiVertexBuffer* m_vertex_sl;
+	
 	
 	
 	

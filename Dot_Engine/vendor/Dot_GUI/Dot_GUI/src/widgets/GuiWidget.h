@@ -1,7 +1,7 @@
 #pragma once
-#include "../GuiShader.h"
-#include "../GuiTransform.h"
-#include "../glText/GuiText.h"
+#include "GuiShader.h"
+#include "GuiTransform.h"
+#include "glText/GuiText.h"
 
 class GuiWidget
 {
@@ -18,6 +18,9 @@ public:
 	
 	virtual bool MouseHoover(glm::vec2 mousePos) = 0;
 	virtual bool &Clicked() = 0;
+
+	virtual bool &LeftClicked() = 0;
+	virtual bool &RightClicked() = 0;
 
 	virtual glm::vec2 GetPosition() const = 0;
 	virtual GuiText *GetText() = 0;

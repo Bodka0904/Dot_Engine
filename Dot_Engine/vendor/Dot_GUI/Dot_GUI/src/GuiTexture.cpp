@@ -1,20 +1,18 @@
-#include "stdafx.h"
-#include "Texture.h"
-#include <cassert>
+#include "GuiTexture.h"
 #include "stb_image.h"
+#include <assert.h>
 
-
-Texture::Texture()
+GuiTexture::GuiTexture()
 {
 }
 
 
-Texture::~Texture()
+GuiTexture::~GuiTexture()
 {	
 	glDeleteTextures(0, &data.texture);
 }
 
-void Texture::Create(std::string fileName)
+void GuiTexture::Create(std::string fileName)
 {
 	data.imageData = stbi_load(fileName.c_str(), &data.width, &data.height, &data.numComponents, 4);
 	if (data.imageData == NULL)
@@ -24,9 +22,8 @@ void Texture::Create(std::string fileName)
 
 
 	glGenTextures(1, &data.texture);
-
+		
 	glBindTexture(GL_TEXTURE_2D, data.texture);
-
 
 	glTexEnvi(GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -35,7 +32,7 @@ void Texture::Create(std::string fileName)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); //reading texture width
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); //reading texture height
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, data.width, data.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.imageData);
-
+	;
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -43,14 +40,14 @@ void Texture::Create(std::string fileName)
 	{
 		stbi_image_free(data.imageData);
 	}
-
+		
+	
 }
 
-void Texture::Bind(unsigned int unit)
+void GuiTexture::Bind(unsigned int unit)
 {
 	assert(unit >= 0 && unit <= 31);
 	glEnable(GL_TEXTURE_2D);
-	glActiveTexture(GL_TEXTURE0 + unit);
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, data.texture);
-	 
 }

@@ -1,22 +1,23 @@
-#include "GuiCheckBox.h"
+#include "GuiArrowButton.h"
 
+float ArrowButton::ARROW_BUTTON_SIZE_X = 60;
+float ArrowButton::ARROW_BUTTON_SIZE_Y = 40;
 
-float CheckBox::CHECKBOX_SIZE_X = 60;
-float CheckBox::CHECKBOX_SIZE_Y = 40;
-
-GuiCheckBox::GuiCheckBox(const std::string& name)
-	: m_text(new GuiText(name, glm::vec2(5, 10)))
+GuiArrowButton::GuiArrowButton(const std::string& name)
+	: m_text(new GuiText(name, glm::vec2(0, -15)))
 {
+	m_click = new bool;
+	m_click = &m_left_click;
 }
 
 
-GuiCheckBox::~GuiCheckBox()
+GuiArrowButton::~GuiArrowButton()
 {
 	delete m_text;
-
+	delete m_click;
 }
 
-void GuiCheckBox::Init(unsigned int& VBO, unsigned int& IBO)
+void GuiArrowButton::Init(unsigned int & VBO, unsigned int & IBO)
 {
 	glGenVertexArrays(1, &m_vao);
 
@@ -30,43 +31,29 @@ void GuiCheckBox::Init(unsigned int& VBO, unsigned int& IBO)
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 16, (const void*)8);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
-
 }
 
-void GuiCheckBox::Draw(GuiShader& shader, GuiTransform& transform)
-{	
+void GuiArrowButton::Draw(GuiShader & shader, GuiTransform & transform)
+{
 	UpdateData(transform);
 	shader.Update(transform);
-	if (checked)
-	{
-		m_color += 0.01;
-		if (m_color >= 1)
-		{
-			m_color = 0;
-		}
-		shader.UpdateColor(glm::vec3(m_color, m_color, m_color));
-	}
-	else
-	{
-		shader.UpdateColor(glm::vec3(0, 0, 0));
-	}
+	shader.UpdateColor(glm::vec3(m_color, m_color, m_color));
+	
 	glBindVertexArray(m_vao);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0);
-	
 }
 
-void GuiCheckBox::UpdateData(GuiTransform & transform)
+void GuiArrowButton::UpdateData(GuiTransform & transform)
 {
-	
 	transform.SetScale(m_scale);
 	transform.SetPos(glm::vec2(m_position.x,
 		m_position.y));
 }
 
-void GuiCheckBox::SetData(glm::vec2 pos, glm::vec2 scale)
+void GuiArrowButton::SetData(glm::vec2 pos, glm::vec2 scale)
 {
 	m_scale = scale;
 	m_position = glm::vec2(pos.x - (CheckBox::CHECKBOX_SIZE_X / 2 * m_scale.x),
@@ -75,13 +62,21 @@ void GuiCheckBox::SetData(glm::vec2 pos, glm::vec2 scale)
 	m_text->SetData(m_position);
 }
 
-
-
-bool GuiCheckBox::MouseHoover(glm::vec2 mousePos)
+bool GuiArrowButton::MouseHoover(glm::vec2 mousePos)
 {
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
 		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)
 	{
+		
+		if (mousePos.x < GetCoords().z - ((ArrowButton::ARROW_BUTTON_SIZE_X/2 *m_scale.x)))
+		{
+			m_click = &m_left_click;
+		}
+		else 
+		{
+			m_click = &m_right_click;
+		}
+
 		return true;
 	}
 	else
@@ -90,13 +85,11 @@ bool GuiCheckBox::MouseHoover(glm::vec2 mousePos)
 	}
 }
 
-
-
-glm::vec4 GuiCheckBox::GetCoords()
+glm::vec4 GuiArrowButton::GetCoords()
 {
 	return glm::vec4(
 		m_position.x,
-		m_position.y + CheckBox::CHECKBOX_SIZE_Y,
-		m_position.x + CheckBox::CHECKBOX_SIZE_X,
+		m_position.y + ArrowButton::ARROW_BUTTON_SIZE_Y,
+		m_position.x + ArrowButton::ARROW_BUTTON_SIZE_X,
 		m_position.y);
 }

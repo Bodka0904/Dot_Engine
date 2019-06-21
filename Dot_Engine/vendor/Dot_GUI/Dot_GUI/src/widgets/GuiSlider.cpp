@@ -3,7 +3,7 @@
 
 
 GuiSlider::GuiSlider(const std::string& name)
-	: m_text(new GuiText(name))
+	: m_text(new GuiText(name, glm::vec2(5, 10)))
 {
 }
 
@@ -22,10 +22,10 @@ void GuiSlider::Init(unsigned int & VBO, unsigned int & IBO)
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 24, 0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 16, 0);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 24, (const void*)8);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 16, (const void*)8);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
 
@@ -34,10 +34,10 @@ void GuiSlider::Init(unsigned int & VBO, unsigned int & IBO)
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 24, (const void*)(4 * sizeof(GuiVertex)));
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE,16, (const void*)(4 * sizeof(GuiVertex)));
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 24, (const void*)(4 * sizeof(GuiVertex) + 8));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 16, (const void*)(4 * sizeof(GuiVertex) + 8));
 	
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
 	glBindVertexArray(0);

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="data">
+      <UniqueIdentifier>{5F91957C-4BC8-960D-F4B4-7C10E0CA120F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="events">
       <UniqueIdentifier>{5A9D08FC-463F-33D2-2FFA-46261B3BBA22}</UniqueIdentifier>
     </Filter>
@@ -13,8 +16,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dot_GUI\src\Gui.h" />
+    <ClInclude Include="Dot_GUI\src\GuiBuffer.h" />
     <ClInclude Include="Dot_GUI\src\GuiShader.h" />
+    <ClInclude Include="Dot_GUI\src\GuiTexture.h" />
     <ClInclude Include="Dot_GUI\src\GuiTransform.h" />
+    <ClInclude Include="Dot_GUI\src\data\GuiData.h">
+      <Filter>data</Filter>
+    </ClInclude>
     <ClInclude Include="Dot_GUI\src\events\GuiEvent.h">
       <Filter>events</Filter>
     </ClInclude>
@@ -24,26 +32,43 @@
     <ClInclude Include="Dot_GUI\src\glText\gltext.h">
       <Filter>glText</Filter>
     </ClInclude>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiCheckBox.h" />
-    <ClInclude Include="Dot_GUI\src\widgets\GuiButton.h" />
-    <ClInclude Include="Dot_GUI\src\widgets\GuiWidget.h" />
-    <ClInclude Include="Dot_GUI\src\GuiBuffer.h" />
-    <ClInclude Include="Dot_GUI\src\data\GuiData.h">
+    <ClInclude Include="Dot_GUI\src\widgets\GuiButton.h">
       <Filter>widgets</Filter>
     </ClInclude>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiSlider.h" />
-    <ClInclude Include="Dot_GUI\src\widgets\GuiWrapper.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiCheckBox.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\widgets\GuiSlider.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\widgets\GuiWidget.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\widgets\GuiWrapper.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\widgets\GuiArrowButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
+    <ClCompile Include="Dot_GUI\src\GuiBuffer.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiShader.cpp" />
+    <ClCompile Include="Dot_GUI\src\GuiTexture.cpp" />
     <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp">
       <Filter>glText</Filter>
     </ClCompile>
-    <ClCompile Include="Dot_GUI\src\widgets\GuiCheckBox.cpp" />
-    <ClCompile Include="Dot_GUI\src\widgets\GuiButton.cpp" />
-    <ClCompile Include="Dot_GUI\src\GuiBuffer.cpp" />
-    <ClCompile Include="Dot_GUI\src\widgets\GuiSlider.cpp" />
-    <ClCompile Include="Dot_GUI\src\widgets\GuiWrapper.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiButton.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\widgets\GuiCheckBox.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\widgets\GuiSlider.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\widgets\GuiWrapper.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\widgets\GuiArrowButton.cpp" />
   </ItemGroup>
 </Project>

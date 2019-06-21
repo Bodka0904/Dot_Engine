@@ -21,10 +21,10 @@ void GuiWrapper::Init(unsigned int & VBO, unsigned int & IBO)
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 24, 0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 16, 0);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 24, (const void*)8);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 16, (const void*)8);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
 }
@@ -59,23 +59,43 @@ void GuiWrapper::SetData(glm::vec2 pos, glm::vec2 scale)
 void GuiWrapper::PinToSide(glm::vec2 winSize)
 {
 	m_pinned = true;
-	if (m_position.x > winSize.x/2 - Wrapper::WRAPPER_SIZE_X/2)
+	if (m_position.x > winSize.x - (Wrapper::WRAPPER_SIZE_X*m_scale.x))
 	{
+		m_scale.x = 0.5;
+		m_scale.y = winSize.y / (Wrapper::WRAPPER_SIZE_Y * m_scale.y);
+
 		m_position.x = winSize.x - (Wrapper::WRAPPER_SIZE_X*m_scale.x);
 		m_position.y = 0;
-
-		m_scale.y = winSize.y / Wrapper::WRAPPER_SIZE_Y;
 	}
-	else if (m_position.x < winSize.x / 2 + Wrapper::WRAPPER_SIZE_X / 2)
+	else if (m_position.x <  0)
 	{
+		m_scale.x = 0.5;
+		m_scale.y = winSize.y / (Wrapper::WRAPPER_SIZE_Y * m_scale.y);
+
+		m_position.x = 0;
+		m_position.y = 0;
+	}
+	else if (m_position.y < 0)
+	{	
+		m_scale.y = 0.5;
+		m_scale.x = winSize.x / (Wrapper::WRAPPER_SIZE_X * m_scale.x);
+
 		m_position.x = 0;
 		m_position.y = 0;
 
-		m_scale.y = winSize.y / Wrapper::WRAPPER_SIZE_Y;
+	}
+	else if (m_position.y > winSize.y - (Wrapper::WRAPPER_SIZE_Y * m_scale.y))
+	{
+	
+		m_scale.y = 0.5;
+		m_scale.x = winSize.x / (Wrapper::WRAPPER_SIZE_X * m_scale.x);
+
+		m_position.x = 0;
+		m_position.y = winSize.y - (Wrapper::WRAPPER_SIZE_Y*m_scale.y);
+
 	}
 	
 }
-
 
 
 bool GuiWrapper::MouseHoover(glm::vec2 mousePos)
@@ -83,8 +103,6 @@ bool GuiWrapper::MouseHoover(glm::vec2 mousePos)
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
 		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)
 	{
-		
-	
 		return true;
 	}
 	else

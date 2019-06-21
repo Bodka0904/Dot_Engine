@@ -41,13 +41,12 @@ private:
 
 struct GuiVertex
 {
-	GuiVertex(glm::vec2 Vertice, glm::vec4 Color)
-		:vertice(Vertice), color(Color)
+	GuiVertex(glm::vec2 Vertice, glm::vec2 TexCoords)
+		:vertice(Vertice), texCoords(TexCoords)
 	{};
 
-	
 	glm::vec2 vertice;
-	glm::vec4 color;
+	glm::vec2 texCoords;
 
 };
 

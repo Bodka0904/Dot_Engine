@@ -16,5 +16,6 @@ public:
 
 	void ButtonAction();
 	void CheckBoxAction();
+	void ArrowButtonAction();
 };
 
