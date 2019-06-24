@@ -1,4 +1,5 @@
 #pragma once
+#include <functional>
 #include "GuiShader.h"
 #include "events/GuiEvent.h"
 #include "glText/GuiText.h"
@@ -11,9 +12,8 @@
 #include "widgets/GuiCheckBox.h"
 #include "widgets/GuiSlider.h"
 #include "GuiTexture.h"
-#include <GLFW\glfw3.h>
 #include "GuiTransform.h"
-
+#include <GLFW\glfw3.h>
 
 
 
@@ -40,6 +40,7 @@ public:
 	static void HandleButtonCallbacks();
 	static void HandleCheckBoxCallbacks();
 	
+	static void HandleSliders();
 
 	static void Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 	static void Gui_MousePositionCallback(GLFWwindow* window,double xPos, double yPos);
@@ -75,8 +76,11 @@ private:
 	
 	static GuiShader* guiShader;
 	static GuiTransform *transform;
+
+	static GuiTexture* wrp_texture;
 	static GuiTexture* btn_texture;
 	static GuiTexture* abtn_texture;
+	static GuiTexture* checkbox_texture;
 
 	static GLFWwindow* m_handler;
 

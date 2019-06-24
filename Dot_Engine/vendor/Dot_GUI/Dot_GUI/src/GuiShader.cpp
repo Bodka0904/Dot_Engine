@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "GuiShader.h"
 
 
@@ -51,6 +50,8 @@ void GuiShader::SetUniforms()
 	m_uniforms[POS_U] = glGetUniformLocation(m_program, "pos_u");
 	m_uniforms[SCALE_U] = glGetUniformLocation(m_program, "scale_u");
 	m_uniforms[COLOR_U] = glGetUniformLocation(m_program, "color_u");
+	m_uniforms[TEX_OFFSET_U] = glGetUniformLocation(m_program, "texOffset_u");
+	m_uniforms[TRANSPARENT_U] = glGetUniformLocation(m_program, "transparent_u");
 }
 
 
@@ -107,6 +108,16 @@ void GuiShader::Update(GuiTransform & transform)
 void GuiShader::UpdateColor(glm::vec3 & color)
 {
 	glUniform3fv(m_uniforms[COLOR_U], 1, &color[0]);
+}
+
+void GuiShader::UpdateTexOffset(float texOffset)
+{
+	glUniform1fv(m_uniforms[TEX_OFFSET_U], 1, &texOffset);
+}
+
+void GuiShader::UpdateTransparency(float value)
+{
+	glUniform1fv(m_uniforms[TRANSPARENT_U], 1, &value);
 }
 
 std::string GuiShader::LoadShader(const std::string & filename)

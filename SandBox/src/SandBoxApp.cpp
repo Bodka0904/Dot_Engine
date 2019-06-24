@@ -1,11 +1,5 @@
 #pragma once
-#include "stdafx.h"
-#include "Dot/Application.h"
-#include "Dot/EntryPoint.h"
-#include "Dot/KeyCodes.h"
-#include "Dot/MouseButtonCodes.h"
-#include "Dot/Events/Event.h"
-#include "Dot/Input.h"
+#include <Dot.h>
 
 
 class TestLayer : public Layer
@@ -35,6 +29,7 @@ public:
 			MouseButtonPressEvent& e = (MouseButtonPressEvent&)event;
 			if (e.GetButton() == D_MOUSE_BUTTON_LEFT)
 			{
+			
 				LOG_INFO("Left button pressed")
 			}
 		}

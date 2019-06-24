@@ -13,7 +13,6 @@ GuiButton::GuiButton(const std::string& name)
 GuiButton::~GuiButton()
 {
 	delete m_text;
-	
 }
 
 void GuiButton::Init(unsigned int& VBO, unsigned int& IBO)
@@ -44,7 +43,8 @@ void GuiButton::Draw(GuiShader& shader, GuiTransform& transform)
 	UpdateData(transform);
 	shader.Update(transform);
 	shader.UpdateColor(glm::vec3(m_color, m_color, m_color));
-	
+	shader.UpdateTexOffset(0);
+
 	glBindVertexArray(m_vao);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

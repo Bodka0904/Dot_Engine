@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Shader.h"
+#include <GL/glew.h>
 
 Shader::Shader()
 {
@@ -89,7 +90,7 @@ void Shader::LinkShader()
 		glDeleteShader(m_shaders[1]);
 
 
-		LOG_ERR("Shader: Could not link shader ",&infoLog[0])
+		LOG_ERR("Shader: Could not link shader %s",&infoLog[0])
 	
 	}
 	glValidateProgram(m_program);
@@ -139,14 +140,15 @@ std::string Shader::LoadShader(const std::string & filename)
 			output.append(line + "\n");
 		}
 	}
+	
 	else
 	{
-		LOG_ERR("Shader: Could not open file: %s", filename);
+		LOG_ERR("Shader: Could not open file: %s",filename.c_str());
 	}
 	return output;
 }
 
-GLuint Shader::CreateShader(const std::string & text, GLenum shaderType)
+unsigned int Shader::CreateShader(const std::string & text, unsigned int shaderType)
 {
 	GLuint shader = glCreateShader(shaderType);
 
@@ -158,7 +160,7 @@ GLuint Shader::CreateShader(const std::string & text, GLenum shaderType)
 	GLint shaderSourceStringLength[1];
 
 	shaderSourceStrings[0] = text.c_str();   
-	shaderSourceStringLength[0] = text.length();
+	shaderSourceStringLength[0] = (size_t)text.length();
 
 	glShaderSource(shader, 1, shaderSourceStrings, shaderSourceStringLength);
 

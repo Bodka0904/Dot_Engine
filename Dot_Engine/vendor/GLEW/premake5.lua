@@ -1,20 +1,21 @@
 project "GLEW"
     	kind "StaticLib"
-    	language "C"
+		language "C"
+		staticruntime "on"
     
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
 	includedirs
-    	{
-        	"include"
-    	}
+    {
+        "include"
+    }
 
 	files
 	{
 		"include/gl/*.h",	
 		"src/*.c"
-    	}
+    }
 
 
 	
@@ -26,16 +27,21 @@ project "GLEW"
 	defines 
 	{ 
          
-            	"WIN32",
+            "WIN32",
       		"WIN32_LEAN_AND_MEAN",
       		"VC_EXTRALEAN",
       		"GLEW_STATIC"
 	}
 
-    	filter 
+    filter 
 	{ 
 		"system:windows", 
-		"configurations:Release" 
 	}
         	 
-	buildoptions "/MT"
+	filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		runtime "Release"
+		optimize "on"

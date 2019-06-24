@@ -23,9 +23,9 @@ Application::Application()
 	m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	
 	
-	shader.Init("res/shaders/BasicShader");
-	mesh = Mesh::CreateMesh("res/models/test.obj");
-	texture.Create("res/textures/grass.jpg");
+	shader.Init("res/shaders/Dot/BasicShader");
+	mesh = Mesh::CreateMesh("res/models/Dot/test.obj");
+	texture.Create("res/textures/Dot/lexi.jpg");
 	texture.Bind(0);
 
 
@@ -49,8 +49,8 @@ void Application::Run()
 	
 		shader.Bind();
 		texture.Bind(0);
-		transform.GetPos().z = -100;
-		transform.GetRot().y += 0.01;
+		transform.GetPos().z = -100.0f;
+		transform.GetRot().y += 0.01f;
 		//transform.GetRot().x += 0.01;
 		//transform.GetRot().z += 0.01;
 		shader.Update(transform, camera);

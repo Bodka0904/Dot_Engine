@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Window.h"
-
+#include <GL\glew.h>
+#include <GLFW\glfw3.h>
 
 static bool GLFWInitialized = false;
 

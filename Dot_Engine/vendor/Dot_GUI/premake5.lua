@@ -3,24 +3,22 @@ project "Dot_GUI"
 		language "C++"
 
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    		objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 		
 
 		files
 		{
 			"%{prj.name}/src/**.h",
-			"%{prj.name}/src/**.cpp",
-		
+			"%{prj.name}/src/**.cpp"
 		}
 
 		includedirs
 		{
 			"%{prj.name}/src",
 			"%{prj.name}/res",
-			"../../vendor/GLEW/include",
-			"../../vendor/GLFW/include",
-			"../../src",
-			"../../vendor/glm",
+			"%{prj.name}/vendor/GLEW/include",
+			"%{prj.name}/vendor/GLFW/include",
+			"%{prj.name}/vendor/glm",
 			"%{prj.name}/vendor/stb_image"
 					
 		}
@@ -32,13 +30,11 @@ project "Dot_GUI"
 
 
 		filter "configurations:Debug"
-				defines "D_DEBUG"
 				runtime "Debug"
 				symbols "on"
 
 		filter "configurations:Release"
-				defines "D_RELEASE"
 				runtime "Release"
 				optimize "on"
         	 
-		buildoptions "/MT"
+	

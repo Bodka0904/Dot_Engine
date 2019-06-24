@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <GLFW/glfw3.h>
 #include "Input.h"
 #include "Application.h"
 

@@ -1,5 +1,6 @@
 #ifndef LOG_H
 #define LOG_H
+#include "Dot/Core.h"
 #include "Dot/ColorCodes.h"
 
 class Log {

@@ -56,8 +56,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>D_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Dot_GUI\src;Dot_GUI\res;..\GLEW\include;..\GLFW\include;..\..\src;..\glm;Dot_GUI\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Dot_GUI\src;Dot_GUI\res;Dot_GUI\vendor\GLEW\include;Dot_GUI\vendor\GLFW\include;Dot_GUI\vendor\glm;Dot_GUI\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -71,15 +70,13 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>D_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Dot_GUI\src;Dot_GUI\res;..\GLEW\include;..\GLFW\include;..\..\src;..\glm;Dot_GUI\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Dot_GUI\src;Dot_GUI\res;Dot_GUI\vendor\GLEW\include;Dot_GUI\vendor\GLFW\include;Dot_GUI\vendor\glm;Dot_GUI\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MT %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -88,7 +85,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiArrowButton.h" />
     <ClInclude Include="Dot_GUI\src\Gui.h" />
     <ClInclude Include="Dot_GUI\src\GuiBuffer.h" />
     <ClInclude Include="Dot_GUI\src\GuiShader.h" />
@@ -98,6 +94,7 @@
     <ClInclude Include="Dot_GUI\src\events\GuiEvent.h" />
     <ClInclude Include="Dot_GUI\src\glText\GuiText.h" />
     <ClInclude Include="Dot_GUI\src\glText\gltext.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiArrowButton.h" />
     <ClInclude Include="Dot_GUI\src\widgets\GuiButton.h" />
     <ClInclude Include="Dot_GUI\src\widgets\GuiCheckBox.h" />
     <ClInclude Include="Dot_GUI\src\widgets\GuiSlider.h" />
@@ -105,12 +102,12 @@
     <ClInclude Include="Dot_GUI\src\widgets\GuiWrapper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dot_GUI\src\widgets\GuiArrowButton.cpp" />
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiBuffer.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiShader.cpp" />
     <ClCompile Include="Dot_GUI\src\GuiTexture.cpp" />
     <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiArrowButton.cpp" />
     <ClCompile Include="Dot_GUI\src\widgets\GuiButton.cpp" />
     <ClCompile Include="Dot_GUI\src\widgets\GuiCheckBox.cpp" />
     <ClCompile Include="Dot_GUI\src\widgets\GuiSlider.cpp" />

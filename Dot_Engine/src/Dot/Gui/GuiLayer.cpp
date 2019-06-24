@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GuiLayer.h"
 #include "Dot/Application.h"
-
+#include "Dot_GUI/src/Gui.h"
 
 
 #define BIND_FN(x) std::bind(&GuiLayer::x ,this)
@@ -13,6 +13,7 @@ GuiLayer::GuiLayer()
 
 GuiLayer::~GuiLayer()
 {
+	Gui::Clear();
 }
 
 
@@ -24,6 +25,7 @@ void GuiLayer::OnAttach()
 	Gui::AddButton(BIND_FN(ButtonAction),"button2");
 	Gui::AddArrowButton(BIND_FN(ArrowButtonAction), "arrow btn");
 	Gui::AddCheckBox(BIND_FN(CheckBoxAction),"checkbox");
+	Gui::AddSlider("OPICA");
 	Gui::AddWrapper();
 
 	Gui::Init(app.GetWin().GetWindow());

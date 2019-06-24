@@ -5,7 +5,7 @@ float CheckBox::CHECKBOX_SIZE_X = 60;
 float CheckBox::CHECKBOX_SIZE_Y = 40;
 
 GuiCheckBox::GuiCheckBox(const std::string& name)
-	: m_text(new GuiText(name, glm::vec2(5, 10)))
+	: m_text(new GuiText(name, glm::vec2(0, -15)))
 {
 }
 
@@ -39,23 +39,20 @@ void GuiCheckBox::Draw(GuiShader& shader, GuiTransform& transform)
 	shader.Update(transform);
 	if (checked)
 	{
-		m_color += 0.01;
-		if (m_color >= 1)
-		{
-			m_color = 0;
-		}
-		shader.UpdateColor(glm::vec3(m_color, m_color, m_color));
+		shader.UpdateTexOffset(0.5);	
 	}
 	else
 	{
-		shader.UpdateColor(glm::vec3(0, 0, 0));
+		shader.UpdateTexOffset(0);
 	}
+	shader.UpdateColor(glm::vec3(0, 0, 0));
+
 	glBindVertexArray(m_vao);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0);
-	
+
 }
 
 void GuiCheckBox::UpdateData(GuiTransform & transform)

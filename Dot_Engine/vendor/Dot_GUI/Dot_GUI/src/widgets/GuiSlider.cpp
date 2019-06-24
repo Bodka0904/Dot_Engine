@@ -1,9 +1,11 @@
 #include "GuiSlider.h"
 
 
+float Slider::SLIDER_SIZE_X = 150;
+float Slider::SLIDER_SIZE_Y = 20;
 
 GuiSlider::GuiSlider(const std::string& name)
-	: m_text(new GuiText(name, glm::vec2(5, 10)))
+	: m_text(new GuiText(name, glm::vec2(5, -15)))
 {
 }
 
@@ -15,10 +17,9 @@ GuiSlider::~GuiSlider()
 
 void GuiSlider::Init(unsigned int & VBO, unsigned int & IBO)
 {
-	glGenVertexArrays(1, &m_vao[0]);
-	glGenVertexArrays(1, &m_vao[1]);
+	glGenVertexArrays(1, &m_vao);
 
-	glBindVertexArray(m_vao[0]);
+	glBindVertexArray(m_vao);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
 	glEnableVertexAttribArray(0);
@@ -30,42 +31,31 @@ void GuiSlider::Init(unsigned int & VBO, unsigned int & IBO)
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
 
 
-	glBindVertexArray(m_vao[1]);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE,16, (const void*)(4 * sizeof(GuiVertex)));
-
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 16, (const void*)(4 * sizeof(GuiVertex) + 8));
-	
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
-	glBindVertexArray(0);
 }
 
 void GuiSlider::Draw(GuiShader& shader, GuiTransform& transform)
 {
 	UpdateData(transform);
 	shader.Update(transform);
+	shader.UpdateColor(glm::vec3(0,0,0));
+	shader.UpdateTexOffset(m_value);
 
-	glBindVertexArray(m_vao[0]);
-
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-	glBindVertexArray(0);
-
-
-	glBindVertexArray(m_vao[1]);
+	glBindVertexArray(m_vao);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0);
+
+
 }
 
 void GuiSlider::SetData(glm::vec2 pos, glm::vec2 scale)
 {
 	m_scale = scale;
-	m_position = pos;
+	m_position = glm::vec2(pos.x - (Slider::SLIDER_SIZE_X / 2 * m_scale.x),
+		pos.y - (Slider::SLIDER_SIZE_Y / 2 * m_scale.y));
+
+	m_text->SetData(m_position);
 }
 
 
@@ -73,8 +63,13 @@ void GuiSlider::SetData(glm::vec2 pos, glm::vec2 scale)
 void GuiSlider::UpdateData(GuiTransform & transform)
 {
 	transform.SetScale(m_scale);
-	transform.SetPos(glm::vec2(m_position.x - m_scale.x / 2,
-		m_position.y + m_scale.y / 2));
+	transform.SetPos(glm::vec2(m_position.x,
+		m_position.y));
+}
+
+void GuiSlider::SetValue(float value)
+{
+	m_value = 1 - ((value - m_position.x)/ (Slider::SLIDER_SIZE_X + m_scale.x));
 }
 
 bool GuiSlider::MouseHoover(glm::vec2 mousePos)
@@ -96,8 +91,8 @@ bool GuiSlider::MouseHoover(glm::vec2 mousePos)
 glm::vec4 GuiSlider::GetCoords()
 {
 	return glm::vec4(
-		m_position.x - (m_scale.x / 2 * 7),
-		m_position.y + (m_scale.y / 2 * 0.2),
-		m_position.x + (m_scale.x / 2 * 7),
-		m_position.y - (m_scale.y / 2 * 0.2));
+		m_position.x,
+		m_position.y + Slider::SLIDER_SIZE_Y,
+		m_position.x + Slider::SLIDER_SIZE_X,
+		m_position.y);
 }

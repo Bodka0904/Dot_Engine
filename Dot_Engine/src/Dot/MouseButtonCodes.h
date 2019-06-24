@@ -1,4 +1,4 @@
 #pragma once
 
-#define D_MOUSE_BUTTON_LEFT      GLFW_MOUSE_BUTTON_1
-#define D_MOUSE_BUTTON_RIGHT     GLFW_MOUSE_BUTTON_2
+#define D_MOUSE_BUTTON_LEFT      0
+#define D_MOUSE_BUTTON_RIGHT     1

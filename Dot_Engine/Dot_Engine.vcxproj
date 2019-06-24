@@ -97,6 +97,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Dot.h" />
     <ClInclude Include="src\Dot\Application.h" />
     <ClInclude Include="src\Dot\ColorCodes.h" />
     <ClInclude Include="src\Dot\Core.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="src\Dot\Events\Event.h" />
     <ClInclude Include="src\Dot\Graphics\Camera.h" />
     <ClInclude Include="src\Dot\Graphics\ObjLoader.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\ArrayBuffer.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffer.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Texture.h" />
@@ -490,6 +492,7 @@
     <ClCompile Include="src\Dot\Debug\Log.cpp" />
     <ClCompile Include="src\Dot\Debug\Windows\WinTimer.cpp" />
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\ArrayBuffer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Texture.cpp" />

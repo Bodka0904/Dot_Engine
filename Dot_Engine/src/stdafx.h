@@ -14,3 +14,4 @@
 #include <functional>
 #include <sstream>
 #include <random>
+#include "Dot/Debug/Log.h"

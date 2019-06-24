@@ -3,7 +3,7 @@
 #include "Dot/Debug/Log.h"
 #include "Dot/Graphics/Transform.h"
 #include "Dot/Graphics/Camera.h"
-#include <GL/glew.h>
+
 
 
 
@@ -42,7 +42,7 @@ public:
 
 
 	static std::string LoadShader(const std::string& filename);
-	static GLuint CreateShader(const std::string& text, GLenum shaderType);
+	static unsigned int CreateShader(const std::string& text, unsigned int shaderType);
 
 
 
@@ -68,9 +68,9 @@ private:
 
 	Light BasicLight;
 
-	GLuint m_program;
-	GLuint m_shaders[NUM_SHADER];
-	GLuint m_uniforms[NUM_UNIFORMS];
+	unsigned int m_program;
+	unsigned int m_shaders[NUM_SHADER];
+	unsigned int m_uniforms[NUM_UNIFORMS];
 
 	
 

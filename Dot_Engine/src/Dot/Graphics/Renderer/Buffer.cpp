@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Buffer.h"
-
+#include <GL/glew.h>
 
 VertexBuffer::VertexBuffer(VertexTexture *vertices, unsigned int size)
 {

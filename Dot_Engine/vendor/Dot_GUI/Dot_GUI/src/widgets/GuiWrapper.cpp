@@ -35,6 +35,7 @@ void GuiWrapper::Draw(GuiShader & shader, GuiTransform & transform)
 	UpdateData(transform);
 	shader.Update(transform);
 	shader.UpdateColor(glm::vec3(m_color, m_color, m_color));
+	shader.UpdateTexOffset(0);
 
 	glBindVertexArray(m_vao);
 

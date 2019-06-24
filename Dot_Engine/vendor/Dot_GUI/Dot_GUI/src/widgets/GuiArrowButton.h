@@ -22,7 +22,9 @@ public:
 
 	virtual void UpdateData(GuiTransform& transform)override;
 	virtual void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(1, 1))override;
-	virtual float &GetColor() override { return m_color; }
+	virtual void SetValue(float value) override { m_color = value; }
+	
+	virtual float GetValue() const override { return m_color; }
 
 	virtual bool MouseHoover(glm::vec2 mousePos)override;
 	
@@ -35,6 +37,7 @@ public:
 private:
 	glm::vec4 GetCoords();
 	virtual bool &Clicked()override { return *m_click;};
+
 
 private:
 	GLuint m_vao;

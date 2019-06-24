@@ -1,7 +1,9 @@
 #pragma once
+#include <string>
+#include <vector>
+#include <fstream>
 #include <glm/glm.hpp>
 #include <GL/glew.h>
-#include <string>
 #include "GuiTransform.h"
 
 
@@ -23,7 +25,10 @@ public:
 
 	void Update(GuiTransform& transform);
 	void UpdateColor(glm::vec3& color);
+	void UpdateTexOffset(float texOffset);
 
+	void UpdateTransparency(float value);
+	
 	static std::string LoadShader(const std::string& filename);
 	static GLuint CreateShader(const std::string& text, GLenum shaderType);
 
@@ -42,6 +47,10 @@ private:
 		SCALE_U,
 
 		COLOR_U,
+
+		TEX_OFFSET_U,
+
+		TRANSPARENT_U,
 
 		NUM_UNIFORMS
 	};

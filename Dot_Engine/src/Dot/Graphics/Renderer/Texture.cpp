@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "Texture.h"
-#include <cassert>
 #include "stb_image.h"
+#include <cassert>
+#include <GL/glew.h>
+
 
 
 Texture::Texture()

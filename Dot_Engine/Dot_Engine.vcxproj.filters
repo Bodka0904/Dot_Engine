@@ -63,6 +63,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Dot.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Application.h">
       <Filter>src\Dot</Filter>
     </ClInclude>
@@ -89,6 +92,9 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\ObjLoader.h">
       <Filter>src\Dot\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\ArrayBuffer.h">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffer.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
@@ -1237,6 +1243,9 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp">
       <Filter>src\Dot\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Renderer\ArrayBuffer.cpp">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffer.cpp">
       <Filter>src\Dot\Graphics\Renderer</Filter>

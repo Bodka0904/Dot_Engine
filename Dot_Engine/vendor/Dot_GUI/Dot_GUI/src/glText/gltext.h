@@ -264,7 +264,7 @@ GLT_API GLboolean gltSetText(GLTtext *text, const char *string)
 	int strLength = 0;
 
 	if (string)
-		strLength = strlen(string);
+		strLength = (int)strlen(string);
 
 	if (strLength)
 	{

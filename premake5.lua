@@ -73,14 +73,14 @@ project "Dot_Engine"
 		
 
 		filter "system:windows"
-				cppdialect "C++17"
 				systemversion "latest"
-			defines
-			{
+
+		defines
+		{
 				"GLFW_INCLUDE_NONE",
 				"GLEW_STATIC",
-				"D_PLATFORM_WINDOWS"
-			}
+				"D_PLATFORM_WINDOWS",
+		}
 			
 
 
@@ -112,9 +112,7 @@ project "SandBox"
 
 		includedirs
 		{
-			"Dot_Engine/vendor/GLFW/include",
-			"Dot_Engine/vendor/GLEW/include",
-			"Dot_Engine/vendor/Dot_GUI",
+		
 			"Dot_Engine/vendor",
 			"Dot_Engine/src",
 			"Dot_Engine/vendor/glm"

@@ -1,6 +1,5 @@
 #pragma once
 #include "Dot/Layer.h"
-#include "Dot_GUI/src/Gui.h"
 #include "Dot/Debug/Log.h"
 #include "Dot/ColorCodes.h"
 

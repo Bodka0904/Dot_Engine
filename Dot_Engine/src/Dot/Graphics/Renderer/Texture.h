@@ -6,7 +6,7 @@
 
 struct TextureData
 {
-	GLuint texture;
+	unsigned int texture;
 	unsigned char* imageData;
 	int width;
 	int height;

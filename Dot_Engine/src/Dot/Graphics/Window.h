@@ -1,12 +1,9 @@
 #pragma once
-#include <GL\glew.h>
 #include "Platform/OpenGL/OpenGLContext.h"
-#include <GLFW\glfw3.h>
 #include "Dot/Events/Event.h"
 #include "Dot/Debug/Log.h"
 #include "Dot/Core.h"
-
-
+#include <functional>
 
 
 

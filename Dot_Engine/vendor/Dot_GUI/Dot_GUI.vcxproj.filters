@@ -32,6 +32,9 @@
     <ClInclude Include="Dot_GUI\src\glText\gltext.h">
       <Filter>glText</Filter>
     </ClInclude>
+    <ClInclude Include="Dot_GUI\src\widgets\GuiArrowButton.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
     <ClInclude Include="Dot_GUI\src\widgets\GuiButton.h">
       <Filter>widgets</Filter>
     </ClInclude>
@@ -47,7 +50,6 @@
     <ClInclude Include="Dot_GUI\src\widgets\GuiWrapper.h">
       <Filter>widgets</Filter>
     </ClInclude>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiArrowButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
@@ -56,6 +58,9 @@
     <ClCompile Include="Dot_GUI\src\GuiTexture.cpp" />
     <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp">
       <Filter>glText</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\widgets\GuiArrowButton.cpp">
+      <Filter>widgets</Filter>
     </ClCompile>
     <ClCompile Include="Dot_GUI\src\widgets\GuiButton.cpp">
       <Filter>widgets</Filter>
@@ -69,6 +74,5 @@
     <ClCompile Include="Dot_GUI\src\widgets\GuiWrapper.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
-    <ClCompile Include="Dot_GUI\src\widgets\GuiArrowButton.cpp" />
   </ItemGroup>
 </Project>
