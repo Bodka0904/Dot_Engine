@@ -1,77 +1,104 @@
 #pragma once
 #include <conio.h>
+#include <map>
+#include <glm/glm.hpp>
 #include "Dot/Debug/Log.h"
-#include "Dot/Graphics/Transform.h"
-#include "Dot/Graphics/Camera.h"
+#include "Uniform/UniformBuffer.h"
 
 
+namespace Dot {
 
-
-struct Light
-{
-	float	 lightStrength;
-	float	 specStrength;
-	glm::vec3 lightColor;
-	glm::vec3 lightPos;
-	
-
-	Light(float lightStr = 0.5, float specStr = 2, glm::vec3 lightC = glm::vec3(0.2, 0.2, 0.2),
-		glm::vec3 lightP = glm::vec3(-5, 10, 0))
-		:
-		lightStrength(lightStr),specStrength(specStr),lightColor(lightC),lightPos(lightP)
-	{}
-
-};
-
-class Shader
-{
-public:
-	Shader();
-	virtual ~Shader();
-
-	virtual void Init(const std::string& filename);
-	
-	virtual void SetAttribs();
-	virtual void SetUniforms();
-	virtual void Update(const Transform& transform, Camera& camera);
-	
-	virtual void LinkShader();
-	virtual void Bind();
-	virtual void UnBind();
-
-
-
-	static std::string LoadShader(const std::string& filename);
-	static unsigned int CreateShader(const std::string& text, unsigned int shaderType);
-
-
-
-private:
-	static const unsigned int NUM_SHADER = 2;
-	
-	enum
+	struct Light
 	{
-		TRANSFORM_U,
+		float	 lightStrength;
+		float	 specStrength;
+		glm::vec3 lightColor;
+		glm::vec3 lightPos;
 
-		VIEW_POS_U,
 
-		LIGHT_STR_U,
+		Light(float lightStr = 0.5, float specStr = 2, glm::vec3 lightC = glm::vec3(0.5, 0.5, 0.5),
+			glm::vec3 lightP = glm::vec3(-5, 10, 0))
+			:
+			lightStrength(lightStr), specStrength(specStr), lightColor(lightC), lightPos(lightP)
+		{}
 
-		SPEC_STR_U,
-
-		LIGHT_COLOR_U,
-
-		LIGHT_POS_U,
-
-		NUM_UNIFORMS
+	};
+	struct ShaderAttribute
+	{
+		ShaderAttribute(unsigned int location,const std::string& name)
+			: m_location(location),m_name(name)
+		{}
+		unsigned int m_location;
+		std::string m_name;
 	};
 
-	Light BasicLight;
+	struct ShaderLayout
+	{
+		ShaderLayout(std::initializer_list<ShaderAttribute>attributes)
+			:m_attributes(attributes)
+		{}
+		std::vector<ShaderAttribute> m_attributes;
+	};
 
-	unsigned int m_program;
-	unsigned int m_shaders[NUM_SHADER];
-	unsigned int m_uniforms[NUM_UNIFORMS];
+	class Shader
+	{
+	public:
+		Shader(const std::string& filename);
+		virtual ~Shader();
 
+		virtual void SetUniforms();
+		virtual void AddGeometryShader(const std::string& filename);
+		virtual void SetLayout(const ShaderLayout& layout);
+		virtual void LinkShader();
+		virtual void Clean();
+
+		virtual void Update() const;
+		virtual void Bind() const;
+		virtual void UnBind() const;
+
+
+		virtual void AddUniformBufferObject(const std::string& name,unsigned int bindIndex,unsigned int size);
+		virtual void UpdateUniformBufferObject(const std::string& name,const void*data);
+
+		virtual void AddUniform(const std::string& name);
+		virtual void UploadUniformMat4(const std::string& name,const glm::mat4& matrix);
+		virtual void UploadFloat(const std::string& name, float value);
+	private:
+		static std::string LoadShader(const std::string& filename);
+		static unsigned int CreateShader(const std::string& text, unsigned int shaderType);
+
+	private:
+		std::map<std::string, std::unique_ptr<UniformBuffer> > m_UBO;
+		std::map<std::string, unsigned int> m_Uniforms;
+		
+
+	private:
+
+		enum
+		{
+			VIEW_POS_U,
+
+			LIGHT_STR_U,
+
+			SPEC_STR_U,
+
+			LIGHT_COLOR_U,
+
+			LIGHT_POS_U,
+
+			NUM_UNIFORMS
+		};
+
+		Light BasicLight;
+
+		unsigned int m_program;
+		std::vector<unsigned int> m_shaders;
 	
+		unsigned int m_computeShader;
+		unsigned int m_uniforms[NUM_UNIFORMS];
 
-};
+
+
+	};
+
+}

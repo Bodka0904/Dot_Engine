@@ -1,5 +1,4 @@
 #pragma once 
-#include "Dot/Debug/Log.h"
 #include <list>
 
 enum class EventType
@@ -15,6 +14,7 @@ enum class EventType
 	MouseButtonPressed,
 	MouseButtonReleased,
 
+	MouseScroll,
 	MouseMoved
 };
 
@@ -24,10 +24,11 @@ class Event
 {
 public:
 	virtual EventType GetEventType() const = 0;
+	bool IsHandled() { return handled; }
 
 private:
 	EventType type = EventType::None;
-	
+	bool handled = false;
 };
 
 
@@ -120,3 +121,16 @@ private:
 	EventType type = EventType::MouseButtonReleased;
 };
 
+class MouseScrollEvent :public Event
+{
+public:
+	MouseScrollEvent(double offset)	
+		:m_offset(offset)
+	{};
+
+	virtual EventType GetEventType() const override { return type; }
+	inline double GetValue() const { return m_offset; }
+private:
+	EventType type = EventType::MouseScroll;
+	double m_offset;
+};

@@ -5,6 +5,7 @@
 #include <GL/GL.h>
 
 
+
 OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
 	: m_WindowHandle(windowHandle)
 {

@@ -1,20 +1,37 @@
 #pragma once
 #include "Dot/Layer.h"
-#include "Dot/Debug/Log.h"
-#include "Dot/ColorCodes.h"
+#include "Dot/Terrain/TerrainEditor.h"
+
+namespace Dot {
+
+	class GuiLayer : public Layer
+	{
+	public:
+		GuiLayer();
+		~GuiLayer();
+
+		void OnAttach() override;
+		void OnUpdate() override;
+
+		void ButtonAction();
+		void CheckBoxAction();
+		void ArrowButtonAction();
+
+		void TestVisibleOff();
+		void TestVisibleOn();
+
+	private:
+		// TEST PURPOSE
+		TerrainEditor editor;
+		std::shared_ptr<Terrain> terrain;
 
 
-class GuiLayer : public Layer
-{
-public:
-	GuiLayer();
-	~GuiLayer();
+		struct Wrappers
+		{
+			int main_wrapper;
+			int test_wrapper;
+		};
 
-	void OnAttach() override;
-	void OnUpdate() override;
-
-	void ButtonAction();
-	void CheckBoxAction();
-	void ArrowButtonAction();
-};
-
+		Wrappers wrap;
+	};
+}

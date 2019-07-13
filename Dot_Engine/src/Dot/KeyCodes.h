@@ -1,6 +1,6 @@
 #pragma once
 
-
+namespace Dot {
 #define D_KEY_SPACE              32
 #define D_KEY_APOSTROPHE         39  /* ' */
 #define D_KEY_COMMA              44  /* , */
@@ -52,7 +52,7 @@
 #define D_KEY_WORLD_1            161 /* non-US #1 */
 #define D_KEY_WORLD_2            162 /* non-US #2 */
 
-/* Function keys */
+	/* Function keys */
 #define D_KEY_ESCAPE             256
 #define D_KEY_ENTER              257
 #define D_KEY_TAB                258
@@ -123,3 +123,5 @@
 #define D_KEY_RIGHT_ALT          346
 #define D_KEY_RIGHT_SUPER        347
 #define D_KEY_MENU               348
+
+}

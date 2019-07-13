@@ -1,78 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="data">
-      <UniqueIdentifier>{5F91957C-4BC8-960D-F4B4-7C10E0CA120F}</UniqueIdentifier>
+    <Filter Include="Dot_GUI">
+      <UniqueIdentifier>{30CA8C81-9CA9-0B1D-A5C1-96F31120727E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="events">
-      <UniqueIdentifier>{5A9D08FC-463F-33D2-2FFA-46261B3BBA22}</UniqueIdentifier>
+    <Filter Include="Dot_GUI\data">
+      <UniqueIdentifier>{B9A99DFE-A50C-2DA3-4E92-65593AD4F825}</UniqueIdentifier>
     </Filter>
-    <Filter Include="glText">
-      <UniqueIdentifier>{5D81F4FF-4923-1FD6-32DE-322A1E1FA626}</UniqueIdentifier>
+    <Filter Include="Dot_GUI\events">
+      <UniqueIdentifier>{34347820-2002-6C26-0996-DC4CF502488B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="widgets">
-      <UniqueIdentifier>{9C4F4BC8-082F-CA63-1147-553A7DA530C5}</UniqueIdentifier>
+    <Filter Include="Dot_GUI\glText">
+      <UniqueIdentifier>{37186424-23E6-572A-0C7A-C850F8E6338F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dot_GUI\widgets">
+      <UniqueIdentifier>{B6C1AD7A-224D-1B3F-2B5E-9E339768773F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\Gui.h">
+      <Filter>Dot_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\GuiBuffer.h">
+      <Filter>Dot_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\GuiShader.h">
+      <Filter>Dot_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\GuiTexture.h">
+      <Filter>Dot_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\GuiTransform.h">
+      <Filter>Dot_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\data\GuiData.h">
+      <Filter>Dot_GUI\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\events\GuiEvent.h">
+      <Filter>Dot_GUI\events</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\glText\GuiText.h">
+      <Filter>Dot_GUI\glText</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\glText\gltext.h">
+      <Filter>Dot_GUI\glText</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\DebugNew.h">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiArrowButton.h">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiButton.h">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiCheckBox.h">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiSlider.h">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiWidget.h">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiWrapper.h">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClInclude>
     <ClInclude Include="Dot_GUI\src\Gui.h" />
-    <ClInclude Include="Dot_GUI\src\GuiBuffer.h" />
-    <ClInclude Include="Dot_GUI\src\GuiShader.h" />
-    <ClInclude Include="Dot_GUI\src\GuiTexture.h" />
-    <ClInclude Include="Dot_GUI\src\GuiTransform.h" />
-    <ClInclude Include="Dot_GUI\src\data\GuiData.h">
-      <Filter>data</Filter>
-    </ClInclude>
-    <ClInclude Include="Dot_GUI\src\events\GuiEvent.h">
-      <Filter>events</Filter>
-    </ClInclude>
-    <ClInclude Include="Dot_GUI\src\glText\GuiText.h">
-      <Filter>glText</Filter>
-    </ClInclude>
-    <ClInclude Include="Dot_GUI\src\glText\gltext.h">
-      <Filter>glText</Filter>
-    </ClInclude>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiArrowButton.h">
-      <Filter>widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiButton.h">
-      <Filter>widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiCheckBox.h">
-      <Filter>widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiSlider.h">
-      <Filter>widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiWidget.h">
-      <Filter>widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="Dot_GUI\src\widgets\GuiWrapper.h">
-      <Filter>widgets</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dot_GUI\src\Gui.cpp" />
-    <ClCompile Include="Dot_GUI\src\GuiBuffer.cpp" />
-    <ClCompile Include="Dot_GUI\src\GuiShader.cpp" />
-    <ClCompile Include="Dot_GUI\src\GuiTexture.cpp" />
-    <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp">
-      <Filter>glText</Filter>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\Gui.cpp">
+      <Filter>Dot_GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Dot_GUI\src\widgets\GuiArrowButton.cpp">
-      <Filter>widgets</Filter>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\GuiBuffer.cpp">
+      <Filter>Dot_GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Dot_GUI\src\widgets\GuiButton.cpp">
-      <Filter>widgets</Filter>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\GuiShader.cpp">
+      <Filter>Dot_GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Dot_GUI\src\widgets\GuiCheckBox.cpp">
-      <Filter>widgets</Filter>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\GuiTexture.cpp">
+      <Filter>Dot_GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Dot_GUI\src\widgets\GuiSlider.cpp">
-      <Filter>widgets</Filter>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\glText\GuiText.cpp">
+      <Filter>Dot_GUI\glText</Filter>
     </ClCompile>
-    <ClCompile Include="Dot_GUI\src\widgets\GuiWrapper.cpp">
-      <Filter>widgets</Filter>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiArrowButton.cpp">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiButton.cpp">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiCheckBox.cpp">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiSlider.cpp">
+      <Filter>Dot_GUI\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiWrapper.cpp">
+      <Filter>Dot_GUI\widgets</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

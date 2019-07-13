@@ -1,6 +1,6 @@
 #pragma once
 
-
+namespace Dot {
 
 #define ANSI_COLOR_BLACK_F		30
 #define ANSI_COLOR_RED_F		31
@@ -10,7 +10,7 @@
 #define ANSI_COLOR_MAGENTA_F	35
 #define ANSI_COLOR_CYAN_F		36
 #define ANSI_COLOR_WHITE_F		37
-		
+
 #define ANSI_COLOR_BLACK_B		40
 #define ANSI_COLOR_RED_B		41
 #define ANSI_COLOR_GREEN_B		42
@@ -28,6 +28,8 @@
 #define COLOR_PURPLE			1,0,1
 #define COLOR_CYAN				0,1,1
 #define COLOR_WHITE				1,1,1
+
+}
 
 
 

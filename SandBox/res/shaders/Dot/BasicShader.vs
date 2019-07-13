@@ -5,20 +5,22 @@ layout (location = 1) in vec3 normal;
 layout (location = 2) in vec2 texCoord;
 
 
+layout (std140) uniform camera_data
+{
+	mat4 ViewProjectionMatrix;
+};
+
+uniform mat4 ModelMatrix;
+
 out vec3 fragPos0;
-out vec2 texCoord0;
 out vec3 normal0;
-
-
-
-uniform mat4 transform;
-
+out vec2 texcoord0;
 
 void main()
 {
-	gl_Position = transform * vec4(position,1.0);	
+	gl_Position = ViewProjectionMatrix * ModelMatrix * vec4(position,1.0);	
 		
-	fragPos0 = vec3(transform * vec4(position,1.0));	
-	texCoord0 = texCoord;
-	normal0 = (transform * vec4(normal, 0.0)).xyz;
+	fragPos0 = vec3(ViewProjectionMatrix * ModelMatrix * vec4(position,1.0));	
+	normal0 = (ViewProjectionMatrix * ModelMatrix * vec4(normal, 0.0)).xyz;
+	texcoord0 = texCoord;
 }

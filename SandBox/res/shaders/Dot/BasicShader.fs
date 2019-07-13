@@ -1,8 +1,9 @@
 #version 330 core
 
 in vec3 fragPos0;
-in vec2 texCoord0;
+in vec2 texcoord0;
 in vec3 normal0;
+
 
 uniform float lightStrength;
 uniform float specStrength;
@@ -29,6 +30,6 @@ void main()
 	vec3 diffuse = diff * lightColor;
 	vec3 result = ambient + diffuse + specular;
 
-	color = texture(tex,texCoord0) * vec4(result,1.0);			
+	color = texture(tex,texcoord0) * vec4(result,1.0);			
 	
 }
