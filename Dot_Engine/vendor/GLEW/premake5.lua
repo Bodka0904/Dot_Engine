@@ -33,10 +33,6 @@ project "GLEW"
       		"GLEW_STATIC"
 	}
 
-    filter 
-	{ 
-		"system:windows", 
-	}
         	 
 	filter "configurations:Debug"
 		runtime "Debug"

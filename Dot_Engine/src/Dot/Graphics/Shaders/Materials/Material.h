@@ -9,7 +9,11 @@ namespace Dot {
 
 	struct light_props
 	{
+		glm::vec4 lightColor;
+		glm::vec4 lightPos;
 
+		float	 lightStrength;
+		float	 specStrength;
 	};
 	
 }

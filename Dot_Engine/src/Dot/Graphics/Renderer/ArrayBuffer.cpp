@@ -32,19 +32,21 @@ namespace Dot {
 		glBindVertexArray(m_VAO);
 		vertexBuffer->Bind();
 
-		uint32_t index = 0;
+		
 		const auto& layout = vertexBuffer->GetLayout();
 
 		for (const auto& element : vertexBuffer->GetLayout())
 		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index,
+			glEnableVertexAttribArray(element.index);
+			glVertexAttribPointer(element.index,
 				element.GetComponentCount(),
 				GL_FLOAT,
 				GL_FALSE,
 				layout.GetStride(),
 				(const void*)element.offset);
-			index++;
+
+			glVertexAttribDivisor(element.index,element.divisor);
+	
 		}
 		m_VertexBuffers.push_back(vertexBuffer);
 	}

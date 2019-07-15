@@ -1,6 +1,7 @@
 project "Dot_GUI"
 		kind "StaticLib"
 		language "C++"
+		staticruntime "on"
 
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -26,8 +27,6 @@ project "Dot_GUI"
 		filter "system:windows"
         	systemversion "latest"
         	staticruntime "On"
-
-
 
 		filter "configurations:Debug"
 				runtime "Debug"

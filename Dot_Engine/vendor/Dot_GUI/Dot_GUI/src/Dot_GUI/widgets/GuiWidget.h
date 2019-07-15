@@ -16,7 +16,8 @@ public:
 	virtual void Draw(GuiShader& shader,GuiTransform& transform) = 0;
 	virtual void UpdateData(GuiTransform& transform) = 0;
 	
-	virtual void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(1, 1)) = 0;
+	virtual void SetData(glm::vec2& pos, glm::vec2& scale = glm::vec2(1, 1)) = 0;
+	
 	virtual void SetValue(float value) = 0;
 
 	virtual float GetValue() const = 0;

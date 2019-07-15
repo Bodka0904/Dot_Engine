@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -97,8 +97,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Camera\Camera.h" />
-    <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h" />
     <ClInclude Include="src\Dot.h" />
     <ClInclude Include="src\Dot\Application.h" />
     <ClInclude Include="src\Dot\ColorCodes.h" />
@@ -112,11 +110,16 @@
     <ClInclude Include="src\Dot\Graphics\ObjLoader.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\ArrayBuffer.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffer.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Camera\Camera.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\InstancedMesh.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Renderer.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\RendererFlags.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Texture.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Materials\Material.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Shader.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.h" />
+    <ClInclude Include="src\Dot\Graphics\Shaders\WorldShader.h" />
     <ClInclude Include="src\Dot\Graphics\Transform.h" />
     <ClInclude Include="src\Dot\Graphics\Window.h" />
     <ClInclude Include="src\Dot\Gui\GuiLayer.h" />
@@ -124,12 +127,12 @@
     <ClInclude Include="src\Dot\KeyCodes.h" />
     <ClInclude Include="src\Dot\Layer.h" />
     <ClInclude Include="src\Dot\MouseButtonCodes.h" />
+    <ClInclude Include="src\Dot\Terrain\Terrain.h" />
     <ClInclude Include="src\Dot\Terrain\TerrainEditor.h" />
+    <ClInclude Include="src\Dot\Terrain\TerrainEditorLayer.h" />
     <ClInclude Include="src\Dot\Utils\BmpLoader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\stdafx.h" />
-    <ClInclude Include="src\Dot\Terrain\Terrain.h" />
-    <ClInclude Include="src\Dot\Terrain\TerrainEditorLayer.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
@@ -495,35 +498,35 @@
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
-    <ClInclude Include="src\Dot\Graphics\Shaders\WorldShader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Camera\Camera.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Dot\Application.cpp" />
     <ClCompile Include="src\Dot\Debug\Log.cpp" />
     <ClCompile Include="src\Dot\Debug\Windows\WinTimer.cpp" />
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\ArrayBuffer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Camera\Camera.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\InstancedMesh.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Texture.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\Shader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Shaders\WorldShader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Window.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiLayer.cpp" />
     <ClCompile Include="src\Dot\Input.cpp" />
     <ClCompile Include="src\Dot\Layer.cpp" />
+    <ClCompile Include="src\Dot\Terrain\Terrain.cpp" />
     <ClCompile Include="src\Dot\Terrain\TerrainEditor.cpp" />
+    <ClCompile Include="src\Dot\Terrain\TerrainEditorLayer.cpp" />
     <ClCompile Include="src\Dot\Utils\BmpLoader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Dot\Terrain\Terrain.cpp" />
-    <ClCompile Include="src\Dot\Terrain\TerrainEditorLayer.cpp" />
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Shaders\WorldShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLEW\GLEW.vcxproj">

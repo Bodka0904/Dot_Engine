@@ -25,14 +25,26 @@
     <Filter Include="src\Dot\Graphics\Renderer">
       <UniqueIdentifier>{29D6EBB7-9598-1F42-DE48-AECE4A4AF81F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Graphics\Renderer\Camera">
+      <UniqueIdentifier>{81C25DE5-6D13-4927-9677-37E98227DC90}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Dot\Graphics\Shaders">
       <UniqueIdentifier>{FCF26A7F-E817-BAFF-1163-9F8FFDE6B81D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Graphics\Shaders\Materials">
+      <UniqueIdentifier>{CDE01A58-B91C-1EC2-222F-36B90E8AC6DC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Graphics\Shaders\Uniform">
+      <UniqueIdentifier>{6BC8258E-5719-11D0-807D-FF916C2DA439}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Gui">
       <UniqueIdentifier>{577CAC8A-C331-2580-4C26-1F57B8DA1B84}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Terrain">
       <UniqueIdentifier>{E765F68E-53F1-6353-5C02-E747C80CC053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Utils">
+      <UniqueIdentifier>{23C7B9E8-8F87-351F-58C2-7E9CC4417AFB}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
@@ -105,13 +117,34 @@
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffer.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\Camera\Camera.h">
+      <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\InstancedMesh.h">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Renderer.h">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\RendererFlags.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Texture.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Shaders\Materials\Material.h">
+      <Filter>src\Dot\Graphics\Shaders\Materials</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Shaders\Shader.h">
+      <Filter>src\Dot\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.h">
+      <Filter>src\Dot\Graphics\Shaders\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Shaders\WorldShader.h">
       <Filter>src\Dot\Graphics\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Transform.h">
@@ -134,6 +167,18 @@
     </ClInclude>
     <ClInclude Include="src\Dot\MouseButtonCodes.h">
       <Filter>src\Dot</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Terrain\Terrain.h">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Terrain\TerrainEditor.h">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Terrain\TerrainEditorLayer.h">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\BmpLoader.h">
+      <Filter>src\Dot\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1236,15 +1281,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Terrain\Terrain.h" />
-    <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h" />
-    <ClInclude Include="src\Dot\Utils\BmpLoader.h" />
-    <ClInclude Include="src\Dot\Terrain\TerrainEditor.h" />
-    <ClInclude Include="src\Dot\Terrain\TerrainEditorLayer.h" />
-    <ClInclude Include="src\Dot\Graphics\Renderer\Camera\Camera.h" />
-    <ClInclude Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.h" />
-    <ClInclude Include="src\Dot\Graphics\Shaders\WorldShader.h" />
-    <ClInclude Include="src\Dot\Graphics\Shaders\Materials\Material.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1265,6 +1301,15 @@
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffer.cpp">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Renderer\Camera\Camera.cpp">
+      <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Renderer\InstancedMesh.cpp">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Renderer.cpp">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
@@ -1272,6 +1317,12 @@
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Shaders\Shader.cpp">
+      <Filter>src\Dot\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp">
+      <Filter>src\Dot\Graphics\Shaders\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Shaders\WorldShader.cpp">
       <Filter>src\Dot\Graphics\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Window.cpp">
@@ -1286,6 +1337,18 @@
     <ClCompile Include="src\Dot\Layer.cpp">
       <Filter>src\Dot</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Terrain\Terrain.cpp">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Terrain\TerrainEditor.cpp">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Terrain\TerrainEditorLayer.cpp">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\BmpLoader.cpp">
+      <Filter>src\Dot\Utils</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1295,13 +1358,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Terrain\Terrain.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp" />
-    <ClCompile Include="src\Dot\Utils\BmpLoader.cpp" />
-    <ClCompile Include="src\Dot\Terrain\TerrainEditor.cpp" />
-    <ClCompile Include="src\Dot\Terrain\TerrainEditorLayer.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Renderer\Camera\Camera.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Shaders\WorldShader.cpp" />
   </ItemGroup>
 </Project>

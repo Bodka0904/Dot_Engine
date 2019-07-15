@@ -50,7 +50,7 @@ void GuiSlider::Draw(GuiShader& shader, GuiTransform& transform)
 
 }
 
-void GuiSlider::SetData(glm::vec2 pos, glm::vec2 scale)
+void GuiSlider::SetData(glm::vec2& pos, glm::vec2& scale)
 {
 	m_scale = scale;
 	m_position = glm::vec2(pos.x - (Slider::SLIDER_SIZE_X / 2 * m_scale.x),

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -97,11 +97,6 @@
     <ProjectReference Include="..\Dot_Engine\Dot_Engine.vcxproj">
       <Project>{21301712-0DE8-585F-76EF-31BB62C6F34F}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\shaders\Dot\GeometryShader.gs" />
-    <None Include="res\shaders\Dot\TestGeometryShader.fs" />
-    <None Include="res\shaders\Dot\TestGeometryShader.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

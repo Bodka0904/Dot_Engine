@@ -43,16 +43,19 @@ public:
 
 	void UpdateData(GuiTransform& transform);
 
-	void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(1, 1));
-	void SetSize(glm::vec2 scale) { m_scale = scale; };
+	void SetData(glm::vec2& pos, glm::vec2& scale = glm::vec2(1, 1));
+	void SetWidgetsFollow();
+	void SetWidget(int index,glm::vec2 position);
+	void SetWidgetsNextTo();
+	void SetSize(glm::vec2& scale) { m_scale = scale; };
 
-	bool PinToSide(glm::vec2 winSize);
-	bool Exit(glm::vec2 mousePos);
+	bool PinToSide(glm::vec2& winSize);
+	bool Exit(glm::vec2& mousePos);
 	
 	bool &GetPinned() { return m_pinned; }
 	bool &GetVisible() {return m_visible;}
 	GuiText* GetText() { return m_text; }
-	bool MouseHoover(glm::vec2 mousePos);
+	bool MouseHoover(glm::vec2& mousePos);
 
 	glm::vec2 GetCenter() const;
 	glm::vec2 GetPosition() const;

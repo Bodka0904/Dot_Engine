@@ -59,15 +59,15 @@ namespace Dot {
 		}
 
 		BufferLayout layout = {
-				{ Dot::ShaderDataType::Float3, "position" },
-				{ Dot::ShaderDataType::Float3, "normal" },
-				{Dot::ShaderDataType::Float2, "texCoord" },
+				{0, Dot::ShaderDataType::Float3, "position" },
+				{1, Dot::ShaderDataType::Float3, "normal" },
+				{2, Dot::ShaderDataType::Float2, "texCoord" },
 
 		};
 
 		m_VAO.reset(new ArrayBuffer());
 
-		vbo.reset(new VertexBuffer(&m_vertices[0], m_vertices.size() * sizeof(VertexTexture), true));
+		vbo.reset(new VertexBuffer(&m_vertices[0], m_vertices.size() * sizeof(VertexTexture), Dynamic_Buffer_Update));
 		vbo->SetLayout(layout);
 		m_VAO->AddVBO(vbo);
 

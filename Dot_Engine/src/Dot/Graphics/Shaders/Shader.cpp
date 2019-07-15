@@ -89,11 +89,6 @@ namespace Dot {
 
 		}
 		glValidateProgram(m_program);
-		for (int i = 0; i < m_shaders.size(); ++i)
-		{
-			glDetachShader(m_program, m_shaders[i]);
-		}
-		glUseProgram(m_program);
 	}
 
 	void Shader::Clean()

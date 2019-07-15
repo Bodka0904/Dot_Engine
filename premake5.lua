@@ -17,6 +17,7 @@ IncludeDir["GLEW"] = "Dot_Engine/vendor/GLEW/include"
 IncludeDir["Dot_GUI"] = "Dot_Engine/vendor/Dot_GUI"
 
 
+
 include "Dot_Engine/vendor/GLFW"
 include "Dot_Engine/vendor/GLEW"
 include "Dot_Engine/vendor/Dot_GUI"
@@ -60,6 +61,7 @@ project "Dot_Engine"
 			"%{IncludeDir.Dot_GUI}",
 			"%{prj.name}/vendor/glm",
 			"%{prj.name}/vendor/stb_image"
+			
 		}
 
 
@@ -68,7 +70,8 @@ project "Dot_Engine"
 			"GLEW",
 			"GLFW",
 			"Dot_GUI",
-			"opengl32"
+			"opengl32",
+	
 		}
 		
 

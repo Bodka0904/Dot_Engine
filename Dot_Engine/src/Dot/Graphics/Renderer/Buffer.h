@@ -1,5 +1,6 @@
 #pragma once
 #include "Dot/Debug/Log.h"
+#include "RendererFlags.h"
 #include <glm/glm.hpp>
 
 
@@ -32,14 +33,17 @@ namespace Dot {
 
 	struct BufferElement
 	{
-		BufferElement(ShaderDataType Type, const std::string& Name, bool Norm = false)
-			:type(Type), name(Name), size(ShaderDataTypeSize(type)), offset(0), normalized(Norm)
-		{};
+		BufferElement(unsigned int Index,ShaderDataType Type, const std::string& Name, unsigned int Divisor = 0, bool Norm = false)
+			:index(Index),type(Type), name(Name), size(ShaderDataTypeSize(type)), divisor(Divisor), offset(0),  normalized(Norm)
+		{
+		};
 
 		std::string name;
 		ShaderDataType type;
 		unsigned int size;
 		unsigned int offset;
+		unsigned int index;
+		unsigned int divisor;
 		bool normalized;
 
 		unsigned int GetComponentCount() const
@@ -62,6 +66,7 @@ namespace Dot {
 			LOG_ERR("Buffer: Unknown ShaderDataType");
 			return 0;
 		}
+		
 	};
 
 	class BufferLayout
@@ -71,6 +76,7 @@ namespace Dot {
 		BufferLayout(const std::initializer_list<BufferElement>& elements)
 			: m_elements(elements)
 		{
+			CreateMat4();
 			CalculateOffsetsAndStride();
 		};
 
@@ -94,6 +100,28 @@ namespace Dot {
 				m_stride += element.size;
 			}
 		};
+		
+
+		void CreateMat4()
+		{
+			for (auto& element : m_elements)
+			{
+				switch (element.type)
+				{
+				case ShaderDataType::Mat4:
+				{
+					element.type = ShaderDataType::Float4;
+					element.size = 4 * 4;
+
+					BufferElement tmpElement = element;
+					m_elements.push_back(BufferElement(tmpElement.index + 1, tmpElement.type, tmpElement.name, tmpElement.divisor));
+					m_elements.push_back(BufferElement(tmpElement.index + 2, tmpElement.type, tmpElement.name, tmpElement.divisor));
+					m_elements.push_back(BufferElement(tmpElement.index + 3, tmpElement.type, tmpElement.name, tmpElement.divisor));
+				}
+				}
+			}
+		}
+
 
 	private:
 		std::vector<BufferElement> m_elements;
@@ -101,13 +129,14 @@ namespace Dot {
 
 	};
 
-
+	
 	struct VertexTexture
 	{
+		VertexTexture() {};
 		VertexTexture(glm::vec3 Vertice, glm::vec3 Normal, glm::vec2 TexCoord)
 			:vertice(Vertice), normal(Normal), texcoord(TexCoord)
 		{};
-		VertexTexture() {};
+	
 
 		glm::vec3 vertice;
 		glm::vec3 normal;
@@ -123,30 +152,28 @@ namespace Dot {
 
 		glm::vec3 vertice;
 		glm::vec3 normal;
-		glm::vec2 color;
+		glm::vec3 color;
 
 	};
 
 
-
+	
 	class VertexBuffer
 	{
 	public:
-		VertexBuffer(VertexTexture *vertices, unsigned int size,bool dynamic);
-		VertexBuffer(VertexColor *vertices, unsigned int size,bool dynamic);
+		VertexBuffer(const void *vertices, unsigned int size,BufferFlag flag);
 		~VertexBuffer();
 
 		void Bind() const;
 		void UnBind() const;
 		
 
-		void Update(VertexTexture *vertices,unsigned int size);
+		void Update(const void *vertices,unsigned int size);
 
 		void SetLayout(const BufferLayout& layout) { m_layout = layout; }
 		inline const BufferLayout &GetLayout() const { return m_layout; }
 
 	private:
-		bool m_dynamic;
 		unsigned int m_VBO;
 		BufferLayout m_layout;
 
@@ -168,21 +195,7 @@ namespace Dot {
 		unsigned int m_Count;
 	};
 
+	
 
-
-	class OffsetBuffer
-	{
-	public:
-		OffsetBuffer(glm::vec3* offsets, unsigned int size, unsigned int sPos);
-		~OffsetBuffer();
-
-		void Bind() const;
-		void UnBind() const;
-
-	private:
-		unsigned int m_VBO;
-
-
-	};
 
 }

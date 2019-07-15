@@ -5,7 +5,7 @@
 #include "Dot_GUI/widgets/GuiCheckBox.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
+#include <iostream>
 float Wrapper::WRAPPER_SIZE_X = 400.0f;
 float Wrapper::WRAPPER_SIZE_Y = 400.0f;
 
@@ -92,8 +92,9 @@ void GuiWrapper::Draw(GuiShader & shader, GuiTransform & transform)
 		shader.UpdateTexOffset(glm::vec2(0, 0.1));
 	}
 
+	
 	glBindVertexArray(m_vao);
-
+	
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0);
@@ -204,14 +205,91 @@ void GuiWrapper::UpdateData(GuiTransform & transform)
 		m_position.y));
 }
 
-void GuiWrapper::SetData(glm::vec2 pos, glm::vec2 scale)
+void GuiWrapper::SetData(glm::vec2& pos, glm::vec2& scale)
 {
 	m_scale = scale;
 	m_position = glm::vec2(pos.x - Wrapper::WRAPPER_SIZE_X/2*m_scale.x, pos.y - Wrapper::WRAPPER_SIZE_Y / 2*m_scale.y);
 	m_text->SetData(m_position);
 }
 
-bool GuiWrapper::PinToSide(glm::vec2 winSize)
+void GuiWrapper::SetWidgetsFollow()
+{
+	for (int i = 0; i < m_widgets.size(); ++i)
+	{	
+		m_widgets[i]->SetData(GetCenter());
+	}
+}
+
+void GuiWrapper::SetWidget(int index,glm::vec2 position)
+{
+	m_widgets[index]->SetData(position);
+}
+
+void GuiWrapper::SetWidgetsNextTo()
+{
+	float xoffset = 0.0f;
+	float yoffset = 0.0f;
+
+	for (int i = 0; i < num_buttons; ++i)
+	{
+		
+		glm::vec2 position = glm::vec2(m_position.x + xoffset + (Button::BUTTON_SIZE_X/2),m_position.y + yoffset + (Button::BUTTON_SIZE_Y / 2));
+		m_widgets[i]->SetData(position);
+
+		yoffset += (Button::BUTTON_SIZE_Y + 20);
+		if (yoffset >= Wrapper::WRAPPER_SIZE_Y * m_scale.y)
+		{
+			xoffset += (Button::BUTTON_SIZE_X + 20);
+			yoffset = 0.0f;
+		};
+	}
+
+	for (int i = num_buttons; i < num_buttons + num_arrow_btns; ++i)
+	{
+		glm::vec2 position = glm::vec2(m_position.x + xoffset + (ArrowButton::ARROW_BUTTON_SIZE_X / 2), m_position.y + yoffset + (ArrowButton::ARROW_BUTTON_SIZE_Y / 2));
+		m_widgets[i]->SetData(position);
+
+		
+		yoffset += (ArrowButton::ARROW_BUTTON_SIZE_Y + 20);
+		if (yoffset >= Wrapper::WRAPPER_SIZE_Y * m_scale.y)
+		{
+			xoffset += (ArrowButton::ARROW_BUTTON_SIZE_X + 20);
+			yoffset = 0.0f;
+		};
+		
+	}
+
+	for (int i = GetCheckBoxesIndexed().x; i < GetCheckBoxesIndexed().y; ++i)
+	{
+		glm::vec2 position = glm::vec2(m_position.x + xoffset + (CheckBox::CHECKBOX_SIZE_X / 2), m_position.y + yoffset + (CheckBox::CHECKBOX_SIZE_Y / 2));
+		m_widgets[i]->SetData(position);
+
+
+		yoffset += (CheckBox::CHECKBOX_SIZE_Y + 20);
+		if (yoffset >= Wrapper::WRAPPER_SIZE_Y * m_scale.y)
+		{
+			xoffset += (CheckBox::CHECKBOX_SIZE_X + 20);
+			yoffset = 0.0f;
+		};
+	}
+
+	for (int i = GetSlidersIndexed().x; i < GetSlidersIndexed().y; ++i)
+	{
+		glm::vec2 position = glm::vec2(m_position.x + xoffset + (Slider::SLIDER_SIZE_X / 2), m_position.y + yoffset + (Slider::SLIDER_SIZE_Y / 2));
+		m_widgets[i]->SetData(position);
+
+
+		yoffset += (Slider::SLIDER_SIZE_Y + 20);
+		if (yoffset >= Wrapper::WRAPPER_SIZE_Y * m_scale.y)
+		{
+			xoffset += (Slider::SLIDER_SIZE_X + 20);
+			yoffset = 0.0f;
+		};
+	}
+
+}
+
+bool GuiWrapper::PinToSide(glm::vec2& winSize)
 {
 	
 	if (m_position.x > winSize.x - (Wrapper::WRAPPER_SIZE_X*m_scale.x))
@@ -267,7 +345,7 @@ bool GuiWrapper::PinToSide(glm::vec2 winSize)
 	
 }
 
-bool GuiWrapper::Exit(glm::vec2 mousePos)
+bool GuiWrapper::Exit(glm::vec2& mousePos)
 {
 	if (mousePos.x >= GetCoords().z - 30 && mousePos.x <= GetCoords().z
 		&& mousePos.y <= GetCoords().w + 30 && mousePos.y >= GetCoords().w)
@@ -282,7 +360,7 @@ bool GuiWrapper::Exit(glm::vec2 mousePos)
 }
 
 
-bool GuiWrapper::MouseHoover(glm::vec2 mousePos)
+bool GuiWrapper::MouseHoover(glm::vec2& mousePos)
 {
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
 		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)

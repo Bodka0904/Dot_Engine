@@ -64,7 +64,7 @@ void GuiCheckBox::UpdateData(GuiTransform & transform)
 		m_position.y));
 }
 
-void GuiCheckBox::SetData(glm::vec2 pos, glm::vec2 scale)
+void GuiCheckBox::SetData(glm::vec2& pos, glm::vec2& scale)
 {
 	m_scale = scale;
 	m_position = glm::vec2(pos.x - (CheckBox::CHECKBOX_SIZE_X / 2 * m_scale.x),

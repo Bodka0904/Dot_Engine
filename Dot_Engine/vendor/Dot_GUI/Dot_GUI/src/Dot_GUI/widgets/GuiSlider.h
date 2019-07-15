@@ -13,7 +13,8 @@ public:
 	virtual void Init(unsigned int& VBO, unsigned int& IBO) override;
 	virtual void Draw(GuiShader& shader, GuiTransform& transform) override;
 
-	virtual void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(1, 1)) override;
+	virtual void SetData(glm::vec2& pos, glm::vec2& scale = glm::vec2(1, 1)) override;
+
 	virtual void UpdateData(GuiTransform& transform) override;
 	virtual void SetValue(float value) override;
 	

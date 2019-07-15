@@ -16,9 +16,9 @@ public:
 	void OnAttach()
 	{
 		Dot::BufferLayout layout = {
-				{ Dot::ShaderDataType::Float3, "position" },
-				{ Dot::ShaderDataType::Float3, "normal" },
-				{ Dot::ShaderDataType::Float2, "texCoord" },
+				{0, Dot::ShaderDataType::Float3, "position" },
+				{1, Dot::ShaderDataType::Float3, "normal" },
+				{2, Dot::ShaderDataType::Float2, "texCoord" },
 				
 		};
 		cube.reset(new Dot::Mesh("res/models/Dot/test.obj", layout));
@@ -45,7 +45,42 @@ public:
 		texture.Create("res/textures/Dot/grass.jpg");
 		texture.Bind(0);
 
+
+		Dot::ShaderLayout test_layout = {
+			{0,"position"},
+			{1,"normal"},
+			{2,"texCoord"},
+			{3,"instanceModel"},
+		};
+
+		InstanceShader.reset(new Dot::Shader("res/shaders/Dot/InstancedShader"));
+		InstanceShader->SetLayout(test_layout);
+		InstanceShader->LinkShader();
+		InstanceShader->Clean();
+		InstanceShader->Bind();
+	
 		
+		
+		Dot::BufferLayout layout_test = {
+				{0, Dot::ShaderDataType::Float3, "position" },
+				{1, Dot::ShaderDataType::Float3, "normal" },
+				{2, Dot::ShaderDataType::Float2, "texCoord" },
+			
+		};
+
+		test_positions.resize(5);		
+		transform.GetPos().x += 100;
+		test_positions[0] = transform.GetModel();
+		transform.GetPos().x += 100;
+		test_positions[1] = transform.GetModel();
+		transform.GetPos().x += 100;
+		test_positions[2] = transform.GetModel();
+		transform.GetPos().x += 100;
+		test_positions[3] = transform.GetModel();
+		transform.GetPos().x = 0;
+
+
+		test.reset(new Dot::InstancedMesh("res/models/Dot/test.obj", layout_test, test_positions));
 	}
 
 	void OnUpdate() override
@@ -93,9 +128,11 @@ public:
 		//transform.GetRot().z += 0.01;
 		//transform.GetPos().z = 100;
 		camera.UpdateViewMatrix();
+		cube->SetModelMatrix(transform.GetModel());
 		Dot::Renderer::BeginScene(camera);
 		{
-			Dot::Renderer::Submit(WorldShader,transform,cube);		
+			Dot::Renderer::Submit(WorldShader,cube);
+			Dot::Renderer::SubmitInstances(InstanceShader, test);
 		}
 		Dot::Renderer::EndScene(WorldShader);
 	}
@@ -157,6 +194,9 @@ private:
 	Dot::Transform transform;
 	Dot::Texture texture;
 	std::shared_ptr<Dot::Mesh> cube;
+	std::shared_ptr<Dot::InstancedMesh> test;
+	std::shared_ptr<Dot::Shader> InstanceShader;
+	std::vector<glm::mat4>test_positions;
 	std::shared_ptr<Dot::WorldShader> WorldShader;
 };
 

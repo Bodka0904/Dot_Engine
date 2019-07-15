@@ -23,7 +23,8 @@ public:
 
 
 	virtual void UpdateData(GuiTransform& transform) override;
-	virtual void SetData(glm::vec2 pos, glm::vec2 scale = glm::vec2(1, 1)) override;
+	virtual void SetData(glm::vec2& pos, glm::vec2& scale = glm::vec2(1, 1)) override;
+	
 	virtual void SetValue(float value) override { m_color = value; }
 
 	virtual float GetValue() const override { return m_color; }

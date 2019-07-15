@@ -5,37 +5,22 @@
 
 namespace Dot {
 
-	VertexBuffer::VertexBuffer(VertexTexture *vertices, unsigned int size, bool dynamic)
-		: m_dynamic(dynamic)
+	VertexBuffer::VertexBuffer(const void* vertices, unsigned int size, BufferFlag flag)
 	{
-
+		
 		glCreateBuffers(1, &m_VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		if (!dynamic)
+		if (flag & Static_Buffer_Update)
 		{
 			glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 		}
-		else
+		else if (flag & Dynamic_Buffer_Update)
 		{
 			glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_DYNAMIC_DRAW);
 		}
 	}
 
 
-	VertexBuffer::VertexBuffer(VertexColor * vertices, unsigned int size, bool dynamic)
-		: m_dynamic(dynamic)
-	{
-		glCreateBuffers(1, &m_VBO);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		if (!dynamic)
-		{
-			glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
-		}
-		else
-		{
-			glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_DYNAMIC_DRAW);
-		}
-	}
 
 	VertexBuffer::~VertexBuffer()
 	{
@@ -52,13 +37,10 @@ namespace Dot {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
-	void VertexBuffer::Update(VertexTexture * vertices,unsigned int size)
+	void VertexBuffer::Update(const void * vertices,unsigned int size)
 	{
-		D_ASSERT(m_dynamic, "Selected vertex buffer is not dynamic");
-
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_DYNAMIC_DRAW);
-				
+		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_DYNAMIC_DRAW);		
 	}
 
 
@@ -90,32 +72,6 @@ namespace Dot {
 	unsigned int IndexBuffer::GetCount() const
 	{
 		return m_Count;
-	}
-
-
-	OffsetBuffer::OffsetBuffer(glm::vec3 * offsets, unsigned int size, unsigned int sPos)
-	{
-		glCreateBuffers(1, &m_VBO);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glBufferData(GL_ARRAY_BUFFER, size, 0, GL_DYNAMIC_DRAW);
-		glEnableVertexAttribArray(sPos);
-		glVertexAttribPointer(sPos, 3, GL_FLOAT, GL_FALSE, 0, 0);
-		glVertexAttribDivisor(sPos, 1);
-	}
-
-	OffsetBuffer::~OffsetBuffer()
-	{
-		glDeleteBuffers(1, &m_VBO);
-	}
-
-	void OffsetBuffer::Bind() const
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-	}
-
-	void OffsetBuffer::UnBind() const
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 

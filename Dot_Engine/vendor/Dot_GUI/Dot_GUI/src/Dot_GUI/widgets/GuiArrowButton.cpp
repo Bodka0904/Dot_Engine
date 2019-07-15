@@ -56,11 +56,11 @@ void GuiArrowButton::UpdateData(GuiTransform & transform)
 		m_position.y));
 }
 
-void GuiArrowButton::SetData(glm::vec2 pos, glm::vec2 scale)
+void GuiArrowButton::SetData(glm::vec2& pos, glm::vec2& scale)
 {
 	m_scale = scale;
-	m_position = glm::vec2(pos.x - (CheckBox::CHECKBOX_SIZE_X / 2 * m_scale.x),
-		pos.y - (CheckBox::CHECKBOX_SIZE_Y / 2 * m_scale.y));
+	m_position = glm::vec2(pos.x - (ArrowButton::ARROW_BUTTON_SIZE_X / 2 * m_scale.x),
+		pos.y - (ArrowButton::ARROW_BUTTON_SIZE_Y / 2 * m_scale.y));
 
 	m_text->SetData(m_position);
 }
