@@ -45,7 +45,7 @@ std::shared_ptr<GuiVertexBuffer> Gui::m_vertex_sl	= NULL;
 
 void Gui::Init(GLFWwindow * handler)
 {
-	glDisable(GL_DEPTH);
+	
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
@@ -104,12 +104,14 @@ void Gui::Init(GLFWwindow * handler)
 
 	for (unsigned int i = 0; i < m_wrappers.size(); ++i)
 	{
+	
 		m_wrappers[i]->Init(m_vertex_w->GetVBO(), m_index->GetVBO());
 		m_wrappers[i]->SetData(glm::vec2(1, 1));
 		m_wrappers[i]->InitButtons(m_vertex_b->GetVBO(), m_index->GetVBO());
 		m_wrappers[i]->InitArrButtons(m_vertex_ab->GetVBO(), m_index->GetVBO());
 		m_wrappers[i]->InitCheckBoxes(m_vertex_chb->GetVBO(), m_index->GetVBO());
 		m_wrappers[i]->InitSliders(m_vertex_sl->GetVBO(), m_index->GetVBO());
+	
 	}
 
 	Initialized = true;
@@ -141,15 +143,15 @@ void Gui::Render()
 			slider_texture->Bind(0);
 			m_wrappers[j]->DrawSliders(*guiShader, *transform);
 	
-			guiShader->UpdateTransparency(0.4);
+			guiShader->UpdateTransparency(0.6);
 			wrp_texture->Bind(0);
 			m_wrappers[j]->Draw(*guiShader, *transform);
 			
 	
 		}
 	}
-
-
+	
+	glDepthFunc(GL_LESS);
 }
 
 void Gui::Update()
@@ -197,14 +199,17 @@ void Gui::HandleWrapperClick(GuiEvent & event)
 				GuiMouseButtonPressEvent& e = (GuiMouseButtonPressEvent&)event;
 				if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
 				{
-					//temporary
-					m_wrappers[i]->SetWidgetsNextTo();
+					
 					if (m_wrappers[i]->Exit(glm::vec2(m_mousePosX, m_mousePosY)))
 					{
 
 					}
 				}
-				if (e.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
+				else if (e.GetButton() == GLFW_MOUSE_BUTTON_MIDDLE)
+				{
+					m_wrappers[i]->SetWidgetsNextTo();
+				}
+				else if (e.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
 				{
 					if (!EDIT_WIDGET)
 					{
@@ -238,7 +243,7 @@ void Gui::HandleWidgetClick(GuiEvent& event)
 						EDIT_WIDGET = true;
 
 					}
-					if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
+					else if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
 					{
 						if (m_wrappers[j]->GetWidgets()[i]->Clicked() == true)
 						{

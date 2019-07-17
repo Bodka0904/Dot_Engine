@@ -67,7 +67,7 @@ public:
 				{2, Dot::ShaderDataType::Float2, "texCoord" },
 			
 		};
-
+		
 		test_positions.resize(5);		
 		transform.GetPos().x += 100;
 		test_positions[0] = transform.GetModel();

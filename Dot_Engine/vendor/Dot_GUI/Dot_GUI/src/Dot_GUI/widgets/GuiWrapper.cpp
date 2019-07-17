@@ -228,7 +228,7 @@ void GuiWrapper::SetWidget(int index,glm::vec2 position)
 void GuiWrapper::SetWidgetsNextTo()
 {
 	float xoffset = 0.0f;
-	float yoffset = 0.0f;
+	float yoffset = 20.0f;
 
 	for (int i = 0; i < num_buttons; ++i)
 	{
@@ -237,10 +237,10 @@ void GuiWrapper::SetWidgetsNextTo()
 		m_widgets[i]->SetData(position);
 
 		yoffset += (Button::BUTTON_SIZE_Y + 20);
-		if (yoffset >= Wrapper::WRAPPER_SIZE_Y * m_scale.y)
+		if (yoffset >= (Wrapper::WRAPPER_SIZE_Y * m_scale.y) - Button::BUTTON_SIZE_Y)
 		{
 			xoffset += (Button::BUTTON_SIZE_X + 20);
-			yoffset = 0.0f;
+			yoffset = 20.0f;
 		};
 	}
 
@@ -249,13 +249,13 @@ void GuiWrapper::SetWidgetsNextTo()
 		glm::vec2 position = glm::vec2(m_position.x + xoffset + (ArrowButton::ARROW_BUTTON_SIZE_X / 2), m_position.y + yoffset + (ArrowButton::ARROW_BUTTON_SIZE_Y / 2));
 		m_widgets[i]->SetData(position);
 
-		
 		yoffset += (ArrowButton::ARROW_BUTTON_SIZE_Y + 20);
-		if (yoffset >= Wrapper::WRAPPER_SIZE_Y * m_scale.y)
+		if (yoffset >= (Wrapper::WRAPPER_SIZE_Y * m_scale.y) - ArrowButton::ARROW_BUTTON_SIZE_Y )
 		{
 			xoffset += (ArrowButton::ARROW_BUTTON_SIZE_X + 20);
-			yoffset = 0.0f;
+			yoffset = 20.0f;
 		};
+		
 		
 	}
 
@@ -264,27 +264,27 @@ void GuiWrapper::SetWidgetsNextTo()
 		glm::vec2 position = glm::vec2(m_position.x + xoffset + (CheckBox::CHECKBOX_SIZE_X / 2), m_position.y + yoffset + (CheckBox::CHECKBOX_SIZE_Y / 2));
 		m_widgets[i]->SetData(position);
 
-
 		yoffset += (CheckBox::CHECKBOX_SIZE_Y + 20);
-		if (yoffset >= Wrapper::WRAPPER_SIZE_Y * m_scale.y)
+		if (yoffset >= (Wrapper::WRAPPER_SIZE_Y * m_scale.y) - CheckBox::CHECKBOX_SIZE_Y)
 		{
-			xoffset += (CheckBox::CHECKBOX_SIZE_X + 20);
-			yoffset = 0.0f;
+			xoffset += (Button::BUTTON_SIZE_X + 20);
+			yoffset = 20.0f;
 		};
+		
 	}
 
 	for (int i = GetSlidersIndexed().x; i < GetSlidersIndexed().y; ++i)
 	{
 		glm::vec2 position = glm::vec2(m_position.x + xoffset + (Slider::SLIDER_SIZE_X / 2), m_position.y + yoffset + (Slider::SLIDER_SIZE_Y / 2));
 		m_widgets[i]->SetData(position);
-
-
-		yoffset += (Slider::SLIDER_SIZE_Y + 20);
-		if (yoffset >= Wrapper::WRAPPER_SIZE_Y * m_scale.y)
+		yoffset += (Button::BUTTON_SIZE_Y + 20);
+		if (yoffset >= (Wrapper::WRAPPER_SIZE_Y * m_scale.y) - Slider::SLIDER_SIZE_Y)
 		{
 			xoffset += (Slider::SLIDER_SIZE_X + 20);
-			yoffset = 0.0f;
+			yoffset = 20.0f;
 		};
+		
+		
 	}
 
 }

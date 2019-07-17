@@ -13,9 +13,6 @@
     <Filter Include="src\Dot\Debug\OpenGL">
       <UniqueIdentifier>{4DDFD8F2-396E-62BC-E28C-76B7CEFA7262}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Debug\Windows">
-      <UniqueIdentifier>{73A310A6-DF0F-CCA0-A803-64FE142FEE08}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Dot\Events">
       <UniqueIdentifier>{072AC2DA-F3F7-B5E0-DC8B-2607C8F89145}</UniqueIdentifier>
     </Filter>
@@ -51,6 +48,12 @@
     </Filter>
     <Filter Include="src\Platform\OpenGL">
       <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows\Timer">
+      <UniqueIdentifier>{6B4EF615-575E-A2E6-C017-0705AC46917F}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -178,6 +181,9 @@
       <Filter>src\Dot\Terrain</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\BmpLoader.h">
+      <Filter>src\Dot\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Timer.h">
       <Filter>src\Dot\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
@@ -1281,6 +1287,9 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Text\text2D.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\DDsTexture.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\TextShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1288,9 +1297,6 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Debug\Log.cpp">
       <Filter>src\Dot\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Debug\Windows\WinTimer.cpp">
-      <Filter>src\Dot\Debug\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp">
       <Filter>src\Dot\Graphics</Filter>
@@ -1352,11 +1358,17 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\Timer\Timer.cpp">
+      <Filter>src\Platform\Windows\Timer</Filter>
+    </ClCompile>
     <ClCompile Include="src\stdafx.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Text\text2D.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\DDsTexture.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\TextShader.cpp" />
   </ItemGroup>
 </Project>

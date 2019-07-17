@@ -7,6 +7,7 @@ namespace Dot {
 
 	ArrayBuffer::ArrayBuffer()
 	{
+		
 		glGenVertexArrays(1, &m_VAO);
 	}
 

@@ -120,6 +120,9 @@
     <ClInclude Include="src\Dot\Graphics\Shaders\Shader.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\WorldShader.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\text2D.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\DDsTexture.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\TextShader.h" />
     <ClInclude Include="src\Dot\Graphics\Transform.h" />
     <ClInclude Include="src\Dot\Graphics\Window.h" />
     <ClInclude Include="src\Dot\Gui\GuiLayer.h" />
@@ -131,6 +134,7 @@
     <ClInclude Include="src\Dot\Terrain\TerrainEditor.h" />
     <ClInclude Include="src\Dot\Terrain\TerrainEditorLayer.h" />
     <ClInclude Include="src\Dot\Utils\BmpLoader.h" />
+    <ClInclude Include="src\Dot\Utils\Timer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -502,7 +506,6 @@
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp" />
     <ClCompile Include="src\Dot\Debug\Log.cpp" />
-    <ClCompile Include="src\Dot\Debug\Windows\WinTimer.cpp" />
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\ArrayBuffer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffer.cpp" />
@@ -514,6 +517,9 @@
     <ClCompile Include="src\Dot\Graphics\Shaders\Shader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\WorldShader.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\text2D.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\DDsTexture.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\TextShader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Window.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiLayer.cpp" />
     <ClCompile Include="src\Dot\Input.cpp" />
@@ -523,6 +529,7 @@
     <ClCompile Include="src\Dot\Terrain\TerrainEditorLayer.cpp" />
     <ClCompile Include="src\Dot\Utils\BmpLoader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\Windows\Timer\Timer.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

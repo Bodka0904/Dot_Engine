@@ -31,19 +31,18 @@ namespace Dot {
 	
 	} BITMAPINFOHEADER, *PBITMAPINFOHEADER;
 
+	typedef struct tagRGBTRIPLE {
+		BYTE    rgbtBlue;
+		BYTE    rgbtGreen;
+		BYTE    rgbtRed;
+	} RGBTRIPLE, * PRGBTRIPLE;
+
 #pragma pack()
 
-	struct RGB {
-		RGB(float r,float g,float b)
-			:R(r),G(g),B(b)
-		{}
-
-		float R, G, B;
-	};
 	struct BMPIMAGE {
-		std::vector<RGB> rgb;
-		int width;
-		int height;
+		BITMAPINFOHEADER infoHeader;
+		BITMAPFILEHEADER fileHeader;
+		RGBTRIPLE rgb;
 	};
 
 

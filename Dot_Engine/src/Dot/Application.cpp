@@ -28,8 +28,14 @@ namespace Dot {
 
 		m_Window->vSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+	
 		
-		
+	
+
+		initText2D("res/fonts/Holstein.DDS");
+
+		test = "HELLO";
 		if (!Gui::Inited())
 		{
 			Gui::Init(m_Window->GetWindow());
@@ -55,9 +61,10 @@ namespace Dot {
 			{
 				layer->OnUpdate();
 			}
-
+			printText2D("Hello",10,500,100);
 			m_Window->Update();
 
+			
 			timer.FrameCount();
 		}
 	
