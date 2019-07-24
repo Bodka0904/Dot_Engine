@@ -20,7 +20,7 @@ public:
 	
 
 	virtual bool &Clicked() override { return clicked; }
-	virtual float GetValue() const override {return m_value*100; }
+	virtual float GetValue() const override {return (1-m_value)*100; }
 
 
 	virtual bool MouseHoover(glm::vec2 mousePos) override;

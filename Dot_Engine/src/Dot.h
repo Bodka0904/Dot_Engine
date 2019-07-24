@@ -10,7 +10,7 @@
 
 #include "Dot/Gui/GuiLayer.h"
 #include "Dot/EntryPoint.h"
-
+#include "Dot/Utils/Timestep.h"
 
 #include "Dot/Graphics/ObjLoader.h"
 #include "Dot/Graphics/Renderer/Renderer.h"

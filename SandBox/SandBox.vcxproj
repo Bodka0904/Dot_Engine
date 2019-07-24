@@ -98,6 +98,12 @@
       <Project>{21301712-0DE8-585F-76EF-31BB62C6F34F}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Gido\Downloads\arial.fnt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\Gido\Downloads\arial.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

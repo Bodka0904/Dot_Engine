@@ -320,9 +320,9 @@ bool GuiWrapper::PinToSide(glm::vec2& winSize)
 		m_text->SetData(glm::vec2(winSize.x / 2 - 20, 20));
 		m_pinned = true;
 		m_scale.y = 0.5;
-		m_scale.x = winSize.x / (Wrapper::WRAPPER_SIZE_X * m_scale.x);
+		m_scale.x = (winSize.x - Wrapper::WRAPPER_SIZE_X) / (Wrapper::WRAPPER_SIZE_X * m_scale.x);
 
-		m_position.x = 0;
+		m_position.x = Wrapper::WRAPPER_SIZE_X * 0.5;
 		m_position.y = 0;
 		return true;
 
@@ -332,9 +332,9 @@ bool GuiWrapper::PinToSide(glm::vec2& winSize)
 		m_text->SetData( glm::vec2(winSize.x/2-20,winSize.y-20));
 		m_pinned = true;
 		m_scale.y = 0.5;
-		m_scale.x = winSize.x / (Wrapper::WRAPPER_SIZE_X * m_scale.x);
+		m_scale.x = (winSize.x - Wrapper::WRAPPER_SIZE_X) / (Wrapper::WRAPPER_SIZE_X * m_scale.x);
 
-		m_position.x = 0;
+		m_position.x = Wrapper::WRAPPER_SIZE_X * 0.5;
 		m_position.y = winSize.y - (Wrapper::WRAPPER_SIZE_Y*m_scale.y);
 		return true;
 	}
@@ -386,31 +386,31 @@ glm::vec2 GuiWrapper::GetPosition() const
 
 void GuiWrapper::AddButton(func_ptr func, const std::string & name)
 {
-	m_user_callbacks.emplace(m_user_callbacks.begin(), func);
-	m_widgets.emplace(m_widgets.begin(), new GuiButton(name));
+	m_user_callbacks.emplace(m_user_callbacks.begin() + num_buttons, func);
+	m_widgets.emplace(m_widgets.begin() + num_buttons, new GuiButton(name));
 	num_buttons++;
 
 }
 
 void GuiWrapper::AddArrowButton(func_ptr func, const std::string & name)
 {
-	m_user_callbacks.emplace(m_user_callbacks.begin() + num_buttons, func);
-	m_widgets.emplace(m_widgets.begin() + num_buttons, new GuiArrowButton(name));
+	m_user_callbacks.emplace(m_user_callbacks.begin() + num_arrow_btns + num_buttons, func);
+	m_widgets.emplace(m_widgets.begin() +num_arrow_btns + num_buttons, new GuiArrowButton(name));
 	num_arrow_btns++;
 	
 }
 
 void GuiWrapper::AddCheckBox(func_ptr func, const std::string & name)
 {
-	m_user_callbacks.emplace(m_user_callbacks.begin() + num_buttons + num_arrow_btns, func);
-	m_widgets.emplace(m_widgets.begin() + num_buttons + num_arrow_btns, new GuiCheckBox(name));
+	m_user_callbacks.emplace(m_user_callbacks.begin() + num_buttons + num_arrow_btns + num_checkboxes, func);
+	m_widgets.emplace(m_widgets.begin() + num_buttons + num_arrow_btns + num_checkboxes, new GuiCheckBox(name));
 	num_checkboxes++;
 	
 }
 
 void GuiWrapper::AddSlider(const std::string & name)
 {
-	m_widgets.emplace(m_widgets.begin() + num_buttons + num_checkboxes + num_arrow_btns, new GuiSlider(name));
+	m_widgets.emplace(m_widgets.begin() + num_buttons + num_checkboxes + num_arrow_btns + num_sliders, new GuiSlider(name));
 	num_sliders++;
 	
 }

@@ -17,6 +17,7 @@ namespace Dot {
 
 	Window::~Window()
 	{	
+		
 	}
 
 	void Window::Init()
@@ -129,10 +130,11 @@ namespace Dot {
 	void Window::Destroy()
 	{
 		LOG_WARN("Window: Close");
-	
+		
+		delete m_Context;
 		glfwDestroyWindow(m_window);
 		glfwTerminate();
-
+	
 	}
 
 

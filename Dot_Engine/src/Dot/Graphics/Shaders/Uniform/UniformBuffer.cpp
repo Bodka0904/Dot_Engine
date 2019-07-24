@@ -25,6 +25,5 @@ void Dot::UniformBuffer::Update(const void* data)
 	glBindBuffer(GL_UNIFORM_BUFFER, m_UBO);
 	GLvoid* p = glMapBuffer(GL_UNIFORM_BUFFER, GL_WRITE_ONLY);
 	memcpy(p, data, m_size);
-	glUnmapBuffer(GL_UNIFORM_BUFFER);
-
+	glUnmapBuffer(GL_UNIFORM_BUFFER);	
 }

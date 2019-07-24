@@ -11,7 +11,7 @@ namespace Dot {
 		~TerrainEditorLayer();
 
 		virtual void OnAttach() override;
-		virtual void OnUpdate() override;
+		virtual void OnUpdate(Timestep ts) override;
 		virtual void OnEvent(Event& event) override;
 		virtual void OnDetach() override;
 

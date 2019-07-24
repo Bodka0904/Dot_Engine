@@ -29,7 +29,7 @@ namespace Dot {
 
 	void Renderer::Submit(const std::shared_ptr<Shader>shader, const std::shared_ptr<Mesh>& mesh)
 	{
-	
+		
 		shader->Bind();
 		shader->Update();	
 		shader->UploadUniformMat4("ModelMatrix", mesh->GetModelMatrix());
@@ -41,6 +41,7 @@ namespace Dot {
 
 	void Renderer::SubmitInstances(const std::shared_ptr<Shader> shader, const std::shared_ptr<InstancedMesh>& mesh)
 	{
+		
 		shader->Bind();
 		shader->Update();
 		mesh->GetVao()->Bind();
@@ -49,7 +50,7 @@ namespace Dot {
 	}
 
 	void Renderer::EndScene(const std::shared_ptr<Shader>shader)
-	{
+	{		
 		shader->UpdateUniformBufferObject("camera_data", m_SceneData);
 	}
 }

@@ -120,6 +120,7 @@ void Gui::Init(GLFWwindow * handler)
 
 void Gui::Render()
 {	
+	glEnable(GL_BLEND);
 	
 	for (unsigned int j = 0; j < m_wrappers.size(); ++j)
 	{
@@ -147,11 +148,11 @@ void Gui::Render()
 			wrp_texture->Bind(0);
 			m_wrappers[j]->Draw(*guiShader, *transform);
 			
-	
 		}
 	}
 	
-	glDepthFunc(GL_LESS);
+	glDisable(GL_BLEND);
+
 }
 
 void Gui::Update()
@@ -182,6 +183,7 @@ void Gui::Update()
 
 void Gui::Clear()
 {
+	
 }
 
 
@@ -383,6 +385,7 @@ void Gui::Gui_WindowSizeCallback(GLFWwindow* window, int width, int height)
 
 		transform->SetOrtho(glm::vec2(width, height));
 		GuiText::UpdateViewPort(width, height);
+
 	}
 }
 

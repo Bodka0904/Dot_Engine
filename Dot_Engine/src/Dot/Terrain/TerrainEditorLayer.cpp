@@ -26,7 +26,7 @@ namespace Dot {
 		Gui::GetWrapper(wrap.terrain_editor_wrapper).AddCheckBox(BIND_FN(RenderTerrain), "render");
 
 	}
-	void TerrainEditorLayer::OnUpdate()
+	void TerrainEditorLayer::OnUpdate(Timestep ts)
 	{
 		
 	}

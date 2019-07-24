@@ -13,6 +13,7 @@ namespace Dot {
 
 	Texture::~Texture()
 	{
+	
 		glDeleteTextures(0, &data.texture);
 	}
 
@@ -45,7 +46,6 @@ namespace Dot {
 		{
 			stbi_image_free(data.imageData);
 		}
-
 	}
 
 	void Texture::Bind(unsigned int unit)

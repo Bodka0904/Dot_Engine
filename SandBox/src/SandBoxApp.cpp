@@ -8,7 +8,7 @@ public:
 	TestLayer()
 		: 
 		Dot::Layer(),
-		camera(50.0f,1280.0f/720.0f,0.01f,1000.0f)
+		camera(50.0f,1280.0f/720.0f,1.0f,1000.0f)
 	{
 
 	}
@@ -83,43 +83,43 @@ public:
 		test.reset(new Dot::InstancedMesh("res/models/Dot/test.obj", layout_test, test_positions));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Dot::Timestep ts) override
 	{
+		//LOG_INFO("%f ms %f s", ts.GetMiliseconds(), ts.GetSeconds());
 		//CAMERA CONTROL - DEBUG PURPOSE
 		
 		if (Dot::Input::IsKeyPressed(D_KEY_W))
 		{
-			camera.GetTarget().y += 0.005;
+			camera.GetTarget().y += m_CameraRotationSpeed * ts;
 		}
 		if (Dot::Input::IsKeyPressed(D_KEY_S))
 		{
-			camera.GetTarget().y -= 0.005;
+			camera.GetTarget().y -= m_CameraRotationSpeed * ts;
 		}
 		if (Dot::Input::IsKeyPressed(D_KEY_A))
 		{
-			camera.GetRotation().y += 0.01;
+			camera.GetRotation().y += m_CameraRotationSpeed * ts;
 			camera.GetTarget().x = sin(camera.GetRotation().y);
 			camera.GetTarget().z = cos(camera.GetRotation().y);
 		}
 		if (Dot::Input::IsKeyPressed(D_KEY_D))
 		{
-			camera.GetRotation().y -= 0.01;
+			camera.GetRotation().y -= m_CameraRotationSpeed * ts;
 			camera.GetTarget().x = sin(camera.GetRotation().y);
 			camera.GetTarget().z = cos(camera.GetRotation().y);
 		}
 		if (Dot::Input::IsKeyPressed(D_KEY_UP))
 		{
-			camera.GetPosition() += glm::vec3(0.1, 0.1, 0.1) * camera.GetTarget();
+			camera.GetPosition() += glm::vec3(m_CameraMoveSpeed * ts, m_CameraMoveSpeed * ts, m_CameraMoveSpeed * ts) * camera.GetTarget();
 		}
 		if (Dot::Input::IsKeyPressed(D_KEY_DOWN))
 		{
-			camera.GetPosition() -= glm::vec3(0.1, 0.1, 0.1) * camera.GetTarget();
+			camera.GetPosition() -= glm::vec3(m_CameraMoveSpeed * ts, m_CameraMoveSpeed * ts, m_CameraMoveSpeed * ts) * camera.GetTarget();
 		}
 		
 		
 
 		Dot::Renderer::Clear(glm::vec4(0.4, 0.5, 0.7, 0.0));
-
 		texture.Bind(0);
 	
 		//transform.SetScale(glm::vec3(1, 1, 1));
@@ -129,12 +129,14 @@ public:
 		//transform.GetPos().z = 100;
 		camera.UpdateViewMatrix();
 		cube->SetModelMatrix(transform.GetModel());
+		
 		Dot::Renderer::BeginScene(camera);
 		{
 			Dot::Renderer::Submit(WorldShader,cube);
 			Dot::Renderer::SubmitInstances(InstanceShader, test);
 		}
 		Dot::Renderer::EndScene(WorldShader);
+		
 	}
 
 	void OnEvent(Event & event) override
@@ -179,11 +181,11 @@ public:
 			MouseScrollEvent& e = (MouseScrollEvent&)event;
 			if (e.GetValue() > 0)
 			{
-				camera.GetPosition().y += 0.05;
+				
 			}
 			else if (e.GetValue() < 0)
 			{
-				camera.GetPosition().y -= 0.05;
+				
 			}
 		}
 
@@ -198,6 +200,10 @@ private:
 	std::shared_ptr<Dot::Shader> InstanceShader;
 	std::vector<glm::mat4>test_positions;
 	std::shared_ptr<Dot::WorldShader> WorldShader;
+
+
+	float m_CameraMoveSpeed = 20.0f;
+	float m_CameraRotationSpeed = 2.0f;
 };
 
 

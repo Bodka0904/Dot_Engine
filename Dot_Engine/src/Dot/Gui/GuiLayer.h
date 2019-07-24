@@ -2,6 +2,7 @@
 #include "Dot/Layer.h"
 #include "Dot/Terrain/TerrainEditor.h"
 
+
 namespace Dot {
 
 	class GuiLayer : public Layer
@@ -11,7 +12,7 @@ namespace Dot {
 		~GuiLayer();
 
 		void OnAttach() override;
-		void OnUpdate() override;
+		void OnUpdate(Timestep ts) override;
 
 		void ButtonAction();
 		void CheckBoxAction();

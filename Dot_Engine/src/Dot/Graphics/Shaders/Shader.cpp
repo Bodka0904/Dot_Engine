@@ -146,6 +146,11 @@ namespace Dot {
 		glUniformMatrix4fv(m_Uniforms[name], 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 
+	void Shader::UploadUniformVec2(const std::string& name, const glm::vec2& vector)
+	{
+		glUniform2f(m_Uniforms[name],vector.x,vector.y);
+	}
+
 	void Shader::UploadFloat(const std::string& name, float value)
 	{
 		glUniform1f(m_Uniforms[name], value);

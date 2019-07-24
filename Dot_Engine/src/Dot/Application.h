@@ -4,10 +4,8 @@
 #include "Events/Event.h"
 #include "Gui/GuiLayer.h"
 #include "Dot/Terrain/TerrainEditorLayer.h"
-#include "Utils/Timer.h"
-#include "Graphics/Text/text2D.h"
-#include "Graphics/Text/DDsTexture.h"
-#include "Graphics/Text/TextShader.h"
+#include "Dot/Graphics/Text/Text.h"
+
 
 
 namespace Dot {
@@ -38,6 +36,8 @@ namespace Dot {
 		TerrainEditorLayer* m_Ter_editor_layer;
 		
 
+		std::shared_ptr<Text> text;
+
 		unsigned int m_LayerInsertIndex = 0;
 		unsigned int m_VertexArray;
 		unsigned int m_VertexBuffer;
@@ -45,12 +45,9 @@ namespace Dot {
 
 		static Application* s_Instance;
 
-
 	private:
-		unsigned int Texture;
-		unsigned int TextureID;
-		unsigned int programID;
-		std::string test;
+		float m_LastFrameTime = 0;
+
 	};
 
 	// To be defined in CLIENT

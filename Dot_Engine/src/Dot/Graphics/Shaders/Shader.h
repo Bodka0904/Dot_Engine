@@ -62,6 +62,7 @@ namespace Dot {
 
 		virtual void AddUniform(const std::string& name);
 		virtual void UploadUniformMat4(const std::string& name,const glm::mat4& matrix);
+		virtual void UploadUniformVec2(const std::string& name,const glm::vec2& vector);
 		virtual void UploadFloat(const std::string& name, float value);
 	private:
 		static std::string LoadShader(const std::string& filename);

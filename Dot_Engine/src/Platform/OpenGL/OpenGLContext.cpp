@@ -15,7 +15,6 @@ OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
 
 OpenGLContext::~OpenGLContext()
 {
-	
 }
 
 void OpenGLContext::Init()
@@ -35,7 +34,7 @@ void OpenGLContext::Init()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LESS);
+
 }
 
 void OpenGLContext::SwapBuffers()

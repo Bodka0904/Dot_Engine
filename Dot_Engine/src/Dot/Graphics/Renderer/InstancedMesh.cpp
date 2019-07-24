@@ -34,7 +34,7 @@ namespace Dot {
 	}
 	InstancedMesh::~InstancedMesh()
 	{
-
+		
 	}
 	std::shared_ptr<ArrayBuffer> InstancedMesh::GetVao()
 	{

@@ -183,9 +183,6 @@
     <ClInclude Include="src\Dot\Utils\BmpLoader.h">
       <Filter>src\Dot\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Timer.h">
-      <Filter>src\Dot\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -1287,9 +1284,15 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Text\text2D.h" />
-    <ClInclude Include="src\Dot\Graphics\Text\DDsTexture.h" />
+    <ClInclude Include="src\Dot\Utils\Timestep.h">
+      <Filter>src\Dot\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\Text2D.h" />
     <ClInclude Include="src\Dot\Graphics\Text\TextShader.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\DDsTexture.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\Font.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\Text.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1358,17 +1361,17 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\Windows\Timer\Timer.cpp">
-      <Filter>src\Platform\Windows\Timer</Filter>
-    </ClCompile>
     <ClCompile Include="src\stdafx.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Text\text2D.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Text\DDsTexture.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\Text2D.cpp" />
     <ClCompile Include="src\Dot\Graphics\Text\TextShader.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\DDsTexture.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\Font.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\Text.cpp" />
   </ItemGroup>
 </Project>

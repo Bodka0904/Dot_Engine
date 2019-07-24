@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "Application.h"
 #include "Dot_GUI/src/Gui.h"
-
+#include "Dot/Utils/Timestep.h"
+#include "Dot/Graphics/Text/Text2D.h"
+#include "Dot/Graphics/Text/Font.h"
 
 namespace Dot {
 
@@ -25,17 +27,15 @@ namespace Dot {
 		PushOverlay(m_GuiLayer);
 
 		
-
 		m_Window->vSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
-	
 		
-	
+		InitText2D("res/fonts/Arial.DDS");
 
-		initText2D("res/fonts/Holstein.DDS");
+		Font::AddFont("Arial","res/fonts/Arial.DDS");
+		text.reset(new Text("TEST", 20, 50, 12));
 
-		test = "HELLO";
 		if (!Gui::Inited())
 		{
 			Gui::Init(m_Window->GetWindow());
@@ -48,24 +48,31 @@ namespace Dot {
 
 		for (Layer* layer : m_Layers)
 			delete layer;
+
+
 	}
 
 	void Application::Run()
 	{
 		
-		Timer timer;
+		
 		while (!m_Window->IsClosed())
 		{
 			
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+			
 			for (Layer* layer : m_Layers)
 			{
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
-			printText2D("Hello",10,500,100);
+			printText2D("Hello", 20, 50, 12);
+			text->PrintText("Arial");
 			m_Window->Update();
 
 			
-			timer.FrameCount();
+			
 		}
 	
 		m_Window->Destroy();

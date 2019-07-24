@@ -1,4 +1,4 @@
-
+#include <iostream>
 #ifndef GL_TEXT_H
 #define GL_TEXT_H
 #include "../GuiTransform.h"
@@ -1219,12 +1219,13 @@ GLT_API GLboolean _gltCreateText2DFontTexture(void)
 		u2 = (GLfloat)glyphWidth / (GLfloat)texWidth;
 		v2 = (GLfloat)glyphHeight / (GLfloat)texHeight;
 
+
 		glyph->u1 = u1;
 		glyph->v1 = v1;
-
+	
 		glyph->u2 = u1 + u2;
 		glyph->v2 = v1 + v2;
-
+	
 		texX += glyphMarginLeft;
 		texY += glyphMarginTop;
 
