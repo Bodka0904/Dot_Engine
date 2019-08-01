@@ -1,6 +1,5 @@
 #pragma once
 #include "Dot/Layer.h"
-#include "Dot/Terrain/TerrainEditor.h"
 
 
 namespace Dot {
@@ -13,6 +12,7 @@ namespace Dot {
 
 		void OnAttach() override;
 		void OnUpdate(Timestep ts) override;
+		void OnEvent(Event& event)override;
 
 		void ButtonAction();
 		void CheckBoxAction();
@@ -22,17 +22,8 @@ namespace Dot {
 		void TestVisibleOn();
 
 	private:
-		// TEST PURPOSE
-		TerrainEditor editor;
-		std::shared_ptr<Terrain> terrain;
+		unsigned int main;
+		unsigned int test;
 
-
-		struct Wrappers
-		{
-			int main_wrapper;
-			int test_wrapper;
-		};
-
-		Wrappers wrap;
 	};
 }

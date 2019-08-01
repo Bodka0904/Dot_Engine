@@ -51,6 +51,11 @@ namespace Dot {
 		{
 			std::cerr << "Unable to load mesh: " << fileName << std::endl;
 		}
+
+		for (int i = 0; i < vertices.size(); ++i)
+		{
+			m_vertex.push_back(VertexTexture(vertices[i], normals[i], uvs[i]));
+		}
 	}
 
 	void IndexedModel::CalcNormals()
@@ -69,16 +74,14 @@ namespace Dot {
 			m_vertex[i0].normal += normal;
 			m_vertex[i1].normal += normal;
 			m_vertex[i2].normal += normal;
-			//normals[i0] += normal;
-			//normals[i1] += normal;
-			//normals[i2] += normal;
+			
 		}
 
 		for (unsigned int i = 0; i < m_vertex.size(); i++)
 		{
 			m_vertex[i].normal = glm::normalize(m_vertex[i].normal);
 		}
-		//normals[i] = glm::normalize(normals[i]);
+	
 	}
 
 	IndexedModel OBJModel::ToIndexedModel()
@@ -134,6 +137,8 @@ namespace Dot {
 			else
 				normalModelIndex = it->second;
 
+			
+			
 			//Create model which properly separates texture coordinates
 			unsigned int previousVertexLocation = FindLastVertexIndex(indexLookup, currentIndex, result);
 
@@ -152,7 +157,8 @@ namespace Dot {
 			result.indices.push_back(resultModelIndex);
 			indexMap.insert(std::pair<unsigned int, unsigned int>(resultModelIndex, normalModelIndex));
 		}
-
+		
+		
 		if (!hasNormals)
 		{
 
@@ -163,6 +169,8 @@ namespace Dot {
 				result.m_vertex[i].normal = normalModel.m_vertex[indexMap[i]].normal;
 			}
 		}
+
+	
 
 		return result;
 	};

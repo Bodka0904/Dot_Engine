@@ -21,7 +21,7 @@ public:
 				{2, Dot::ShaderDataType::Float2, "texCoord" },
 				
 		};
-		cube.reset(new Dot::Mesh("res/models/Dot/test.obj", layout));
+		cube.reset(new Dot::Mesh("res/models/Dot/bear.obj", layout));
 		
 
 		Dot::ShaderLayout s_layout = {
@@ -42,7 +42,7 @@ public:
 		WorldShader->AddUniform("ModelMatrix");
 		WorldShader->AddUniform("time");
 		
-		texture.Create("res/textures/Dot/grass.jpg");
+		texture.Create("res/textures/Dot/treehill.png");
 		texture.Bind(0);
 
 
@@ -69,18 +69,19 @@ public:
 		};
 		
 		test_positions.resize(5);		
-		transform.GetPos().x += 100;
+		transform.GetPos().x += 30;
+		transform.SetScale(glm::vec3(10, 10, 10));
 		test_positions[0] = transform.GetModel();
-		transform.GetPos().x += 100;
+		transform.GetPos().x += 30;
 		test_positions[1] = transform.GetModel();
-		transform.GetPos().x += 100;
+		transform.GetPos().x += 30;
 		test_positions[2] = transform.GetModel();
-		transform.GetPos().x += 100;
+		transform.GetPos().x += 30;
 		test_positions[3] = transform.GetModel();
 		transform.GetPos().x = 0;
 
-
-		test.reset(new Dot::InstancedMesh("res/models/Dot/test.obj", layout_test, test_positions));
+		bearTex.Create("res/textures/Dot/bear.png");
+		test.reset(new Dot::InstancedMesh("res/models/Dot/treehill.obj", layout_test, test_positions));
 	}
 
 	void OnUpdate(Dot::Timestep ts) override
@@ -122,7 +123,7 @@ public:
 		Dot::Renderer::Clear(glm::vec4(0.4, 0.5, 0.7, 0.0));
 		texture.Bind(0);
 	
-		//transform.SetScale(glm::vec3(1, 1, 1));
+		transform.SetScale(glm::vec3(20, 20, 20));
 		//transform.GetRot().y += 0.01f;
 		//transform.GetRot().x += 0.01;
 		//transform.GetRot().z += 0.01;
@@ -132,31 +133,33 @@ public:
 		
 		Dot::Renderer::BeginScene(camera);
 		{
+			bearTex.Bind(0);
 			Dot::Renderer::Submit(WorldShader,cube);
+			
+			texture.Bind(0);
 			Dot::Renderer::SubmitInstances(InstanceShader, test);
 		}
 		Dot::Renderer::EndScene(WorldShader);
 		
 	}
 
-	void OnEvent(Event & event) override
+	void OnEvent(Dot::Event & event) override
 	{
-		
-		if (event.GetEventType() == EventType::MouseButtonPressed)
+		if (event.GetEventType() == Dot::EventType::MouseButtonPressed)
 		{
-			MouseButtonPressEvent& e = (MouseButtonPressEvent&)event;
+			Dot::MouseButtonPressEvent& e = (Dot::MouseButtonPressEvent&)event;
 			if (e.GetButton() == D_MOUSE_BUTTON_LEFT)
 			{
-				
+			
 			}
 			if (e.GetButton() == D_MOUSE_BUTTON_RIGHT)
 			{
-				
+			
 			}
 		}
-		else if (event.GetEventType() == EventType::KeyPressed)
+		else if (event.GetEventType() == Dot::EventType::KeyPressed)
 		{
-			KeyPressedEvent& e = (KeyPressedEvent&)event;
+			Dot::KeyPressedEvent& e = (Dot::KeyPressedEvent&)event;
 			if (e.GetKey() == D_KEY_LEFT)
 			{
 				
@@ -176,9 +179,9 @@ public:
 			
 			}
 		}
-		else if (event.GetEventType() == EventType::MouseScroll)
+		else if (event.GetEventType() == Dot::EventType::MouseScroll)
 		{
-			MouseScrollEvent& e = (MouseScrollEvent&)event;
+			Dot::MouseScrollEvent& e = (Dot::MouseScrollEvent&)event;
 			if (e.GetValue() > 0)
 			{
 				
@@ -195,6 +198,7 @@ private:
 	Dot::Camera camera;
 	Dot::Transform transform;
 	Dot::Texture texture;
+	Dot::Texture bearTex;
 	std::shared_ptr<Dot::Mesh> cube;
 	std::shared_ptr<Dot::InstancedMesh> test;
 	std::shared_ptr<Dot::Shader> InstanceShader;

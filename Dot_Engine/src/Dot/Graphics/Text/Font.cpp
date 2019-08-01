@@ -24,6 +24,7 @@ namespace Dot {
 		}
 		
 	}
+	
 	void Font::AddFont(const std::string& name,const std::string& imagepath)
 	{
 		m_FontTexture[name] = LoadDDSFont(imagepath.c_str());

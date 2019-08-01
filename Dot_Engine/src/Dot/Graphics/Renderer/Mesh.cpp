@@ -13,7 +13,7 @@ namespace Dot {
 
 		m_VAO.reset(new Dot::ArrayBuffer);
 		Dot::IndexedModel model = Dot::OBJModel(filename).ToIndexedModel();
-
+		
 
 		m_VBO.reset((new Dot::VertexBuffer((Dot::VertexTexture*) & model.m_vertex[0], model.m_vertex.size() * sizeof(Dot::VertexTexture), Static_Buffer_Update)));
 		m_VBO->SetLayout(layout);

@@ -15,6 +15,7 @@
 #include "Dot/Graphics/ObjLoader.h"
 #include "Dot/Graphics/Renderer/Renderer.h"
 #include "Dot/Graphics/Renderer/Camera/Camera.h"
+#include "Dot/Graphics/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Graphics/Shaders/Shader.h"
 #include "Dot/Graphics/Shaders/WorldShader.h"
 #include "Dot/Graphics/Renderer/Mesh.h"

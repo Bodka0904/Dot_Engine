@@ -24,7 +24,7 @@ namespace Dot {
 		m_VBO->SetLayout(layout);
 		m_VAO->AddVBO(m_VBO);
 		
-		m_VBO_MAT.reset((new VertexBuffer(&matrices[0], m_num * sizeof(glm::mat4), Static_Buffer_Update)));
+		m_VBO_MAT.reset((new VertexBuffer(&matrices[0], m_num * sizeof(glm::mat4), Dynamic_Buffer_Update)));
 		m_VBO_MAT->SetLayout(mat4);
 		m_VAO->AddVBO(m_VBO_MAT);
 

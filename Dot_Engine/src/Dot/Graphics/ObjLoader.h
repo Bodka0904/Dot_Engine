@@ -31,13 +31,12 @@ namespace Dot {
 		std::vector<glm::vec3> vertices;
 		std::vector<glm::vec2> uvs;
 		std::vector<glm::vec3> normals;
+		std::vector <VertexTexture> m_vertex;
 
 		bool hasUVs;
 		bool hasNormals;
 
 		OBJModel(const std::string& fileName);
-		
-		std::vector<IndexedModel> ToSceneIndexedModels();
 		IndexedModel ToIndexedModel();
 	private:
 		unsigned int FindLastVertexIndex(const std::vector<OBJIndex*>& indexLookup, const OBJIndex* currentIndex, const IndexedModel& result);

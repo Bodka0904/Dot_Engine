@@ -85,35 +85,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\Gui.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\GuiBuffer.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\GuiShader.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\GuiTexture.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\GuiTransform.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\data\GuiData.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\events\GuiEvent.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\glText\GuiText.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\glText\gltext.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\DebugNew.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiArrowButton.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiButton.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiCheckBox.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiSlider.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiWidget.h" />
-    <ClInclude Include="Dot_GUI\src\Dot_GUI\widgets\GuiWrapper.h" />
+    <ClInclude Include="Dot_GUI\src\graphics\GuiArrayBuffer.h" />
     <ClInclude Include="Dot_GUI\src\Gui.h" />
+    <ClInclude Include="Dot_GUI\src\data\GuiData.h" />
+    <ClInclude Include="Dot_GUI\src\events\GuiEvent.h" />
+    <ClInclude Include="Dot_GUI\src\glText\GuiText.h" />
+    <ClInclude Include="Dot_GUI\src\glText\gltext.h" />
+    <ClInclude Include="Dot_GUI\src\graphics\GuiBuffer.h" />
+    <ClInclude Include="Dot_GUI\src\graphics\GuiShader.h" />
+    <ClInclude Include="Dot_GUI\src\graphics\GuiTexture.h" />
+    <ClInclude Include="Dot_GUI\src\graphics\GuiTransform.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\DebugNew.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiArrowButton.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiButton.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiCheckBox.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiSlider.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiWidget.h" />
+    <ClInclude Include="Dot_GUI\src\widgets\GuiWrapper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\Gui.cpp" />
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\GuiBuffer.cpp" />
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\GuiShader.cpp" />
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\GuiTexture.cpp" />
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\glText\GuiText.cpp" />
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiArrowButton.cpp" />
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiButton.cpp" />
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiCheckBox.cpp" />
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiSlider.cpp" />
-    <ClCompile Include="Dot_GUI\src\Dot_GUI\widgets\GuiWrapper.cpp" />
+    <ClCompile Include="Dot_GUI\src\graphics\GuiArrayBuffer.cpp" />
+    <ClCompile Include="Dot_GUI\src\Gui.cpp" />
+    <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp" />
+    <ClCompile Include="Dot_GUI\src\graphics\GuiBuffer.cpp" />
+    <ClCompile Include="Dot_GUI\src\graphics\GuiShader.cpp" />
+    <ClCompile Include="Dot_GUI\src\graphics\GuiTexture.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiArrowButton.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiButton.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiCheckBox.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiSlider.cpp" />
+    <ClCompile Include="Dot_GUI\src\widgets\GuiWrapper.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

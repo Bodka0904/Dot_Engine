@@ -38,8 +38,8 @@ namespace Dot {
 		//I can set what this function will represent
 		void SetEventCallback(const EventCallbackFn& callback) { m_data.EventCallback = callback; }
 
-		inline int GetWidth() const;
-		inline int GetHeight() const;
+		int GetWidth() const;
+		int GetHeight() const;
 
 		static Window* Create(const WindowProps& props = WindowProps()) { return new Window(props); }
 

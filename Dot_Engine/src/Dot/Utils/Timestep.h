@@ -12,8 +12,6 @@ namespace Dot {
 			
 		}
 		
-	
-
 		float GetSeconds() const { return m_Time; }
 		float GetMiliseconds() const { return m_Time * 1000.0f; }
 		operator float() const { return m_Time; }

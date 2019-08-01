@@ -2,8 +2,8 @@
 #include "Application.h"
 #include "Dot_GUI/src/Gui.h"
 #include "Dot/Utils/Timestep.h"
-#include "Dot/Graphics/Text/Text2D.h"
 #include "Dot/Graphics/Text/Font.h"
+
 
 namespace Dot {
 
@@ -29,12 +29,24 @@ namespace Dot {
 		
 		m_Window->vSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
-
 		
-		InitText2D("res/fonts/Arial.DDS");
+		
+		camera.reset(new OrthoCamera(0, m_Window->GetWidth(), 0, m_Window->GetHeight()));
+
+
+		ShaderLayout layout = {
+			{0,"position"},
+			{1,"texCoord"},
+		};
+		shader.reset(new Shader("res/shaders/Text/TextShader"));
+		shader->SetLayout(layout);
+		shader->LinkShader();
+		shader->AddUniform("ortho");
+		shader->Clean();
+
 
 		Font::AddFont("Arial","res/fonts/Arial.DDS");
-		text.reset(new Text("TEST", 20, 50, 12));
+		text.reset(new Text("Test test TEST", 20, 50, 20));
 
 		if (!Gui::Inited())
 		{
@@ -67,7 +79,11 @@ namespace Dot {
 			{
 				layer->OnUpdate(timestep);
 			}
-			printText2D("Hello", 20, 50, 12);
+		
+			
+			shader->Bind();
+
+			shader->UploadUniformMat4("ortho",camera->GetViewProjectionMatrix());
 			text->PrintText("Arial");
 			m_Window->Update();
 
@@ -114,6 +130,8 @@ namespace Dot {
 		for (auto it = m_Layers.end(); it != m_Layers.begin(); )
 		{
 			(*--it)->OnEvent(event);
+			if (event.IsHandled())
+				break;
 		}
 	}
 

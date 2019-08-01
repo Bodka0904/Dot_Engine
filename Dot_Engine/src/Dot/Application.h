@@ -5,8 +5,8 @@
 #include "Gui/GuiLayer.h"
 #include "Dot/Terrain/TerrainEditorLayer.h"
 #include "Dot/Graphics/Text/Text.h"
-
-
+#include "Dot/Graphics/Shaders/Shader.h"
+#include "Dot/Graphics/Renderer/Camera/OrthoCamera.h"
 
 namespace Dot {
 	class Application
@@ -34,7 +34,8 @@ namespace Dot {
 		std::vector<Layer*> m_Layers;
 		GuiLayer *m_GuiLayer;
 		TerrainEditorLayer* m_Ter_editor_layer;
-		
+		std::shared_ptr<Shader> shader;
+		std::shared_ptr<OrthoCamera> camera;
 
 		std::shared_ptr<Text> text;
 

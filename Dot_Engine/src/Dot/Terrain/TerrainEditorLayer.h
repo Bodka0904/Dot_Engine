@@ -34,11 +34,6 @@ namespace Dot {
 
 
 	private:
-		struct Wrappers
-		{
-			int terrain_editor_wrapper;
-		};
-
-		Wrappers wrap;
+		unsigned int terrain_editor;
 	};
 }

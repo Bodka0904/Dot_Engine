@@ -141,12 +141,12 @@ namespace Dot {
 
 
 
-	inline int Window::GetWidth() const
+	int Window::GetWidth() const
 	{
 		return m_data.width;
 	}
 
-	inline int Window::GetHeight() const
+	int Window::GetHeight() const
 	{
 		return m_data.height;
 	}

@@ -34,6 +34,9 @@
     <Filter Include="src\Dot\Graphics\Shaders\Uniform">
       <UniqueIdentifier>{6BC8258E-5719-11D0-807D-FF916C2DA439}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Graphics\Text">
+      <UniqueIdentifier>{1716F020-8382-AB1B-4C76-4379B8A1CD83}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Dot\Gui">
       <UniqueIdentifier>{577CAC8A-C331-2580-4C26-1F57B8DA1B84}</UniqueIdentifier>
     </Filter>
@@ -48,12 +51,6 @@
     </Filter>
     <Filter Include="src\Platform\OpenGL">
       <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Platform\Windows">
-      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Platform\Windows\Timer">
-      <UniqueIdentifier>{6B4EF615-575E-A2E6-C017-0705AC46917F}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -123,6 +120,9 @@
     <ClInclude Include="src\Dot\Graphics\Renderer\Camera\Camera.h">
       <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.h">
+      <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\InstancedMesh.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
@@ -149,6 +149,12 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Shaders\WorldShader.h">
       <Filter>src\Dot\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Text\Font.h">
+      <Filter>src\Dot\Graphics\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Text\Text.h">
+      <Filter>src\Dot\Graphics\Text</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Transform.h">
       <Filter>src\Dot\Graphics</Filter>
@@ -181,6 +187,9 @@
       <Filter>src\Dot\Terrain</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\BmpLoader.h">
+      <Filter>src\Dot\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Timestep.h">
       <Filter>src\Dot\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
@@ -1284,15 +1293,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Timestep.h">
-      <Filter>src\Dot\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.h" />
-    <ClInclude Include="src\Dot\Graphics\Text\Text2D.h" />
-    <ClInclude Include="src\Dot\Graphics\Text\TextShader.h" />
-    <ClInclude Include="src\Dot\Graphics\Text\DDsTexture.h" />
-    <ClInclude Include="src\Dot\Graphics\Text\Font.h" />
-    <ClInclude Include="src\Dot\Graphics\Text\Text.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1311,6 +1311,9 @@
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Camera\Camera.cpp">
+      <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.cpp">
       <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\InstancedMesh.cpp">
@@ -1333,6 +1336,12 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Shaders\WorldShader.cpp">
       <Filter>src\Dot\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Text\Font.cpp">
+      <Filter>src\Dot\Graphics\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Text\Text.cpp">
+      <Filter>src\Dot\Graphics\Text</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Window.cpp">
       <Filter>src\Dot\Graphics</Filter>
@@ -1367,11 +1376,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Text\Text2D.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Text\TextShader.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Text\DDsTexture.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Text\Font.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Text\Text.cpp" />
   </ItemGroup>
 </Project>

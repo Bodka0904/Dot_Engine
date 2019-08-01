@@ -19,10 +19,10 @@ namespace Dot {
 
 	void Texture::Create(std::string fileName)
 	{
-		data.imageData = stbi_load(fileName.c_str(), &data.width, &data.height, &data.numComponents, 4);
+		data.imageData = stbi_load(fileName.c_str(), &data.width, &data.height, &data.numComponents, STBI_rgb_alpha);
 		if (data.imageData == NULL)
 		{
-			printf("GuiTexture: Could not load texture");
+			printf("Texture: Could not load texture");
 		}
 
 
@@ -31,12 +31,12 @@ namespace Dot {
 		glBindTexture(GL_TEXTURE_2D, data.texture);
 
 
-		glTexEnvi(GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		//glTexEnvi(GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); //reading texture width
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); //reading texture height
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_LINEAR_MIPMAP_LINEAR); //reading texture width
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_LINEAR); //reading texture height
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, data.width, data.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.imageData);
 
 

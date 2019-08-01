@@ -90,11 +90,11 @@ namespace Dot {
 	void TerrainEditor::Draw()
 	{
 		//Renderer::BeginScene();
-		//{
+		{
 			//Renderer::Submit(m_VAO);
 		m_VAO->Bind();
 		glDrawElements(GL_TRIANGLES, m_VAO->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT,0);
-		//}
+		}
 		//Renderer::EndScene();
 	}
 

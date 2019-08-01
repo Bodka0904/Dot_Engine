@@ -21,18 +21,18 @@ namespace Dot {
 	{
 		Application& app = Application::Get();
 
-		Gui::AddWrapper("MAIN",wrap.main_wrapper);
-		Gui::GetWrapper(wrap.main_wrapper).AddButton(BIND_FN(ButtonAction), "button1");
-		Gui::GetWrapper(wrap.main_wrapper).AddButton(BIND_FN(ButtonAction), "button2");
-		Gui::GetWrapper(wrap.main_wrapper).AddArrowButton(BIND_FN(ArrowButtonAction), "arrow btn");
-		Gui::GetWrapper(wrap.main_wrapper).AddArrowButton(BIND_FN(ButtonAction), "arrow btn2");
-		Gui::GetWrapper(wrap.main_wrapper).AddCheckBox(BIND_FN(CheckBoxAction), "checkbox");
-		Gui::GetWrapper(wrap.main_wrapper).AddSlider("HAHA");
+		main = Gui::AddWrapper("MAIN");
+		Gui::GetWrapper(main).AddButton(BIND_FN(ButtonAction), "button1");
+		Gui::GetWrapper(main).AddButton(BIND_FN(ButtonAction), "button2");
+		Gui::GetWrapper(main).AddArrowButton(BIND_FN(ArrowButtonAction), "arrow btn");
+		Gui::GetWrapper(main).AddArrowButton(BIND_FN(ButtonAction), "arrow btn2");
+		Gui::GetWrapper(main).AddCheckBox(BIND_FN(CheckBoxAction), "checkbox");
+		Gui::GetWrapper(main).AddSlider("HAHA");
 
-		Gui::AddWrapper("TEST",wrap.test_wrapper);
-		Gui::GetWrapper(wrap.test_wrapper).AddSlider("HOHO");
-		Gui::GetWrapper(wrap.test_wrapper).AddButton(BIND_FN(TestVisibleOff), "test off");
-		Gui::GetWrapper(wrap.test_wrapper).AddButton(BIND_FN(TestVisibleOn), "test on");
+		test = Gui::AddWrapper("TEST");
+		Gui::GetWrapper(test).AddSlider("HOHO");
+		Gui::GetWrapper(test).AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper(test).AddButton(BIND_FN(TestVisibleOn), "test on");
 		
 	
 		
@@ -46,9 +46,18 @@ namespace Dot {
 		
 	}
 
+	void GuiLayer::OnEvent(Event& event)
+	{
+		if (Gui::IsHandlingEvent())
+		{
+			event.IsHandled() = true;
+			Gui::IsHandlingEvent() = false;
+		}
+	}
+
 	void GuiLayer::ButtonAction()
 	{	
-		LOG_INFO("%f",Gui::GetWrapper(wrap.test_wrapper).GetSlider(0).GetValue())
+		LOG_INFO("%f",Gui::GetWrapper(test).GetSlider(0).GetValue())
 	}
 
 	void GuiLayer::CheckBoxAction()
@@ -58,7 +67,7 @@ namespace Dot {
 
 	void GuiLayer::ArrowButtonAction()
 	{
-		if (Gui::GetWrapper(1).GetArrowButton(0).LeftClicked())
+		if (Gui::GetWrapper(test).GetArrowButton(0).LeftClicked())
 		{
 			LOG_INFO("KOLIBRIK");
 		}
@@ -66,12 +75,12 @@ namespace Dot {
 
 	void GuiLayer::TestVisibleOff()
 	{
-		Gui::GetWrapper(0).GetVisible() = false;
+		Gui::GetWrapper(main).GetVisible() = false;
 	}
 
 	void GuiLayer::TestVisibleOn()
 	{
-		Gui::GetWrapper(0).GetVisible() = true;
+		Gui::GetWrapper(main).GetVisible() = true;
 	}
 
 }
