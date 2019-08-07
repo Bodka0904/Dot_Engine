@@ -32,8 +32,5 @@ namespace Dot {
 		float size = 300;
 		float height = 0;
 
-
-	private:
-		unsigned int terrain_editor;
 	};
 }

@@ -21,18 +21,18 @@ namespace Dot {
 	{
 		Application& app = Application::Get();
 
-		main = Gui::AddWrapper("MAIN");
-		Gui::GetWrapper(main).AddButton(BIND_FN(ButtonAction), "button1");
-		Gui::GetWrapper(main).AddButton(BIND_FN(ButtonAction), "button2");
-		Gui::GetWrapper(main).AddArrowButton(BIND_FN(ArrowButtonAction), "arrow btn");
-		Gui::GetWrapper(main).AddArrowButton(BIND_FN(ButtonAction), "arrow btn2");
-		Gui::GetWrapper(main).AddCheckBox(BIND_FN(CheckBoxAction), "checkbox");
-		Gui::GetWrapper(main).AddSlider("HAHA");
+		Gui::AddWrapper("MAIN");
+		Gui::GetWrapper("MAIN").AddButton(BIND_FN(ButtonAction), "button1");
+		Gui::GetWrapper("MAIN").AddButton(BIND_FN(ButtonAction), "button2");
+		Gui::GetWrapper("MAIN").AddArrowButton(BIND_FN(ArrowButtonAction), "arrow btn");
+		Gui::GetWrapper("MAIN").AddArrowButton(BIND_FN(ButtonAction), "arrow btn2");
+		Gui::GetWrapper("MAIN").AddCheckBox(BIND_FN(CheckBoxAction), "checkbox");
+		Gui::GetWrapper("MAIN").AddSlider("HAHA");
 
-		test = Gui::AddWrapper("TEST");
-		Gui::GetWrapper(test).AddSlider("HOHO");
-		Gui::GetWrapper(test).AddButton(BIND_FN(TestVisibleOff), "test off");
-		Gui::GetWrapper(test).AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::AddWrapper("TEST");
+		Gui::GetWrapper("TEST").AddSlider("HOHO");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
 		
 	
 		
@@ -57,7 +57,7 @@ namespace Dot {
 
 	void GuiLayer::ButtonAction()
 	{	
-		LOG_INFO("%f",Gui::GetWrapper(test).GetSlider(0).GetValue())
+		LOG_INFO("%f",Gui::GetWrapper("TEST").GetSlider(0).GetValue())
 	}
 
 	void GuiLayer::CheckBoxAction()
@@ -67,7 +67,7 @@ namespace Dot {
 
 	void GuiLayer::ArrowButtonAction()
 	{
-		if (Gui::GetWrapper(test).GetArrowButton(0).LeftClicked())
+		if (Gui::GetWrapper("TEST").GetArrowButton(0).LeftClicked())
 		{
 			LOG_INFO("KOLIBRIK");
 		}
@@ -75,12 +75,12 @@ namespace Dot {
 
 	void GuiLayer::TestVisibleOff()
 	{
-		Gui::GetWrapper(main).GetVisible() = false;
+		Gui::GetWrapper("MAIN").GetVisible() = false;
 	}
 
 	void GuiLayer::TestVisibleOn()
 	{
-		Gui::GetWrapper(main).GetVisible() = true;
+		Gui::GetWrapper("MAIN").GetVisible() = true;
 	}
 
 }

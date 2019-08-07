@@ -1,6 +1,6 @@
 #include "Gui.h"
 
-std::vector<std::unique_ptr<GuiWrapper>> Gui::m_wrappers;
+std::map<std::string,std::unique_ptr<GuiWrapper>> Gui::m_wrappers;
 
 
 std::unique_ptr<GuiShader>	Gui::guiShader = NULL;
@@ -18,11 +18,11 @@ GLFWcursorposfun Gui::m_handler_cursorPosCLB = NULL;
 GLFWframebuffersizefun Gui::m_handler_winSizeCLB = NULL;
 
 bool Gui::EDIT_WRAPPER = false;
-int Gui::attachedWrapper = 0;
+std::string Gui::attachedWrapper;
 bool Gui::Initialized = false;
 
 bool Gui::EDIT_WIDGET = false;
-glm::vec2 Gui::attachedWidget = glm::vec2(0,0);
+std::pair<std::string,int> Gui::attachedWidget;
 
 int Gui::winWidth = 0;
 int Gui::winHeight = 0;
@@ -34,7 +34,6 @@ int Gui::m_right_btn_counter = 0;
 
 
 bool Gui::HandlingEvent = false;
-unsigned int Gui::num_wrappers = 0;
 
 std::shared_ptr<GuiIndexBuffer>  Gui::m_index		= NULL;	
 std::shared_ptr<GuiVertexBuffer> Gui::m_vertex_w	= NULL;
@@ -86,18 +85,17 @@ void Gui::Init(GLFWwindow * handler)
 	};
 
 
-	m_index.reset(new GuiIndexBuffer((unsigned int*)&m_wrapper_data.indices[0], 6));	
+	m_index = std::make_shared<GuiIndexBuffer>((unsigned int*)& m_wrapper_data.indices[0], 6);
 	m_vertex_w.reset(new GuiVertexBuffer((GuiVertex*)&m_wrapper_data.m_vertices[0], 4 * sizeof(GuiVertex)));
 	m_vertex_w->SetLayout(layout);
 
 
-
-	for (unsigned int i = 0; i < m_wrappers.size(); ++i)
+	for (auto& it : m_wrappers)
 	{
 	
-		m_wrappers[i]->SetData(glm::vec2(winWidth/2, winHeight/2));
-		m_wrappers[i]->SetWidgetsFollow();
-		m_wrappers[i]->SetWidgetsNextTo();
+		it.second->SetData(glm::vec2(winWidth/2, winHeight/2));
+		it.second->SetWidgetsFollow();
+		it.second->SetWidgetsNextTo();
 	}
 
 	Initialized = true;
@@ -108,32 +106,32 @@ void Gui::Render()
 {	
 	glEnable(GL_BLEND);
 	
-	for (unsigned int j = 0; j < m_wrappers.size(); ++j)
+	for (auto& it : m_wrappers)
 	{
-		if (m_wrappers[j]->GetVisible())
+		if (it.second->GetVisible())
 		{
 			
-			m_wrappers[j]->DrawTexts(*transform);
+			it.second->DrawTexts(*transform);
 	
 			guiShader->Bind();
 			guiShader->UpdateTransparency(0.8f);
 			
 			btn_texture->Bind(0);
 			transform->SetScale(glm::vec2(1, 1));
-			m_wrappers[j]->DrawButtons(*guiShader,*transform);
+			it.second->DrawButtons(*guiShader,*transform);
 			
 			abtn_texture->Bind(0);
-			m_wrappers[j]->DrawArrButtons(*guiShader, *transform);
+			it.second->DrawArrButtons(*guiShader, *transform);
 	
 			checkbox_texture->Bind(0);
-			m_wrappers[j]->DrawCheckBoxes(*guiShader, *transform);
+			it.second->DrawCheckBoxes(*guiShader, *transform);
 			
 			slider_texture->Bind(0);
-			m_wrappers[j]->DrawSliders(*guiShader, *transform);
+			it.second->DrawSliders(*guiShader, *transform);
 	
 			guiShader->UpdateTransparency(0.6);
 			wrp_texture->Bind(0);
-			m_wrappers[j]->Draw(*guiShader, *transform);
+			it.second->Draw(*guiShader, *transform);
 			
 		}
 	}
@@ -147,7 +145,7 @@ void Gui::Update()
 	
 	if (EDIT_WIDGET)
 	{
-		m_wrappers[attachedWidget.x]->SetWidget(attachedWidget.y,glm::vec2(m_mousePosX, m_mousePosY));
+		m_wrappers[attachedWidget.first]->SetWidget(attachedWidget.second,glm::vec2(m_mousePosX, m_mousePosY));
 
 	}
 	if (EDIT_WRAPPER)
@@ -157,11 +155,11 @@ void Gui::Update()
 				
 	}
 
-	for (int j = 0; j < m_wrappers.size(); ++j)
+	for (auto& it : m_wrappers)
 	{
-		if (m_wrappers[j]->GetVisible())
+		if (it.second->GetVisible())
 		{
-			m_wrappers[j]->HandleCheckBoxCallbacks();
+			it.second->HandleCheckBoxCallbacks();
 		}
 	}
 	
@@ -178,11 +176,11 @@ void Gui::Clear()
 
 void Gui::HandleWrapperClick(GuiEvent & event)
 {
-	for (int i = 0; i < m_wrappers.size(); ++i)
+	for (auto& it : m_wrappers)
 	{
-		if (m_wrappers[i]->GetVisible())
+		if (it.second->GetVisible())
 		{
-			if (m_wrappers[i]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
+			if (it.second->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
 			{
 				HandlingEvent = true;
 				GuiMouseButtonPressEvent& e = (GuiMouseButtonPressEvent&)event;
@@ -192,7 +190,7 @@ void Gui::HandleWrapperClick(GuiEvent & event)
 				}
 				else if (e.GetButton() == GLFW_MOUSE_BUTTON_MIDDLE)
 				{
-					m_wrappers[i]->SetWidgetsNextTo();
+					it.second->SetWidgetsNextTo();
 					break;
 				}
 				else if (e.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
@@ -200,8 +198,8 @@ void Gui::HandleWrapperClick(GuiEvent & event)
 					if (!EDIT_WIDGET)
 					{
 						
-						m_wrappers[i]->GetPinned() = false;
-						attachedWrapper = i;
+						it.second->GetPinned() = false;
+						attachedWrapper = it.first;
 						
 						EDIT_WRAPPER = true;
 						
@@ -216,39 +214,39 @@ void Gui::HandleWrapperClick(GuiEvent & event)
 
 void Gui::HandleWidgetClick(GuiEvent& event)
 {
-	for (int j = 0; j < m_wrappers.size(); ++j)
+	for (auto& it : m_wrappers)
 	{
-		if (m_wrappers[j]->GetVisible())
+		if (it.second->GetVisible())
 		{
-			if (m_wrappers[j]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
+			if (it.second->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
 			{
 				HandlingEvent = true;
 
-				for (int i = 0; i < m_wrappers[j]->GetWidgets().size(); ++i)
+				for (int i = 0; i < it.second->GetWidgets().size(); ++i)
 				{
-					if (m_wrappers[j]->GetWidgets()[i]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
+					if (it.second->GetWidgets()[i]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
 					{
 						GuiMouseButtonPressEvent& e = (GuiMouseButtonPressEvent&)event;
 						if (e.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
 						{
-							attachedWidget = glm::vec2(j, i);
+							attachedWidget = std::pair<std::string,int>(it.first, i);
 							EDIT_WIDGET = true;
 							break;
 
 						}
 						else if (e.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
 						{
-							if (m_wrappers[j]->GetWidgets()[i]->Clicked() == true)
+							if (it.second->GetWidgets()[i]->Clicked() == true)
 							{
-								m_wrappers[j]->GetWidgets()[i]->Clicked() = false;
+								it.second ->GetWidgets()[i]->Clicked() = false;
 
 								break;
 							}
 							else
 							{
-								m_wrappers[j]->GetWidgets()[i]->Clicked() = true;
-								m_wrappers[j]->HandleButtonCallbacks();
-								m_wrappers[j]->HandleSliders(m_mousePosX);
+								it.second->GetWidgets()[i]->Clicked() = true;
+								it.second->HandleButtonCallbacks();
+								it.second->HandleSliders(m_mousePosX);
 								break;
 							}
 						}
@@ -337,9 +335,9 @@ void Gui::Gui_MouseButtonCallback(GLFWwindow* window, int button, int action, in
 					HandleReleaseWrapper(e);
 					HandleReleaseWidget(e);
 
-					for (int i = 0; i < m_wrappers.size(); ++i)
+					for (auto& it : m_wrappers)
 					{
-						m_wrappers[i]->HandleReleaseButton(e, m_mousePosX, m_mousePosY);
+						it.second->HandleReleaseButton(e, m_mousePosX, m_mousePosY);
 					}
 				}
 			}
@@ -380,15 +378,14 @@ void Gui::Gui_WindowSizeCallback(GLFWwindow* window, int width, int height)
 	}
 }
 
-unsigned int Gui::AddWrapper(const std::string& name)
+void Gui::AddWrapper(const std::string& name)
 {
-	m_wrappers.emplace(m_wrappers.begin()+num_wrappers, new GuiWrapper(name));
-	num_wrappers++;
-	return num_wrappers-1;
+	m_wrappers[name] = std::unique_ptr<GuiWrapper>();
+	m_wrappers[name].reset(new GuiWrapper(name));
 }
 
-GuiWrapper & Gui::GetWrapper(int index)
+GuiWrapper & Gui::GetWrapper(const std::string& name)
 {
-	return *m_wrappers[index];
+	return *m_wrappers[name];
 }
 

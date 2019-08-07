@@ -21,9 +21,6 @@ namespace Dot {
 		void TestVisibleOff();
 		void TestVisibleOn();
 
-	private:
-		unsigned int main;
-		unsigned int test;
 
 	};
 }

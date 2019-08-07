@@ -91,10 +91,6 @@ private:
 	bool m_visible = true;
 	float m_color = 0;
 
-
-	unsigned int m_width;
-	unsigned int m_height;
-
 private:
 	GuiText* m_text;
 

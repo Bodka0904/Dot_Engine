@@ -69,8 +69,8 @@ namespace Dot {
 		static unsigned int CreateShader(const std::string& text, unsigned int shaderType);
 
 	private:
-		std::map<std::string, std::unique_ptr<UniformBuffer> > m_UBO;
-		std::map<std::string, unsigned int> m_Uniforms;
+		std::unordered_map<std::string, std::unique_ptr<UniformBuffer> > m_UBO;
+		std::unordered_map<std::string, unsigned int> m_Uniforms;
 		
 
 	private:

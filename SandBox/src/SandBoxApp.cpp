@@ -21,7 +21,7 @@ public:
 				{2, Dot::ShaderDataType::Float2, "texCoord" },
 				
 		};
-		cube.reset(new Dot::Mesh("res/models/Dot/bear.obj", layout));
+		cube = std::make_shared<Dot::Mesh>("res/models/Dot/bear.obj", layout);
 		
 
 		Dot::ShaderLayout s_layout = {
@@ -31,7 +31,7 @@ public:
 	
 		};
 		
-		WorldShader.reset(new Dot::WorldShader("res/shaders/Dot/TestGeometryShader"));
+		WorldShader = std::make_shared<Dot::WorldShader>("res/shaders/Dot/TestGeometryShader");
 		WorldShader->AddGeometryShader("res/shaders/Dot/GeometryShader.gs");
 		WorldShader->SetLayout(s_layout);
 		WorldShader->LinkShader();
@@ -53,7 +53,7 @@ public:
 			{3,"instanceModel"},
 		};
 
-		InstanceShader.reset(new Dot::Shader("res/shaders/Dot/InstancedShader"));
+		InstanceShader = std::make_shared<Dot::Shader>("res/shaders/Dot/InstancedShader");
 		InstanceShader->SetLayout(test_layout);
 		InstanceShader->LinkShader();
 		InstanceShader->Clean();

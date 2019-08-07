@@ -12,12 +12,9 @@ namespace Dot {
 		m_shaders.resize(2);
 		m_shaders[0] = CreateShader(LoadShader(filename + ".vs"), GL_VERTEX_SHADER);
 		m_shaders[1] = CreateShader(LoadShader(filename + ".fs"), GL_FRAGMENT_SHADER);
-		for (unsigned int i = 0; i < m_shaders.size(); i++)
-		{
-			glAttachShader(m_program, m_shaders[i]);
-		}
 		
 		glUseProgram(m_program);
+
 	}
 
 	Shader::~Shader()
@@ -57,15 +54,15 @@ namespace Dot {
 		{
 			glBindAttribLocation(m_program, i.m_location, i.m_name.c_str());
 		}
+		
 	}
 
 	void Shader::LinkShader()
 	{
 		
-
+	
 		glUseProgram(m_program);
 		glLinkProgram(m_program);
-
 
 		GLint isLinked = 0;
 		glGetProgramiv(m_program, GL_LINK_STATUS, (int *)&isLinked);
@@ -88,7 +85,10 @@ namespace Dot {
 			LOG_ERR("Shader: Could not link shader %s", &infoLog[0])
 
 		}
+
 		glValidateProgram(m_program);
+
+		
 	}
 
 	void Shader::Clean()
