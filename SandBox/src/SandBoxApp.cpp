@@ -8,7 +8,7 @@ public:
 	TestLayer()
 		: 
 		Dot::Layer(),
-		camera(50.0f,1280.0f/720.0f,1.0f,1000.0f)
+		camera(50.0f,1280.0f/720.0f,1.0f,1500.0f)
 	{
 
 	}
@@ -31,20 +31,19 @@ public:
 	
 		};
 		
-		WorldShader = std::make_shared<Dot::WorldShader>("res/shaders/Dot/TestGeometryShader");
+		WorldShader = std::make_shared<Dot::Shader>("res/shaders/Dot/TestGeometryShader");
 		WorldShader->AddGeometryShader("res/shaders/Dot/GeometryShader.gs");
 		WorldShader->SetLayout(s_layout);
 		WorldShader->LinkShader();
-		WorldShader->Clean();
+	
 		WorldShader->Bind();
 		WorldShader->SetUniforms();
-		WorldShader->AddUniformBufferObject("camera_data", 0,sizeof(glm::mat4));
+		WorldShader->AddUniformBufferObject("camera_data", 0,3*sizeof(glm::mat4));
 		WorldShader->AddUniform("ModelMatrix");
 		WorldShader->AddUniform("time");
+			
+		texture.Create2D("res/textures/Dot/treehill.png");
 		
-		texture.Create("res/textures/Dot/treehill.png");
-		texture.Bind(0);
-
 
 		Dot::ShaderLayout test_layout = {
 			{0,"position"},
@@ -56,10 +55,10 @@ public:
 		InstanceShader = std::make_shared<Dot::Shader>("res/shaders/Dot/InstancedShader");
 		InstanceShader->SetLayout(test_layout);
 		InstanceShader->LinkShader();
-		InstanceShader->Clean();
-		InstanceShader->Bind();
 	
-		
+		InstanceShader->Bind();
+		InstanceShader->AddUniform("texi");
+		InstanceShader->UploadInt("texi", 1);
 		
 		Dot::BufferLayout layout_test = {
 				{0, Dot::ShaderDataType::Float3, "position" },
@@ -80,8 +79,28 @@ public:
 		test_positions[3] = transform.GetModel();
 		transform.GetPos().x = 0;
 
-		bearTex.Create("res/textures/Dot/bear.png");
-		test.reset(new Dot::InstancedMesh("res/models/Dot/treehill.obj", layout_test, test_positions));
+		bearTex.Create2D("res/textures/Dot/bear.png");
+		test = std::make_shared<Dot::InstancedMesh>("res/models/Dot/treehill.obj", layout_test, test_positions);
+
+		Dot::ShaderLayout skyLayout = {
+			{0,"position"}
+		};
+
+		SkyBoxShader = std::make_shared<Dot::Shader>("res/shaders/Dot/SkyboxShader");
+		SkyBoxShader->SetLayout(skyLayout);
+		SkyBoxShader->LinkShader();
+	
+		
+		std::vector<std::string> faces{ 
+			"res/textures/skybox/test/right.png",
+			"res/textures/skybox/test/left.png",
+			"res/textures/skybox/test/top.png",
+			"res/textures/skybox/test/bottom.png",
+			"res/textures/skybox/test/back.png",
+			"res/textures/skybox/test/front.png"
+		};
+
+		SkyBox = std::make_shared<Dot::Skybox>(faces,500);
 	}
 
 	void OnUpdate(Dot::Timestep ts) override
@@ -121,7 +140,6 @@ public:
 		
 
 		Dot::Renderer::Clear(glm::vec4(0.4, 0.5, 0.7, 0.0));
-		texture.Bind(0);
 	
 		transform.SetScale(glm::vec3(20, 20, 20));
 		//transform.GetRot().y += 0.01f;
@@ -130,14 +148,20 @@ public:
 		//transform.GetPos().z = 100;
 		camera.UpdateViewMatrix();
 		cube->SetModelMatrix(transform.GetModel());
-		
+
 		Dot::Renderer::BeginScene(camera);
 		{
 			bearTex.Bind(0);
-			Dot::Renderer::Submit(WorldShader,cube);
+			Dot::Renderer::SubmitElements(WorldShader,cube);
 			
-			texture.Bind(0);
+			texture.Bind(1);
 			Dot::Renderer::SubmitInstances(InstanceShader, test);
+
+			
+			SkyBox->GetTexture().Bind(0);
+			Dot::Renderer::SubmitArrays(SkyBoxShader, SkyBox->GetVao());
+	
+
 		}
 		Dot::Renderer::EndScene(WorldShader);
 		
@@ -194,6 +218,11 @@ public:
 
 	}
 
+	void OnDetach() override
+	{
+	
+	}
+
 private:
 	Dot::Camera camera;
 	Dot::Transform transform;
@@ -203,8 +232,11 @@ private:
 	std::shared_ptr<Dot::InstancedMesh> test;
 	std::shared_ptr<Dot::Shader> InstanceShader;
 	std::vector<glm::mat4>test_positions;
-	std::shared_ptr<Dot::WorldShader> WorldShader;
+	std::shared_ptr<Dot::Shader> WorldShader;
 
+
+	std::shared_ptr<Dot::Shader> SkyBoxShader;
+	std::shared_ptr<Dot::Skybox> SkyBox;
 
 	float m_CameraMoveSpeed = 20.0f;
 	float m_CameraRotationSpeed = 2.0f;
@@ -216,8 +248,8 @@ class SandBox : public Dot::Application
 public:
 	SandBox()
 	{
-		PushLayer(new TestLayer());
 		
+		PushLayer(new TestLayer());	
 	
 	}
 

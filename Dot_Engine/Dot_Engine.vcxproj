@@ -120,7 +120,7 @@
     <ClInclude Include="src\Dot\Graphics\Shaders\Materials\Material.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Shader.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.h" />
-    <ClInclude Include="src\Dot\Graphics\Shaders\WorldShader.h" />
+    <ClInclude Include="src\Dot\Graphics\Skybox.h" />
     <ClInclude Include="src\Dot\Graphics\Text\Font.h" />
     <ClInclude Include="src\Dot\Graphics\Text\Text.h" />
     <ClInclude Include="src\Dot\Graphics\Transform.h" />
@@ -506,6 +506,7 @@
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp" />
     <ClCompile Include="src\Dot\Debug\Log.cpp" />
+    <ClCompile Include="src\Dot\Debug\Timer.cpp" />
     <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\ArrayBuffer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffer.cpp" />
@@ -517,7 +518,7 @@
     <ClCompile Include="src\Dot\Graphics\Renderer\Texture.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\Shader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Shaders\WorldShader.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Skybox.cpp" />
     <ClCompile Include="src\Dot\Graphics\Text\Font.cpp" />
     <ClCompile Include="src\Dot\Graphics\Text\Text.cpp" />
     <ClCompile Include="src\Dot\Graphics\Window.cpp" />

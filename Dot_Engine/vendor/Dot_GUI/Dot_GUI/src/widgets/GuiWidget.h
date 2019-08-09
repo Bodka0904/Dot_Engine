@@ -15,14 +15,14 @@ public:
 	virtual void Draw(GuiShader& shader,GuiTransform& transform) = 0;
 	virtual void UpdateData(GuiTransform& transform) = 0;
 	
-	virtual void SetData(glm::vec2& pos) = 0;
+	virtual void SetData(const glm::vec2& pos) = 0;
 	
 	virtual void SetValue(float value) = 0;
 
 	virtual float GetValue() const = 0;
 	virtual bool &Clicked() = 0;
 	
-	virtual bool MouseHoover(glm::vec2 mousePos) = 0;
+	virtual bool MouseHoover(const glm::vec2& mousePos) = 0;
 
 	virtual bool &LeftClicked() = 0;
 	virtual bool &RightClicked() = 0;

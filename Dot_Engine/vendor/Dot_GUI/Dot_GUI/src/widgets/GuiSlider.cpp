@@ -48,7 +48,7 @@ void GuiSlider::Draw(GuiShader& shader, GuiTransform& transform)
 
 }
 
-void GuiSlider::SetData(glm::vec2& pos)
+void GuiSlider::SetData(const glm::vec2& pos)
 {
 	m_position = glm::vec2(pos.x - (m_size.x / 2),
 		pos.y - (m_size.y / 2));
@@ -75,7 +75,7 @@ void GuiSlider::SetValue(float value)
 	}
 }
 
-bool GuiSlider::MouseHoover(glm::vec2 mousePos)
+bool GuiSlider::MouseHoover(const glm::vec2& mousePos)
 {
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
 		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)

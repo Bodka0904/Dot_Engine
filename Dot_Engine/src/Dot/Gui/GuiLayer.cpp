@@ -33,6 +33,44 @@ namespace Dot {
 		Gui::GetWrapper("TEST").AddSlider("HOHO");
 		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
 		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
+		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
 		
 	
 		

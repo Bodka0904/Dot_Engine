@@ -25,9 +25,20 @@ namespace Dot {
 	void Renderer::BeginScene(Camera& camera)
 	{
 		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+		m_SceneData->ViewMatrix = camera.GetViewMatrix();
+		m_SceneData->ProjectionMatrix = camera.GetProjectionMatrix();
+
 	}
 
-	void Renderer::Submit(const std::shared_ptr<Shader>shader, const std::shared_ptr<Mesh>& mesh)
+	void Renderer::SubmitArrays(const std::shared_ptr<Shader> shader, const std::shared_ptr<ArrayBuffer>& vao)
+	{
+		shader->Bind();
+		shader->Update();
+		vao->Bind();
+		glDrawArrays(GL_TRIANGLES, 0, vao->GetVertexBuffer(0)->GetCount());
+	}
+
+	void Renderer::SubmitElements(const std::shared_ptr<Shader>shader, const std::shared_ptr<Mesh>& mesh)
 	{
 		
 		shader->Bind();
@@ -50,7 +61,7 @@ namespace Dot {
 	}
 
 	void Renderer::EndScene(const std::shared_ptr<Shader>shader)
-	{		
+	{				
 		shader->UpdateUniformBufferObject("camera_data", m_SceneData);
 	}
 }

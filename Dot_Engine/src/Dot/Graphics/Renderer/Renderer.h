@@ -16,7 +16,8 @@ namespace Dot {
 		static void Clear(glm::vec4& color);
 
 		static void BeginScene(Camera& camera);
-		static void Submit(const std::shared_ptr<Shader>shader,const std::shared_ptr<Mesh>& mesh);
+		static void SubmitArrays(const std::shared_ptr<Shader>shader ,const std::shared_ptr<ArrayBuffer>& vao);
+		static void SubmitElements(const std::shared_ptr<Shader>shader,const std::shared_ptr<Mesh>& mesh);
 		static void SubmitInstances(const std::shared_ptr<Shader> shader, const std::shared_ptr<InstancedMesh>& mesh);
 		static void EndScene(const std::shared_ptr<Shader>shader);
 	
@@ -24,6 +25,8 @@ namespace Dot {
 		struct SceneData
 		{
 			glm::mat4 ViewProjectionMatrix;
+			glm::mat4 ViewMatrix;
+			glm::mat4 ProjectionMatrix;
 
 		};
 

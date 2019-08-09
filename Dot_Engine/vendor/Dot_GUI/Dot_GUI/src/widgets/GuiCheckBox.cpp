@@ -64,7 +64,7 @@ void GuiCheckBox::UpdateData(GuiTransform & transform)
 		m_position.y));
 }
 
-void GuiCheckBox::SetData(glm::vec2& pos)
+void GuiCheckBox::SetData(const glm::vec2& pos)
 {
 	m_position = glm::vec2(pos.x - (m_size.x / 2),
 		pos.y - (m_size.y / 2));
@@ -74,7 +74,7 @@ void GuiCheckBox::SetData(glm::vec2& pos)
 
 
 
-bool GuiCheckBox::MouseHoover(glm::vec2 mousePos)
+bool GuiCheckBox::MouseHoover(const glm::vec2& mousePos)
 {
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
 		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)

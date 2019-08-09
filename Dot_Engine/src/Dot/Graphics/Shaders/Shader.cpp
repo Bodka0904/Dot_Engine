@@ -66,7 +66,8 @@ namespace Dot {
 
 		GLint isLinked = 0;
 		glGetProgramiv(m_program, GL_LINK_STATUS, (int *)&isLinked);
-		if (isLinked = GL_FALSE)
+		
+		if (isLinked == GL_FALSE)
 		{
 			GLint maxLength = 0;
 			glGetProgramiv(m_program, GL_INFO_LOG_LENGTH, &maxLength);
@@ -88,11 +89,7 @@ namespace Dot {
 
 		glValidateProgram(m_program);
 
-		
-	}
 
-	void Shader::Clean()
-	{
 		for (unsigned int i = 0; i < m_shaders.size(); i++)
 		{
 			glDetachShader(m_program, m_shaders[i]);
@@ -101,9 +98,10 @@ namespace Dot {
 		}
 	}
 
+
 	void Shader::Update() const
 	{	
-		glm::vec3 test = { 0.3,1,0.5 };
+		glm::vec3 test = { 0.0f,-1.0f,0.0f };
 		glUniform1f(m_uniforms[LIGHT_STR_U], BasicLight.lightStrength);
 		glUniform1f(m_uniforms[SPEC_STR_U], BasicLight.specStrength);
 		glUniform3fv(m_uniforms[VIEW_POS_U], 1, &test[0]);
@@ -154,6 +152,11 @@ namespace Dot {
 	void Shader::UploadFloat(const std::string& name, float value)
 	{
 		glUniform1f(m_Uniforms[name], value);
+	}
+
+	void Shader::UploadInt(const std::string& name, int value)
+	{
+		glUniform1i(m_Uniforms[name], value);
 	}
 
 

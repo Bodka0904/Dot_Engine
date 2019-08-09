@@ -54,7 +54,7 @@ void GuiButton::UpdateData(GuiTransform& transform)
 	transform.SetPos(m_position);
 }
 
-void GuiButton::SetData(glm::vec2& pos)
+void GuiButton::SetData(const glm::vec2& pos)
 {
 	m_position = glm::vec2(pos.x - (m_size.x / 2),
 		pos.y - (m_size.y / 2));
@@ -62,7 +62,7 @@ void GuiButton::SetData(glm::vec2& pos)
 }
 
 
-bool GuiButton::MouseHoover(glm::vec2 mousePos)
+bool GuiButton::MouseHoover(const glm::vec2& mousePos)
 {
 	
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z

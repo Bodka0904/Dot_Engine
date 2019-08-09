@@ -167,7 +167,7 @@ namespace Dot {
 		void Bind() const;
 		void UnBind() const;
 		
-
+		unsigned int GetCount() const;
 		void Update(const void *vertices,unsigned int size);
 
 		void SetLayout(const BufferLayout& layout) { m_layout = layout; }
@@ -175,6 +175,7 @@ namespace Dot {
 
 	private:
 		unsigned int m_VBO;
+		unsigned int m_Count;
 		BufferLayout m_layout;
 
 	};

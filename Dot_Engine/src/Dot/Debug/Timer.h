@@ -1,21 +1,16 @@
 #pragma once
 #include "Dot/Debug/Log.h"
+#include <chrono>
 
-struct Members;
+namespace Dot {
+	class Timer
+	{
+	public:
+		Timer();
+		~Timer();
 
-class Timer
-{
-public:
-	Timer();
-	~Timer();
-
-	void Reset();
-
-	float Elapsed();
-	void FrameCount();
-
-
-private:
-	Members* m_Members;
-
-};
+		void Stop();
+	private:
+		std::chrono::time_point<std::chrono::high_resolution_clock> m_StartTimepoint;
+	};
+}

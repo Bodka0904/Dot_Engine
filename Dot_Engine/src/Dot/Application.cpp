@@ -3,7 +3,7 @@
 #include "Dot_GUI/src/Gui.h"
 #include "Dot/Utils/Timestep.h"
 #include "Dot/Graphics/Text/Font.h"
-
+#include "Dot/Debug/Timer.h"
 
 namespace Dot {
 
@@ -23,9 +23,9 @@ namespace Dot {
 		m_Ter_editor_layer = new TerrainEditorLayer();
 		PushOverlay(m_Ter_editor_layer);
 
-		m_GuiLayer = new GuiLayer();
+		m_GuiLayer = new GuiLayer();	
 		PushOverlay(m_GuiLayer);
-
+		
 		
 		m_Window->vSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
@@ -42,7 +42,7 @@ namespace Dot {
 		shader->SetLayout(layout);
 		shader->LinkShader();
 		shader->AddUniform("ortho");
-		shader->Clean();
+
 
 
 		Font::AddFont("Arial","res/fonts/Arial.DDS");
@@ -66,8 +66,7 @@ namespace Dot {
 
 	void Application::Run()
 	{
-		
-		
+			
 		while (!m_Window->IsClosed())
 		{
 			
@@ -77,7 +76,11 @@ namespace Dot {
 			
 			for (Layer* layer : m_Layers)
 			{
-				layer->OnUpdate(timestep);
+				{	
+					Timer timer;
+					layer->OnUpdate(timestep);
+
+				}
 			}
 		
 			

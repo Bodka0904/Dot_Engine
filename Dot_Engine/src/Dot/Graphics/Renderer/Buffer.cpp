@@ -6,8 +6,8 @@
 namespace Dot {
 
 	VertexBuffer::VertexBuffer(const void* vertices, unsigned int size, BufferFlag flag)
-	{
-		
+		: m_Count(size/sizeof(float))
+	{	
 		glCreateBuffers(1, &m_VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 		if (flag & Static_Buffer_Update)
@@ -35,6 +35,11 @@ namespace Dot {
 	void VertexBuffer::UnBind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
+	unsigned int VertexBuffer::GetCount() const
+	{
+		return m_Count;
 	}
 
 	void VertexBuffer::Update(const void * vertices,unsigned int size)

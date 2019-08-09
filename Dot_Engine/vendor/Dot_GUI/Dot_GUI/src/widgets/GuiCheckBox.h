@@ -22,12 +22,12 @@ public:
 	
 	
 	virtual void UpdateData(GuiTransform& transformr)override;
-	virtual void SetData(glm::vec2& pos)override;
+	virtual void SetData(const glm::vec2& pos)override;
 	
 	virtual void SetValue(float value) override { m_color = value; }
 	
 	virtual float GetValue() const override { return m_color; }
-	virtual bool MouseHoover(glm::vec2 mousePos)override;
+	virtual bool MouseHoover(const glm::vec2& mousePos)override;
 	virtual bool &Clicked()override { return checked; }
 	
 

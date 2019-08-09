@@ -29,16 +29,16 @@ public:
 	void DrawTexts(GuiTransform& transform);
 
 
-	void HandleButtonCallbacks();
+	void HandleButtonCallback(int i);
 	void HandleCheckBoxCallbacks();
-	void HandleSliders(float xpos);
+	void HandleSlider(int i,float xpos);
 	void HandleReleaseButton(GuiEvent &event,float xpos, float ypos);
 
 	void UpdateData(GuiTransform& transform);
 
 	void SetData(glm::vec2& pos, glm::vec2& scale = glm::vec2(1, 1));
 	void SetWidgetsFollow();
-	void SetWidget(int index,glm::vec2 position);
+	void SetWidget(int index,const glm::vec2& position);
 	void SetWidgetsNextTo();
 	void SetSize(glm::vec2& scale) { m_scale = scale; };
 
@@ -84,12 +84,12 @@ private:
 private:
 	std::shared_ptr<GuiArrayBuffer>m_VAO;
 
-	glm::vec2 m_position = glm::vec2(0, 0);
-	glm::vec2 m_scale;
+	glm::vec2 m_position = glm::vec2(0.0f, 0.0f);
+	glm::vec2 m_scale = glm::vec2(1.0f,1.0f);
 
 	bool m_pinned = false;
 	bool m_visible = true;
-	float m_color = 0;
+	float m_color = 0.0f;
 
 private:
 	GuiText* m_text;

@@ -44,26 +44,26 @@ namespace Dot {
 	{
 	public:
 		Shader(const std::string& filename);
-		virtual ~Shader();
+		~Shader();
 
-		virtual void SetUniforms();
-		virtual void AddGeometryShader(const std::string& filename);
-		virtual void SetLayout(const ShaderLayout& layout);
-		virtual void LinkShader();
-		virtual void Clean();
+		void SetUniforms();
+		void AddGeometryShader(const std::string& filename);
+		void SetLayout(const ShaderLayout& layout);
+		void LinkShader();
+		
 
-		virtual void Update() const;
-		virtual void Bind() const;
-		virtual void UnBind() const;
+		void Update() const;
+		void Bind() const;
+		void UnBind() const;
 
+		void AddUniformBufferObject(const std::string& name,unsigned int bindIndex,unsigned int size);
+		void UpdateUniformBufferObject(const std::string& name,const void*data);
 
-		virtual void AddUniformBufferObject(const std::string& name,unsigned int bindIndex,unsigned int size);
-		virtual void UpdateUniformBufferObject(const std::string& name,const void*data);
-
-		virtual void AddUniform(const std::string& name);
-		virtual void UploadUniformMat4(const std::string& name,const glm::mat4& matrix);
-		virtual void UploadUniformVec2(const std::string& name,const glm::vec2& vector);
-		virtual void UploadFloat(const std::string& name, float value);
+		void AddUniform(const std::string& name);
+		void UploadUniformMat4(const std::string& name,const glm::mat4& matrix);
+		void UploadUniformVec2(const std::string& name,const glm::vec2& vector);
+		void UploadFloat(const std::string& name, float value);
+		void UploadInt(const std::string& name, int value);
 	private:
 		static std::string LoadShader(const std::string& filename);
 		static unsigned int CreateShader(const std::string& text, unsigned int shaderType);

@@ -12,7 +12,7 @@ float Wrapper::WRAPPER_SIZE_Y = 400.0f;
 
 
 GuiWrapper::GuiWrapper(const std::string& name)
-	: m_text(new GuiText(name, glm::vec2(0, -15)))
+	: m_text(new GuiText(name, glm::vec2(0.0f, -15.0f)))
 {
 	std::shared_ptr<GuiVertexBuffer> m_VBO;
 	std::shared_ptr<GuiIndexBuffer> m_IBO;
@@ -108,16 +108,14 @@ void GuiWrapper::DrawTexts(GuiTransform& transform)
 }
 
 
-void GuiWrapper::HandleButtonCallbacks()
+void GuiWrapper::HandleButtonCallback(int i)
 {
-	for (unsigned int i = 0; i < num_buttons + num_arrow_btns; i++)
+	if (i < num_buttons + num_arrow_btns)
 	{
-		if (m_widgets[i]->Clicked())
-		{
-			m_user_callbacks[i]();
-			m_widgets[i]->SetValue(0.5f);
-			m_widgets[i]->Clicked() = false;
-		}
+		m_user_callbacks[i]();
+		m_widgets[i]->SetValue(0.5f);
+		m_widgets[i]->Clicked() = false;
+		
 	}
 }
 
@@ -132,15 +130,14 @@ void GuiWrapper::HandleCheckBoxCallbacks()
 	}
 }
 
-void GuiWrapper::HandleSliders(float xpos)
+void GuiWrapper::HandleSlider(int i,float xpos)
 {
-	for (int i = GetSlidersIndexed().x; i < GetSlidersIndexed().y; ++i)
+	if (i >= GetSlidersIndexed().x && i < GetSlidersIndexed().y)
 	{
-		if (m_widgets[i]->Clicked())
-		{
-			m_widgets[i]->SetValue(xpos);
-			m_widgets[i]->Clicked() = false;
-		}
+			
+		m_widgets[i]->SetValue(xpos);
+		m_widgets[i]->Clicked() = false;
+		
 	}
 }
 
@@ -188,11 +185,9 @@ void GuiWrapper::SetWidgetsFollow()
 	
 }
 
-void GuiWrapper::SetWidget(int index,glm::vec2 position)
+void GuiWrapper::SetWidget(int index,const glm::vec2& position)
 {
-	
-		m_widgets[index]->SetData(position);
-	
+	m_widgets[index]->SetData(position);
 }
 
 void GuiWrapper::SetWidgetsNextTo()
@@ -321,17 +316,15 @@ bool GuiWrapper::PinToSide(glm::vec2& winSize)
 
 bool GuiWrapper::MouseHoover(glm::vec2& mousePos)
 {
-	
-	
-		if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
-			&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
+		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 	
 }
 

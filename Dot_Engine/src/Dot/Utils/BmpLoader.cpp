@@ -3,18 +3,18 @@
 
 
 namespace Dot {
-	std::shared_ptr<BMPIMAGE> BMPLoader::LoadBMP(const std::string & filename)
+	std::shared_ptr<_BMPIMAGE> BMPLoader::LoadBMP(const std::string & filename)
 	{
 	
-		std::shared_ptr<BMPIMAGE> image;
-		image.reset(new BMPIMAGE());
+		std::shared_ptr<_BMPIMAGE> image;
+		image.reset(new _BMPIMAGE());
 
 		//uint8_t* datBuff[2] = { nullptr, nullptr }; // Header buffers
 
 		//uint8_t* pixels = nullptr; // Pixels
 
-		BITMAPFILEHEADER* bmpHeader = nullptr; // Header
-		BITMAPINFOHEADER* bmpInfo = nullptr; // Info 
+		_BITMAPFILEHEADER* bmpHeader = nullptr; // Header
+		_BITMAPINFOHEADER* bmpInfo = nullptr; // Info 
 		FILE* l_file;
 
 		l_file = fopen(filename.c_str(),"rb");

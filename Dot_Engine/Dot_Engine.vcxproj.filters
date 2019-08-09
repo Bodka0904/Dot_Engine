@@ -147,9 +147,6 @@
     <ClInclude Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.h">
       <Filter>src\Dot\Graphics\Shaders\Uniform</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Shaders\WorldShader.h">
-      <Filter>src\Dot\Graphics\Shaders</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Text\Font.h">
       <Filter>src\Dot\Graphics\Text</Filter>
     </ClInclude>
@@ -1293,6 +1290,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Skybox.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1334,9 +1332,6 @@
     <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp">
       <Filter>src\Dot\Graphics\Shaders\Uniform</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Shaders\WorldShader.cpp">
-      <Filter>src\Dot\Graphics\Shaders</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Text\Font.cpp">
       <Filter>src\Dot\Graphics\Text</Filter>
     </ClCompile>
@@ -1376,5 +1371,7 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Skybox.cpp" />
+    <ClCompile Include="src\Dot\Debug\Timer.cpp" />
   </ItemGroup>
 </Project>

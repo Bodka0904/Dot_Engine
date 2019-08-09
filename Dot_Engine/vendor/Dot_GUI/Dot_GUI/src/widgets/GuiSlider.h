@@ -13,7 +13,7 @@ public:
 
 	virtual void Draw(GuiShader& shader, GuiTransform& transform) override;
 
-	virtual void SetData(glm::vec2& pos) override;
+	virtual void SetData(const glm::vec2& pos) override;
 
 	virtual void UpdateData(GuiTransform& transform) override;
 	virtual void SetValue(float value) override;
@@ -23,7 +23,7 @@ public:
 	virtual float GetValue() const override {return (1-m_value)*100; }
 
 
-	virtual bool MouseHoover(glm::vec2 mousePos) override;
+	virtual bool MouseHoover(const glm::vec2& mousePos) override;
 
 	virtual glm::vec2 GetPosition() const override { return m_position; };
 	virtual glm::vec2 GetSize() const override { return m_size; }

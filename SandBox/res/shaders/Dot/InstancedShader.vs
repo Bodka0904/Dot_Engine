@@ -8,6 +8,8 @@ layout (location = 3) in mat4 instanceModel;
 layout (std140) uniform camera_data
 {
 	mat4 ViewProjectionMatrix;
+	mat4 ViewMatrix;
+	mat4 ProjectionMatrix;
 };
 
 out vec3 fragPos0;

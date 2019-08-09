@@ -11,7 +11,6 @@ namespace Dot {
 		m_zNear(zNear),
 		m_zFar(zFar)
 	{
-		UpdateViewMatrix();
 		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
 	}
 	void Camera::UpdateViewMatrix()

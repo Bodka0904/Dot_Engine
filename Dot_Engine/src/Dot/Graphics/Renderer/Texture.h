@@ -1,29 +1,20 @@
 #pragma once
 
-
-
 namespace Dot {
-	struct TextureData
-	{
-		unsigned int texture;
-		unsigned char* imageData;
-		int width;
-		int height;
-		int numComponents;
-	};
-
+	
 	class Texture
 	{
 	public:
 		Texture();
-		virtual ~Texture();
+		~Texture();
+		void Create2D(const std::string& fileName);
+		void CreateCubeMap(const std::vector<std::string>faces);
 
-		void Create(std::string fileName);
 		void Bind(unsigned int unit);
 
 	private:
-		TextureData data;
-
+		unsigned int texture;
+		int textureType;
 	};
 
 }

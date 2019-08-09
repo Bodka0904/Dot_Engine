@@ -12,6 +12,8 @@ out VS_OUT {
 layout (std140) uniform camera_data
 {
 	mat4 ViewProjectionMatrix;
+	mat4 ViewMatrix;
+	mat4 ProjectionMatrix;
 };
 
 uniform mat4 ModelMatrix;

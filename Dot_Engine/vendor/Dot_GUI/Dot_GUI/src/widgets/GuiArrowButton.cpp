@@ -59,7 +59,7 @@ void GuiArrowButton::UpdateData(GuiTransform & transform)
 		m_position.y));
 }
 
-void GuiArrowButton::SetData(glm::vec2& pos)
+void GuiArrowButton::SetData(const glm::vec2& pos)
 {
 	m_position = glm::vec2(pos.x - (m_size.x / 2),
 		pos.y - (m_size.y / 2));
@@ -67,7 +67,7 @@ void GuiArrowButton::SetData(glm::vec2& pos)
 	m_text->SetData(m_position);
 }
 
-bool GuiArrowButton::MouseHoover(glm::vec2 mousePos)
+bool GuiArrowButton::MouseHoover(const glm::vec2& mousePos)
 {
 	if (mousePos.x >= GetCoords().x && mousePos.x <= GetCoords().z
 		&& mousePos.y <= GetCoords().y && mousePos.y >= GetCoords().w)
