@@ -8,6 +8,13 @@ namespace Dot {
 	class TerrainEditor
 	{
 	public:
+		struct Vertex
+		{
+			glm::vec3 vertice;
+			glm::vec3 normal;
+			glm::vec2 texcoord;
+		};
+
 		TerrainEditor();
 		~TerrainEditor();
 
@@ -36,9 +43,11 @@ namespace Dot {
 		glm::vec3 generateNormal(int x, int z) const;
 
 	private:
+		
+
 		std::shared_ptr<TerrainData> m_data;
 		std::shared_ptr<ArrayBuffer> m_VAO;
-		std::vector<VertexTexture> m_vertices;
+		std::vector<Vertex> m_vertices;
 
 
 	private:

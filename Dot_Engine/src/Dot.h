@@ -12,7 +12,7 @@
 #include "Dot/EntryPoint.h"
 #include "Dot/Utils/Timestep.h"
 
-#include "Dot/Graphics/ObjLoader.h"
+
 #include "Dot/Graphics/Renderer/Renderer.h"
 #include "Dot/Graphics/Renderer/Camera/Camera.h"
 #include "Dot/Graphics/Renderer/Camera/OrthoCamera.h"
@@ -20,9 +20,11 @@
 #include "Dot/Graphics/Renderer/Mesh.h"
 #include "Dot/Graphics/Skybox.h"
 
+#include "Dot/Utils/MousePicker.h"
 #include "Dot/Graphics/Transform.h"
 #include "Dot/Graphics/Renderer/Texture.h"
 
 #include "Dot/Terrain/Terrain.h"
 #include "Dot/Utils/BmpLoader.h"
 
+#include "Dot/Graphics/Renderer/Animation/AnimatedMesh.h"

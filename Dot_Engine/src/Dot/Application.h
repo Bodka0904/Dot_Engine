@@ -48,7 +48,7 @@ namespace Dot {
 
 	private:
 		float m_LastFrameTime = 0;
-
+	
 	};
 
 	// To be defined in CLIENT

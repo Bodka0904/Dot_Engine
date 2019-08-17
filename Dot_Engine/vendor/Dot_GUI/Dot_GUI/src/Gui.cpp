@@ -80,8 +80,7 @@ void Gui::Init(GLFWwindow * handler)
 
 	GuiBufferLayout layout = {
 		{0,GuiShaderDataType::Float2, "position" },
-		{1,GuiShaderDataType::Float2, "texCoords" },
-		{2,GuiShaderDataType::Float2, "offsets" },
+		{1,GuiShaderDataType::Float2, "texCoords" }
 	};
 
 

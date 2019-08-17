@@ -2,4 +2,4 @@
 #include "Log.h"
 
 
-int Log::LEVEL = 0;
+int Log::LEVEL = 3;

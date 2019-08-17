@@ -16,7 +16,7 @@ namespace Dot {
 		virtual void OnDetach() override;
 
 
-	
+	private:
 		void NewTerrain();
 		void SetHeight();
 		void SetNormals();

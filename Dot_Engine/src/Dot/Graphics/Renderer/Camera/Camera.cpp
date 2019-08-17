@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Camera.h"
+#include <glm/gtx/transform.hpp>
 
 namespace Dot {
 	Camera::Camera(float fov, float aspect, float zNear, float zFar)

@@ -26,7 +26,7 @@ namespace Dot {
 		glBindVertexArray(0);
 	}
 
-	void ArrayBuffer::AddVBO(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+	void ArrayBuffer::AddVBO(const Ref<VertexBuffer>& vertexBuffer)
 	{
 		D_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout");
 
@@ -52,7 +52,7 @@ namespace Dot {
 		m_VertexBuffers.push_back(vertexBuffer);
 	}
 
-	void ArrayBuffer::AddIBO(const std::shared_ptr<IndexBuffer>& indexBuffer)
+	void ArrayBuffer::AddIBO(const Ref<IndexBuffer>& indexBuffer)
 	{
 		glBindVertexArray(m_VAO);
 		indexBuffer->Bind();

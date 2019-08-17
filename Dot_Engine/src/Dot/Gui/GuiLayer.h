@@ -14,6 +14,8 @@ namespace Dot {
 		void OnUpdate(Timestep ts) override;
 		void OnEvent(Event& event)override;
 
+
+	private:
 		void ButtonAction();
 		void CheckBoxAction();
 		void ArrowButtonAction();

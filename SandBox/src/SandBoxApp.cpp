@@ -1,38 +1,32 @@
 #pragma once
 #include <Dot.h>
-
-
+#include <iostream>
 class TestLayer : public Dot::Layer
 {
 public:
 	TestLayer()
 		: 
 		Dot::Layer(),
-		camera(50.0f,1280.0f/720.0f,1.0f,1500.0f)
+		camera(45.0f,1780.0f/1240.0f,1.0f,10000.0f)
 	{
 
 	}
 
 	void OnAttach()
-	{
-		Dot::BufferLayout layout = {
-				{0, Dot::ShaderDataType::Float3, "position" },
-				{1, Dot::ShaderDataType::Float3, "normal" },
-				{2, Dot::ShaderDataType::Float2, "texCoord" },
-				
-		};
-		cube = std::make_shared<Dot::Mesh>("res/models/Dot/bear.obj", layout);
-		
+	{	
 
 		Dot::ShaderLayout s_layout = {
 			{0,"position"},
 			{1,"normal"},
-			{2,"texCoord"},
+			{2,"tangent"},
+			{3,"binormal"},
+			{4,"texCoord"},
 	
 		};
 		
-		WorldShader = std::make_shared<Dot::Shader>("res/shaders/Dot/TestGeometryShader");
-		WorldShader->AddGeometryShader("res/shaders/Dot/GeometryShader.gs");
+		//WorldShader = std::make_shared<Dot::Shader>("res/shaders/Dot/TestGeometryShader");
+		WorldShader = std::make_shared<Dot::Shader>("res/shaders/Dot/BasicShader.vs","res/shaders/Dot/BasicShader.fs");
+		//WorldShader->AddGeometryShader("res/shaders/Dot/GeometryShader.gs");
 		WorldShader->SetLayout(s_layout);
 		WorldShader->LinkShader();
 	
@@ -42,17 +36,17 @@ public:
 		WorldShader->AddUniform("ModelMatrix");
 		WorldShader->AddUniform("time");
 			
-		texture.Create2D("res/textures/Dot/treehill.png");
 		
+		TreeTexture.Create2D("res/textures/Dot/treehill.png", Dot::TextureFormat::RGBA);
 
 		Dot::ShaderLayout test_layout = {
 			{0,"position"},
 			{1,"normal"},
-			{2,"texCoord"},
+			{4,"texCoord"},
 			{3,"instanceModel"},
 		};
 
-		InstanceShader = std::make_shared<Dot::Shader>("res/shaders/Dot/InstancedShader");
+		InstanceShader = std::make_shared<Dot::Shader>("res/shaders/Dot/InstancedShader.vs", "res/shaders/Dot/InstancedShader.fs");
 		InstanceShader->SetLayout(test_layout);
 		InstanceShader->LinkShader();
 	
@@ -60,33 +54,27 @@ public:
 		InstanceShader->AddUniform("texi");
 		InstanceShader->UploadInt("texi", 1);
 		
-		Dot::BufferLayout layout_test = {
-				{0, Dot::ShaderDataType::Float3, "position" },
-				{1, Dot::ShaderDataType::Float3, "normal" },
-				{2, Dot::ShaderDataType::Float2, "texCoord" },
-			
-		};
 		
-		test_positions.resize(5);		
+		InstancePositions.resize(5);		
 		transform.GetPos().x += 30;
 		transform.SetScale(glm::vec3(10, 10, 10));
-		test_positions[0] = transform.GetModel();
+		InstancePositions[0] = transform.GetModel();
 		transform.GetPos().x += 30;
-		test_positions[1] = transform.GetModel();
+		InstancePositions[1] = transform.GetModel();
 		transform.GetPos().x += 30;
-		test_positions[2] = transform.GetModel();
+		InstancePositions[2] = transform.GetModel();
 		transform.GetPos().x += 30;
-		test_positions[3] = transform.GetModel();
+		InstancePositions[3] = transform.GetModel();
 		transform.GetPos().x = 0;
 
-		bearTex.Create2D("res/textures/Dot/bear.png");
-		test = std::make_shared<Dot::InstancedMesh>("res/models/Dot/treehill.obj", layout_test, test_positions);
+
+		InstanceModel = std::make_shared<Dot::InstancedMesh>("res/models/Dot/treehill.obj", InstancePositions);
 
 		Dot::ShaderLayout skyLayout = {
 			{0,"position"}
 		};
 
-		SkyBoxShader = std::make_shared<Dot::Shader>("res/shaders/Dot/SkyboxShader");
+		SkyBoxShader = std::make_shared<Dot::Shader>("res/shaders/Dot/SkyboxShader.vs", "res/shaders/Dot/SkyboxShader.fs");
 		SkyBoxShader->SetLayout(skyLayout);
 		SkyBoxShader->LinkShader();
 	
@@ -101,6 +89,31 @@ public:
 		};
 
 		SkyBox = std::make_shared<Dot::Skybox>(faces,500);
+
+
+		TerrTexture.Create2D("res/textures/Dot/grass.jpg",Dot::TextureFormat::RGBA);
+
+
+		GunTexture.Create2D("res/textures/Dot/dragon.png", Dot::TextureFormat::RGBA);
+		Mesh = std::make_shared<Dot::Mesh>("res/models/Dot/dragon.obj");
+
+
+		Dot::ShaderLayout anim = {
+			{0,"Position"},
+			{1,"TexCoord"},
+			{2,"Normal"},
+			{3,"BoneIDs"},
+			{4,"Weights"}
+		};
+		m_Anim_Shader = std::make_shared<Dot::Shader>("res/shaders/Dot/AnimShader.vs", "res/shaders/Dot/AnimShader.fs");
+		m_Anim_Shader->SetLayout(anim);
+		m_Anim_Shader->LinkShader();
+
+
+		m_Anim_Test = std::make_shared<Dot::AnimatedMesh>("res/animation/cowboy.dae");
+		m_Anim_Shader->AddUniform("ModelMatrix");
+		m_Anim_Shader->AddUniform("gBones");
+		CowBoyTex.Create2D("res/textures/Dot/cowboy.png", Dot::TextureFormat::RGBA);
 	}
 
 	void OnUpdate(Dot::Timestep ts) override
@@ -141,27 +154,37 @@ public:
 
 		Dot::Renderer::Clear(glm::vec4(0.4, 0.5, 0.7, 0.0));
 	
-		transform.SetScale(glm::vec3(20, 20, 20));
+		transform.SetScale(glm::vec3(1, 1, 1));
 		//transform.GetRot().y += 0.01f;
 		//transform.GetRot().x += 0.01;
 		//transform.GetRot().z += 0.01;
 		//transform.GetPos().z = 100;
 		camera.UpdateViewMatrix();
-		cube->SetModelMatrix(transform.GetModel());
-
+	
+		//MousePicker.CalculateMouseRay(camera);
 		Dot::Renderer::BeginScene(camera);
-		{
-			bearTex.Bind(0);
-			Dot::Renderer::SubmitElements(WorldShader,cube);
-			
-			texture.Bind(1);
-			Dot::Renderer::SubmitInstances(InstanceShader, test);
+		{	
+			TreeTexture.Bind(1);
+			Dot::Renderer::SubmitInstances(InstanceShader, InstanceModel);
 
-			
 			SkyBox->GetTexture().Bind(0);
 			Dot::Renderer::SubmitArrays(SkyBoxShader, SkyBox->GetVao());
-	
 
+
+			GunTexture.Bind(0);
+			Dot::Renderer::SubmitElements(WorldShader, Mesh);
+			
+			m_Anim_Shader->Bind();
+		
+			dt += 0.005;
+			Anim_Transform.InitTranslationTransform(0, 0, dt*10);
+			m_Anim_Test->AnimateBones(dt);
+	
+			m_Anim_Shader->UploadUniformMat4("gBones", (float*)&m_Anim_Test->GetBoneTransformations()[0], m_Anim_Test->GetBoneTransformations().size());
+			m_Anim_Shader->UploadUniformMat4("ModelMatrix", (float*)&Anim_Transform);
+			CowBoyTex.Bind(0);
+			m_Anim_Test->Render();
+			TerrTexture.Bind(0);
 		}
 		Dot::Renderer::EndScene(WorldShader);
 		
@@ -174,7 +197,8 @@ public:
 			Dot::MouseButtonPressEvent& e = (Dot::MouseButtonPressEvent&)event;
 			if (e.GetButton() == D_MOUSE_BUTTON_LEFT)
 			{
-			
+				transform.GetPos().z += 0.1;
+				
 			}
 			if (e.GetButton() == D_MOUSE_BUTTON_RIGHT)
 			{
@@ -184,13 +208,13 @@ public:
 		else if (event.GetEventType() == Dot::EventType::KeyPressed)
 		{
 			Dot::KeyPressedEvent& e = (Dot::KeyPressedEvent&)event;
-			if (e.GetKey() == D_KEY_LEFT)
+			if (e.GetKey() == D_KEY_LEFT) 
 			{
 				
 
 			}
 			else if (e.GetKey() == D_KEY_RIGHT)
-			{
+			{ 
 				
 				
 			}
@@ -220,26 +244,41 @@ public:
 
 	void OnDetach() override
 	{
-	
+		
 	}
 
 private:
 	Dot::Camera camera;
 	Dot::Transform transform;
-	Dot::Texture texture;
-	Dot::Texture bearTex;
-	std::shared_ptr<Dot::Mesh> cube;
-	std::shared_ptr<Dot::InstancedMesh> test;
-	std::shared_ptr<Dot::Shader> InstanceShader;
-	std::vector<glm::mat4>test_positions;
-	std::shared_ptr<Dot::Shader> WorldShader;
+
+	Dot::Texture TreeTexture;
+	Dot::Texture TerrTexture;
+	Dot::Texture GunTexture;
+	Dot::Texture CowBoyTex;
 
 
-	std::shared_ptr<Dot::Shader> SkyBoxShader;
-	std::shared_ptr<Dot::Skybox> SkyBox;
+	Dot::Ref<Dot::InstancedMesh> InstanceModel;
+	Dot::Ref<Dot::Shader> InstanceShader;
+	std::vector<glm::mat4>InstancePositions;
+	
+
+
+	Dot::Ref<Dot::Shader> SkyBoxShader;
+	Dot::Ref<Dot::Skybox> SkyBox;
+
+	Dot::MousePicker MousePicker;
+	Dot::Ref<Dot::Mesh> Mesh;
+	Dot::Ref<Dot::Shader> WorldShader;
 
 	float m_CameraMoveSpeed = 20.0f;
 	float m_CameraRotationSpeed = 2.0f;
+
+	
+	Dot::Ref<Dot::Shader> m_Anim_Shader;
+	Dot::Ref<Dot::AnimatedMesh> m_Anim_Test  ;
+	Dot::Matrix4f Anim_Transform;
+
+	float dt = 0.0f;
 };
 
 

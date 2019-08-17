@@ -94,7 +94,8 @@ private:
 private:
 	GuiText* m_text;
 
-	
+	std::shared_ptr<GuiVertexBuffer>m_VBO;
+	std::shared_ptr<GuiIndexBuffer>m_IBO;	
 	std::vector <std::shared_ptr<GuiWidget>> m_widgets;
 	std::vector<func_ptr> m_user_callbacks;
 

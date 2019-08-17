@@ -29,7 +29,7 @@ namespace Dot {
 
 		if (glewInit() != GLEW_OK)
 		{
-			LOG_ERR("OpenGLContext: Could not initialize glew")
+			LOG_ERR("OpenGLContext: Could not initialize glew");
 		};
 
 		glMatrixMode(GL_PROJECTION);

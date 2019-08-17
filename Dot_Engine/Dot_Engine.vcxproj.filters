@@ -22,6 +22,9 @@
     <Filter Include="src\Dot\Graphics\Renderer">
       <UniqueIdentifier>{29D6EBB7-9598-1F42-DE48-AECE4A4AF81F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Graphics\Renderer\Animation">
+      <UniqueIdentifier>{5816DD22-C4CF-47CD-4D2F-62A7B9E7FD3C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Dot\Graphics\Renderer\Camera">
       <UniqueIdentifier>{81C25DE5-6D13-4927-9677-37E98227DC90}</UniqueIdentifier>
     </Filter>
@@ -108,9 +111,6 @@
     <ClInclude Include="src\Dot\Events\Event.h">
       <Filter>src\Dot\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\ObjLoader.h">
-      <Filter>src\Dot\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\ArrayBuffer.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
@@ -122,9 +122,6 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.h">
       <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\InstancedMesh.h">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
@@ -146,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.h">
       <Filter>src\Dot\Graphics\Shaders\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Skybox.h">
+      <Filter>src\Dot\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Text\Font.h">
       <Filter>src\Dot\Graphics\Text</Filter>
@@ -183,7 +183,13 @@
     <ClInclude Include="src\Dot\Terrain\TerrainEditorLayer.h">
       <Filter>src\Dot\Terrain</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Terrain\TerrainGenerator.h">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Utils\BmpLoader.h">
+      <Filter>src\Dot\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\MousePicker.h">
       <Filter>src\Dot\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\Timestep.h">
@@ -1290,7 +1296,8 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Skybox.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Animation\AssimpMat.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Animation\AnimatedMesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1299,8 +1306,8 @@
     <ClCompile Include="src\Dot\Debug\Log.cpp">
       <Filter>src\Dot\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\ObjLoader.cpp">
-      <Filter>src\Dot\Graphics</Filter>
+    <ClCompile Include="src\Dot\Debug\Timer.cpp">
+      <Filter>src\Dot\Debug</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\ArrayBuffer.cpp">
       <Filter>src\Dot\Graphics\Renderer</Filter>
@@ -1313,9 +1320,6 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.cpp">
       <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\InstancedMesh.cpp">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp">
       <Filter>src\Dot\Graphics\Renderer</Filter>
@@ -1331,6 +1335,9 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp">
       <Filter>src\Dot\Graphics\Shaders\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Skybox.cpp">
+      <Filter>src\Dot\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Text\Font.cpp">
       <Filter>src\Dot\Graphics\Text</Filter>
@@ -1359,7 +1366,13 @@
     <ClCompile Include="src\Dot\Terrain\TerrainEditorLayer.cpp">
       <Filter>src\Dot\Terrain</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Terrain\TerrainGenerator.cpp">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Utils\BmpLoader.cpp">
+      <Filter>src\Dot\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\MousePicker.cpp">
       <Filter>src\Dot\Utils</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
@@ -1371,7 +1384,7 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Skybox.cpp" />
-    <ClCompile Include="src\Dot\Debug\Timer.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Animation\AssimpMat.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Animation\AnimatedMesh.cpp" />
   </ItemGroup>
 </Project>

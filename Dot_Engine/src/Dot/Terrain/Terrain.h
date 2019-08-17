@@ -3,9 +3,25 @@
 #include <glm/glm.hpp>
 
 namespace Dot {
+
+	struct TerrainDataT
+	{
+		struct Vertex
+		{
+			glm::vec3 vertice;
+			glm::vec3 normal;
+			glm::vec2 texcoord;
+		};
+
+		std::vector<Vertex> m_vertices;
+		std::shared_ptr<ArrayBuffer> m_vao;
+
+		float m_size;
+		int m_numvertex;
+	};
+
 	struct TerrainData
 	{
-		std::shared_ptr<ArrayBuffer> VAO;
 		std::vector<std::vector<float> > heights;
 
 		float size;
@@ -18,8 +34,6 @@ namespace Dot {
 		Terrain(TerrainData& data);
 		~Terrain();
 
-
-		std::shared_ptr<ArrayBuffer>GetVao() const { return m_data.VAO; }
 		float GetSize() const { return m_data.size; }
 		float GetNumVertex() const { return m_data.numvertex; }
 

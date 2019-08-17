@@ -7,7 +7,7 @@ namespace Dot {
 		UniformBuffer(const void* data, unsigned int size, unsigned int index);
 		~UniformBuffer();
 
-		void Update(const void* data);
+		void Update(const void* data,unsigned int size);
 	
 		unsigned int& GetUBO() { return m_UBO; }
 		unsigned int& GetBlockIndex() { return m_Block_Index; }
@@ -17,7 +17,7 @@ namespace Dot {
 		unsigned int m_UBO;
 		unsigned int m_Index;
 		unsigned int m_Block_Index;
-		unsigned int m_size;
+		
 	};
 
 }

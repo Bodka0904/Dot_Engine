@@ -1,20 +1,55 @@
 #pragma once
+#include <glm/glm.hpp>
 #include "ArrayBuffer.h"
 
 namespace Dot {
 	class Mesh
 	{
 	public:
-		Mesh(std::string filename, BufferLayout layout);
+		struct Vertex
+		{
+			glm::vec3 Position;
+			glm::vec3 Normal;
+			glm::vec3 Tangent;
+			glm::vec3 Binormal;
+			glm::vec2 Texcoord;
+		};
+		static_assert(sizeof(Vertex) == 14 * sizeof(float));
+		static const int NumAttributes = 5;
+
+		struct Index
+		{
+			uint32_t V1, V2, V3;
+		};
+		static_assert(sizeof(Index) == 3 * sizeof(uint32_t));
+
+		Mesh(const std::string& filename);
 		~Mesh();
 
-		std::shared_ptr<ArrayBuffer> GetVao();
-		void SetModelMatrix(glm::mat4 modelMatrix) { m_modelMatrix = modelMatrix; }
-		glm::mat4& GetModelMatrix() {return m_modelMatrix;}
+		void Render();
+
+		inline const std::shared_ptr<ArrayBuffer> GetVao() { return m_VAO; }
+		inline const std::string& GetFilePath() const { return m_FilePath; }
+	private:
+		std::vector<Vertex> m_Vertices;
+		std::vector<Index> m_Indices;
+		Ref<ArrayBuffer> m_VAO;
+
+
+		std::string m_FilePath;
+	};
+
+	class InstancedMesh
+	{
+	public:
+		InstancedMesh(const std::string& filename, const std::vector<glm::mat4> transforms);
+
+
+		const inline unsigned int GetNum() const { return m_num; }
+		const inline std::shared_ptr<ArrayBuffer> GetVao() { return mesh->GetVao(); }
 
 	private:
-		std::shared_ptr<ArrayBuffer> m_VAO;
-		glm::mat4 m_modelMatrix;
-		
+		Ref<Mesh> mesh;
+		unsigned int m_num;
 	};
 }

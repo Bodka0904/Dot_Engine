@@ -5,12 +5,10 @@
 #include "Dot/Graphics/Text/Font.h"
 #include "Dot/Debug/Timer.h"
 
+
 namespace Dot {
 
-	//0th argument stands for Function to call,
-	//1th must be called because it is class member function,
-	//2th is placeholder for agument
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
 
 	Application* Application::s_Instance = nullptr;
 
@@ -38,12 +36,13 @@ namespace Dot {
 			{0,"position"},
 			{1,"texCoord"},
 		};
-		shader.reset(new Shader("res/shaders/Text/TextShader"));
+		shader.reset(new Shader("res/shaders/Text/TextShader.vs", "res/shaders/Text/TextShader.fs"));
 		shader->SetLayout(layout);
 		shader->LinkShader();
 		shader->AddUniform("ortho");
 
-
+		
+	
 
 		Font::AddFont("Arial","res/fonts/Arial.DDS");
 		text.reset(new Text("Test test TEST", 20, 50, 20));
@@ -82,11 +81,11 @@ namespace Dot {
 
 				}
 			}
+
 		
-			
 			shader->Bind();
 
-			shader->UploadUniformMat4("ortho",camera->GetViewProjectionMatrix());
+			shader->UploadUniformMat4("ortho",(float*)&camera->GetViewProjectionMatrix());
 			text->PrintText("Arial");
 			m_Window->Update();
 

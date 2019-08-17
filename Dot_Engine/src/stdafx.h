@@ -8,7 +8,6 @@
 #include <iostream>
 #include <algorithm>
 #include <map>
-#include <math.h>
 #include <fstream>
 #include <vector>
 #include <functional>

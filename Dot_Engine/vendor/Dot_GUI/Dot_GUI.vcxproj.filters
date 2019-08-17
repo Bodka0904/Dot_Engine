@@ -31,6 +31,9 @@
     <ClInclude Include="Dot_GUI\src\glText\gltext.h">
       <Filter>glText</Filter>
     </ClInclude>
+    <ClInclude Include="Dot_GUI\src\graphics\GuiArrayBuffer.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
     <ClInclude Include="Dot_GUI\src\graphics\GuiBuffer.h">
       <Filter>graphics</Filter>
     </ClInclude>
@@ -64,12 +67,14 @@
     <ClInclude Include="Dot_GUI\src\widgets\GuiWrapper.h">
       <Filter>widgets</Filter>
     </ClInclude>
-    <ClInclude Include="Dot_GUI\src\graphics\GuiArrayBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dot_GUI\src\Gui.cpp" />
     <ClCompile Include="Dot_GUI\src\glText\GuiText.cpp">
       <Filter>glText</Filter>
+    </ClCompile>
+    <ClCompile Include="Dot_GUI\src\graphics\GuiArrayBuffer.cpp">
+      <Filter>graphics</Filter>
     </ClCompile>
     <ClCompile Include="Dot_GUI\src\graphics\GuiBuffer.cpp">
       <Filter>graphics</Filter>
@@ -95,6 +100,5 @@
     <ClCompile Include="Dot_GUI\src\widgets\GuiWrapper.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
-    <ClCompile Include="Dot_GUI\src\graphics\GuiArrayBuffer.cpp" />
   </ItemGroup>
 </Project>

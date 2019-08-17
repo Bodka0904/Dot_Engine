@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Buffer.h"
-#include "Dot/Graphics/ObjLoader.h"
 #include <GL/glew.h>
 
 namespace Dot {
@@ -50,7 +49,7 @@ namespace Dot {
 
 
 
-	IndexBuffer::IndexBuffer(unsigned int* indices, unsigned int count)
+	IndexBuffer::IndexBuffer(const void* indices, unsigned int count)
 		:m_Count(count)
 	{
 		glCreateBuffers(1, &m_VBO);

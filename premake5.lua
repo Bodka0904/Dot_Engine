@@ -22,7 +22,6 @@ include "Dot_Engine/vendor/GLFW"
 include "Dot_Engine/vendor/GLEW"
 include "Dot_Engine/vendor/Dot_GUI"
 
-
 project "Dot_Engine"
 		location "Dot_Engine"
 		kind "StaticLib"
@@ -50,6 +49,7 @@ project "Dot_Engine"
 		{
 			"_CRT_SECURE_NO_WARNINGS",
 			"GLEW_STATIC"
+			
 		}
 
 		includedirs
@@ -60,17 +60,20 @@ project "Dot_Engine"
 			"%{IncludeDir.GLEW}",
 			"%{IncludeDir.Dot_GUI}",
 			"%{prj.name}/vendor/glm",
-			"%{prj.name}/vendor/stb_image"
+			"%{prj.name}/vendor/stb_image",
+			"%{prj.name}/vendor/assimp/include"
+			
 			
 		}
 
+		
 
 		links 
 		{ 
 			"GLEW",
 			"GLFW",
 			"Dot_GUI",
-			"opengl32",
+			"opengl32"	
 	
 		}
 		
@@ -80,22 +83,24 @@ project "Dot_Engine"
 
 		defines
 		{
-				"GLFW_INCLUDE_NONE",
-				"GLEW_STATIC",
-				"D_PLATFORM_WINDOWS",
+			"GLFW_INCLUDE_NONE",
+			"GLEW_STATIC",
+			"D_PLATFORM_WINDOWS"
+			
 		}
 			
-
-
 		filter "configurations:Debug"
 				defines "D_DEBUG"
 				runtime "Debug"
 				symbols "on"
+		
 
 		filter "configurations:Release"
 				defines "D_RELEASE"
 				runtime "Release"
 				optimize "on"
+
+	
 
 project "SandBox"
 		location "SandBox"
@@ -118,14 +123,15 @@ project "SandBox"
 		
 			"Dot_Engine/vendor",
 			"Dot_Engine/src",
-			"Dot_Engine/vendor/glm"
-		
+			"Dot_Engine/vendor/glm",
+			"Dot_Engine/vendor/assimp/include"
 		}
 		
-
+		
 		links
 		{
-			"Dot_Engine"
+			"Dot_Engine",
+			"Dot_Engine/vendor/assimp/win64/assimp.lib"			
 		}
 
 		filter "system:windows"

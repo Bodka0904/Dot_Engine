@@ -17,8 +17,20 @@ namespace Dot {
 		glDeleteTextures(1, &texture);
 	}
 
-	void Texture::Create2D(const std::string& fileName)
+	void Texture::Create2D(const std::string& fileName,TextureFormat format)
 	{
+		int texFormat = 0;
+		switch (format)
+		{
+		case Dot::TextureFormat::None:
+			break;
+		case Dot::TextureFormat::RGB:
+			texFormat = GL_RGB;
+		case Dot::TextureFormat::RGBA:
+			texFormat = GL_RGBA;
+	
+		}
+
 		int width;
 		int height;
 		int numComponents;
@@ -33,16 +45,14 @@ namespace Dot {
 		glGenTextures(1, &texture);
 		glBindTexture(GL_TEXTURE_2D, texture);
 
-
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_LINEAR_MIPMAP_LINEAR); //reading texture width
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_LINEAR); //reading texture height
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
-
-
-		glBindTexture(GL_TEXTURE_2D, 0);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		
+		glTexImage2D(GL_TEXTURE_2D, 0, texFormat, width, height, 0, texFormat, GL_UNSIGNED_BYTE, imageData);
+		glGenerateMipmap(GL_TEXTURE_2D);
+		
 
 		if (imageData)
 		{
@@ -54,6 +64,7 @@ namespace Dot {
 
 	void Texture::CreateCubeMap(const std::vector<std::string> faces)
 	{
+		
 
 		glGenTextures(1, &texture);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
@@ -93,5 +104,13 @@ namespace Dot {
 
 	}
 
+	int Texture::CalculateMipMapCount(int width, int height)
+	{
+		int levels = 1;
+		while ((width | height) >> levels) {
+			levels++;
+		}
+		return levels;
+	}
 
 }

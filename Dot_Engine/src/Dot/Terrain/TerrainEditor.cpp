@@ -35,11 +35,13 @@ namespace Dot {
 		{
 			for (int j = 0; j < m_data->numvertex; j++)
 			{
-				m_vertices[j + (i * m_data->numvertex)] =
-					VertexTexture(
-						glm::vec3((float)j / ((float)m_data->numvertex - 1) * m_data->size, 0, (float)i / ((float)m_data->numvertex - 1) * m_data->size),
-						glm::vec3(0, 0, 0), 
-						glm::vec2((float)j / ((float)m_data->numvertex - 1), (float)i / ((float)m_data->numvertex - 1)));
+				Vertex vertex;
+				vertex.vertice = glm::vec3((float)j / ((float)m_data->numvertex - 1) * m_data->size, 0, (float)i / ((float)m_data->numvertex - 1) * m_data->size);
+				vertex.normal = glm::vec3(0, 0, 0);
+				vertex.texcoord = glm::vec2((float)j / ((float)m_data->numvertex - 1), (float)i / ((float)m_data->numvertex - 1));
+
+				m_vertices[j + (i * m_data->numvertex)] = vertex;
+					
 			}
 		}
 		int pointer = 0;
@@ -67,7 +69,7 @@ namespace Dot {
 
 		m_VAO.reset(new ArrayBuffer());
 
-		vbo.reset(new VertexBuffer(&m_vertices[0], m_vertices.size() * sizeof(VertexTexture), Dynamic_Buffer_Update));
+		vbo.reset(new VertexBuffer(&m_vertices[0], m_vertices.size() * sizeof(Vertex), Dynamic_Buffer_Update));
 		vbo->SetLayout(layout);
 		m_VAO->AddVBO(vbo);
 
@@ -84,7 +86,7 @@ namespace Dot {
 				m_vertices[j + (i * m_data->numvertex)].normal = generateNormal(i, j);
 			}
 		}
-		m_VAO->GetVertexBuffer(0)->Update(&m_vertices[0], m_vertices.size() * sizeof(VertexTexture));
+		m_VAO->GetVertexBuffer(0)->Update(&m_vertices[0], m_vertices.size() * sizeof(Vertex));
 	}
 
 	void TerrainEditor::Draw()
@@ -113,7 +115,7 @@ namespace Dot {
 			}
 		}
 	
-		m_VAO->GetVertexBuffer(0)->Update(&m_vertices[0], m_vertices.size() * sizeof(VertexTexture));
+		m_VAO->GetVertexBuffer(0)->Update(&m_vertices[0], m_vertices.size() * sizeof(Vertex));
 	}
 
 	

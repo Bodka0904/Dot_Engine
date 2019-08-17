@@ -130,33 +130,6 @@ namespace Dot {
 	};
 
 	
-	struct VertexTexture
-	{
-		VertexTexture() {};
-		VertexTexture(glm::vec3 Vertice, glm::vec3 Normal, glm::vec2 TexCoord)
-			:vertice(Vertice), normal(Normal), texcoord(TexCoord)
-		{};
-	
-
-		glm::vec3 vertice;
-		glm::vec3 normal;
-		glm::vec2 texcoord;
-
-	};
-
-	struct VertexColor
-	{
-		VertexColor(glm::vec3 Vertice, glm::vec3 Normal, glm::vec3 Color)
-			:vertice(Vertice), normal(Normal), color(Color)
-		{};
-
-		glm::vec3 vertice;
-		glm::vec3 normal;
-		glm::vec3 color;
-
-	};
-
-
 	
 	class VertexBuffer
 	{
@@ -183,7 +156,7 @@ namespace Dot {
 	class IndexBuffer
 	{
 	public:
-		IndexBuffer(unsigned int* indices, unsigned int count);
+		IndexBuffer(const void* indices, unsigned int count);
 		~IndexBuffer();
 
 		void Bind() const;

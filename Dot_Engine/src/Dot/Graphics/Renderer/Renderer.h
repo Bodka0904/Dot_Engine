@@ -3,7 +3,7 @@
 #include "Dot/Graphics/Renderer/Camera/Camera.h"
 #include "Dot/Graphics/Transform.h"
 #include "Mesh.h"
-#include "InstancedMesh.h"
+
 
 namespace Dot {
 
@@ -16,10 +16,12 @@ namespace Dot {
 		static void Clear(glm::vec4& color);
 
 		static void BeginScene(Camera& camera);
-		static void SubmitArrays(const std::shared_ptr<Shader>shader ,const std::shared_ptr<ArrayBuffer>& vao);
-		static void SubmitElements(const std::shared_ptr<Shader>shader,const std::shared_ptr<Mesh>& mesh);
-		static void SubmitInstances(const std::shared_ptr<Shader> shader, const std::shared_ptr<InstancedMesh>& mesh);
-		static void EndScene(const std::shared_ptr<Shader>shader);
+		static void SubmitArrays(const Ref<Shader>shader ,const Ref<ArrayBuffer>& vao);
+		static void SubmitElements(const Ref<Shader>shader,const Ref<Mesh>& mesh);
+		static void SubmitInstances(const Ref<Shader> shader, const Ref<InstancedMesh>& mesh);
+		static void EndScene(const Ref<Shader>shader);
+
+
 	
 	private:
 		struct SceneData
@@ -30,7 +32,8 @@ namespace Dot {
 
 		};
 
-		static SceneData* m_SceneData;
+
+		static SceneData m_SceneData;
 	};
 
 }

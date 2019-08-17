@@ -1,6 +1,5 @@
 #pragma once
 #include <conio.h>
-#include <map>
 #include <glm/glm.hpp>
 #include "Dot/Debug/Log.h"
 #include "Uniform/UniformBuffer.h"
@@ -43,7 +42,7 @@ namespace Dot {
 	class Shader
 	{
 	public:
-		Shader(const std::string& filename);
+		Shader(const std::string& vsSrc, const std::string& fsSrc);
 		~Shader();
 
 		void SetUniforms();
@@ -57,10 +56,11 @@ namespace Dot {
 		void UnBind() const;
 
 		void AddUniformBufferObject(const std::string& name,unsigned int bindIndex,unsigned int size);
-		void UpdateUniformBufferObject(const std::string& name,const void*data);
+		void UpdateUniformBufferObject(const std::string& name,const void*data,unsigned int size);
 
 		void AddUniform(const std::string& name);
-		void UploadUniformMat4(const std::string& name,const glm::mat4& matrix);
+
+		void UploadUniformMat4(const std::string& name, const float* data,unsigned int count = 1);
 		void UploadUniformVec2(const std::string& name,const glm::vec2& vector);
 		void UploadFloat(const std::string& name, float value);
 		void UploadInt(const std::string& name, int value);

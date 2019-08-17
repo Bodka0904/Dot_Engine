@@ -35,7 +35,7 @@ private:
 
 
 #define LOG_INFO(...) if(Log::GetLevel() == Log::INFO || Log::TRACE) printf("%c[1;%dm",27,ANSI_COLOR_WHITE_F);printf(__VA_ARGS__);printf("\n");
-#define LOG_WARN(...) if(Log::GetLevel() == Log::WARN || Log::TRACE) printf("%c[1;%dm",27,ANSI_COLOR_YELLOW_F);printf(__VA_ARGS__);printf("\n");
-#define LOG_ERR(...)  if(Log::GetLevel() == Log::ERR || Log::TRACE) printf("%c[1;%dm",27,ANSI_COLOR_RED_F);printf(__VA_ARGS__);printf("\n");
+#define LOG_WARN(...) if(Log::GetLevel() == Log::WARN || Log::TRACE) printf("%c[1;%dm",27,ANSI_COLOR_YELLOW_F);printf(__VA_ARGS__);printf("\n");printf("%c[1;%dm",27,ANSI_COLOR_WHITE_F)
+#define LOG_ERR(...)  if(Log::GetLevel() == Log::ERR || Log::TRACE) printf("%c[1;%dm",27,ANSI_COLOR_RED_F);printf(__VA_ARGS__);printf("\n");printf("%c[1;%dm",27,ANSI_COLOR_WHITE_F)
 
 #endif

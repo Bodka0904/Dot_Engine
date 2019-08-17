@@ -5,13 +5,13 @@
 
 namespace Dot {
 
-	Shader::Shader(const std::string& filename)
+	Shader::Shader(const std::string& vsSrc, const std::string& fsSrc)
 	{
 		m_program = glCreateProgram();
 	
 		m_shaders.resize(2);
-		m_shaders[0] = CreateShader(LoadShader(filename + ".vs"), GL_VERTEX_SHADER);
-		m_shaders[1] = CreateShader(LoadShader(filename + ".fs"), GL_FRAGMENT_SHADER);
+		m_shaders[0] = CreateShader(LoadShader(vsSrc), GL_VERTEX_SHADER);
+		m_shaders[1] = CreateShader(LoadShader(fsSrc), GL_FRAGMENT_SHADER);
 		
 		glUseProgram(m_program);
 
@@ -83,7 +83,7 @@ namespace Dot {
 				glDeleteShader(m_shaders[i]);
 			}
 
-			LOG_ERR("Shader: Could not link shader %s", &infoLog[0])
+			LOG_ERR("Shader: Could not link shader %s", &infoLog[0]);
 
 		}
 
@@ -129,9 +129,9 @@ namespace Dot {
 		glUniformBlockBinding(m_program, m_UBO[name]->GetBlockIndex(), m_UBO[name]->GetIndex());
 	}
 
-	void Shader::UpdateUniformBufferObject(const std::string& name, const void* data)
+	void Shader::UpdateUniformBufferObject(const std::string& name, const void* data,unsigned int size)
 	{
-		m_UBO[name]->Update(data);
+		m_UBO[name]->Update(data,size);
 	}
 
 	void Shader::AddUniform(const std::string& name)
@@ -139,9 +139,10 @@ namespace Dot {
 		m_Uniforms[name] = glGetUniformLocation(m_program, name.c_str());
 	}
 
-	void Shader::UploadUniformMat4(const std::string& name , const glm::mat4& matrix)
+
+	void Shader::UploadUniformMat4(const std::string& name, const float* data, unsigned int count)
 	{
-		glUniformMatrix4fv(m_Uniforms[name], 1, GL_FALSE, glm::value_ptr(matrix));
+		glUniformMatrix4fv(m_Uniforms[name], count, GL_TRUE, data);
 	}
 
 	void Shader::UploadUniformVec2(const std::string& name, const glm::vec2& vector)
@@ -191,7 +192,7 @@ namespace Dot {
 
 		if (shader == 0)
 		{
-			LOG_ERR("Shader: Could not create shader")
+			LOG_ERR("Shader: Could not create shader");
 		}
 		const GLchar* shaderSourceStrings[1];
 		GLint shaderSourceStringLength[1];
