@@ -58,7 +58,6 @@ namespace Dot {
 		if (Gui::GetWrapper("TerrainEditor").GetArrowButton(0).LeftClicked())
 		{
 			size += 1.0f;
-			std::cout << size << std::endl;
 			LOG_INFO("SIZE: %f", size);
 		}
 		else if (Gui::GetWrapper("TerrainEditor").GetArrowButton(0).RightClicked())

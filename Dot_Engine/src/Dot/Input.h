@@ -18,7 +18,7 @@ namespace Dot {
 		static float GetMouseXImp1();
 		static float GetMouseYImp1();
 
-
+		static std::pair<int, int>GetWindowSize();
 	private:
 		static Input* s_Instance;
 

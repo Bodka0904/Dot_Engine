@@ -1,6 +1,7 @@
 #pragma once
 #include <conio.h>
 #include <glm/glm.hpp>
+
 #include "Dot/Debug/Log.h"
 #include "Uniform/UniformBuffer.h"
 
@@ -60,11 +61,11 @@ namespace Dot {
 
 		void AddUniform(const std::string& name);
 
-		void UploadUniformMat4(const std::string& name, const float* data,unsigned int count = 1);
+		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
 		void UploadUniformVec2(const std::string& name,const glm::vec2& vector);
 		void UploadFloat(const std::string& name, float value);
 		void UploadInt(const std::string& name, int value);
-	private:
+	public:
 		static std::string LoadShader(const std::string& filename);
 		static unsigned int CreateShader(const std::string& text, unsigned int shaderType);
 
@@ -94,11 +95,36 @@ namespace Dot {
 
 		unsigned int m_program;
 		std::vector<unsigned int> m_shaders;
-	
-		unsigned int m_computeShader;
+
 		unsigned int m_uniforms[NUM_UNIFORMS];
 
 
+
+	};
+
+	class ComputeShader
+	{
+	public:
+		ComputeShader(const std::string& src);
+		~ComputeShader();
+
+		
+		void Compute(unsigned int groupX,unsigned int groupY = 1,unsigned int groupZ = 1);
+		void AddUniform(const std::string& name);
+
+		void UploadUniformMat4(const std::string& name, const float* data, unsigned int count = 1);
+		void UploadUniformVec2(const std::string& name, const glm::vec2& vector);
+		void UploadFloat(const std::string& name, float value);
+		void UploadInt(const std::string& name, int value);
+
+
+	private:
+		void LinkShader();
+
+	private:
+		unsigned int m_program;
+		unsigned int m_shader;
+		std::unordered_map<std::string, unsigned int> m_Uniforms;
 
 	};
 

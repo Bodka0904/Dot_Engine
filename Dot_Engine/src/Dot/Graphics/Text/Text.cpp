@@ -6,7 +6,7 @@
 
 
 namespace Dot {
-	Text::Text(const std::string& text, int x, int y, int size)
+	Text::Text(const std::string& text, float x, float y, int size)
 	{
 		unsigned int VBO_Vertex;
 		unsigned int VBO_Uv;
@@ -47,9 +47,9 @@ namespace Dot {
 			UVs.push_back(uv_up_right);
 			UVs.push_back(uv_down_left);
 		}
-
 		m_VertSize = vertices.size();
 
+		glBindVertexArray(0);
 		glGenVertexArrays(1, &m_VAO);
 		glBindVertexArray(m_VAO);
 
@@ -67,8 +67,8 @@ namespace Dot {
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
-
-		glBindVertexArray(0);
+		
+		//glBindVertexArray(0);
 	}
 	Text::~Text()
 	{
@@ -77,7 +77,7 @@ namespace Dot {
 	void Text::PrintText(const std::string& name)
 	{
 		Font::BindFont(name);
-		
+
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 

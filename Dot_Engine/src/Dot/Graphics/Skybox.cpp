@@ -60,7 +60,7 @@ namespace Dot {
 		};
 
 		std::shared_ptr<VertexBuffer> m_VBO;
-		m_VBO = std::make_shared<VertexBuffer>(vertices, sizeof(vertices), Static_Buffer_Update);
+		m_VBO = std::make_shared<VertexBuffer>(vertices, sizeof(vertices), D_STATIC_DRAW);
 		m_VBO->SetLayout(layout);
 
 		m_VAO = std::make_shared<ArrayBuffer>();

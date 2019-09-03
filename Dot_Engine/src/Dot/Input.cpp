@@ -42,4 +42,12 @@ namespace Dot {
 		return y; 0.0f;
 	}
 
+	std::pair<int, int> Input::GetWindowSize()
+	{
+		int width, height;
+		GLFWwindow* window = Application::Get().GetWin().GetWindow();
+		glfwGetWindowSize(window, &width, &height);
+		return std::pair<int, int>(width,height);
+	}
+
 }

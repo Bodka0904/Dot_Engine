@@ -48,7 +48,6 @@ void Gui::Init(GLFWwindow * handler)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
-	
 	m_handler = handler;
 	m_handler_mouseButtonCLB = glfwSetMouseButtonCallback(handler, Gui_MouseButtonCallback);
 	m_handler_cursorPosCLB = glfwSetCursorPosCallback(handler, Gui_MousePositionCallback);
@@ -140,6 +139,7 @@ void Gui::Update()
 	
 	if (EDIT_WIDGET)
 	{
+
 		m_wrappers[attachedWidget.first]->SetWidget(attachedWidget.second,glm::vec2(m_mousePosX, m_mousePosY));
 
 	}
@@ -260,6 +260,7 @@ void Gui::HandleReleaseWrapper(GuiEvent & event)
 	if (e.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
 	{
 		EDIT_WRAPPER = false;
+
 		if (m_wrappers[attachedWrapper]->MouseHoover(glm::vec2(m_mousePosX, m_mousePosY)))
 		{
 			HandlingEvent = true;
@@ -267,14 +268,15 @@ void Gui::HandleReleaseWrapper(GuiEvent & event)
 			if (!m_wrappers[attachedWrapper]->GetPinned())
 			{
 				if (m_wrappers[attachedWrapper]->PinToSide(glm::vec2(winWidth, winHeight)))
-				{			
+				{
 					m_wrappers[attachedWrapper]->SetWidgetsFollow();
 					m_wrappers[attachedWrapper]->SetWidgetsNextTo();
-					
+
 				}
 			}
 		}
-	}	
+		
+	}
 }
 
 void Gui::HandleReleaseWidget(GuiEvent & event)
@@ -376,6 +378,7 @@ void Gui::AddWrapper(const std::string& name)
 {
 	m_wrappers[name] = std::unique_ptr<GuiWrapper>();
 	m_wrappers[name].reset(new GuiWrapper(name));
+	attachedWrapper = name;
 }
 
 GuiWrapper & Gui::GetWrapper(const std::string& name)

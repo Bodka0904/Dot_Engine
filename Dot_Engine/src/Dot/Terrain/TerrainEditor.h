@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/Graphics/Renderer/ArrayBuffer.h"
+#include "Dot/Graphics/Renderer/Buffers/ArrayBuffer.h"
 #include "Terrain.h"
 #include <glm/glm.hpp>
 
@@ -43,8 +43,7 @@ namespace Dot {
 		glm::vec3 generateNormal(int x, int z) const;
 
 	private:
-		
-
+	
 		std::shared_ptr<TerrainData> m_data;
 		std::shared_ptr<ArrayBuffer> m_VAO;
 		std::vector<Vertex> m_vertices;

@@ -69,11 +69,12 @@ namespace Dot {
 
 		m_VAO.reset(new ArrayBuffer());
 
-		vbo.reset(new VertexBuffer(&m_vertices[0], m_vertices.size() * sizeof(Vertex), Dynamic_Buffer_Update));
+		vbo = std::make_shared<VertexBuffer>(&m_vertices[0], m_vertices.size() * sizeof(Vertex), D_DYNAMIC_DRAW);
 		vbo->SetLayout(layout);
 		m_VAO->AddVBO(vbo);
 
-		ibo.reset(new IndexBuffer(&indices[0], indices.size()));
+
+		ibo = std::make_shared<IndexBuffer>(&indices[0], indices.size());
 		m_VAO->AddIBO(ibo);
 	}
 
@@ -86,7 +87,7 @@ namespace Dot {
 				m_vertices[j + (i * m_data->numvertex)].normal = generateNormal(i, j);
 			}
 		}
-		m_VAO->GetVertexBuffer(0)->Update(&m_vertices[0], m_vertices.size() * sizeof(Vertex));
+		m_VAO->GetVertexBuffer(0)->Update(&m_vertices[0], m_vertices.size() * sizeof(Vertex),0);
 	}
 
 	void TerrainEditor::Draw()
@@ -115,7 +116,7 @@ namespace Dot {
 			}
 		}
 	
-		m_VAO->GetVertexBuffer(0)->Update(&m_vertices[0], m_vertices.size() * sizeof(Vertex));
+		m_VAO->GetVertexBuffer(0)->Update(&m_vertices[0], m_vertices.size() * sizeof(Vertex),0);
 	}
 
 	

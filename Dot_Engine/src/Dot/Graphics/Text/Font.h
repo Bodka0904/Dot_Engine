@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/Graphics/Shaders/Shader.h"
+#include <map>
 
 namespace Dot {
 

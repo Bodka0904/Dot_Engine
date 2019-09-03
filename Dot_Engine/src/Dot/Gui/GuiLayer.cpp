@@ -8,7 +8,11 @@ namespace Dot {
 #define BIND_FN(x) std::bind(&GuiLayer::x ,this)
 
 	GuiLayer::GuiLayer()
-	{
+	{	
+		if (!Gui::Inited())
+		{
+			Gui::Init(Application::Get().GetWin().GetWindow());
+		}
 	}
 
 

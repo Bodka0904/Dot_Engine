@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/Graphics/Renderer/ArrayBuffer.h"
+#include "Dot/Graphics/Renderer/Buffers/ArrayBuffer.h"
 #include <glm/glm.hpp>
 
 namespace Dot {

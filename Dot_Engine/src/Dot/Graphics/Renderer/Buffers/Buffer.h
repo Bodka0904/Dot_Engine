@@ -1,8 +1,11 @@
 #pragma once
 #include "Dot/Debug/Log.h"
-#include "RendererFlags.h"
+#include "Dot/Graphics/Renderer/RendererFlags.h"
 #include <glm/glm.hpp>
 
+#define D_STATIC_DRAW 0x88E4
+#define D_DYNAMIC_DRAW 0x88E8
+#define D_STREAM_DRAW 0x88E0
 
 namespace Dot {
 
@@ -134,14 +137,14 @@ namespace Dot {
 	class VertexBuffer
 	{
 	public:
-		VertexBuffer(const void *vertices, unsigned int size,BufferFlag flag);
+		VertexBuffer(const void *vertices, unsigned int size,int drawMod);
 		~VertexBuffer();
 
 		void Bind() const;
 		void UnBind() const;
 		
 		unsigned int GetCount() const;
-		void Update(const void *vertices,unsigned int size);
+		void Update(const void *vertices,unsigned int size, int offset);
 
 		void SetLayout(const BufferLayout& layout) { m_layout = layout; }
 		inline const BufferLayout &GetLayout() const { return m_layout; }
@@ -169,7 +172,23 @@ namespace Dot {
 		unsigned int m_Count;
 	};
 
-	
+	class ShaderStorageBuffer
+	{
+	public:
+		ShaderStorageBuffer(const void* data,unsigned int size,int drawMod);
+		~ShaderStorageBuffer();
 
+		void BindBase(unsigned int point);
+		void BindRange(unsigned int index);
+		void Bind();
+
+		void SetLayout(const BufferLayout& layout) { m_layout = layout; }
+		inline const BufferLayout& GetLayout() const { return m_layout; }
+
+	private:
+		unsigned int m_size;
+		unsigned int m_SSBO;
+		BufferLayout m_layout;
+	};
 
 }

@@ -140,9 +140,9 @@ namespace Dot {
 	}
 
 
-	void Shader::UploadUniformMat4(const std::string& name, const float* data, unsigned int count)
+	void Shader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
 	{
-		glUniformMatrix4fv(m_Uniforms[name], count, GL_TRUE, data);
+		glUniformMatrix4fv(m_Uniforms[name], 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 
 	void Shader::UploadUniformVec2(const std::string& name, const glm::vec2& vector)
@@ -220,5 +220,82 @@ namespace Dot {
 		return shader;
 	}
 
+
+	ComputeShader::ComputeShader(const std::string& src)
+	{
+		m_program = glCreateProgram();
+
+		m_shader = Shader::CreateShader(Shader::LoadShader(src), GL_COMPUTE_SHADER);
+	
+		glAttachShader(m_program, m_shader);
+		LinkShader();
+	}
+
+	ComputeShader::~ComputeShader()
+	{
+	}
+
+	void ComputeShader::LinkShader()
+	{
+
+		glUseProgram(m_program);
+		glLinkProgram(m_program);
+
+		GLint isLinked = 0;
+		glGetProgramiv(m_program, GL_LINK_STATUS, (int*)& isLinked);
+		
+		if (isLinked == GL_FALSE)
+		{
+			GLint maxLength = 0;
+			glGetProgramiv(m_program, GL_INFO_LOG_LENGTH, &maxLength);
+
+			// The maxLength includes the NULL character
+			std::vector<GLchar> infoLog(maxLength);
+			glGetProgramInfoLog(m_program, maxLength, &maxLength, &infoLog[0]);
+
+
+			glDeleteProgram(m_program);
+			glDeleteShader(m_shader);
+			
+			LOG_ERR("Shader: Could not link shader %s", &infoLog[0]);
+
+		}
+	
+		glValidateProgram(m_program);
+
+		glDetachShader(m_program, m_shader);
+		glDeleteShader(m_shader);
+
+		
+	}
+
+	void ComputeShader::Compute(unsigned int groupX, unsigned int groupY, unsigned int groupZ)
+	{
+		glUseProgram(m_program);
+		glDispatchCompute(groupX, groupY, groupZ);
+		glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);
+	}
+
+	void ComputeShader::AddUniform(const std::string& name)
+	{
+		m_Uniforms[name] = glGetUniformLocation(m_program, name.c_str());
+	}
+
+	void ComputeShader::UploadUniformMat4(const std::string& name, const float* data, unsigned int count)
+	{
+	}
+
+	void ComputeShader::UploadUniformVec2(const std::string& name, const glm::vec2& vector)
+	{
+	}
+
+	void ComputeShader::UploadFloat(const std::string& name, float value)
+	{
+		glUniform1f(m_Uniforms[name], value);
+	}
+
+	void ComputeShader::UploadInt(const std::string& name, int value)
+	{
+	}
 
 }

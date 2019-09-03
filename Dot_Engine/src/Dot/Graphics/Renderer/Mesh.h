@@ -1,6 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
-#include "ArrayBuffer.h"
+#include "Buffers/ArrayBuffer.h"
 
 namespace Dot {
 	class Mesh
@@ -26,7 +26,6 @@ namespace Dot {
 		Mesh(const std::string& filename);
 		~Mesh();
 
-		void Render();
 
 		inline const std::shared_ptr<ArrayBuffer> GetVao() { return m_VAO; }
 		inline const std::string& GetFilePath() const { return m_FilePath; }

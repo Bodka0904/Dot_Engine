@@ -78,7 +78,7 @@ namespace Dot {
 		}
 
 		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		m_VertexBuffer = std::make_shared<VertexBuffer>((void*)m_Vertices.data(), m_Vertices.size() * sizeof(Vertex),Static_Buffer_Update);
+		m_VertexBuffer = std::make_shared<VertexBuffer>((void*)m_Vertices.data(), m_Vertices.size() * sizeof(Vertex),D_STATIC_DRAW);
 		
 		BufferLayout layout = {
 			{0, ShaderDataType::Float3, "position" },
@@ -111,11 +111,6 @@ namespace Dot {
 	{
 	}
 
-	void Mesh::Render()
-	{
-	
-		
-	}
 
 
 	InstancedMesh::InstancedMesh(const std::string& filename, const std::vector<glm::mat4> transforms)
@@ -129,7 +124,7 @@ namespace Dot {
 				{5, Dot::ShaderDataType::Mat4, "instanceModel", 1},
 		};
 
-		m_VBO_MAT.reset((new VertexBuffer(&transforms[0], m_num * sizeof(glm::mat4), Dynamic_Buffer_Update)));
+		m_VBO_MAT.reset((new VertexBuffer(&transforms[0], m_num * sizeof(glm::mat4), D_DYNAMIC_DRAW)));
 		m_VBO_MAT->SetLayout(mat4);
 		mesh->GetVao()->AddVBO(m_VBO_MAT);
 	}

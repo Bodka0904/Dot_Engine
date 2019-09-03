@@ -18,6 +18,7 @@ namespace Dot {
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 
+		
 		m_Ter_editor_layer = new TerrainEditorLayer();
 		PushOverlay(m_Ter_editor_layer);
 
@@ -31,12 +32,14 @@ namespace Dot {
 		
 		camera.reset(new OrthoCamera(0, m_Window->GetWidth(), 0, m_Window->GetHeight()));
 
+		
 
 		ShaderLayout layout = {
 			{0,"position"},
 			{1,"texCoord"},
 		};
-		shader.reset(new Shader("res/shaders/Text/TextShader.vs", "res/shaders/Text/TextShader.fs"));
+		
+		shader = std::make_shared<Shader>("res/shaders/Text/TextShader.vs", "res/shaders/Text/TextShader.fs");
 		shader->SetLayout(layout);
 		shader->LinkShader();
 		shader->AddUniform("ortho");
@@ -44,13 +47,12 @@ namespace Dot {
 		
 	
 
-		Font::AddFont("Arial","res/fonts/Arial.DDS");
-		text.reset(new Text("Test test TEST", 20, 50, 20));
+		Font::AddFont("Arial", "res/fonts/Arial.DDS");
+		text = std::make_shared<Text>("Test test TEST", 20, 50, 50);
+		
 
-		if (!Gui::Inited())
-		{
-			Gui::Init(m_Window->GetWindow());
-		}
+		
+		
 	}
 
 
@@ -72,11 +74,13 @@ namespace Dot {
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
+
 			
+
 			for (Layer* layer : m_Layers)
 			{
 				{	
-					Timer timer;
+					//Timer timer;
 					layer->OnUpdate(timestep);
 
 				}
@@ -84,9 +88,9 @@ namespace Dot {
 
 		
 			shader->Bind();
-
-			shader->UploadUniformMat4("ortho",(float*)&camera->GetViewProjectionMatrix());
+			shader->UploadUniformMat4("ortho", camera->GetViewProjectionMatrix());
 			text->PrintText("Arial");
+		
 			m_Window->Update();
 
 			

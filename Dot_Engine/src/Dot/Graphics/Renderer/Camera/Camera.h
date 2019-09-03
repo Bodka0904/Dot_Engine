@@ -1,48 +1,48 @@
 #pragma once
 #include <glm/glm.hpp>
 
-
-
 namespace Dot {
 
 	class Camera
 	{
 	public:
-		Camera(float fov,float aspect,float zNear,float zFar);
+		Camera(const glm::mat4& projectionMatrix);
 
-		glm::vec3& GetPosition() { return m_Position; }
-		void SetPosition(const glm::vec3 position) { m_Position = position; UpdateViewMatrix(); };
+		void Focus();
+		void Update(float dt);
 
-		glm::vec3& GetRotation() { return m_Rotation; }
-		void SetRotation(const glm::vec3 rotation) { m_Rotation = rotation; UpdateViewMatrix(); };
+		inline float GetDistance() const { return m_Distance; }
+		inline void SetDistance(float distance) { m_Distance = distance; }
 
-		glm::vec3& GetTarget() { return m_Target; }
-		void SetTarget(const glm::vec3 target) { m_Target = target; UpdateViewMatrix(); };
-
-		void SetAspect(float aspect) { m_aspect = aspect; UpdateProjectionMatrix(); }
+		inline void SetProjectionMatrix(const glm::mat4& projectionMatrix) { m_ProjectionMatrix = projectionMatrix; }
 
 		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
 		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
-		const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
-		void UpdateViewMatrix();
+		const glm::mat4& GetViewProjectionMatrix() const { return m_ProjectionMatrix * m_ViewMatrix; }
 		
+		glm::vec3 GetUpDirection();
+		glm::vec3 GetRightDirection();
+		glm::vec3 GetForwardDirection();
+		const glm::vec3& GetPosition() const { return m_Position; }
 	private:
-		
-		void UpdateProjectionMatrix();
-		 
-	private:
-		glm::mat4 m_ProjectionMatrix;
-		glm::mat4 m_ViewMatrix;
-		glm::mat4 m_ViewProjectionMatrix;
+		void MousePan(const glm::vec2& delta);
+		void MouseRotate(const glm::vec2& delta);
+		void MouseZoom(float delta);
 
-		glm::vec3 m_Position = { 0.0f,0.0f,0.0f };
-		glm::vec3 m_Rotation = { 0.0f,0.0f,0.0f };
-		glm::vec3 m_Target = { 0.0f,0.0f,1.0f };
-		glm::vec3 m_Up = { 0.0f,1.0f,0.0f };
-		
-		float m_fov;
-		float m_aspect;
-		float m_zNear;
-		float m_zFar;
+		glm::vec3 CalculatePosition();
+		glm::quat GetOrientation();
+	private:
+		glm::mat4 m_ProjectionMatrix, m_ViewMatrix;
+		glm::vec3 m_Position, m_Rotation, m_FocalPoint;
+
+		bool m_Panning, m_Rotating;
+		glm::vec2 m_InitialMousePosition;
+		glm::vec3 m_InitialFocalPoint, m_InitialRotation;
+
+		float m_Distance;
+		float m_PanSpeed, m_RotationSpeed, m_ZoomSpeed;
+
+		float m_Pitch, m_Yaw;
 	};
+
 }

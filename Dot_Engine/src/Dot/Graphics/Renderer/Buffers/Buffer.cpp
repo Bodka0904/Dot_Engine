@@ -1,24 +1,20 @@
 #include "stdafx.h"
 #include "Buffer.h"
+
 #include <GL/glew.h>
+
+
 
 namespace Dot {
 
-	VertexBuffer::VertexBuffer(const void* vertices, unsigned int size, BufferFlag flag)
+	VertexBuffer::VertexBuffer(const void* vertices, unsigned int size,int drawMod)
 		: m_Count(size/sizeof(float))
 	{	
 		glCreateBuffers(1, &m_VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		if (flag & Static_Buffer_Update)
-		{
-			glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
-		}
-		else if (flag & Dynamic_Buffer_Update)
-		{
-			glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_DYNAMIC_DRAW);
-		}
+		glBufferData(GL_ARRAY_BUFFER, size, vertices, drawMod);
+		
 	}
-
 
 
 	VertexBuffer::~VertexBuffer()
@@ -41,12 +37,12 @@ namespace Dot {
 		return m_Count;
 	}
 
-	void VertexBuffer::Update(const void * vertices,unsigned int size)
+	void VertexBuffer::Update(const void * vertices,unsigned int size,int offset)
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_DYNAMIC_DRAW);		
+		//glBufferData(GL_ARRAY_BUFFER, size, vertices, D_DYNAMIC_DRAW);
+		glBufferSubData(GL_ARRAY_BUFFER, offset, size, vertices);	
 	}
-
 
 
 	IndexBuffer::IndexBuffer(const void* indices, unsigned int count)
@@ -78,5 +74,35 @@ namespace Dot {
 		return m_Count;
 	}
 
+
+	ShaderStorageBuffer::ShaderStorageBuffer(const void* data, unsigned int size, int drawMod)
+		:m_size(size)
+	{
+		glGenBuffers(1, &m_SSBO);
+		glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_SSBO);
+		glBufferData(GL_SHADER_STORAGE_BUFFER, size, data, drawMod);
+		glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
+
+	}
+
+	ShaderStorageBuffer::~ShaderStorageBuffer()
+	{
+		glDeleteBuffers(1, &m_SSBO);
+	}
+
+	void ShaderStorageBuffer::BindBase(unsigned int point)
+	{
+		glBindBufferBase(GL_SHADER_STORAGE_BUFFER, point, m_SSBO);
+	}
+
+	void ShaderStorageBuffer::BindRange(unsigned int index)
+	{
+		glBindBufferRange(GL_SHADER_STORAGE_BUFFER,index, m_SSBO,0, m_size);
+	}
+
+	void ShaderStorageBuffer::Bind()
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_SSBO);
+	}
 
 }

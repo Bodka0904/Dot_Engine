@@ -17,40 +17,48 @@ namespace Dot {
 		glDeleteTextures(1, &texture);
 	}
 
-	void Texture::Create2D(const std::string& fileName,TextureFormat format)
+	void Texture::Create2D(const std::string& fileName)
 	{
 		int texFormat = 0;
-		switch (format)
-		{
-		case Dot::TextureFormat::None:
-			break;
-		case Dot::TextureFormat::RGB:
-			texFormat = GL_RGB;
-		case Dot::TextureFormat::RGBA:
-			texFormat = GL_RGBA;
-	
-		}
+		int dataFormat = 0;
 
 		int width;
 		int height;
 		int numComponents;
 		unsigned char* imageData;
 
+		stbi_set_flip_vertically_on_load(1);
 		imageData = stbi_load(fileName.c_str(), &width, &height, &numComponents, STBI_rgb_alpha);
 		if (imageData == NULL)
 		{
 			printf("Texture: Could not load texture");
 		}
+		
+	
+
+		if (numComponents == 4)
+		{
+			texFormat = GL_RGBA8;
+			dataFormat = GL_RGBA;
+		}
+		else if (numComponents == 3)
+		{
+			texFormat = GL_RGB8;
+			dataFormat = GL_RGB;
+		}
+		
+		D_ASSERT(texFormat & dataFormat, "Format not supported!");
 
 		glGenTextures(1, &texture);
+		glTextureStorage2D(texture, 1, texFormat, width, height);
 		glBindTexture(GL_TEXTURE_2D, texture);
-
+		
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		
-		glTexImage2D(GL_TEXTURE_2D, 0, texFormat, width, height, 0, texFormat, GL_UNSIGNED_BYTE, imageData);
+		glTexImage2D(GL_TEXTURE_2D, 0, texFormat, width, height, 0, dataFormat, GL_UNSIGNED_BYTE, imageData);
 		glGenerateMipmap(GL_TEXTURE_2D);
 		
 
@@ -69,6 +77,7 @@ namespace Dot {
 		glGenTextures(1, &texture);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
 
+		stbi_set_flip_vertically_on_load(0);
 		int width, height, nrChannels;
 		for (unsigned int i = 0; i < faces.size(); i++)
 		{

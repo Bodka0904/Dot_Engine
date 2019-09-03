@@ -1,6 +1,6 @@
 #pragma once
 #include "Renderer/Texture.h"
-#include "Renderer/ArrayBuffer.h"
+#include "Renderer/Buffers/ArrayBuffer.h"
 
 namespace Dot {
 	class Skybox

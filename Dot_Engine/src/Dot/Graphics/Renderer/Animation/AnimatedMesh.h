@@ -1,6 +1,5 @@
 #pragma once
-#include "AssimpMat.h"
-#include "Dot/Graphics/Renderer/ArrayBuffer.h"
+#include "Dot/Graphics/Renderer/Buffers/ArrayBuffer.h"
 
 #include <assimp/Importer.hpp>      
 #include <assimp/scene.h>       
@@ -14,7 +13,7 @@ namespace Dot {
 	public:
 		struct BoneInfo
 		{
-			Matrix4f BoneOffset;
+			glm::mat4 BoneOffset;
 
 			BoneInfo()
 			{
@@ -28,9 +27,11 @@ namespace Dot {
 		void Render();
 		void AnimateBones(float TimeInSeconds);
 
+		glm::mat4 GetInverse() { return m_InverseTransform; }
+
 		unsigned int GetNumBones() const { return m_NumBones; }
 		const std::vector<BoneInfo>& GetBonesInfo() { return m_BoneInfo; }
-		const std::vector<Matrix4f>& GetBoneTransformations() { return m_FinalTransformation; }
+		const std::vector<glm::mat4>& GetBoneTransformations() { return m_FinalTransformation; }
 
 	private:
 		struct VertexBoneData
@@ -56,25 +57,25 @@ namespace Dot {
 		};
 
 	private:
-		void CalcInterpolatedScaling(aiVector3D& Out, float AnimationTime, const aiNodeAnim* pNodeAnim);
-		void CalcInterpolatedRotation(aiQuaternion& Out, float AnimationTime, const aiNodeAnim* pNodeAnim);
-		void CalcInterpolatedPosition(aiVector3D& Out, float AnimationTime, const aiNodeAnim* pNodeAnim);
+		glm::vec3 CalcInterpolatedScaling(float AnimationTime, const aiNodeAnim* pNodeAnim);
+		glm::quat CalcInterpolatedRotation(float AnimationTime, const aiNodeAnim* pNodeAnim);
+		glm::vec3 CalcInterpolatedPosition(float AnimationTime, const aiNodeAnim* pNodeAnim);
 		
 		unsigned int FindScaling(float AnimationTime, const aiNodeAnim* pNodeAnim);
 		unsigned int FindRotation(float AnimationTime, const aiNodeAnim* pNodeAnim);
 		unsigned int FindPosition(float AnimationTime, const aiNodeAnim* pNodeAnim);
 		const aiNodeAnim* FindNodeAnim(const aiAnimation* pAnimation, const std::string NodeName);
 		
-		void LoadHierarchy(const aiNode* pNode);
-		void ReadNodeHeirarchy(float AnimationTime, const aiNode* pNode, const Matrix4f& ParentTransform);
+		void LoadHierarchy(const aiNode* pNode,std::vector<std::string>& boneMappingDelete);
+		void ReadNodeHeirarchy(float AnimationTime, const aiNode* pNode, const glm::mat4& ParentTransform);
 		
 		bool InitFromScene(const aiScene* pScene, const std::string& Filename);
 		void InitMesh(
 			unsigned int MeshIndex,
 			const aiMesh* paiMesh,
-			std::vector<Vector3f>& Positions,
-			std::vector<Vector3f>& Normals,
-			std::vector<Vector2f>& TexCoords,
+			std::vector<glm::vec3>& Positions,
+			std::vector<glm::vec3>& Normals,
+			std::vector<glm::vec2>& TexCoords,
 			std::vector<VertexBoneData>& Bones,
 			std::vector<unsigned int>& Indices
 		);
@@ -110,7 +111,7 @@ namespace Dot {
 		};
 
 		std::vector<BoneInfo> m_BoneInfo;
-		std::vector<Matrix4f> m_FinalTransformation;
+		std::vector<glm::mat4> m_FinalTransformation;
 		std::vector<MeshEntry> m_Entries;
 
 
@@ -118,7 +119,8 @@ namespace Dot {
 		std::map<std::string, const aiNodeAnim*> m_NodeAnim;
 
 		unsigned int m_NumBones;
-	
+		glm::mat4 m_InverseTransform;
+
 		const aiScene* m_pScene;
 		Assimp::Importer m_Importer;
 	

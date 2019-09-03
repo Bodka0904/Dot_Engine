@@ -23,6 +23,7 @@ namespace Dot {
 	{
 		glClearColor(color.x, color.y, color.z, color.w);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
 	}
 
 	void Renderer::BeginScene(Camera& camera)
@@ -33,37 +34,46 @@ namespace Dot {
 
 	}
 
-	void Renderer::SubmitArrays(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao)
+	void Renderer::SubmitArrays(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod)
 	{
 		shader->Bind();
 		shader->Update();
 		vao->Bind();
-		glDrawArrays(GL_TRIANGLES, 0, vao->GetVertexBuffer(0)->GetCount());
+		glDrawArrays(drawMod, 0, vao->GetVertexBuffer(0)->GetCount());
+	}
+
+	void Renderer::SubmitArraysInstanced(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod)
+	{
+		shader->Bind();
+		shader->Update();
+		vao->Bind();
+		glDrawArraysInstanced(drawMod, 0, 1, num);
+
 	}
 
 
-	void Renderer::SubmitElements(const Ref<Shader>shader, const Ref<Mesh>& mesh)
+	void Renderer::SubmitElements(const Ref<Shader>shader, const Ref<Mesh>& mesh, const glm::mat4& transform, int drawMod)
 	{
 		shader->Bind();
 		shader->Update();
 		mesh->GetVao()->Bind();
 
-		glm::mat4 test = glm::mat4(1.0f);
+	
 
-		shader->UploadUniformMat4("ModelMatrix",(float*)&test);
+		shader->UploadUniformMat4("ModelMatrix",transform);
 
 
-		glDrawElements(GL_TRIANGLES, mesh->GetVao()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
+		glDrawElements(drawMod, mesh->GetVao()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
 	}
 
 
-	void Renderer::SubmitInstances(const Ref<Shader> shader, const Ref<InstancedMesh>& mesh)
+	void Renderer::SubmitInstances(const Ref<Shader> shader, const Ref<InstancedMesh>& mesh, int drawMod)
 	{
 
 		shader->Bind();
 		shader->Update();
 		mesh->GetVao()->Bind();
-		glDrawElementsInstanced(GL_TRIANGLES, mesh->GetVao()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0, mesh->GetNum());
+		glDrawElementsInstanced(drawMod, mesh->GetVao()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0, mesh->GetNum());
 
 	}
 

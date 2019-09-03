@@ -11,8 +11,10 @@
 #include "Dot/Gui/GuiLayer.h"
 #include "Dot/EntryPoint.h"
 #include "Dot/Utils/Timestep.h"
+#include "Dot/Graphics/Text/Font.h"
 
 
+#include "Dot/Graphics/Renderer/Buffers/FrameBuffer.h"
 #include "Dot/Graphics/Renderer/Renderer.h"
 #include "Dot/Graphics/Renderer/Camera/Camera.h"
 #include "Dot/Graphics/Renderer/Camera/OrthoCamera.h"
@@ -28,3 +30,4 @@
 #include "Dot/Utils/BmpLoader.h"
 
 #include "Dot/Graphics/Renderer/Animation/AnimatedMesh.h"
+#include "Dot/Graphics/Particle/ParticleManager.h"
