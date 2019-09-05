@@ -16,7 +16,7 @@ namespace Dot {
 		: m_ProjectionMatrix(projectionMatrix)
 	{
 		// Sensible defaults
-		m_PanSpeed = 0.00015f;
+		m_PanSpeed = 0.00045f;
 		m_RotationSpeed = 0.0003f;
 		m_ZoomSpeed = 0.01f;
 

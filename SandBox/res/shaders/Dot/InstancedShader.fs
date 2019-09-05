@@ -11,7 +11,7 @@ uniform vec3 viewPos;
 uniform vec3 lightColor;
 uniform vec3 lightPos;
 
-uniform sampler2D texi;
+uniform sampler2D u_Texture;
 
 out vec4 color;
 
@@ -30,5 +30,5 @@ void main()
 	vec3 diffuse = diff * vec3(0.5,0.5,0.5);
 	vec3 result = ambient + diffuse + specular;
 
-	color = texture(texi,texcoord0) * vec4(result,1.0);	
+	color = texture(u_Texture,texcoord0) * vec4(result,1.0);	
 }

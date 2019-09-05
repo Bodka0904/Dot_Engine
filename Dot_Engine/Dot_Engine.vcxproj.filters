@@ -198,12 +198,6 @@
     <ClInclude Include="src\Dot\Terrain\Terrain.h">
       <Filter>src\Dot\Terrain</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Terrain\TerrainEditor.h">
-      <Filter>src\Dot\Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Terrain\TerrainEditorLayer.h">
-      <Filter>src\Dot\Terrain</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Terrain\TerrainGenerator.h">
       <Filter>src\Dot\Terrain</Filter>
     </ClInclude>
@@ -1392,12 +1386,6 @@
       <Filter>src\Dot</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Terrain\Terrain.cpp">
-      <Filter>src\Dot\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Terrain\TerrainEditor.cpp">
-      <Filter>src\Dot\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Terrain\TerrainEditorLayer.cpp">
       <Filter>src\Dot\Terrain</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Terrain\TerrainGenerator.cpp">

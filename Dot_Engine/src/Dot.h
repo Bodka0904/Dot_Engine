@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include "Dot/Application.h"
 #include "Dot/Layer.h"
 #include "Dot/Debug/Log.h"

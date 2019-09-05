@@ -134,8 +134,6 @@
     <ClInclude Include="src\Dot\Layer.h" />
     <ClInclude Include="src\Dot\MouseButtonCodes.h" />
     <ClInclude Include="src\Dot\Terrain\Terrain.h" />
-    <ClInclude Include="src\Dot\Terrain\TerrainEditor.h" />
-    <ClInclude Include="src\Dot\Terrain\TerrainEditorLayer.h" />
     <ClInclude Include="src\Dot\Terrain\TerrainGenerator.h" />
     <ClInclude Include="src\Dot\Utils\BmpLoader.h" />
     <ClInclude Include="src\Dot\Utils\MousePicker.h" />
@@ -534,8 +532,6 @@
     <ClCompile Include="src\Dot\Input.cpp" />
     <ClCompile Include="src\Dot\Layer.cpp" />
     <ClCompile Include="src\Dot\Terrain\Terrain.cpp" />
-    <ClCompile Include="src\Dot\Terrain\TerrainEditor.cpp" />
-    <ClCompile Include="src\Dot\Terrain\TerrainEditorLayer.cpp" />
     <ClCompile Include="src\Dot\Terrain\TerrainGenerator.cpp" />
     <ClCompile Include="src\Dot\Utils\BmpLoader.cpp" />
     <ClCompile Include="src\Dot\Utils\MousePicker.cpp" />

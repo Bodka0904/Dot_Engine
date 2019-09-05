@@ -21,8 +21,9 @@ namespace Dot {
 		static void SubmitArrays(const Ref<Shader>shader ,const Ref<ArrayBuffer>& vao, const glm::mat4& transform,int drawMod);
 		static void SubmitArraysInstanced(const Ref<Shader>shader, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod);
 		
+		static void SubmitElementsVao(const Ref<Shader>shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod);
 		static void SubmitElements(const Ref<Shader>shader,const Ref<Mesh>& mesh, const glm::mat4& transform, int drawMod);
-		static void SubmitInstances(const Ref<Shader> shader, const Ref<InstancedMesh>& mesh, int drawMod);
+		static void SubmitInstances(const Ref<Shader> shader, const Ref<InstancedMesh>& mesh,unsigned int num, int drawMod);
 		static void EndScene(const Ref<Shader>shader);
 
 

@@ -9,7 +9,7 @@ namespace Dot {
 
 	Skybox::Skybox(const std::vector<std::string> faces,int SIZE)
 	{
-		m_CubeMap.CreateCubeMap(faces);
+		m_CubeMap = std::make_shared<CubeMapTexture>(faces);
 
 		float vertices[108] = {
 		-SIZE,  SIZE, -SIZE,

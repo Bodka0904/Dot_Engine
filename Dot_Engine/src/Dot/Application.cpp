@@ -18,10 +18,6 @@ namespace Dot {
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 
-		
-		m_Ter_editor_layer = new TerrainEditorLayer();
-		PushOverlay(m_Ter_editor_layer);
-
 		m_GuiLayer = new GuiLayer();	
 		PushOverlay(m_GuiLayer);
 		
@@ -33,7 +29,6 @@ namespace Dot {
 		camera.reset(new OrthoCamera(0, m_Window->GetWidth(), 0, m_Window->GetHeight()));
 
 		
-
 		ShaderLayout layout = {
 			{0,"position"},
 			{1,"texCoord"},

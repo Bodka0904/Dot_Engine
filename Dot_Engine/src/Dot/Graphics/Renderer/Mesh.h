@@ -43,7 +43,7 @@ namespace Dot {
 	public:
 		InstancedMesh(const std::string& filename, const std::vector<glm::mat4> transforms);
 
-
+		void Update(const std::vector<glm::mat4> transforms, unsigned int num);
 		const inline unsigned int GetNum() const { return m_num; }
 		const inline std::shared_ptr<ArrayBuffer> GetVao() { return mesh->GetVao(); }
 

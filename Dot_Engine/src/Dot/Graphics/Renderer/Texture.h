@@ -6,12 +6,14 @@ namespace Dot {
 	class Texture
 	{
 	public:
-		Texture();
+		Texture(const std::string& fileName);
+		Texture(const std::vector<std::string>faces);
 		~Texture();
-		void Create2D(const std::string& fileName);
-		void CreateCubeMap(const std::vector<std::string>faces);
 
 		void Bind(unsigned int unit);
+
+	
+		
 	
 	private:
 		int CalculateMipMapCount(int width, int height);
@@ -21,4 +23,18 @@ namespace Dot {
 		int textureType;
 	};
 
+
+	class CubeMapTexture
+	{
+	public:
+		CubeMapTexture(const std::vector<std::string>faces);
+		~CubeMapTexture();
+
+		void Bind(unsigned int unit);
+
+	private:
+		unsigned int texture;
+		int textureType;
+
+	};
 }

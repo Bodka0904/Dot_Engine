@@ -129,5 +129,10 @@ namespace Dot {
 		mesh->GetVao()->AddVBO(m_VBO_MAT);
 	}
 
+	void InstancedMesh::Update(const std::vector<glm::mat4> transforms,unsigned int num)
+	{
+		mesh->GetVao()->GetVertexBuffer(1)->Update(&transforms[0], num * sizeof(glm::mat4), 0);
+	}
+
 
 }

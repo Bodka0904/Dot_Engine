@@ -9,8 +9,7 @@ namespace Dot {
 		TerrainGenerator();
 		~TerrainGenerator();
 
-		//std::shared_ptr<Terrain> GenerateFlatTerrain();
-
+		
 	private:
 	};
 }

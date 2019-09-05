@@ -4,42 +4,63 @@
 
 namespace Dot {
 
-	struct TerrainDataT
-	{
-		struct Vertex
-		{
-			glm::vec3 vertice;
-			glm::vec3 normal;
-			glm::vec2 texcoord;
-		};
-
-		std::vector<Vertex> m_vertices;
-		std::shared_ptr<ArrayBuffer> m_vao;
-
-		float m_size;
-		int m_numvertex;
-	};
-
-	struct TerrainData
-	{
-		std::vector<std::vector<float> > heights;
-
-		float size;
-		int numvertex;
-	};
-
 	class Terrain
 	{
 	public:
-		Terrain(TerrainData& data);
+		Terrain(float size, unsigned int numvertex);
 		~Terrain();
 
-		float GetSize() const { return m_data.size; }
-		float GetNumVertex() const { return m_data.numvertex; }
+		void ApplyHeightsValueNoise(int height);
+		void ApplyNormals();
+
+		void SetSeed(int num) { m_Seed = num; }
+		void SetAmplitude(float amplitude) { m_Amplitude = amplitude; }
+		void SetOctaves(int octaves) { m_Octaves = octaves; }
+		void SetRoughness(float roughness) { m_Roughness = roughness; }
+		void SetSize(float size) { m_Size = size; }
+
+		const float& GetAmplitude() const { return m_Amplitude; }
+		const int& GetOctaves() const { return m_Octaves; }
+		const float& GetRoughness() const { return m_Roughness; }
+		const float& GetSize() const { return m_Size; }
+		const Ref<ArrayBuffer>& GetVao() const { return m_VAO; }
+
+		float GetHeight(const glm::vec3& position);
 
 	private:
-		TerrainData m_data;
-	
+		float getNoise(int x, int z);
+		float getSmoothNoise(int x, int z);
+		float getInterpolatedNoise(float x, float z);
+		float interpolateCosine(float a, float b, float blend);
+		float generateHeight(int x, int z);
+		float getHeight(int x, int z) const;
+
+		glm::vec3 generateNormal(int x, int z) const;
+
+	private:
+		float barryCentric(const glm::vec3& p1, const glm::vec3& p2, const glm::vec3& p3, const glm::vec2& pos);
+
+	private:
+		std::shared_ptr<ArrayBuffer> m_VAO;
+		std::vector<std::vector<float> > m_Heights;
+
+	private:
+		// TODO AFTER GENERATING SHOULD BE DELETED
+		std::vector<float> vertices;
+		std::vector<float> texcoords;
+		std::vector<float> normals;
+
+
+	private:
+		float m_Amplitude = 5.0f;
+		int m_Octaves = 4;
+		float m_Roughness = 0.2f;
+		int m_Height = 0;
+		int m_Seed;
+		float m_Size;
+		unsigned int m_NumVertex;
+
+		
 	};
 }
 
