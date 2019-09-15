@@ -13,8 +13,8 @@ namespace Dot {
 		unsigned int Height;
 
 		WindowProps(const char* title = "Dot Engine",
-			unsigned int width = 1780,
-			unsigned int height = 1240)
+			unsigned int width = 1240,
+			unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 		}

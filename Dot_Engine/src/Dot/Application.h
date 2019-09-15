@@ -3,9 +3,7 @@
 #include "Layer.h"
 #include "Events/Event.h"
 #include "Gui/GuiLayer.h"
-#include "Dot/Graphics/Text/Text.h"
-#include "Dot/Graphics/Shaders/Shader.h"
-#include "Dot/Graphics/Renderer/Camera/OrthoCamera.h"
+
 
 namespace Dot {
 	class Application
@@ -33,16 +31,8 @@ namespace Dot {
 		std::vector<Layer*> m_Layers;
 		GuiLayer *m_GuiLayer;
 
-		std::shared_ptr<Shader> shader;
-		std::shared_ptr<OrthoCamera> camera;
-
-		std::shared_ptr<Text> text;
 
 		unsigned int m_LayerInsertIndex = 0;
-		unsigned int m_VertexArray;
-		unsigned int m_VertexBuffer;
-		unsigned int m_IndexBuffer;
-
 		static Application* s_Instance;
 
 	private:

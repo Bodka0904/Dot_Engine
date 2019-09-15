@@ -406,9 +406,13 @@ namespace Dot {
 
 	void AnimatedMesh::AnimateBones(float TimeInSeconds)
 	{
-
+		m_Time += TimeInSeconds;
+		if (m_Time >= m_pScene->mAnimations[0]->mDuration)
+		{
+			m_Time = 0.0f;
+		}
 		float TicksPerSecond = (float)(m_pScene->mAnimations[0]->mTicksPerSecond != 0 ? m_pScene->mAnimations[0]->mTicksPerSecond : 25.0f);
-		float TimeInTicks = TimeInSeconds * TicksPerSecond;
+		float TimeInTicks = m_Time * TicksPerSecond;
 		float AnimationTime = fmod(TimeInTicks, (float)m_pScene->mAnimations[0]->mDuration);
 
 		ReadNodeHeirarchy(AnimationTime, m_pScene->mRootNode, glm::mat4(1.0));

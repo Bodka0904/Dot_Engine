@@ -45,7 +45,8 @@ namespace Dot {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			data.width = width;
 			data.height = height;
-
+			WindowResizeEvent e(width, height);
+			data.EventCallback(e);
 
 			glViewport(0, 0, width, height);
 		});

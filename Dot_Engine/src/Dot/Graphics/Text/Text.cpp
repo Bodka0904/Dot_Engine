@@ -6,7 +6,8 @@
 
 
 namespace Dot {
-	Text::Text(const std::string& text, float x, float y, int size)
+	Text::Text(const std::string& text, float x, float y, int sizex,int sizey)
+		:m_Position(glm::vec2(x,y))
 	{
 		unsigned int VBO_Vertex;
 		unsigned int VBO_Uv;
@@ -18,10 +19,10 @@ namespace Dot {
 		std::vector<glm::vec2> UVs;
 		for (unsigned int i = 0; i < length; i++) {
 
-			glm::vec2 vertex_up_left = glm::vec2(x + i * size, y + size);
-			glm::vec2 vertex_up_right = glm::vec2(x + i * size + size, y + size);
-			glm::vec2 vertex_down_right = glm::vec2(x + i * size + size, y);
-			glm::vec2 vertex_down_left = glm::vec2(x + i * size, y);
+			glm::vec2 vertex_up_left = glm::vec2((x + i * sizex), y + sizey);
+			glm::vec2 vertex_up_right = glm::vec2((x + i * sizex + sizex), y + sizey);
+			glm::vec2 vertex_down_right = glm::vec2((x + i * sizex + sizex), y);
+			glm::vec2 vertex_down_left = glm::vec2((x + i * sizex), y);
 
 			vertices.push_back(vertex_up_left);
 			vertices.push_back(vertex_down_left);
@@ -35,10 +36,10 @@ namespace Dot {
 			float uv_x = (character % 16) / 16.0f;
 			float uv_y = (character / 16) / 16.0f;
 
-			glm::vec2 uv_up_left = glm::vec2(uv_x, uv_y);
-			glm::vec2 uv_up_right = glm::vec2(uv_x + 1.0f / 16.0f, uv_y);
-			glm::vec2 uv_down_right = glm::vec2(uv_x + 1.0f / 16.0f, (uv_y + 1.0f / 16.0f));
-			glm::vec2 uv_down_left = glm::vec2(uv_x, (uv_y + 1.0f / 16.0f));
+			glm::vec2 uv_down_left = glm::vec2(uv_x, uv_y);
+			glm::vec2 uv_down_right = glm::vec2(uv_x + 1.0f / 16.0f, uv_y);
+			glm::vec2 uv_up_right = glm::vec2(uv_x + 1.0f / 16.0f, (uv_y + 1.0f / 16.0f));
+			glm::vec2 uv_up_left = glm::vec2(uv_x, (uv_y + 1.0f / 16.0f));
 			UVs.push_back(uv_up_left);
 			UVs.push_back(uv_down_left);
 			UVs.push_back(uv_up_right);

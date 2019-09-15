@@ -73,7 +73,7 @@ namespace Dot {
 
 		m_VAO.reset(new ArrayBuffer());
 		BufferLayout layout = {
-				{0, Dot::ShaderDataType::Float3, "position" },
+				{0, Dot::ShaderDataType::Float3, "a_Position" },
 			
 		};
 		vbo_pos = std::make_shared<VertexBuffer>(&vertices[0], vertices.size() * sizeof(float), D_DYNAMIC_DRAW);
@@ -82,7 +82,7 @@ namespace Dot {
 
 
 		BufferLayout layout_n = {
-			{1, Dot::ShaderDataType::Float3, "normal" }
+			{1, Dot::ShaderDataType::Float3, "a_Normal" }
 		};
 		vbo_normal = std::make_shared<VertexBuffer>(&normals[0], normals.size() * sizeof(float), D_DYNAMIC_DRAW);
 		vbo_normal->SetLayout(layout_n);
@@ -90,7 +90,7 @@ namespace Dot {
 
 
 		BufferLayout layout_t = {
-			{2, Dot::ShaderDataType::Float2, "texCoord" }
+			{2, Dot::ShaderDataType::Float2, "a_TexCoord" }
 		};
 		vbo_tex = std::make_shared<VertexBuffer>(&texcoords[0], texcoords.size() * sizeof(float), D_DYNAMIC_DRAW);
 		vbo_tex->SetLayout(layout_t);

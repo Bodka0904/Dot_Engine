@@ -37,7 +37,7 @@ namespace Dot {
 	void Renderer::SubmitArrays(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod)
 	{
 		shader->Bind();
-		shader->Update();
+		//shader->Update();
 		vao->Bind();
 		glDrawArrays(drawMod, 0, vao->GetVertexBuffer(0)->GetCount());
 	}
@@ -45,7 +45,7 @@ namespace Dot {
 	void Renderer::SubmitArraysInstanced(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod)
 	{
 		shader->Bind();
-		shader->Update();
+		//shader->Update();
 		vao->Bind();
 		glDrawArraysInstanced(drawMod, 0, 1, num);
 
@@ -55,10 +55,10 @@ namespace Dot {
 	void Renderer::SubmitElementsVao(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod)
 	{
 		shader->Bind();
-		shader->Update();
+		//shader->Update();
 		vao->Bind();
 
-		shader->UploadUniformMat4("ModelMatrix", transform);
+		shader->UploadUniformMat4("u_ModelMatrix", transform);
 
 
 		glDrawElements(drawMod, vao->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
@@ -67,12 +67,12 @@ namespace Dot {
 	void Renderer::SubmitElements(const Ref<Shader>shader, const Ref<Mesh>& mesh, const glm::mat4& transform, int drawMod)
 	{
 		shader->Bind();
-		shader->Update();
+		//shader->Update();
 		mesh->GetVao()->Bind();
 
 	
 
-		shader->UploadUniformMat4("ModelMatrix",transform);
+		shader->UploadUniformMat4("u_ModelMatrix",transform);
 
 
 		glDrawElements(drawMod, mesh->GetVao()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
@@ -83,7 +83,7 @@ namespace Dot {
 	{
 
 		shader->Bind();
-		shader->Update();
+		//shader->Update();
 		mesh->GetVao()->Bind();
 		glDrawElementsInstanced(drawMod, mesh->GetVao()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0, num);
 

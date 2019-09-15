@@ -1,88 +1,94 @@
 #include "stdafx.h"
 #include "GuiLayer.h"
 #include "Dot/Application.h"
-#include "Dot_GUI/src/Gui.h"
+#include "Dot/Graphics/Gui/Button.h"
+#include "Dot/Graphics/Gui/CheckBox.h"
+#include "Dot/Graphics/Gui/ArrowButton.h"
+#include "Dot/Graphics/Gui/Slider.h"
 
+#include "Dot/MouseButtonCodes.h"
 
 namespace Dot {
-#define BIND_FN(x) std::bind(&GuiLayer::x ,this)
-
 	GuiLayer::GuiLayer()
-	{	
-		if (!Gui::Inited())
-		{
-			Gui::Init(Application::Get().GetWin().GetWindow());
-		}
+	{
 	}
-
 
 	GuiLayer::~GuiLayer()
 	{
-		Gui::Clear();
 	}
 
 	void GuiLayer::OnAttach()
 	{
-	
-		Gui::AddWrapper("MAIN");
-		Gui::GetWrapper("MAIN").AddButton(BIND_FN(ButtonAction), "button1");
-		Gui::GetWrapper("MAIN").AddButton(BIND_FN(ButtonAction), "button2");
-		Gui::GetWrapper("MAIN").AddArrowButton(BIND_FN(ArrowButtonAction), "arrow btn");
-		Gui::GetWrapper("MAIN").AddArrowButton(BIND_FN(ButtonAction), "arrow btn2");
-		Gui::GetWrapper("MAIN").AddCheckBox(BIND_FN(CheckBoxAction), "checkbox");
-		Gui::GetWrapper("MAIN").AddSlider("HAHA");
-		
+		Wrapper::Create("wrapper", glm::vec2(300, 500), glm::vec2(300, 300));
 
-		Gui::AddWrapper("TEST");
-		Gui::GetWrapper("TEST").AddSlider("HOHO");
-		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOff), "test off");
-		Gui::GetWrapper("TEST").AddButton(BIND_FN(TestVisibleOn), "test on");
-	
+		WidgetStack::EnableWrapper("wrapper");
+		{
+			Button::Create("button", glm::vec2(300, 50), glm::vec2(50, 50));
+			CheckBox::Create("checkbox", glm::vec2(50, 50), glm::vec2(50, 50));
+			ArrowButton::Create("arrowbutton", glm::vec2(50, 50), glm::vec2(60, 50));
+			Slider::Create("slider", glm::vec2(50, 50), glm::vec2(200, 20), &value);
+
+		}WidgetStack::DisableWrapper();
+
+		m_Stack = std::make_shared<WidgetStack>("res/shaders/Dot/GuiShader.glsl", "res/shaders/Text/TextShader.glsl", "res/textures/Dot/Gui/DefaultTexturePack/DefaultTexturePack.png");
 	}
 
 	void GuiLayer::OnUpdate(Timestep ts)
 	{
+		//if (WidgetStack::GetWidget("button")->GetClicked())
+		//{
+		//	std::cout << "Clicked!" << std::endl;
+		//	std::cout << value << std::endl;
+		//}
+		//if (WidgetStack::GetWidget("checkbox")->GetClicked())
+		//{
+		//	std::cout << "Checked!" << std::endl;
+		//}
+		//if (WidgetStack::GetWidget("arrowbutton")->LeftClicked())
+		//{
+		//	std::cout << "Left Clicked!" << std::endl;
+		//}
 
-		Gui::Update();
-		Gui::Render();
-		
+		m_Stack->Update();	
+		m_Stack->RenderLabels();	
+		m_Stack->RenderWidgets();
 	}
 
 	void GuiLayer::OnEvent(Event& event)
 	{
-		if (Gui::IsHandlingEvent())
+		if (event.GetEventType() == EventType::WindowResized)
 		{
-			event.IsHandled() = true;
-			Gui::IsHandlingEvent() = false;
-		}
-	}
-
-	void GuiLayer::ButtonAction()
-	{	
-		LOG_INFO("%f",Gui::GetWrapper("TEST").GetSlider(0).GetValue())
-	}
-
-	void GuiLayer::CheckBoxAction()
-	{
-		LOG_WARN("ACTIVATED");
-	}
-
-	void GuiLayer::ArrowButtonAction()
-	{
-		if (Gui::GetWrapper("TEST").GetArrowButton(0).LeftClicked())
+			WindowResizeEvent& e = (WindowResizeEvent&)event;
+			m_Stack->UpdateCamera(e.GetWidth(), e.GetHeight());
+		
+		} 
+		else if (event.GetEventType() == EventType::MouseButtonPressed)
 		{
-			LOG_INFO("KOLIBRIK");
+			MouseButtonPressEvent& e = (MouseButtonPressEvent&)event;
+			if (e.GetButton() == D_MOUSE_BUTTON_LEFT)
+			{	
+				if (m_Stack->HandleLeftClick())
+				{
+					e.IsHandled() = true;
+				}
+			
+			}
+			else if (e.GetButton() == D_MOUSE_BUTTON_RIGHT)
+			{
+				if (m_Stack->HandleRightClick())
+				{
+					e.IsHandled() = true;
+				}
+			}
 		}
-	}
-
-	void GuiLayer::TestVisibleOff()
-	{
-		Gui::GetWrapper("MAIN").GetVisible() = false;
-	}
-
-	void GuiLayer::TestVisibleOn()
-	{
-		Gui::GetWrapper("MAIN").GetVisible() = true;
+		else if (event.GetEventType() == EventType::MouseButtonReleased)
+		{
+			MouseButtonReleaseEvent& e = (MouseButtonReleaseEvent&)event;
+			if (e.GetButton() == D_MOUSE_BUTTON_RIGHT)
+			{
+				m_Stack->Release();
+			}
+		}
 	}
 
 }

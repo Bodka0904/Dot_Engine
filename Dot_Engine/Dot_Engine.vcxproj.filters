@@ -1311,6 +1311,11 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Gui\Button.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\CheckBox.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\ArrowButton.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\WidgetStack.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\Slider.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1406,5 +1411,10 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Gui\Button.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\CheckBox.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\ArrowButton.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\WidgetStack.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\Slider.cpp" />
   </ItemGroup>
 </Project>

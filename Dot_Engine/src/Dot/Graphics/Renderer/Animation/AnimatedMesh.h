@@ -28,7 +28,7 @@ namespace Dot {
 		void AnimateBones(float TimeInSeconds);
 
 		glm::mat4 GetInverse() { return m_InverseTransform; }
-
+		const float GetDuration() const { return (float)m_pScene->mAnimations[0]->mDuration; }
 		unsigned int GetNumBones() const { return m_NumBones; }
 		const std::vector<BoneInfo>& GetBonesInfo() { return m_BoneInfo; }
 		const std::vector<glm::mat4>& GetBoneTransformations() { return m_FinalTransformation; }
@@ -124,6 +124,7 @@ namespace Dot {
 		const aiScene* m_pScene;
 		Assimp::Importer m_Importer;
 	
+		float m_Time = 0.0f;
 	};
 
 

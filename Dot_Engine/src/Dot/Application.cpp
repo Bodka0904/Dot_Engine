@@ -25,28 +25,10 @@ namespace Dot {
 		m_Window->vSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		
-		
-		camera.reset(new OrthoCamera(0, m_Window->GetWidth(), 0, m_Window->GetHeight()));
-
-		
-		ShaderLayout layout = {
-			{0,"position"},
-			{1,"texCoord"},
-		};
-		
-		shader = std::make_shared<Shader>("res/shaders/Text/TextShader.vs", "res/shaders/Text/TextShader.fs");
-		shader->SetLayout(layout);
-		shader->LinkShader();
-		shader->AddUniform("ortho");
-
-		
+			
+		Font::AddFont("ArialBolt", "res/fonts/ArialBolt.DDS");
 	
 
-		Font::AddFont("Arial", "res/fonts/Arial.DDS");
-		text = std::make_shared<Text>("Test test TEST", 20, 50, 50);
-		
-
-		
 		
 	}
 
@@ -80,11 +62,6 @@ namespace Dot {
 
 				}
 			}
-
-		
-			shader->Bind();
-			shader->UploadUniformMat4("ortho", camera->GetViewProjectionMatrix());
-			text->PrintText("Arial");
 		
 			m_Window->Update();
 

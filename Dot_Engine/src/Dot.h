@@ -9,7 +9,6 @@
 #include "Dot/KeyCodes.h"
 #include "Dot/MouseButtonCodes.h"
 
-#include "Dot/Gui/GuiLayer.h"
 #include "Dot/EntryPoint.h"
 #include "Dot/Utils/Timestep.h"
 #include "Dot/Graphics/Text/Font.h"

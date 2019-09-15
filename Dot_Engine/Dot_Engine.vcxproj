@@ -107,6 +107,11 @@
     <ClInclude Include="src\Dot\Debug\Timer.h" />
     <ClInclude Include="src\Dot\EntryPoint.h" />
     <ClInclude Include="src\Dot\Events\Event.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\ArrowButton.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\Button.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\CheckBox.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\Slider.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\WidgetStack.h" />
     <ClInclude Include="src\Dot\Graphics\Particle\Particle.h" />
     <ClInclude Include="src\Dot\Graphics\Particle\ParticleManager.h" />
     <ClInclude Include="src\Dot\Graphics\Particle\ParticleSystem.h" />
@@ -510,6 +515,11 @@
     <ClCompile Include="src\Dot\Application.cpp" />
     <ClCompile Include="src\Dot\Debug\Log.cpp" />
     <ClCompile Include="src\Dot\Debug\Timer.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\ArrowButton.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\Button.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\CheckBox.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\Slider.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\WidgetStack.cpp" />
     <ClCompile Include="src\Dot\Graphics\Particle\Particle.cpp" />
     <ClCompile Include="src\Dot\Graphics\Particle\ParticleManger.cpp" />
     <ClCompile Include="src\Dot\Graphics\Particle\ParticleSystem.cpp" />

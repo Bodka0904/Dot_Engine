@@ -14,11 +14,17 @@ namespace Dot {
 			:
 			m_pos(pos),
 			m_rot(rot),
-			m_scale(scale)
+			m_scale(scale),
+			m_transformation(glm::mat4(1))
 		{
 		}
 
 		inline glm::mat4 GetModel() const
+		{
+			return m_transformation;
+		}
+
+		inline void UpdateModel()
 		{
 			glm::mat4 posMatrix = glm::translate(m_pos);
 			glm::mat4 rotXMatrix = glm::rotate(m_rot.x, glm::vec3(1, 0, 0));
@@ -29,8 +35,9 @@ namespace Dot {
 			glm::mat4 rotMatrix = rotZMatrix * rotYMatrix * rotXMatrix;
 
 
-			return posMatrix * rotMatrix * scaleMatrix;
+			m_transformation = posMatrix * rotMatrix * scaleMatrix;
 		}
+
 		inline glm::vec3& GetPos() { return m_pos; }
 		inline glm::vec3& GetRot() { return m_rot; }
 		inline glm::vec3& GetScale() { return m_scale; }
@@ -45,6 +52,56 @@ namespace Dot {
 		glm::vec3 m_pos;
 		glm::vec3 m_rot;
 		glm::vec3 m_scale;
+
+		glm::mat4 m_transformation;
+
+	};
+
+
+	class Transform2D
+	{
+	public:
+		Transform2D(const glm::vec2& pos = glm::vec2(0,0), const glm::vec2& rot = glm::vec2(0,0))
+			:
+			m_pos(pos),
+			m_rot(rot),
+
+			m_transformation(glm::mat4(1))
+		{
+		}
+
+		inline glm::mat4 GetModel() const
+		{
+			return m_transformation;
+		}
+
+		inline void UpdateModel()
+		{
+			glm::mat4 posMatrix = glm::translate(glm::vec3(m_pos,1.0));
+			
+			glm::mat4 rotXMatrix = glm::rotate(m_rot.x, glm::vec3(1, 0, 0));
+			glm::mat4 rotYMatrix = glm::rotate(m_rot.y, glm::vec3(0, 1, 0));
+			
+			glm::mat4 rotMatrix = rotYMatrix * rotXMatrix;
+
+
+			m_transformation = posMatrix;
+		}
+
+		inline glm::vec2& GetPos() { return m_pos; }
+		inline glm::vec2& GetRot() { return m_rot; }
+
+		inline void SetPos(const glm::vec2& pos) { m_pos = pos; }
+		inline void SetRot(const glm::vec2& rot) { m_rot = rot; }
+	
+
+
+
+	private:
+		glm::vec2 m_pos;
+		glm::vec2 m_rot;
+
+		glm::mat4 m_transformation;
 
 	};
 

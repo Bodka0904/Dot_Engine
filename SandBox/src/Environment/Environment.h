@@ -1,7 +1,7 @@
 #pragma once
 #include <Dot.h>
+#include "Player.h"
 
-#include "Species/Ant/Colony.h"
 
 class EnvironmentLayer : public Dot::Layer
 {
@@ -16,23 +16,28 @@ public:
 
 
 private:
-	Dot::Ref<Dot::Shader> m_ModelShader;
+	Dot::Ref<Dot::Shader> m_StaticShader;
 	Dot::Ref <Dot::Shader> m_SkyShader;
 	Dot::Ref<Dot::Shader> m_InstanceShader;
+	Dot::Ref<Dot::Shader> m_ComputeShader;
+	Dot::Ref<Dot::Shader> m_ShaderForCompute;
 
 	Dot::Ref<Dot::Texture> m_TreeTexture;
 	Dot::Ref<Dot::Texture> m_TerrTexture;
-	Dot::Ref<Dot::Texture> m_AntTexture;
+	
+
 
 	Dot::Ref<Dot::InstancedMesh> m_Tree;
-	Dot::Ref<Colony> m_Colony;
+	Dot::Ref<Player> m_Player;
 
 	Dot::Ref<Dot::Skybox> m_SkyBox;
 	Dot::Ref<Dot::Terrain> m_Terrain;
 	Dot::Ref<Dot::Camera> m_Camera;
 
+	Dot::Ref<Dot::ParticleManager> m_TestManager;
 
 private:
+	Dot::Transform m_T;
 	std::vector<glm::mat4> m_TreeTransformations;
 
 };
