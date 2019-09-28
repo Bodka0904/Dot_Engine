@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "Application.h"
-#include "Dot_GUI/src/Gui.h"
 #include "Dot/Utils/Timestep.h"
 #include "Dot/Graphics/Text/Font.h"
 #include "Dot/Debug/Timer.h"
 
+#include <GLFW/glfw3.h>
 
 namespace Dot {
 
@@ -28,8 +28,7 @@ namespace Dot {
 			
 		Font::AddFont("ArialBolt", "res/fonts/ArialBolt.DDS");
 	
-
-		
+	
 	}
 
 

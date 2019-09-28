@@ -32,8 +32,7 @@ namespace Dot {
 
 		glBindVertexArray(m_VAO);
 		vertexBuffer->Bind();
-
-		
+	
 		const auto& layout = vertexBuffer->GetLayout();
 
 		for (const auto& element : vertexBuffer->GetLayout())

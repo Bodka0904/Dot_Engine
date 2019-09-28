@@ -14,13 +14,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Dot_Engine/vendor/GLFW/include"
 IncludeDir["GLEW"] = "Dot_Engine/vendor/GLEW/include"
-IncludeDir["Dot_GUI"] = "Dot_Engine/vendor/Dot_GUI"
-
 
 
 include "Dot_Engine/vendor/GLFW"
 include "Dot_Engine/vendor/GLEW"
-include "Dot_Engine/vendor/Dot_GUI"
 
 project "Dot_Engine"
 		location "Dot_Engine"
@@ -58,7 +55,6 @@ project "Dot_Engine"
 			"%{prj.name}/res",
 			"%{IncludeDir.GLFW}",	
 			"%{IncludeDir.GLEW}",
-			"%{IncludeDir.Dot_GUI}",
 			"%{prj.name}/vendor/glm",
 			"%{prj.name}/vendor/stb_image",
 			"%{prj.name}/vendor/assimp/include"
@@ -72,7 +68,6 @@ project "Dot_Engine"
 		{ 
 			"GLEW",
 			"GLFW",
-			"Dot_GUI",
 			"opengl32"	
 	
 		}

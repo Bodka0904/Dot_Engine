@@ -12,29 +12,9 @@ namespace Dot {
 		m_Value = value;
 
 		m_Transform.SetPos(position);
-		glm::vec2 texcoords[4] = {
-			glm::vec2(0.5,0.5),
-			glm::vec2(1,0.5),
-			glm::vec2(1,0.75),
-			glm::vec2(0.5,0.75)
-		};
-		Quad quad(glm::vec2(0, 0), size, &texcoords[0]);
-
-		m_VAO = std::make_shared<ArrayBuffer>();
-
-		BufferLayout layout = {
-			{0,ShaderDataType::Float2,"a_Position"},
-			{1,ShaderDataType::Float2,"a_TexCoord"},
-
-		};
-		Ref<VertexBuffer> VBO = std::make_shared<VertexBuffer>(&quad.m_Vertices[0], 4 * sizeof(Vertex), D_STATIC_DRAW);
-		VBO->SetLayout(layout);
-
-		m_VAO->AddVBO(VBO);
+		
 
 
-		Ref<IndexBuffer> IBO = std::make_shared<IndexBuffer>((void*)& quad.m_Indices[0], 6);
-		m_VAO->AddIBO(IBO);
 		float letterSize = size.x / label.length()/3;
 		if (letterSize >= 40)
 		{
@@ -51,12 +31,9 @@ namespace Dot {
 	Slider::~Slider()
 	{
 	}
-	void Slider::Render(const Ref<Shader>& shader)
+	void Slider::Update(const Ref<Shader>& shader)
 	{
 		shader->UploadUniformFloat("u_TexOffset", m_TexOffset);
-		m_VAO->Bind();
-		glDrawElements(GL_TRIANGLES, m_VAO->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
-	
 	}
 	void Slider::RenderLabel()
 	{
@@ -66,6 +43,9 @@ namespace Dot {
 	{
 		m_Transform.GetPos() = pos;
 		m_Transform.UpdateModel();
+		glm::vec2 newPos[4] = { m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() };
+
+		WidgetStack::UpdateTransfBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
 	void Slider::ClickHandle()
 	{
@@ -107,10 +87,17 @@ namespace Dot {
 	}
 	void Slider::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size,float*value)
 	{
+		glm::vec2 texcoords[4] = {
+			   glm::vec2(0.5,0.5),
+			   glm::vec2(1,0.5),
+			   glm::vec2(1,0.75),
+			   glm::vec2(0.5,0.75)
+		};
+		Quad quad(glm::vec2(0, 0), size, &texcoords[0]);
 		Ref<Slider> slider;
 		slider = std::make_shared<Slider>(label, position, size,value);
 
-		WidgetStack::AddWidget(label, slider);
+		WidgetStack::AddWidget(label, slider,quad);
 	}
 	glm::vec4 Slider::GetCoords()
 	{

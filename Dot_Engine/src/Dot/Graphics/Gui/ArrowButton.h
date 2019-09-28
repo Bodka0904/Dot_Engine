@@ -10,9 +10,10 @@ namespace Dot {
 		ArrowButton(const std::string& label, const glm::vec2& position, const glm::vec2& size);
 		virtual ~ArrowButton() override;
 
-		virtual void Render(const Ref<Shader>& shader) override;
+		virtual void Update(const Ref<Shader>& shader) override;
 		virtual void RenderLabel() override;
 		virtual void SetPosition(const glm::vec2& pos) override;
+		virtual void SetIndex(const unsigned int index) { m_Index = index; };
 		virtual void ClickHandle() override { *m_Clicked = !*m_Clicked; }
 		virtual bool MouseHoover(const glm::vec2& mousePos) override;
 
@@ -27,9 +28,7 @@ namespace Dot {
 		glm::vec4 GetCoords();
 		virtual const bool& GetClicked() const override { return *m_Clicked; }
 	private:
-		Ref<ArrayBuffer>m_VAO;
 		Ref<Text>m_Label;
-
 		Transform2D m_Transform;
 
 		glm::vec2 m_Size;
@@ -37,5 +36,7 @@ namespace Dot {
 
 		bool m_LeftClick = false;
 		bool m_RightClick = false;
+
+		unsigned int m_Index = 0;
 	};
 }

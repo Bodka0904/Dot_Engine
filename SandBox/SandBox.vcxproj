@@ -93,6 +93,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Environment\Environment.h" />
+    <ClInclude Include="src\Environment\Player.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\Environment\Environment.cpp" />
     <ClCompile Include="src\SandBoxApp.cpp" />
   </ItemGroup>
@@ -100,21 +104,6 @@
     <ProjectReference Include="..\Dot_Engine\Dot_Engine.vcxproj">
       <Project>{21301712-0DE8-585F-76EF-31BB62C6F34F}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Environment\Environment.h" />
-    <ClInclude Include="src\Environment\Player.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\shaders\Dot\AnimShader.glsl" />
-    <None Include="res\shaders\Dot\ComputeShader.glsl" />
-    <None Include="res\shaders\Dot\GeometryShader.glsl" />
-    <None Include="res\shaders\Dot\GuiShader.glsl" />
-    <None Include="res\shaders\Dot\InstanceShader.glsl" />
-    <None Include="res\shaders\Dot\SkyboxShader.glsl" />
-    <None Include="res\shaders\Dot\StaticShader.glsl" />
-    <None Include="res\shaders\Dot\TestForComputeShader.glsl" />
-    <None Include="res\shaders\Text\TextShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

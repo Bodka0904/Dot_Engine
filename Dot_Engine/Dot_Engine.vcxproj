@@ -58,7 +58,7 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;GLEW_STATIC;D_PLATFORM_WINDOWS;D_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;res;vendor\GLFW\include;vendor\GLEW\include;vendor\Dot_GUI;vendor\glm;vendor\stb_image;vendor\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;res;vendor\GLFW\include;vendor\GLEW\include;vendor\glm;vendor\stb_image;vendor\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -78,7 +78,7 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;GLEW_STATIC;D_PLATFORM_WINDOWS;D_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;res;vendor\GLFW\include;vendor\GLEW\include;vendor\Dot_GUI;vendor\glm;vendor\stb_image;vendor\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;res;vendor\GLFW\include;vendor\GLEW\include;vendor\glm;vendor\stb_image;vendor\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -115,7 +115,7 @@
     <ClInclude Include="src\Dot\Graphics\Particle\Particle.h" />
     <ClInclude Include="src\Dot\Graphics\Particle\ParticleManager.h" />
     <ClInclude Include="src\Dot\Graphics\Particle\ParticleSystem.h" />
-    <ClInclude Include="src\Dot\Graphics\Renderer\Animation\AnimatedMesh.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\AnimatedMesh.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffers\ArrayBuffer.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffers\Buffer.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffers\FrameBuffer.h" />
@@ -123,7 +123,9 @@
     <ClInclude Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Renderer.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\RendererFlags.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Sprite.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Texture.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Materials\Material.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Shader.h" />
@@ -523,7 +525,7 @@
     <ClCompile Include="src\Dot\Graphics\Particle\Particle.cpp" />
     <ClCompile Include="src\Dot\Graphics\Particle\ParticleManger.cpp" />
     <ClCompile Include="src\Dot\Graphics\Particle\ParticleSystem.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Renderer\Animation\AnimatedMesh.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\AnimatedMesh.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffers\ArrayBuffer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffers\Buffer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffers\FrameBuffer.cpp" />
@@ -531,6 +533,8 @@
     <ClCompile Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Sprite.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Texture.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\Shader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp" />
@@ -557,9 +561,6 @@
     </ProjectReference>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
-    </ProjectReference>
-    <ProjectReference Include="vendor\Dot_GUI\Dot_GUI.vcxproj">
-      <Project>{30CA8C81-9CA9-0B1D-A5C1-96F31120727E}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

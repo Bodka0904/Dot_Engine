@@ -3,18 +3,18 @@
 
 layout(location = 0) in vec2 a_Position;
 layout(location = 1) in vec2 a_TexCoord;
+layout(location = 2) in vec2 a_Transformation;
 
 out vec2 v_TexCoord;
 out float v_Dist;
 
 uniform mat4 u_ViewProjectionMatrix;
-uniform vec2 u_Position;
 uniform vec2 u_MousePos;
+
 
 void main()
 {
-	
-	vec4 pos = u_ViewProjectionMatrix * vec4(a_Position + u_Position, 0, 1.0);
+	vec4 pos = u_ViewProjectionMatrix * vec4(a_Position + a_Transformation, 0, 1.0);
 	vec4 mousePos = u_ViewProjectionMatrix * vec4(u_MousePos, 0, 1.0);
 
 

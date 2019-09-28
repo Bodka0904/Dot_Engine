@@ -11,9 +11,10 @@ namespace Dot {
 		virtual ~CheckBox() override;
 
 	
-		virtual void Render(const Ref<Shader>& shader) override;
+		virtual void Update(const Ref<Shader>& shader) override;
 		virtual void RenderLabel() override;
 		virtual void SetPosition(const glm::vec2& pos) override;
+		virtual void SetIndex(const unsigned int index) { m_Index = index; };
 		virtual void ClickHandle() override { m_TexOffset = !m_TexOffset; m_Clicked = !m_Clicked; }
 		virtual bool MouseHoover(const glm::vec2& mousePos) override;
 
@@ -27,12 +28,12 @@ namespace Dot {
 		virtual const bool& LeftClicked() const override { return m_Clicked; }
 		virtual const bool& RightClicked() const override { return m_Clicked; }
 	private:
-		Ref<ArrayBuffer>m_VAO;
 		Ref<Text>m_Label;
 		Transform2D m_Transform;
 
 		glm::vec2 m_Size;
 		bool m_Clicked = false;
 		int m_TexOffset = 0;
+		unsigned int m_Index = 0;
 	};
 }

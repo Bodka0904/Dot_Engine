@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "CheckBox.h"
 
-
 #include <GL/glew.h>
 
 namespace Dot {
@@ -10,31 +9,9 @@ namespace Dot {
 		Widget(),
 		m_Size(size)
 	{
-		
+
 		m_Transform.SetPos(position);
-		glm::vec2 texcoords[4] = {
-			glm::vec2(0,0.25),
-			glm::vec2(0.5,0.25),
-			glm::vec2(0.5,0.5),
-			glm::vec2(0,0.5)
-		};
-		Quad quad(glm::vec2(0, 0), size, &texcoords[0]);
 
-		m_VAO = std::make_shared<ArrayBuffer>();
-
-		BufferLayout layout = {
-			{0,ShaderDataType::Float2,"a_Position"},
-			{1,ShaderDataType::Float2,"a_TexCoord"},
-
-		};
-		Ref<VertexBuffer> VBO = std::make_shared<VertexBuffer>(&quad.m_Vertices[0], 4 * sizeof(Vertex), D_STATIC_DRAW);
-		VBO->SetLayout(layout);
-
-		m_VAO->AddVBO(VBO);
-
-
-		Ref<IndexBuffer> IBO = std::make_shared<IndexBuffer>((void*)& quad.m_Indices[0], 6);
-		m_VAO->AddIBO(IBO);
 		float letterSize = size.x / label.length();
 		if (letterSize >= 40)
 		{
@@ -46,17 +23,15 @@ namespace Dot {
 		}
 		float offsetx = size.x - (label.length() * letterSize);
 		m_Label = std::make_shared<Text>(label, offsetx / 2, -size.y / 2, letterSize, size.y / 2);
-		
+
 	}
 	CheckBox::~CheckBox()
 	{
 	}
-	
-	void CheckBox::Render(const Ref<Shader>& shader)
+
+	void CheckBox::Update(const Ref<Shader>& shader)
 	{
-		shader->UploadUniformFloat("u_TexOffset",(float)m_TexOffset);
-		m_VAO->Bind();
-		glDrawElements(GL_TRIANGLES, m_VAO->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
+		shader->UploadUniformFloat("u_TexOffset", (float)m_TexOffset);
 	}
 	void CheckBox::RenderLabel()
 	{
@@ -66,6 +41,9 @@ namespace Dot {
 	{
 		m_Transform.GetPos() = pos;
 		m_Transform.UpdateModel();
+		glm::vec2 newPos[4] = { m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() };
+
+		WidgetStack::UpdateTransfBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
 	bool CheckBox::MouseHoover(const glm::vec2& mousePos)
 	{
@@ -81,10 +59,17 @@ namespace Dot {
 	}
 	void CheckBox::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size)
 	{
+		glm::vec2 texcoords[4] = {
+			   glm::vec2(0,0.25),
+			   glm::vec2(0.5,0.25),
+			   glm::vec2(0.5,0.5),
+			   glm::vec2(0,0.5)
+		};
+		Quad quad(glm::vec2(0, 0), size, &texcoords[0]);
 		Ref<CheckBox> checkbox;
 		checkbox = std::make_shared<CheckBox>(label, position, size);
 
-		WidgetStack::AddWidget(label, checkbox);
+		WidgetStack::AddWidget(label, checkbox, quad);
 	}
 	glm::vec4 CheckBox::GetCoords()
 	{

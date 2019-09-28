@@ -8,6 +8,9 @@
 namespace Dot {
 	std::unordered_map<std::string, Ref<Widget>> WidgetStack::m_Widget;
 	std::unordered_map<std::string, Ref<Wrapper>> WidgetStack::m_Wrapper;
+	Ref<ArrayBuffer>WidgetStack::m_VAO;
+	unsigned int WidgetStack::m_NumWidgets = 0;
+	std::vector<Vertex> WidgetStack::m_Data;
 	std::string WidgetStack::m_EnabledWrapper = "";
 
 	WidgetStack::WidgetStack(const std::string& widgetShader, const std::string& textShader, const std::string& texturePack)
@@ -27,24 +30,77 @@ namespace Dot {
 		m_TextShader = std::make_shared<Shader>("TextShader", textShader);
 		m_TextShader->AddUniform("u_ViewProjectionMatrix");
 		m_TextShader->AddUniform("u_Position");
+
+
+		m_VAO = std::make_shared<ArrayBuffer>();
+		BufferLayout layout = {
+				{0,ShaderDataType::Float2,"a_Position"},
+				{1,ShaderDataType::Float2,"a_TexCoord"},
+		};
+
+		Ref<VertexBuffer>m_VBO = std::make_shared<VertexBuffer>(&m_Data[0], m_NumWidgets*sizeof(Quad), D_STATIC_DRAW);
+		m_VBO->SetLayout(layout);	
+		m_VAO->AddVBO(m_VBO);
+
+		BufferLayout layout_pos = {
+			{2,ShaderDataType::Float2,"a_Transformation"},
+		};
+
+		Ref<VertexBuffer>m_VBO_POS = std::make_shared<VertexBuffer>((void*)0, m_NumWidgets * sizeof(glm::vec2) * 4, D_DYNAMIC_DRAW);
+		m_VBO_POS->SetLayout(layout_pos);
+		m_VAO->AddVBO(m_VBO_POS);
+
+		for (auto& it : m_Widget)
+		{
+			it.second->SetPosition(it.second->GetPosition());
+		}
+		for (auto& it : m_Wrapper)
+		{
+			it.second->SetPosition(it.second->GetPosition());
+			it.second->SetWidgetPosition();
+		}
+
+		m_Data.clear();
 	}
 
-	void WidgetStack::AddWidget(const std::string& label, Ref<Widget> widget)
+	void WidgetStack::AddWidget(const std::string& label, Ref<Widget> widget, const Quad& quad)
 	{
+		unsigned int numVertices = sizeof(quad.m_Vertices) / sizeof(Vertex);
 		if (m_EnabledWrapper != "")
-		{
-			m_Wrapper[m_EnabledWrapper]->AddWidget(label, widget);
+		{		
+			m_Wrapper[m_EnabledWrapper]->AddWidget(label, widget, m_NumWidgets);
+
+			for (int i = 0; i < numVertices; ++i)
+			{
+				m_Data.insert(m_Data.begin() + (numVertices * m_NumWidgets), quad.m_Vertices[i]);
+			}
+			m_NumWidgets++;
 		}
 		else
 		{
 			m_Widget[label] = widget;
+			m_Widget[label]->SetIndex(m_NumWidgets);
+			for (int i = 0; i < numVertices; ++i)
+			{
+				m_Data.insert(m_Data.begin() + (numVertices * m_NumWidgets), quad.m_Vertices[i]);
+			}
+			m_NumWidgets++;
 		}
+		
 	}
 
-	void WidgetStack::AddWrapper(const std::string& label, Ref<Wrapper> wrapper)
+	void WidgetStack::AddWrapper(const std::string& label, Ref<Wrapper> wrapper, const Quad& quad)
 	{
 		m_Wrapper[label] = wrapper;
+		m_Wrapper[label]->SetIndex(m_NumWidgets);
+
+		for (int i = 0; i < sizeof(quad.m_Vertices) / sizeof(Vertex); ++i)
+		{
+			m_Data.push_back(quad.m_Vertices[i]);	
+		}
+		m_NumWidgets++;
 	}
+
 	
 	bool WidgetStack::HandleLeftClick()
 	{
@@ -53,6 +109,14 @@ namespace Dot {
 			if (it.second->MouseHoover(glm::vec2(Input::GetMouseX(), Input::GetMouseY())))
 			{
 				it.second->ClickHandle();
+				return true;
+			}
+		}
+		for (auto& it : m_Wrapper)
+		{
+
+			if (it.second->HandleLeftClick())
+			{		
 				return true;
 			}
 		}
@@ -117,22 +181,28 @@ namespace Dot {
 		m_Shader->UploadUniformFloat2("u_MousePos", glm::vec2(Input::GetMouseX(), Input::GetMouseY()));
 		m_Shader->UploadUniformMat4("u_ViewProjectionMatrix", m_Camera->GetViewProjectionMatrix());
 		m_Texture->Bind(0);
+		
+		glDisable(GL_DEPTH_TEST);
 		glEnable(GL_BLEND);
 		for (auto& it : m_Widget) 
 		{
-			m_Shader->UploadUniformFloat2("u_Position", it.second->GetPosition());
-			it.second->Render(m_Shader);		
+			it.second->Update(m_Shader);		
 		}
 		for (auto& it : m_Wrapper)
 		{
-			it.second->Render(m_Shader);
+			it.second->Update(m_Shader);
 		}
+		m_VAO->Bind();
+		glDrawArrays(GL_QUADS, 0, m_VAO->GetVertexBuffer(0)->GetCount());
+
 		glDisable(GL_BLEND);
+		glEnable(GL_DEPTH_TEST);
 	}
 	void WidgetStack::RenderLabels()
 	{
 		m_TextShader->Bind();
 		m_TextShader->UploadUniformMat4("u_ViewProjectionMatrix", m_Camera->GetViewProjectionMatrix());
+		
 		for (auto& it : m_Widget)
 		{		
 			m_TextShader->UploadUniformFloat2("u_Position", it.second->GetPosition());
@@ -141,7 +211,6 @@ namespace Dot {
 		for (auto& it : m_Wrapper)
 		{
 			it.second->RenderLabels(m_TextShader);
-	
 		}
 	}
 	void WidgetStack::EnableWrapper(const std::string& wrapper)
@@ -152,34 +221,15 @@ namespace Dot {
 	{
 		m_EnabledWrapper = "";
 	}
+	void WidgetStack::UpdateTransfBuffer(unsigned int index, unsigned int size, const void* vertices)
+	{
+		m_VAO->GetVertexBuffer(1)->Update(vertices, size, index * sizeof(glm::vec2) * 4);
+	}
 	Wrapper::Wrapper(const std::string& label, const glm::vec2& position, const glm::vec2& size)
 		:
 		m_Size(size)
 	{
 		m_Transform.SetPos(position);
-		glm::vec2 texcoords[4] = {
-			glm::vec2(0,0.75),
-			glm::vec2(0.5,0.75),
-			glm::vec2(0.5,1),
-			glm::vec2(0,1)
-		};
-		Quad quad(glm::vec2(0, 0), size, &texcoords[0]);
-
-		m_VAO = std::make_shared<ArrayBuffer>();
-
-		BufferLayout layout = {
-			{0,ShaderDataType::Float2,"a_Position"},
-			{1,ShaderDataType::Float2,"a_TexCoord"},
-
-		};
-		Ref<VertexBuffer> VBO = std::make_shared<VertexBuffer>(&quad.m_Vertices[0], 4 * sizeof(Vertex), D_STATIC_DRAW);
-		VBO->SetLayout(layout);
-
-		m_VAO->AddVBO(VBO);
-
-
-		Ref<IndexBuffer> IBO = std::make_shared<IndexBuffer>((void*)& quad.m_Indices[0], 6);
-		m_VAO->AddIBO(IBO);
 		
 		int sizeConstantDiv = 7;
 		float letterSize = size.x / label.length() / sizeConstantDiv;
@@ -199,19 +249,14 @@ namespace Dot {
 	Wrapper::~Wrapper()
 	{
 	}
-	void Wrapper::Render(const Ref<Shader>& shader)
+	void Wrapper::Update(const Ref<Shader>& shader)
 	{
 		for (auto& it : m_Widget)
 		{
-			shader->UploadUniformFloat2("u_Position", it.second->GetPosition());
-			it.second->Render(shader);
+			it.second->Update(shader);
 		}		
-		shader->UploadUniformFloat2("u_Position", m_Transform.GetPos());
 		shader->UploadUniformFloat("u_TexOffset", 0);
 		
-		m_VAO->Bind();
-		glDrawElements(GL_TRIANGLES, m_VAO->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
-
 	}
 	void Wrapper::RenderLabels(const Ref<Shader>& shader)
 	{	
@@ -232,11 +277,19 @@ namespace Dot {
 		}
 		m_Transform.GetPos() = pos;
 		m_Transform.UpdateModel();
+		glm::vec2 newPos[4] = { m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() };
+
+		WidgetStack::UpdateTransfBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
-	void Wrapper::ClickHandle()
+	void Wrapper::SetWidgetPosition()
 	{
-		
+		for (auto& it : m_Widget)
+		{
+			it.second->SetPosition(m_Transform.GetPos());
+		}
 	}
+
+	
 	bool Wrapper::MouseHoover(const glm::vec2& mousePos)
 	{
 		glm::vec4 coords = GetCoords();
@@ -249,12 +302,38 @@ namespace Dot {
 
 		return false;
 	}
+	bool Wrapper::HandleLeftClick()
+	{
+		for (auto& it : m_Widget)
+		{
+			if (it.second->MouseHoover(glm::vec2(Input::GetMouseX(), Input::GetMouseY())))
+			{
+				it.second->ClickHandle();
+				return true;
+			}
+		}
+		return false;
+	}
+	void Wrapper::AddWidget(const std::string& label, Ref<Widget> widget, unsigned int index)
+	{ 
+		m_Widget[label] = widget;
+		m_Widget[label]->SetIndex(index);
+	
+	}
 	void Wrapper::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size)
 	{
-		Ref<Wrapper> checkbox;
-		checkbox = std::make_shared<Wrapper>(label, position, size);
+		glm::vec2 texcoords[4] = {
+			glm::vec2(0,0.75),
+			glm::vec2(0.5,0.75),
+			glm::vec2(0.5,1),
+			glm::vec2(0,1)
+		};
+		Quad quad(glm::vec2(0, 0), size, &texcoords[0]);
 
-		WidgetStack::AddWrapper(label, checkbox);
+		Ref<Wrapper> wrapper;
+		wrapper = std::make_shared<Wrapper>(label, position, size);
+
+		WidgetStack::AddWrapper(label, wrapper,quad);
 	}
 	glm::vec4 Wrapper::GetCoords()
 	{

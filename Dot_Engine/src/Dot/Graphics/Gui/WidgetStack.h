@@ -31,17 +31,9 @@ namespace Dot {
 			m_Vertices[3].position = glm::vec2(position.x, position.y + size.y);
 			m_Vertices[3].texcoord = texcood[3];
 
-
-			m_Indices[0] = 0;
-			m_Indices[1] = 1;
-			m_Indices[2] = 2;
-			m_Indices[3] = 0;
-			m_Indices[4] = 3;
-			m_Indices[5] = 2;
 		}
 
 		Vertex m_Vertices[4];
-		unsigned int m_Indices[6];
 	};
 	class Widget
 	{
@@ -49,10 +41,11 @@ namespace Dot {
 		Widget() {}
 		virtual ~Widget() {};
 
-		virtual void Render(const Ref<Shader>& shader) = 0;
+		virtual void Update(const Ref<Shader>& shader) = 0;
 		virtual void RenderLabel() = 0;
 		virtual void ClickHandle() = 0;
 		virtual void SetPosition(const glm::vec2& pos) = 0;
+		virtual void SetIndex(const unsigned int index) = 0;
 		virtual bool MouseHoover(const glm::vec2& mousePos) = 0;
 
 		
@@ -60,7 +53,6 @@ namespace Dot {
 		virtual const bool& LeftClicked() const = 0;
 		virtual const bool& RightClicked() const = 0;
 		virtual const glm::vec2& GetPosition() = 0;
-
 		
 	};
 	class Wrapper
@@ -70,13 +62,18 @@ namespace Dot {
 		virtual ~Wrapper();
 
 
-		void Render(const Ref<Shader>& shader);
+		void Update(const Ref<Shader>& shader);
 		void RenderLabels(const Ref<Shader>& shader);
 		void SetPosition(const glm::vec2& pos);
-		void ClickHandle();
-		bool MouseHoover(const glm::vec2& mousePos);
+		void SetIndex(const unsigned int index) { m_Index = index; }
+		void SetWidgetPosition();
+		
 
-		void AddWidget(const std::string& label, Ref<Widget> widget) { m_Widget[label] = widget; };
+		bool MouseHoover(const glm::vec2& mousePos);
+		bool HandleLeftClick();
+	
+
+		void AddWidget(const std::string& label, Ref<Widget> widget, unsigned int index);
 		
 		std::unordered_map<std::string, Ref<Widget>>& GetWidgets() { return m_Widget; }
 		const glm::vec2& GetPosition() { return m_Transform.GetPos(); }
@@ -86,11 +83,11 @@ namespace Dot {
 		glm::vec4 GetCoords();
 
 	private:
-		Ref<ArrayBuffer>m_VAO;
 		Ref<Text>m_Label;
 		Transform2D m_Transform;
 
 		glm::vec2 m_Size;
+		unsigned int m_Index;
 
 	private:
 		std::unordered_map<std::string, Ref<Widget>> m_Widget;
@@ -100,14 +97,13 @@ namespace Dot {
 	{
 	public:
 		WidgetStack(const std::string& widgetShader, const std::string& textShader, const std::string& texturePack);
-
-		static void AddWidget(const std::string& label,Ref<Widget> widget);
-		static void AddWrapper(const std::string& label, Ref<Wrapper> wrapper);
+		// TODO NEEED TO CHANGE UPDATING TEXOFFSET TOO DEPENDING ON BUTTON
+		static void AddWidget(const std::string& label,Ref<Widget> widget, const Quad& quad);
+		static void AddWrapper(const std::string& label, Ref<Wrapper> wrapper, const Quad& quad);
 
 		bool HandleLeftClick();
 		bool HandleRightClick();
 		
-	
 		void Release();
 		void Update();
 
@@ -118,6 +114,7 @@ namespace Dot {
 		static void EnableWrapper(const std::string& wrapper);
 		static void DisableWrapper();
 
+		static void UpdateTransfBuffer(unsigned int index,unsigned int size,const void* vertices);
 		static Ref<Widget>& GetWidget(const std::string& name) { return m_Widget[name]; }
 		static Ref<Wrapper>& GetWrapper(const std::string& name) { return m_Wrapper[name]; }
 
@@ -126,13 +123,17 @@ namespace Dot {
 		static std::unordered_map<std::string, Ref<Wrapper>> m_Wrapper;
 		
 		std::string m_SelectedWidget;
-
 		static std::string m_EnabledWrapper;
+
 	private:
 		Ref<Shader>m_Shader;
 		Ref<Shader>m_TextShader;
 		Ref<OrthoCamera> m_Camera;
-
 		Ref<Texture> m_Texture;
+
+	private:
+		static unsigned int m_NumWidgets;
+		static std::vector<Vertex> m_Data;
+		static Ref<ArrayBuffer> m_VAO;
 	};
 }

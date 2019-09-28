@@ -40,7 +40,6 @@ namespace Dot {
 	void VertexBuffer::Update(const void * vertices,unsigned int size,int offset)
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		//glBufferData(GL_ARRAY_BUFFER, size, vertices, D_DYNAMIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, offset, size, vertices);	
 	}
 

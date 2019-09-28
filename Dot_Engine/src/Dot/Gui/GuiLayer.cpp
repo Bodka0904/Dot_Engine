@@ -19,19 +19,20 @@ namespace Dot {
 
 	void GuiLayer::OnAttach()
 	{
-		Wrapper::Create("wrapper", glm::vec2(300, 500), glm::vec2(300, 300));
-
-		WidgetStack::EnableWrapper("wrapper");
+	
+		//Wrapper::Create("wrapper", glm::vec2(300, 500), glm::vec2(300, 300));
+		//WidgetStack::EnableWrapper("wrapper");
 		{
 			Button::Create("button", glm::vec2(300, 50), glm::vec2(50, 50));
 			CheckBox::Create("checkbox", glm::vec2(50, 50), glm::vec2(50, 50));
 			ArrowButton::Create("arrowbutton", glm::vec2(50, 50), glm::vec2(60, 50));
 			Slider::Create("slider", glm::vec2(50, 50), glm::vec2(200, 20), &value);
 
-		}WidgetStack::DisableWrapper();
+		}//WidgetStack::DisableWrapper();
 
 		m_Stack = std::make_shared<WidgetStack>("res/shaders/Dot/GuiShader.glsl", "res/shaders/Text/TextShader.glsl", "res/textures/Dot/Gui/DefaultTexturePack/DefaultTexturePack.png");
-	}
+
+}
 
 	void GuiLayer::OnUpdate(Timestep ts)
 	{
@@ -50,8 +51,9 @@ namespace Dot {
 		//}
 
 		m_Stack->Update();	
-		m_Stack->RenderLabels();	
+	
 		m_Stack->RenderWidgets();
+		m_Stack->RenderLabels();
 	}
 
 	void GuiLayer::OnEvent(Event& event)
