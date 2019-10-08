@@ -11,20 +11,31 @@ layout(std140) uniform camera_data
 	mat4 ViewProjectionMatrix;
 	mat4 ViewMatrix;
 	mat4 ProjectionMatrix;
+	vec3 ViewPos;
 };
+
+uniform float u_WaterLevelHeight;
 
 out vec3 v_FragPos;
 out vec3 v_Normal;
 out vec2 v_TexCoord;
-
+out vec3 v_ViewPos;
 
 void main()
 {
-	gl_Position = ViewProjectionMatrix * a_InstanceModel * vec4(a_Position, 1.0);
+	vec4 plane = vec4(0, -u_WaterLevelHeight / abs(u_WaterLevelHeight), 0, abs(u_WaterLevelHeight));
+	vec4 WorldPos = a_InstanceModel * vec4(a_Position, 1.0);
 
-	v_FragPos = vec3(ViewProjectionMatrix * a_InstanceModel * vec4(a_Position, 1.0));
+	gl_ClipDistance[0] = dot(WorldPos, plane);
+	
+	vec4 Position = ViewProjectionMatrix * WorldPos;
+
+	gl_Position = Position;
+
+	v_FragPos = Position.xyz;
 	v_Normal = (ViewProjectionMatrix * a_InstanceModel * vec4(a_Normal, 0.0)).xyz;
 	v_TexCoord = a_TexCoord;
+	v_ViewPos = ViewPos;
 }
 
 
@@ -34,13 +45,11 @@ void main()
 in vec3 v_FragPos;
 in vec3 v_Normal;
 in vec2 v_TexCoord;
+in vec3 v_ViewPos;
 
-
-uniform float lightStrength;
-uniform float specStrength;
-uniform vec3 viewPos;
-uniform vec3 lightColor;
-uniform vec3 lightPos;
+uniform vec3 u_LightPosition;
+uniform vec3 u_LightColor;
+uniform float u_LightStrength;
 
 uniform sampler2D u_Texture;
 
@@ -49,17 +58,18 @@ out vec4 color;
 void main()
 {
 	vec3 norm = normalize(v_Normal);
-	vec3 lightDir = normalize(vec3(0, 5, 0) - v_FragPos);
-	vec3 ambient = 0.7 * vec3(0.5, 0.5, 0.5);
-	vec3 viewDir = normalize(vec3(0, 5, 0) - v_FragPos);
+	vec3 lightDir = normalize(u_LightPosition - v_FragPos);
+	
+	vec3 ambient = u_LightStrength * u_LightColor;
+	vec3 viewDir = normalize(v_ViewPos - v_FragPos);
 	vec3 reflectDir = reflect(-lightDir, norm);
 
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
-	float diff = max(dot(norm, vec3(0, 5, 0)), 0.0);
+	float diff = max(dot(norm, lightDir), 0.0);
 
-	vec3 specular = 0.7 * spec * vec3(0.5, 0.5, 0.5);
-	vec3 diffuse = diff * vec3(0.5, 0.5, 0.5);
-	vec3 result = ambient + diffuse + specular;
+	vec3 specular = u_LightStrength * spec * u_LightColor;
+	vec3 diffuse = diff * u_LightColor;
+	vec3 result = (ambient + diffuse + specular);
 
 	color = texture(u_Texture, v_TexCoord) * vec4(result, 1.0);
 }

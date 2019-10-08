@@ -5,8 +5,9 @@ namespace Dot {
 	enum class FramebufferFormat
 	{
 		None = 0,
-		RGBA8 = 1,
-		RGBA16F = 2
+		RGB = 1,
+		RGBA8 = 2,
+		RGBA16F = 3
 	};
 
 	class Framebuffer
@@ -30,7 +31,7 @@ namespace Dot {
 		uint32_t GetHeight() const { return m_Height; }
 		FramebufferFormat GetFormat() const { return m_Format; }
 	private:
-		unsigned int m_FBO = 0;
+		unsigned int m_FBO;
 
 		uint32_t m_Width, m_Height;
 		FramebufferFormat m_Format;

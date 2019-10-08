@@ -3,10 +3,10 @@
 #include "Player.h"
 
 
-class EnvironmentLayer : public Dot::Layer
+class Sandbox : public Dot::Layer
 {
 public:
-	EnvironmentLayer();
+	Sandbox();
 	
 
 	virtual void OnAttach() override;
@@ -21,20 +21,23 @@ private:
 	Dot::Ref<Dot::Shader> m_InstanceShader;
 	Dot::Ref<Dot::Shader> m_ComputeShader;
 	Dot::Ref<Dot::Shader> m_ShaderForCompute;
+	Dot::Ref<Dot::Shader> m_WaterShader;
 
 	Dot::Ref<Dot::Texture> m_TreeTexture;
 	Dot::Ref<Dot::Texture> m_TerrTexture;
 	
-
-
 	Dot::Ref<Dot::InstancedMesh> m_Tree;
 	Dot::Ref<Player> m_Player;
 
 	Dot::Ref<Dot::Skybox> m_SkyBox;
 	Dot::Ref<Dot::Terrain> m_Terrain;
+	Dot::Ref<Dot::Water>m_Water;
 	Dot::Ref<Dot::Camera> m_Camera;
+	Dot::Ref<Dot::Light> m_Light;
 
 	Dot::Ref<Dot::ParticleManager> m_TestManager;
+
+	Dot::Ref<Dot::Framebuffer> m_TestWaterFBO;
 
 private:
 	Dot::Transform m_T;
@@ -49,7 +52,7 @@ class SandBox : public Dot::Application
 public:
 	SandBox()
 	{
-		PushLayer(new EnvironmentLayer());
+		PushLayer(new Sandbox());
 
 	}
 

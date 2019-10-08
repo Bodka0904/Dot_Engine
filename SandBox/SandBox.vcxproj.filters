@@ -6,17 +6,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Environment\Environment.h">
+    <ClInclude Include="src\Environment\Player.h">
       <Filter>Environment</Filter>
     </ClInclude>
-    <ClInclude Include="src\Environment\Player.h">
+    <ClInclude Include="src\Environment\Sandbox.h">
       <Filter>Environment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Environment\Environment.cpp">
+    <ClCompile Include="src\SandBoxApp.cpp" />
+    <ClCompile Include="src\Environment\Sandbox.cpp">
       <Filter>Environment</Filter>
     </ClCompile>
-    <ClCompile Include="src\SandBoxApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\Dot\WaterShader.glsl" />
   </ItemGroup>
 </Project>

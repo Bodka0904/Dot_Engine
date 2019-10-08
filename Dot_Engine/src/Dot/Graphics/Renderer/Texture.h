@@ -11,9 +11,6 @@ namespace Dot {
 		~Texture();
 
 		void Bind(unsigned int unit);
-
-	
-		
 	
 	private:
 		int CalculateMipMapCount(int width, int height);

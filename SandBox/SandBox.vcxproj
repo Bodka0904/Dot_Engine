@@ -93,17 +93,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Environment\Environment.h" />
+    <ClInclude Include="src\Environment\Sandbox.h" />
     <ClInclude Include="src\Environment\Player.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Environment\Environment.cpp" />
+    <ClCompile Include="src\Environment\Sandbox.cpp" />
     <ClCompile Include="src\SandBoxApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dot_Engine\Dot_Engine.vcxproj">
       <Project>{21301712-0DE8-585F-76EF-31BB62C6F34F}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\Dot\WaterShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

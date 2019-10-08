@@ -121,6 +121,7 @@
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffers\FrameBuffer.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Camera\Camera.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Material\Light.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Renderer.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Renderer2D.h" />
@@ -141,7 +142,7 @@
     <ClInclude Include="src\Dot\Layer.h" />
     <ClInclude Include="src\Dot\MouseButtonCodes.h" />
     <ClInclude Include="src\Dot\Terrain\Terrain.h" />
-    <ClInclude Include="src\Dot\Terrain\TerrainGenerator.h" />
+    <ClInclude Include="src\Dot\Terrain\Water.h" />
     <ClInclude Include="src\Dot\Utils\BmpLoader.h" />
     <ClInclude Include="src\Dot\Utils\MousePicker.h" />
     <ClInclude Include="src\Dot\Utils\Timestep.h" />
@@ -531,6 +532,7 @@
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffers\FrameBuffer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Camera\Camera.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Material\Light.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Renderer2D.cpp" />
@@ -546,7 +548,7 @@
     <ClCompile Include="src\Dot\Input.cpp" />
     <ClCompile Include="src\Dot\Layer.cpp" />
     <ClCompile Include="src\Dot\Terrain\Terrain.cpp" />
-    <ClCompile Include="src\Dot\Terrain\TerrainGenerator.cpp" />
+    <ClCompile Include="src\Dot\Terrain\Water.cpp" />
     <ClCompile Include="src\Dot\Utils\BmpLoader.cpp" />
     <ClCompile Include="src\Dot\Utils\MousePicker.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />

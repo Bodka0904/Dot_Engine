@@ -3,7 +3,6 @@
 
 layout(location = 0) in vec2 a_Position;
 layout(location = 1) in vec2 a_TexCoord;
-layout(location = 2) in vec2 a_Transformation;
 
 out vec2 v_TexCoord;
 out float v_Dist;
@@ -14,7 +13,8 @@ uniform vec2 u_MousePos;
 
 void main()
 {
-	vec4 pos = u_ViewProjectionMatrix * vec4(a_Position + a_Transformation, 0, 1.0);
+
+	vec4 pos = u_ViewProjectionMatrix * vec4(a_Position, 0, 1.0);
 	vec4 mousePos = u_ViewProjectionMatrix * vec4(u_MousePos, 0, 1.0);
 
 
@@ -59,6 +59,6 @@ void main()
 	vec3 ambient = point_light_col * ambient_light_intensity;
 
 	vec3 result = ambient + diffuse;
-	FragColor = texture(u_Texture, vec2(v_TexCoord.x + (u_TexOffset / 2), v_TexCoord.y)) * vec4(result, 0.7);
-	
+	FragColor = texture(u_Texture, v_TexCoord) * vec4(result, 0.7);
+
 }

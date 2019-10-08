@@ -10,6 +10,7 @@ layout(std140) uniform camera_data
 	mat4 ViewProjectionMatrix;
 	mat4 ViewMatrix;
 	mat4 ProjectionMatrix;
+	vec3 ViewPos;
 };
 
 

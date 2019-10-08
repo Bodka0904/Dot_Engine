@@ -8,9 +8,13 @@
 namespace Dot {
 	std::unordered_map<std::string, Ref<Widget>> WidgetStack::m_Widget;
 	std::unordered_map<std::string, Ref<Wrapper>> WidgetStack::m_Wrapper;
-	Ref<ArrayBuffer>WidgetStack::m_VAO;
+	Ref<ArrayBuffer>WidgetStack::m_VAO_Widget;
 	unsigned int WidgetStack::m_NumWidgets = 0;
-	std::vector<Vertex> WidgetStack::m_Data;
+	std::vector<glm::vec2> WidgetStack::m_Vertices;
+	std::vector<glm::vec2> WidgetStack::m_TexCoords;
+
+
+
 	std::string WidgetStack::m_EnabledWrapper = "";
 
 	WidgetStack::WidgetStack(const std::string& widgetShader, const std::string& textShader, const std::string& texturePack)
@@ -21,9 +25,7 @@ namespace Dot {
 
 		m_Shader = std::make_shared<Shader>("GuiShader", widgetShader);
 		m_Shader->AddUniform("u_ViewProjectionMatrix");
-		m_Shader->AddUniform("u_Position");
 		m_Shader->AddUniform("u_MousePos");
-		m_Shader->AddUniform("u_TexOffset");
 		m_Shader->AddUniform("u_Texture");
 		m_Shader->UploadUniformInt("u_Texture", 0);
 
@@ -32,23 +34,24 @@ namespace Dot {
 		m_TextShader->AddUniform("u_Position");
 
 
-		m_VAO = std::make_shared<ArrayBuffer>();
+		m_VAO_Widget = std::make_shared<ArrayBuffer>();
+
+		Ref<VertexBuffer>m_VBO[2];
+		
 		BufferLayout layout = {
 				{0,ShaderDataType::Float2,"a_Position"},
+		};
+		m_VBO[0] = std::make_shared<VertexBuffer>((void*)&m_Vertices[0], m_NumWidgets*sizeof(Quad), D_DYNAMIC_DRAW);
+		m_VBO[0]->SetLayout(layout);	
+		m_VAO_Widget->AddVBO(m_VBO[0]);
+
+		BufferLayout layout_tex = {
 				{1,ShaderDataType::Float2,"a_TexCoord"},
 		};
+		m_VBO[1] = std::make_shared<VertexBuffer>(&m_TexCoords[0], m_NumWidgets * sizeof(glm::vec2)*4, D_DYNAMIC_DRAW);
+		m_VBO[1]->SetLayout(layout_tex);
+		m_VAO_Widget->AddVBO(m_VBO[1]);
 
-		Ref<VertexBuffer>m_VBO = std::make_shared<VertexBuffer>(&m_Data[0], m_NumWidgets*sizeof(Quad), D_STATIC_DRAW);
-		m_VBO->SetLayout(layout);	
-		m_VAO->AddVBO(m_VBO);
-
-		BufferLayout layout_pos = {
-			{2,ShaderDataType::Float2,"a_Transformation"},
-		};
-
-		Ref<VertexBuffer>m_VBO_POS = std::make_shared<VertexBuffer>((void*)0, m_NumWidgets * sizeof(glm::vec2) * 4, D_DYNAMIC_DRAW);
-		m_VBO_POS->SetLayout(layout_pos);
-		m_VAO->AddVBO(m_VBO_POS);
 
 		for (auto& it : m_Widget)
 		{
@@ -60,19 +63,22 @@ namespace Dot {
 			it.second->SetWidgetPosition();
 		}
 
-		m_Data.clear();
+		m_Vertices.clear();
+		m_TexCoords.clear();
 	}
 
-	void WidgetStack::AddWidget(const std::string& label, Ref<Widget> widget, const Quad& quad)
+	void WidgetStack::AddWidget(const std::string& label, Ref<Widget> widget, const Quad& quad, const glm::vec2* texcoords)
 	{
-		unsigned int numVertices = sizeof(quad.m_Vertices) / sizeof(Vertex);
+		unsigned int numVertices = sizeof(quad.m_Vertices) / sizeof(glm::vec2);
 		if (m_EnabledWrapper != "")
 		{		
 			m_Wrapper[m_EnabledWrapper]->AddWidget(label, widget, m_NumWidgets);
 
 			for (int i = 0; i < numVertices; ++i)
 			{
-				m_Data.insert(m_Data.begin() + (numVertices * m_NumWidgets), quad.m_Vertices[i]);
+				m_Vertices.insert(m_Vertices.begin() + (numVertices * m_NumWidgets), quad.m_Vertices[i]);
+				m_TexCoords.insert(m_TexCoords.begin() + (numVertices * m_NumWidgets), texcoords[i]);
+
 			}
 			m_NumWidgets++;
 		}
@@ -82,21 +88,23 @@ namespace Dot {
 			m_Widget[label]->SetIndex(m_NumWidgets);
 			for (int i = 0; i < numVertices; ++i)
 			{
-				m_Data.insert(m_Data.begin() + (numVertices * m_NumWidgets), quad.m_Vertices[i]);
+				m_Vertices.insert(m_Vertices.begin() + (numVertices * m_NumWidgets), quad.m_Vertices[i]);
+				m_TexCoords.insert(m_TexCoords.begin() + (numVertices * m_NumWidgets), texcoords[i]);
 			}
 			m_NumWidgets++;
 		}
 		
 	}
 
-	void WidgetStack::AddWrapper(const std::string& label, Ref<Wrapper> wrapper, const Quad& quad)
+	void WidgetStack::AddWrapper(const std::string& label, Ref<Wrapper> wrapper, const Quad& quad, const glm::vec2* texcoords)
 	{
 		m_Wrapper[label] = wrapper;
 		m_Wrapper[label]->SetIndex(m_NumWidgets);
 
-		for (int i = 0; i < sizeof(quad.m_Vertices) / sizeof(Vertex); ++i)
+		for (int i = 0; i < sizeof(quad.m_Vertices) / sizeof(glm::vec2); ++i)
 		{
-			m_Data.push_back(quad.m_Vertices[i]);	
+			m_Vertices.push_back(quad.m_Vertices[i]);
+			m_TexCoords.push_back(texcoords[i]);
 		}
 		m_NumWidgets++;
 	}
@@ -192,8 +200,8 @@ namespace Dot {
 		{
 			it.second->Update(m_Shader);
 		}
-		m_VAO->Bind();
-		glDrawArrays(GL_QUADS, 0, m_VAO->GetVertexBuffer(0)->GetCount());
+		m_VAO_Widget->Bind();
+		glDrawArrays(GL_QUADS, 0, m_VAO_Widget->GetVertexBuffer(0)->GetCount());
 
 		glDisable(GL_BLEND);
 		glEnable(GL_DEPTH_TEST);
@@ -221,9 +229,13 @@ namespace Dot {
 	{
 		m_EnabledWrapper = "";
 	}
-	void WidgetStack::UpdateTransfBuffer(unsigned int index, unsigned int size, const void* vertices)
+	void WidgetStack::UpdatePosBuffer(unsigned int index, unsigned int size, const void* vertices)
 	{
-		m_VAO->GetVertexBuffer(1)->Update(vertices, size, index * sizeof(glm::vec2) * 4);
+		m_VAO_Widget->GetVertexBuffer(0)->Update(vertices, size, index * sizeof(Quad));
+	}
+	void WidgetStack::UpdateTexBuffer(unsigned int index, unsigned int size, const void* texcoords)
+	{
+		m_VAO_Widget->GetVertexBuffer(1)->Update(texcoords, size, index * sizeof(glm::vec2)*4);
 	}
 	Wrapper::Wrapper(const std::string& label, const glm::vec2& position, const glm::vec2& size)
 		:
@@ -276,10 +288,14 @@ namespace Dot {
 			it.second->SetPosition(pos + posDif);
 		}
 		m_Transform.GetPos() = pos;
-		m_Transform.UpdateModel();
-		glm::vec2 newPos[4] = { m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() };
 
-		WidgetStack::UpdateTransfBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		glm::vec2 newPos[4] = {
+			glm::vec2(m_Transform.GetPos()),
+			glm::vec2(m_Transform.GetPos().x + m_Size.x,m_Transform.GetPos().y),
+			glm::vec2(m_Transform.GetPos() + m_Size),
+			glm::vec2(m_Transform.GetPos().x,m_Transform.GetPos().y + m_Size.y)
+		};
+		WidgetStack::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
 	void Wrapper::SetWidgetPosition()
 	{
@@ -328,12 +344,12 @@ namespace Dot {
 			glm::vec2(0.5,1),
 			glm::vec2(0,1)
 		};
-		Quad quad(glm::vec2(0, 0), size, &texcoords[0]);
+		Quad quad(glm::vec2(0, 0), size);
 
 		Ref<Wrapper> wrapper;
 		wrapper = std::make_shared<Wrapper>(label, position, size);
 
-		WidgetStack::AddWrapper(label, wrapper,quad);
+		WidgetStack::AddWrapper(label, wrapper,quad,&texcoords[0]);
 	}
 	glm::vec4 Wrapper::GetCoords()
 	{

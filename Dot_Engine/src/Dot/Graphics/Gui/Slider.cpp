@@ -33,7 +33,7 @@ namespace Dot {
 	}
 	void Slider::Update(const Ref<Shader>& shader)
 	{
-		shader->UploadUniformFloat("u_TexOffset", m_TexOffset);
+		
 	}
 	void Slider::RenderLabel()
 	{
@@ -42,10 +42,14 @@ namespace Dot {
 	void Slider::SetPosition(const glm::vec2& pos)
 	{
 		m_Transform.GetPos() = pos;
-		m_Transform.UpdateModel();
-		glm::vec2 newPos[4] = { m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() ,m_Transform.GetPos() };
-
-		WidgetStack::UpdateTransfBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+	
+		glm::vec2 newPos[4] = {
+			glm::vec2(m_Transform.GetPos()),
+			glm::vec2(m_Transform.GetPos().x + m_Size.x,m_Transform.GetPos().y),
+			glm::vec2(m_Transform.GetPos() + m_Size),
+			glm::vec2(m_Transform.GetPos().x,m_Transform.GetPos().y + m_Size.y)
+		};
+		WidgetStack::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
 	void Slider::ClickHandle()
 	{
@@ -53,14 +57,35 @@ namespace Dot {
 		if (*m_Value >= 0.96f)
 		{
 			m_TexOffset = -*m_Value - 0.1;
+			glm::vec2 texcoords[4] = {
+					glm::vec2(0.5+ m_TexOffset/2,0.5),
+					glm::vec2(1 +  m_TexOffset/2,0.5),
+					glm::vec2(1 +  m_TexOffset/2,0.75),
+					glm::vec2(0.5 + m_TexOffset/2,0.75)
+			};
+			WidgetStack::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		}
 		else if (*m_Value <= 0.02f)
 		{
 			m_TexOffset = -*m_Value + 0.1;
+			glm::vec2 texcoords[4] = {
+					glm::vec2(0.5 + m_TexOffset / 2,0.5),
+					glm::vec2(1 + m_TexOffset / 2,0.5),
+					glm::vec2(1 + m_TexOffset / 2,0.75),
+					glm::vec2(0.5 + m_TexOffset / 2,0.75)
+			};
+			WidgetStack::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		}
 		else
 		{
 			m_TexOffset = -*m_Value;
+			glm::vec2 texcoords[4] = {
+					glm::vec2(0.5 + m_TexOffset / 2,0.5),
+					glm::vec2(1 + m_TexOffset / 2,0.5),
+					glm::vec2(1 + m_TexOffset / 2,0.75),
+					glm::vec2(0.5 + m_TexOffset / 2,0.75)
+			};
+			WidgetStack::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		}
 	}
 	bool Slider::MouseHoover(const glm::vec2& mousePos)
@@ -93,11 +118,11 @@ namespace Dot {
 			   glm::vec2(1,0.75),
 			   glm::vec2(0.5,0.75)
 		};
-		Quad quad(glm::vec2(0, 0), size, &texcoords[0]);
+		Quad quad(glm::vec2(0, 0), size);
 		Ref<Slider> slider;
 		slider = std::make_shared<Slider>(label, position, size,value);
 
-		WidgetStack::AddWidget(label, slider,quad);
+		WidgetStack::AddWidget(label, slider,quad, &texcoords[0]);
 	}
 	glm::vec4 Slider::GetCoords()
 	{

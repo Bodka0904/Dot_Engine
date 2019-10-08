@@ -65,32 +65,9 @@ namespace Dot {
 			:
 			m_pos(pos),
 			m_rot(rot),
-			m_scale(scale),
-
-			m_transformation(glm::mat4(1))
+			m_scale(scale)
 		{
 		}
-
-		inline glm::mat4 GetModel() const
-		{
-			return m_transformation;
-		}
-
-		inline void UpdateModel()
-		{
-			glm::mat4 posMatrix = glm::translate(glm::vec3(m_pos,1.0));
-			
-			glm::mat4 rotXMatrix = glm::rotate(m_rot.x, glm::vec3(1, 0, 0));
-			glm::mat4 rotYMatrix = glm::rotate(m_rot.y, glm::vec3(0, 1, 0));
-			
-			glm::mat4 scaleMatrix = glm::scale(glm::vec3(m_scale,1.0));
-
-			glm::mat4 rotMatrix = rotYMatrix * rotXMatrix ;
-
-
-			m_transformation = posMatrix * rotMatrix * scaleMatrix;
-		}
-
 		inline glm::vec2& GetPos() { return m_pos; }
 		inline glm::vec2& GetRot() { return m_rot; }
 		inline glm::vec2& GetScale() { return m_scale; }
@@ -99,14 +76,11 @@ namespace Dot {
 		inline void SetRot(const glm::vec2& rot) { m_rot = rot; }
 		inline void SetScale(const glm::vec2& scale) { m_scale = scale; }
 
-
-
 	private:
 		glm::vec2 m_pos;
 		glm::vec2 m_rot;
 		glm::vec2 m_scale;
 
-		glm::mat4 m_transformation;
 
 	};
 

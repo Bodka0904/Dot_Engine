@@ -12,29 +12,20 @@
 
 
 namespace Dot {
-	struct Vertex
-	{
-		glm::vec2 position;
-		glm::vec2 texcoord;
-	};
+	
 	struct Quad
 	{
-		Quad(const glm::vec2& position, const glm::vec2& size, const glm::vec2* texcood)
+		Quad(const glm::vec2& position, const glm::vec2& size)
 		{
-
-			m_Vertices[0].position = glm::vec2(position.x, position.y);
-			m_Vertices[0].texcoord = texcood[0];
-			m_Vertices[1].position = glm::vec2(position.x + size.x, position.y);
-			m_Vertices[1].texcoord = texcood[1];
-			m_Vertices[2].position = glm::vec2(position.x + size.x, position.y + size.y);
-			m_Vertices[2].texcoord = texcood[2];
-			m_Vertices[3].position = glm::vec2(position.x, position.y + size.y);
-			m_Vertices[3].texcoord = texcood[3];
+			m_Vertices[0] = glm::vec2(position.x, position.y);
+			m_Vertices[1] = glm::vec2(position.x + size.x, position.y);
+			m_Vertices[2] = glm::vec2(position.x + size.x, position.y + size.y);
+			m_Vertices[3] = glm::vec2(position.x, position.y + size.y);
 
 		}
-
-		Vertex m_Vertices[4];
+		glm::vec2 m_Vertices[4];
 	};
+
 	class Widget
 	{
 	public:
@@ -98,8 +89,8 @@ namespace Dot {
 	public:
 		WidgetStack(const std::string& widgetShader, const std::string& textShader, const std::string& texturePack);
 		// TODO NEEED TO CHANGE UPDATING TEXOFFSET TOO DEPENDING ON BUTTON
-		static void AddWidget(const std::string& label,Ref<Widget> widget, const Quad& quad);
-		static void AddWrapper(const std::string& label, Ref<Wrapper> wrapper, const Quad& quad);
+		static void AddWidget(const std::string& label,Ref<Widget> widget, const Quad& quad, const glm::vec2* texcoords);
+		static void AddWrapper(const std::string& label, Ref<Wrapper> wrapper, const Quad& quad, const glm::vec2* texcoords);
 
 		bool HandleLeftClick();
 		bool HandleRightClick();
@@ -114,7 +105,9 @@ namespace Dot {
 		static void EnableWrapper(const std::string& wrapper);
 		static void DisableWrapper();
 
-		static void UpdateTransfBuffer(unsigned int index,unsigned int size,const void* vertices);
+		static void UpdatePosBuffer(unsigned int index,unsigned int size,const void* vertices);
+		static void UpdateTexBuffer(unsigned int index, unsigned int size, const void* texcoords);
+		
 		static Ref<Widget>& GetWidget(const std::string& name) { return m_Widget[name]; }
 		static Ref<Wrapper>& GetWrapper(const std::string& name) { return m_Wrapper[name]; }
 
@@ -133,7 +126,9 @@ namespace Dot {
 
 	private:
 		static unsigned int m_NumWidgets;
-		static std::vector<Vertex> m_Data;
-		static Ref<ArrayBuffer> m_VAO;
+		static std::vector<glm::vec2> m_Vertices;
+		static std::vector<glm::vec2> m_TexCoords;
+		static Ref<ArrayBuffer> m_VAO_Widget;
+
 	};
 }

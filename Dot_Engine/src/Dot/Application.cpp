@@ -18,17 +18,11 @@ namespace Dot {
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 
-		m_GuiLayer = new GuiLayer();	
-		PushOverlay(m_GuiLayer);
-		
-		
 		m_Window->vSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		
-			
-		Font::AddFont("ArialBolt", "res/fonts/ArialBolt.DDS");
-	
-	
+
+		Font::AddFont("ArialBolt", "res/fonts/ArialBolt.DDS");	
 	}
 
 
@@ -43,7 +37,11 @@ namespace Dot {
 
 	void Application::Run()
 	{
-			
+
+		// TODO PUT BACK TO APPLICATION CONSTRUCTOR
+		m_GuiLayer = new GuiLayer();
+		PushOverlay(m_GuiLayer);
+
 		while (!m_Window->IsClosed())
 		{
 			

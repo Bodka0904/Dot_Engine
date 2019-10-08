@@ -216,9 +216,6 @@
     <ClInclude Include="src\Dot\Terrain\Terrain.h">
       <Filter>src\Dot\Terrain</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Terrain\TerrainGenerator.h">
-      <Filter>src\Dot\Terrain</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Utils\BmpLoader.h">
       <Filter>src\Dot\Utils</Filter>
     </ClInclude>
@@ -1334,6 +1331,8 @@
       <Filter>src\Dot\Graphics\Renderer\Animation</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Sprite.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Material\Light.h" />
+    <ClInclude Include="src\Dot\Terrain\Water.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1423,9 +1422,6 @@
     <ClCompile Include="src\Dot\Terrain\Terrain.cpp">
       <Filter>src\Dot\Terrain</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Terrain\TerrainGenerator.cpp">
-      <Filter>src\Dot\Terrain</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Utils\BmpLoader.cpp">
       <Filter>src\Dot\Utils</Filter>
     </ClCompile>
@@ -1446,5 +1442,7 @@
       <Filter>src\Dot\Graphics\Renderer\Animation</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Sprite.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Material\Light.cpp" />
+    <ClCompile Include="src\Dot\Terrain\Water.cpp" />
   </ItemGroup>
 </Project>

@@ -13,7 +13,11 @@ public:
 
 		m_Shader = std::make_shared<Dot::Shader>("AnimationShader","res/shaders/Dot/AnimShader.glsl");
 		m_Shader->AddUniform("u_ModelMatrix");
-		
+		m_Shader->AddUniform("u_WaterLevelHeight");
+		m_Shader->AddUniform("u_LightPosition");
+		m_Shader->AddUniform("u_LightColor");
+		m_Shader->AddUniform("u_LightStrength");
+
 		for (size_t i = 0; i < m_Cowboy->GetBoneTransformations().size(); i++)
 		{
 			std::string uniformName = std::string("u_gBones[") + std::to_string(i) + std::string("]");
@@ -27,7 +31,7 @@ public:
 		m_CowBoyTex->Bind(0);
 		m_Cowboy->Render();
 	}
-	void Update(float speed,float rot,float dt)
+	void Update(float speed,float rot,float dt,Dot::Light& light)
 	{
 		if (Dot::Input::IsKeyPressed(D_KEY_UP))
 		{
@@ -53,7 +57,11 @@ public:
 			std::string uniformName = std::string("u_gBones[") + std::to_string(i) + std::string("]");
 			m_Shader->UploadUniformMat4(uniformName, m_Cowboy->GetBoneTransformations()[i]);
 		}
+		m_Shader->UploadUniformFloat("u_WaterLevelHeight", 1);
 		m_Shader->UploadUniformMat4("u_ModelMatrix", m_Transform.GetModel());
+		m_Shader->UploadUniformFloat3("u_LightPosition", light.GetPosition());
+		m_Shader->UploadUniformFloat3("u_LightColor", light.GetColor());
+		m_Shader->UploadUniformFloat("u_LightStrength", light.GetStrength());
 	}
 
 

@@ -15,7 +15,7 @@ namespace Dot {
 		virtual void RenderLabel() override;
 		virtual void SetPosition(const glm::vec2& pos) override;
 		virtual void SetIndex(const unsigned int index) { m_Index = index; };
-		virtual void ClickHandle() override { m_TexOffset = !m_TexOffset; m_Clicked = !m_Clicked; }
+		virtual void ClickHandle() override;
 		virtual bool MouseHoover(const glm::vec2& mousePos) override;
 
 		virtual const bool& GetClicked() const override { return m_Clicked; }

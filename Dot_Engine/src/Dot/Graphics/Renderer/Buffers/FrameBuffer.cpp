@@ -5,9 +5,11 @@
 
 namespace Dot {
 	Framebuffer::Framebuffer(uint32_t width, uint32_t height, FramebufferFormat format)
-		: m_Width(width), m_Height(height), m_Format(format)
+		: m_Format(format)
 	{
 		Resize(width, height);
+		m_Width = width;
+		m_Height = height;
 	}
 	Framebuffer::~Framebuffer()
 	{
@@ -18,11 +20,12 @@ namespace Dot {
 	void Framebuffer::Resize(uint32_t width, uint32_t height)
 	{
 		if (m_Width == width && m_Height == height)
+		{
 			return;
-
+		}
 		m_Width = width;
 		m_Height = height;
-		
+	
 		if (m_FBO)
 		{
 			glDeleteFramebuffers(1, &m_FBO);
@@ -32,11 +35,16 @@ namespace Dot {
 
 		glGenFramebuffers(1, &m_FBO);
 		glBindFramebuffer(GL_FRAMEBUFFER, m_FBO);
+		glDrawBuffer(GL_COLOR_ATTACHMENT0);
 
 		glGenTextures(1, &m_ColorAttachment);
 		glBindTexture(GL_TEXTURE_2D, m_ColorAttachment);
-
-		if (m_Format == FramebufferFormat::RGBA16F)
+		if (m_Format == FramebufferFormat::RGB)
+		{
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_Width, m_Height,
+				0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+		}
+		else if (m_Format == FramebufferFormat::RGBA16F)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, m_Width, m_Height, 0, GL_RGBA, GL_FLOAT, nullptr);
 		}
@@ -46,16 +54,12 @@ namespace Dot {
 		}
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_ColorAttachment, 0);
-
+		glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, m_ColorAttachment, 0);
+	
 		glGenTextures(1, &m_DepthAttachment);
 		glBindTexture(GL_TEXTURE_2D, m_DepthAttachment);
-		glTexImage2D(
-			GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, m_Width, m_Height, 0,
-			GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL
-		);
-
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, m_DepthAttachment, 0);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32, m_Width, m_Height, 0,GL_DEPTH_COMPONENT, GL_FLOAT, 0);
+		glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, m_DepthAttachment, 0);
 
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
@@ -65,12 +69,15 @@ namespace Dot {
 	}
 	void Framebuffer::Bind() const
 	{
+		glBindTexture(GL_TEXTURE_2D, 0);
 		glBindFramebuffer(GL_FRAMEBUFFER, m_FBO);
 		glViewport(0, 0, m_Width, m_Height);
 	}
 	void Framebuffer::Unbind() const
-	{
+	{	
+		auto WinSize = Input::GetWindowSize();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glViewport(0, 0, WinSize.first, WinSize.second);
 	}
 	void Framebuffer::BindTexture(uint32_t slot) const
 	{
