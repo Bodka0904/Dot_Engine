@@ -180,17 +180,18 @@ namespace Dot {
 		{
 			if (xCoord <= 1 - zCoord)
 			{
-				answer = barryCentric(glm::vec3(0, (m_Heights[gridX][gridZ]) + position.y, 0), glm::vec3(1,
-					(m_Heights[gridX + 1][gridZ]) + position.y, 0), glm::vec3(0,
-					(m_Heights[gridX][gridZ + 1]) + position.y, 1), glm::vec2(xCoord, zCoord));
+				answer = barryCentric(glm::vec3(0, (m_Heights[gridX][gridZ]), 0), glm::vec3(1,
+					(m_Heights[gridX + 1][gridZ]), 0), glm::vec3(0,
+					(m_Heights[gridX][gridZ + 1]), 1), glm::vec2(xCoord, zCoord));			
 			}
 			else
 			{
-				answer = barryCentric(glm::vec3(1, (m_Heights[gridX + 1][gridZ]) + position.y, 0), glm::vec3(1,
-					(m_Heights[gridX + 1][gridZ + 1]) + position.y, 1), glm::vec3(0,
-					(m_Heights[gridX][gridZ + 1]) + position.y, 1), glm::vec2(xCoord, zCoord));
+				answer = barryCentric(glm::vec3(1, (m_Heights[gridX + 1][gridZ]), 0), glm::vec3(1,
+					(m_Heights[gridX + 1][gridZ + 1]), 1), glm::vec3(0,
+					(m_Heights[gridX][gridZ + 1]), 1), glm::vec2(xCoord, zCoord));
 			}
 		}
+		
 		if (position.y < answer)
 		{
 			return answer;

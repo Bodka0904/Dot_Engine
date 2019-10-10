@@ -9,6 +9,7 @@
 #define D_TRIANGLES 0x0004
 #define D_POINTS 0x0000
 #define D_QUADS 0x0007
+#define D_LINES 0x0001
 
 namespace Dot {
 

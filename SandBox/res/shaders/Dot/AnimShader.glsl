@@ -23,7 +23,7 @@ layout(std140) uniform camera_data
 };
 
 
-uniform float u_WaterLevelHeight;
+uniform vec2 u_ClipDistance;
 const int MAX_BONES = 100;
 uniform mat4 u_gBones[MAX_BONES];
 uniform mat4 u_ModelMatrix;
@@ -35,7 +35,7 @@ void main()
 	BoneTransform += u_gBones[a_BoneIDs[2]] * a_Weights[2];
 	BoneTransform += u_gBones[a_BoneIDs[3]] * a_Weights[3];
 
-	vec4 plane = vec4(0, -u_WaterLevelHeight / abs(u_WaterLevelHeight), 0, abs(u_WaterLevelHeight));
+	vec4 plane = vec4(0, u_ClipDistance.x, 0, u_ClipDistance.y);
 	vec4 WorldPos = u_ModelMatrix * BoneTransform * vec4(a_Position, 1.0);
 	gl_ClipDistance[0] = dot(WorldPos, plane);
 

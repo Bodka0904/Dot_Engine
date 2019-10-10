@@ -32,7 +32,7 @@ namespace Dot {
 		m_SceneData.ProjectionMatrix = camera.GetProjectionMatrix();
 		m_SceneData.ViewPos = camera.GetPosition();
 
-		glEnable(GL_CLIP_DISTANCE0);
+		glEnable(GL_BLEND);
 	}
 
 	void Renderer::SubmitArrays(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod)
@@ -100,7 +100,7 @@ namespace Dot {
 	void Renderer::EndScene(const Ref<Shader>shader)
 	{
 		shader->UpdateUniformBufferObject("camera_data", &m_SceneData, (sizeof(glm::mat4) * 3) + sizeof(glm::vec3));
-		glDisable(GL_CLIP_DISTANCE0);
+		glDisable(GL_BLEND);
 	}
 
 }

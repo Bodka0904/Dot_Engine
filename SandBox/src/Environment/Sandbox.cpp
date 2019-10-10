@@ -21,7 +21,7 @@ void Sandbox::OnAttach()
 	};
 	m_SkyBox = std::make_shared<Dot::Skybox>(faces, 500);
 	
-	m_Terrain = std::make_shared<Dot::Terrain>(600, 100);
+	m_Terrain = std::make_shared<Dot::Terrain>(500, 100);
 	m_Terrain->ApplyHeightsValueNoise(15);
 	m_Terrain->ApplyNormals();
 	
@@ -36,7 +36,6 @@ void Sandbox::OnAttach()
 	
 	m_StaticShader->AddUniformBufferObject("camera_data", 0, (sizeof(glm::mat4) * 3) + sizeof(glm::vec3));
 	m_StaticShader->AddUniform("u_ModelMatrix");
-	m_StaticShader->AddUniform("u_WaterLevelHeight");
 	m_StaticShader->AddUniform("u_LightPosition");
 	m_StaticShader->AddUniform("u_LightColor");
 	m_StaticShader->AddUniform("u_LightStrength");
@@ -49,7 +48,6 @@ void Sandbox::OnAttach()
 
 	//m_InstanceShader->AddUniform("u_Texture");
 	//m_InstanceShader->UploadUniformInt("u_Texture", 0);
-	m_InstanceShader->AddUniform("u_WaterLevelHeight");
 	m_InstanceShader->AddUniform("u_LightPosition");
 	m_InstanceShader->AddUniform("u_LightColor");
 	m_InstanceShader->AddUniform("u_LightStrength");
@@ -59,7 +57,10 @@ void Sandbox::OnAttach()
 	
 	m_WaterShader = std::make_shared<Dot::Shader>("WaterShader", "res/shaders/Dot/WaterShader.glsl");
 	m_WaterShader->AddUniform("u_ModelMatrix");
-	
+	m_WaterShader->AddUniform("u_Time");
+	m_WaterShader->AddUniform("u_LightPosition");
+	m_WaterShader->AddUniform("u_LightColor");
+	m_WaterShader->AddUniform("u_LightStrength");
 
 
 	m_TreeTransformations.resize(20);
@@ -84,15 +85,13 @@ void Sandbox::OnAttach()
 	m_Tree = std::make_shared<Dot::InstancedMesh>("res/projectmodels/tree.obj",m_TreeTransformations);
 	m_Player = std::make_shared<Player>("res/animation/cowboy.dae", "res/textures/Dot/cowboy.png");
 
-	m_Light = std::make_shared<Dot::Light>(glm::vec3(500, 1000, 0), glm::vec3(0.7, 0.7, 0.7));
+	m_Light = std::make_shared<Dot::Light>(glm::vec3(-20, 1000, 0), glm::vec3(0.7, 0.7, 0.7));
 
 	m_TestManager = std::make_shared<Dot::ParticleManager>(1000);
 
 
-	m_TestWaterFBO = std::make_shared<Dot::Framebuffer>(500, 400, Dot::FramebufferFormat::RGB);
-
-
-	m_Water = std::make_shared<Dot::Water>(glm::vec3(0, 1, 0), glm::vec2(20, 20));
+	
+	m_Water = std::make_shared<Dot::Water>(glm::vec3(0, 1, 0), glm::vec2(5, 5), 100);
 
 	Dot::Slider::Create("Light Strength", glm::vec2(50, 50), glm::vec2(200, 20), &m_Light->GetStrength());
 }
@@ -107,53 +106,27 @@ void Sandbox::OnUpdate(Dot::Timestep ts)
 	m_ShaderForCompute->Bind();
 	m_TestManager->Draw();
 
-	m_TestWaterFBO->Bind();
 	Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0.0));
-
 	Dot::Renderer::BeginScene(*m_Camera);
 	{
 		m_SkyBox->GetTexture()->Bind(0);
 		Dot::Renderer::SubmitArrays(m_SkyShader, m_SkyBox->GetVao(), glm::mat4(1), D_TRIANGLES);
 
-		m_Player->Update(0.05, 0.01, ts.GetSeconds(), *m_Light);
+		m_Player->Update(0.05, 0.01, ts.GetSeconds(), *m_Light,*m_Terrain);
 		m_Player->Render();
 
 		m_TreeTexture->Bind(0);
 		m_InstanceShader->Bind();
-		m_InstanceShader->UploadUniformFloat("u_WaterLevelHeight", -1);
-		Dot::Renderer::SubmitInstances(m_InstanceShader, m_Light, m_Tree,m_TreeTransformations.size(), D_TRIANGLES);
-
-		m_TerrTexture->Bind(0);
-		m_StaticShader->Bind();
-		m_StaticShader->UploadUniformFloat("u_WaterLevelHeight", -1);
-		Dot::Renderer::SubmitElementsVao(m_StaticShader, m_Light, m_Terrain->GetVao(), glm::mat4(1), D_TRIANGLES);
-	}
-	Dot::Renderer::EndScene(m_StaticShader);
-	m_TestWaterFBO->Unbind();
-	
-	Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0.0));
-
-	Dot::Renderer::BeginScene(*m_Camera);
-	{
-		m_SkyBox->GetTexture()->Bind(0);
-		Dot::Renderer::SubmitArrays(m_SkyShader, m_SkyBox->GetVao(), glm::mat4(1), D_TRIANGLES);
-	
-		m_Player->Update(0.05, 0.01, ts.GetSeconds(), *m_Light);
-		m_Player->Render();
-	
-		
-		m_TestWaterFBO->BindTexture();
-		Dot::Renderer::SubmitArrays(m_WaterShader, m_Water->GetVAO(), glm::mat4(1), D_QUADS);
-
-		m_TreeTexture->Bind(0);
-		m_InstanceShader->Bind();
-		m_InstanceShader->UploadUniformFloat("u_WaterLevelHeight", -1);
 		Dot::Renderer::SubmitInstances(m_InstanceShader, m_Light, m_Tree, m_TreeTransformations.size(), D_TRIANGLES);
-	
+
 		m_TerrTexture->Bind(0);
 		m_StaticShader->Bind();
-		m_StaticShader->UploadUniformFloat("u_WaterLevelHeight", -1);
 		Dot::Renderer::SubmitElementsVao(m_StaticShader, m_Light, m_Terrain->GetVao(), glm::mat4(1), D_TRIANGLES);
+		
+		m_TimePassed += ts.GetSeconds();
+		m_WaterShader->Bind();
+		m_WaterShader->UploadUniformFloat("u_Time", m_TimePassed/2);
+		Dot::Renderer::SubmitElementsVao(m_WaterShader,m_Light, m_Water->GetVAO(), glm::mat4(1), D_TRIANGLES);
 	}
 	Dot::Renderer::EndScene(m_StaticShader);
 }

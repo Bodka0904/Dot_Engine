@@ -37,11 +37,12 @@ private:
 
 	Dot::Ref<Dot::ParticleManager> m_TestManager;
 
-	Dot::Ref<Dot::Framebuffer> m_TestWaterFBO;
-
 private:
 	Dot::Transform m_T;
 	std::vector<glm::mat4> m_TreeTransformations;
+
+private:
+	float m_TimePassed = 0.0f;
 
 };
 
