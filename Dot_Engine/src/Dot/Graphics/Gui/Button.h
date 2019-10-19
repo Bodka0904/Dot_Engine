@@ -1,5 +1,5 @@
 #pragma once
-#include "WidgetStack.h"
+#include "Gui.h"
 #include "Dot/Graphics/Transform.h"
 #include "Dot/Graphics/Text/Text.h"
 

@@ -35,7 +35,7 @@
 #include "Dot/Graphics/Gui/Checkbox.h"
 #include "Dot/Graphics/Gui/ArrowButton.h"
 #include "Dot/Graphics/Gui/Button.h"
-#include "Dot/Graphics/Gui/WidgetStack.h"
+#include "Dot/Graphics/Gui/Gui.h"
 
 // --- Entry Point -----------------
 #include "Dot/EntryPoint.h"

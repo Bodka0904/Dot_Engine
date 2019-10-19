@@ -21,31 +21,31 @@ namespace Dot {
 	void GuiLayer::OnAttach()
 	{
 		Wrapper::Create("wrapper", glm::vec2(300, 500), glm::vec2(300, 300));
-		WidgetStack::EnableWrapper("wrapper");
+		Gui::EnableWrapper("wrapper");
 		{
 			Button::Create("button", glm::vec2(300, 50), glm::vec2(50, 50));
 			CheckBox::Create("checkbox", glm::vec2(50, 50), glm::vec2(50, 50));
 			ArrowButton::Create("arrowbutton", glm::vec2(50, 50), glm::vec2(60, 50));
 			Slider::Create("slider", glm::vec2(50, 50), glm::vec2(200, 20), &value);
 
-		}WidgetStack::DisableWrapper();
+		}Gui::DisableWrapper();
 
-		m_Stack = std::make_shared<WidgetStack>("res/shaders/Dot/GuiShader.glsl", "res/shaders/Text/TextShader.glsl", "res/textures/Dot/Gui/DefaultTexturePack/DefaultTexturePack.png");
+		m_Stack = std::make_shared<Gui>("res/shaders/Dot/GuiShader.glsl", "res/shaders/Text/TextShader.glsl", "res/textures/Dot/Gui/DefaultTexturePack/DefaultTexturePack.png");
 
 	}
 
 	void GuiLayer::OnUpdate(Timestep ts)
 	{
-		//if (WidgetStack::GetWidget("button")->GetClicked())
+		//if (Gui::GetWidget("button")->GetClicked())
 		//{
 		//	std::cout << "Clicked!" << std::endl;
 		//	std::cout << value << std::endl;
 		//}
-		//if (WidgetStack::GetWidget("checkbox")->GetClicked())
+		//if (Gui::GetWidget("checkbox")->GetClicked())
 		//{
 		//	std::cout << "Checked!" << std::endl;
 		//}
-		//if (WidgetStack::GetWidget("arrowbutton")->LeftClicked())
+		//if (Gui::GetWidget("arrowbutton")->LeftClicked())
 		//{
 		//	std::cout << "Left Clicked!" << std::endl;
 		//}

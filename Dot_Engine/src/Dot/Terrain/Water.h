@@ -8,7 +8,14 @@ namespace Dot {
 	class Water
 	{
 	public:
-		Water(const glm::vec3& position,const glm::vec2& size, const float vertnum);
+		Water(const glm::vec3& position,const glm::vec3& color,const glm::vec2& size, const float vertnum);
+
+		void Update(float dt);
+		
+
+		void SetWaveLen(float len) { m_WaveLength = len; }
+		void SetWaveAmpl(float ampl) { m_WaveAmplitude = ampl; }
+		void SetColor(const glm::vec3& color) { m_Color = color; }
 
 		const float& GetHeight() const { return m_Height; }
 		const Ref<ArrayBuffer>& GetVAO() const { return m_VAO; }
@@ -16,6 +23,12 @@ namespace Dot {
 	private:
 		Ref<ArrayBuffer>m_VAO;
 		float m_Height;
+
+	private:
+		glm::vec3 m_Color;
+		float m_TimePass = 0.0f;
+		float m_WaveLength = 30.0f;
+		float m_WaveAmplitude = 2.0f;
 	
 	};
 }

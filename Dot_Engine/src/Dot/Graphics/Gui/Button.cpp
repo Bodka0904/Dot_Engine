@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Button.h"
-#include "WidgetStack.h"
+#include "Gui.h"
 
 #include <GL/glew.h>
 
@@ -55,7 +55,7 @@ namespace Dot {
 			glm::vec2(m_Transform.GetPos() + m_Size),
 			glm::vec2(m_Transform.GetPos().x,m_Transform.GetPos().y + m_Size.y)
 		};
-		WidgetStack::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
 
 	bool Button::MouseHoover(const glm::vec2& mousePos)
@@ -83,7 +83,7 @@ namespace Dot {
 		Ref<Button> button;
 		button = std::make_shared<Button>(label, position, size);
 			
-		WidgetStack::AddWidget(label,button,quad, &texcoords[0]);
+		Gui::AddWidget(label,button,quad, &texcoords[0]);
 	}
 
 	glm::vec4 Button::GetCoords()

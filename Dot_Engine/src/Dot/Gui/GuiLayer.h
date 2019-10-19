@@ -1,6 +1,6 @@
 #pragma once
 #include "Dot/Layer.h"
-#include "Dot/Graphics/Gui/WidgetStack.h"
+#include "Dot/Graphics/Gui/Gui.h"
 
 namespace Dot {
 
@@ -14,7 +14,7 @@ namespace Dot {
 		void OnUpdate(Timestep ts) override;
 		void OnEvent(Event& event)override;
 	private:
-		Ref<WidgetStack> m_Stack;
+		Ref<Gui> m_Stack;
 
 		float value = 0.0f;
 		

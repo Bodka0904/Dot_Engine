@@ -84,10 +84,10 @@ namespace Dot {
 		std::unordered_map<std::string, Ref<Widget>> m_Widget;
 	};
 
-	class WidgetStack
+	class Gui
 	{
 	public:
-		WidgetStack(const std::string& widgetShader, const std::string& textShader, const std::string& texturePack);
+		Gui(const std::string& widgetShader, const std::string& textShader, const std::string& texturePack);
 		// TODO NEEED TO CHANGE UPDATING TEXOFFSET TOO DEPENDING ON BUTTON
 		static void AddWidget(const std::string& label,Ref<Widget> widget, const Quad& quad, const glm::vec2* texcoords);
 		static void AddWrapper(const std::string& label, Ref<Wrapper> wrapper, const Quad& quad, const glm::vec2* texcoords);

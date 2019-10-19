@@ -50,7 +50,7 @@ namespace Dot {
 			glm::vec2(m_Transform.GetPos() + m_Size),
 			glm::vec2(m_Transform.GetPos().x,m_Transform.GetPos().y + m_Size.y)
 		};
-		WidgetStack::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
 	bool ArrowButton::MouseHoover(const glm::vec2& mousePos)
 	{
@@ -84,7 +84,7 @@ namespace Dot {
 		Ref<ArrowButton> button;
 		button = std::make_shared<ArrowButton>(label, position, size);
 
-		WidgetStack::AddWidget(label, button,quad, &texcoords[0]);
+		Gui::AddWidget(label, button,quad, &texcoords[0]);
 	}
 	glm::vec4 ArrowButton::GetCoords()
 	{

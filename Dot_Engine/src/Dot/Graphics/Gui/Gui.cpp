@@ -1,23 +1,23 @@
 #include "stdafx.h"
-#include "WidgetStack.h"
+#include "Gui.h"
 #include "Dot/Input.h"
 #include "Dot/Application.h"
 
 #include <GL/glew.h>
 
 namespace Dot {
-	std::unordered_map<std::string, Ref<Widget>> WidgetStack::m_Widget;
-	std::unordered_map<std::string, Ref<Wrapper>> WidgetStack::m_Wrapper;
-	Ref<ArrayBuffer>WidgetStack::m_VAO_Widget;
-	unsigned int WidgetStack::m_NumWidgets = 0;
-	std::vector<glm::vec2> WidgetStack::m_Vertices;
-	std::vector<glm::vec2> WidgetStack::m_TexCoords;
+	std::unordered_map<std::string, Ref<Widget>> Gui::m_Widget;
+	std::unordered_map<std::string, Ref<Wrapper>> Gui::m_Wrapper;
+	Ref<ArrayBuffer>Gui::m_VAO_Widget;
+	unsigned int Gui::m_NumWidgets = 0;
+	std::vector<glm::vec2> Gui::m_Vertices;
+	std::vector<glm::vec2> Gui::m_TexCoords;
 
 
 
-	std::string WidgetStack::m_EnabledWrapper = "";
+	std::string Gui::m_EnabledWrapper = "";
 
-	WidgetStack::WidgetStack(const std::string& widgetShader, const std::string& textShader, const std::string& texturePack)
+	Gui::Gui(const std::string& widgetShader, const std::string& textShader, const std::string& texturePack)
 	{
 		
 		m_Texture = std::make_shared<Texture>(texturePack);
@@ -67,7 +67,7 @@ namespace Dot {
 		m_TexCoords.clear();
 	}
 
-	void WidgetStack::AddWidget(const std::string& label, Ref<Widget> widget, const Quad& quad, const glm::vec2* texcoords)
+	void Gui::AddWidget(const std::string& label, Ref<Widget> widget, const Quad& quad, const glm::vec2* texcoords)
 	{
 		unsigned int numVertices = sizeof(quad.m_Vertices) / sizeof(glm::vec2);
 		if (m_EnabledWrapper != "")
@@ -96,7 +96,7 @@ namespace Dot {
 		
 	}
 
-	void WidgetStack::AddWrapper(const std::string& label, Ref<Wrapper> wrapper, const Quad& quad, const glm::vec2* texcoords)
+	void Gui::AddWrapper(const std::string& label, Ref<Wrapper> wrapper, const Quad& quad, const glm::vec2* texcoords)
 	{
 		m_Wrapper[label] = wrapper;
 		m_Wrapper[label]->SetIndex(m_NumWidgets);
@@ -110,7 +110,7 @@ namespace Dot {
 	}
 
 	
-	bool WidgetStack::HandleLeftClick()
+	bool Gui::HandleLeftClick()
 	{
 		for (auto& it : m_Widget)
 		{
@@ -130,7 +130,7 @@ namespace Dot {
 		}
 		return false;
 	}
-	bool WidgetStack::HandleRightClick()
+	bool Gui::HandleRightClick()
 	{
 		for (auto& it : m_Wrapper)
 		{
@@ -158,11 +158,11 @@ namespace Dot {
 		}
 		return false;	
 	}
-	void WidgetStack::Release()
+	void Gui::Release()
 	{
 		m_SelectedWidget = "";
 	}
-	void WidgetStack::Update()
+	void Gui::Update()
 	{
 		for (auto& it : m_Wrapper)
 		{
@@ -182,7 +182,7 @@ namespace Dot {
 		
 	
 	}
-	void WidgetStack::RenderWidgets()
+	void Gui::RenderWidgets()
 	{
 	
 		m_Shader->Bind();
@@ -206,7 +206,7 @@ namespace Dot {
 		glDisable(GL_BLEND);
 		glEnable(GL_DEPTH_TEST);
 	}
-	void WidgetStack::RenderLabels()
+	void Gui::RenderLabels()
 	{
 		m_TextShader->Bind();
 		m_TextShader->UploadUniformMat4("u_ViewProjectionMatrix", m_Camera->GetViewProjectionMatrix());
@@ -221,19 +221,19 @@ namespace Dot {
 			it.second->RenderLabels(m_TextShader);
 		}
 	}
-	void WidgetStack::EnableWrapper(const std::string& wrapper)
+	void Gui::EnableWrapper(const std::string& wrapper)
 	{
 		m_EnabledWrapper = wrapper;	
 	}
-	void WidgetStack::DisableWrapper()
+	void Gui::DisableWrapper()
 	{
 		m_EnabledWrapper = "";
 	}
-	void WidgetStack::UpdatePosBuffer(unsigned int index, unsigned int size, const void* vertices)
+	void Gui::UpdatePosBuffer(unsigned int index, unsigned int size, const void* vertices)
 	{
 		m_VAO_Widget->GetVertexBuffer(0)->Update(vertices, size, index * sizeof(Quad));
 	}
-	void WidgetStack::UpdateTexBuffer(unsigned int index, unsigned int size, const void* texcoords)
+	void Gui::UpdateTexBuffer(unsigned int index, unsigned int size, const void* texcoords)
 	{
 		m_VAO_Widget->GetVertexBuffer(1)->Update(texcoords, size, index * sizeof(glm::vec2)*4);
 	}
@@ -295,7 +295,7 @@ namespace Dot {
 			glm::vec2(m_Transform.GetPos() + m_Size),
 			glm::vec2(m_Transform.GetPos().x,m_Transform.GetPos().y + m_Size.y)
 		};
-		WidgetStack::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
 	void Wrapper::SetWidgetPosition()
 	{
@@ -349,7 +349,7 @@ namespace Dot {
 		Ref<Wrapper> wrapper;
 		wrapper = std::make_shared<Wrapper>(label, position, size);
 
-		WidgetStack::AddWrapper(label, wrapper,quad,&texcoords[0]);
+		Gui::AddWrapper(label, wrapper,quad,&texcoords[0]);
 	}
 	glm::vec4 Wrapper::GetCoords()
 	{

@@ -49,7 +49,7 @@ namespace Dot {
 			glm::vec2(m_Transform.GetPos() + m_Size),
 			glm::vec2(m_Transform.GetPos().x,m_Transform.GetPos().y + m_Size.y)
 		};
-		WidgetStack::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
 	void Slider::ClickHandle()
 	{
@@ -63,7 +63,7 @@ namespace Dot {
 					glm::vec2(1 +  m_TexOffset/2,0.75),
 					glm::vec2(0.5 + m_TexOffset/2,0.75)
 			};
-			WidgetStack::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
+			Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		}
 		else if (*m_Value <= 0.02f)
 		{
@@ -74,7 +74,7 @@ namespace Dot {
 					glm::vec2(1 + m_TexOffset / 2,0.75),
 					glm::vec2(0.5 + m_TexOffset / 2,0.75)
 			};
-			WidgetStack::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
+			Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		}
 		else
 		{
@@ -85,7 +85,7 @@ namespace Dot {
 					glm::vec2(1 + m_TexOffset / 2,0.75),
 					glm::vec2(0.5 + m_TexOffset / 2,0.75)
 			};
-			WidgetStack::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
+			Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		}
 	}
 	bool Slider::MouseHoover(const glm::vec2& mousePos)
@@ -122,7 +122,7 @@ namespace Dot {
 		Ref<Slider> slider;
 		slider = std::make_shared<Slider>(label, position, size,value);
 
-		WidgetStack::AddWidget(label, slider,quad, &texcoords[0]);
+		Gui::AddWidget(label, slider,quad, &texcoords[0]);
 	}
 	glm::vec4 Slider::GetCoords()
 	{

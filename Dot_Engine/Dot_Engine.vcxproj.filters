@@ -135,9 +135,6 @@
     <ClInclude Include="src\Dot\Graphics\Gui\Slider.h">
       <Filter>src\Dot\Graphics\Gui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Gui\WidgetStack.h">
-      <Filter>src\Dot\Graphics\Gui</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Particle\Particle.h">
       <Filter>src\Dot\Graphics\Particle</Filter>
     </ClInclude>
@@ -1333,6 +1330,9 @@
     <ClInclude Include="src\Dot\Graphics\Renderer\Sprite.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Material\Light.h" />
     <ClInclude Include="src\Dot\Terrain\Water.h" />
+    <ClInclude Include="src\Dot\Graphics\Gui\Gui.h">
+      <Filter>src\Dot\Graphics\Gui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1354,9 +1354,6 @@
       <Filter>src\Dot\Graphics\Gui</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Gui\Slider.cpp">
-      <Filter>src\Dot\Graphics\Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Gui\WidgetStack.cpp">
       <Filter>src\Dot\Graphics\Gui</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Particle\Particle.cpp">
@@ -1444,5 +1441,8 @@
     <ClCompile Include="src\Dot\Graphics\Renderer\Sprite.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Material\Light.cpp" />
     <ClCompile Include="src\Dot\Terrain\Water.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Gui\Gui.cpp">
+      <Filter>src\Dot\Graphics\Gui</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -91,7 +91,7 @@ void Sandbox::OnAttach()
 
 
 	
-	m_Water = std::make_shared<Dot::Water>(glm::vec3(0, 1, 0), glm::vec2(5, 5), 100);
+	m_Water = std::make_shared<Dot::Water>(glm::vec3(0, 1, 0),glm::vec3(0,0,1), glm::vec2(10, 10), 50);
 
 	Dot::Slider::Create("Light Strength", glm::vec2(50, 50), glm::vec2(200, 20), &m_Light->GetStrength());
 }
@@ -99,14 +99,14 @@ void Sandbox::OnAttach()
 void Sandbox::OnUpdate(Dot::Timestep ts)
 {
 	
-
+	Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0.0));
 	m_Camera->Update(ts.GetSeconds() * 250);
 	m_TestManager->Run();
 	m_ComputeShader->Compute(32, 32, 1);
 	m_ShaderForCompute->Bind();
 	m_TestManager->Draw();
 
-	Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0.0));
+	
 	Dot::Renderer::BeginScene(*m_Camera);
 	{
 		m_SkyBox->GetTexture()->Bind(0);
@@ -124,6 +124,10 @@ void Sandbox::OnUpdate(Dot::Timestep ts)
 		Dot::Renderer::SubmitElementsVao(m_StaticShader, m_Light, m_Terrain->GetVao(), glm::mat4(1), D_TRIANGLES);
 		
 		m_TimePassed += ts.GetSeconds();
+		if (m_TimePassed >= 1)
+		{
+			m_TimePassed = -1;
+		}
 		m_WaterShader->Bind();
 		m_WaterShader->UploadUniformFloat("u_Time", m_TimePassed/2);
 		Dot::Renderer::SubmitElementsVao(m_WaterShader,m_Light, m_Water->GetVAO(), glm::mat4(1), D_TRIANGLES);

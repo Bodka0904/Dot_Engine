@@ -48,7 +48,7 @@ namespace Dot {
 			glm::vec2(m_Transform.GetPos().x,m_Transform.GetPos().y + m_Size.y)
 		};
 
-		WidgetStack::UpdatePosBuffer(m_Index, sizeof(Quad), (void*)&newPos[0]);
+		Gui::UpdatePosBuffer(m_Index, sizeof(Quad), (void*)&newPos[0]);
 	}
 	void CheckBox::ClickHandle()
 	{
@@ -59,7 +59,7 @@ namespace Dot {
 			   glm::vec2(m_TexOffset,0.5),
 			   glm::vec2(0.5,0.5)
 		};
-		WidgetStack::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
+		Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 	}
 	bool CheckBox::MouseHoover(const glm::vec2& mousePos)
 	{
@@ -85,7 +85,7 @@ namespace Dot {
 		Ref<CheckBox> checkbox;
 		checkbox = std::make_shared<CheckBox>(label, position, size);
 
-		WidgetStack::AddWidget(label, checkbox, quad, &texcoords[0]);
+		Gui::AddWidget(label, checkbox, quad, &texcoords[0]);
 	}
 	glm::vec4 CheckBox::GetCoords()
 	{

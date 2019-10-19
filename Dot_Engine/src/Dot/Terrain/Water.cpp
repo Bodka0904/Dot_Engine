@@ -5,8 +5,8 @@
 
 namespace Dot {
 
-	Water::Water(const glm::vec3& position,const glm::vec2& size,const float vertnum)
-		:m_Height(position.y)
+	Water::Water(const glm::vec3& position,const glm::vec3& color,const glm::vec2& size,const float vertnum)
+		:m_Height(position.y),m_Color(color)
 	{
 		std::vector<glm::vec3> positions;
 		std::vector<unsigned int> indices;
@@ -47,6 +47,15 @@ namespace Dot {
 
 		Ref<IndexBuffer>m_IBO = std::make_shared<IndexBuffer>((void*)&indices[0], indices.size());
 		m_VAO->AddIBO(m_IBO);
+	}
+
+	void Water::Update(float dt)
+	{
+		if (m_TimePass >= 1)
+		{
+			m_TimePass = -1;
+		}
+		m_TimePass += dt;
 	}
 	
 }

@@ -98,7 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Environment\Sandbox.cpp" />
-    <ClCompile Include="src\SandBoxApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dot_Engine\Dot_Engine.vcxproj">
