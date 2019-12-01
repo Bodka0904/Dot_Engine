@@ -21,12 +21,18 @@ namespace Dot {
 		fread(&image->fileHeader, sizeof(image->fileHeader), 1, l_file);
 		fseek(l_file, sizeof(image->fileHeader), SEEK_SET);
 		fread(&image->infoHeader, sizeof(image->infoHeader), 1, l_file);
+	
+		image->values.resize(image->infoHeader.biWidth * image->infoHeader.biHeight);
+		_RGBTRIPLE rgb;
 		for (int i = 0; i < image->infoHeader.biWidth * image->infoHeader.biHeight; i++)
 		{
-			fread(&image->rgb, sizeof(image->rgb), 1, l_file);
+			fread(&rgb, sizeof(rgb), 1, l_file);
+			image->values[i] = rgb;
+			
 		}
 		fclose(l_file);
-
+		
+		
 		//std::ifstream file(filename, std::ios::binary);
 		//if (!file)
 		//{

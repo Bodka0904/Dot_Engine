@@ -29,8 +29,11 @@ private:
 	Dot::Ref<Dot::InstancedMesh> m_Tree;
 	Dot::Ref<Player> m_Player;
 
+	
 	Dot::Ref<Dot::Skybox> m_SkyBox;
 	Dot::Ref<Dot::Terrain> m_Terrain;
+	Dot::Ref<Dot::TerrainEditor>m_Editor;
+
 	Dot::Ref<Dot::Water>m_Water;
 	Dot::Ref<Dot::Camera> m_Camera;
 	Dot::Ref<Dot::Light> m_Light;

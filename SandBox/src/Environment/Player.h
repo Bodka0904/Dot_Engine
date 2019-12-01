@@ -9,7 +9,7 @@ public:
 	{
 		m_Cowboy = std::make_shared<Dot::AnimatedMesh>(model);
 		m_Cowboy->AnimateBones(0);
-		m_CowBoyTex = std::make_shared<Dot::Texture>(texture);
+		m_CowBoyTex = std::make_shared<Dot::Texture>(texture,true);
 
 		m_Shader = std::make_shared<Dot::Shader>("AnimationShader","res/shaders/Dot/AnimShader.glsl");
 		m_Shader->AddUniform("u_ModelMatrix");

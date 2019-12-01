@@ -14,8 +14,10 @@ namespace Dot {
 	
 	public:
 		// Function to update Terrain 
-		void ApplyHeightsValueNoise(int height);
+		void ApplyHeightsValueNoise(float height);
 		void ApplyNormals();
+
+		void Update();
 	
 	public:
 		// Control of params for Terrain generation
@@ -28,8 +30,9 @@ namespace Dot {
 		// Getter functions
 		const float& GetAmplitude() const { return m_Amplitude; }
 		const int& GetOctaves() const { return m_Octaves; }
-		const float& GetRoughness() const { return m_Roughness; }
+		const float& GetRoughness() const { return m_Roughness;}
 		const float& GetSize() const { return m_Size; }
+		
 		const Ref<ArrayBuffer>& GetVao() const { return m_VAO; }
 
 		// Get height of surface in the position
@@ -46,6 +49,8 @@ namespace Dot {
 	
 		glm::vec3 generateNormal(int x, int z) const;
 	
+	
+
 	private:
 		float barryCentric(const glm::vec3& p1, const glm::vec3& p2, const glm::vec3& p3, const glm::vec2& pos);
 	
@@ -55,10 +60,11 @@ namespace Dot {
 
 	
 	private:
+		std::vector<float> m_vertices;
 		float m_Amplitude = 5.0f;
 		int m_Octaves = 4;
 		float m_Roughness = 0.2f;
-		int m_Height = 0;
+		float m_Height = 0.0f;
 		int m_Seed;
 		float m_Size;
 		unsigned int m_NumVertex;

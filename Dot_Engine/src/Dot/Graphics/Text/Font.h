@@ -1,22 +1,44 @@
 #pragma once
-#include <map>
+#include "Dot/Graphics/Renderer/Texture.h"
 
 namespace Dot {
-
+	struct Character
+	{
+		int id = 0;
+		double xTextureCoord = 0;
+		double yTextureCoord = 0;
+		double xMaxTextureCoord = 0;
+		double yMaxTextureCoord =0;
+		double xOffset = 0;
+		double yOffset = 0;
+		double sizeX = 0;
+		double sizeY = 0;
+		double xAdvance = 0;
+	};
+	struct FontMetaData
+	{
+		int paddingWidth;
+		int paddingHeight;
+		int scaleW;
+		int scaleH;
+	};
 	class Font
 	{
 	public:
-		Font();
-		~Font();
+		Font(const std::string& filepath, const std::string& texture);
 
-		static void AddFont(const std::string& name, const std::string& imagepath);
-		static void BindFont(const std::string& name);
+		const Character GetCharacter(char c)  { return m_Characters[c]; }
+
+		static void Bind(const std::string& name) { s_Fonts[name]->m_Texture.Bind(0); }
+		static const Ref<Font>& GetFont(const std::string& name) { return s_Fonts[name]; }
+		static void AddFont(const std::string& name, const std::string& filepath, const std::string& texture);
+	private:
+		std::unordered_map<char ,Character> m_Characters;
+		FontMetaData m_MetaData;
+		Texture m_Texture;
 
 	private:
-		static unsigned int LoadDDSFont(const char* imagepath);
-		static unsigned int LoadBMPFont(const char* imagepath);
-
-	private:
-		static std::map<std::string,unsigned int> m_FontTexture;
+		static std::unordered_map<std::string, Ref<Font> > s_Fonts;
 	};
+
 }

@@ -22,8 +22,9 @@ void Sandbox::OnAttach()
 	m_SkyBox = std::make_shared<Dot::Skybox>(faces, 500);
 	
 	m_Terrain = std::make_shared<Dot::Terrain>(500, 100);
-	m_Terrain->ApplyHeightsValueNoise(15);
-	m_Terrain->ApplyNormals();
+	//m_Terrain->ApplyHeightsValueNoise(15.0f);
+	//m_Terrain->Update();
+	//m_Terrain->ApplyNormals();
 	
 
 	m_Camera = std::make_shared<Dot::Camera>(glm::perspectiveFov(glm::radians(45.0f), 1280.0f, 720.0f, 0.1f, 10000.0f));
@@ -40,8 +41,8 @@ void Sandbox::OnAttach()
 	m_StaticShader->AddUniform("u_LightColor");
 	m_StaticShader->AddUniform("u_LightStrength");
 
-	m_TreeTexture = std::make_shared<Dot::Texture>("res/projectmodels/tree.png");
-	m_TerrTexture = std::make_shared<Dot::Texture>("res/textures/Dot/grass.jpg");
+	m_TreeTexture = std::make_shared<Dot::Texture>("res/projectmodels/tree.png",true);
+	m_TerrTexture = std::make_shared<Dot::Texture>("res/textures/Dot/grass.jpg",true);
 
 	m_InstanceShader = std::make_shared<Dot::Shader>("InstanceShader", "res/shaders/Dot/InstanceShader.glsl");
 	m_InstanceShader->Bind();
@@ -92,8 +93,9 @@ void Sandbox::OnAttach()
 
 	
 	m_Water = std::make_shared<Dot::Water>(glm::vec3(0, 1, 0),glm::vec3(0,0,1), glm::vec2(10, 10), 50);
+	m_Editor = std::make_shared<Dot::TerrainEditor>();
 
-	Dot::Slider::Create("Light Strength", glm::vec2(50, 50), glm::vec2(200, 20), &m_Light->GetStrength());
+	Dot::DSlider::Create("Light Strength", glm::vec2(50, 50), glm::vec2(200, 20), &m_Light->GetStrength());
 }
 
 void Sandbox::OnUpdate(Dot::Timestep ts)
@@ -106,7 +108,7 @@ void Sandbox::OnUpdate(Dot::Timestep ts)
 	m_ShaderForCompute->Bind();
 	m_TestManager->Draw();
 
-	
+	m_Editor->UpdateTerrain(m_Terrain);
 	Dot::Renderer::BeginScene(*m_Camera);
 	{
 		m_SkyBox->GetTexture()->Bind(0);

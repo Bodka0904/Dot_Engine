@@ -59,6 +59,11 @@ void main()
 	vec3 ambient = point_light_col * ambient_light_intensity;
 
 	vec3 result = ambient + diffuse;
-	FragColor = texture(u_Texture, v_TexCoord) * vec4(result, 0.7);
+
+	vec4 texColor = texture(u_Texture, v_TexCoord) * vec4(result, 0.7);
+	if (texColor.a < 0.1)
+		discard;
+
+	FragColor = texColor;
 
 }

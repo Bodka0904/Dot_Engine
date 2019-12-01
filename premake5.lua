@@ -15,9 +15,9 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Dot_Engine/vendor/GLFW/include"
 IncludeDir["GLEW"] = "Dot_Engine/vendor/GLEW/include"
 
-
 include "Dot_Engine/vendor/GLFW"
 include "Dot_Engine/vendor/GLEW"
+
 
 project "Dot_Engine"
 		location "Dot_Engine"
@@ -45,8 +45,7 @@ project "Dot_Engine"
 		defines
 		{
 			"_CRT_SECURE_NO_WARNINGS",
-			"GLEW_STATIC"
-			
+			"GLEW_STATIC"		
 		}
 
 		includedirs
@@ -59,17 +58,14 @@ project "Dot_Engine"
 			"%{prj.name}/vendor/stb_image",
 			"%{prj.name}/vendor/assimp/include"
 			
-			
 		}
-
-		
+	
 
 		links 
 		{ 
 			"GLEW",
 			"GLFW",
 			"opengl32"	
-	
 		}
 		
 
@@ -119,7 +115,8 @@ project "SandBox"
 			"Dot_Engine/vendor",
 			"Dot_Engine/src",
 			"Dot_Engine/vendor/glm",
-			"Dot_Engine/vendor/assimp/include"
+			"Dot_Engine/vendor/assimp/include",
+			"Dot_Engine/vendor/Dot_Gui"
 		}
 		
 		

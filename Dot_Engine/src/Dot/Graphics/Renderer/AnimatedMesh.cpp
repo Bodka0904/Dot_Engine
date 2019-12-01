@@ -43,6 +43,7 @@ namespace Dot {
 
 	AnimatedMesh::AnimatedMesh(const std::string& Filename)
 	{
+		LOG_INFO("Loading animated mesh: %s", Filename.c_str());
 		memset(m_Buffers, 0, sizeof(m_Buffers));
 		m_NumBones = 0;
 		m_pScene = NULL;

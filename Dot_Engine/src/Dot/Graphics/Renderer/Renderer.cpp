@@ -33,6 +33,7 @@ namespace Dot {
 		m_SceneData.ViewPos = camera.GetPosition();
 
 		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
 	void Renderer::SubmitArrays(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod)
@@ -101,6 +102,7 @@ namespace Dot {
 	{
 		shader->UpdateUniformBufferObject("camera_data", &m_SceneData, (sizeof(glm::mat4) * 3) + sizeof(glm::vec3));
 		glDisable(GL_BLEND);
+		glBlendFunc(GL_SRC_COLOR, GL_SRC_COLOR);
 	}
 
 }

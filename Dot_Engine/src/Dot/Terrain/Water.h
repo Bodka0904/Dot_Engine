@@ -1,5 +1,6 @@
 #pragma once
 #include "Dot/Graphics/Renderer/Buffers/ArrayBuffer.h"
+
 #include <glm/glm.hpp>
 
 namespace Dot {
@@ -12,11 +13,12 @@ namespace Dot {
 
 		void Update(float dt);
 		
-
 		void SetWaveLen(float len) { m_WaveLength = len; }
 		void SetWaveAmpl(float ampl) { m_WaveAmplitude = ampl; }
 		void SetColor(const glm::vec3& color) { m_Color = color; }
 
+		const float &GetWaveLen() const { return m_WaveLength; }
+		const float &GetWaveAmpl() const { return m_WaveAmplitude; }	
 		const float& GetHeight() const { return m_Height; }
 		const Ref<ArrayBuffer>& GetVAO() const { return m_VAO; }
 		

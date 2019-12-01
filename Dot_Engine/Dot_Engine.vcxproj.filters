@@ -7,9 +7,6 @@
     <Filter Include="src\Dot">
       <UniqueIdentifier>{836F2FA9-EF4E-AE44-F866-391B64C514A6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\AI">
-      <UniqueIdentifier>{3CB5F50B-286D-3759-9174-10B57D4BD249}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Dot\Debug">
       <UniqueIdentifier>{39D07DE7-A590-F91D-6ECB-429BDA4A3EFA}</UniqueIdentifier>
     </Filter>
@@ -22,8 +19,8 @@
     <Filter Include="src\Dot\Graphics">
       <UniqueIdentifier>{235B582F-0F54-7781-3886-5C0624DE568D}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Graphics\Gui">
-      <UniqueIdentifier>{F737A28C-E3C6-2B56-8CE5-3F5178533CFC}</UniqueIdentifier>
+    <Filter Include="src\Dot\Graphics\GuiSystem">
+      <UniqueIdentifier>{DCE00AD1-C8F0-B6A1-31AA-1BC01DD9A53A}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Graphics\Particle">
       <UniqueIdentifier>{8656F7B5-F218-2B40-3BC9-B9CCA7CA031E}</UniqueIdentifier>
@@ -31,14 +28,14 @@
     <Filter Include="src\Dot\Graphics\Renderer">
       <UniqueIdentifier>{29D6EBB7-9598-1F42-DE48-AECE4A4AF81F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Graphics\Renderer\Animation">
-      <UniqueIdentifier>{5816DD22-C4CF-47CD-4D2F-62A7B9E7FD3C}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Dot\Graphics\Renderer\Buffers">
       <UniqueIdentifier>{A5AE4472-111D-9AF1-5A06-55F1C6B38F8D}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Graphics\Renderer\Camera">
       <UniqueIdentifier>{81C25DE5-6D13-4927-9677-37E98227DC90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Graphics\Renderer\Material">
+      <UniqueIdentifier>{E702BFFE-D33E-C268-3C51-DA5F28AC6A83}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Graphics\Shaders">
       <UniqueIdentifier>{FCF26A7F-E817-BAFF-1163-9F8FFDE6B81D}</UniqueIdentifier>
@@ -123,17 +120,20 @@
     <ClInclude Include="src\Dot\Events\Event.h">
       <Filter>src\Dot\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Gui\ArrowButton.h">
-      <Filter>src\Dot\Graphics\Gui</Filter>
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DArrowbutton.h">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Gui\Button.h">
-      <Filter>src\Dot\Graphics\Gui</Filter>
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DButton.h">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Gui\CheckBox.h">
-      <Filter>src\Dot\Graphics\Gui</Filter>
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DCheckbox.h">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Gui\Slider.h">
-      <Filter>src\Dot\Graphics\Gui</Filter>
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DGui.h">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DSlider.h">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Particle\Particle.h">
       <Filter>src\Dot\Graphics\Particle</Filter>
@@ -143,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Particle\ParticleSystem.h">
       <Filter>src\Dot\Graphics\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\AnimatedMesh.h">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Buffers\ArrayBuffer.h">
       <Filter>src\Dot\Graphics\Renderer\Buffers</Filter>
@@ -159,10 +162,16 @@
     <ClInclude Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.h">
       <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\Material\Light.h">
+      <Filter>src\Dot\Graphics\Renderer\Material</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\Renderer.h">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Renderer\Renderer2D.h">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Renderer\RendererFlags.h">
@@ -211,6 +220,12 @@
       <Filter>src\Dot</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Terrain\Terrain.h">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Terrain\TerrainEditor.h">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Terrain\Water.h">
       <Filter>src\Dot\Terrain</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\BmpLoader.h">
@@ -1323,16 +1338,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Dot\Graphics\Renderer\AnimatedMesh.h">
-      <Filter>src\Dot\Graphics\Renderer\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Sprite.h" />
-    <ClInclude Include="src\Dot\Graphics\Renderer\Material\Light.h" />
-    <ClInclude Include="src\Dot\Terrain\Water.h" />
-    <ClInclude Include="src\Dot\Graphics\Gui\Gui.h">
-      <Filter>src\Dot\Graphics\Gui</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1344,17 +1349,20 @@
     <ClCompile Include="src\Dot\Debug\Timer.cpp">
       <Filter>src\Dot\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Gui\ArrowButton.cpp">
-      <Filter>src\Dot\Graphics\Gui</Filter>
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DArrowbutton.cpp">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Gui\Button.cpp">
-      <Filter>src\Dot\Graphics\Gui</Filter>
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DButton.cpp">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Gui\CheckBox.cpp">
-      <Filter>src\Dot\Graphics\Gui</Filter>
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DCheckbox.cpp">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Gui\Slider.cpp">
-      <Filter>src\Dot\Graphics\Gui</Filter>
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DGui.cpp">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DSlider.cpp">
+      <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Particle\Particle.cpp">
       <Filter>src\Dot\Graphics\Particle</Filter>
@@ -1364,6 +1372,9 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Particle\ParticleSystem.cpp">
       <Filter>src\Dot\Graphics\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Renderer\AnimatedMesh.cpp">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Buffers\ArrayBuffer.cpp">
       <Filter>src\Dot\Graphics\Renderer\Buffers</Filter>
@@ -1380,10 +1391,16 @@
     <ClCompile Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.cpp">
       <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Renderer\Material\Light.cpp">
+      <Filter>src\Dot\Graphics\Renderer\Material</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Renderer.cpp">
+      <Filter>src\Dot\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Renderer\Renderer2D.cpp">
       <Filter>src\Dot\Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Renderer\Texture.cpp">
@@ -1419,6 +1436,12 @@
     <ClCompile Include="src\Dot\Terrain\Terrain.cpp">
       <Filter>src\Dot\Terrain</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Terrain\TerrainEditor.cpp">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Terrain\Water.cpp">
+      <Filter>src\Dot\Terrain</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Utils\BmpLoader.cpp">
       <Filter>src\Dot\Utils</Filter>
     </ClCompile>
@@ -1433,16 +1456,6 @@
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Renderer\AnimatedMesh.cpp">
-      <Filter>src\Dot\Graphics\Renderer\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Sprite.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Renderer\Material\Light.cpp" />
-    <ClCompile Include="src\Dot\Terrain\Water.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Gui\Gui.cpp">
-      <Filter>src\Dot\Graphics\Gui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

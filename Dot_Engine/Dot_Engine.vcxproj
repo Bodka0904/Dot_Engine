@@ -107,11 +107,11 @@
     <ClInclude Include="src\Dot\Debug\Timer.h" />
     <ClInclude Include="src\Dot\EntryPoint.h" />
     <ClInclude Include="src\Dot\Events\Event.h" />
-    <ClInclude Include="src\Dot\Graphics\Gui\ArrowButton.h" />
-    <ClInclude Include="src\Dot\Graphics\Gui\Button.h" />
-    <ClInclude Include="src\Dot\Graphics\Gui\CheckBox.h" />
-    <ClInclude Include="src\Dot\Graphics\Gui\Slider.h" />
-    <ClInclude Include="src\Dot\Graphics\Gui\Gui.h" />
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DArrowbutton.h" />
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DButton.h" />
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DCheckbox.h" />
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DGui.h" />
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\DSlider.h" />
     <ClInclude Include="src\Dot\Graphics\Particle\Particle.h" />
     <ClInclude Include="src\Dot\Graphics\Particle\ParticleManager.h" />
     <ClInclude Include="src\Dot\Graphics\Particle\ParticleSystem.h" />
@@ -126,7 +126,6 @@
     <ClInclude Include="src\Dot\Graphics\Renderer\Renderer.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\RendererFlags.h" />
-    <ClInclude Include="src\Dot\Graphics\Renderer\Sprite.h" />
     <ClInclude Include="src\Dot\Graphics\Renderer\Texture.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Materials\Material.h" />
     <ClInclude Include="src\Dot\Graphics\Shaders\Shader.h" />
@@ -142,6 +141,7 @@
     <ClInclude Include="src\Dot\Layer.h" />
     <ClInclude Include="src\Dot\MouseButtonCodes.h" />
     <ClInclude Include="src\Dot\Terrain\Terrain.h" />
+    <ClInclude Include="src\Dot\Terrain\TerrainEditor.h" />
     <ClInclude Include="src\Dot\Terrain\Water.h" />
     <ClInclude Include="src\Dot\Utils\BmpLoader.h" />
     <ClInclude Include="src\Dot\Utils\MousePicker.h" />
@@ -518,11 +518,11 @@
     <ClCompile Include="src\Dot\Application.cpp" />
     <ClCompile Include="src\Dot\Debug\Log.cpp" />
     <ClCompile Include="src\Dot\Debug\Timer.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Gui\ArrowButton.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Gui\Button.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Gui\CheckBox.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Gui\Slider.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Gui\Gui.cpp" />
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DArrowbutton.cpp" />
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DButton.cpp" />
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DCheckbox.cpp" />
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DGui.cpp" />
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\DSlider.cpp" />
     <ClCompile Include="src\Dot\Graphics\Particle\Particle.cpp" />
     <ClCompile Include="src\Dot\Graphics\Particle\ParticleManger.cpp" />
     <ClCompile Include="src\Dot\Graphics\Particle\ParticleSystem.cpp" />
@@ -536,7 +536,6 @@
     <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Renderer\Sprite.cpp" />
     <ClCompile Include="src\Dot\Graphics\Renderer\Texture.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\Shader.cpp" />
     <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp" />
@@ -548,6 +547,7 @@
     <ClCompile Include="src\Dot\Input.cpp" />
     <ClCompile Include="src\Dot\Layer.cpp" />
     <ClCompile Include="src\Dot\Terrain\Terrain.cpp" />
+    <ClCompile Include="src\Dot\Terrain\TerrainEditor.cpp" />
     <ClCompile Include="src\Dot\Terrain\Water.cpp" />
     <ClCompile Include="src\Dot\Utils\BmpLoader.cpp" />
     <ClCompile Include="src\Dot\Utils\MousePicker.cpp" />

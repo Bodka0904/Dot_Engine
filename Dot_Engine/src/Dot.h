@@ -26,16 +26,17 @@
 #include "Dot/Graphics/Particle/ParticleManager.h"
 #include "Dot/Graphics/Renderer/Material/Light.h"
 
-#include "Dot/Terrain/Terrain.h"
+#include "Dot/Terrain/TerrainEditor.h"
+//#include "Dot/Terrain/Terrain.h"
 #include "Dot/Terrain/Water.h"
 
 
 // --- Widgets --------------
-#include "Dot/Graphics/Gui/Slider.h"
-#include "Dot/Graphics/Gui/Checkbox.h"
-#include "Dot/Graphics/Gui/ArrowButton.h"
-#include "Dot/Graphics/Gui/Button.h"
-#include "Dot/Graphics/Gui/Gui.h"
+#include "Dot/Graphics/GuiSystem/DSlider.h"
+#include "Dot/Graphics/GuiSystem/DCheckbox.h"
+#include "Dot/Graphics/GuiSystem/DArrowButton.h"
+#include "Dot/Graphics/GuiSystem/DButton.h"
+#include "Dot/Graphics/GuiSystem/DGui.h"
 
 // --- Entry Point -----------------
 #include "Dot/EntryPoint.h"

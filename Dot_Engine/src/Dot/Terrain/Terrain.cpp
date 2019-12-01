@@ -1,8 +1,12 @@
 #include "stdafx.h"
 #include "Terrain.h"
+
 #include <random>
 #define _USE_MATH_DEFINES
 #include <math.h>
+
+
+
 
 namespace Dot {
 
@@ -109,12 +113,10 @@ namespace Dot {
 	{
 	}
 	
-	void Terrain::ApplyHeightsValueNoise(int height)
+	void Terrain::ApplyHeightsValueNoise(float height)
 	{
 		m_Height = height;
-	
-		std::vector<float> vertices;
-		vertices.resize(m_NumVertex * m_NumVertex * 3);
+		m_vertices.resize(m_NumVertex * m_NumVertex * 3);
 
 
 		int vertexPointer = 0;
@@ -125,16 +127,17 @@ namespace Dot {
 				float height = generateHeight(i, j) * m_Height;
 				m_Heights[j][i] = height;
 				
-				vertices[vertexPointer * 3] = (float)j / ((float)m_NumVertex - 1) * m_Size;
-				vertices[(vertexPointer * 3) + 1] = height;
-				vertices[(vertexPointer * 3) + 2] = (float)i / ((float)m_NumVertex - 1) * m_Size;
+				m_vertices[vertexPointer * 3] = (float)j / ((float)m_NumVertex - 1) * m_Size;
+				m_vertices[(vertexPointer * 3) + 1] = height;
+				m_vertices[(vertexPointer * 3) + 2] = (float)i / ((float)m_NumVertex - 1) * m_Size;
 
 				vertexPointer++;
 			}
 		}
 	
-		m_VAO->GetVertexBuffer(0)->Update(&vertices[0], vertices.size() * sizeof(float), 0);
+		
 	}
+
 	
 	void Terrain::ApplyNormals()
 	{
@@ -157,6 +160,11 @@ namespace Dot {
 		}
 		
 		m_VAO->GetVertexBuffer(1)->Update(&normals[0], normals.size() * sizeof(float), 0);
+	}
+
+	void Terrain::Update()
+	{
+		m_VAO->GetVertexBuffer(0)->Update(&m_vertices[0], m_vertices.size() * sizeof(float), 0);
 	}
 	
 	

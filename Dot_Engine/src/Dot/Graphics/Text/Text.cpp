@@ -1,94 +1,72 @@
+#pragma once
 #include "stdafx.h"
 #include "Text.h"
-#include "Font.h"
-#include <GL/glew.h>
-#include <glm/glm.hpp>
 
+#include <GL/glew.h>
 
 namespace Dot {
-	Text::Text(const std::string& text, float x, float y, int sizex,int sizey)
-		:m_Position(glm::vec2(x,y))
+	Text::Text(Font& font, std::string text, const glm::vec2& position, const glm::vec2& size)
 	{
-		unsigned int VBO_Vertex;
-		unsigned int VBO_Uv;
+		double curser = position.x;
 
-		unsigned int length = strlen(text.c_str());
+		Character tmp;
+		for (char& c : text) 
+		{
+			tmp = font.GetCharacter(c);
+			
+			tmp.sizeX *= size.x;
+			tmp.xOffset *= size.x;
+			tmp.sizeY *= size.y;
+			tmp.yOffset *= size.y;
 
-		// Fill buffers
-		std::vector<glm::vec2> vertices;
-		std::vector<glm::vec2> UVs;
-		for (unsigned int i = 0; i < length; i++) {
+			m_TexCoord.push_back(tmp.xTextureCoord);
+			m_TexCoord.push_back(tmp.yTextureCoord);
 
-			glm::vec2 vertex_up_left = glm::vec2((x + i * sizex), y + sizey);
-			glm::vec2 vertex_up_right = glm::vec2((x + i * sizex + sizex), y + sizey);
-			glm::vec2 vertex_down_right = glm::vec2((x + i * sizex + sizex), y);
-			glm::vec2 vertex_down_left = glm::vec2((x + i * sizex), y);
+			m_TexCoord.push_back(tmp.xMaxTextureCoord);
+			m_TexCoord.push_back(tmp.yTextureCoord);
 
-			vertices.push_back(vertex_up_left);
-			vertices.push_back(vertex_down_left);
-			vertices.push_back(vertex_up_right);
+			m_TexCoord.push_back(tmp.xMaxTextureCoord);
+			m_TexCoord.push_back(tmp.yMaxTextureCoord);
 
-			vertices.push_back(vertex_down_right);
-			vertices.push_back(vertex_up_right);
-			vertices.push_back(vertex_down_left);
+			m_TexCoord.push_back(tmp.xTextureCoord);
+			m_TexCoord.push_back(tmp.yMaxTextureCoord);
 
-			char character = text[i];
-			float uv_x = (character % 16) / 16.0f;
-			float uv_y = (character / 16) / 16.0f;
+			m_Vertice.push_back(curser+tmp.xOffset);
+			m_Vertice.push_back(position.y+tmp.yOffset);
 
-			glm::vec2 uv_down_left = glm::vec2(uv_x, uv_y);
-			glm::vec2 uv_down_right = glm::vec2(uv_x + 1.0f / 16.0f, uv_y);
-			glm::vec2 uv_up_right = glm::vec2(uv_x + 1.0f / 16.0f, (uv_y + 1.0f / 16.0f));
-			glm::vec2 uv_up_left = glm::vec2(uv_x, (uv_y + 1.0f / 16.0f));
-			UVs.push_back(uv_up_left);
-			UVs.push_back(uv_down_left);
-			UVs.push_back(uv_up_right);
+			m_Vertice.push_back(curser + tmp.sizeX + tmp.xOffset);
+			m_Vertice.push_back(position.y +tmp.yOffset);
 
-			UVs.push_back(uv_down_right);
-			UVs.push_back(uv_up_right);
-			UVs.push_back(uv_down_left);
+			m_Vertice.push_back(curser + tmp.sizeX + tmp.xOffset);
+			m_Vertice.push_back(position.y + tmp.sizeY + tmp.yOffset);
+
+			m_Vertice.push_back(curser + tmp.xOffset);
+			m_Vertice.push_back(position.y + tmp.sizeY + tmp.yOffset);
+
+			curser += tmp.xAdvance*size.x;
 		}
-		m_VertSize = vertices.size();
 
-		glBindVertexArray(0);
-		glGenVertexArrays(1, &m_VAO);
-		glBindVertexArray(m_VAO);
+		m_VAO = std::make_shared<ArrayBuffer>();
+		Ref<VertexBuffer>m_VBO[2];
 
-		glGenBuffers(1, &VBO_Vertex);
-		glGenBuffers(1, &VBO_Uv);
+		BufferLayout layout = {
+				{0,ShaderDataType::Float2,"a_Position"},
+		};
+		m_VBO[0] = std::make_shared<VertexBuffer>((void*)& m_Vertice[0], m_Vertice.size() * sizeof(float), D_STATIC_DRAW);
+		m_VBO[0]->SetLayout(layout);
+		m_VAO->AddVBO(m_VBO[0]);
 
-		glBindBuffer(GL_ARRAY_BUFFER, VBO_Vertex);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec2), &vertices[0], GL_STATIC_DRAW);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
+		BufferLayout layout_tex = {
+				{1,ShaderDataType::Float2,"a_TexCoord"},
+		};
+		m_VBO[1] = std::make_shared<VertexBuffer>(&m_TexCoord[0], m_TexCoord.size() * sizeof(float), D_STATIC_DRAW);
+		m_VBO[1]->SetLayout(layout_tex);
+		m_VAO->AddVBO(m_VBO[1]);
 
-
-		glBindBuffer(GL_ARRAY_BUFFER, VBO_Uv);
-		glBufferData(GL_ARRAY_BUFFER, UVs.size() * sizeof(glm::vec2), &UVs[0], GL_STATIC_DRAW);
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
-
-		
-		//glBindVertexArray(0);
 	}
-	Text::~Text()
+	void Text::RenderText()
 	{
-		glDeleteVertexArrays(1, &m_VAO);
-	}
-	void Text::PrintText(const std::string& name)
-	{
-		Font::BindFont(name);
-
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-		glBindVertexArray(m_VAO);
-
-		glDrawArrays(GL_TRIANGLES, 0, m_VertSize);
-
-		glBindVertexArray(0);
-
-		glDisable(GL_BLEND);
-
+		m_VAO->Bind();
+		glDrawArrays(GL_QUADS, 0, m_VAO->GetVertexBuffer(0)->GetCount());
 	}
 }

@@ -1,22 +1,20 @@
 #pragma once
-#include <glm/glm.hpp>
+#include "Dot/Graphics/Renderer/Buffers/ArrayBuffer.h"
+#include "Font.h"
+
 
 namespace Dot {
-
 	class Text
 	{
 	public:
-		Text(const std::string& text, float x,float y, int sizex,int sizey);
-		~Text();
-
-		void PrintText(const std::string& name);
-		const glm::vec2& GetPosition() const { return m_Position; }
+		Text(Font& font, std::string text, const glm::vec2& position ,const glm::vec2& size);
+		void RenderText();
 
 	private:
-		unsigned int m_VAO;
-		unsigned int m_VertSize;
+		Ref<ArrayBuffer>m_VAO;
 
-		glm::vec2 m_Position;
+	private:
+		std::vector <float> m_Vertice;
+		std::vector <float> m_TexCoord;
 	};
-
 }

@@ -35,14 +35,15 @@ namespace Dot {
 		_BYTE    rgbtBlue;
 		_BYTE    rgbtGreen;
 		_BYTE    rgbtRed;
-	} _RGBTRIPLE, * _PRGBTRIPLE;
+	} _RGBTRIPLE,  _PRGBTRIPLE;
 
 #pragma pack()
 
 	struct _BMPIMAGE {
 		_BITMAPINFOHEADER infoHeader;
 		_BITMAPFILEHEADER fileHeader;
-		_RGBTRIPLE rgb;
+		
+		std::vector<_RGBTRIPLE> values;
 	};
 
 

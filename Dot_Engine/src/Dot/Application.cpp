@@ -4,6 +4,7 @@
 #include "Dot/Graphics/Text/Font.h"
 #include "Dot/Debug/Timer.h"
 
+
 #include <GLFW/glfw3.h>
 
 namespace Dot {
@@ -21,8 +22,8 @@ namespace Dot {
 		m_Window->vSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		
-
-		Font::AddFont("ArialBolt", "res/fonts/ArialBolt.DDS");	
+		Font::AddFont("Arial", "res/fonts/Arial/Arial2.fnt", "res/fonts/Arial/Arial2.png");
+		text = std::make_shared<Text>(*Font::GetFont("Arial"), "test test",glm::vec2(100,100), glm::vec2(0.2,0.2));
 	}
 
 
@@ -50,16 +51,18 @@ namespace Dot {
 			m_LastFrameTime = time;
 
 			
-
+			
 			for (Layer* layer : m_Layers)
 			{
 				{	
 					//Timer timer;
 					layer->OnUpdate(timestep);
-
+					
 				}
 			}
-		
+			
+			Font::Bind("Arial");
+			text->RenderText();
 			m_Window->Update();
 
 			

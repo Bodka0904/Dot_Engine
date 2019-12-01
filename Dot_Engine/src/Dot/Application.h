@@ -4,6 +4,8 @@
 #include "Events/Event.h"
 #include "Gui/GuiLayer.h"
 
+#include "Dot/Graphics/Text/Text.h"
+
 
 namespace Dot {
 	class Application
@@ -30,6 +32,8 @@ namespace Dot {
 		std::unique_ptr<Window> m_Window;
 		std::vector<Layer*> m_Layers;
 		GuiLayer *m_GuiLayer;
+		
+		Ref<Text> text;
 
 
 		unsigned int m_LayerInsertIndex = 0;

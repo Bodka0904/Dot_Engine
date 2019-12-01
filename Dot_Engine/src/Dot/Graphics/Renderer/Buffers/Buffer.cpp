@@ -44,6 +44,7 @@ namespace Dot {
 	}
 
 
+
 	IndexBuffer::IndexBuffer(const void* indices, unsigned int count)
 		:m_Count(count)
 	{

@@ -8,7 +8,7 @@ namespace Dot {
 
 
 
-	Texture::Texture(const std::string& fileName)
+	Texture::Texture(const std::string& fileName,bool flipped)
 	{
 		int texFormat = 0;
 		int dataFormat = 0;
@@ -18,7 +18,7 @@ namespace Dot {
 		int numComponents;
 		unsigned char* imageData;
 
-		stbi_set_flip_vertically_on_load(1);
+		stbi_set_flip_vertically_on_load(flipped);
 		imageData = stbi_load(fileName.c_str(), &width, &height, &numComponents, STBI_rgb_alpha);
 		if (imageData == NULL)
 		{
