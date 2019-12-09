@@ -120,19 +120,19 @@
     <ClInclude Include="src\Dot\Events\Event.h">
       <Filter>src\Dot\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\DArrowbutton.h">
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\Arrowbutton.h">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\DButton.h">
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\Button.h">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\DCheckbox.h">
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\Checkbox.h">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\DGui.h">
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\Gui.h">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\DSlider.h">
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\Slider.h">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Graphics\Particle\Particle.h">
@@ -1338,6 +1338,12 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Graphics\Text\DynamicText.h" />
+    <ClInclude Include="src\Dot\Graphics\GuiSystem\GuiRenderer.h" />
+    <ClInclude Include="src\Dot\Graphics\Text\TextRenderer.h" />
+    <ClInclude Include="src\Dot\Graphics\Console\Console.h" />
+    <ClInclude Include="src\Dot\Graphics\Renderer\Renderable2D.h" />
+    <ClInclude Include="src\Dot\Console\ConsoleLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Application.cpp">
@@ -1349,19 +1355,19 @@
     <ClCompile Include="src\Dot\Debug\Timer.cpp">
       <Filter>src\Dot\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\DArrowbutton.cpp">
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\Arrowbutton.cpp">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\DButton.cpp">
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\Button.cpp">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\DCheckbox.cpp">
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\Checkbox.cpp">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\DGui.cpp">
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\Gui.cpp">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\DSlider.cpp">
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\Slider.cpp">
       <Filter>src\Dot\Graphics\GuiSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Graphics\Particle\Particle.cpp">
@@ -1457,5 +1463,11 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Graphics\Text\DynamicText.cpp" />
+    <ClCompile Include="src\Dot\Graphics\GuiSystem\GuiRenderer.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Text\TextRenderer.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Console\Console.cpp" />
+    <ClCompile Include="src\Dot\Graphics\Renderer\Renderable2D.cpp" />
+    <ClCompile Include="src\Dot\Console\ConsoleLayer.cpp" />
   </ItemGroup>
 </Project>

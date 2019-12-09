@@ -1,5 +1,9 @@
 #pragma once
 #include "Dot/Layer.h"
+#include "Dot/Graphics/Renderer/Camera/OrthoCamera.h"
+#include "Dot/Graphics/Shaders/Shader.h"
+
+#include "Dot/Graphics/Text/DynamicText.h"
 
 namespace Dot {
 
@@ -14,6 +18,13 @@ namespace Dot {
 		void OnEvent(Event& event)override;
 	private:
 		float value = 0.0f;
-		
+		Ref<OrthoCamera> m_Camera;
+		Ref<Shader> m_GuiShader;
+		Ref<Shader> m_TextShader;
+		Ref<Shader> m_TestShader;
+
+	private:
+		Ref<DynamicText> m_Text;
+
 	};
 }

@@ -19,6 +19,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Dot\WaterShader.glsl" />
+    <None Include="res\shaders\Dot\ConsoleShader.glsl" />
   </ItemGroup>
 </Project>

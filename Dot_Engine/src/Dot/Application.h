@@ -3,8 +3,7 @@
 #include "Layer.h"
 #include "Events/Event.h"
 #include "Gui/GuiLayer.h"
-
-#include "Dot/Graphics/Text/Text.h"
+#include "Console/ConsoleLayer.h"
 
 
 namespace Dot {
@@ -32,9 +31,7 @@ namespace Dot {
 		std::unique_ptr<Window> m_Window;
 		std::vector<Layer*> m_Layers;
 		GuiLayer *m_GuiLayer;
-		
-		Ref<Text> text;
-
+		ConsoleLayer* m_ConsoleLayer;
 
 		unsigned int m_LayerInsertIndex = 0;
 		static Application* s_Instance;

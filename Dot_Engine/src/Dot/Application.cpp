@@ -1,29 +1,26 @@
 #include "stdafx.h"
 #include "Application.h"
 #include "Dot/Utils/Timestep.h"
-#include "Dot/Graphics/Text/Font.h"
 #include "Dot/Debug/Timer.h"
-
+#include "Dot/Graphics/Text/Font.h"
 
 #include <GLFW/glfw3.h>
 
 namespace Dot {
 
-
-
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
-
+	
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 
 		m_Window->vSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		
-		Font::AddFont("Arial", "res/fonts/Arial/Arial2.fnt", "res/fonts/Arial/Arial2.png");
-		text = std::make_shared<Text>(*Font::GetFont("Arial"), "test test",glm::vec2(100,100), glm::vec2(0.2,0.2));
+		//Default font
+		Font::AddFont("Arial", "res/fonts/Arial/Arial.fnt", "res/fonts/Arial/Arial.png");
 	}
 
 
@@ -41,7 +38,9 @@ namespace Dot {
 
 		// TODO PUT BACK TO APPLICATION CONSTRUCTOR
 		m_GuiLayer = new GuiLayer();
+		m_ConsoleLayer = new ConsoleLayer();
 		PushOverlay(m_GuiLayer);
+		PushOverlay(m_ConsoleLayer);
 
 		while (!m_Window->IsClosed())
 		{
@@ -50,8 +49,6 @@ namespace Dot {
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			
-			
 			for (Layer* layer : m_Layers)
 			{
 				{	
@@ -61,12 +58,8 @@ namespace Dot {
 				}
 			}
 			
-			Font::Bind("Arial");
-			text->RenderText();
-			m_Window->Update();
-
 			
-			
+			m_Window->Update();	
 		}
 	
 		m_Window->Destroy();

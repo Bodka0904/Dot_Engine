@@ -106,6 +106,14 @@ void Shader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
 	glUniformMatrix4fv(m_Uniforms[name], 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
+Ref<Shader> Shader::Create(const std::string& name, const std::string& filepath)
+{
+	Ref<Shader> shader = std::make_shared<Shader>(name, filepath);
+	
+	return shader;
+}
+
+
 std::string Shader::ReadFile(const std::string& filepath)
 {
 	std::string result;

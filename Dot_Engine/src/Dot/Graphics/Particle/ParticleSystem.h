@@ -3,8 +3,6 @@
 
 namespace Dot {
 
-	
-
 	struct ParticlePosition
 	{
 		float x;

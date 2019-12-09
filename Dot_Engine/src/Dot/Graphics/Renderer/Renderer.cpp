@@ -16,7 +16,7 @@ namespace Dot {
 
 	Renderer::~Renderer()
 	{
-
+	
 	}
 
 	void Renderer::Clear(glm::vec4& color)
@@ -43,6 +43,8 @@ namespace Dot {
 		shader->UploadUniformMat4("u_ModelMatrix", transform);
 		vao->Bind();
 		glDrawArrays(drawMod, 0, vao->GetVertexBuffer(0)->GetCount());
+		
+		
 	}
 
 	void Renderer::SubmitArraysInstanced(const Ref<Shader> shader, const Ref<Light>light, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod)

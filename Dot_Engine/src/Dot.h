@@ -32,11 +32,11 @@
 
 
 // --- Widgets --------------
-#include "Dot/Graphics/GuiSystem/DSlider.h"
-#include "Dot/Graphics/GuiSystem/DCheckbox.h"
-#include "Dot/Graphics/GuiSystem/DArrowButton.h"
-#include "Dot/Graphics/GuiSystem/DButton.h"
-#include "Dot/Graphics/GuiSystem/DGui.h"
+#include "Dot/Graphics/GuiSystem/Slider.h"
+#include "Dot/Graphics/GuiSystem/Checkbox.h"
+#include "Dot/Graphics/GuiSystem/ArrowButton.h"
+#include "Dot/Graphics/GuiSystem/Button.h"
+#include "Dot/Graphics/GuiSystem/Gui.h"
 
 // --- Entry Point -----------------
 #include "Dot/EntryPoint.h"

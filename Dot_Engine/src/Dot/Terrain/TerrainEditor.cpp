@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "TerrainEditor.h"
-#include "Dot/Graphics/GuiSystem/DGui.h"
-#include "Dot/Graphics/GuiSystem/DSlider.h"
-#include "Dot/Graphics/GuiSystem/DButton.h"
-#include "Dot/Graphics/GuiSystem/DArrowbutton.h"
+#include "Dot/Graphics/GuiSystem/Gui.h"
+#include "Dot/Graphics/GuiSystem/Slider.h"
+#include "Dot/Graphics/GuiSystem/Button.h"
+#include "Dot/Graphics/GuiSystem/Arrowbutton.h"
 
 #include <glm/glm.hpp>
 
@@ -12,17 +12,17 @@
 namespace Dot {
 	TerrainEditor::TerrainEditor()
 	{
-		DWrapper::Create("Terrain Editor", glm::vec2(100, 100), glm::vec2(300, 600));
-		DGui::EnableWrapper("Terrain Editor");
+		Wrapper::Create("Terrain Editor", glm::vec2(100, 100), glm::vec2(300, 600));
+		Gui::EnableWrapper("Terrain Editor");
 		{
 			
-			DArrbutton::Create("Amplitude", glm::vec2(100, 100), glm::vec2(50, 50));
-			DArrbutton::Create("Roughness", glm::vec2(100, 100), glm::vec2(50, 50));
-			DArrbutton::Create("Height", glm::vec2(100, 100), glm::vec2(50, 50));
-			DArrbutton::Create("Seed", glm::vec2(100, 100), glm::vec2(50, 50));
-			DButton::Create("Process", glm::vec2(100, 100), glm::vec2(50, 50));
+			Arrbutton::Create("Amplitude", glm::vec2(100, 100), glm::vec2(50, 50));
+			Arrbutton::Create("Roughness", glm::vec2(100, 100), glm::vec2(50, 50));
+			Arrbutton::Create("Height", glm::vec2(100, 100), glm::vec2(50, 50));
+			Arrbutton::Create("Seed", glm::vec2(100, 100), glm::vec2(50, 50));
+			Button::Create("Process", glm::vec2(100, 100), glm::vec2(50, 50));
 		
-		}DGui::DisableWrapper();
+		}Gui::DisableWrapper();
 	}
 
 	static std::mutex s_Mutex;
@@ -39,38 +39,38 @@ namespace Dot {
 
 	void TerrainEditor::UpdateTerrain(Ref<Terrain> terrain)
 	{
-		if (DArrbutton::GetWrapped("Terrain Editor", "Seed").LeftClicked())
-		{
+		if (Arrbutton::GetWrapped("Terrain Editor", "Seed").LeftClicked())
+		{	
 			m_Seed--;
 			LOG_INFO("Seed: %d", m_Seed);
 		}
-		else if (DArrbutton::GetWrapped("Terrain Editor", "Seed").RightClicked())
+		else if (Arrbutton::GetWrapped("Terrain Editor", "Seed").RightClicked())
 		{
 			m_Seed++;
 			LOG_INFO("Seed: %d", m_Seed);
 		}
-		else if (DArrbutton::GetWrapped("Terrain Editor", "Amplitude").LeftClicked())
+		else if (Arrbutton::GetWrapped("Terrain Editor", "Amplitude").LeftClicked())
 		{
 			m_Amplitude -= 0.5f;
 			LOG_INFO("Amplitude: %f", m_Amplitude);
 		}
-		else if (DArrbutton::GetWrapped("Terrain Editor", "Amplitude").RightClicked())
+		else if (Arrbutton::GetWrapped("Terrain Editor", "Amplitude").RightClicked())
 		{
 			m_Amplitude += 0.5f;
 			LOG_INFO("Amplitude: %f", m_Amplitude);
 		}
-		else if (DArrbutton::GetWrapped("Terrain Editor", "Height").RightClicked())
+		else if (Arrbutton::GetWrapped("Terrain Editor", "Height").RightClicked())
 		{
 			m_Height += 0.5f;
 			LOG_INFO("Height: %f", m_Height);
 		}
-		else if (DArrbutton::GetWrapped("Terrain Editor", "Height").LeftClicked())
+		else if (Arrbutton::GetWrapped("Terrain Editor", "Height").LeftClicked())
 		{
 			m_Height -= 0.5f;
 			LOG_INFO("Height: %f", m_Height);
 		}
 		
-		if (DButton::GetWrapped("Terrain Editor","Process").GetClicked())
+		if (Button::GetWrapped("Terrain Editor","Process").GetClicked())
 		{
 			LOG_INFO("Processing...");
 			terrain->SetSeed(m_Seed);

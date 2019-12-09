@@ -8,7 +8,7 @@ namespace Dot {
 
 
 
-	Texture::Texture(const std::string& fileName,bool flipped)
+	Texture::Texture(const std::string& fileName, bool filters,bool flipped)
 	{
 		int texFormat = 0;
 		int dataFormat = 0;
@@ -44,11 +44,17 @@ namespace Dot {
 		glTextureStorage2D(texture, 1, texFormat, width, height);
 		glBindTexture(GL_TEXTURE_2D, texture);
 
-		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+		
+		// Temporary
+		if (filters)
+		{
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		}
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_LOD_BIAS, 0);
+		
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
@@ -96,6 +102,8 @@ namespace Dot {
 		glBindTexture(GL_TEXTURE_2D, 0);
 		textureType = GL_TEXTURE_CUBE_MAP;
 	}
+
+	
 
 	Texture::~Texture()
 	{

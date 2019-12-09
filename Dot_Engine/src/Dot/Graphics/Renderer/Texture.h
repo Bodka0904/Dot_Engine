@@ -6,7 +6,7 @@ namespace Dot {
 	class Texture
 	{
 	public:
-		Texture(const std::string& fileName,bool flipped = true);
+		Texture(const std::string& fileName,bool filters = true,bool flipped = true);
 		Texture(const std::vector<std::string>faces);
 		~Texture();
 

@@ -4,6 +4,7 @@
 #include <iostream>
 
 
+
 Sandbox::Sandbox()
 	: Dot::Layer()
 {
@@ -22,7 +23,7 @@ void Sandbox::OnAttach()
 	m_SkyBox = std::make_shared<Dot::Skybox>(faces, 500);
 	
 	m_Terrain = std::make_shared<Dot::Terrain>(500, 100);
-	//m_Terrain->ApplyHeightsValueNoise(15.0f);
+	m_Terrain->ApplyHeightsValueNoise(15.0f);
 	//m_Terrain->Update();
 	//m_Terrain->ApplyNormals();
 	
@@ -95,7 +96,7 @@ void Sandbox::OnAttach()
 	m_Water = std::make_shared<Dot::Water>(glm::vec3(0, 1, 0),glm::vec3(0,0,1), glm::vec2(10, 10), 50);
 	m_Editor = std::make_shared<Dot::TerrainEditor>();
 
-	Dot::DSlider::Create("Light Strength", glm::vec2(50, 50), glm::vec2(200, 20), &m_Light->GetStrength());
+	Dot::Slider::Create("Light Strength", glm::vec2(50, 50), glm::vec2(200, 20), &m_Light->GetStrength());
 }
 
 void Sandbox::OnUpdate(Dot::Timestep ts)

@@ -33,6 +33,9 @@ namespace Dot {
 
 		void UploadUniformMat3(const std::string& name, const glm::mat3& matrix);
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
+
+		static Ref<Shader> Create(const std::string& name, const std::string& filepath);
+
 	private:
 		std::string ReadFile(const std::string& filepath);
 		std::unordered_map<unsigned int, std::string> PreProcess(const std::string& source);

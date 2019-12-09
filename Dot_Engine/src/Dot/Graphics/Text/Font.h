@@ -17,17 +17,20 @@ namespace Dot {
 	};
 	struct FontMetaData
 	{
-		int paddingWidth;
-		int paddingHeight;
-		int scaleW;
-		int scaleH;
+		int count = 0;
+		int base = 0;
+
+		int scaleW = 0;
+		int scaleH = 0;
+		double lineHeight = 0.0f;
 	};
 	class Font
 	{
 	public:
 		Font(const std::string& filepath, const std::string& texture);
-
-		const Character GetCharacter(char c)  { return m_Characters[c]; }
+		
+		const Character &GetCharacter(char c) { return m_Characters[c]; }
+		const FontMetaData& GetData() { return m_MetaData; }
 
 		static void Bind(const std::string& name) { s_Fonts[name]->m_Texture.Bind(0); }
 		static const Ref<Font>& GetFont(const std::string& name) { return s_Fonts[name]; }

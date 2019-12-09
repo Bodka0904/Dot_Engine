@@ -738,7 +738,7 @@ int _glfwPlatformPollJoystick(_GLFWjoystick* js, int mode)
     return GLFW_TRUE;
 }
 
-void _glfwPlatformUpdateGamepadGUID(char* guid)
+void _glfwPlatformUpdateGamepaGuiD(char* guid)
 {
     if (strcmp(guid + 20, "504944564944") == 0)
     {

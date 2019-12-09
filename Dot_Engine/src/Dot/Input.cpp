@@ -15,6 +15,8 @@ namespace Dot {
 		return { (float)xpos, (float)ypos };
 	}
 
+
+
 	bool Input::IsKeyPressedImp1(int keycode)
 	{
 		GLFWwindow* window = Application::Get().GetWin().GetWindow();
