@@ -1,18 +1,17 @@
 #include "stdafx.h"
 #include "GuiLayer.h"
-#include "Dot/Application.h"
+#include "Dot/Core/Application.h"
 
-#include "Dot/MouseButtonCodes.h"
-#include "Dot/Input.h"
+#include "Dot/Core/MouseButtonCodes.h"
+#include "Dot/Core/Input.h"
 
-#include "Dot/Graphics/GuiSystem/Button.h"
-#include "Dot/Graphics/GuiSystem/Checkbox.h"
-#include "Dot/Graphics/GuiSystem/Slider.h"
-#include "Dot/Graphics/GuiSystem/Gui.h"
+#include "Dot/Gui/GuiSystem/Button.h"
+#include "Dot/Gui/GuiSystem/Checkbox.h"
+#include "Dot/Gui/GuiSystem/Slider.h"
+#include "Dot/Gui/GuiSystem/Gui.h"
+#include "Dot/Gui/GuiSystem/GuiRenderer.h"
 
-#include "Dot/Graphics/Text/TextRenderer.h"
-#include "Dot/Graphics/GuiSystem/GuiRenderer.h"
-
+#include "Dot/Utils/Text/TextRenderer.h"
 
 namespace Dot {
 	GuiLayer::GuiLayer()

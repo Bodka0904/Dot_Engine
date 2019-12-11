@@ -1,0 +1,105 @@
+2019-12-10.22:29:52:	Log is 96 haha
+2019-12-10.22:29:52:	Log is 96 haha
+2019-12-10.22:29:52:	Log is 96 haha
+2019-12-10.22:29:53:	Log is 96 haha
+2019-12-10.22:29:53:	Log is 96 haha
+2019-12-10.22:29:53:	Log is 96 haha
+2019-12-10.22:29:53:	Log is 96 haha
+2019-12-10.22:29:53:	Log is 96 haha
+2019-12-10.22:29:53:	Log is 96 haha
+2019-12-10.22:29:54:	Log is 96 haha
+2019-12-11.11:43:03: Log is 96 haha
+2019-12-11.11:43:06: Log is 96 haha
+2019-12-11.11:43:06: Log is 96 haha
+2019-12-11.11:43:07: Log is 96 haha
+2019-12-11.11:52:33: Log is 96 haha
+2019-12-11.11:52:34: Log is 96 haha
+2019-12-11.11:52:35: Log is 96 haha
+2019-12-11.11:52:35: Log is 96 haha
+2019-12-11.11:52:35: Log is 96 haha
+2019-12-11.11:52:35: Log is 96 haha
+2019-12-11.12:14:47: Test
+2019-12-11.12:14:48: Test
+2019-12-11.12:14:49: Test
+2019-12-11.12:14:50: Test
+2019-12-11.12:14:51: Test
+2019-12-11.12:16:07: Test
+2019-12-11.12:16:07: Test
+2019-12-11.12:16:08: Test
+2019-12-11.12:16:08: Test
+2019-12-11.12:16:08: Test
+2019-12-11.12:20:36: Test
+2019-12-11.12:20:37: Test
+2019-12-11.12:20:37: Test
+2019-12-11.12:22:43: Test
+2019-12-11.12:22:43: Test
+2019-12-11.12:22:43: Test
+2019-12-11.12:22:44: Test
+2019-12-11.12:22:44: Test
+2019-12-11.12:22:44: Test
+2019-12-11.12:22:44: Test
+2019-12-11.12:22:44: Test
+2019-12-11.12:22:45: Test
+2019-12-11.12:22:45: Test
+2019-12-11.12:58:24: Test
+2019-12-11.12:58:24: Test
+2019-12-11.12:58:25: Test
+2019-12-11.12:58:25: Test
+2019-12-11.12:58:25: Test
+2019-12-11.12:58:25: Test
+2019-12-11.12:58:25: Test
+2019-12-11.12:58:26: Test
+2019-12-11.12:58:26: Test
+2019-12-11.13:16:52: Test
+2019-12-11.13:16:55: Test
+2019-12-11.13:22:49: Test
+2019-12-11.13:22:49: Test
+2019-12-11.13:22:52: Test
+2019-12-11.13:22:52: Test
+2019-12-11.13:22:53: Test
+2019-12-11.13:22:53: Test
+2019-12-11.13:22:53: Test
+2019-12-11.13:27:13: Test
+2019-12-11.13:27:13: Test
+2019-12-11.13:27:13: Test
+2019-12-11.13:27:15: Test
+2019-12-11.13:27:15: Test
+2019-12-11.13:27:15: Test
+2019-12-11.13:27:16: Test
+2019-12-11.13:45:58: OpenGL Info:
+2019-12-11.13:45:58: Vendor: NVIDIA Corporation
+2019-12-11.13:45:58: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.13:45:58: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.13:46:18: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.13:46:18: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.13:46:27: Buffer for dynamic text is full!
+2019-12-11.13:46:27: Buffer for dynamic text is full!
+2019-12-11.13:46:28: Buffer for dynamic text is full!
+2019-12-11.13:46:30: Buffer for dynamic text is full!
+2019-12-11.13:46:30: Buffer for dynamic text is full!
+2019-12-11.13:46:30: Buffer for dynamic text is full!
+2019-12-11.13:46:34: Window: Close
+2019-12-11.13:59:01: OpenGL Info:
+2019-12-11.13:59:01: Vendor: NVIDIA Corporation
+2019-12-11.13:59:01: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.13:59:01: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.13:59:21: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.13:59:21: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.14:11:45: OpenGL Info:
+2019-12-11.14:11:45: Vendor: NVIDIA Corporation
+2019-12-11.14:11:45: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.14:11:45: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.14:15:49: OpenGL Info:
+2019-12-11.14:15:49: Vendor: NVIDIA Corporation
+2019-12-11.14:15:49: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.14:15:49: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.14:16:09: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.14:16:09: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.14:16:17: Window: Close
+2019-12-11.14:44:24: OpenGL Info:
+2019-12-11.14:44:24: Vendor: NVIDIA Corporation
+2019-12-11.14:44:24: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.14:44:24: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.14:44:45: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.14:44:45: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.14:44:52: Window: Close

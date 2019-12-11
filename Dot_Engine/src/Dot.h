@@ -1,43 +1,42 @@
 #pragma once
 
 
-#include "Dot/Application.h"
-#include "Dot/Layer.h"
+#include "Dot/Core/Application.h"
+#include "Dot/Core/Layer.h"
 #include "Dot/Debug/Log.h"
 
-#include "Dot/Input.h"
-#include "Dot/KeyCodes.h"
-#include "Dot/MouseButtonCodes.h"
+#include "Dot/Core/Input.h"
+#include "Dot/Core/KeyCodes.h"
+#include "Dot/Core/MouseButtonCodes.h"
 
-#include "Dot/Utils/Timestep.h"
+
+#include "Dot/Renderer/Buffers/FrameBuffer.h"
+#include "Dot/Renderer/Renderer.h"
+#include "Dot/Renderer/Camera/Camera.h"
+#include "Dot/Renderer/Camera/OrthoCamera.h"
+#include "Dot/Renderer/Shaders/Shader.h"
+#include "Dot/Renderer/Mesh.h"
+#include "Dot/Renderer/Material/Light.h"
+#include "Dot/Renderer/Texture.h"
+#include "Dot/Renderer/AnimatedMesh.h"
+
+#include "Dot/Utils/Time/Timestep.h"
 #include "Dot/Utils/MousePicker.h"
-
-#include "Dot/Graphics/Text/Font.h"
-#include "Dot/Graphics/Renderer/Buffers/FrameBuffer.h"
-#include "Dot/Graphics/Renderer/Renderer.h"
-#include "Dot/Graphics/Renderer/Camera/Camera.h"
-#include "Dot/Graphics/Renderer/Camera/OrthoCamera.h"
-#include "Dot/Graphics/Shaders/Shader.h"
-#include "Dot/Graphics/Renderer/Mesh.h"
-#include "Dot/Graphics/Skybox.h"
-#include "Dot/Graphics/Transform.h"
-#include "Dot/Graphics/Renderer/Texture.h"
-#include "Dot/Graphics/Renderer/AnimatedMesh.h"
-#include "Dot/Graphics/Particle/ParticleManager.h"
-#include "Dot/Graphics/Renderer/Material/Light.h"
-
-#include "Dot/Terrain/TerrainEditor.h"
-//#include "Dot/Terrain/Terrain.h"
-#include "Dot/Terrain/Water.h"
+#include "Dot/Utils/Text/Font.h"
+#include "Dot/Utils/Skybox.h"
+#include "Dot/utils/Transform.h"
+#include "Dot/Utils/Particle/ParticleManager.h"
+#include "Dot/Utils/Terrain/TerrainEditor.h"
+#include "Dot/Utils/Terrain/Water.h"
 
 
 // --- Widgets --------------
-#include "Dot/Graphics/GuiSystem/Slider.h"
-#include "Dot/Graphics/GuiSystem/Checkbox.h"
-#include "Dot/Graphics/GuiSystem/ArrowButton.h"
-#include "Dot/Graphics/GuiSystem/Button.h"
-#include "Dot/Graphics/GuiSystem/Gui.h"
+#include "Dot/Gui/GuiSystem/Slider.h"
+#include "Dot/Gui/GuiSystem/Checkbox.h"
+#include "Dot/Gui/GuiSystem/ArrowButton.h"
+#include "Dot/Gui/GuiSystem/Button.h"
+#include "Dot/Gui/GuiSystem/Gui.h"
 
 // --- Entry Point -----------------
-#include "Dot/EntryPoint.h"
+#include "Dot/Core/EntryPoint.h"
 // ---------------------------------

@@ -1,9 +1,9 @@
 #pragma once
-#include "Dot/Layer.h"
-#include "Dot/Graphics/Renderer/Camera/OrthoCamera.h"
-#include "Dot/Graphics/Shaders/Shader.h"
+#include "Dot/Core/Layer.h"
+#include "Dot/Renderer/Camera/OrthoCamera.h"
+#include "Dot/Renderer/Shaders/Shader.h"
 
-#include "Dot/Graphics/Text/DynamicText.h"
+#include "Dot/Utils/Text/DynamicText.h"
 
 namespace Dot {
 

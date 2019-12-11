@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/Graphics/Renderer/Camera/Camera.h"
+#include "Dot/Renderer/Camera/Camera.h"
 #include <glm/glm.hpp>
 
 namespace Dot {

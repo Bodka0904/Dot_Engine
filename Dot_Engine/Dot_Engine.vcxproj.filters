@@ -7,62 +7,65 @@
     <Filter Include="src\Dot">
       <UniqueIdentifier>{836F2FA9-EF4E-AE44-F866-391B64C514A6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Core">
+      <UniqueIdentifier>{BBBD39E0-A720-C984-50A6-013B3CE89407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Core\Events">
+      <UniqueIdentifier>{3F49CF3F-ABAA-AC4D-3418-F3FFA078E30C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Dot\Debug">
       <UniqueIdentifier>{39D07DE7-A590-F91D-6ECB-429BDA4A3EFA}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Debug\OpenGL">
       <UniqueIdentifier>{4DDFD8F2-396E-62BC-E28C-76B7CEFA7262}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Events">
-      <UniqueIdentifier>{072AC2DA-F3F7-B5E0-DC8B-2607C8F89145}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics">
-      <UniqueIdentifier>{235B582F-0F54-7781-3886-5C0624DE568D}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\GuiSystem">
-      <UniqueIdentifier>{DCE00AD1-C8F0-B6A1-31AA-1BC01DD9A53A}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\Particle">
-      <UniqueIdentifier>{8656F7B5-F218-2B40-3BC9-B9CCA7CA031E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\Renderer">
-      <UniqueIdentifier>{29D6EBB7-9598-1F42-DE48-AECE4A4AF81F}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\Renderer\Buffers">
-      <UniqueIdentifier>{A5AE4472-111D-9AF1-5A06-55F1C6B38F8D}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\Renderer\Camera">
-      <UniqueIdentifier>{81C25DE5-6D13-4927-9677-37E98227DC90}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\Renderer\Material">
-      <UniqueIdentifier>{E702BFFE-D33E-C268-3C51-DA5F28AC6A83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\Shaders">
-      <UniqueIdentifier>{FCF26A7F-E817-BAFF-1163-9F8FFDE6B81D}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\Shaders\Materials">
-      <UniqueIdentifier>{CDE01A58-B91C-1EC2-222F-36B90E8AC6DC}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\Shaders\Uniform">
-      <UniqueIdentifier>{6BC8258E-5719-11D0-807D-FF916C2DA439}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Graphics\Text">
-      <UniqueIdentifier>{1716F020-8382-AB1B-4C76-4379B8A1CD83}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Dot\Gui">
       <UniqueIdentifier>{577CAC8A-C331-2580-4C26-1F57B8DA1B84}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Terrain">
-      <UniqueIdentifier>{E765F68E-53F1-6353-5C02-E747C80CC053}</UniqueIdentifier>
+    <Filter Include="src\Dot\Gui\GuiSystem">
+      <UniqueIdentifier>{1013916F-7C7F-4C6A-4573-E4C7B19E6ED2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Renderer">
+      <UniqueIdentifier>{89D6EF8A-75CF-0EDD-9E01-F4618A59EEE8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Renderer\Buffers">
+      <UniqueIdentifier>{050FF3B7-F133-4238-1A7F-27C806034156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Renderer\Camera">
+      <UniqueIdentifier>{E1969144-4DCE-D9DB-56D8-3DFFC28E00D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Renderer\Material">
+      <UniqueIdentifier>{476F39FA-B331-6D84-FCE1-FB1068E34562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Renderer\Shaders">
+      <UniqueIdentifier>{6274E2B5-4E99-3136-77E4-16C663683054}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Renderer\Shaders\Materials">
+      <UniqueIdentifier>{B3D99729-9F15-9B93-0828-B38AF48243AE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Renderer\Shaders\Uniform">
+      <UniqueIdentifier>{D14F236A-BDA0-0EAC-E604-FD6DD2B4A115}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Utils">
       <UniqueIdentifier>{23C7B9E8-8F87-351F-58C2-7E9CC4417AFB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platform">
-      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    <Filter Include="src\Dot\Utils\Bmp">
+      <UniqueIdentifier>{B18DD9B0-1DA4-D746-661B-6368D270A8CE}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platform\OpenGL">
-      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    <Filter Include="src\Dot\Utils\Console">
+      <UniqueIdentifier>{45511CCB-B1BD-D7C5-7AB1-6F23E6DCF92D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Utils\Particle">
+      <UniqueIdentifier>{8642B201-723C-DB53-5BA9-7164474241C0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Utils\Terrain">
+      <UniqueIdentifier>{875DAED0-F3C9-69CB-BCBD-012928E98B33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Utils\Text">
+      <UniqueIdentifier>{170215CC-03E6-D521-6C46-D0745849C0A3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Utils\Time">
+      <UniqueIdentifier>{A11115CC-8DF5-D521-F655-D074E258C0A3}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -93,14 +96,38 @@
     <ClInclude Include="src\Dot.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Application.h">
-      <Filter>src\Dot</Filter>
+    <ClInclude Include="src\Dot\Core\Application.h">
+      <Filter>src\Dot\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\ColorCodes.h">
-      <Filter>src\Dot</Filter>
+    <ClInclude Include="src\Dot\Core\ColorCodes.h">
+      <Filter>src\Dot\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Core.h">
-      <Filter>src\Dot</Filter>
+    <ClInclude Include="src\Dot\Core\Core.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Core\EntryPoint.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Core\Events\Event.h">
+      <Filter>src\Dot\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Core\Input.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Core\KeyCodes.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Core\Layer.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Core\MouseButtonCodes.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Core\OpenGLContext.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Core\Window.h">
+      <Filter>src\Dot\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Debug\DebugNew.h">
       <Filter>src\Dot\Debug</Filter>
@@ -114,131 +141,128 @@
     <ClInclude Include="src\Dot\Debug\Timer.h">
       <Filter>src\Dot\Debug</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\EntryPoint.h">
-      <Filter>src\Dot</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Events\Event.h">
-      <Filter>src\Dot\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\Arrowbutton.h">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\Button.h">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\Checkbox.h">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\Gui.h">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\Slider.h">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Particle\Particle.h">
-      <Filter>src\Dot\Graphics\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Particle\ParticleManager.h">
-      <Filter>src\Dot\Graphics\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Particle\ParticleSystem.h">
-      <Filter>src\Dot\Graphics\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\AnimatedMesh.h">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Buffers\ArrayBuffer.h">
-      <Filter>src\Dot\Graphics\Renderer\Buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Buffers\Buffer.h">
-      <Filter>src\Dot\Graphics\Renderer\Buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Buffers\FrameBuffer.h">
-      <Filter>src\Dot\Graphics\Renderer\Buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Camera\Camera.h">
-      <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.h">
-      <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Material\Light.h">
-      <Filter>src\Dot\Graphics\Renderer\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Mesh.h">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Renderer.h">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Renderer2D.h">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\RendererFlags.h">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Renderer\Texture.h">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Shaders\Materials\Material.h">
-      <Filter>src\Dot\Graphics\Shaders\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Shaders\Shader.h">
-      <Filter>src\Dot\Graphics\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.h">
-      <Filter>src\Dot\Graphics\Shaders\Uniform</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Skybox.h">
-      <Filter>src\Dot\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Text\Font.h">
-      <Filter>src\Dot\Graphics\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Text\Text.h">
-      <Filter>src\Dot\Graphics\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Transform.h">
-      <Filter>src\Dot\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Window.h">
-      <Filter>src\Dot\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Gui\GuiLayer.h">
       <Filter>src\Dot\Gui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Input.h">
-      <Filter>src\Dot</Filter>
+    <ClInclude Include="src\Dot\Gui\GuiSystem\Arrowbutton.h">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\KeyCodes.h">
-      <Filter>src\Dot</Filter>
+    <ClInclude Include="src\Dot\Gui\GuiSystem\Button.h">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Layer.h">
-      <Filter>src\Dot</Filter>
+    <ClInclude Include="src\Dot\Gui\GuiSystem\Checkbox.h">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\MouseButtonCodes.h">
-      <Filter>src\Dot</Filter>
+    <ClInclude Include="src\Dot\Gui\GuiSystem\Gui.h">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Terrain\Terrain.h">
-      <Filter>src\Dot\Terrain</Filter>
+    <ClInclude Include="src\Dot\Gui\GuiSystem\GuiRenderer.h">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Terrain\TerrainEditor.h">
-      <Filter>src\Dot\Terrain</Filter>
+    <ClInclude Include="src\Dot\Gui\GuiSystem\Slider.h">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Terrain\Water.h">
-      <Filter>src\Dot\Terrain</Filter>
+    <ClInclude Include="src\Dot\Renderer\AnimatedMesh.h">
+      <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Utils\BmpLoader.h">
-      <Filter>src\Dot\Utils</Filter>
+    <ClInclude Include="src\Dot\Renderer\Buffers\ArrayBuffer.h">
+      <Filter>src\Dot\Renderer\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Buffers\Buffer.h">
+      <Filter>src\Dot\Renderer\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Buffers\FrameBuffer.h">
+      <Filter>src\Dot\Renderer\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Camera\Camera.h">
+      <Filter>src\Dot\Renderer\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Camera\OrthoCamera.h">
+      <Filter>src\Dot\Renderer\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Material\Light.h">
+      <Filter>src\Dot\Renderer\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Mesh.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Renderable2D.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Renderer.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Renderer2D.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\RendererFlags.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Shaders\Materials\Material.h">
+      <Filter>src\Dot\Renderer\Shaders\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Shaders\Shader.h">
+      <Filter>src\Dot\Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Shaders\Uniform\UniformBuffer.h">
+      <Filter>src\Dot\Renderer\Shaders\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Texture.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Bmp\BmpLoader.h">
+      <Filter>src\Dot\Utils\Bmp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Console\Console.h">
+      <Filter>src\Dot\Utils\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Console\ConsoleLayer.h">
+      <Filter>src\Dot\Utils\Console</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\MousePicker.h">
       <Filter>src\Dot\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Timestep.h">
+    <ClInclude Include="src\Dot\Utils\Particle\Particle.h">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Particle\ParticleManager.h">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Particle\ParticleSystem.h">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Skybox.h">
       <Filter>src\Dot\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
-      <Filter>src\Platform\OpenGL</Filter>
+    <ClInclude Include="src\Dot\Utils\Terrain\Terrain.h">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Terrain\TerrainEditor.h">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Terrain\Water.h">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Text\DynamicText.h">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Text\Font.h">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Text\Text.h">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Text\TextRenderer.h">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Time\TimeUtils.h">
+      <Filter>src\Dot\Utils\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Time\Timestep.h">
+      <Filter>src\Dot\Utils\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Transform.h">
+      <Filter>src\Dot\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\stdafx.h">
       <Filter>src</Filter>
@@ -1338,16 +1362,22 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Graphics\Text\DynamicText.h" />
-    <ClInclude Include="src\Dot\Graphics\GuiSystem\GuiRenderer.h" />
-    <ClInclude Include="src\Dot\Graphics\Text\TextRenderer.h" />
-    <ClInclude Include="src\Dot\Graphics\Console\Console.h" />
-    <ClInclude Include="src\Dot\Graphics\Renderer\Renderable2D.h" />
-    <ClInclude Include="src\Dot\Console\ConsoleLayer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Dot\Application.cpp">
-      <Filter>src\Dot</Filter>
+    <ClCompile Include="src\Dot\Core\Application.cpp">
+      <Filter>src\Dot\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Core\Input.cpp">
+      <Filter>src\Dot\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Core\Layer.cpp">
+      <Filter>src\Dot\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Core\OpenGLContext.cpp">
+      <Filter>src\Dot\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Core\Window.cpp">
+      <Filter>src\Dot\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Debug\Log.cpp">
       <Filter>src\Dot\Debug</Filter>
@@ -1355,107 +1385,113 @@
     <ClCompile Include="src\Dot\Debug\Timer.cpp">
       <Filter>src\Dot\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\Arrowbutton.cpp">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\Button.cpp">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\Checkbox.cpp">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\Gui.cpp">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\Slider.cpp">
-      <Filter>src\Dot\Graphics\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Particle\Particle.cpp">
-      <Filter>src\Dot\Graphics\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Particle\ParticleManger.cpp">
-      <Filter>src\Dot\Graphics\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Particle\ParticleSystem.cpp">
-      <Filter>src\Dot\Graphics\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\AnimatedMesh.cpp">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Buffers\ArrayBuffer.cpp">
-      <Filter>src\Dot\Graphics\Renderer\Buffers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Buffers\Buffer.cpp">
-      <Filter>src\Dot\Graphics\Renderer\Buffers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Buffers\FrameBuffer.cpp">
-      <Filter>src\Dot\Graphics\Renderer\Buffers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Camera\Camera.cpp">
-      <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Camera\OrthoCamera.cpp">
-      <Filter>src\Dot\Graphics\Renderer\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Material\Light.cpp">
-      <Filter>src\Dot\Graphics\Renderer\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Mesh.cpp">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Renderer.cpp">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Renderer2D.cpp">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Renderer\Texture.cpp">
-      <Filter>src\Dot\Graphics\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Shaders\Shader.cpp">
-      <Filter>src\Dot\Graphics\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Shaders\Uniform\UniformBuffer.cpp">
-      <Filter>src\Dot\Graphics\Shaders\Uniform</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Skybox.cpp">
-      <Filter>src\Dot\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Text\Font.cpp">
-      <Filter>src\Dot\Graphics\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Text\Text.cpp">
-      <Filter>src\Dot\Graphics\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Window.cpp">
-      <Filter>src\Dot\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Gui\GuiLayer.cpp">
       <Filter>src\Dot\Gui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Input.cpp">
-      <Filter>src\Dot</Filter>
+    <ClCompile Include="src\Dot\Gui\GuiSystem\Arrowbutton.cpp">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Layer.cpp">
-      <Filter>src\Dot</Filter>
+    <ClCompile Include="src\Dot\Gui\GuiSystem\Button.cpp">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Terrain\Terrain.cpp">
-      <Filter>src\Dot\Terrain</Filter>
+    <ClCompile Include="src\Dot\Gui\GuiSystem\Checkbox.cpp">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Terrain\TerrainEditor.cpp">
-      <Filter>src\Dot\Terrain</Filter>
+    <ClCompile Include="src\Dot\Gui\GuiSystem\Gui.cpp">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Terrain\Water.cpp">
-      <Filter>src\Dot\Terrain</Filter>
+    <ClCompile Include="src\Dot\Gui\GuiSystem\GuiRenderer.cpp">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Utils\BmpLoader.cpp">
-      <Filter>src\Dot\Utils</Filter>
+    <ClCompile Include="src\Dot\Gui\GuiSystem\Slider.cpp">
+      <Filter>src\Dot\Gui\GuiSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\AnimatedMesh.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Buffers\ArrayBuffer.cpp">
+      <Filter>src\Dot\Renderer\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Buffers\Buffer.cpp">
+      <Filter>src\Dot\Renderer\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Buffers\FrameBuffer.cpp">
+      <Filter>src\Dot\Renderer\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Camera\Camera.cpp">
+      <Filter>src\Dot\Renderer\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Camera\OrthoCamera.cpp">
+      <Filter>src\Dot\Renderer\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Material\Light.cpp">
+      <Filter>src\Dot\Renderer\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Mesh.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Renderable2D.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Renderer.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Renderer2D.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Shaders\Shader.cpp">
+      <Filter>src\Dot\Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Shaders\Uniform\UniformBuffer.cpp">
+      <Filter>src\Dot\Renderer\Shaders\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Texture.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Bmp\BmpLoader.cpp">
+      <Filter>src\Dot\Utils\Bmp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Console\Console.cpp">
+      <Filter>src\Dot\Utils\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Console\ConsoleLayer.cpp">
+      <Filter>src\Dot\Utils\Console</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Utils\MousePicker.cpp">
       <Filter>src\Dot\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
+    <ClCompile Include="src\Dot\Utils\Particle\Particle.cpp">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Particle\ParticleManger.cpp">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Particle\ParticleSystem.cpp">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Skybox.cpp">
+      <Filter>src\Dot\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Terrain\Terrain.cpp">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Terrain\TerrainEditor.cpp">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Terrain\Water.cpp">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Text\DynamicText.cpp">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Text\Font.cpp">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Text\Text.cpp">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Text\TextRenderer.cpp">
+      <Filter>src\Dot\Utils\Text</Filter>
     </ClCompile>
     <ClCompile Include="src\stdafx.cpp">
       <Filter>src</Filter>
@@ -1463,11 +1499,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Graphics\Text\DynamicText.cpp" />
-    <ClCompile Include="src\Dot\Graphics\GuiSystem\GuiRenderer.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Text\TextRenderer.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Console\Console.cpp" />
-    <ClCompile Include="src\Dot\Graphics\Renderer\Renderable2D.cpp" />
-    <ClCompile Include="src\Dot\Console\ConsoleLayer.cpp" />
   </ItemGroup>
 </Project>

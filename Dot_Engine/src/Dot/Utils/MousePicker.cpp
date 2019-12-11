@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "MousePicker.h"
-#include "Dot/Input.h"
-#include "Dot/Application.h"
+#include "Dot/Core/Input.h"
+#include "Dot/Core/Application.h"
+
 #include <glm/gtx/transform.hpp>
 
 namespace Dot {
