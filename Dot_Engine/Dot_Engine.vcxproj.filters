@@ -129,14 +129,8 @@
     <ClInclude Include="src\Dot\Core\Window.h">
       <Filter>src\Dot\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Debug\DebugNew.h">
-      <Filter>src\Dot\Debug</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Debug\Log.h">
       <Filter>src\Dot\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Debug\OpenGL\OpenGLErr.h">
-      <Filter>src\Dot\Debug\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Debug\Timer.h">
       <Filter>src\Dot\Debug</Filter>
@@ -216,9 +210,6 @@
     <ClInclude Include="src\Dot\Utils\Console\Console.h">
       <Filter>src\Dot\Utils\Console</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Console\ConsoleLayer.h">
-      <Filter>src\Dot\Utils\Console</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Utils\MousePicker.h">
       <Filter>src\Dot\Utils</Filter>
     </ClInclude>
@@ -243,13 +234,7 @@
     <ClInclude Include="src\Dot\Utils\Terrain\Water.h">
       <Filter>src\Dot\Utils\Terrain</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Text\DynamicText.h">
-      <Filter>src\Dot\Utils\Text</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Utils\Text\Font.h">
-      <Filter>src\Dot\Utils\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Text\Text.h">
       <Filter>src\Dot\Utils\Text</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\Text\TextRenderer.h">
@@ -1362,6 +1347,9 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Camera\CameraController.h" />
+    <ClInclude Include="src\Dot\Utils\Text\Text.h" />
+    <ClInclude Include="src\Dot\Utils\Text\DynamicText.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Core\Application.cpp">
@@ -1454,9 +1442,6 @@
     <ClCompile Include="src\Dot\Utils\Console\Console.cpp">
       <Filter>src\Dot\Utils\Console</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Console\ConsoleLayer.cpp">
-      <Filter>src\Dot\Utils\Console</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Utils\MousePicker.cpp">
       <Filter>src\Dot\Utils</Filter>
     </ClCompile>
@@ -1481,13 +1466,7 @@
     <ClCompile Include="src\Dot\Utils\Terrain\Water.cpp">
       <Filter>src\Dot\Utils\Terrain</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Text\DynamicText.cpp">
-      <Filter>src\Dot\Utils\Text</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Utils\Text\Font.cpp">
-      <Filter>src\Dot\Utils\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Text\Text.cpp">
       <Filter>src\Dot\Utils\Text</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Utils\Text\TextRenderer.cpp">
@@ -1499,5 +1478,8 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Camera\CameraController.cpp" />
+    <ClCompile Include="src\Dot\Utils\Text\Text.cpp" />
+    <ClCompile Include="src\Dot\Utils\Text\DynamicText.cpp" />
   </ItemGroup>
 </Project>

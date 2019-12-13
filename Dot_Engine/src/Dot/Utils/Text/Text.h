@@ -1,14 +1,12 @@
 #pragma once
-#include "Dot/Renderer/Shaders/Shader.h"
 #include "Dot/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Renderer/Buffers/ArrayBuffer.h"
-
 
 namespace Dot {
 	class Text
 	{
 	public:
-		Text(const std::string& font, std::string text, const glm::vec2 position ,const glm::vec2 size);
+		Text(const std::string& font, std::string text, const glm::vec2 position, const glm::vec2 size);
 		void SetPosition(const glm::vec2& position);
 		const glm::vec2& GetSize() const { return m_Size; }
 

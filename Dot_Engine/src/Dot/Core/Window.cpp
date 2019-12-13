@@ -41,7 +41,6 @@ namespace Dot {
 
 		glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
 		{
-			LOG_INFO("Window: Resized window width: %d height: %d", width, height);
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			data.width = width;
 			data.height = height;

@@ -4,6 +4,8 @@
 #include "Application.h"
 
 namespace Dot {
+
+
 	Input* Input::s_Instance = new Input();
 
 	std::pair<float, float> Input::GetMousePositionImp1()
@@ -11,7 +13,6 @@ namespace Dot {
 		GLFWwindow* window = Application::Get().GetWin().GetWindow();
 		double xpos, ypos;
 		glfwGetCursorPos(window, &xpos, &ypos);
-
 		return { (float)xpos, (float)ypos };
 	}
 
@@ -33,14 +34,14 @@ namespace Dot {
 
 	float Input::GetMouseXImp1()
 	{
-		auto[x, y] = Input::GetMousePositionImp1();
+		auto [x, y] = Input::GetMousePositionImp1();
 		return x;
 	}
 
 	float Input::GetMouseYImp1()
 	{
 
-		auto[x, y] = Input::GetMousePositionImp1();
+		auto [x, y] = Input::GetMousePositionImp1();
 		return y; 0.0f;
 	}
 
@@ -49,7 +50,7 @@ namespace Dot {
 		int width, height;
 		GLFWwindow* window = Application::Get().GetWin().GetWindow();
 		glfwGetWindowSize(window, &width, &height);
-		return std::pair<int, int>(width,height);
+		return std::pair<int, int>(width, height);
 	}
 
 }

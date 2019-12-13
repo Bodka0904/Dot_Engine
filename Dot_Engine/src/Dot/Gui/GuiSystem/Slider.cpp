@@ -66,10 +66,10 @@ namespace Dot {
 		{
 			m_TexOffset = -*m_Value - 0.1;
 			glm::vec2 texcoords[4] = {
-					glm::vec2(0.5 + m_TexOffset / 2,0.5),
-					glm::vec2(1 + m_TexOffset / 2,0.5),
-					glm::vec2(1 + m_TexOffset / 2,0.75),
-					glm::vec2(0.5 + m_TexOffset / 2,0.75)
+					glm::vec2(0.25 + m_TexOffset / 4,0.5),
+					glm::vec2(0.5 + m_TexOffset / 4,0.5),
+					glm::vec2(0.5 + m_TexOffset / 4,0.75),
+					glm::vec2(0.25 + m_TexOffset / 4,0.75)
 			};
 			Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		}
@@ -77,10 +77,10 @@ namespace Dot {
 		{
 			m_TexOffset = -*m_Value + 0.1;
 			glm::vec2 texcoords[4] = {
-					glm::vec2(0.5 + m_TexOffset / 2,0.5),
-					glm::vec2(1 + m_TexOffset / 2,0.5),
-					glm::vec2(1 + m_TexOffset / 2,0.75),
-					glm::vec2(0.5 + m_TexOffset / 2,0.75)
+					glm::vec2(0.25 + m_TexOffset / 4,0.5),
+					glm::vec2(0.5 + m_TexOffset / 4,0.5),
+					glm::vec2(0.5 + m_TexOffset / 4,0.75),
+					glm::vec2(0.25 + m_TexOffset / 4,0.75)
 			};
 			Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		}
@@ -88,13 +88,25 @@ namespace Dot {
 		{
 			m_TexOffset = -*m_Value;
 			glm::vec2 texcoords[4] = {
-					glm::vec2(0.5 + m_TexOffset / 2,0.5),
-					glm::vec2(1 + m_TexOffset / 2,0.5),
-					glm::vec2(1 + m_TexOffset / 2,0.75),
-					glm::vec2(0.5 + m_TexOffset / 2,0.75)
+					glm::vec2(0.25 + m_TexOffset / 4,0.5),
+					glm::vec2(0.5 + m_TexOffset / 4,0.5),
+					glm::vec2(0.5 + m_TexOffset / 4,0.75),
+					glm::vec2(0.25 + m_TexOffset / 4,0.75)
 			};
 			Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		}
+	}
+	void Slider::Minimize()
+	{
+		glm::vec2 newPos[4] =
+		{
+			glm::vec2(0),
+			glm::vec2(0),
+			glm::vec2(0),
+			glm::vec2(0)
+		};
+		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		m_Label.SetPosition(glm::vec2(-100, -100));
 	}
 	const glm::vec2& Slider::GetLabelSize()
 	{
@@ -113,10 +125,10 @@ namespace Dot {
 	void Slider::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size,float *val)
 	{
 		glm::vec2 texCoords[4] = {
+				glm::vec2(0.25, 0.5),
 				glm::vec2(0.5, 0.5),
-				glm::vec2(1, 0.5),
-				glm::vec2(1, 0.75),
-				glm::vec2(0.5, 0.75)
+				glm::vec2(0.5, 0.75),
+				glm::vec2(0.25, 0.75)
 		};
 
 		Quad quad(position, size);

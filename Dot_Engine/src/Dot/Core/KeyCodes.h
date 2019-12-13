@@ -58,7 +58,7 @@ namespace Dot {
 #define D_KEY_TAB                258
 #define D_KEY_BACKSPACE          259
 #define D_KEY_INSERT             260
-#define D_KEY_DELETE             261
+#define D_KEY_Delete             261
 #define D_KEY_RIGHT              262
 #define D_KEY_LEFT               263
 #define D_KEY_DOWN               264

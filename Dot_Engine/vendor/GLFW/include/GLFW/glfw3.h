@@ -414,7 +414,7 @@ extern "C" {
 #define GLFW_KEY_TAB                258
 #define GLFW_KEY_BACKSPACE          259
 #define GLFW_KEY_INSERT             260
-#define GLFW_KEY_DELETE             261
+#define GLFW_KEY_Delete             261
 #define GLFW_KEY_RIGHT              262
 #define GLFW_KEY_LEFT               263
 #define GLFW_KEY_DOWN               264
@@ -3008,7 +3008,7 @@ GLFWAPI void glfwSetWindowOpacity(GLFWwindow* window, float opacity);
 
 /*! @brief Iconifies the specified window.
  *
- *  This function iconifies (minimizes) the specified window if it was
+ *  This function iconifies (Deletes) the specified window if it was
  *  previously restored.  If the window is already iconified, this function does
  *  nothing.
  *
@@ -3040,7 +3040,7 @@ GLFWAPI void glfwIconifyWindow(GLFWwindow* window);
 /*! @brief Restores the specified window.
  *
  *  This function restores the specified window if it was previously iconified
- *  (minimized) or maximized.  If the window is already restored, this function
+ *  (Deleted) or maximized.  If the window is already restored, this function
  *  does nothing.
  *
  *  If the specified window is a full screen window, the resolution chosen for

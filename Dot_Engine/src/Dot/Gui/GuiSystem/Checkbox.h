@@ -15,6 +15,7 @@ namespace Dot {
 		virtual void SetPosition(const glm::vec2& pos) override;
 		virtual void ClickHandle() override;
 		virtual void SetIndex(const unsigned int index) override { m_Index = index; };
+		virtual void Minimize()override;
 		virtual const glm::vec2& GetPosition() override { return m_Position; }
 		virtual const glm::vec2& GetSize() override { return m_Size; }
 		virtual const glm::vec2& GetLabelSize() override;

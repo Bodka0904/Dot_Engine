@@ -28,10 +28,13 @@ namespace Dot {
 		virtual void SetPosition(const glm::vec2& pos) = 0;
 		virtual void ClickHandle() = 0;
 		virtual void SetIndex(const unsigned int index) = 0;
+		virtual void Minimize() = 0;
 		virtual const glm::vec2& GetPosition() = 0;
 		virtual const glm::vec2& GetSize() = 0;
 		virtual const glm::vec2& GetLabelSize() = 0;
 	};
+
+	
 
 	class Wrapper
 	{
@@ -41,21 +44,43 @@ namespace Dot {
 		void AddWidget(const std::string& label, Ref<Widget> widget, unsigned int index);
 		bool MouseHoover(const glm::vec2& mousePos);
 		bool MouseResize(const glm::vec2& mousePos);
-
+		bool Minimize(const glm::vec2& mousePos);
+		
 		void Resize(const glm::vec2& mousePos);
 		void Move(const glm::vec2& pos);
 		void SetPosition(const glm::vec2& pos);
 		
 		void SetWidgetPosition();
-		void SetIndex(const unsigned int index) { m_Index = index; }
+		void SetIndex(const unsigned int index) { m_Index = index; m_ExitButton.SetIndex(index + 1); }
 
 
-
+		const bool IsMinimized() const { return m_Minimized; }
 		const glm::vec2& GetPosition() { return m_Position; }
 		Widget& GetWidget(const std::string& label) { return *m_Widget[label]; }
 		const std::unordered_map <std::string, Ref<Widget> >& const GetWidgets() { return m_Widget; }
 		static void Create(const std::string& label, const glm::vec2& position, const glm::vec2& size);
 
+	private:
+		class ExitButton
+		{
+		public:
+			ExitButton(const glm::vec2& position, const glm::vec2& size);
+			bool MouseHoover(const glm::vec2& mousePos);
+			void Move(const glm::vec2& pos);
+			void SetPosition(const glm::vec2& pos);
+			void SetIndex(unsigned int index) { m_Index = index; }
+
+			const glm::vec2& GetPosition() { return m_Position; }
+			const glm::vec2& GetSize() { return m_Size; }
+ 		private:
+			glm::vec4 GetCoords();
+		private:
+			glm::vec2 m_Position;
+			glm::vec2 m_Size;
+
+			unsigned int m_Index;
+		};
+		ExitButton m_ExitButton;
 	private:
 		glm::vec4 GetCoords();
 	private:
@@ -66,20 +91,22 @@ namespace Dot {
 		glm::vec2 m_Size;
 		unsigned int m_Index;
 		bool m_Resizing = false;
+		bool m_Minimized = false;
 	};
 
+
+	// TODO POSSIBLY UPDATE TO SINGLETON
 	class Gui
 	{
 	public:
 		static void Init(const std::string& texturePack);
 		static void AddWidget(const std::string& label, Ref<Widget> widget, const Quad& quad, glm::vec2* texcoord,int num = 4);
-		static void AddWrapper(const std::string label, Ref<Wrapper> wrapper, const Quad& quad, glm::vec2* texcoord, int num = 4);
+		static void AddWrapper(const std::string label, Ref<Wrapper> wrapper, const Quad* quad, glm::vec2* texcoord, int num = 8);
 		static void EnableWrapper(const std::string& label);
 		static void DisableWrapper();
 
 		static bool HandleLeftClick();
 		static bool HandleRightClick();
-		static bool HandleMiddleClick();
 		static void HandleRelease();
 
 		static void UpdatePosBuffer(unsigned int index, unsigned int size, const void* vertices);
@@ -87,8 +114,7 @@ namespace Dot {
 
 		static void Update();
 		static void BindTexture() { s_Texture->Bind(0); };
-
-
+	
 		const static Ref<ArrayBuffer>& GetVAO() { return s_VAO; }
 		static const Widget& GetWidget(const std::string& label) { return *s_Widget[label]; }
 		static const Widget& GetWrappeWidget(const std::string& wrapper,const std::string widget) { return s_Wrapper[wrapper]->GetWidget(widget); }
@@ -113,6 +139,7 @@ namespace Dot {
 	private:
 		static glm::vec2 s_MousePosition;
 		static bool s_Locked;
+
 	
 	};
 }

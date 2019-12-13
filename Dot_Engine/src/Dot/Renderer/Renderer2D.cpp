@@ -17,29 +17,28 @@ namespace Dot {
 			{0,ShaderDataType::Float2,"a_Position"},
 			{1,ShaderDataType::Float2,"a_TexCoord"}
 		};
-		
+		m_NumDataStored = 0;
 		VBO->SetLayout(layout);
 		m_VAO->AddVBO(VBO);
 	}
-	void Renderer2D::Push(const Ref<Renderable2D> data)
+	void Renderer2D::Push(const QuadVertex* data, int len)
 	{
-		m_Buffer->position = data->GetQuad().m_Vertices[0].position;
-		m_Buffer->texCoord = data->GetQuad().m_Vertices[0].texCoord;
-		m_Buffer++;
-
-		m_Buffer->position = data->GetQuad().m_Vertices[1].position;
-		m_Buffer->texCoord = data->GetQuad().m_Vertices[1].texCoord;
-		m_Buffer++;
-
-		m_Buffer->position = data->GetQuad().m_Vertices[2].position;
-		m_Buffer->texCoord = data->GetQuad().m_Vertices[2].texCoord;
-		m_Buffer++;
-
-		m_Buffer->position = data->GetQuad().m_Vertices[3].position;
-		m_Buffer->texCoord = data->GetQuad().m_Vertices[3].texCoord;
-		m_Buffer++;
-
-		m_NumDataStored += 4;
+		int tmp = m_NumDataStored;
+		for (int i = tmp; i < len + tmp; i++)
+		{
+			for (int j = 0; j < 4; ++j)
+			{
+				m_Buffer->position = data[i].m_Vertices[j].position;
+				m_Buffer->texCoord = data[i].m_Vertices[j].texCoord;
+				m_Buffer++;
+			}
+			m_NumDataStored++;
+		}
+	}
+	void Renderer2D::PushOff(const QuadVertex* data, int len)
+	{
+		m_VAO->GetVertexBuffer(0)->Update(data,len*sizeof(QuadVertex),m_NumDataStored*sizeof(QuadVertex));
+		m_NumDataStored += len;
 	}
 	void Renderer2D::ClearBuffer()
 	{
@@ -66,7 +65,7 @@ namespace Dot {
 	void Renderer2D::Render()
 	{	
 		m_VAO->Bind();
-		glDrawArrays(GL_QUADS, 0, m_NumDataStored);
+		glDrawArrays(GL_QUADS, 0, m_NumDataStored*4);
 	}
 	void Renderer2D::EndScene()
 	{

@@ -759,18 +759,18 @@ static void _glewInfo_GL_AMD_multi_draw_indirect (void)
 
 #endif /* GL_AMD_multi_draw_indirect */
 
-#ifdef GL_AMD_name_gen_delete
+#ifdef GL_AMD_name_gen_Delete
 
-static void _glewInfo_GL_AMD_name_gen_delete (void)
+static void _glewInfo_GL_AMD_name_gen_Delete (void)
 {
-  glewPrintExt("GL_AMD_name_gen_delete", GLEW_AMD_name_gen_delete, glewIsSupported("GL_AMD_name_gen_delete"), glewGetExtension("GL_AMD_name_gen_delete"));
+  glewPrintExt("GL_AMD_name_gen_Delete", GLEW_AMD_name_gen_Delete, glewIsSupported("GL_AMD_name_gen_Delete"), glewGetExtension("GL_AMD_name_gen_Delete"));
 
   glewInfoFunc("glDeleteNamesAMD", glDeleteNamesAMD == NULL);
   glewInfoFunc("glGenNamesAMD", glGenNamesAMD == NULL);
   glewInfoFunc("glIsNameAMD", glIsNameAMD == NULL);
 }
 
-#endif /* GL_AMD_name_gen_delete */
+#endif /* GL_AMD_name_gen_Delete */
 
 #ifdef GL_AMD_occlusion_query_event
 
@@ -13192,9 +13192,9 @@ static void glewInfo (void)
 #ifdef GL_AMD_multi_draw_indirect
   _glewInfo_GL_AMD_multi_draw_indirect();
 #endif /* GL_AMD_multi_draw_indirect */
-#ifdef GL_AMD_name_gen_delete
-  _glewInfo_GL_AMD_name_gen_delete();
-#endif /* GL_AMD_name_gen_delete */
+#ifdef GL_AMD_name_gen_Delete
+  _glewInfo_GL_AMD_name_gen_Delete();
+#endif /* GL_AMD_name_gen_Delete */
 #ifdef GL_AMD_occlusion_query_event
   _glewInfo_GL_AMD_occlusion_query_event();
 #endif /* GL_AMD_occlusion_query_event */

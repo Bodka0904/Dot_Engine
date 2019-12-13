@@ -35,7 +35,7 @@ private:
 	Dot::Ref<Dot::TerrainEditor>m_Editor;
 
 	Dot::Ref<Dot::Water>m_Water;
-	Dot::Ref<Dot::Camera> m_Camera;
+	Dot::Ref<Dot::CameraController> m_CamController;
 	Dot::Ref<Dot::Light> m_Light;
 
 	Dot::Ref<Dot::ParticleManager> m_TestManager;

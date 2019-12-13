@@ -53,13 +53,26 @@ namespace Dot {
 		m_Clicked = !m_Clicked;
 		m_TexOffset = !m_TexOffset;
 		glm::vec2 texcoords[4] = {
-			   glm::vec2(0.5,0.25),
-			   glm::vec2(m_TexOffset,0.25),
-			   glm::vec2(m_TexOffset,0.5),
-			   glm::vec2(0.5,0.5)
+			   glm::vec2(0.25,0.25),
+			   glm::vec2(m_TexOffset/2,0.25),
+			   glm::vec2(m_TexOffset/2,0.5),
+			   glm::vec2(0.25,0.5)
 		};
 		Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
 		
+	}
+
+	void Checkbox::Minimize()
+	{
+		glm::vec2 newPos[4] =
+		{
+			glm::vec2(0),
+			glm::vec2(0),
+			glm::vec2(0),
+			glm::vec2(0)
+		};
+		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		m_Label.SetPosition(glm::vec2(-100, -100));
 	}
 
 	const glm::vec2& Checkbox::GetLabelSize()
@@ -82,10 +95,10 @@ namespace Dot {
 	void Checkbox::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size)
 	{
 		glm::vec2 texCoords[4] = {
-				glm::vec2(0.5, 0.25),
+				glm::vec2(0.25, 0.25),
 				glm::vec2(0,   0.25),
 				glm::vec2(0,   0.5),
-				glm::vec2(0.5, 0.5)
+				glm::vec2(0.25, 0.5)
 		};
 		 
 		Quad quad(position, size);

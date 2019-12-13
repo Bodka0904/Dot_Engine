@@ -21,7 +21,6 @@ namespace Dot {
 		static std::pair<int, int>GetWindowSize();
 	private:
 		static Input* s_Instance;
-
 	};
 
 }

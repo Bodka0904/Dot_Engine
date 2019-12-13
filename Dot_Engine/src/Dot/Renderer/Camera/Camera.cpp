@@ -2,7 +2,7 @@
 #include "Camera.h"
 #include "Dot/Core/Input.h"
 
-#include <glfw/glfw3.h>
+
 #include <glm/gtc/quaternion.hpp>
 
 #define GLM_ENABLE_EXPERIMENTAL
@@ -30,30 +30,9 @@ namespace Dot {
 		m_Pitch = M_PI / 4.0f;
 	}
 
-	void Camera::Focus()
+	void Camera::Update()
 	{
-	}
-
-	void Camera::Update(float dt)
-	{
-		if (Input::IsKeyPressed(GLFW_KEY_LEFT_ALT))
-		{
-			const glm::vec2& mouse{ Input::GetMouseX(), Input::GetMouseY() };
-			glm::vec2 delta = mouse - m_InitialMousePosition;
-			m_InitialMousePosition = mouse;
-
-			delta *= dt;
-
-			if (Input::IsMouseButtonPressed(GLFW_MOUSE_BUTTON_MIDDLE))
-				MousePan(delta);
-			else if (Input::IsMouseButtonPressed(GLFW_MOUSE_BUTTON_LEFT))
-				MouseRotate(delta);
-			else if (Input::IsMouseButtonPressed(GLFW_MOUSE_BUTTON_RIGHT))
-				MouseZoom(delta.y);
-		}
-
 		m_Position = CalculatePosition();
-
 		glm::quat orientation = GetOrientation();
 		m_Rotation = glm::eulerAngles(orientation) * (180.0f / (float)M_PI);
 		m_ViewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 1)) * glm::toMat4(glm::conjugate(orientation)) * glm::translate(glm::mat4(1.0f), -m_Position);

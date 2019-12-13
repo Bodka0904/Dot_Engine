@@ -119,9 +119,9 @@ namespace Dot {
 		}
 
 		// Delete BoneMapping elements that we do not need
-		std::vector<std::string> deleteBone;
-		LoadHierarchy(m_pScene->mRootNode,deleteBone);
-		for (auto i : deleteBone)
+		std::vector<std::string> DeleteBone;
+		LoadHierarchy(m_pScene->mRootNode,DeleteBone);
+		for (auto i : DeleteBone)
 		{
 			m_BoneMapping.erase(i);
 		}

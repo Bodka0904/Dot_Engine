@@ -66,19 +66,26 @@ namespace Dot {
 		s_MousePosition = glm::vec2(Input::GetMouseX(), Input::GetMouseY());
 		for (auto& wrap : s_Wrapper)
 		{
-			if (wrap.second->MouseResize(s_MousePosition))
+			if (wrap.second->Minimize(s_MousePosition))
 			{
-				s_ResizedWrapper = wrap.first;
 				return true;
 			}
-			else
+			if (!wrap.second->IsMinimized())
 			{
-				for (auto& widg : wrap.second->GetWidgets())
+				if (wrap.second->MouseResize(s_MousePosition))
 				{
-					if (widg.second->MouseHoover(s_MousePosition))
+					s_ResizedWrapper = wrap.first;
+					return true;
+				}
+				else
+				{
+					for (auto& widg : wrap.second->GetWidgets())
 					{
-						widg.second->ClickHandle();
-						return true;
+						if (widg.second->MouseHoover(s_MousePosition))
+						{
+							widg.second->ClickHandle();
+							return true;
+						}
 					}
 				}
 			}
@@ -98,9 +105,9 @@ namespace Dot {
 	bool Gui::HandleRightClick()
 	{
 		s_MousePosition = glm::vec2(Input::GetMouseX(), Input::GetMouseY());
-		if (!s_Locked)
+		for (auto& wrap : s_Wrapper)
 		{
-			for (auto& wrap : s_Wrapper)
+			if (!wrap.second->IsMinimized())
 			{
 				for (auto& widg : wrap.second->GetWidgets())
 				{
@@ -117,26 +124,18 @@ namespace Dot {
 					return true;
 				}
 			}
-			for (auto& it : s_Widget)
+		}
+		for (auto& it : s_Widget)
+		{
+			if (it.second->MouseHoover(s_MousePosition))
 			{
-				if (it.second->MouseHoover(s_MousePosition))
-				{
-					s_AttachedWidget = it.first;
-					return true;
-				}
+				s_AttachedWidget = it.first;
+				return true;
 			}
 		}
 		return false;
 	}
-	bool Gui::HandleMiddleClick()
-	{
-		if (!s_Locked)
-			s_Locked = true;
-		else
-			s_Locked = false;
-
-		return true;
-	}
+	
 	void Gui::HandleRelease()
 	{
 		s_AttachedWidget.clear();
@@ -177,6 +176,7 @@ namespace Dot {
 			s_Wrapper[s_ResizedWrapper]->Resize(s_MousePosition);
 		}
 	}
+
 	
 	void Gui::AddWidget(const std::string& label, Ref<Widget> widget, const Quad& quad, glm::vec2* texcoord, int num)
 	{
@@ -196,16 +196,23 @@ namespace Dot {
 		}
 		s_NumWidgets++;
 	}
-	void Gui::AddWrapper(const std::string label, Ref<Wrapper> wrapper, const Quad& quad, glm::vec2* texcoord, int num)
+	void Gui::AddWrapper(const std::string label, Ref<Wrapper> wrapper, const Quad* quad, glm::vec2* texcoord, int num)
 	{
 		wrapper->SetIndex(s_NumWidgets);
 		s_Wrapper[label] = wrapper;
-		for (int i = 0; i < num; ++i)
+		for (int i = 0; i < 2; ++i)
 		{
-			s_Vertice.push_back(quad.m_Vertices[i]);
+			for (int j = 0; j < num/2; ++j)
+			{
+				s_Vertice.push_back(quad[i].m_Vertices[j]);
+			}
+		}
+		for (int i = 0; i < num; ++i)
+		{		
 			s_TexCoord.push_back(texcoord[i]);
 		}
-		s_NumWidgets++;
+		// Wrapper plus exit button
+		s_NumWidgets+=2;
 	}
 	void Gui::EnableWrapper(const std::string& label)
 	{
@@ -219,7 +226,8 @@ namespace Dot {
 		:
 		m_Position(position),
 		m_Size(size),
-		m_Index(0)
+		m_Index(0),
+		m_ExitButton(glm::vec2(position.x + size.x - 20,position.y),glm::vec2(20,20))
 	{
 	}
 	void Wrapper::AddWidget(const std::string& label, Ref<Widget> widget, unsigned int index)
@@ -249,6 +257,30 @@ namespace Dot {
 		return false;
 	}
 	
+	bool Wrapper::Minimize(const glm::vec2& mousePos)
+	{
+		if (m_ExitButton.MouseHoover(mousePos))
+		{
+			if (!m_Minimized)
+			{
+				for (auto& it : m_Widget)
+				{
+					it.second->Minimize();
+				}
+				m_Minimized = true;
+				Resize(m_Position + m_ExitButton.GetSize());
+			}
+			else
+			{
+				m_Minimized = false;
+				Resize(m_Position + glm::vec2(100,100));
+				SetWidgetPosition();
+			}
+			return true;
+		}
+		return false;
+	}
+
 	void Wrapper::Resize(const glm::vec2& mousePos)
 	{
 		m_Size = abs(mousePos - m_Position);
@@ -258,16 +290,21 @@ namespace Dot {
 			glm::vec2(m_Position + m_Size),
 			glm::vec2(m_Position.x,m_Position.y + m_Size.y)
 		};
+
+		m_ExitButton.SetPosition(glm::vec2(m_Position.x+m_Size.x- m_ExitButton.GetSize().x,m_Position.y));
 		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
 	}
 	void Wrapper::Move(const glm::vec2& pos)
 	{
 		m_Position += pos;
-		for (auto& it : m_Widget)
+		if (!m_Minimized)
 		{
-			it.second->Move(pos);
+			for (auto& it : m_Widget)
+			{
+				it.second->Move(pos);
+			}
 		}
-
+		m_ExitButton.Move(pos);
 		glm::vec2 newPos[4] = {
 			glm::vec2(m_Position),
 			glm::vec2(m_Position.x + m_Size.x,m_Position.y),
@@ -279,12 +316,17 @@ namespace Dot {
 	void Wrapper::SetPosition(const glm::vec2& pos)
 	{
 		m_Position = pos;
-		for (auto& it : m_Widget)
+		if (!m_Minimized)
 		{
-			glm::vec2 posDif = it.second->GetPosition() - m_Position;
-			it.second->SetPosition(posDif);
+			for (auto& it : m_Widget)
+			{
+				glm::vec2 posDif = it.second->GetPosition() - m_Position;
+				it.second->SetPosition(posDif);
+			}
 		}
-			
+		glm::vec2 posDif = m_ExitButton.GetPosition() - m_Position;
+		m_ExitButton.SetPosition(posDif);
+
 		glm::vec2 newPos[4] = {
 			glm::vec2(m_Position),
 			glm::vec2(m_Position.x + m_Size.x,m_Position.y),
@@ -301,10 +343,12 @@ namespace Dot {
 			newPos.y += it.second->GetLabelSize().y;
 			it.second->SetPosition(newPos);
 			newPos.y += it.second->GetSize().y;	
+			if (m_Size.x < it.second->GetSize().x)
+				m_Size.x = it.second->GetSize().x+20;
 		}
 		if (newPos.y > m_Size.y + m_Position.y)
 		{
-			m_Size.y = newPos.y - m_Position.y;
+			m_Size.y = (newPos.y - m_Position.y)+20;
 			glm::vec2 newPos[4] = {
 				glm::vec2(m_Position),
 				glm::vec2(m_Position.x + m_Size.x,m_Position.y),
@@ -316,19 +360,74 @@ namespace Dot {
 	}
 	void Wrapper::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size)
 	{
-		glm::vec2 texCoords[4] = {
+		glm::vec2 texCoords[8] = {
 			   glm::vec2(0, 0.75),
+			   glm::vec2(0.25, 0.75),
+			   glm::vec2(0.25, 1),
+			   glm::vec2(0, 1),
+			   // Exit button
 			   glm::vec2(0.5, 0.75),
-			   glm::vec2(0.5, 1),
-			   glm::vec2(0, 1)
+			   glm::vec2(0.75, 0.75),
+			   glm::vec2(0.75, 1),
+			   glm::vec2(0.5,  1)
 		};
-		Quad quad(position, size);
-		Ref<Wrapper> button = std::make_shared<Wrapper>(label, position, size);
-		Gui::AddWrapper(label, button, quad, &texCoords[0]);
+		Quad quad[2] = {
+			Quad(position, size),
+			Quad(glm::vec2(position.x + size.x - 20,position.y),glm::vec2(20,20))
+		};
+
+		Ref<Wrapper> wrapper = std::make_shared<Wrapper>(label, position, size);
+		Gui::AddWrapper(label, wrapper, &quad[0], &texCoords[0]);
 	}
 	glm::vec4 Wrapper::GetCoords()
 	{
 		return glm::vec4(  m_Position.x,
+			m_Position.y + m_Size.y,
+			m_Position.x + m_Size.x,
+			m_Position.y);
+	}
+	Wrapper::ExitButton::ExitButton(const glm::vec2& position, const glm::vec2& size)
+		:
+		m_Position(position),m_Size(size),m_Index(0)
+	{
+	}
+	bool Wrapper::ExitButton::MouseHoover(const glm::vec2& mousePos)
+	{
+		glm::vec4 coords = GetCoords();
+
+		if (mousePos.x >= coords.x && mousePos.x <= coords.z
+			&& mousePos.y <= coords.y && mousePos.y >= coords.w)
+		{
+			return true;
+		}
+		return false;
+	}
+	void Wrapper::ExitButton::Move(const glm::vec2& pos)
+	{
+		m_Position += pos;
+		glm::vec2 newPos[4] = {
+			   glm::vec2(m_Position),
+			   glm::vec2(m_Position.x + m_Size.x,m_Position.y),
+			   glm::vec2(m_Position + m_Size),
+			   glm::vec2(m_Position.x,m_Position.y + m_Size.y)
+		};
+		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+	}
+	void Wrapper::ExitButton::SetPosition(const glm::vec2& pos)
+	{
+		m_Position = pos;
+		glm::vec2 newPos[4] =
+		{
+			glm::vec2(m_Position),
+			glm::vec2(m_Position.x + m_Size.x,m_Position.y),
+			glm::vec2(m_Position + m_Size),
+			glm::vec2(m_Position.x,m_Position.y + m_Size.y)
+		};
+		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+	}
+	glm::vec4 Wrapper::ExitButton::GetCoords()
+	{
+		return glm::vec4(m_Position.x,
 			m_Position.y + m_Size.y,
 			m_Position.x + m_Size.x,
 			m_Position.y);

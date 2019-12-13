@@ -61,9 +61,9 @@ namespace Dot {
 		//}
 	
 
-		//delete[] datBuff[0];
-		//delete[] datBuff[1];
-		//delete[] pixels;
+		//Delete[] datBuff[0];
+		//Delete[] datBuff[1];
+		//Delete[] pixels;
 
 		return image;
 	

@@ -40,7 +40,9 @@ namespace Dot {
 	public:
 		WindowResizeEvent(int width, int height)
 			:m_width(width), m_height(height)
-		{}
+		{
+			LOG_INFO("Window: Resized window width: %d height: %d", width, height);
+		}
 
 
 		virtual EventType GetEventType() const override { return type; }

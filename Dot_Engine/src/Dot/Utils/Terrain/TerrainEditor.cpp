@@ -15,7 +15,6 @@ namespace Dot {
 		Wrapper::Create("Terrain Editor", glm::vec2(100, 100), glm::vec2(300, 600));
 		Gui::EnableWrapper("Terrain Editor");
 		{
-			
 			Arrbutton::Create("Amplitude", glm::vec2(100, 100), glm::vec2(50, 50));
 			Arrbutton::Create("Roughness", glm::vec2(100, 100), glm::vec2(50, 50));
 			Arrbutton::Create("Height", glm::vec2(100, 100), glm::vec2(50, 50));
@@ -32,11 +31,12 @@ namespace Dot {
 		std::lock_guard<std::mutex>lock(s_Mutex);
 		ter->ApplyHeightsValueNoise(height);
 		
+
+
 		LOG_INFO("Finished");
 		*processed = true;
 	}
 	
-
 	void TerrainEditor::UpdateTerrain(Ref<Terrain> terrain)
 	{
 		if (Arrbutton::GetWrapped("Terrain Editor", "Seed").LeftClicked())

@@ -424,8 +424,8 @@ PFNGLBEGINQUERYPROC __glewBeginQuery = NULL;
 PFNGLBINDBUFFERPROC __glewBindBuffer = NULL;
 PFNGLBUFFERDATAPROC __glewBufferData = NULL;
 PFNGLBUFFERSUBDATAPROC __glewBufferSubData = NULL;
-PFNGLDELETEBUFFERSPROC __glewDeleteBuffers = NULL;
-PFNGLDELETEQUERIESPROC __glewDeleteQueries = NULL;
+PFNGLDeleteBUFFERSPROC __glewDeleteBuffers = NULL;
+PFNGLDeleteQUERIESPROC __glewDeleteQueries = NULL;
 PFNGLENDQUERYPROC __glewEndQuery = NULL;
 PFNGLGENBUFFERSPROC __glewGenBuffers = NULL;
 PFNGLGENQUERIESPROC __glewGenQueries = NULL;
@@ -446,8 +446,8 @@ PFNGLBLENDEQUATIONSEPARATEPROC __glewBlendEquationSeparate = NULL;
 PFNGLCOMPILESHADERPROC __glewCompileShader = NULL;
 PFNGLCREATEPROGRAMPROC __glewCreateProgram = NULL;
 PFNGLCREATESHADERPROC __glewCreateShader = NULL;
-PFNGLDELETEPROGRAMPROC __glewDeleteProgram = NULL;
-PFNGLDELETESHADERPROC __glewDeleteShader = NULL;
+PFNGLDeletePROGRAMPROC __glewDeleteProgram = NULL;
+PFNGLDeleteSHADERPROC __glewDeleteShader = NULL;
 PFNGLDETACHSHADERPROC __glewDetachShader = NULL;
 PFNGLDISABLEVERTEXATTRIBARRAYPROC __glewDisableVertexAttribArray = NULL;
 PFNGLDRAWBUFFERSPROC __glewDrawBuffers = NULL;
@@ -645,14 +645,14 @@ PFNGLVERTEXATTRIBPARAMETERIAMDPROC __glewVertexAttribParameteriAMD = NULL;
 PFNGLMULTIDRAWARRAYSINDIRECTAMDPROC __glewMultiDrawArraysIndirectAMD = NULL;
 PFNGLMULTIDRAWELEMENTSINDIRECTAMDPROC __glewMultiDrawElementsIndirectAMD = NULL;
 
-PFNGLDELETENAMESAMDPROC __glewDeleteNamesAMD = NULL;
+PFNGLDeleteNAMESAMDPROC __glewDeleteNamesAMD = NULL;
 PFNGLGENNAMESAMDPROC __glewGenNamesAMD = NULL;
 PFNGLISNAMEAMDPROC __glewIsNameAMD = NULL;
 
 PFNGLQUERYOBJECTPARAMETERUIAMDPROC __glewQueryObjectParameteruiAMD = NULL;
 
 PFNGLBEGINPERFMONITORAMDPROC __glewBeginPerfMonitorAMD = NULL;
-PFNGLDELETEPERFMONITORSAMDPROC __glewDeletePerfMonitorsAMD = NULL;
+PFNGLDeletePERFMONITORSAMDPROC __glewDeletePerfMonitorsAMD = NULL;
 PFNGLENDPERFMONITORAMDPROC __glewEndPerfMonitorAMD = NULL;
 PFNGLGENPERFMONITORSAMDPROC __glewGenPerfMonitorsAMD = NULL;
 PFNGLGETPERFMONITORCOUNTERDATAAMDPROC __glewGetPerfMonitorCounterDataAMD = NULL;
@@ -682,7 +682,7 @@ PFNGLDRAWELEMENTSINSTANCEDANGLEPROC __glewDrawElementsInstancedANGLE = NULL;
 PFNGLVERTEXATTRIBDIVISORANGLEPROC __glewVertexAttribDivisorANGLE = NULL;
 
 PFNGLBEGINQUERYANGLEPROC __glewBeginQueryANGLE = NULL;
-PFNGLDELETEQUERIESANGLEPROC __glewDeleteQueriesANGLE = NULL;
+PFNGLDeleteQUERIESANGLEPROC __glewDeleteQueriesANGLE = NULL;
 PFNGLENDQUERYANGLEPROC __glewEndQueryANGLE = NULL;
 PFNGLGENQUERIESANGLEPROC __glewGenQueriesANGLE = NULL;
 PFNGLGETQUERYOBJECTI64VANGLEPROC __glewGetQueryObjecti64vANGLE = NULL;
@@ -703,7 +703,7 @@ PFNGLELEMENTPOINTERAPPLEPROC __glewElementPointerAPPLE = NULL;
 PFNGLMULTIDRAWELEMENTARRAYAPPLEPROC __glewMultiDrawElementArrayAPPLE = NULL;
 PFNGLMULTIDRAWRANGEELEMENTARRAYAPPLEPROC __glewMultiDrawRangeElementArrayAPPLE = NULL;
 
-PFNGLDELETEFENCESAPPLEPROC __glewDeleteFencesAPPLE = NULL;
+PFNGLDeleteFENCESAPPLEPROC __glewDeleteFencesAPPLE = NULL;
 PFNGLFINISHFENCEAPPLEPROC __glewFinishFenceAPPLE = NULL;
 PFNGLFINISHOBJECTAPPLEPROC __glewFinishObjectAPPLE = NULL;
 PFNGLGENFENCESAPPLEPROC __glewGenFencesAPPLE = NULL;
@@ -723,7 +723,7 @@ PFNGLOBJECTPURGEABLEAPPLEPROC __glewObjectPurgeableAPPLE = NULL;
 PFNGLOBJECTUNPURGEABLEAPPLEPROC __glewObjectUnpurgeableAPPLE = NULL;
 
 PFNGLCLIENTWAITSYNCAPPLEPROC __glewClientWaitSyncAPPLE = NULL;
-PFNGLDELETESYNCAPPLEPROC __glewDeleteSyncAPPLE = NULL;
+PFNGLDeleteSYNCAPPLEPROC __glewDeleteSyncAPPLE = NULL;
 PFNGLFENCESYNCAPPLEPROC __glewFenceSyncAPPLE = NULL;
 PFNGLGETINTEGER64VAPPLEPROC __glewGetInteger64vAPPLE = NULL;
 PFNGLGETSYNCIVAPPLEPROC __glewGetSyncivAPPLE = NULL;
@@ -734,7 +734,7 @@ PFNGLGETTEXPARAMETERPOINTERVAPPLEPROC __glewGetTexParameterPointervAPPLE = NULL;
 PFNGLTEXTURERANGEAPPLEPROC __glewTextureRangeAPPLE = NULL;
 
 PFNGLBINDVERTEXARRAYAPPLEPROC __glewBindVertexArrayAPPLE = NULL;
-PFNGLDELETEVERTEXARRAYSAPPLEPROC __glewDeleteVertexArraysAPPLE = NULL;
+PFNGLDeleteVERTEXARRAYSAPPLEPROC __glewDeleteVertexArraysAPPLE = NULL;
 PFNGLGENVERTEXARRAYSAPPLEPROC __glewGenVertexArraysAPPLE = NULL;
 PFNGLISVERTEXARRAYAPPLEPROC __glewIsVertexArrayAPPLE = NULL;
 
@@ -936,8 +936,8 @@ PFNGLBINDFRAMEBUFFERPROC __glewBindFramebuffer = NULL;
 PFNGLBINDRENDERBUFFERPROC __glewBindRenderbuffer = NULL;
 PFNGLBLITFRAMEBUFFERPROC __glewBlitFramebuffer = NULL;
 PFNGLCHECKFRAMEBUFFERSTATUSPROC __glewCheckFramebufferStatus = NULL;
-PFNGLDELETEFRAMEBUFFERSPROC __glewDeleteFramebuffers = NULL;
-PFNGLDELETERENDERBUFFERSPROC __glewDeleteRenderbuffers = NULL;
+PFNGLDeleteFRAMEBUFFERSPROC __glewDeleteFramebuffers = NULL;
+PFNGLDeleteRENDERBUFFERSPROC __glewDeleteRenderbuffers = NULL;
 PFNGLFRAMEBUFFERRENDERBUFFERPROC __glewFramebufferRenderbuffer = NULL;
 PFNGLFRAMEBUFFERTEXTURE1DPROC __glewFramebufferTexture1D = NULL;
 PFNGLFRAMEBUFFERTEXTURE2DPROC __glewFramebufferTexture2D = NULL;
@@ -1131,7 +1131,7 @@ PFNGLMULTITEXCOORD4SARBPROC __glewMultiTexCoord4sARB = NULL;
 PFNGLMULTITEXCOORD4SVARBPROC __glewMultiTexCoord4svARB = NULL;
 
 PFNGLBEGINQUERYARBPROC __glewBeginQueryARB = NULL;
-PFNGLDELETEQUERIESARBPROC __glewDeleteQueriesARB = NULL;
+PFNGLDeleteQUERIESARBPROC __glewDeleteQueriesARB = NULL;
 PFNGLENDQUERYARBPROC __glewEndQueryARB = NULL;
 PFNGLGENQUERIESARBPROC __glewGenQueriesARB = NULL;
 PFNGLGETQUERYOBJECTIVARBPROC __glewGetQueryObjectivARB = NULL;
@@ -1182,7 +1182,7 @@ PFNGLNAMEDFRAMEBUFFERSAMPLELOCATIONSFVARBPROC __glewNamedFramebufferSampleLocati
 PFNGLMINSAMPLESHADINGARBPROC __glewMinSampleShadingARB = NULL;
 
 PFNGLBINDSAMPLERPROC __glewBindSampler = NULL;
-PFNGLDELETESAMPLERSPROC __glewDeleteSamplers = NULL;
+PFNGLDeleteSAMPLERSPROC __glewDeleteSamplers = NULL;
 PFNGLGENSAMPLERSPROC __glewGenSamplers = NULL;
 PFNGLGETSAMPLERPARAMETERIIVPROC __glewGetSamplerParameterIiv = NULL;
 PFNGLGETSAMPLERPARAMETERIUIVPROC __glewGetSamplerParameterIuiv = NULL;
@@ -1199,7 +1199,7 @@ PFNGLSAMPLERPARAMETERIVPROC __glewSamplerParameteriv = NULL;
 PFNGLACTIVESHADERPROGRAMPROC __glewActiveShaderProgram = NULL;
 PFNGLBINDPROGRAMPIPELINEPROC __glewBindProgramPipeline = NULL;
 PFNGLCREATESHADERPROGRAMVPROC __glewCreateShaderProgramv = NULL;
-PFNGLDELETEPROGRAMPIPELINESPROC __glewDeleteProgramPipelines = NULL;
+PFNGLDeletePROGRAMPIPELINESPROC __glewDeleteProgramPipelines = NULL;
 PFNGLGENPROGRAMPIPELINESPROC __glewGenProgramPipelines = NULL;
 PFNGLGETPROGRAMPIPELINEINFOLOGPROC __glewGetProgramPipelineInfoLog = NULL;
 PFNGLGETPROGRAMPIPELINEIVPROC __glewGetProgramPipelineiv = NULL;
@@ -1266,7 +1266,7 @@ PFNGLATTACHOBJECTARBPROC __glewAttachObjectARB = NULL;
 PFNGLCOMPILESHADERARBPROC __glewCompileShaderARB = NULL;
 PFNGLCREATEPROGRAMOBJECTARBPROC __glewCreateProgramObjectARB = NULL;
 PFNGLCREATESHADEROBJECTARBPROC __glewCreateShaderObjectARB = NULL;
-PFNGLDELETEOBJECTARBPROC __glewDeleteObjectARB = NULL;
+PFNGLDeleteOBJECTARBPROC __glewDeleteObjectARB = NULL;
 PFNGLDETACHOBJECTARBPROC __glewDetachObjectARB = NULL;
 PFNGLGETACTIVEUNIFORMARBPROC __glewGetActiveUniformARB = NULL;
 PFNGLGETATTACHEDOBJECTSARBPROC __glewGetAttachedObjectsARB = NULL;
@@ -1314,7 +1314,7 @@ PFNGLGETUNIFORMSUBROUTINEUIVPROC __glewGetUniformSubroutineuiv = NULL;
 PFNGLUNIFORMSUBROUTINESUIVPROC __glewUniformSubroutinesuiv = NULL;
 
 PFNGLCOMPILESHADERINCLUDEARBPROC __glewCompileShaderIncludeARB = NULL;
-PFNGLDELETENAMEDSTRINGARBPROC __glewDeleteNamedStringARB = NULL;
+PFNGLDeleteNAMEDSTRINGARBPROC __glewDeleteNamedStringARB = NULL;
 PFNGLGETNAMEDSTRINGARBPROC __glewGetNamedStringARB = NULL;
 PFNGLGETNAMEDSTRINGIVARBPROC __glewGetNamedStringivARB = NULL;
 PFNGLISNAMEDSTRINGARBPROC __glewIsNamedStringARB = NULL;
@@ -1325,7 +1325,7 @@ PFNGLBUFFERPAGECOMMITMENTARBPROC __glewBufferPageCommitmentARB = NULL;
 PFNGLTEXPAGECOMMITMENTARBPROC __glewTexPageCommitmentARB = NULL;
 
 PFNGLCLIENTWAITSYNCPROC __glewClientWaitSync = NULL;
-PFNGLDELETESYNCPROC __glewDeleteSync = NULL;
+PFNGLDeleteSYNCPROC __glewDeleteSync = NULL;
 PFNGLFENCESYNCPROC __glewFenceSync = NULL;
 PFNGLGETINTEGER64VPROC __glewGetInteger64v = NULL;
 PFNGLGETSYNCIVPROC __glewGetSynciv = NULL;
@@ -1371,7 +1371,7 @@ PFNGLGETQUERYOBJECTUI64VPROC __glewGetQueryObjectui64v = NULL;
 PFNGLQUERYCOUNTERPROC __glewQueryCounter = NULL;
 
 PFNGLBINDTRANSFORMFEEDBACKPROC __glewBindTransformFeedback = NULL;
-PFNGLDELETETRANSFORMFEEDBACKSPROC __glewDeleteTransformFeedbacks = NULL;
+PFNGLDeleteTRANSFORMFEEDBACKSPROC __glewDeleteTransformFeedbacks = NULL;
 PFNGLDRAWTRANSFORMFEEDBACKPROC __glewDrawTransformFeedback = NULL;
 PFNGLGENTRANSFORMFEEDBACKSPROC __glewGenTransformFeedbacks = NULL;
 PFNGLISTRANSFORMFEEDBACKPROC __glewIsTransformFeedback = NULL;
@@ -1403,7 +1403,7 @@ PFNGLGETUNIFORMINDICESPROC __glewGetUniformIndices = NULL;
 PFNGLUNIFORMBLOCKBINDINGPROC __glewUniformBlockBinding = NULL;
 
 PFNGLBINDVERTEXARRAYPROC __glewBindVertexArray = NULL;
-PFNGLDELETEVERTEXARRAYSPROC __glewDeleteVertexArrays = NULL;
+PFNGLDeleteVERTEXARRAYSPROC __glewDeleteVertexArrays = NULL;
 PFNGLGENVERTEXARRAYSPROC __glewGenVertexArrays = NULL;
 PFNGLISVERTEXARRAYPROC __glewIsVertexArray = NULL;
 
@@ -1445,7 +1445,7 @@ PFNGLWEIGHTUSVARBPROC __glewWeightusvARB = NULL;
 PFNGLBINDBUFFERARBPROC __glewBindBufferARB = NULL;
 PFNGLBUFFERDATAARBPROC __glewBufferDataARB = NULL;
 PFNGLBUFFERSUBDATAARBPROC __glewBufferSubDataARB = NULL;
-PFNGLDELETEBUFFERSARBPROC __glewDeleteBuffersARB = NULL;
+PFNGLDeleteBUFFERSARBPROC __glewDeleteBuffersARB = NULL;
 PFNGLGENBUFFERSARBPROC __glewGenBuffersARB = NULL;
 PFNGLGETBUFFERPARAMETERIVARBPROC __glewGetBufferParameterivARB = NULL;
 PFNGLGETBUFFERPOINTERVARBPROC __glewGetBufferPointervARB = NULL;
@@ -1455,7 +1455,7 @@ PFNGLMAPBUFFERARBPROC __glewMapBufferARB = NULL;
 PFNGLUNMAPBUFFERARBPROC __glewUnmapBufferARB = NULL;
 
 PFNGLBINDPROGRAMARBPROC __glewBindProgramARB = NULL;
-PFNGLDELETEPROGRAMSARBPROC __glewDeleteProgramsARB = NULL;
+PFNGLDeletePROGRAMSARBPROC __glewDeleteProgramsARB = NULL;
 PFNGLDISABLEVERTEXATTRIBARRAYARBPROC __glewDisableVertexAttribArrayARB = NULL;
 PFNGLENABLEVERTEXATTRIBARRAYARBPROC __glewEnableVertexAttribArrayARB = NULL;
 PFNGLGENPROGRAMSARBPROC __glewGenProgramsARB = NULL;
@@ -1607,7 +1607,7 @@ PFNGLBINDFRAGMENTSHADERATIPROC __glewBindFragmentShaderATI = NULL;
 PFNGLCOLORFRAGMENTOP1ATIPROC __glewColorFragmentOp1ATI = NULL;
 PFNGLCOLORFRAGMENTOP2ATIPROC __glewColorFragmentOp2ATI = NULL;
 PFNGLCOLORFRAGMENTOP3ATIPROC __glewColorFragmentOp3ATI = NULL;
-PFNGLDELETEFRAGMENTSHADERATIPROC __glewDeleteFragmentShaderATI = NULL;
+PFNGLDeleteFRAGMENTSHADERATIPROC __glewDeleteFragmentShaderATI = NULL;
 PFNGLENDFRAGMENTSHADERATIPROC __glewEndFragmentShaderATI = NULL;
 PFNGLGENFRAGMENTSHADERSATIPROC __glewGenFragmentShadersATI = NULL;
 PFNGLPASSTEXCOORDATIPROC __glewPassTexCoordATI = NULL;
@@ -2035,8 +2035,8 @@ PFNGLRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC __glewRenderbufferStorageMultisampleE
 PFNGLBINDFRAMEBUFFEREXTPROC __glewBindFramebufferEXT = NULL;
 PFNGLBINDRENDERBUFFEREXTPROC __glewBindRenderbufferEXT = NULL;
 PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC __glewCheckFramebufferStatusEXT = NULL;
-PFNGLDELETEFRAMEBUFFERSEXTPROC __glewDeleteFramebuffersEXT = NULL;
-PFNGLDELETERENDERBUFFERSEXTPROC __glewDeleteRenderbuffersEXT = NULL;
+PFNGLDeleteFRAMEBUFFERSEXTPROC __glewDeleteFramebuffersEXT = NULL;
+PFNGLDeleteRENDERBUFFERSEXTPROC __glewDeleteRenderbuffersEXT = NULL;
 PFNGLFRAMEBUFFERRENDERBUFFEREXTPROC __glewFramebufferRenderbufferEXT = NULL;
 PFNGLFRAMEBUFFERTEXTURE1DEXTPROC __glewFramebufferTexture1DEXT = NULL;
 PFNGLFRAMEBUFFERTEXTURE2DEXTPROC __glewFramebufferTexture2DEXT = NULL;
@@ -2118,7 +2118,7 @@ PFNGLMAPBUFFERRANGEEXTPROC __glewMapBufferRangeEXT = NULL;
 
 PFNGLBUFFERSTORAGEMEMEXTPROC __glewBufferStorageMemEXT = NULL;
 PFNGLCREATEMEMORYOBJECTSEXTPROC __glewCreateMemoryObjectsEXT = NULL;
-PFNGLDELETEMEMORYOBJECTSEXTPROC __glewDeleteMemoryObjectsEXT = NULL;
+PFNGLDeleteMEMORYOBJECTSEXTPROC __glewDeleteMemoryObjectsEXT = NULL;
 PFNGLGETMEMORYOBJECTPARAMETERIVEXTPROC __glewGetMemoryObjectParameterivEXT = NULL;
 PFNGLGETUNSIGNEDBYTEI_VEXTPROC __glewGetUnsignedBytei_vEXT = NULL;
 PFNGLGETUNSIGNEDBYTEVEXTPROC __glewGetUnsignedBytevEXT = NULL;
@@ -2203,7 +2203,7 @@ PFNGLSECONDARYCOLOR3USEXTPROC __glewSecondaryColor3usEXT = NULL;
 PFNGLSECONDARYCOLOR3USVEXTPROC __glewSecondaryColor3usvEXT = NULL;
 PFNGLSECONDARYCOLORPOINTEREXTPROC __glewSecondaryColorPointerEXT = NULL;
 
-PFNGLDELETESEMAPHORESEXTPROC __glewDeleteSemaphoresEXT = NULL;
+PFNGLDeleteSEMAPHORESEXTPROC __glewDeleteSemaphoresEXT = NULL;
 PFNGLGENSEMAPHORESEXTPROC __glewGenSemaphoresEXT = NULL;
 PFNGLGETSEMAPHOREPARAMETERUI64VEXTPROC __glewGetSemaphoreParameterui64vEXT = NULL;
 PFNGLISSEMAPHOREEXTPROC __glewIsSemaphoreEXT = NULL;
@@ -2251,7 +2251,7 @@ PFNGLTEXPARAMETERIUIVEXTPROC __glewTexParameterIuivEXT = NULL;
 
 PFNGLARETEXTURESRESIDENTEXTPROC __glewAreTexturesResidentEXT = NULL;
 PFNGLBINDTEXTUREEXTPROC __glewBindTextureEXT = NULL;
-PFNGLDELETETEXTURESEXTPROC __glewDeleteTexturesEXT = NULL;
+PFNGLDeleteTEXTURESEXTPROC __glewDeleteTexturesEXT = NULL;
 PFNGLGENTEXTURESEXTPROC __glewGenTexturesEXT = NULL;
 PFNGLISTEXTUREEXTPROC __glewIsTextureEXT = NULL;
 PFNGLPRIORITIZETEXTURESEXTPROC __glewPrioritizeTexturesEXT = NULL;
@@ -2289,7 +2289,7 @@ PFNGLVERTEXPOINTEREXTPROC __glewVertexPointerEXT = NULL;
 
 PFNGLBINDARRAYSETEXTPROC __glewBindArraySetEXT = NULL;
 PFNGLCREATEARRAYSETEXTPROC __glewCreateArraySetExt = NULL;
-PFNGLDELETEARRAYSETSEXTPROC __glewDeleteArraySetsEXT = NULL;
+PFNGLDeleteARRAYSETSEXTPROC __glewDeleteArraySetsEXT = NULL;
 
 PFNGLGETVERTEXATTRIBLDVEXTPROC __glewGetVertexAttribLdvEXT = NULL;
 PFNGLVERTEXARRAYVERTEXATTRIBLOFFSETEXTPROC __glewVertexArrayVertexAttribLOffsetEXT = NULL;
@@ -2310,7 +2310,7 @@ PFNGLBINDPARAMETEREXTPROC __glewBindParameterEXT = NULL;
 PFNGLBINDTEXGENPARAMETEREXTPROC __glewBindTexGenParameterEXT = NULL;
 PFNGLBINDTEXTUREUNITPARAMETEREXTPROC __glewBindTextureUnitParameterEXT = NULL;
 PFNGLBINDVERTEXSHADEREXTPROC __glewBindVertexShaderEXT = NULL;
-PFNGLDELETEVERTEXSHADEREXTPROC __glewDeleteVertexShaderEXT = NULL;
+PFNGLDeleteVERTEXSHADEREXTPROC __glewDeleteVertexShaderEXT = NULL;
 PFNGLDISABLEVARIANTCLIENTSTATEEXTPROC __glewDisableVariantClientStateEXT = NULL;
 PFNGLENABLEVARIANTCLIENTSTATEEXTPROC __glewEnableVariantClientStateEXT = NULL;
 PFNGLENDVERTEXSHADEREXTPROC __glewEndVertexShaderEXT = NULL;
@@ -2391,7 +2391,7 @@ PFNGLVERTEXPOINTERVINTELPROC __glewVertexPointervINTEL = NULL;
 
 PFNGLBEGINPERFQUERYINTELPROC __glewBeginPerfQueryINTEL = NULL;
 PFNGLCREATEPERFQUERYINTELPROC __glewCreatePerfQueryINTEL = NULL;
-PFNGLDELETEPERFQUERYINTELPROC __glewDeletePerfQueryINTEL = NULL;
+PFNGLDeletePERFQUERYINTELPROC __glewDeletePerfQueryINTEL = NULL;
 PFNGLENDPERFQUERYINTELPROC __glewEndPerfQueryINTEL = NULL;
 PFNGLGETFIRSTPERFQUERYIDINTELPROC __glewGetFirstPerfQueryIdINTEL = NULL;
 PFNGLGETNEXTPERFQUERYIDINTELPROC __glewGetNextPerfQueryIdINTEL = NULL;
@@ -2424,7 +2424,7 @@ PFNGLGETNUNIFORMUIVPROC __glewGetnUniformuiv = NULL;
 PFNGLREADNPIXELSPROC __glewReadnPixels = NULL;
 
 PFNGLBUFFERREGIONENABLEDPROC __glewBufferRegionEnabled = NULL;
-PFNGLDELETEBUFFERREGIONPROC __glewDeleteBufferRegion = NULL;
+PFNGLDeleteBUFFERREGIONPROC __glewDeleteBufferRegion = NULL;
 PFNGLDRAWBUFFERREGIONPROC __glewDrawBufferRegion = NULL;
 PFNGLNEWBUFFERREGIONPROC __glewNewBufferRegion = NULL;
 PFNGLREADBUFFERREGIONPROC __glewReadBufferRegion = NULL;
@@ -2496,8 +2496,8 @@ PFNGLCOMMANDLISTSEGMENTSNVPROC __glewCommandListSegmentsNV = NULL;
 PFNGLCOMPILECOMMANDLISTNVPROC __glewCompileCommandListNV = NULL;
 PFNGLCREATECOMMANDLISTSNVPROC __glewCreateCommandListsNV = NULL;
 PFNGLCREATESTATESNVPROC __glewCreateStatesNV = NULL;
-PFNGLDELETECOMMANDLISTSNVPROC __glewDeleteCommandListsNV = NULL;
-PFNGLDELETESTATESNVPROC __glewDeleteStatesNV = NULL;
+PFNGLDeleteCOMMANDLISTSNVPROC __glewDeleteCommandListsNV = NULL;
+PFNGLDeleteSTATESNVPROC __glewDeleteStatesNV = NULL;
 PFNGLDRAWCOMMANDSADDRESSNVPROC __glewDrawCommandsAddressNV = NULL;
 PFNGLDRAWCOMMANDSNVPROC __glewDrawCommandsNV = NULL;
 PFNGLDRAWCOMMANDSSTATESADDRESSNVPROC __glewDrawCommandsStatesAddressNV = NULL;
@@ -2553,7 +2553,7 @@ PFNGLGETMULTISAMPLEFVNVPROC __glewGetMultisamplefvNV = NULL;
 PFNGLSAMPLEMASKINDEXEDNVPROC __glewSampleMaskIndexedNV = NULL;
 PFNGLTEXRENDERBUFFERNVPROC __glewTexRenderbufferNV = NULL;
 
-PFNGLDELETEFENCESNVPROC __glewDeleteFencesNV = NULL;
+PFNGLDeleteFENCESNVPROC __glewDeleteFencesNV = NULL;
 PFNGLFINISHFENCENVPROC __glewFinishFenceNV = NULL;
 PFNGLGENFENCESNVPROC __glewGenFencesNV = NULL;
 PFNGLGETFENCEIVNVPROC __glewGetFenceivNV = NULL;
@@ -2698,7 +2698,7 @@ PFNGLUNIFORMMATRIX4X2FVNVPROC __glewUniformMatrix4x2fvNV = NULL;
 PFNGLUNIFORMMATRIX4X3FVNVPROC __glewUniformMatrix4x3fvNV = NULL;
 
 PFNGLBEGINOCCLUSIONQUERYNVPROC __glewBeginOcclusionQueryNV = NULL;
-PFNGLDELETEOCCLUSIONQUERIESNVPROC __glewDeleteOcclusionQueriesNV = NULL;
+PFNGLDeleteOCCLUSIONQUERIESNVPROC __glewDeleteOcclusionQueriesNV = NULL;
 PFNGLENDOCCLUSIONQUERYNVPROC __glewEndOcclusionQueryNV = NULL;
 PFNGLGENOCCLUSIONQUERIESNVPROC __glewGenOcclusionQueriesNV = NULL;
 PFNGLGETOCCLUSIONQUERYIVNVPROC __glewGetOcclusionQueryivNV = NULL;
@@ -2714,7 +2714,7 @@ PFNGLCOVERFILLPATHINSTANCEDNVPROC __glewCoverFillPathInstancedNV = NULL;
 PFNGLCOVERFILLPATHNVPROC __glewCoverFillPathNV = NULL;
 PFNGLCOVERSTROKEPATHINSTANCEDNVPROC __glewCoverStrokePathInstancedNV = NULL;
 PFNGLCOVERSTROKEPATHNVPROC __glewCoverStrokePathNV = NULL;
-PFNGLDELETEPATHSNVPROC __glewDeletePathsNV = NULL;
+PFNGLDeletePATHSNVPROC __glewDeletePathsNV = NULL;
 PFNGLGENPATHSNVPROC __glewGenPathsNV = NULL;
 PFNGLGETPATHCOLORGENFVNVPROC __glewGetPathColorGenfvNV = NULL;
 PFNGLGETPATHCOLORGENIVNVPROC __glewGetPathColorGenivNV = NULL;
@@ -2855,7 +2855,7 @@ PFNGLTRANSFORMFEEDBACKATTRIBSNVPROC __glewTransformFeedbackAttribsNV = NULL;
 PFNGLTRANSFORMFEEDBACKVARYINGSNVPROC __glewTransformFeedbackVaryingsNV = NULL;
 
 PFNGLBINDTRANSFORMFEEDBACKNVPROC __glewBindTransformFeedbackNV = NULL;
-PFNGLDELETETRANSFORMFEEDBACKSNVPROC __glewDeleteTransformFeedbacksNV = NULL;
+PFNGLDeleteTRANSFORMFEEDBACKSNVPROC __glewDeleteTransformFeedbacksNV = NULL;
 PFNGLDRAWTRANSFORMFEEDBACKNVPROC __glewDrawTransformFeedbackNV = NULL;
 PFNGLGENTRANSFORMFEEDBACKSNVPROC __glewGenTransformFeedbacksNV = NULL;
 PFNGLISTRANSFORMFEEDBACKNVPROC __glewIsTransformFeedbackNV = NULL;
@@ -2911,7 +2911,7 @@ PFNGLVERTEXFORMATNVPROC __glewVertexFormatNV = NULL;
 
 PFNGLAREPROGRAMSRESIDENTNVPROC __glewAreProgramsResidentNV = NULL;
 PFNGLBINDPROGRAMNVPROC __glewBindProgramNV = NULL;
-PFNGLDELETEPROGRAMSNVPROC __glewDeleteProgramsNV = NULL;
+PFNGLDeletePROGRAMSNVPROC __glewDeleteProgramsNV = NULL;
 PFNGLEXECUTEPROGRAMNVPROC __glewExecuteProgramNV = NULL;
 PFNGLGENPROGRAMSNVPROC __glewGenProgramsNV = NULL;
 PFNGLGETPROGRAMPARAMETERDVNVPROC __glewGetProgramParameterdvNV = NULL;
@@ -3116,7 +3116,7 @@ PFNGLGETTEXFILTERFUNCSGISPROC __glewGetTexFilterFuncSGIS = NULL;
 PFNGLTEXFILTERFUNCSGISPROC __glewTexFilterFuncSGIS = NULL;
 
 PFNGLASYNCMARKERSGIXPROC __glewAsyncMarkerSGIX = NULL;
-PFNGLDELETEASYNCMARKERSSGIXPROC __glewDeleteAsyncMarkersSGIX = NULL;
+PFNGLDeleteASYNCMARKERSSGIXPROC __glewDeleteAsyncMarkersSGIX = NULL;
 PFNGLFINISHASYNCSGIXPROC __glewFinishAsyncSGIX = NULL;
 PFNGLGENASYNCMARKERSSGIXPROC __glewGenAsyncMarkersSGIX = NULL;
 PFNGLISASYNCMARKERSGIXPROC __glewIsAsyncMarkerSGIX = NULL;
@@ -3155,7 +3155,7 @@ PFNGLFRAMEZOOMSGIXPROC __glewFrameZoomSGIX = NULL;
 PFNGLIGLOOINTERFACESGIXPROC __glewIglooInterfaceSGIX = NULL;
 
 PFNGLALLOCMPEGPREDICTORSSGIXPROC __glewAllocMPEGPredictorsSGIX = NULL;
-PFNGLDELETEMPEGPREDICTORSSGIXPROC __glewDeleteMPEGPredictorsSGIX = NULL;
+PFNGLDeleteMPEGPREDICTORSSGIXPROC __glewDeleteMPEGPredictorsSGIX = NULL;
 PFNGLGENMPEGPREDICTORSSGIXPROC __glewGenMPEGPredictorsSGIX = NULL;
 PFNGLGETMPEGPARAMETERFVSGIXPROC __glewGetMPEGParameterfvSGIX = NULL;
 PFNGLGETMPEGPARAMETERIVSGIXPROC __glewGetMPEGParameterivSGIX = NULL;
@@ -3193,7 +3193,7 @@ PFNGLVECTOROPERATIONSGIXPROC __glewVectorOperationSGIX = NULL;
 
 PFNGLAREVERTEXARRAYSRESIDENTSGIXPROC __glewAreVertexArraysResidentSGIX = NULL;
 PFNGLBINDVERTEXARRAYSGIXPROC __glewBindVertexArraySGIX = NULL;
-PFNGLDELETEVERTEXARRAYSSGIXPROC __glewDeleteVertexArraysSGIX = NULL;
+PFNGLDeleteVERTEXARRAYSSGIXPROC __glewDeleteVertexArraysSGIX = NULL;
 PFNGLGENVERTEXARRAYSSGIXPROC __glewGenVertexArraysSGIX = NULL;
 PFNGLISVERTEXARRAYSGIXPROC __glewIsVertexArraySGIX = NULL;
 PFNGLPRIORITIZEVERTEXARRAYSSGIXPROC __glewPrioritizeVertexArraysSGIX = NULL;
@@ -3314,7 +3314,7 @@ GLboolean __GLEW_AMD_gpu_shader_int16 = GL_FALSE;
 GLboolean __GLEW_AMD_gpu_shader_int64 = GL_FALSE;
 GLboolean __GLEW_AMD_interleaved_elements = GL_FALSE;
 GLboolean __GLEW_AMD_multi_draw_indirect = GL_FALSE;
-GLboolean __GLEW_AMD_name_gen_delete = GL_FALSE;
+GLboolean __GLEW_AMD_name_gen_Delete = GL_FALSE;
 GLboolean __GLEW_AMD_occlusion_query_event = GL_FALSE;
 GLboolean __GLEW_AMD_performance_monitor = GL_FALSE;
 GLboolean __GLEW_AMD_pinned_memory = GL_FALSE;
@@ -4187,8 +4187,8 @@ static const char * _glewExtensionLookup[] = {
 #ifdef GL_AMD_multi_draw_indirect
   "GL_AMD_multi_draw_indirect",
 #endif
-#ifdef GL_AMD_name_gen_delete
-  "GL_AMD_name_gen_delete",
+#ifdef GL_AMD_name_gen_Delete
+  "GL_AMD_name_gen_Delete",
 #endif
 #ifdef GL_AMD_occlusion_query_event
   "GL_AMD_occlusion_query_event",
@@ -6597,8 +6597,8 @@ static GLboolean* _glewExtensionEnabled[] = {
 #ifdef GL_AMD_multi_draw_indirect
   &__GLEW_AMD_multi_draw_indirect,
 #endif
-#ifdef GL_AMD_name_gen_delete
-  &__GLEW_AMD_name_gen_delete,
+#ifdef GL_AMD_name_gen_Delete
+  &__GLEW_AMD_name_gen_Delete,
 #endif
 #ifdef GL_AMD_occlusion_query_event
   &__GLEW_AMD_occlusion_query_event,
@@ -8916,7 +8916,7 @@ static GLboolean _glewInit_GL_AMD_draw_buffers_blend ();
 static GLboolean _glewInit_GL_AMD_framebuffer_sample_positions ();
 static GLboolean _glewInit_GL_AMD_interleaved_elements ();
 static GLboolean _glewInit_GL_AMD_multi_draw_indirect ();
-static GLboolean _glewInit_GL_AMD_name_gen_delete ();
+static GLboolean _glewInit_GL_AMD_name_gen_Delete ();
 static GLboolean _glewInit_GL_AMD_occlusion_query_event ();
 static GLboolean _glewInit_GL_AMD_performance_monitor ();
 static GLboolean _glewInit_GL_AMD_sample_positions ();
@@ -9392,8 +9392,8 @@ static GLboolean _glewInit_GL_VERSION_1_5 ()
   r = ((glBindBuffer = (PFNGLBINDBUFFERPROC)glewGetProcAddress((const GLubyte*)"glBindBuffer")) == NULL) || r;
   r = ((glBufferData = (PFNGLBUFFERDATAPROC)glewGetProcAddress((const GLubyte*)"glBufferData")) == NULL) || r;
   r = ((glBufferSubData = (PFNGLBUFFERSUBDATAPROC)glewGetProcAddress((const GLubyte*)"glBufferSubData")) == NULL) || r;
-  r = ((glDeleteBuffers = (PFNGLDELETEBUFFERSPROC)glewGetProcAddress((const GLubyte*)"glDeleteBuffers")) == NULL) || r;
-  r = ((glDeleteQueries = (PFNGLDELETEQUERIESPROC)glewGetProcAddress((const GLubyte*)"glDeleteQueries")) == NULL) || r;
+  r = ((glDeleteBuffers = (PFNGLDeleteBUFFERSPROC)glewGetProcAddress((const GLubyte*)"glDeleteBuffers")) == NULL) || r;
+  r = ((glDeleteQueries = (PFNGLDeleteQUERIESPROC)glewGetProcAddress((const GLubyte*)"glDeleteQueries")) == NULL) || r;
   r = ((glEndQuery = (PFNGLENDQUERYPROC)glewGetProcAddress((const GLubyte*)"glEndQuery")) == NULL) || r;
   r = ((glGenBuffers = (PFNGLGENBUFFERSPROC)glewGetProcAddress((const GLubyte*)"glGenBuffers")) == NULL) || r;
   r = ((glGenQueries = (PFNGLGENQUERIESPROC)glewGetProcAddress((const GLubyte*)"glGenQueries")) == NULL) || r;
@@ -9425,8 +9425,8 @@ static GLboolean _glewInit_GL_VERSION_2_0 ()
   r = ((glCompileShader = (PFNGLCOMPILESHADERPROC)glewGetProcAddress((const GLubyte*)"glCompileShader")) == NULL) || r;
   r = ((glCreateProgram = (PFNGLCREATEPROGRAMPROC)glewGetProcAddress((const GLubyte*)"glCreateProgram")) == NULL) || r;
   r = ((glCreateShader = (PFNGLCREATESHADERPROC)glewGetProcAddress((const GLubyte*)"glCreateShader")) == NULL) || r;
-  r = ((glDeleteProgram = (PFNGLDELETEPROGRAMPROC)glewGetProcAddress((const GLubyte*)"glDeleteProgram")) == NULL) || r;
-  r = ((glDeleteShader = (PFNGLDELETESHADERPROC)glewGetProcAddress((const GLubyte*)"glDeleteShader")) == NULL) || r;
+  r = ((glDeleteProgram = (PFNGLDeletePROGRAMPROC)glewGetProcAddress((const GLubyte*)"glDeleteProgram")) == NULL) || r;
+  r = ((glDeleteShader = (PFNGLDeleteSHADERPROC)glewGetProcAddress((const GLubyte*)"glDeleteShader")) == NULL) || r;
   r = ((glDetachShader = (PFNGLDETACHSHADERPROC)glewGetProcAddress((const GLubyte*)"glDetachShader")) == NULL) || r;
   r = ((glDisableVertexAttribArray = (PFNGLDISABLEVERTEXATTRIBARRAYPROC)glewGetProcAddress((const GLubyte*)"glDisableVertexAttribArray")) == NULL) || r;
   r = ((glDrawBuffers = (PFNGLDRAWBUFFERSPROC)glewGetProcAddress((const GLubyte*)"glDrawBuffers")) == NULL) || r;
@@ -9795,20 +9795,20 @@ static GLboolean _glewInit_GL_AMD_multi_draw_indirect ()
 
 #endif /* GL_AMD_multi_draw_indirect */
 
-#ifdef GL_AMD_name_gen_delete
+#ifdef GL_AMD_name_gen_Delete
 
-static GLboolean _glewInit_GL_AMD_name_gen_delete ()
+static GLboolean _glewInit_GL_AMD_name_gen_Delete ()
 {
   GLboolean r = GL_FALSE;
 
-  r = ((glDeleteNamesAMD = (PFNGLDELETENAMESAMDPROC)glewGetProcAddress((const GLubyte*)"glDeleteNamesAMD")) == NULL) || r;
+  r = ((glDeleteNamesAMD = (PFNGLDeleteNAMESAMDPROC)glewGetProcAddress((const GLubyte*)"glDeleteNamesAMD")) == NULL) || r;
   r = ((glGenNamesAMD = (PFNGLGENNAMESAMDPROC)glewGetProcAddress((const GLubyte*)"glGenNamesAMD")) == NULL) || r;
   r = ((glIsNameAMD = (PFNGLISNAMEAMDPROC)glewGetProcAddress((const GLubyte*)"glIsNameAMD")) == NULL) || r;
 
   return r;
 }
 
-#endif /* GL_AMD_name_gen_delete */
+#endif /* GL_AMD_name_gen_Delete */
 
 #ifdef GL_AMD_occlusion_query_event
 
@@ -9830,7 +9830,7 @@ static GLboolean _glewInit_GL_AMD_performance_monitor ()
   GLboolean r = GL_FALSE;
 
   r = ((glBeginPerfMonitorAMD = (PFNGLBEGINPERFMONITORAMDPROC)glewGetProcAddress((const GLubyte*)"glBeginPerfMonitorAMD")) == NULL) || r;
-  r = ((glDeletePerfMonitorsAMD = (PFNGLDELETEPERFMONITORSAMDPROC)glewGetProcAddress((const GLubyte*)"glDeletePerfMonitorsAMD")) == NULL) || r;
+  r = ((glDeletePerfMonitorsAMD = (PFNGLDeletePERFMONITORSAMDPROC)glewGetProcAddress((const GLubyte*)"glDeletePerfMonitorsAMD")) == NULL) || r;
   r = ((glEndPerfMonitorAMD = (PFNGLENDPERFMONITORAMDPROC)glewGetProcAddress((const GLubyte*)"glEndPerfMonitorAMD")) == NULL) || r;
   r = ((glGenPerfMonitorsAMD = (PFNGLGENPERFMONITORSAMDPROC)glewGetProcAddress((const GLubyte*)"glGenPerfMonitorsAMD")) == NULL) || r;
   r = ((glGetPerfMonitorCounterDataAMD = (PFNGLGETPERFMONITORCOUNTERDATAAMDPROC)glewGetProcAddress((const GLubyte*)"glGetPerfMonitorCounterDataAMD")) == NULL) || r;
@@ -9948,7 +9948,7 @@ static GLboolean _glewInit_GL_ANGLE_timer_query ()
   GLboolean r = GL_FALSE;
 
   r = ((glBeginQueryANGLE = (PFNGLBEGINQUERYANGLEPROC)glewGetProcAddress((const GLubyte*)"glBeginQueryANGLE")) == NULL) || r;
-  r = ((glDeleteQueriesANGLE = (PFNGLDELETEQUERIESANGLEPROC)glewGetProcAddress((const GLubyte*)"glDeleteQueriesANGLE")) == NULL) || r;
+  r = ((glDeleteQueriesANGLE = (PFNGLDeleteQUERIESANGLEPROC)glewGetProcAddress((const GLubyte*)"glDeleteQueriesANGLE")) == NULL) || r;
   r = ((glEndQueryANGLE = (PFNGLENDQUERYANGLEPROC)glewGetProcAddress((const GLubyte*)"glEndQueryANGLE")) == NULL) || r;
   r = ((glGenQueriesANGLE = (PFNGLGENQUERIESANGLEPROC)glewGetProcAddress((const GLubyte*)"glGenQueriesANGLE")) == NULL) || r;
   r = ((glGetQueryObjecti64vANGLE = (PFNGLGETQUERYOBJECTI64VANGLEPROC)glewGetProcAddress((const GLubyte*)"glGetQueryObjecti64vANGLE")) == NULL) || r;
@@ -10013,7 +10013,7 @@ static GLboolean _glewInit_GL_APPLE_fence ()
 {
   GLboolean r = GL_FALSE;
 
-  r = ((glDeleteFencesAPPLE = (PFNGLDELETEFENCESAPPLEPROC)glewGetProcAddress((const GLubyte*)"glDeleteFencesAPPLE")) == NULL) || r;
+  r = ((glDeleteFencesAPPLE = (PFNGLDeleteFENCESAPPLEPROC)glewGetProcAddress((const GLubyte*)"glDeleteFencesAPPLE")) == NULL) || r;
   r = ((glFinishFenceAPPLE = (PFNGLFINISHFENCEAPPLEPROC)glewGetProcAddress((const GLubyte*)"glFinishFenceAPPLE")) == NULL) || r;
   r = ((glFinishObjectAPPLE = (PFNGLFINISHOBJECTAPPLEPROC)glewGetProcAddress((const GLubyte*)"glFinishObjectAPPLE")) == NULL) || r;
   r = ((glGenFencesAPPLE = (PFNGLGENFENCESAPPLEPROC)glewGetProcAddress((const GLubyte*)"glGenFencesAPPLE")) == NULL) || r;
@@ -10077,7 +10077,7 @@ static GLboolean _glewInit_GL_APPLE_sync ()
   GLboolean r = GL_FALSE;
 
   r = ((glClientWaitSyncAPPLE = (PFNGLCLIENTWAITSYNCAPPLEPROC)glewGetProcAddress((const GLubyte*)"glClientWaitSyncAPPLE")) == NULL) || r;
-  r = ((glDeleteSyncAPPLE = (PFNGLDELETESYNCAPPLEPROC)glewGetProcAddress((const GLubyte*)"glDeleteSyncAPPLE")) == NULL) || r;
+  r = ((glDeleteSyncAPPLE = (PFNGLDeleteSYNCAPPLEPROC)glewGetProcAddress((const GLubyte*)"glDeleteSyncAPPLE")) == NULL) || r;
   r = ((glFenceSyncAPPLE = (PFNGLFENCESYNCAPPLEPROC)glewGetProcAddress((const GLubyte*)"glFenceSyncAPPLE")) == NULL) || r;
   r = ((glGetInteger64vAPPLE = (PFNGLGETINTEGER64VAPPLEPROC)glewGetProcAddress((const GLubyte*)"glGetInteger64vAPPLE")) == NULL) || r;
   r = ((glGetSyncivAPPLE = (PFNGLGETSYNCIVAPPLEPROC)glewGetProcAddress((const GLubyte*)"glGetSyncivAPPLE")) == NULL) || r;
@@ -10110,7 +10110,7 @@ static GLboolean _glewInit_GL_APPLE_vertex_array_object ()
   GLboolean r = GL_FALSE;
 
   r = ((glBindVertexArrayAPPLE = (PFNGLBINDVERTEXARRAYAPPLEPROC)glewGetProcAddress((const GLubyte*)"glBindVertexArrayAPPLE")) == NULL) || r;
-  r = ((glDeleteVertexArraysAPPLE = (PFNGLDELETEVERTEXARRAYSAPPLEPROC)glewGetProcAddress((const GLubyte*)"glDeleteVertexArraysAPPLE")) == NULL) || r;
+  r = ((glDeleteVertexArraysAPPLE = (PFNGLDeleteVERTEXARRAYSAPPLEPROC)glewGetProcAddress((const GLubyte*)"glDeleteVertexArraysAPPLE")) == NULL) || r;
   r = ((glGenVertexArraysAPPLE = (PFNGLGENVERTEXARRAYSAPPLEPROC)glewGetProcAddress((const GLubyte*)"glGenVertexArraysAPPLE")) == NULL) || r;
   r = ((glIsVertexArrayAPPLE = (PFNGLISVERTEXARRAYAPPLEPROC)glewGetProcAddress((const GLubyte*)"glIsVertexArrayAPPLE")) == NULL) || r;
 
@@ -10598,8 +10598,8 @@ static GLboolean _glewInit_GL_ARB_framebuffer_object ()
   r = ((glBindRenderbuffer = (PFNGLBINDRENDERBUFFERPROC)glewGetProcAddress((const GLubyte*)"glBindRenderbuffer")) == NULL) || r;
   r = ((glBlitFramebuffer = (PFNGLBLITFRAMEBUFFERPROC)glewGetProcAddress((const GLubyte*)"glBlitFramebuffer")) == NULL) || r;
   r = ((glCheckFramebufferStatus = (PFNGLCHECKFRAMEBUFFERSTATUSPROC)glewGetProcAddress((const GLubyte*)"glCheckFramebufferStatus")) == NULL) || r;
-  r = ((glDeleteFramebuffers = (PFNGLDELETEFRAMEBUFFERSPROC)glewGetProcAddress((const GLubyte*)"glDeleteFramebuffers")) == NULL) || r;
-  r = ((glDeleteRenderbuffers = (PFNGLDELETERENDERBUFFERSPROC)glewGetProcAddress((const GLubyte*)"glDeleteRenderbuffers")) == NULL) || r;
+  r = ((glDeleteFramebuffers = (PFNGLDeleteFRAMEBUFFERSPROC)glewGetProcAddress((const GLubyte*)"glDeleteFramebuffers")) == NULL) || r;
+  r = ((glDeleteRenderbuffers = (PFNGLDeleteRENDERBUFFERSPROC)glewGetProcAddress((const GLubyte*)"glDeleteRenderbuffers")) == NULL) || r;
   r = ((glFramebufferRenderbuffer = (PFNGLFRAMEBUFFERRENDERBUFFERPROC)glewGetProcAddress((const GLubyte*)"glFramebufferRenderbuffer")) == NULL) || r;
   r = ((glFramebufferTexture1D = (PFNGLFRAMEBUFFERTEXTURE1DPROC)glewGetProcAddress((const GLubyte*)"glFramebufferTexture1D")) == NULL) || r;
   r = ((glFramebufferTexture2D = (PFNGLFRAMEBUFFERTEXTURE2DPROC)glewGetProcAddress((const GLubyte*)"glFramebufferTexture2D")) == NULL) || r;
@@ -11003,7 +11003,7 @@ static GLboolean _glewInit_GL_ARB_occlusion_query ()
   GLboolean r = GL_FALSE;
 
   r = ((glBeginQueryARB = (PFNGLBEGINQUERYARBPROC)glewGetProcAddress((const GLubyte*)"glBeginQueryARB")) == NULL) || r;
-  r = ((glDeleteQueriesARB = (PFNGLDELETEQUERIESARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteQueriesARB")) == NULL) || r;
+  r = ((glDeleteQueriesARB = (PFNGLDeleteQUERIESARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteQueriesARB")) == NULL) || r;
   r = ((glEndQueryARB = (PFNGLENDQUERYARBPROC)glewGetProcAddress((const GLubyte*)"glEndQueryARB")) == NULL) || r;
   r = ((glGenQueriesARB = (PFNGLGENQUERIESARBPROC)glewGetProcAddress((const GLubyte*)"glGenQueriesARB")) == NULL) || r;
   r = ((glGetQueryObjectivARB = (PFNGLGETQUERYOBJECTIVARBPROC)glewGetProcAddress((const GLubyte*)"glGetQueryObjectivARB")) == NULL) || r;
@@ -11153,7 +11153,7 @@ static GLboolean _glewInit_GL_ARB_sampler_objects ()
   GLboolean r = GL_FALSE;
 
   r = ((glBindSampler = (PFNGLBINDSAMPLERPROC)glewGetProcAddress((const GLubyte*)"glBindSampler")) == NULL) || r;
-  r = ((glDeleteSamplers = (PFNGLDELETESAMPLERSPROC)glewGetProcAddress((const GLubyte*)"glDeleteSamplers")) == NULL) || r;
+  r = ((glDeleteSamplers = (PFNGLDeleteSAMPLERSPROC)glewGetProcAddress((const GLubyte*)"glDeleteSamplers")) == NULL) || r;
   r = ((glGenSamplers = (PFNGLGENSAMPLERSPROC)glewGetProcAddress((const GLubyte*)"glGenSamplers")) == NULL) || r;
   r = ((glGetSamplerParameterIiv = (PFNGLGETSAMPLERPARAMETERIIVPROC)glewGetProcAddress((const GLubyte*)"glGetSamplerParameterIiv")) == NULL) || r;
   r = ((glGetSamplerParameterIuiv = (PFNGLGETSAMPLERPARAMETERIUIVPROC)glewGetProcAddress((const GLubyte*)"glGetSamplerParameterIuiv")) == NULL) || r;
@@ -11181,7 +11181,7 @@ static GLboolean _glewInit_GL_ARB_separate_shader_objects ()
   r = ((glActiveShaderProgram = (PFNGLACTIVESHADERPROGRAMPROC)glewGetProcAddress((const GLubyte*)"glActiveShaderProgram")) == NULL) || r;
   r = ((glBindProgramPipeline = (PFNGLBINDPROGRAMPIPELINEPROC)glewGetProcAddress((const GLubyte*)"glBindProgramPipeline")) == NULL) || r;
   r = ((glCreateShaderProgramv = (PFNGLCREATESHADERPROGRAMVPROC)glewGetProcAddress((const GLubyte*)"glCreateShaderProgramv")) == NULL) || r;
-  r = ((glDeleteProgramPipelines = (PFNGLDELETEPROGRAMPIPELINESPROC)glewGetProcAddress((const GLubyte*)"glDeleteProgramPipelines")) == NULL) || r;
+  r = ((glDeleteProgramPipelines = (PFNGLDeletePROGRAMPIPELINESPROC)glewGetProcAddress((const GLubyte*)"glDeleteProgramPipelines")) == NULL) || r;
   r = ((glGenProgramPipelines = (PFNGLGENPROGRAMPIPELINESPROC)glewGetProcAddress((const GLubyte*)"glGenProgramPipelines")) == NULL) || r;
   r = ((glGetProgramPipelineInfoLog = (PFNGLGETPROGRAMPIPELINEINFOLOGPROC)glewGetProcAddress((const GLubyte*)"glGetProgramPipelineInfoLog")) == NULL) || r;
   r = ((glGetProgramPipelineiv = (PFNGLGETPROGRAMPIPELINEIVPROC)glewGetProcAddress((const GLubyte*)"glGetProgramPipelineiv")) == NULL) || r;
@@ -11281,7 +11281,7 @@ static GLboolean _glewInit_GL_ARB_shader_objects ()
   r = ((glCompileShaderARB = (PFNGLCOMPILESHADERARBPROC)glewGetProcAddress((const GLubyte*)"glCompileShaderARB")) == NULL) || r;
   r = ((glCreateProgramObjectARB = (PFNGLCREATEPROGRAMOBJECTARBPROC)glewGetProcAddress((const GLubyte*)"glCreateProgramObjectARB")) == NULL) || r;
   r = ((glCreateShaderObjectARB = (PFNGLCREATESHADEROBJECTARBPROC)glewGetProcAddress((const GLubyte*)"glCreateShaderObjectARB")) == NULL) || r;
-  r = ((glDeleteObjectARB = (PFNGLDELETEOBJECTARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteObjectARB")) == NULL) || r;
+  r = ((glDeleteObjectARB = (PFNGLDeleteOBJECTARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteObjectARB")) == NULL) || r;
   r = ((glDetachObjectARB = (PFNGLDETACHOBJECTARBPROC)glewGetProcAddress((const GLubyte*)"glDetachObjectARB")) == NULL) || r;
   r = ((glGetActiveUniformARB = (PFNGLGETACTIVEUNIFORMARBPROC)glewGetProcAddress((const GLubyte*)"glGetActiveUniformARB")) == NULL) || r;
   r = ((glGetAttachedObjectsARB = (PFNGLGETATTACHEDOBJECTSARBPROC)glewGetProcAddress((const GLubyte*)"glGetAttachedObjectsARB")) == NULL) || r;
@@ -11362,7 +11362,7 @@ static GLboolean _glewInit_GL_ARB_shading_language_include ()
   GLboolean r = GL_FALSE;
 
   r = ((glCompileShaderIncludeARB = (PFNGLCOMPILESHADERINCLUDEARBPROC)glewGetProcAddress((const GLubyte*)"glCompileShaderIncludeARB")) == NULL) || r;
-  r = ((glDeleteNamedStringARB = (PFNGLDELETENAMEDSTRINGARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteNamedStringARB")) == NULL) || r;
+  r = ((glDeleteNamedStringARB = (PFNGLDeleteNAMEDSTRINGARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteNamedStringARB")) == NULL) || r;
   r = ((glGetNamedStringARB = (PFNGLGETNAMEDSTRINGARBPROC)glewGetProcAddress((const GLubyte*)"glGetNamedStringARB")) == NULL) || r;
   r = ((glGetNamedStringivARB = (PFNGLGETNAMEDSTRINGIVARBPROC)glewGetProcAddress((const GLubyte*)"glGetNamedStringivARB")) == NULL) || r;
   r = ((glIsNamedStringARB = (PFNGLISNAMEDSTRINGARBPROC)glewGetProcAddress((const GLubyte*)"glIsNamedStringARB")) == NULL) || r;
@@ -11406,7 +11406,7 @@ static GLboolean _glewInit_GL_ARB_sync ()
   GLboolean r = GL_FALSE;
 
   r = ((glClientWaitSync = (PFNGLCLIENTWAITSYNCPROC)glewGetProcAddress((const GLubyte*)"glClientWaitSync")) == NULL) || r;
-  r = ((glDeleteSync = (PFNGLDELETESYNCPROC)glewGetProcAddress((const GLubyte*)"glDeleteSync")) == NULL) || r;
+  r = ((glDeleteSync = (PFNGLDeleteSYNCPROC)glewGetProcAddress((const GLubyte*)"glDeleteSync")) == NULL) || r;
   r = ((glFenceSync = (PFNGLFENCESYNCPROC)glewGetProcAddress((const GLubyte*)"glFenceSync")) == NULL) || r;
   r = ((glGetInteger64v = (PFNGLGETINTEGER64VPROC)glewGetProcAddress((const GLubyte*)"glGetInteger64v")) == NULL) || r;
   r = ((glGetSynciv = (PFNGLGETSYNCIVPROC)glewGetProcAddress((const GLubyte*)"glGetSynciv")) == NULL) || r;
@@ -11573,7 +11573,7 @@ static GLboolean _glewInit_GL_ARB_transform_feedback2 ()
   GLboolean r = GL_FALSE;
 
   r = ((glBindTransformFeedback = (PFNGLBINDTRANSFORMFEEDBACKPROC)glewGetProcAddress((const GLubyte*)"glBindTransformFeedback")) == NULL) || r;
-  r = ((glDeleteTransformFeedbacks = (PFNGLDELETETRANSFORMFEEDBACKSPROC)glewGetProcAddress((const GLubyte*)"glDeleteTransformFeedbacks")) == NULL) || r;
+  r = ((glDeleteTransformFeedbacks = (PFNGLDeleteTRANSFORMFEEDBACKSPROC)glewGetProcAddress((const GLubyte*)"glDeleteTransformFeedbacks")) == NULL) || r;
   r = ((glDrawTransformFeedback = (PFNGLDRAWTRANSFORMFEEDBACKPROC)glewGetProcAddress((const GLubyte*)"glDrawTransformFeedback")) == NULL) || r;
   r = ((glGenTransformFeedbacks = (PFNGLGENTRANSFORMFEEDBACKSPROC)glewGetProcAddress((const GLubyte*)"glGenTransformFeedbacks")) == NULL) || r;
   r = ((glIsTransformFeedback = (PFNGLISTRANSFORMFEEDBACKPROC)glewGetProcAddress((const GLubyte*)"glIsTransformFeedback")) == NULL) || r;
@@ -11660,7 +11660,7 @@ static GLboolean _glewInit_GL_ARB_vertex_array_object ()
   GLboolean r = GL_FALSE;
 
   r = ((glBindVertexArray = (PFNGLBINDVERTEXARRAYPROC)glewGetProcAddress((const GLubyte*)"glBindVertexArray")) == NULL) || r;
-  r = ((glDeleteVertexArrays = (PFNGLDELETEVERTEXARRAYSPROC)glewGetProcAddress((const GLubyte*)"glDeleteVertexArrays")) == NULL) || r;
+  r = ((glDeleteVertexArrays = (PFNGLDeleteVERTEXARRAYSPROC)glewGetProcAddress((const GLubyte*)"glDeleteVertexArrays")) == NULL) || r;
   r = ((glGenVertexArrays = (PFNGLGENVERTEXARRAYSPROC)glewGetProcAddress((const GLubyte*)"glGenVertexArrays")) == NULL) || r;
   r = ((glIsVertexArray = (PFNGLISVERTEXARRAYPROC)glewGetProcAddress((const GLubyte*)"glIsVertexArray")) == NULL) || r;
 
@@ -11746,7 +11746,7 @@ static GLboolean _glewInit_GL_ARB_vertex_buffer_object ()
   r = ((glBindBufferARB = (PFNGLBINDBUFFERARBPROC)glewGetProcAddress((const GLubyte*)"glBindBufferARB")) == NULL) || r;
   r = ((glBufferDataARB = (PFNGLBUFFERDATAARBPROC)glewGetProcAddress((const GLubyte*)"glBufferDataARB")) == NULL) || r;
   r = ((glBufferSubDataARB = (PFNGLBUFFERSUBDATAARBPROC)glewGetProcAddress((const GLubyte*)"glBufferSubDataARB")) == NULL) || r;
-  r = ((glDeleteBuffersARB = (PFNGLDELETEBUFFERSARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteBuffersARB")) == NULL) || r;
+  r = ((glDeleteBuffersARB = (PFNGLDeleteBUFFERSARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteBuffersARB")) == NULL) || r;
   r = ((glGenBuffersARB = (PFNGLGENBUFFERSARBPROC)glewGetProcAddress((const GLubyte*)"glGenBuffersARB")) == NULL) || r;
   r = ((glGetBufferParameterivARB = (PFNGLGETBUFFERPARAMETERIVARBPROC)glewGetProcAddress((const GLubyte*)"glGetBufferParameterivARB")) == NULL) || r;
   r = ((glGetBufferPointervARB = (PFNGLGETBUFFERPOINTERVARBPROC)glewGetProcAddress((const GLubyte*)"glGetBufferPointervARB")) == NULL) || r;
@@ -11767,7 +11767,7 @@ static GLboolean _glewInit_GL_ARB_vertex_program ()
   GLboolean r = GL_FALSE;
 
   r = ((glBindProgramARB = (PFNGLBINDPROGRAMARBPROC)glewGetProcAddress((const GLubyte*)"glBindProgramARB")) == NULL) || r;
-  r = ((glDeleteProgramsARB = (PFNGLDELETEPROGRAMSARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteProgramsARB")) == NULL) || r;
+  r = ((glDeleteProgramsARB = (PFNGLDeletePROGRAMSARBPROC)glewGetProcAddress((const GLubyte*)"glDeleteProgramsARB")) == NULL) || r;
   r = ((glDisableVertexAttribArrayARB = (PFNGLDISABLEVERTEXATTRIBARRAYARBPROC)glewGetProcAddress((const GLubyte*)"glDisableVertexAttribArrayARB")) == NULL) || r;
   r = ((glEnableVertexAttribArrayARB = (PFNGLENABLEVERTEXATTRIBARRAYARBPROC)glewGetProcAddress((const GLubyte*)"glEnableVertexAttribArrayARB")) == NULL) || r;
   r = ((glGenProgramsARB = (PFNGLGENPROGRAMSARBPROC)glewGetProcAddress((const GLubyte*)"glGenProgramsARB")) == NULL) || r;
@@ -12007,7 +12007,7 @@ static GLboolean _glewInit_GL_ATI_fragment_shader ()
   r = ((glColorFragmentOp1ATI = (PFNGLCOLORFRAGMENTOP1ATIPROC)glewGetProcAddress((const GLubyte*)"glColorFragmentOp1ATI")) == NULL) || r;
   r = ((glColorFragmentOp2ATI = (PFNGLCOLORFRAGMENTOP2ATIPROC)glewGetProcAddress((const GLubyte*)"glColorFragmentOp2ATI")) == NULL) || r;
   r = ((glColorFragmentOp3ATI = (PFNGLCOLORFRAGMENTOP3ATIPROC)glewGetProcAddress((const GLubyte*)"glColorFragmentOp3ATI")) == NULL) || r;
-  r = ((glDeleteFragmentShaderATI = (PFNGLDELETEFRAGMENTSHADERATIPROC)glewGetProcAddress((const GLubyte*)"glDeleteFragmentShaderATI")) == NULL) || r;
+  r = ((glDeleteFragmentShaderATI = (PFNGLDeleteFRAGMENTSHADERATIPROC)glewGetProcAddress((const GLubyte*)"glDeleteFragmentShaderATI")) == NULL) || r;
   r = ((glEndFragmentShaderATI = (PFNGLENDFRAGMENTSHADERATIPROC)glewGetProcAddress((const GLubyte*)"glEndFragmentShaderATI")) == NULL) || r;
   r = ((glGenFragmentShadersATI = (PFNGLGENFRAGMENTSHADERSATIPROC)glewGetProcAddress((const GLubyte*)"glGenFragmentShadersATI")) == NULL) || r;
   r = ((glPassTexCoordATI = (PFNGLPASSTEXCOORDATIPROC)glewGetProcAddress((const GLubyte*)"glPassTexCoordATI")) == NULL) || r;
@@ -12864,8 +12864,8 @@ static GLboolean _glewInit_GL_EXT_framebuffer_object ()
   r = ((glBindFramebufferEXT = (PFNGLBINDFRAMEBUFFEREXTPROC)glewGetProcAddress((const GLubyte*)"glBindFramebufferEXT")) == NULL) || r;
   r = ((glBindRenderbufferEXT = (PFNGLBINDRENDERBUFFEREXTPROC)glewGetProcAddress((const GLubyte*)"glBindRenderbufferEXT")) == NULL) || r;
   r = ((glCheckFramebufferStatusEXT = (PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC)glewGetProcAddress((const GLubyte*)"glCheckFramebufferStatusEXT")) == NULL) || r;
-  r = ((glDeleteFramebuffersEXT = (PFNGLDELETEFRAMEBUFFERSEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteFramebuffersEXT")) == NULL) || r;
-  r = ((glDeleteRenderbuffersEXT = (PFNGLDELETERENDERBUFFERSEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteRenderbuffersEXT")) == NULL) || r;
+  r = ((glDeleteFramebuffersEXT = (PFNGLDeleteFRAMEBUFFERSEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteFramebuffersEXT")) == NULL) || r;
+  r = ((glDeleteRenderbuffersEXT = (PFNGLDeleteRENDERBUFFERSEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteRenderbuffersEXT")) == NULL) || r;
   r = ((glFramebufferRenderbufferEXT = (PFNGLFRAMEBUFFERRENDERBUFFEREXTPROC)glewGetProcAddress((const GLubyte*)"glFramebufferRenderbufferEXT")) == NULL) || r;
   r = ((glFramebufferTexture1DEXT = (PFNGLFRAMEBUFFERTEXTURE1DEXTPROC)glewGetProcAddress((const GLubyte*)"glFramebufferTexture1DEXT")) == NULL) || r;
   r = ((glFramebufferTexture2DEXT = (PFNGLFRAMEBUFFERTEXTURE2DEXTPROC)glewGetProcAddress((const GLubyte*)"glFramebufferTexture2DEXT")) == NULL) || r;
@@ -13057,7 +13057,7 @@ static GLboolean _glewInit_GL_EXT_memory_object ()
 
   r = ((glBufferStorageMemEXT = (PFNGLBUFFERSTORAGEMEMEXTPROC)glewGetProcAddress((const GLubyte*)"glBufferStorageMemEXT")) == NULL) || r;
   r = ((glCreateMemoryObjectsEXT = (PFNGLCREATEMEMORYOBJECTSEXTPROC)glewGetProcAddress((const GLubyte*)"glCreateMemoryObjectsEXT")) == NULL) || r;
-  r = ((glDeleteMemoryObjectsEXT = (PFNGLDELETEMEMORYOBJECTSEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteMemoryObjectsEXT")) == NULL) || r;
+  r = ((glDeleteMemoryObjectsEXT = (PFNGLDeleteMEMORYOBJECTSEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteMemoryObjectsEXT")) == NULL) || r;
   r = ((glGetMemoryObjectParameterivEXT = (PFNGLGETMEMORYOBJECTPARAMETERIVEXTPROC)glewGetProcAddress((const GLubyte*)"glGetMemoryObjectParameterivEXT")) == NULL) || r;
   r = ((glGetUnsignedBytei_vEXT = (PFNGLGETUNSIGNEDBYTEI_VEXTPROC)glewGetProcAddress((const GLubyte*)"glGetUnsignedBytei_vEXT")) == NULL) || r;
   r = ((glGetUnsignedBytevEXT = (PFNGLGETUNSIGNEDBYTEVEXTPROC)glewGetProcAddress((const GLubyte*)"glGetUnsignedBytevEXT")) == NULL) || r;
@@ -13329,7 +13329,7 @@ static GLboolean _glewInit_GL_EXT_semaphore ()
 {
   GLboolean r = GL_FALSE;
 
-  r = ((glDeleteSemaphoresEXT = (PFNGLDELETESEMAPHORESEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteSemaphoresEXT")) == NULL) || r;
+  r = ((glDeleteSemaphoresEXT = (PFNGLDeleteSEMAPHORESEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteSemaphoresEXT")) == NULL) || r;
   r = ((glGenSemaphoresEXT = (PFNGLGENSEMAPHORESEXTPROC)glewGetProcAddress((const GLubyte*)"glGenSemaphoresEXT")) == NULL) || r;
   r = ((glGetSemaphoreParameterui64vEXT = (PFNGLGETSEMAPHOREPARAMETERUI64VEXTPROC)glewGetProcAddress((const GLubyte*)"glGetSemaphoreParameterui64vEXT")) == NULL) || r;
   r = ((glIsSemaphoreEXT = (PFNGLISSEMAPHOREEXTPROC)glewGetProcAddress((const GLubyte*)"glIsSemaphoreEXT")) == NULL) || r;
@@ -13520,7 +13520,7 @@ static GLboolean _glewInit_GL_EXT_texture_object ()
 
   r = ((glAreTexturesResidentEXT = (PFNGLARETEXTURESRESIDENTEXTPROC)glewGetProcAddress((const GLubyte*)"glAreTexturesResidentEXT")) == NULL) || r;
   r = ((glBindTextureEXT = (PFNGLBINDTEXTUREEXTPROC)glewGetProcAddress((const GLubyte*)"glBindTextureEXT")) == NULL) || r;
-  r = ((glDeleteTexturesEXT = (PFNGLDELETETEXTURESEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteTexturesEXT")) == NULL) || r;
+  r = ((glDeleteTexturesEXT = (PFNGLDeleteTEXTURESEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteTexturesEXT")) == NULL) || r;
   r = ((glGenTexturesEXT = (PFNGLGENTEXTURESEXTPROC)glewGetProcAddress((const GLubyte*)"glGenTexturesEXT")) == NULL) || r;
   r = ((glIsTextureEXT = (PFNGLISTEXTUREEXTPROC)glewGetProcAddress((const GLubyte*)"glIsTextureEXT")) == NULL) || r;
   r = ((glPrioritizeTexturesEXT = (PFNGLPRIORITIZETEXTURESEXTPROC)glewGetProcAddress((const GLubyte*)"glPrioritizeTexturesEXT")) == NULL) || r;
@@ -13635,7 +13635,7 @@ static GLboolean _glewInit_GL_EXT_vertex_array_setXXX ()
 
   r = ((glBindArraySetEXT = (PFNGLBINDARRAYSETEXTPROC)glewGetProcAddress((const GLubyte*)"glBindArraySetEXT")) == NULL) || r;
   r = ((glCreateArraySetExt = (PFNGLCREATEARRAYSETEXTPROC)glewGetProcAddress((const GLubyte*)"glCreateArraySetExt")) == NULL) || r;
-  r = ((glDeleteArraySetsEXT = (PFNGLDELETEARRAYSETSEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteArraySetsEXT")) == NULL) || r;
+  r = ((glDeleteArraySetsEXT = (PFNGLDeleteARRAYSETSEXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteArraySetsEXT")) == NULL) || r;
 
   return r;
 }
@@ -13678,7 +13678,7 @@ static GLboolean _glewInit_GL_EXT_vertex_shader ()
   r = ((glBindTexGenParameterEXT = (PFNGLBINDTEXGENPARAMETEREXTPROC)glewGetProcAddress((const GLubyte*)"glBindTexGenParameterEXT")) == NULL) || r;
   r = ((glBindTextureUnitParameterEXT = (PFNGLBINDTEXTUREUNITPARAMETEREXTPROC)glewGetProcAddress((const GLubyte*)"glBindTextureUnitParameterEXT")) == NULL) || r;
   r = ((glBindVertexShaderEXT = (PFNGLBINDVERTEXSHADEREXTPROC)glewGetProcAddress((const GLubyte*)"glBindVertexShaderEXT")) == NULL) || r;
-  r = ((glDeleteVertexShaderEXT = (PFNGLDELETEVERTEXSHADEREXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteVertexShaderEXT")) == NULL) || r;
+  r = ((glDeleteVertexShaderEXT = (PFNGLDeleteVERTEXSHADEREXTPROC)glewGetProcAddress((const GLubyte*)"glDeleteVertexShaderEXT")) == NULL) || r;
   r = ((glDisableVariantClientStateEXT = (PFNGLDISABLEVARIANTCLIENTSTATEEXTPROC)glewGetProcAddress((const GLubyte*)"glDisableVariantClientStateEXT")) == NULL) || r;
   r = ((glEnableVariantClientStateEXT = (PFNGLENABLEVARIANTCLIENTSTATEEXTPROC)glewGetProcAddress((const GLubyte*)"glEnableVariantClientStateEXT")) == NULL) || r;
   r = ((glEndVertexShaderEXT = (PFNGLENDVERTEXSHADEREXTPROC)glewGetProcAddress((const GLubyte*)"glEndVertexShaderEXT")) == NULL) || r;
@@ -13891,7 +13891,7 @@ static GLboolean _glewInit_GL_INTEL_performance_query ()
 
   r = ((glBeginPerfQueryINTEL = (PFNGLBEGINPERFQUERYINTELPROC)glewGetProcAddress((const GLubyte*)"glBeginPerfQueryINTEL")) == NULL) || r;
   r = ((glCreatePerfQueryINTEL = (PFNGLCREATEPERFQUERYINTELPROC)glewGetProcAddress((const GLubyte*)"glCreatePerfQueryINTEL")) == NULL) || r;
-  r = ((glDeletePerfQueryINTEL = (PFNGLDELETEPERFQUERYINTELPROC)glewGetProcAddress((const GLubyte*)"glDeletePerfQueryINTEL")) == NULL) || r;
+  r = ((glDeletePerfQueryINTEL = (PFNGLDeletePERFQUERYINTELPROC)glewGetProcAddress((const GLubyte*)"glDeletePerfQueryINTEL")) == NULL) || r;
   r = ((glEndPerfQueryINTEL = (PFNGLENDPERFQUERYINTELPROC)glewGetProcAddress((const GLubyte*)"glEndPerfQueryINTEL")) == NULL) || r;
   r = ((glGetFirstPerfQueryIdINTEL = (PFNGLGETFIRSTPERFQUERYIDINTELPROC)glewGetProcAddress((const GLubyte*)"glGetFirstPerfQueryIdINTEL")) == NULL) || r;
   r = ((glGetNextPerfQueryIdINTEL = (PFNGLGETNEXTPERFQUERYIDINTELPROC)glewGetProcAddress((const GLubyte*)"glGetNextPerfQueryIdINTEL")) == NULL) || r;
@@ -13990,7 +13990,7 @@ static GLboolean _glewInit_GL_KTX_buffer_region ()
   GLboolean r = GL_FALSE;
 
   r = ((glBufferRegionEnabled = (PFNGLBUFFERREGIONENABLEDPROC)glewGetProcAddress((const GLubyte*)"glBufferRegionEnabled")) == NULL) || r;
-  r = ((glDeleteBufferRegion = (PFNGLDELETEBUFFERREGIONPROC)glewGetProcAddress((const GLubyte*)"glDeleteBufferRegion")) == NULL) || r;
+  r = ((glDeleteBufferRegion = (PFNGLDeleteBUFFERREGIONPROC)glewGetProcAddress((const GLubyte*)"glDeleteBufferRegion")) == NULL) || r;
   r = ((glDrawBufferRegion = (PFNGLDRAWBUFFERREGIONPROC)glewGetProcAddress((const GLubyte*)"glDrawBufferRegion")) == NULL) || r;
   r = ((glNewBufferRegion = (PFNGLNEWBUFFERREGIONPROC)glewGetProcAddress((const GLubyte*)"glNewBufferRegion")) == NULL) || r;
   r = ((glReadBufferRegion = (PFNGLREADBUFFERREGIONPROC)glewGetProcAddress((const GLubyte*)"glReadBufferRegion")) == NULL) || r;
@@ -14183,8 +14183,8 @@ static GLboolean _glewInit_GL_NV_command_list ()
   r = ((glCompileCommandListNV = (PFNGLCOMPILECOMMANDLISTNVPROC)glewGetProcAddress((const GLubyte*)"glCompileCommandListNV")) == NULL) || r;
   r = ((glCreateCommandListsNV = (PFNGLCREATECOMMANDLISTSNVPROC)glewGetProcAddress((const GLubyte*)"glCreateCommandListsNV")) == NULL) || r;
   r = ((glCreateStatesNV = (PFNGLCREATESTATESNVPROC)glewGetProcAddress((const GLubyte*)"glCreateStatesNV")) == NULL) || r;
-  r = ((glDeleteCommandListsNV = (PFNGLDELETECOMMANDLISTSNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteCommandListsNV")) == NULL) || r;
-  r = ((glDeleteStatesNV = (PFNGLDELETESTATESNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteStatesNV")) == NULL) || r;
+  r = ((glDeleteCommandListsNV = (PFNGLDeleteCOMMANDLISTSNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteCommandListsNV")) == NULL) || r;
+  r = ((glDeleteStatesNV = (PFNGLDeleteSTATESNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteStatesNV")) == NULL) || r;
   r = ((glDrawCommandsAddressNV = (PFNGLDRAWCOMMANDSADDRESSNVPROC)glewGetProcAddress((const GLubyte*)"glDrawCommandsAddressNV")) == NULL) || r;
   r = ((glDrawCommandsNV = (PFNGLDRAWCOMMANDSNVPROC)glewGetProcAddress((const GLubyte*)"glDrawCommandsNV")) == NULL) || r;
   r = ((glDrawCommandsStatesAddressNV = (PFNGLDRAWCOMMANDSSTATESADDRESSNVPROC)glewGetProcAddress((const GLubyte*)"glDrawCommandsStatesAddressNV")) == NULL) || r;
@@ -14394,7 +14394,7 @@ static GLboolean _glewInit_GL_NV_fence ()
 {
   GLboolean r = GL_FALSE;
 
-  r = ((glDeleteFencesNV = (PFNGLDELETEFENCESNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteFencesNV")) == NULL) || r;
+  r = ((glDeleteFencesNV = (PFNGLDeleteFENCESNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteFencesNV")) == NULL) || r;
   r = ((glFinishFenceNV = (PFNGLFINISHFENCENVPROC)glewGetProcAddress((const GLubyte*)"glFinishFenceNV")) == NULL) || r;
   r = ((glGenFencesNV = (PFNGLGENFENCESNVPROC)glewGetProcAddress((const GLubyte*)"glGenFencesNV")) == NULL) || r;
   r = ((glGetFenceivNV = (PFNGLGETFENCEIVNVPROC)glewGetProcAddress((const GLubyte*)"glGetFenceivNV")) == NULL) || r;
@@ -14693,7 +14693,7 @@ static GLboolean _glewInit_GL_NV_occlusion_query ()
   GLboolean r = GL_FALSE;
 
   r = ((glBeginOcclusionQueryNV = (PFNGLBEGINOCCLUSIONQUERYNVPROC)glewGetProcAddress((const GLubyte*)"glBeginOcclusionQueryNV")) == NULL) || r;
-  r = ((glDeleteOcclusionQueriesNV = (PFNGLDELETEOCCLUSIONQUERIESNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteOcclusionQueriesNV")) == NULL) || r;
+  r = ((glDeleteOcclusionQueriesNV = (PFNGLDeleteOCCLUSIONQUERIESNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteOcclusionQueriesNV")) == NULL) || r;
   r = ((glEndOcclusionQueryNV = (PFNGLENDOCCLUSIONQUERYNVPROC)glewGetProcAddress((const GLubyte*)"glEndOcclusionQueryNV")) == NULL) || r;
   r = ((glGenOcclusionQueriesNV = (PFNGLGENOCCLUSIONQUERIESNVPROC)glewGetProcAddress((const GLubyte*)"glGenOcclusionQueriesNV")) == NULL) || r;
   r = ((glGetOcclusionQueryivNV = (PFNGLGETOCCLUSIONQUERYIVNVPROC)glewGetProcAddress((const GLubyte*)"glGetOcclusionQueryivNV")) == NULL) || r;
@@ -14731,7 +14731,7 @@ static GLboolean _glewInit_GL_NV_path_rendering ()
   r = ((glCoverFillPathNV = (PFNGLCOVERFILLPATHNVPROC)glewGetProcAddress((const GLubyte*)"glCoverFillPathNV")) == NULL) || r;
   r = ((glCoverStrokePathInstancedNV = (PFNGLCOVERSTROKEPATHINSTANCEDNVPROC)glewGetProcAddress((const GLubyte*)"glCoverStrokePathInstancedNV")) == NULL) || r;
   r = ((glCoverStrokePathNV = (PFNGLCOVERSTROKEPATHNVPROC)glewGetProcAddress((const GLubyte*)"glCoverStrokePathNV")) == NULL) || r;
-  r = ((glDeletePathsNV = (PFNGLDELETEPATHSNVPROC)glewGetProcAddress((const GLubyte*)"glDeletePathsNV")) == NULL) || r;
+  r = ((glDeletePathsNV = (PFNGLDeletePATHSNVPROC)glewGetProcAddress((const GLubyte*)"glDeletePathsNV")) == NULL) || r;
   r = ((glGenPathsNV = (PFNGLGENPATHSNVPROC)glewGetProcAddress((const GLubyte*)"glGenPathsNV")) == NULL) || r;
   r = ((glGetPathColorGenfvNV = (PFNGLGETPATHCOLORGENFVNVPROC)glewGetProcAddress((const GLubyte*)"glGetPathColorGenfvNV")) == NULL) || r;
   r = ((glGetPathColorGenivNV = (PFNGLGETPATHCOLORGENIVNVPROC)glewGetProcAddress((const GLubyte*)"glGetPathColorGenivNV")) == NULL) || r;
@@ -15026,7 +15026,7 @@ static GLboolean _glewInit_GL_NV_transform_feedback2 ()
   GLboolean r = GL_FALSE;
 
   r = ((glBindTransformFeedbackNV = (PFNGLBINDTRANSFORMFEEDBACKNVPROC)glewGetProcAddress((const GLubyte*)"glBindTransformFeedbackNV")) == NULL) || r;
-  r = ((glDeleteTransformFeedbacksNV = (PFNGLDELETETRANSFORMFEEDBACKSNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteTransformFeedbacksNV")) == NULL) || r;
+  r = ((glDeleteTransformFeedbacksNV = (PFNGLDeleteTRANSFORMFEEDBACKSNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteTransformFeedbacksNV")) == NULL) || r;
   r = ((glDrawTransformFeedbackNV = (PFNGLDRAWTRANSFORMFEEDBACKNVPROC)glewGetProcAddress((const GLubyte*)"glDrawTransformFeedbackNV")) == NULL) || r;
   r = ((glGenTransformFeedbacksNV = (PFNGLGENTRANSFORMFEEDBACKSNVPROC)glewGetProcAddress((const GLubyte*)"glGenTransformFeedbacksNV")) == NULL) || r;
   r = ((glIsTransformFeedbackNV = (PFNGLISTRANSFORMFEEDBACKNVPROC)glewGetProcAddress((const GLubyte*)"glIsTransformFeedbackNV")) == NULL) || r;
@@ -15137,7 +15137,7 @@ static GLboolean _glewInit_GL_NV_vertex_program ()
 
   r = ((glAreProgramsResidentNV = (PFNGLAREPROGRAMSRESIDENTNVPROC)glewGetProcAddress((const GLubyte*)"glAreProgramsResidentNV")) == NULL) || r;
   r = ((glBindProgramNV = (PFNGLBINDPROGRAMNVPROC)glewGetProcAddress((const GLubyte*)"glBindProgramNV")) == NULL) || r;
-  r = ((glDeleteProgramsNV = (PFNGLDELETEPROGRAMSNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteProgramsNV")) == NULL) || r;
+  r = ((glDeleteProgramsNV = (PFNGLDeletePROGRAMSNVPROC)glewGetProcAddress((const GLubyte*)"glDeleteProgramsNV")) == NULL) || r;
   r = ((glExecuteProgramNV = (PFNGLEXECUTEPROGRAMNVPROC)glewGetProcAddress((const GLubyte*)"glExecuteProgramNV")) == NULL) || r;
   r = ((glGenProgramsNV = (PFNGLGENPROGRAMSNVPROC)glewGetProcAddress((const GLubyte*)"glGenProgramsNV")) == NULL) || r;
   r = ((glGetProgramParameterdvNV = (PFNGLGETPROGRAMPARAMETERDVNVPROC)glewGetProcAddress((const GLubyte*)"glGetProgramParameterdvNV")) == NULL) || r;
@@ -15639,7 +15639,7 @@ static GLboolean _glewInit_GL_SGIX_async ()
   GLboolean r = GL_FALSE;
 
   r = ((glAsyncMarkerSGIX = (PFNGLASYNCMARKERSGIXPROC)glewGetProcAddress((const GLubyte*)"glAsyncMarkerSGIX")) == NULL) || r;
-  r = ((glDeleteAsyncMarkersSGIX = (PFNGLDELETEASYNCMARKERSSGIXPROC)glewGetProcAddress((const GLubyte*)"glDeleteAsyncMarkersSGIX")) == NULL) || r;
+  r = ((glDeleteAsyncMarkersSGIX = (PFNGLDeleteASYNCMARKERSSGIXPROC)glewGetProcAddress((const GLubyte*)"glDeleteAsyncMarkersSGIX")) == NULL) || r;
   r = ((glFinishAsyncSGIX = (PFNGLFINISHASYNCSGIXPROC)glewGetProcAddress((const GLubyte*)"glFinishAsyncSGIX")) == NULL) || r;
   r = ((glGenAsyncMarkersSGIX = (PFNGLGENASYNCMARKERSSGIXPROC)glewGetProcAddress((const GLubyte*)"glGenAsyncMarkersSGIX")) == NULL) || r;
   r = ((glIsAsyncMarkerSGIX = (PFNGLISASYNCMARKERSGIXPROC)glewGetProcAddress((const GLubyte*)"glIsAsyncMarkerSGIX")) == NULL) || r;
@@ -15766,7 +15766,7 @@ static GLboolean _glewInit_GL_SGIX_mpeg1 ()
   GLboolean r = GL_FALSE;
 
   r = ((glAllocMPEGPredictorsSGIX = (PFNGLALLOCMPEGPREDICTORSSGIXPROC)glewGetProcAddress((const GLubyte*)"glAllocMPEGPredictorsSGIX")) == NULL) || r;
-  r = ((glDeleteMPEGPredictorsSGIX = (PFNGLDELETEMPEGPREDICTORSSGIXPROC)glewGetProcAddress((const GLubyte*)"glDeleteMPEGPredictorsSGIX")) == NULL) || r;
+  r = ((glDeleteMPEGPredictorsSGIX = (PFNGLDeleteMPEGPREDICTORSSGIXPROC)glewGetProcAddress((const GLubyte*)"glDeleteMPEGPredictorsSGIX")) == NULL) || r;
   r = ((glGenMPEGPredictorsSGIX = (PFNGLGENMPEGPREDICTORSSGIXPROC)glewGetProcAddress((const GLubyte*)"glGenMPEGPredictorsSGIX")) == NULL) || r;
   r = ((glGetMPEGParameterfvSGIX = (PFNGLGETMPEGPARAMETERFVSGIXPROC)glewGetProcAddress((const GLubyte*)"glGetMPEGParameterfvSGIX")) == NULL) || r;
   r = ((glGetMPEGParameterivSGIX = (PFNGLGETMPEGPARAMETERIVSGIXPROC)glewGetProcAddress((const GLubyte*)"glGetMPEGParameterivSGIX")) == NULL) || r;
@@ -15903,7 +15903,7 @@ static GLboolean _glewInit_GL_SGIX_vertex_array_object ()
 
   r = ((glAreVertexArraysResidentSGIX = (PFNGLAREVERTEXARRAYSRESIDENTSGIXPROC)glewGetProcAddress((const GLubyte*)"glAreVertexArraysResidentSGIX")) == NULL) || r;
   r = ((glBindVertexArraySGIX = (PFNGLBINDVERTEXARRAYSGIXPROC)glewGetProcAddress((const GLubyte*)"glBindVertexArraySGIX")) == NULL) || r;
-  r = ((glDeleteVertexArraysSGIX = (PFNGLDELETEVERTEXARRAYSSGIXPROC)glewGetProcAddress((const GLubyte*)"glDeleteVertexArraysSGIX")) == NULL) || r;
+  r = ((glDeleteVertexArraysSGIX = (PFNGLDeleteVERTEXARRAYSSGIXPROC)glewGetProcAddress((const GLubyte*)"glDeleteVertexArraysSGIX")) == NULL) || r;
   r = ((glGenVertexArraysSGIX = (PFNGLGENVERTEXARRAYSSGIXPROC)glewGetProcAddress((const GLubyte*)"glGenVertexArraysSGIX")) == NULL) || r;
   r = ((glIsVertexArraySGIX = (PFNGLISVERTEXARRAYSGIXPROC)glewGetProcAddress((const GLubyte*)"glIsVertexArraySGIX")) == NULL) || r;
   r = ((glPrioritizeVertexArraysSGIX = (PFNGLPRIORITIZEVERTEXARRAYSSGIXPROC)glewGetProcAddress((const GLubyte*)"glPrioritizeVertexArraysSGIX")) == NULL) || r;
@@ -16345,9 +16345,9 @@ static GLenum GLEWAPIENTRY glewContextInit ()
 #ifdef GL_AMD_multi_draw_indirect
   if (glewExperimental || GLEW_AMD_multi_draw_indirect) GLEW_AMD_multi_draw_indirect = !_glewInit_GL_AMD_multi_draw_indirect();
 #endif /* GL_AMD_multi_draw_indirect */
-#ifdef GL_AMD_name_gen_delete
-  if (glewExperimental || GLEW_AMD_name_gen_delete) GLEW_AMD_name_gen_delete = !_glewInit_GL_AMD_name_gen_delete();
-#endif /* GL_AMD_name_gen_delete */
+#ifdef GL_AMD_name_gen_Delete
+  if (glewExperimental || GLEW_AMD_name_gen_Delete) GLEW_AMD_name_gen_Delete = !_glewInit_GL_AMD_name_gen_Delete();
+#endif /* GL_AMD_name_gen_Delete */
 #ifdef GL_AMD_occlusion_query_event
   if (glewExperimental || GLEW_AMD_occlusion_query_event) GLEW_AMD_occlusion_query_event = !_glewInit_GL_AMD_occlusion_query_event();
 #endif /* GL_AMD_occlusion_query_event */
@@ -18811,7 +18811,7 @@ PFNWGLSETSTEREOEMITTERSTATE3DLPROC __wglewSetStereoEmitterState3DL = NULL;
 PFNWGLBLITCONTEXTFRAMEBUFFERAMDPROC __wglewBlitContextFramebufferAMD = NULL;
 PFNWGLCREATEASSOCIATEDCONTEXTAMDPROC __wglewCreateAssociatedContextAMD = NULL;
 PFNWGLCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC __wglewCreateAssociatedContextAttribsAMD = NULL;
-PFNWGLDELETEASSOCIATEDCONTEXTAMDPROC __wglewDeleteAssociatedContextAMD = NULL;
+PFNWGLDeleteASSOCIATEDCONTEXTAMDPROC __wglewDeleteAssociatedContextAMD = NULL;
 PFNWGLGETCONTEXTGPUIDAMDPROC __wglewGetContextGPUIDAMD = NULL;
 PFNWGLGETCURRENTASSOCIATEDCONTEXTAMDPROC __wglewGetCurrentAssociatedContextAMD = NULL;
 PFNWGLGETGPUIDSAMDPROC __wglewGetGPUIDsAMD = NULL;
@@ -18819,7 +18819,7 @@ PFNWGLGETGPUINFOAMDPROC __wglewGetGPUInfoAMD = NULL;
 PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC __wglewMakeAssociatedContextCurrentAMD = NULL;
 
 PFNWGLCREATEBUFFERREGIONARBPROC __wglewCreateBufferRegionARB = NULL;
-PFNWGLDELETEBUFFERREGIONARBPROC __wglewDeleteBufferRegionARB = NULL;
+PFNWGLDeleteBUFFERREGIONARBPROC __wglewDeleteBufferRegionARB = NULL;
 PFNWGLRESTOREBUFFERREGIONARBPROC __wglewRestoreBufferRegionARB = NULL;
 PFNWGLSAVEBUFFERREGIONARBPROC __wglewSaveBufferRegionARB = NULL;
 
@@ -18917,7 +18917,7 @@ PFNWGLCOPYIMAGESUBDATANVPROC __wglewCopyImageSubDataNV = NULL;
 PFNWGLDELAYBEFORESWAPNVPROC __wglewDelayBeforeSwapNV = NULL;
 
 PFNWGLCREATEAFFINITYDCNVPROC __wglewCreateAffinityDCNV = NULL;
-PFNWGLDELETEDCNVPROC __wglewDeleteDCNV = NULL;
+PFNWGLDeleteDCNVPROC __wglewDeleteDCNV = NULL;
 PFNWGLENUMGPUDEVICESNVPROC __wglewEnumGpuDevicesNV = NULL;
 PFNWGLENUMGPUSFROMAFFINITYDCNVPROC __wglewEnumGpusFromAffinityDCNV = NULL;
 PFNWGLENUMGPUSNVPROC __wglewEnumGpusNV = NULL;
@@ -19033,7 +19033,7 @@ static GLboolean _glewInit_WGL_AMD_gpu_association ()
   r = ((wglBlitContextFramebufferAMD = (PFNWGLBLITCONTEXTFRAMEBUFFERAMDPROC)glewGetProcAddress((const GLubyte*)"wglBlitContextFramebufferAMD")) == NULL) || r;
   r = ((wglCreateAssociatedContextAMD = (PFNWGLCREATEASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"wglCreateAssociatedContextAMD")) == NULL) || r;
   r = ((wglCreateAssociatedContextAttribsAMD = (PFNWGLCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC)glewGetProcAddress((const GLubyte*)"wglCreateAssociatedContextAttribsAMD")) == NULL) || r;
-  r = ((wglDeleteAssociatedContextAMD = (PFNWGLDELETEASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"wglDeleteAssociatedContextAMD")) == NULL) || r;
+  r = ((wglDeleteAssociatedContextAMD = (PFNWGLDeleteASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"wglDeleteAssociatedContextAMD")) == NULL) || r;
   r = ((wglGetContextGPUIDAMD = (PFNWGLGETCONTEXTGPUIDAMDPROC)glewGetProcAddress((const GLubyte*)"wglGetContextGPUIDAMD")) == NULL) || r;
   r = ((wglGetCurrentAssociatedContextAMD = (PFNWGLGETCURRENTASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"wglGetCurrentAssociatedContextAMD")) == NULL) || r;
   r = ((wglGetGPUIDsAMD = (PFNWGLGETGPUIDSAMDPROC)glewGetProcAddress((const GLubyte*)"wglGetGPUIDsAMD")) == NULL) || r;
@@ -19052,7 +19052,7 @@ static GLboolean _glewInit_WGL_ARB_buffer_region ()
   GLboolean r = GL_FALSE;
 
   r = ((wglCreateBufferRegionARB = (PFNWGLCREATEBUFFERREGIONARBPROC)glewGetProcAddress((const GLubyte*)"wglCreateBufferRegionARB")) == NULL) || r;
-  r = ((wglDeleteBufferRegionARB = (PFNWGLDELETEBUFFERREGIONARBPROC)glewGetProcAddress((const GLubyte*)"wglDeleteBufferRegionARB")) == NULL) || r;
+  r = ((wglDeleteBufferRegionARB = (PFNWGLDeleteBUFFERREGIONARBPROC)glewGetProcAddress((const GLubyte*)"wglDeleteBufferRegionARB")) == NULL) || r;
   r = ((wglRestoreBufferRegionARB = (PFNWGLRESTOREBUFFERREGIONARBPROC)glewGetProcAddress((const GLubyte*)"wglRestoreBufferRegionARB")) == NULL) || r;
   r = ((wglSaveBufferRegionARB = (PFNWGLSAVEBUFFERREGIONARBPROC)glewGetProcAddress((const GLubyte*)"wglSaveBufferRegionARB")) == NULL) || r;
 
@@ -19392,7 +19392,7 @@ static GLboolean _glewInit_WGL_NV_gpu_affinity ()
   GLboolean r = GL_FALSE;
 
   r = ((wglCreateAffinityDCNV = (PFNWGLCREATEAFFINITYDCNVPROC)glewGetProcAddress((const GLubyte*)"wglCreateAffinityDCNV")) == NULL) || r;
-  r = ((wglDeleteDCNV = (PFNWGLDELETEDCNVPROC)glewGetProcAddress((const GLubyte*)"wglDeleteDCNV")) == NULL) || r;
+  r = ((wglDeleteDCNV = (PFNWGLDeleteDCNVPROC)glewGetProcAddress((const GLubyte*)"wglDeleteDCNV")) == NULL) || r;
   r = ((wglEnumGpuDevicesNV = (PFNWGLENUMGPUDEVICESNVPROC)glewGetProcAddress((const GLubyte*)"wglEnumGpuDevicesNV")) == NULL) || r;
   r = ((wglEnumGpusFromAffinityDCNV = (PFNWGLENUMGPUSFROMAFFINITYDCNVPROC)glewGetProcAddress((const GLubyte*)"wglEnumGpusFromAffinityDCNV")) == NULL) || r;
   r = ((wglEnumGpusNV = (PFNWGLENUMGPUSNVPROC)glewGetProcAddress((const GLubyte*)"wglEnumGpusNV")) == NULL) || r;
@@ -19771,7 +19771,7 @@ PFNGLXSELECTEVENTPROC __glewXSelectEvent = NULL;
 PFNGLXBLITCONTEXTFRAMEBUFFERAMDPROC __glewXBlitContextFramebufferAMD = NULL;
 PFNGLXCREATEASSOCIATEDCONTEXTAMDPROC __glewXCreateAssociatedContextAMD = NULL;
 PFNGLXCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC __glewXCreateAssociatedContextAttribsAMD = NULL;
-PFNGLXDELETEASSOCIATEDCONTEXTAMDPROC __glewXDeleteAssociatedContextAMD = NULL;
+PFNGLXDeleteASSOCIATEDCONTEXTAMDPROC __glewXDeleteAssociatedContextAMD = NULL;
 PFNGLXGETCONTEXTGPUIDAMDPROC __glewXGetContextGPUIDAMD = NULL;
 PFNGLXGETCURRENTASSOCIATEDCONTEXTAMDPROC __glewXGetCurrentAssociatedContextAMD = NULL;
 PFNGLXGETGPUIDSAMDPROC __glewXGetGPUIDsAMD = NULL;
@@ -20023,7 +20023,7 @@ static GLboolean _glewInit_GLX_AMD_gpu_association ()
   r = ((glXBlitContextFramebufferAMD = (PFNGLXBLITCONTEXTFRAMEBUFFERAMDPROC)glewGetProcAddress((const GLubyte*)"glXBlitContextFramebufferAMD")) == NULL) || r;
   r = ((glXCreateAssociatedContextAMD = (PFNGLXCREATEASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"glXCreateAssociatedContextAMD")) == NULL) || r;
   r = ((glXCreateAssociatedContextAttribsAMD = (PFNGLXCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC)glewGetProcAddress((const GLubyte*)"glXCreateAssociatedContextAttribsAMD")) == NULL) || r;
-  r = ((glXDeleteAssociatedContextAMD = (PFNGLXDELETEASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"glXDeleteAssociatedContextAMD")) == NULL) || r;
+  r = ((glXDeleteAssociatedContextAMD = (PFNGLXDeleteASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"glXDeleteAssociatedContextAMD")) == NULL) || r;
   r = ((glXGetContextGPUIDAMD = (PFNGLXGETCONTEXTGPUIDAMDPROC)glewGetProcAddress((const GLubyte*)"glXGetContextGPUIDAMD")) == NULL) || r;
   r = ((glXGetCurrentAssociatedContextAMD = (PFNGLXGETCURRENTASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"glXGetCurrentAssociatedContextAMD")) == NULL) || r;
   r = ((glXGetGPUIDsAMD = (PFNGLXGETGPUIDSAMDPROC)glewGetProcAddress((const GLubyte*)"glXGetGPUIDsAMD")) == NULL) || r;
@@ -21152,10 +21152,10 @@ GLboolean GLEWAPIENTRY glewIsSupported (const char* name)
           continue;
         }
 #endif
-#ifdef GL_AMD_name_gen_delete
-        if (_glewStrSame3(&pos, &len, (const GLubyte*)"name_gen_delete", 15))
+#ifdef GL_AMD_name_gen_Delete
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"name_gen_Delete", 15))
         {
-          ret = GLEW_AMD_name_gen_delete;
+          ret = GLEW_AMD_name_gen_Delete;
           continue;
         }
 #endif

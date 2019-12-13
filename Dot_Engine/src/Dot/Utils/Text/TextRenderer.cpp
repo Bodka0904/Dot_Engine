@@ -23,15 +23,6 @@ namespace Dot {
 		glDrawArrays(GL_QUADS, 0, vao->GetVertexBuffer(0)->GetCount());
 	}
 
-	void TextRenderer::RenderDynamic(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, int count)
-	{
-		shader->Bind();
-		shader->UploadUniformMat4("u_ViewProjectionMatrix", m_SceneData.ViewProjectionMatrix);
-		vao->Bind();
-
-		glDrawArrays(GL_QUADS, 0, count);
-	}
-
 	void TextRenderer::EndRender()
 	{
 		glDisable(GL_BLEND);

@@ -3,6 +3,8 @@
 #include "Dot/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Renderer/Shaders/Shader.h"
 
+#include "Dot/Renderer/Renderer2D.h"
+#include "Dot/Utils/Text/Text.h"
 #include "Dot/Utils/Text/DynamicText.h"
 
 namespace Dot {
@@ -21,8 +23,7 @@ namespace Dot {
 		Ref<OrthoCamera> m_Camera;
 		Ref<Shader> m_GuiShader;
 		Ref<Shader> m_TextShader;
-		Ref<Shader> m_TestShader;
-
+		Ref<Renderer2D> m_Renderer;
 	private:
 		Ref<DynamicText> m_Text;
 

@@ -103,3 +103,1206 @@
 2019-12-11.14:44:45: Loading mesh: res/projectmodels/tree.obj
 2019-12-11.14:44:45: Loading animated mesh: res/animation/cowboy.dae
 2019-12-11.14:44:52: Window: Close
+2019-12-11.19:07:10: OpenGL Info:
+2019-12-11.19:07:10: Vendor: NVIDIA Corporation
+2019-12-11.19:07:10: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.19:07:10: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.19:07:33: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.19:07:33: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.19:07:38: Window: Resized window width: 1920 height: 1017
+2019-12-11.19:07:41: Window: Resized window width: 1240 height: 720
+2019-12-11.19:10:45: OpenGL Info:
+2019-12-11.19:10:45: Vendor: NVIDIA Corporation
+2019-12-11.19:10:45: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.19:10:45: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.19:11:04: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.19:11:04: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.19:11:07: Window: Resized window width: 1241 height: 720
+2019-12-11.19:11:07: Window: Resized window width: 1241 height: 720
+2019-12-11.19:11:07: Window: Resized window width: 1242 height: 720
+2019-12-11.19:11:07: Window: Resized window width: 1242 height: 720
+2019-12-11.19:11:07: Window: Resized window width: 1246 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1246 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1251 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1251 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1257 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1257 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1267 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1267 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1270 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1270 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1276 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1276 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1282 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1282 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1285 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1285 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1288 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1288 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1289 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1289 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1292 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1292 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1293 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1293 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1294 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1294 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1296 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1296 height: 719
+2019-12-11.19:11:07: Window: Resized window width: 1299 height: 720
+2019-12-11.19:11:07: Window: Resized window width: 1299 height: 720
+2019-12-11.19:11:07: Window: Resized window width: 1302 height: 721
+2019-12-11.19:11:07: Window: Resized window width: 1302 height: 721
+2019-12-11.19:11:07: Window: Resized window width: 1307 height: 722
+2019-12-11.19:11:07: Window: Resized window width: 1307 height: 722
+2019-12-11.19:11:07: Window: Resized window width: 1310 height: 722
+2019-12-11.19:11:07: Window: Resized window width: 1310 height: 722
+2019-12-11.19:11:07: Window: Resized window width: 1313 height: 723
+2019-12-11.19:11:07: Window: Resized window width: 1313 height: 723
+2019-12-11.19:11:07: Window: Resized window width: 1314 height: 723
+2019-12-11.19:11:07: Window: Resized window width: 1314 height: 723
+2019-12-11.19:11:07: Window: Resized window width: 1315 height: 723
+2019-12-11.19:11:07: Window: Resized window width: 1315 height: 723
+2019-12-11.19:16:03: OpenGL Info:
+2019-12-11.19:16:03: Vendor: NVIDIA Corporation
+2019-12-11.19:16:03: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.19:16:03: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.19:16:24: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.19:16:24: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.19:16:30: Window: Resized window width: 1920 height: 1017
+2019-12-11.19:16:41: Window: Resized window width: 1240 height: 720
+2019-12-11.19:16:46: Window: Resized window width: 1240 height: 719
+2019-12-11.19:16:46: Window: Resized window width: 1237 height: 716
+2019-12-11.19:16:46: Window: Resized window width: 1216 height: 703
+2019-12-11.19:16:46: Window: Resized window width: 1143 height: 653
+2019-12-11.19:16:46: Window: Resized window width: 1083 height: 612
+2019-12-11.19:16:46: Window: Resized window width: 1026 height: 572
+2019-12-11.19:16:47: Window: Resized window width: 970 height: 540
+2019-12-11.19:16:47: Window: Resized window width: 915 height: 510
+2019-12-11.19:16:47: Window: Resized window width: 858 height: 487
+2019-12-11.19:16:47: Window: Resized window width: 830 height: 475
+2019-12-11.19:16:47: Window: Resized window width: 808 height: 468
+2019-12-11.19:16:47: Window: Resized window width: 785 height: 459
+2019-12-11.19:16:47: Window: Resized window width: 766 height: 452
+2019-12-11.19:16:47: Window: Resized window width: 748 height: 445
+2019-12-11.19:16:47: Window: Resized window width: 735 height: 442
+2019-12-11.19:16:47: Window: Resized window width: 723 height: 438
+2019-12-11.19:16:47: Window: Resized window width: 713 height: 436
+2019-12-11.19:16:47: Window: Resized window width: 705 height: 434
+2019-12-11.19:16:47: Window: Resized window width: 694 height: 432
+2019-12-11.19:16:47: Window: Resized window width: 689 height: 431
+2019-12-11.19:16:47: Window: Resized window width: 685 height: 431
+2019-12-11.19:16:47: Window: Resized window width: 675 height: 430
+2019-12-11.19:16:47: Window: Resized window width: 670 height: 430
+2019-12-11.19:16:47: Window: Resized window width: 663 height: 430
+2019-12-11.19:16:47: Window: Resized window width: 647 height: 430
+2019-12-11.19:16:47: Window: Resized window width: 638 height: 430
+2019-12-11.19:16:47: Window: Resized window width: 628 height: 429
+2019-12-11.19:16:47: Window: Resized window width: 610 height: 425
+2019-12-11.19:16:47: Window: Resized window width: 602 height: 423
+2019-12-11.19:16:47: Window: Resized window width: 595 height: 421
+2019-12-11.19:16:47: Window: Resized window width: 588 height: 419
+2019-12-11.19:16:47: Window: Resized window width: 584 height: 417
+2019-12-11.19:16:47: Window: Resized window width: 580 height: 416
+2019-12-11.19:16:47: Window: Resized window width: 577 height: 414
+2019-12-11.19:16:47: Window: Resized window width: 572 height: 412
+2019-12-11.19:16:47: Window: Resized window width: 570 height: 411
+2019-12-11.19:16:47: Window: Resized window width: 569 height: 410
+2019-12-11.19:16:47: Window: Resized window width: 568 height: 410
+2019-12-11.19:16:47: Window: Resized window width: 567 height: 409
+2019-12-11.19:16:47: Window: Resized window width: 567 height: 408
+2019-12-11.19:16:47: Window: Resized window width: 568 height: 408
+2019-12-11.19:16:47: Window: Resized window width: 569 height: 409
+2019-12-11.19:16:47: Window: Resized window width: 579 height: 412
+2019-12-11.19:16:47: Window: Resized window width: 613 height: 418
+2019-12-11.19:16:47: Window: Resized window width: 681 height: 430
+2019-12-11.19:16:47: Window: Resized window width: 769 height: 447
+2019-12-11.19:16:47: Window: Resized window width: 855 height: 467
+2019-12-11.19:16:47: Window: Resized window width: 923 height: 488
+2019-12-11.19:16:47: Window: Resized window width: 978 height: 506
+2019-12-11.19:16:47: Window: Resized window width: 1023 height: 524
+2019-12-11.19:16:47: Window: Resized window width: 1041 height: 531
+2019-12-11.19:16:47: Window: Resized window width: 1070 height: 543
+2019-12-11.19:16:47: Window: Resized window width: 1092 height: 553
+2019-12-11.19:16:47: Window: Resized window width: 1112 height: 560
+2019-12-11.19:16:47: Window: Resized window width: 1130 height: 568
+2019-12-11.19:16:47: Window: Resized window width: 1147 height: 574
+2019-12-11.19:16:47: Window: Resized window width: 1154 height: 576
+2019-12-11.19:16:47: Window: Resized window width: 1168 height: 581
+2019-12-11.19:16:47: Window: Resized window width: 1181 height: 586
+2019-12-11.19:16:47: Window: Resized window width: 1194 height: 591
+2019-12-11.19:16:47: Window: Resized window width: 1208 height: 596
+2019-12-11.19:16:47: Window: Resized window width: 1221 height: 601
+2019-12-11.19:16:47: Window: Resized window width: 1237 height: 609
+2019-12-11.19:16:47: Window: Resized window width: 1246 height: 613
+2019-12-11.19:16:48: Window: Resized window width: 1255 height: 615
+2019-12-11.19:16:48: Window: Resized window width: 1257 height: 617
+2019-12-11.19:16:48: Window: Resized window width: 1264 height: 619
+2019-12-11.19:16:48: Window: Resized window width: 1269 height: 621
+2019-12-11.19:16:48: Window: Resized window width: 1273 height: 623
+2019-12-11.19:16:48: Window: Resized window width: 1274 height: 624
+2019-12-11.19:16:48: Window: Resized window width: 1276 height: 624
+2019-12-11.19:16:48: Window: Resized window width: 1278 height: 624
+2019-12-11.19:16:48: Window: Resized window width: 1279 height: 625
+2019-12-11.19:16:49: Window: Resized window width: 1920 height: 1017
+2019-12-11.19:17:10: Window: Resized window width: 1279 height: 625
+2019-12-11.19:17:10: Window: Resized window width: 1920 height: 1017
+2019-12-11.19:21:35: OpenGL Info:
+2019-12-11.19:21:35: Vendor: NVIDIA Corporation
+2019-12-11.19:21:35: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.19:21:35: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.19:21:55: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.19:21:55: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.19:22:11: Buffer for dynamic text is full!
+2019-12-11.19:22:12: Buffer for dynamic text is full!
+2019-12-11.19:22:12: Buffer for dynamic text is full!
+2019-12-11.19:22:12: Buffer for dynamic text is full!
+2019-12-11.19:22:12: Buffer for dynamic text is full!
+2019-12-11.19:22:12: Buffer for dynamic text is full!
+2019-12-11.19:22:13: Buffer for dynamic text is full!
+2019-12-11.19:22:13: Buffer for dynamic text is full!
+2019-12-11.19:22:13: Buffer for dynamic text is full!
+2019-12-11.19:22:14: Buffer for dynamic text is full!
+2019-12-11.19:22:14: Buffer for dynamic text is full!
+2019-12-11.19:22:14: Buffer for dynamic text is full!
+2019-12-11.19:22:14: Buffer for dynamic text is full!
+2019-12-11.19:22:14: Buffer for dynamic text is full!
+2019-12-11.19:22:15: Buffer for dynamic text is full!
+2019-12-11.19:22:15: Buffer for dynamic text is full!
+2019-12-11.19:22:15: Buffer for dynamic text is full!
+2019-12-11.19:22:15: Buffer for dynamic text is full!
+2019-12-11.19:22:15: Buffer for dynamic text is full!
+2019-12-11.19:22:16: Buffer for dynamic text is full!
+2019-12-11.19:22:16: Buffer for dynamic text is full!
+2019-12-11.19:22:16: Buffer for dynamic text is full!
+2019-12-11.19:22:17: Buffer for dynamic text is full!
+2019-12-11.19:22:17: Buffer for dynamic text is full!
+2019-12-11.19:22:17: Buffer for dynamic text is full!
+2019-12-11.19:22:17: Buffer for dynamic text is full!
+2019-12-11.19:22:18: Buffer for dynamic text is full!
+2019-12-11.19:22:18: Buffer for dynamic text is full!
+2019-12-11.19:22:25: Buffer for dynamic text is full!
+2019-12-11.19:22:25: Buffer for dynamic text is full!
+2019-12-11.19:22:28: Window: Resized window width: 1920 height: 1017
+2019-12-11.19:22:32: Window: Close
+2019-12-11.19:24:09: OpenGL Info:
+2019-12-11.19:24:09: Vendor: NVIDIA Corporation
+2019-12-11.19:24:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.19:24:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.19:24:28: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.19:24:28: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.19:24:40: Buffer for dynamic text is full!
+2019-12-11.19:24:40: Buffer for dynamic text is full!
+2019-12-11.19:24:40: Buffer for dynamic text is full!
+2019-12-11.19:24:51: Buffer for dynamic text is full!
+2019-12-11.19:24:54: Window: Close
+2019-12-11.19:25:08: OpenGL Info:
+2019-12-11.19:25:08: Vendor: NVIDIA Corporation
+2019-12-11.19:25:08: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.19:25:08: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.19:25:29: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.19:25:29: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.19:25:49: Window: Resized window width: 1920 height: 1017
+2019-12-11.19:25:57: Window: Close
+2019-12-11.19:27:48: OpenGL Info:
+2019-12-11.19:27:48: Vendor: NVIDIA Corporation
+2019-12-11.19:27:48: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.19:27:48: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.19:47:34: OpenGL Info:
+2019-12-11.19:47:34: Vendor: NVIDIA Corporation
+2019-12-11.19:47:34: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.19:47:34: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.19:47:54: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.19:47:54: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.19:48:02: Window: Resized window width: 1920 height: 1017
+2019-12-11.19:49:30: Window: Close
+2019-12-11.20:25:15: OpenGL Info:
+2019-12-11.20:25:15: Vendor: NVIDIA Corporation
+2019-12-11.20:25:15: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.20:25:15: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.20:25:35: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.20:25:35: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.20:26:10: Window: Close
+2019-12-11.20:32:11: OpenGL Info:
+2019-12-11.20:32:11: Vendor: NVIDIA Corporation
+2019-12-11.20:32:11: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.20:32:11: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.20:32:31: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.20:32:31: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.20:32:38: Window: Resized window width: 1920 height: 1017
+2019-12-11.20:33:06: Window: Close
+2019-12-11.20:35:01: OpenGL Info:
+2019-12-11.20:35:01: Vendor: NVIDIA Corporation
+2019-12-11.20:35:01: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.20:35:01: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.20:35:21: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.20:35:21: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.20:35:40: Window: Resized window width: 1920 height: 1017
+2019-12-11.20:38:14: OpenGL Info:
+2019-12-11.20:38:14: Vendor: NVIDIA Corporation
+2019-12-11.20:38:14: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.20:38:14: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.20:38:33: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.20:38:34: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.20:38:43: Window: Resized window width: 1920 height: 1017
+2019-12-11.20:38:50: Buffer for dynamic text is full!
+2019-12-11.20:38:50: Buffer for dynamic text is full!
+2019-12-11.20:38:51: Buffer for dynamic text is full!
+2019-12-11.20:38:53: Buffer for dynamic text is full!
+2019-12-11.20:38:53: Buffer for dynamic text is full!
+2019-12-11.20:38:58: Buffer for dynamic text is full!
+2019-12-11.20:38:59: Buffer for dynamic text is full!
+2019-12-11.20:39:00: Buffer for dynamic text is full!
+2019-12-11.20:39:00: Buffer for dynamic text is full!
+2019-12-11.20:39:01: Buffer for dynamic text is full!
+2019-12-11.20:39:01: Buffer for dynamic text is full!
+2019-12-11.20:39:01: Buffer for dynamic text is full!
+2019-12-11.20:39:01: Buffer for dynamic text is full!
+2019-12-11.20:39:01: Buffer for dynamic text is full!
+2019-12-11.20:39:13: Height: 0.500000
+2019-12-11.20:39:13: Height: 1.000000
+2019-12-11.20:39:14: Height: 1.500000
+2019-12-11.20:39:14: Height: 2.000000
+2019-12-11.20:39:14: Height: 2.500000
+2019-12-11.20:39:14: Height: 3.000000
+2019-12-11.20:39:14: Height: 3.500000
+2019-12-11.20:39:15: Height: 4.000000
+2019-12-11.20:39:15: Height: 4.500000
+2019-12-11.20:39:15: Height: 5.000000
+2019-12-11.20:39:15: Height: 5.500000
+2019-12-11.20:39:15: Height: 6.000000
+2019-12-11.20:39:15: Height: 6.500000
+2019-12-11.20:39:16: Height: 7.000000
+2019-12-11.20:39:16: Height: 7.500000
+2019-12-11.20:39:16: Height: 8.000000
+2019-12-11.20:39:17: Amplitude: 0.500000
+2019-12-11.20:39:17: Amplitude: 1.000000
+2019-12-11.20:39:17: Amplitude: 1.500000
+2019-12-11.20:39:17: Amplitude: 2.000000
+2019-12-11.20:39:18: Amplitude: 2.500000
+2019-12-11.20:39:18: Amplitude: 3.000000
+2019-12-11.20:39:18: Amplitude: 3.500000
+2019-12-11.20:39:18: Amplitude: 4.000000
+2019-12-11.20:39:18: Amplitude: 4.500000
+2019-12-11.20:39:19: Amplitude: 5.000000
+2019-12-11.20:39:19: Amplitude: 5.500000
+2019-12-11.20:39:19: Amplitude: 6.000000
+2019-12-11.20:39:20: Amplitude: 6.500000
+2019-12-11.20:39:20: Amplitude: 7.000000
+2019-12-11.20:39:20: Amplitude: 7.500000
+2019-12-11.20:39:23: Seed: 1
+2019-12-11.20:39:24: Seed: 2
+2019-12-11.20:39:24: Seed: 3
+2019-12-11.20:39:24: Seed: 4
+2019-12-11.20:39:24: Seed: 5
+2019-12-11.20:39:24: Seed: 6
+2019-12-11.20:39:25: Seed: 7
+2019-12-11.20:39:26: Processing...
+2019-12-11.20:39:49: Finished
+2019-12-11.20:39:49: Updated
+2019-12-11.20:40:10: Window: Close
+2019-12-11.20:42:18: OpenGL Info:
+2019-12-11.20:42:18: Vendor: NVIDIA Corporation
+2019-12-11.20:42:18: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.20:42:18: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.20:42:39: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.20:42:39: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.20:42:39: Could not open file °/Æ,S 
+2019-12-11.20:43:36: OpenGL Info:
+2019-12-11.20:43:36: Vendor: NVIDIA Corporation
+2019-12-11.20:43:36: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.20:43:36: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.20:43:55: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.20:43:55: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.20:43:59: Window: Close
+2019-12-11.20:56:37: OpenGL Info:
+2019-12-11.20:56:37: Vendor: NVIDIA Corporation
+2019-12-11.20:56:37: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.20:56:37: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.20:56:58: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.20:56:58: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.20:57:01: Window: Close
+2019-12-11.20:57:10: OpenGL Info:
+2019-12-11.20:57:10: Vendor: NVIDIA Corporation
+2019-12-11.20:57:10: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.20:57:10: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.20:57:29: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.20:57:29: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:01:31: OpenGL Info:
+2019-12-11.21:01:31: Vendor: NVIDIA Corporation
+2019-12-11.21:01:31: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:01:31: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:01:50: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:01:50: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:02:11: Window: Resized window width: 1920 height: 1017
+2019-12-11.21:04:54: OpenGL Info:
+2019-12-11.21:04:54: Vendor: NVIDIA Corporation
+2019-12-11.21:04:54: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:04:54: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:05:00: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:05:00: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:05:24: Window: Resized window width: 1920 height: 1017
+2019-12-11.21:06:02: Window: Close
+2019-12-11.21:12:58: OpenGL Info:
+2019-12-11.21:12:58: Vendor: NVIDIA Corporation
+2019-12-11.21:12:58: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:12:58: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:13:02: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:13:03: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:13:23: Window: Close
+2019-12-11.21:14:58: OpenGL Info:
+2019-12-11.21:14:58: Vendor: NVIDIA Corporation
+2019-12-11.21:14:58: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:14:58: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:15:02: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:15:02: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:15:10: Window: Close
+2019-12-11.21:17:51: OpenGL Info:
+2019-12-11.21:17:51: Vendor: NVIDIA Corporation
+2019-12-11.21:17:51: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:17:51: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:17:56: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:17:56: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:32:58: OpenGL Info:
+2019-12-11.21:32:58: Vendor: NVIDIA Corporation
+2019-12-11.21:32:58: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:32:58: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:33:02: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:33:02: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:33:13: Window: Close
+2019-12-11.21:33:34: OpenGL Info:
+2019-12-11.21:33:34: Vendor: NVIDIA Corporation
+2019-12-11.21:33:34: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:33:34: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:33:39: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:33:39: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:33:43: Window: Close
+2019-12-11.21:36:04: OpenGL Info:
+2019-12-11.21:36:04: Vendor: NVIDIA Corporation
+2019-12-11.21:36:04: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:36:04: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:36:08: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:36:08: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:36:17: Buffer for dynamic text is full!
+2019-12-11.21:36:18: Buffer for dynamic text is full!
+2019-12-11.21:36:18: Buffer for dynamic text is full!
+2019-12-11.21:36:18: Buffer for dynamic text is full!
+2019-12-11.21:36:20: Window: Close
+2019-12-11.21:42:12: OpenGL Info:
+2019-12-11.21:42:12: Vendor: NVIDIA Corporation
+2019-12-11.21:42:12: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:42:12: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:42:17: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:42:17: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:44:19: OpenGL Info:
+2019-12-11.21:44:19: Vendor: NVIDIA Corporation
+2019-12-11.21:44:19: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:44:19: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:44:23: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:44:23: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:45:25: OpenGL Info:
+2019-12-11.21:45:25: Vendor: NVIDIA Corporation
+2019-12-11.21:45:25: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:45:25: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:45:29: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:45:29: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:46:28: OpenGL Info:
+2019-12-11.21:46:28: Vendor: NVIDIA Corporation
+2019-12-11.21:46:28: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:46:28: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:46:32: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:46:32: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:47:36: OpenGL Info:
+2019-12-11.21:47:36: Vendor: NVIDIA Corporation
+2019-12-11.21:47:36: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:47:36: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:47:40: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:47:40: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:51:28: OpenGL Info:
+2019-12-11.21:51:28: Vendor: NVIDIA Corporation
+2019-12-11.21:51:28: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:51:28: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:51:33: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:51:33: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:51:39: Window: Close
+2019-12-11.21:54:01: OpenGL Info:
+2019-12-11.21:54:01: Vendor: NVIDIA Corporation
+2019-12-11.21:54:01: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.21:54:01: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.21:54:06: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.21:54:06: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.21:54:25: Buffer for dynamic text is full!
+2019-12-11.21:54:25: Buffer for dynamic text is full!
+2019-12-11.21:54:25: Buffer for dynamic text is full!
+2019-12-11.21:54:25: Buffer for dynamic text is full!
+2019-12-11.21:54:26: Buffer for dynamic text is full!
+2019-12-11.21:54:26: Buffer for dynamic text is full!
+2019-12-11.21:54:26: Buffer for dynamic text is full!
+2019-12-11.21:54:26: Buffer for dynamic text is full!
+2019-12-11.21:54:26: Buffer for dynamic text is full!
+2019-12-11.21:54:26: Buffer for dynamic text is full!
+2019-12-11.21:54:27: Buffer for dynamic text is full!
+2019-12-11.21:54:28: Buffer for dynamic text is full!
+2019-12-11.21:54:28: Buffer for dynamic text is full!
+2019-12-11.21:54:29: Buffer for dynamic text is full!
+2019-12-11.21:54:29: Buffer for dynamic text is full!
+2019-12-11.21:54:29: Buffer for dynamic text is full!
+2019-12-11.21:54:29: Buffer for dynamic text is full!
+2019-12-11.21:54:29: Buffer for dynamic text is full!
+2019-12-11.21:54:31: Buffer for dynamic text is full!
+2019-12-11.21:54:31: Buffer for dynamic text is full!
+2019-12-11.21:54:31: Buffer for dynamic text is full!
+2019-12-11.21:54:31: Buffer for dynamic text is full!
+2019-12-11.21:54:32: Buffer for dynamic text is full!
+2019-12-11.21:54:32: Buffer for dynamic text is full!
+2019-12-11.21:54:37: Buffer for dynamic text is full!
+2019-12-11.21:54:37: Buffer for dynamic text is full!
+2019-12-11.21:54:39: Window: Close
+2019-12-11.22:02:02: OpenGL Info:
+2019-12-11.22:02:02: Vendor: NVIDIA Corporation
+2019-12-11.22:02:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.22:02:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.22:02:07: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.22:02:07: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.22:02:22: Window: Close
+2019-12-11.22:03:02: OpenGL Info:
+2019-12-11.22:03:02: Vendor: NVIDIA Corporation
+2019-12-11.22:03:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.22:03:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.22:03:06: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.22:03:06: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.22:06:36: OpenGL Info:
+2019-12-11.22:06:36: Vendor: NVIDIA Corporation
+2019-12-11.22:06:36: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.22:06:36: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.22:06:40: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.22:06:40: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.22:06:52: Buffer for dynamic text is full!
+2019-12-11.22:06:52: Buffer for dynamic text is full!
+2019-12-11.22:06:54: Buffer for dynamic text is full!
+2019-12-11.22:06:54: Buffer for dynamic text is full!
+2019-12-11.22:06:55: Window: Close
+2019-12-11.22:07:11: OpenGL Info:
+2019-12-11.22:07:11: Vendor: NVIDIA Corporation
+2019-12-11.22:07:11: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.22:07:11: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.22:07:15: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.22:07:15: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.22:07:26: Window: Close
+2019-12-11.22:08:29: OpenGL Info:
+2019-12-11.22:08:29: Vendor: NVIDIA Corporation
+2019-12-11.22:08:29: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.22:08:29: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.22:08:33: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.22:08:33: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.22:08:41: Window: Close
+2019-12-11.22:10:09: OpenGL Info:
+2019-12-11.22:10:09: Vendor: NVIDIA Corporation
+2019-12-11.22:10:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.22:10:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.22:10:15: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.22:10:15: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.22:10:39: Window: Close
+2019-12-11.22:12:15: OpenGL Info:
+2019-12-11.22:12:15: Vendor: NVIDIA Corporation
+2019-12-11.22:12:15: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.22:12:15: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.22:12:19: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.22:12:19: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.22:12:38: Window: Close
+2019-12-11.22:13:04: OpenGL Info:
+2019-12-11.22:13:04: Vendor: NVIDIA Corporation
+2019-12-11.22:13:04: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-11.22:13:04: Version: 4.6.0 NVIDIA 431.36
+2019-12-11.22:13:09: Loading mesh: res/projectmodels/tree.obj
+2019-12-11.22:13:09: Loading animated mesh: res/animation/cowboy.dae
+2019-12-11.22:13:15: Window: Close
+2019-12-12.11:18:59: OpenGL Info:
+2019-12-12.11:19:00: Vendor: NVIDIA Corporation
+2019-12-12.11:19:00: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.11:19:00: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.11:19:04: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.11:19:04: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.11:19:15: Window: Close
+2019-12-12.12:38:08: OpenGL Info:
+2019-12-12.12:38:09: Vendor: NVIDIA Corporation
+2019-12-12.12:38:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:38:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:38:13: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:38:13: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:39:42: OpenGL Info:
+2019-12-12.12:39:42: Vendor: NVIDIA Corporation
+2019-12-12.12:39:42: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:39:42: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:39:46: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:39:46: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:39:54: Window: Close
+2019-12-12.12:41:52: OpenGL Info:
+2019-12-12.12:41:52: Vendor: NVIDIA Corporation
+2019-12-12.12:41:52: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:41:52: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:41:56: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:41:56: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:42:05: Buffer for dynamic text is full!
+2019-12-12.12:42:05: Buffer for dynamic text is full!
+2019-12-12.12:42:09: Window: Close
+2019-12-12.12:44:44: OpenGL Info:
+2019-12-12.12:44:44: Vendor: NVIDIA Corporation
+2019-12-12.12:44:44: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:44:44: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:44:48: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:44:48: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:45:14: Window: Close
+2019-12-12.12:48:42: OpenGL Info:
+2019-12-12.12:48:42: Vendor: NVIDIA Corporation
+2019-12-12.12:48:42: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:48:42: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:48:47: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:48:47: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:48:56: Window: Close
+2019-12-12.12:50:33: OpenGL Info:
+2019-12-12.12:50:33: Vendor: NVIDIA Corporation
+2019-12-12.12:50:33: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:50:33: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:50:38: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:50:38: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:50:45: Window: Close
+2019-12-12.12:51:39: OpenGL Info:
+2019-12-12.12:51:39: Vendor: NVIDIA Corporation
+2019-12-12.12:51:39: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:51:39: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:51:43: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:51:43: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:51:49: Window: Close
+2019-12-12.12:52:30: OpenGL Info:
+2019-12-12.12:52:30: Vendor: NVIDIA Corporation
+2019-12-12.12:52:30: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:52:30: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:52:34: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:52:34: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:52:44: Window: Close
+2019-12-12.12:53:09: OpenGL Info:
+2019-12-12.12:53:09: Vendor: NVIDIA Corporation
+2019-12-12.12:53:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:53:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:53:13: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:53:13: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:53:30: Window: Close
+2019-12-12.12:53:55: OpenGL Info:
+2019-12-12.12:53:55: Vendor: NVIDIA Corporation
+2019-12-12.12:53:55: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:53:55: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:53:59: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:53:59: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:54:08: Buffer for dynamic text is full!
+2019-12-12.12:54:08: Buffer for dynamic text is full!
+2019-12-12.12:54:09: Buffer for dynamic text is full!
+2019-12-12.12:54:10: Window: Close
+2019-12-12.12:55:02: OpenGL Info:
+2019-12-12.12:55:02: Vendor: NVIDIA Corporation
+2019-12-12.12:55:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.12:55:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.12:55:06: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.12:55:07: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.12:55:15: Window: Close
+2019-12-12.18:27:00: OpenGL Info:
+2019-12-12.18:27:00: Vendor: NVIDIA Corporation
+2019-12-12.18:27:00: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.18:27:00: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.18:27:05: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.18:27:05: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.18:27:08: Window: Resized window width: 1920 height: 1017
+2019-12-12.18:27:43: Height: 0.500000
+2019-12-12.18:27:44: Height: 1.000000
+2019-12-12.18:27:44: Height: 1.500000
+2019-12-12.18:27:44: Height: 2.000000
+2019-12-12.18:27:44: Height: 2.500000
+2019-12-12.18:27:45: Height: 3.000000
+2019-12-12.18:27:45: Height: 3.500000
+2019-12-12.18:27:45: Height: 4.000000
+2019-12-12.18:27:45: Height: 4.500000
+2019-12-12.18:27:45: Height: 5.000000
+2019-12-12.18:27:45: Height: 5.500000
+2019-12-12.18:27:46: Height: 6.000000
+2019-12-12.18:27:46: Height: 6.500000
+2019-12-12.18:27:46: Height: 7.000000
+2019-12-12.18:27:46: Height: 7.500000
+2019-12-12.18:27:46: Amplitude: 0.500000
+2019-12-12.18:27:47: Amplitude: 1.000000
+2019-12-12.18:27:47: Amplitude: 1.500000
+2019-12-12.18:27:47: Amplitude: 2.000000
+2019-12-12.18:27:47: Amplitude: 2.500000
+2019-12-12.18:27:47: Amplitude: 3.000000
+2019-12-12.18:27:48: Amplitude: 3.500000
+2019-12-12.18:27:48: Amplitude: 4.000000
+2019-12-12.18:27:48: Amplitude: 4.500000
+2019-12-12.18:27:48: Amplitude: 5.000000
+2019-12-12.18:27:48: Amplitude: 5.500000
+2019-12-12.18:27:49: Amplitude: 6.000000
+2019-12-12.18:27:49: Amplitude: 6.500000
+2019-12-12.18:27:49: Amplitude: 7.000000
+2019-12-12.18:27:49: Amplitude: 7.500000
+2019-12-12.18:27:49: Amplitude: 8.000000
+2019-12-12.18:27:49: Amplitude: 8.500000
+2019-12-12.18:27:50: Amplitude: 9.000000
+2019-12-12.18:27:50: Amplitude: 9.500000
+2019-12-12.18:27:50: Amplitude: 10.000000
+2019-12-12.18:27:50: Amplitude: 10.500000
+2019-12-12.18:27:50: Amplitude: 11.000000
+2019-12-12.18:27:50: Amplitude: 11.500000
+2019-12-12.18:27:51: Amplitude: 12.000000
+2019-12-12.18:27:51: Amplitude: 12.500000
+2019-12-12.18:27:51: Amplitude: 13.000000
+2019-12-12.18:27:51: Amplitude: 13.500000
+2019-12-12.18:27:51: Amplitude: 14.000000
+2019-12-12.18:27:52: Amplitude: 14.500000
+2019-12-12.18:27:52: Amplitude: 15.000000
+2019-12-12.18:27:52: Amplitude: 15.500000
+2019-12-12.18:27:54: Seed: 1
+2019-12-12.18:27:54: Seed: 2
+2019-12-12.18:27:54: Seed: 3
+2019-12-12.18:27:54: Seed: 4
+2019-12-12.18:27:55: Seed: 5
+2019-12-12.18:27:55: Seed: 6
+2019-12-12.18:27:55: Seed: 7
+2019-12-12.18:27:55: Seed: 8
+2019-12-12.18:27:56: Processing...
+2019-12-12.18:28:02: Finished
+2019-12-12.18:28:02: Updated
+2019-12-12.18:28:23: Seed: 9
+2019-12-12.18:28:27: Seed: 10
+2019-12-12.18:28:28: Seed: 11
+2019-12-12.18:28:28: Seed: 12
+2019-12-12.18:28:29: Processing...
+2019-12-12.18:28:34: Finished
+2019-12-12.18:28:34: Updated
+2019-12-12.18:28:37: Seed: 13
+2019-12-12.18:28:37: Seed: 14
+2019-12-12.18:28:37: Seed: 15
+2019-12-12.18:28:37: Seed: 16
+2019-12-12.18:28:37: Seed: 17
+2019-12-12.18:28:38: Amplitude: 16.000000
+2019-12-12.18:28:38: Amplitude: 16.500000
+2019-12-12.18:28:39: Amplitude: 17.000000
+2019-12-12.18:28:39: Amplitude: 17.500000
+2019-12-12.18:28:39: Amplitude: 18.000000
+2019-12-12.18:28:39: Amplitude: 18.500000
+2019-12-12.18:28:39: Amplitude: 19.000000
+2019-12-12.18:28:39: Amplitude: 19.500000
+2019-12-12.18:28:40: Amplitude: 20.000000
+2019-12-12.18:28:40: Amplitude: 20.500000
+2019-12-12.18:28:40: Amplitude: 21.000000
+2019-12-12.18:28:40: Amplitude: 21.500000
+2019-12-12.18:28:40: Amplitude: 22.000000
+2019-12-12.18:28:40: Amplitude: 22.500000
+2019-12-12.18:28:41: Amplitude: 23.000000
+2019-12-12.18:28:41: Amplitude: 23.500000
+2019-12-12.18:28:41: Amplitude: 24.000000
+2019-12-12.18:28:41: Amplitude: 24.500000
+2019-12-12.18:28:42: Processing...
+2019-12-12.18:28:46: Finished
+2019-12-12.18:28:46: Updated
+2019-12-12.18:28:53: Amplitude: 25.000000
+2019-12-12.18:28:53: Amplitude: 25.500000
+2019-12-12.18:28:53: Amplitude: 26.000000
+2019-12-12.18:28:53: Amplitude: 26.500000
+2019-12-12.18:28:54: Amplitude: 27.000000
+2019-12-12.18:28:54: Amplitude: 27.500000
+2019-12-12.18:28:54: Amplitude: 28.000000
+2019-12-12.18:28:54: Amplitude: 28.500000
+2019-12-12.18:28:54: Amplitude: 29.000000
+2019-12-12.18:28:54: Amplitude: 29.500000
+2019-12-12.18:28:55: Amplitude: 30.000000
+2019-12-12.18:28:55: Amplitude: 30.500000
+2019-12-12.18:28:55: Amplitude: 31.000000
+2019-12-12.18:28:55: Amplitude: 31.500000
+2019-12-12.18:28:55: Amplitude: 32.000000
+2019-12-12.18:28:55: Amplitude: 32.500000
+2019-12-12.18:28:56: Amplitude: 33.000000
+2019-12-12.18:28:56: Amplitude: 33.500000
+2019-12-12.18:28:56: Amplitude: 34.000000
+2019-12-12.18:28:56: Amplitude: 34.500000
+2019-12-12.18:28:56: Amplitude: 35.000000
+2019-12-12.18:28:56: Amplitude: 35.500000
+2019-12-12.18:28:57: Amplitude: 36.000000
+2019-12-12.18:28:57: Amplitude: 36.500000
+2019-12-12.18:28:58: Processing...
+2019-12-12.18:29:07: Finished
+2019-12-12.18:29:07: Updated
+2019-12-12.18:29:12: Amplitude: 36.000000
+2019-12-12.18:29:12: Amplitude: 35.500000
+2019-12-12.18:29:12: Amplitude: 35.000000
+2019-12-12.18:29:12: Amplitude: 34.500000
+2019-12-12.18:29:13: Amplitude: 34.000000
+2019-12-12.18:29:13: Amplitude: 33.500000
+2019-12-12.18:29:13: Amplitude: 33.000000
+2019-12-12.18:29:13: Amplitude: 32.500000
+2019-12-12.18:29:13: Amplitude: 32.000000
+2019-12-12.18:29:13: Amplitude: 31.500000
+2019-12-12.18:29:14: Amplitude: 31.000000
+2019-12-12.18:29:14: Amplitude: 30.500000
+2019-12-12.18:29:14: Amplitude: 30.000000
+2019-12-12.18:29:14: Amplitude: 29.500000
+2019-12-12.18:29:14: Amplitude: 29.000000
+2019-12-12.18:29:15: Amplitude: 28.500000
+2019-12-12.18:29:15: Amplitude: 28.000000
+2019-12-12.18:29:15: Amplitude: 27.500000
+2019-12-12.18:29:15: Amplitude: 27.000000
+2019-12-12.18:29:15: Amplitude: 26.500000
+2019-12-12.18:29:15: Amplitude: 26.000000
+2019-12-12.18:29:16: Amplitude: 25.500000
+2019-12-12.18:29:16: Amplitude: 25.000000
+2019-12-12.18:29:16: Amplitude: 24.500000
+2019-12-12.18:29:16: Amplitude: 24.000000
+2019-12-12.18:29:16: Amplitude: 23.500000
+2019-12-12.18:29:16: Amplitude: 23.000000
+2019-12-12.18:29:17: Amplitude: 22.500000
+2019-12-12.18:29:17: Amplitude: 22.000000
+2019-12-12.18:29:17: Amplitude: 21.500000
+2019-12-12.18:29:17: Amplitude: 21.000000
+2019-12-12.18:29:17: Amplitude: 20.500000
+2019-12-12.18:29:18: Amplitude: 20.000000
+2019-12-12.18:29:18: Amplitude: 19.500000
+2019-12-12.18:29:18: Amplitude: 19.000000
+2019-12-12.18:29:18: Amplitude: 18.500000
+2019-12-12.18:29:18: Amplitude: 18.000000
+2019-12-12.18:29:19: Amplitude: 17.500000
+2019-12-12.18:29:19: Amplitude: 17.000000
+2019-12-12.18:29:19: Amplitude: 16.500000
+2019-12-12.18:29:19: Amplitude: 16.000000
+2019-12-12.18:29:19: Amplitude: 15.500000
+2019-12-12.18:29:20: Amplitude: 15.000000
+2019-12-12.18:29:20: Amplitude: 14.500000
+2019-12-12.18:29:20: Amplitude: 14.000000
+2019-12-12.18:29:20: Amplitude: 13.500000
+2019-12-12.18:29:20: Amplitude: 13.000000
+2019-12-12.18:29:21: Amplitude: 12.500000
+2019-12-12.18:29:21: Amplitude: 12.000000
+2019-12-12.18:29:21: Amplitude: 11.500000
+2019-12-12.18:29:21: Amplitude: 11.000000
+2019-12-12.18:29:21: Amplitude: 10.500000
+2019-12-12.18:29:21: Amplitude: 10.000000
+2019-12-12.18:29:22: Amplitude: 9.500000
+2019-12-12.18:29:22: Amplitude: 9.000000
+2019-12-12.18:29:22: Amplitude: 8.500000
+2019-12-12.18:29:22: Amplitude: 8.000000
+2019-12-12.18:29:23: Amplitude: 7.500000
+2019-12-12.18:29:23: Amplitude: 7.000000
+2019-12-12.18:29:23: Amplitude: 6.500000
+2019-12-12.18:29:23: Amplitude: 6.000000
+2019-12-12.18:29:23: Amplitude: 5.500000
+2019-12-12.18:29:24: Amplitude: 5.000000
+2019-12-12.18:29:24: Amplitude: 4.500000
+2019-12-12.18:29:24: Amplitude: 4.000000
+2019-12-12.18:29:24: Amplitude: 3.500000
+2019-12-12.18:29:25: Amplitude: 3.000000
+2019-12-12.18:29:25: Amplitude: 2.500000
+2019-12-12.18:29:26: Processing...
+2019-12-12.18:29:34: Finished
+2019-12-12.18:29:34: Updated
+2019-12-12.18:29:57: Window: Close
+2019-12-12.18:59:23: OpenGL Info:
+2019-12-12.18:59:23: Vendor: NVIDIA Corporation
+2019-12-12.18:59:23: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.18:59:23: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.18:59:28: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.18:59:28: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.19:00:14: Window: Close
+2019-12-12.19:34:28: OpenGL Info:
+2019-12-12.19:34:28: Vendor: NVIDIA Corporation
+2019-12-12.19:34:28: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.19:34:28: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.19:34:33: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.19:34:33: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.19:34:43: Window: Close
+2019-12-12.20:24:50: OpenGL Info:
+2019-12-12.20:24:50: Vendor: NVIDIA Corporation
+2019-12-12.20:24:50: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.20:24:50: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.20:24:55: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.20:24:55: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.20:25:06: Window: Resized window width: 1920 height: 1017
+2019-12-12.20:25:08: Window: Resized window width: 1240 height: 720
+2019-12-12.20:25:10: Window: Close
+2019-12-12.20:29:16: OpenGL Info:
+2019-12-12.20:29:16: Vendor: NVIDIA Corporation
+2019-12-12.20:29:16: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.20:29:16: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.20:29:21: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.20:29:21: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.20:29:35: Window: Close
+2019-12-12.21:54:11: OpenGL Info:
+2019-12-12.21:54:11: Vendor: NVIDIA Corporation
+2019-12-12.21:54:11: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.21:54:11: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.21:54:16: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.21:54:16: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.21:56:49: OpenGL Info:
+2019-12-12.21:56:49: Vendor: NVIDIA Corporation
+2019-12-12.21:56:49: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.21:56:49: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.21:56:55: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.21:56:55: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.21:57:13: Window: Close
+2019-12-12.22:00:45: OpenGL Info:
+2019-12-12.22:00:45: Vendor: NVIDIA Corporation
+2019-12-12.22:00:45: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:00:45: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:00:51: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:00:51: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:01:03: Window: Close
+2019-12-12.22:04:26: OpenGL Info:
+2019-12-12.22:04:26: Vendor: NVIDIA Corporation
+2019-12-12.22:04:26: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:04:26: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:04:31: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:04:31: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:04:50: Window: Resized window width: 1920 height: 1017
+2019-12-12.22:04:52: Window: Resized window width: 1240 height: 720
+2019-12-12.22:04:53: Window: Close
+2019-12-12.22:12:15: OpenGL Info:
+2019-12-12.22:12:15: Vendor: NVIDIA Corporation
+2019-12-12.22:12:15: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:12:15: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:12:20: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:12:20: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:12:47: Window: Close
+2019-12-12.22:15:47: OpenGL Info:
+2019-12-12.22:15:47: Vendor: NVIDIA Corporation
+2019-12-12.22:15:47: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:15:47: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:15:52: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:15:52: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:17:39: OpenGL Info:
+2019-12-12.22:17:39: Vendor: NVIDIA Corporation
+2019-12-12.22:17:39: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:17:39: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:17:45: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:17:45: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:18:21: Window: Close
+2019-12-12.22:25:47: OpenGL Info:
+2019-12-12.22:25:47: Vendor: NVIDIA Corporation
+2019-12-12.22:25:47: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:25:47: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:25:52: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:25:52: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:26:09: Window: Close
+2019-12-12.22:27:26: OpenGL Info:
+2019-12-12.22:27:26: Vendor: NVIDIA Corporation
+2019-12-12.22:27:26: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:27:26: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:27:32: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:27:32: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:28:34: OpenGL Info:
+2019-12-12.22:28:34: Vendor: NVIDIA Corporation
+2019-12-12.22:28:34: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:28:34: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:28:39: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:28:39: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:29:27: Window: Close
+2019-12-12.22:30:50: OpenGL Info:
+2019-12-12.22:30:50: Vendor: NVIDIA Corporation
+2019-12-12.22:30:50: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:30:50: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:30:55: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:30:55: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:31:20: OpenGL Info:
+2019-12-12.22:31:20: Vendor: NVIDIA Corporation
+2019-12-12.22:31:20: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:31:20: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:31:25: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:31:25: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:31:33: Window: Close
+2019-12-12.22:32:13: OpenGL Info:
+2019-12-12.22:32:13: Vendor: NVIDIA Corporation
+2019-12-12.22:32:13: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:32:13: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:32:18: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:32:18: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:32:32: Window: Close
+2019-12-12.22:33:06: OpenGL Info:
+2019-12-12.22:33:06: Vendor: NVIDIA Corporation
+2019-12-12.22:33:06: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:33:06: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:33:11: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:33:11: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:33:20: Window: Close
+2019-12-12.22:34:47: OpenGL Info:
+2019-12-12.22:34:47: Vendor: NVIDIA Corporation
+2019-12-12.22:34:47: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:34:47: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:34:52: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:34:52: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:35:00: Window: Close
+2019-12-12.22:35:39: OpenGL Info:
+2019-12-12.22:35:39: Vendor: NVIDIA Corporation
+2019-12-12.22:35:39: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:35:39: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:35:44: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:35:44: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:35:51: Window: Close
+2019-12-12.22:36:56: OpenGL Info:
+2019-12-12.22:36:56: Vendor: NVIDIA Corporation
+2019-12-12.22:36:56: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:36:57: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:37:02: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:37:02: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:38:48: OpenGL Info:
+2019-12-12.22:38:48: Vendor: NVIDIA Corporation
+2019-12-12.22:38:48: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:38:48: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:38:53: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:38:53: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:39:02: Window: Close
+2019-12-12.22:39:42: OpenGL Info:
+2019-12-12.22:39:42: Vendor: NVIDIA Corporation
+2019-12-12.22:39:42: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:39:42: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:39:48: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:39:48: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:39:54: Window: Close
+2019-12-12.22:40:20: OpenGL Info:
+2019-12-12.22:40:20: Vendor: NVIDIA Corporation
+2019-12-12.22:40:20: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:40:21: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:40:26: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:40:26: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:40:59: Window: Close
+2019-12-12.22:43:10: OpenGL Info:
+2019-12-12.22:43:10: Vendor: NVIDIA Corporation
+2019-12-12.22:43:10: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:43:10: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:43:16: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:43:16: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.22:43:24: Window: Close
+2019-12-12.22:49:27: OpenGL Info:
+2019-12-12.22:49:27: Vendor: NVIDIA Corporation
+2019-12-12.22:49:27: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.22:49:27: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.22:49:34: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.22:49:34: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:00:39: Window: Close
+2019-12-12.23:03:13: OpenGL Info:
+2019-12-12.23:03:13: Vendor: NVIDIA Corporation
+2019-12-12.23:03:13: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:03:13: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:03:19: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:03:19: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:03:57: Window: Close
+2019-12-12.23:05:27: OpenGL Info:
+2019-12-12.23:05:27: Vendor: NVIDIA Corporation
+2019-12-12.23:05:27: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:05:27: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:05:32: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:05:32: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:05:42: Window: Close
+2019-12-12.23:07:33: OpenGL Info:
+2019-12-12.23:07:33: Vendor: NVIDIA Corporation
+2019-12-12.23:07:33: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:07:33: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:07:38: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:07:38: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:07:48: Window: Close
+2019-12-12.23:08:25: OpenGL Info:
+2019-12-12.23:08:25: Vendor: NVIDIA Corporation
+2019-12-12.23:08:25: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:08:25: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:08:30: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:08:30: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:09:04: Window: Close
+2019-12-12.23:16:31: OpenGL Info:
+2019-12-12.23:16:31: Vendor: NVIDIA Corporation
+2019-12-12.23:16:31: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:16:31: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:16:36: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:16:36: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:17:47: OpenGL Info:
+2019-12-12.23:17:47: Vendor: NVIDIA Corporation
+2019-12-12.23:17:47: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:17:47: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:17:52: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:17:52: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:18:06: Window: Close
+2019-12-12.23:19:52: OpenGL Info:
+2019-12-12.23:19:52: Vendor: NVIDIA Corporation
+2019-12-12.23:19:52: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:19:52: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:19:57: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:19:57: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:20:09: Window: Close
+2019-12-12.23:20:43: OpenGL Info:
+2019-12-12.23:20:43: Vendor: NVIDIA Corporation
+2019-12-12.23:20:43: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:20:43: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:20:48: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:20:48: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:23:25: Window: Resized window width: 1920 height: 1017
+2019-12-12.23:24:13: Window: Resized window width: 1240 height: 720
+2019-12-12.23:24:13: Window: Resized window width: 1920 height: 1017
+2019-12-12.23:24:43: Height: 0.500000
+2019-12-12.23:24:43: Height: 1.000000
+2019-12-12.23:24:44: Height: 1.500000
+2019-12-12.23:24:44: Height: 2.000000
+2019-12-12.23:24:44: Height: 2.500000
+2019-12-12.23:24:44: Height: 3.000000
+2019-12-12.23:24:44: Height: 3.500000
+2019-12-12.23:24:44: Height: 4.000000
+2019-12-12.23:24:45: Height: 4.500000
+2019-12-12.23:24:45: Height: 5.000000
+2019-12-12.23:24:45: Height: 5.500000
+2019-12-12.23:24:45: Height: 6.000000
+2019-12-12.23:24:45: Height: 6.500000
+2019-12-12.23:24:45: Height: 7.000000
+2019-12-12.23:24:46: Height: 7.500000
+2019-12-12.23:24:46: Height: 8.000000
+2019-12-12.23:24:48: Amplitude: 0.500000
+2019-12-12.23:24:48: Amplitude: 1.000000
+2019-12-12.23:24:48: Amplitude: 1.500000
+2019-12-12.23:24:48: Amplitude: 2.000000
+2019-12-12.23:24:49: Seed: 1
+2019-12-12.23:24:49: Seed: 2
+2019-12-12.23:24:49: Seed: 3
+2019-12-12.23:24:49: Seed: 4
+2019-12-12.23:24:49: Seed: 5
+2019-12-12.23:24:49: Seed: 6
+2019-12-12.23:24:50: Processing...
+2019-12-12.23:24:55: Finished
+2019-12-12.23:24:55: Updated
+2019-12-12.23:26:34: Amplitude: 2.500000
+2019-12-12.23:26:34: Amplitude: 3.000000
+2019-12-12.23:26:35: Amplitude: 3.500000
+2019-12-12.23:26:35: Amplitude: 4.000000
+2019-12-12.23:26:35: Amplitude: 4.500000
+2019-12-12.23:26:35: Amplitude: 5.000000
+2019-12-12.23:26:35: Amplitude: 5.500000
+2019-12-12.23:26:35: Amplitude: 6.000000
+2019-12-12.23:26:36: Amplitude: 6.500000
+2019-12-12.23:26:36: Amplitude: 7.000000
+2019-12-12.23:26:36: Amplitude: 7.500000
+2019-12-12.23:26:36: Amplitude: 8.000000
+2019-12-12.23:26:36: Amplitude: 8.500000
+2019-12-12.23:26:36: Amplitude: 9.000000
+2019-12-12.23:26:37: Amplitude: 9.500000
+2019-12-12.23:26:37: Amplitude: 10.000000
+2019-12-12.23:26:37: Amplitude: 10.500000
+2019-12-12.23:26:37: Amplitude: 11.000000
+2019-12-12.23:26:37: Amplitude: 11.500000
+2019-12-12.23:26:37: Amplitude: 12.000000
+2019-12-12.23:26:38: Processing...
+2019-12-12.23:26:43: Finished
+2019-12-12.23:26:43: Updated
+2019-12-12.23:32:54: Seed: 7
+2019-12-12.23:32:54: Seed: 8
+2019-12-12.23:32:55: Seed: 9
+2019-12-12.23:32:55: Seed: 10
+2019-12-12.23:32:55: Seed: 11
+2019-12-12.23:32:55: Seed: 12
+2019-12-12.23:32:55: Seed: 13
+2019-12-12.23:32:55: Seed: 14
+2019-12-12.23:32:56: Seed: 15
+2019-12-12.23:32:56: Seed: 16
+2019-12-12.23:32:58: Seed: 17
+2019-12-12.23:33:12: Seed: 18
+2019-12-12.23:33:12: Seed: 19
+2019-12-12.23:33:12: Seed: 20
+2019-12-12.23:33:12: Seed: 21
+2019-12-12.23:33:13: Processing...
+2019-12-12.23:33:20: Finished
+2019-12-12.23:33:20: Updated
+2019-12-12.23:33:22: Seed: 22
+2019-12-12.23:33:24: Processing...
+2019-12-12.23:33:30: Finished
+2019-12-12.23:33:30: Updated
+2019-12-12.23:33:39: Amplitude: 12.500000
+2019-12-12.23:33:39: Amplitude: 13.000000
+2019-12-12.23:33:39: Height: 8.500000
+2019-12-12.23:33:40: Height: 9.000000
+2019-12-12.23:33:40: Height: 9.500000
+2019-12-12.23:33:40: Height: 10.000000
+2019-12-12.23:33:40: Height: 10.500000
+2019-12-12.23:33:40: Height: 11.000000
+2019-12-12.23:33:40: Height: 11.500000
+2019-12-12.23:33:41: Height: 12.000000
+2019-12-12.23:33:41: Height: 12.500000
+2019-12-12.23:33:41: Height: 13.000000
+2019-12-12.23:33:41: Height: 13.500000
+2019-12-12.23:33:41: Height: 14.000000
+2019-12-12.23:33:41: Height: 14.500000
+2019-12-12.23:33:42: Height: 15.000000
+2019-12-12.23:33:52: Processing...
+2019-12-12.23:33:59: Finished
+2019-12-12.23:33:59: Updated
+2019-12-12.23:34:09: Height: 15.500000
+2019-12-12.23:34:10: Height: 16.000000
+2019-12-12.23:34:10: Height: 16.500000
+2019-12-12.23:34:10: Height: 17.000000
+2019-12-12.23:34:11: Height: 17.500000
+2019-12-12.23:34:11: Height: 18.000000
+2019-12-12.23:34:11: Height: 18.500000
+2019-12-12.23:34:11: Height: 19.000000
+2019-12-12.23:34:11: Height: 19.500000
+2019-12-12.23:34:11: Height: 20.000000
+2019-12-12.23:34:12: Amplitude: 13.500000
+2019-12-12.23:34:12: Amplitude: 14.000000
+2019-12-12.23:34:13: Amplitude: 14.500000
+2019-12-12.23:34:14: Amplitude: 15.000000
+2019-12-12.23:34:14: Amplitude: 15.500000
+2019-12-12.23:34:14: Amplitude: 16.000000
+2019-12-12.23:34:14: Amplitude: 16.500000
+2019-12-12.23:34:14: Amplitude: 17.000000
+2019-12-12.23:34:14: Amplitude: 17.500000
+2019-12-12.23:34:16: Processing...
+2019-12-12.23:34:21: Finished
+2019-12-12.23:34:21: Updated
+2019-12-12.23:35:06: Height: 19.500000
+2019-12-12.23:35:06: Height: 19.000000
+2019-12-12.23:35:07: Height: 18.500000
+2019-12-12.23:35:07: Height: 18.000000
+2019-12-12.23:35:07: Height: 17.500000
+2019-12-12.23:35:07: Height: 17.000000
+2019-12-12.23:35:07: Height: 16.500000
+2019-12-12.23:35:07: Height: 16.000000
+2019-12-12.23:35:08: Height: 15.500000
+2019-12-12.23:35:08: Height: 15.000000
+2019-12-12.23:35:08: Height: 14.500000
+2019-12-12.23:35:08: Height: 14.000000
+2019-12-12.23:35:08: Height: 13.500000
+2019-12-12.23:35:08: Height: 13.000000
+2019-12-12.23:35:09: Height: 12.500000
+2019-12-12.23:35:09: Height: 12.000000
+2019-12-12.23:35:09: Height: 11.500000
+2019-12-12.23:35:17: Processing...
+2019-12-12.23:35:22: Finished
+2019-12-12.23:35:22: Updated
+2019-12-12.23:46:36: OpenGL Info:
+2019-12-12.23:46:36: Vendor: NVIDIA Corporation
+2019-12-12.23:46:36: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:46:36: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:46:41: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:46:41: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:46:42: Window: Resized window width: 1920 height: 1017
+2019-12-12.23:52:41: OpenGL Info:
+2019-12-12.23:52:41: Vendor: NVIDIA Corporation
+2019-12-12.23:52:41: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-12.23:52:41: Version: 4.6.0 NVIDIA 431.36
+2019-12-12.23:52:46: Loading mesh: res/projectmodels/tree.obj
+2019-12-12.23:52:46: Loading animated mesh: res/animation/cowboy.dae
+2019-12-12.23:52:48: Window: Resized window width: 1920 height: 1017
+2019-12-13.00:03:25: OpenGL Info:
+2019-12-13.00:03:25: Vendor: NVIDIA Corporation
+2019-12-13.00:03:25: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.00:03:25: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.00:03:29: Window: Close
+2019-12-13.00:21:45: OpenGL Info:
+2019-12-13.00:21:45: Vendor: NVIDIA Corporation
+2019-12-13.00:21:45: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.00:21:45: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.00:21:51: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.00:21:51: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.00:22:00: Window: Close
+2019-12-13.00:22:48: OpenGL Info:
+2019-12-13.00:22:48: Vendor: NVIDIA Corporation
+2019-12-13.00:22:48: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.00:22:48: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.00:22:52: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.00:22:52: Loading animated mesh: res/animation/cowboy.dae

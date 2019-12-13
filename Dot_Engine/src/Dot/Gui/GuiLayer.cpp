@@ -36,8 +36,6 @@ namespace Dot {
 				
 		}Gui::DisableWrapper();
 		
-		
-
 		Text::Init();
 		Gui::Init("res/textures/Dot/Gui/DefaultTexturePack/TexturePack_black.png");
 		
@@ -55,13 +53,13 @@ namespace Dot {
 		m_TextShader->AddUniform("u_Texture");
 		m_TextShader->UploadUniformInt("u_Texture", 0);
 		/////////////////////
-		// TestShader setup //
-		m_TestShader = std::make_shared<Shader>("TestShader", "res/shaders/Dot/ConsoleShader.glsl");
-		m_TestShader->AddUniform("u_ViewProjectionMatrix");
-		/////////////////////
 
 		m_Text = std::make_shared<DynamicText>("Arial", "Test", glm::vec2(300, 300), glm::vec2(0.2, 0.2), 100);
-				
+		m_Renderer = std::make_shared<Renderer2D>(5000);
+
+		m_Renderer->ClearBuffer();
+		m_Renderer->Push(m_Text->GetVertice(0), m_Text->GetNumChar());
+		m_Renderer->PrepareForRender();
 	}
 
 	void GuiLayer::OnUpdate(Timestep ts)
@@ -69,7 +67,11 @@ namespace Dot {
 		if (Button::GetWrapped("wrapper", "button").GetClicked())
 		{
 			std::cout << "Click!" << std::endl;
-			m_Text->Update(" Kra");
+			m_Text->Update(" AKra");
+			m_Renderer->PushOff(m_Text->GetVertice(5),5);
+			//m_Renderer->ClearBuffer();
+			//m_Renderer->Push(m_Text->GetVertice(0), m_Text->GetNumChar());
+			//m_Renderer->PrepareForRender();
 		}
 		if (Checkbox::GetWrapped("wrapper", "checkbox").GetClicked())
 		{
@@ -90,17 +92,21 @@ namespace Dot {
 			GuiRenderer::Render(m_GuiShader, Gui::GetVAO());
 		}
 		GuiRenderer::EndRender();
-		
 		TextRenderer::BeginRender(m_Camera);
 		{
 			Font::Bind("Arial");
 			m_TextShader->Bind();
 			m_TextShader->UploadUniformFloat("u_Color", 1);
 			TextRenderer::Render(m_TextShader, Text::GetVAO());
-			TextRenderer::RenderDynamic(m_TextShader, m_Text->GetVAO(),m_Text->GetNumChar()*4);
 		}
 		TextRenderer::EndRender();
+		
+		m_Renderer->BeginScene(m_TextShader, m_Camera);
+		{
+			m_TextShader->UploadUniformFloat("u_Color", 1);
+			m_Renderer->Render();
 
+		}m_Renderer->EndScene();
 	}
 
 	void GuiLayer::OnEvent(Event& event)
@@ -128,13 +134,7 @@ namespace Dot {
 					e.IsHandled() = true;
 				}
 			}
-			else if (e.GetButton() == D_MOUSE_BUTTON_MIDDLE)
-			{
-				if (Gui::HandleMiddleClick())
-				{
-					e.IsHandled() = true;
-				}
-			}
+			
 		}
 		else if (event.GetEventType() == EventType::MouseButtonReleased)
 		{

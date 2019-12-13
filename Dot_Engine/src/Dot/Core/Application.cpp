@@ -38,9 +38,8 @@ namespace Dot {
 
 		// TODO PUT BACK TO APPLICATION CONSTRUCTOR
 		m_GuiLayer = new GuiLayer();
-		m_ConsoleLayer = new ConsoleLayer();
 		PushOverlay(m_GuiLayer);
-		PushOverlay(m_ConsoleLayer);
+
 
 		while (!m_Window->IsClosed())
 		{

@@ -13,6 +13,7 @@
 #include "Dot/Renderer/Buffers/FrameBuffer.h"
 #include "Dot/Renderer/Renderer.h"
 #include "Dot/Renderer/Camera/Camera.h"
+#include "Dot/Renderer/Camera/CameraController.h"
 #include "Dot/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Renderer/Shaders/Shader.h"
 #include "Dot/Renderer/Mesh.h"

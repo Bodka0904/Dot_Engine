@@ -28,8 +28,7 @@ void Sandbox::OnAttach()
 	//m_Terrain->ApplyNormals();
 	
 
-	m_Camera = std::make_shared<Dot::Camera>(glm::perspectiveFov(glm::radians(45.0f), 1280.0f, 720.0f, 0.1f, 10000.0f));
-
+	m_CamController = std::make_shared<Dot::CameraController>(glm::perspectiveFov(glm::radians(45.0f), 1280.0f, 720.0f, 0.1f, 10000.0f));
 
 	m_StaticShader = std::make_shared<Dot::Shader>("TEST","res/shaders/Dot/StaticShader.glsl");
 	m_StaticShader->Bind();
@@ -103,14 +102,14 @@ void Sandbox::OnUpdate(Dot::Timestep ts)
 {
 	
 	Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0.0));
-	m_Camera->Update(ts.GetSeconds() * 250);
+	m_CamController->OnUpdate(ts.GetSeconds() * 250);
 	m_TestManager->Run();
 	m_ComputeShader->Compute(32, 32, 1);
 	m_ShaderForCompute->Bind();
 	m_TestManager->Draw();
 
 	m_Editor->UpdateTerrain(m_Terrain);
-	Dot::Renderer::BeginScene(*m_Camera);
+	Dot::Renderer::BeginScene(m_CamController->GetCamera());
 	{
 		m_SkyBox->GetTexture()->Bind(0);
 		Dot::Renderer::SubmitArrays(m_SkyShader, m_SkyBox->GetVao(), glm::mat4(1), D_TRIANGLES);
@@ -140,6 +139,7 @@ void Sandbox::OnUpdate(Dot::Timestep ts)
 
 void Sandbox::OnEvent(Dot::Event& event)
 {
+	m_CamController->OnEvent(event);
 }
 
 void Sandbox::OnDetach()

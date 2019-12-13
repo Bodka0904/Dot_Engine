@@ -109,9 +109,7 @@
     <ClInclude Include="src\Dot\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Dot\Core\OpenGLContext.h" />
     <ClInclude Include="src\Dot\Core\Window.h" />
-    <ClInclude Include="src\Dot\Debug\DebugNew.h" />
     <ClInclude Include="src\Dot\Debug\Log.h" />
-    <ClInclude Include="src\Dot\Debug\OpenGL\OpenGLErr.h" />
     <ClInclude Include="src\Dot\Debug\Timer.h" />
     <ClInclude Include="src\Dot\Gui\GuiLayer.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Arrowbutton.h" />
@@ -125,6 +123,7 @@
     <ClInclude Include="src\Dot\Renderer\Buffers\Buffer.h" />
     <ClInclude Include="src\Dot\Renderer\Buffers\FrameBuffer.h" />
     <ClInclude Include="src\Dot\Renderer\Camera\Camera.h" />
+    <ClInclude Include="src\Dot\Renderer\Camera\CameraController.h" />
     <ClInclude Include="src\Dot\Renderer\Camera\OrthoCamera.h" />
     <ClInclude Include="src\Dot\Renderer\Material\Light.h" />
     <ClInclude Include="src\Dot\Renderer\Mesh.h" />
@@ -138,7 +137,6 @@
     <ClInclude Include="src\Dot\Renderer\Texture.h" />
     <ClInclude Include="src\Dot\Utils\Bmp\BmpLoader.h" />
     <ClInclude Include="src\Dot\Utils\Console\Console.h" />
-    <ClInclude Include="src\Dot\Utils\Console\ConsoleLayer.h" />
     <ClInclude Include="src\Dot\Utils\MousePicker.h" />
     <ClInclude Include="src\Dot\Utils\Particle\Particle.h" />
     <ClInclude Include="src\Dot\Utils\Particle\ParticleManager.h" />
@@ -541,6 +539,7 @@
     <ClCompile Include="src\Dot\Renderer\Buffers\Buffer.cpp" />
     <ClCompile Include="src\Dot\Renderer\Buffers\FrameBuffer.cpp" />
     <ClCompile Include="src\Dot\Renderer\Camera\Camera.cpp" />
+    <ClCompile Include="src\Dot\Renderer\Camera\CameraController.cpp" />
     <ClCompile Include="src\Dot\Renderer\Camera\OrthoCamera.cpp" />
     <ClCompile Include="src\Dot\Renderer\Material\Light.cpp" />
     <ClCompile Include="src\Dot\Renderer\Mesh.cpp" />
@@ -552,7 +551,6 @@
     <ClCompile Include="src\Dot\Renderer\Texture.cpp" />
     <ClCompile Include="src\Dot\Utils\Bmp\BmpLoader.cpp" />
     <ClCompile Include="src\Dot\Utils\Console\Console.cpp" />
-    <ClCompile Include="src\Dot\Utils\Console\ConsoleLayer.cpp" />
     <ClCompile Include="src\Dot\Utils\MousePicker.cpp" />
     <ClCompile Include="src\Dot\Utils\Particle\Particle.cpp" />
     <ClCompile Include="src\Dot\Utils\Particle\ParticleManger.cpp" />

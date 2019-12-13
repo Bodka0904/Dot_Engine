@@ -248,7 +248,7 @@ static void createKeyTables(void)
     _glfw.win32.keycodes[0x056] = GLFW_KEY_WORLD_2;
 
     _glfw.win32.keycodes[0x00E] = GLFW_KEY_BACKSPACE;
-    _glfw.win32.keycodes[0x153] = GLFW_KEY_DELETE;
+    _glfw.win32.keycodes[0x153] = GLFW_KEY_Delete;
     _glfw.win32.keycodes[0x14F] = GLFW_KEY_END;
     _glfw.win32.keycodes[0x01C] = GLFW_KEY_ENTER;
     _glfw.win32.keycodes[0x001] = GLFW_KEY_ESCAPE;

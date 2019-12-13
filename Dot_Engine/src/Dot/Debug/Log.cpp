@@ -36,7 +36,7 @@ namespace Dot {
 			std::string date = Dot::CurrentDateTime();
 			m_LogFile << date << ": " << log << std::endl;
 
-			std::cout << ANSI(ANSI_COLOR_GREEN_F) << date << ": " << fncname << ": " << log << ANSI(ANSI_COLOR_WHITE_F) << std::endl;
+			std::cout << ANSI(ANSI_COLOR_GREEN_F)<< "INFO: " << date << ": " << fncname << ": " << log << ANSI(ANSI_COLOR_WHITE_F) << std::endl;
 
 			m_LogFile.flush();
 			va_end(args);
@@ -63,7 +63,7 @@ namespace Dot {
 			std::string date = Dot::CurrentDateTime();
 			m_LogFile << date << ": " << log << std::endl;
 
-			std::cout << ANSI(ANSI_COLOR_YELLOW_F) << date << ": " << fncname << ": " << log << ANSI(ANSI_COLOR_WHITE_F) << std::endl;
+			std::cout << ANSI(ANSI_COLOR_YELLOW_F) << "WARN: " << date << ": " << fncname << ": " << log << ANSI(ANSI_COLOR_WHITE_F) << std::endl;
 
 			m_LogFile.flush();
 			va_end(args);
@@ -90,7 +90,7 @@ namespace Dot {
 			std::string date = Dot::CurrentDateTime();
 			m_LogFile << date << ": " << log << std::endl;
 
-			std::cout << ANSI(ANSI_COLOR_RED_F) << date << ": " << fncname << ": " << log << ANSI(ANSI_COLOR_WHITE_F) << std::endl;
+			std::cout << ANSI(ANSI_COLOR_RED_F) << "ERROR: " << date << ": " << fncname << ": " << log << ANSI(ANSI_COLOR_WHITE_F) << std::endl;
 
 			m_LogFile.flush();
 			va_end(args);

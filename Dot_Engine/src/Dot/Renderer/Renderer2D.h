@@ -7,15 +7,15 @@
 #include "Renderable2D.h"
 
 namespace Dot {
-	
 	class Renderer2D
 	{
 	public:
 		Renderer2D(unsigned int batchSize);
 
 		void ClearBuffer();
-		void Push(const Ref<Renderable2D> data);
-		
+		void Push(const QuadVertex* data,int len);
+		void PushOff(const QuadVertex* data, int len);
+
 		void PrepareForRender();
 		void BeginScene(const Ref<Shader> shader, const Ref<OrthoCamera> camera);
 		void Render();

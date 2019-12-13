@@ -140,8 +140,8 @@
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2342.htm
 
 // #define GLM_CXX11_DEFAULTED_FUNCTIONS
-// #define GLM_CXX11_DELETED_FUNCTIONS
-// Defaulted and deleted functions	N2346	GCC 4.4
+// #define GLM_CXX11_DeleteD_FUNCTIONS
+// Defaulted and Deleted functions	N2346	GCC 4.4
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2346.htm
 
 //
@@ -295,8 +295,8 @@
 #		define GLM_CXX11_DELEGATING_CONSTRUCTORS
 #	endif
 
-#	if(__has_feature(cxx_deleted_functions))
-#		define GLM_CXX11_DELETED_FUNCTIONS
+#	if(__has_feature(cxx_Deleted_functions))
+#		define GLM_CXX11_DeleteD_FUNCTIONS
 #	endif
 
 #	if(__has_feature(cxx_explicit_conversions))

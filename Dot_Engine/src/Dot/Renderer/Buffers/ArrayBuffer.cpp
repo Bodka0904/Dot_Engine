@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "ArrayBuffer.h"
 #include <GL/glew.h>
-#include "Dot/Debug/OpenGL/OpenGLErr.h"
 
 namespace Dot {
 
