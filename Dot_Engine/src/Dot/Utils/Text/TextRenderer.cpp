@@ -14,13 +14,13 @@ namespace Dot {
 		glDisable(GL_DEPTH_TEST);
 	}
 
-	void TextRenderer::Render(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao)
+	void TextRenderer::Render(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, int count)
 	{
 		shader->Bind();
 		shader->UploadUniformMat4("u_ViewProjectionMatrix", m_SceneData.ViewProjectionMatrix);
 		vao->Bind();
 
-		glDrawArrays(GL_QUADS, 0, vao->GetVertexBuffer(0)->GetCount());
+		glDrawArrays(GL_QUADS, 0, count);
 	}
 
 	void TextRenderer::EndRender()

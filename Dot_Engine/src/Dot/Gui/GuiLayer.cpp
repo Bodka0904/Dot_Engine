@@ -9,7 +9,6 @@
 #include "Dot/Gui/GuiSystem/Checkbox.h"
 #include "Dot/Gui/GuiSystem/Slider.h"
 #include "Dot/Gui/GuiSystem/Gui.h"
-#include "Dot/Gui/GuiSystem/GuiRenderer.h"
 
 #include "Dot/Utils/Text/TextRenderer.h"
 
@@ -24,20 +23,24 @@ namespace Dot {
 
 	void GuiLayer::OnAttach()
 	{
-		m_Camera = std::make_shared<OrthoCamera>(0, Input::GetWindowSize().first, Input::GetWindowSize().second, 0);
+		//Default font
+		Font::AddFont("Arial", "res/fonts/Arial/Arial.fnt", "res/fonts/Arial/Arial.png");
+		Text::Init(1000);
+		Gui::Init("res/textures/Dot/Gui/DefaultTexturePack/TexturePack_black.png");
 
+		m_Camera = std::make_shared<OrthoCamera>(0, Input::GetWindowSize().first, Input::GetWindowSize().second, 0);
+		
 		Wrapper::Create("wrapper", glm::vec2(300, 50), glm::vec2(300, 500));
-		Gui::EnableWrapper("wrapper");
+		Gui::Get()->EnableWrapper("wrapper");
 		{
 			Button::Create("button", glm::vec2(300, 50), glm::vec2(50, 50));
 			Checkbox::Create("checkbox", glm::vec2(300, 50), glm::vec2(50, 50));
 			Slider::Create("slider", glm::vec2(50, 50), glm::vec2(200, 20), &value);
 			Button::Create("button2", glm::vec2(300, 50), glm::vec2(50, 50));	
 				
-		}Gui::DisableWrapper();
+		}Gui::Get()->DisableWrapper();	
 		
-		Text::Init();
-		Gui::Init("res/textures/Dot/Gui/DefaultTexturePack/TexturePack_black.png");
+		
 		
 		// GuiShader setup //
 		m_GuiShader = std::make_shared<Shader>("GuiShader", "res/shaders/Dot/GuiShader.glsl");
@@ -68,10 +71,10 @@ namespace Dot {
 		{
 			std::cout << "Click!" << std::endl;
 			m_Text->Update(" AKra");
-			m_Renderer->PushOff(m_Text->GetVertice(5),5);
-			//m_Renderer->ClearBuffer();
-			//m_Renderer->Push(m_Text->GetVertice(0), m_Text->GetNumChar());
-			//m_Renderer->PrepareForRender();
+			m_Renderer->PushOffset(m_Text->GetVertice(5),5);
+			m_Renderer->ClearBuffer();
+			m_Renderer->Push(m_Text->GetVertice(0), m_Text->GetNumChar());
+			m_Renderer->PrepareForRender();
 		}
 		if (Checkbox::GetWrapped("wrapper", "checkbox").GetClicked())
 		{
@@ -83,21 +86,15 @@ namespace Dot {
 			m_Text->SetPositionInBuffer(0);
 		}
 		
-		Gui::Update();
-		GuiRenderer::BeginRender(m_Camera);
-		{
-			m_GuiShader->Bind();
-			m_GuiShader->UploadUniformFloat2("u_MousePos", glm::vec2(Input::GetMouseX(), Input::GetMouseY()));
-			Gui::BindTexture();
-			GuiRenderer::Render(m_GuiShader, Gui::GetVAO());
-		}
-		GuiRenderer::EndRender();
+		Gui::Get()->Update();
+		Gui::Get()->Render(m_GuiShader, m_Camera);
+		
 		TextRenderer::BeginRender(m_Camera);
 		{
 			Font::Bind("Arial");
 			m_TextShader->Bind();
 			m_TextShader->UploadUniformFloat("u_Color", 1);
-			TextRenderer::Render(m_TextShader, Text::GetVAO());
+			TextRenderer::Render(m_TextShader, Text::GetVAO(),Text::GetCount()*4);
 		}
 		TextRenderer::EndRender();
 		
@@ -121,17 +118,19 @@ namespace Dot {
 			MouseButtonPressEvent& e = (MouseButtonPressEvent&)event;
 			if (e.GetButton() == D_MOUSE_BUTTON_LEFT)
 			{	
-				if (Gui::HandleLeftClick())
+				if (Gui::Get()->HandleLeftClick())
 				{
 					e.IsHandled() = true;
+				
 				}
 			
 			}
 			else if (e.GetButton() == D_MOUSE_BUTTON_RIGHT)
 			{
-				if (Gui::HandleRightClick())
+				if (Gui::Get()->HandleRightClick())
 				{
 					e.IsHandled() = true;
+					
 				}
 			}
 			
@@ -139,11 +138,7 @@ namespace Dot {
 		else if (event.GetEventType() == EventType::MouseButtonReleased)
 		{
 			MouseButtonReleaseEvent& e = (MouseButtonReleaseEvent&)event;
-			//if (e.GetButton() == D_MOUSE_BUTTON_RIGHT)
-			{
-				Gui::HandleRelease();
-			}
-			
+			Gui::Get()->HandleRelease();	
 		}
 
 	}

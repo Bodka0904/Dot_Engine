@@ -27,40 +27,24 @@ namespace Dot {
 	void Button::Move(const glm::vec2 pos)
 	{
 		m_Position += pos;
-		glm::vec2 newPos[4] =
-		{
-			glm::vec2(m_Position),
-			glm::vec2(m_Position.x + m_Size.x,m_Position.y),
-			glm::vec2(m_Position + m_Size),
-			glm::vec2(m_Position.x,m_Position.y + m_Size.y)
-		};
-		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		
+		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
+		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
 	}
 	void Button::SetPosition(const glm::vec2& pos)
 	{
 		m_Position = pos;
-		glm::vec2 newPos[4] = 
-		{
-			glm::vec2(m_Position),
-			glm::vec2(m_Position.x + m_Size.x,m_Position.y),
-			glm::vec2(m_Position + m_Size),
-			glm::vec2(m_Position.x,m_Position.y + m_Size.y)
-		};
-		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		
+		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
+		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 
 		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
 	}
 	void Button::Minimize()
 	{
-		glm::vec2 newPos[4] =
-		{
-			glm::vec2(0),
-			glm::vec2(0),
-			glm::vec2(0),
-			glm::vec2(0)
-		};
-		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		QuadVertex newVertex = QuadVertex(glm::vec2(0), glm::vec2(0), NULL);
+		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 		m_Label.SetPosition(glm::vec2(-100, -100));
 	}
 	const glm::vec2& Button::GetLabelSize()
@@ -78,12 +62,12 @@ namespace Dot {
 	}
 	Button& Button::Get(const std::string& label)
 	{
-		Button& button = (Button&)Gui::GetWidget(label);
+		Button& button = (Button&)Gui::Get()->GetWidget(label);
 		return button;
 	}
 	Button& Button::GetWrapped(const std::string& wrapper, const std::string& label)
 	{
-		Button& button = (Button&)Gui::GetWrappeWidget(wrapper,label);
+		Button& button = (Button&)Gui::Get()->GetWrappeWidget(wrapper,label);
 		return button;
 	}
 	void Button::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size)
@@ -94,9 +78,9 @@ namespace Dot {
 			glm::vec2(0.25,0.25),
 			glm::vec2(0,0.25)
 		};
-		Quad quad(position, size);
+		QuadVertex quadVertex = QuadVertex(position, size, &texCoords[0]);
 		Ref<Button> button = std::make_shared<Button>(label, position, size);
-		Gui::AddWidget(label, button, quad, &texCoords[0]);
+		Gui::Get()->AddWidget(label, button, &quadVertex);
 	}
 	glm::vec4 Button::GetCoords()
 	{

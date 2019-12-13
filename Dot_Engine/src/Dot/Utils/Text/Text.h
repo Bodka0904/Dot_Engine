@@ -10,8 +10,9 @@ namespace Dot {
 		void SetPosition(const glm::vec2& position);
 		const glm::vec2& GetSize() const { return m_Size; }
 
+		static const unsigned int GetCount() { return s_NumChars; }
 		static const Ref<ArrayBuffer>& GetVAO() { return s_VAO; }
-		static void Init();
+		static void Init(int numChars);
 
 	private:
 		glm::vec2 m_Position;

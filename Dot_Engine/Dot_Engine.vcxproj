@@ -116,7 +116,6 @@
     <ClInclude Include="src\Dot\Gui\GuiSystem\Button.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Checkbox.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Gui.h" />
-    <ClInclude Include="src\Dot\Gui\GuiSystem\GuiRenderer.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Slider.h" />
     <ClInclude Include="src\Dot\Renderer\AnimatedMesh.h" />
     <ClInclude Include="src\Dot\Renderer\Buffers\ArrayBuffer.h" />
@@ -532,7 +531,6 @@
     <ClCompile Include="src\Dot\Gui\GuiSystem\Button.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Checkbox.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Gui.cpp" />
-    <ClCompile Include="src\Dot\Gui\GuiSystem\GuiRenderer.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Slider.cpp" />
     <ClCompile Include="src\Dot\Renderer\AnimatedMesh.cpp" />
     <ClCompile Include="src\Dot\Renderer\Buffers\ArrayBuffer.cpp" />

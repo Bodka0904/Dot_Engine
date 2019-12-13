@@ -14,7 +14,7 @@ namespace Dot {
 
 		void ClearBuffer();
 		void Push(const QuadVertex* data,int len);
-		void PushOff(const QuadVertex* data, int len);
+		void PushOffset(const QuadVertex* data, int len, int offsetElements=0);
 
 		void PrepareForRender();
 		void BeginScene(const Ref<Shader> shader, const Ref<OrthoCamera> camera);

@@ -8,7 +8,7 @@ namespace Dot {
 	{
 	public:
 		static void BeginRender(const Ref<OrthoCamera> camera);
-		static void Render(const Ref<Shader>shader, const Ref<ArrayBuffer>& vao);
+		static void Render(const Ref<Shader>shader, const Ref<ArrayBuffer>& vao,int count);
 		static void EndRender();
 
 	private:

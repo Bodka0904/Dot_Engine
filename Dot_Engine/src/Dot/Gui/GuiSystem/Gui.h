@@ -4,6 +4,7 @@
 #include "Dot/Renderer/Shaders/Shader.h"
 #include "Dot/Renderer/Buffers/ArrayBuffer.h"
 
+#include "Dot/Renderer/Renderer2D.h"
 
 namespace Dot {
 	
@@ -94,53 +95,53 @@ namespace Dot {
 		bool m_Minimized = false;
 	};
 
-
-	// TODO POSSIBLY UPDATE TO SINGLETON
 	class Gui
 	{
-	public:
+	public:	
+		Gui(const std::string& texturePack);
+		~Gui();
+		void AddWidget(const std::string& label, Ref<Widget> widget, const QuadVertex* quad,int num = 1);
+		void AddWrapper(const std::string label, Ref<Wrapper> wrapper, const QuadVertex* quad, int num = 2);
+		void EnableWrapper(const std::string& label);
+		void DisableWrapper();
+
+		bool HandleLeftClick();
+		bool HandleRightClick();
+		
+		void HandleRelease();
+		void UpdatePosBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len = 1);
+		void UpdateTexBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len = 1);
+		void Update();
+		void Render(const Ref<Shader> shader,const Ref<OrthoCamera> camera);
+		
+		const Widget& GetWidget(const std::string& label) { return *m_Widget[label]; }
+		const Widget& GetWrappeWidget(const std::string& wrapper,const std::string widget) { return m_Wrapper[wrapper]->GetWidget(widget); }
+		
 		static void Init(const std::string& texturePack);
-		static void AddWidget(const std::string& label, Ref<Widget> widget, const Quad& quad, glm::vec2* texcoord,int num = 4);
-		static void AddWrapper(const std::string label, Ref<Wrapper> wrapper, const Quad* quad, glm::vec2* texcoord, int num = 8);
-		static void EnableWrapper(const std::string& label);
-		static void DisableWrapper();
-
-		static bool HandleLeftClick();
-		static bool HandleRightClick();
-		static void HandleRelease();
-
-		static void UpdatePosBuffer(unsigned int index, unsigned int size, const void* vertices);
-		static void UpdateTexBuffer(unsigned int index, unsigned int size, const void* texcoords);
-
-		static void Update();
-		static void BindTexture() { s_Texture->Bind(0); };
-	
-		const static Ref<ArrayBuffer>& GetVAO() { return s_VAO; }
-		static const Widget& GetWidget(const std::string& label) { return *s_Widget[label]; }
-		static const Widget& GetWrappeWidget(const std::string& wrapper,const std::string widget) { return s_Wrapper[wrapper]->GetWidget(widget); }
+		static Gui* Get() {return s_Instance;}
 	private:
-		static Ref<Texture>		s_Texture;
-		static Ref<ArrayBuffer> s_VAO;
-
+		Ref<Texture>		m_Texture;
+		Ref<Renderer2D>		m_GuiRenderer;
 	private:
-		static std::unordered_map <std::string, Ref<Widget>>  s_Widget;
-		static std::unordered_map <std::string, Ref<Wrapper>> s_Wrapper;
+		std::unordered_map <std::string, Ref<Widget>>  m_Widget;
+		std::unordered_map <std::string, Ref<Wrapper>> m_Wrapper;
 		
 	private:
-		static std::vector<glm::vec2>  s_Vertice;
-		static std::vector <glm::vec2> s_TexCoord;
+		std::vector<QuadVertex> m_Vertices;
 
-		static unsigned int s_NumWidgets;
-		static std::string	s_AttachedWidget;
-		static std::string	s_AttachedWrapper;
-		static std::string  s_ResizedWrapper;
-		static std::string	s_EnabledWrapper;
+		unsigned int m_NumWidgets;
+		std::string	 m_AttachedWidget;
+		std::string	 m_AttachedWrapper;
+		std::string  m_ResizedWrapper;
+		std::string	 m_EnabledWrapper;
 
 	private:
-		static glm::vec2 s_MousePosition;
-		static bool s_Locked;
+		glm::vec2 m_MousePosition;
+		bool	  m_Locked;
 
-	
+	private:
+		static Gui* s_Instance;
+
 	};
 }
 

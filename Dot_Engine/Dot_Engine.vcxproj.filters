@@ -150,9 +150,6 @@
     <ClInclude Include="src\Dot\Gui\GuiSystem\Gui.h">
       <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Gui\GuiSystem\GuiRenderer.h">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Gui\GuiSystem\Slider.h">
       <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClInclude>
@@ -1386,9 +1383,6 @@
       <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Gui\GuiSystem\Gui.cpp">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Gui\GuiSystem\GuiRenderer.cpp">
       <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Gui\GuiSystem\Slider.cpp">

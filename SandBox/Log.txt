@@ -1306,3 +1306,538 @@
 2019-12-13.00:22:48: Version: 4.6.0 NVIDIA 431.36
 2019-12-13.00:22:52: Loading mesh: res/projectmodels/tree.obj
 2019-12-13.00:22:52: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.11:57:07: OpenGL Info:
+2019-12-13.11:57:07: Vendor: NVIDIA Corporation
+2019-12-13.11:57:07: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.11:57:07: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.11:58:25: OpenGL Info:
+2019-12-13.11:58:25: Vendor: NVIDIA Corporation
+2019-12-13.11:58:25: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.11:58:25: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.11:59:18: OpenGL Info:
+2019-12-13.11:59:18: Vendor: NVIDIA Corporation
+2019-12-13.11:59:18: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.11:59:18: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.11:59:23: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.11:59:23: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.11:59:42: Window: Close
+2019-12-13.12:01:53: OpenGL Info:
+2019-12-13.12:01:53: Vendor: NVIDIA Corporation
+2019-12-13.12:01:53: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:01:53: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:01:59: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:01:59: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:02:06: Window: Close
+2019-12-13.12:02:53: OpenGL Info:
+2019-12-13.12:02:53: Vendor: NVIDIA Corporation
+2019-12-13.12:02:53: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:02:53: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:02:57: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:02:57: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:03:02: Window: Close
+2019-12-13.12:04:21: OpenGL Info:
+2019-12-13.12:04:21: Vendor: NVIDIA Corporation
+2019-12-13.12:04:21: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:04:21: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:04:26: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:04:26: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:04:37: Window: Close
+2019-12-13.12:05:35: OpenGL Info:
+2019-12-13.12:05:35: Vendor: NVIDIA Corporation
+2019-12-13.12:05:35: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:05:35: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:05:40: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:05:40: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:06:09: Window: Close
+2019-12-13.12:07:58: OpenGL Info:
+2019-12-13.12:07:58: Vendor: NVIDIA Corporation
+2019-12-13.12:07:58: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:07:58: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:08:02: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:08:02: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:08:20: Window: Close
+2019-12-13.12:10:06: OpenGL Info:
+2019-12-13.12:10:06: Vendor: NVIDIA Corporation
+2019-12-13.12:10:06: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:10:06: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:10:10: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:10:10: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:10:13: Window: Close
+2019-12-13.12:11:39: OpenGL Info:
+2019-12-13.12:11:39: Vendor: NVIDIA Corporation
+2019-12-13.12:11:39: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:11:39: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:11:45: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:11:45: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:12:13: Window: Close
+2019-12-13.12:14:09: OpenGL Info:
+2019-12-13.12:14:09: Vendor: NVIDIA Corporation
+2019-12-13.12:14:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:14:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:14:14: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:14:14: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:14:48: OpenGL Info:
+2019-12-13.12:14:48: Vendor: NVIDIA Corporation
+2019-12-13.12:14:48: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:14:48: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:14:53: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:14:53: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:14:58: Window: Close
+2019-12-13.12:15:31: OpenGL Info:
+2019-12-13.12:15:31: Vendor: NVIDIA Corporation
+2019-12-13.12:15:31: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:15:31: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:15:35: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:15:35: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:15:43: Window: Close
+2019-12-13.12:17:58: OpenGL Info:
+2019-12-13.12:17:58: Vendor: NVIDIA Corporation
+2019-12-13.12:17:58: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:17:58: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:18:03: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:18:03: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:18:42: Window: Close
+2019-12-13.12:18:47: OpenGL Info:
+2019-12-13.12:18:47: Vendor: NVIDIA Corporation
+2019-12-13.12:18:47: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:18:47: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:18:52: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:18:52: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:18:57: Window: Close
+2019-12-13.12:22:09: OpenGL Info:
+2019-12-13.12:22:09: Vendor: NVIDIA Corporation
+2019-12-13.12:22:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:22:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:22:13: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:22:13: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:22:24: Window: Close
+2019-12-13.12:24:12: OpenGL Info:
+2019-12-13.12:24:12: Vendor: NVIDIA Corporation
+2019-12-13.12:24:12: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:24:12: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:24:16: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:24:16: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:26:24: OpenGL Info:
+2019-12-13.12:26:24: Vendor: NVIDIA Corporation
+2019-12-13.12:26:24: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:26:24: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:26:29: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:26:29: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:26:34: Window: Close
+2019-12-13.12:26:57: OpenGL Info:
+2019-12-13.12:26:57: Vendor: NVIDIA Corporation
+2019-12-13.12:26:57: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:26:57: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:27:03: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:27:03: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:27:14: Window: Close
+2019-12-13.12:51:59: OpenGL Info:
+2019-12-13.12:51:59: Vendor: NVIDIA Corporation
+2019-12-13.12:51:59: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:51:59: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:52:04: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:52:04: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:52:28: Window: Close
+2019-12-13.12:58:07: OpenGL Info:
+2019-12-13.12:58:07: Vendor: NVIDIA Corporation
+2019-12-13.12:58:07: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.12:58:07: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.12:58:12: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.12:58:12: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.12:58:27: Window: Close
+2019-12-13.13:01:55: OpenGL Info:
+2019-12-13.13:01:55: Vendor: NVIDIA Corporation
+2019-12-13.13:01:55: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:01:55: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:01:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:01:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:01:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:01:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:01:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:02:00: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:02:00: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:02:00: Reached maximum of widgets, not possible to add!
+2019-12-13.13:02:34: OpenGL Info:
+2019-12-13.13:02:34: Vendor: NVIDIA Corporation
+2019-12-13.13:02:34: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:02:34: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:02:34: Reached maximum of widgets, not possible to add!
+2019-12-13.13:02:34: Reached maximum of widgets, not possible to add!
+2019-12-13.13:02:34: Reached maximum of widgets, not possible to add!
+2019-12-13.13:02:34: Reached maximum of widgets, not possible to add!
+2019-12-13.13:02:34: Reached maximum of widgets, not possible to add!
+2019-12-13.13:02:39: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:02:39: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:02:39: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:02: OpenGL Info:
+2019-12-13.13:03:02: Vendor: NVIDIA Corporation
+2019-12-13.13:03:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:03:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:03:02: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:02: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:02: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:02: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:02: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:07: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:03:07: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:03:07: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:55: OpenGL Info:
+2019-12-13.13:03:55: Vendor: NVIDIA Corporation
+2019-12-13.13:03:55: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:03:55: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:03:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:03:55: Reached maximum of widgets, not possible to add!
+2019-12-13.13:04:01: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:04:01: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:04:01: Reached maximum of widgets, not possible to add!
+2019-12-13.13:04:38: OpenGL Info:
+2019-12-13.13:04:38: Vendor: NVIDIA Corporation
+2019-12-13.13:04:38: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:04:38: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:04:38: Reached maximum of widgets, not possible to add!
+2019-12-13.13:04:38: Reached maximum of widgets, not possible to add!
+2019-12-13.13:04:38: Reached maximum of widgets, not possible to add!
+2019-12-13.13:04:38: Reached maximum of widgets, not possible to add!
+2019-12-13.13:04:38: Reached maximum of widgets, not possible to add!
+2019-12-13.13:04:43: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:04:43: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:04:43: Reached maximum of widgets, not possible to add!
+2019-12-13.13:06:35: OpenGL Info:
+2019-12-13.13:06:35: Vendor: NVIDIA Corporation
+2019-12-13.13:06:35: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:06:35: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:06:40: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:06:40: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:06:42: Window: Close
+2019-12-13.13:07:15: OpenGL Info:
+2019-12-13.13:07:15: Vendor: NVIDIA Corporation
+2019-12-13.13:07:15: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:07:16: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:07:16: Reached maximum of widgets, not possible to add!
+2019-12-13.13:07:16: Reached maximum of widgets, not possible to add!
+2019-12-13.13:07:16: Reached maximum of widgets, not possible to add!
+2019-12-13.13:07:16: Reached maximum of widgets, not possible to add!
+2019-12-13.13:07:16: Reached maximum of widgets, not possible to add!
+2019-12-13.13:07:20: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:07:20: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:07:20: Reached maximum of widgets, not possible to add!
+2019-12-13.13:09:06: OpenGL Info:
+2019-12-13.13:09:06: Vendor: NVIDIA Corporation
+2019-12-13.13:09:06: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:09:06: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:09:06: Reached maximum of widgets, not possible to add!
+2019-12-13.13:09:06: Reached maximum of widgets, not possible to add!
+2019-12-13.13:09:06: Reached maximum of widgets, not possible to add!
+2019-12-13.13:09:06: Reached maximum of widgets, not possible to add!
+2019-12-13.13:09:06: Reached maximum of widgets, not possible to add!
+2019-12-13.13:09:11: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:09:11: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:09:11: Reached maximum of widgets, not possible to add!
+2019-12-13.13:10:02: OpenGL Info:
+2019-12-13.13:10:02: Vendor: NVIDIA Corporation
+2019-12-13.13:10:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:10:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:10:09: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:10:09: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:10:17: Window: Close
+2019-12-13.13:12:00: OpenGL Info:
+2019-12-13.13:12:00: Vendor: NVIDIA Corporation
+2019-12-13.13:12:00: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:12:00: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:12:05: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:12:05: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:12:10: Window: Close
+2019-12-13.13:12:50: OpenGL Info:
+2019-12-13.13:12:50: Vendor: NVIDIA Corporation
+2019-12-13.13:12:50: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:12:50: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:12:55: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:12:55: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:13:12: Window: Close
+2019-12-13.13:13:17: OpenGL Info:
+2019-12-13.13:13:17: Vendor: NVIDIA Corporation
+2019-12-13.13:13:17: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:13:17: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:13:22: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:13:22: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:13:38: Window: Close
+2019-12-13.13:14:44: OpenGL Info:
+2019-12-13.13:14:44: Vendor: NVIDIA Corporation
+2019-12-13.13:14:44: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:14:44: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:14:49: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:14:49: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:14:55: Window: Close
+2019-12-13.13:16:33: OpenGL Info:
+2019-12-13.13:16:33: Vendor: NVIDIA Corporation
+2019-12-13.13:16:33: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:16:33: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:16:38: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:16:38: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:16:42: Window: Close
+2019-12-13.13:18:07: OpenGL Info:
+2019-12-13.13:18:07: Vendor: NVIDIA Corporation
+2019-12-13.13:18:07: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:18:07: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:19:19: OpenGL Info:
+2019-12-13.13:19:19: Vendor: NVIDIA Corporation
+2019-12-13.13:19:19: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:19:19: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:20:40: OpenGL Info:
+2019-12-13.13:20:40: Vendor: NVIDIA Corporation
+2019-12-13.13:20:40: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:20:40: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:21:48: OpenGL Info:
+2019-12-13.13:21:48: Vendor: NVIDIA Corporation
+2019-12-13.13:21:48: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:21:48: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:22:27: OpenGL Info:
+2019-12-13.13:22:27: Vendor: NVIDIA Corporation
+2019-12-13.13:22:27: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:22:27: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:22:32: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:22:32: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:22:42: Window: Close
+2019-12-13.13:24:02: OpenGL Info:
+2019-12-13.13:24:02: Vendor: NVIDIA Corporation
+2019-12-13.13:24:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:24:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:24:07: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:24:07: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:24:10: Window: Close
+2019-12-13.13:24:35: OpenGL Info:
+2019-12-13.13:24:35: Vendor: NVIDIA Corporation
+2019-12-13.13:24:35: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:24:35: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:24:40: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:24:40: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:24:44: Window: Close
+2019-12-13.13:25:29: OpenGL Info:
+2019-12-13.13:25:29: Vendor: NVIDIA Corporation
+2019-12-13.13:25:29: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:25:29: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:25:33: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:25:33: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:26:06: Window: Close
+2019-12-13.13:26:22: OpenGL Info:
+2019-12-13.13:26:22: Vendor: NVIDIA Corporation
+2019-12-13.13:26:22: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:26:22: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:26:27: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:26:27: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:29:05: OpenGL Info:
+2019-12-13.13:29:05: Vendor: NVIDIA Corporation
+2019-12-13.13:29:05: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:29:05: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:29:09: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:29:09: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:29:41: OpenGL Info:
+2019-12-13.13:29:41: Vendor: NVIDIA Corporation
+2019-12-13.13:29:41: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:29:41: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:29:47: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:29:47: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:32:27: OpenGL Info:
+2019-12-13.13:32:27: Vendor: NVIDIA Corporation
+2019-12-13.13:32:27: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:32:27: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:32:32: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:32:32: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:32:47: Window: Close
+2019-12-13.13:34:05: OpenGL Info:
+2019-12-13.13:34:05: Vendor: NVIDIA Corporation
+2019-12-13.13:34:05: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:34:05: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:34:09: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:34:09: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:34:18: Window: Close
+2019-12-13.13:39:29: OpenGL Info:
+2019-12-13.13:39:29: Vendor: NVIDIA Corporation
+2019-12-13.13:39:29: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:39:29: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:39:34: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:39:34: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:41:30: OpenGL Info:
+2019-12-13.13:41:30: Vendor: NVIDIA Corporation
+2019-12-13.13:41:30: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:41:30: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:41:35: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:41:35: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:41:48: Window: Close
+2019-12-13.13:42:35: OpenGL Info:
+2019-12-13.13:42:35: Vendor: NVIDIA Corporation
+2019-12-13.13:42:35: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:42:35: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:42:39: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:42:39: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:42:55: Window: Close
+2019-12-13.13:43:44: OpenGL Info:
+2019-12-13.13:43:44: Vendor: NVIDIA Corporation
+2019-12-13.13:43:44: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:43:44: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:43:50: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:43:50: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:44:00: Window: Close
+2019-12-13.13:46:10: OpenGL Info:
+2019-12-13.13:46:10: Vendor: NVIDIA Corporation
+2019-12-13.13:46:10: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:46:10: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:46:14: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:46:14: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:46:18: Window: Close
+2019-12-13.13:46:45: OpenGL Info:
+2019-12-13.13:46:45: Vendor: NVIDIA Corporation
+2019-12-13.13:46:45: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:46:45: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:46:50: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:46:50: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:46:55: Window: Close
+2019-12-13.13:47:10: OpenGL Info:
+2019-12-13.13:47:10: Vendor: NVIDIA Corporation
+2019-12-13.13:47:10: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:47:10: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:47:16: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:47:16: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:47:18: Window: Close
+2019-12-13.13:47:34: OpenGL Info:
+2019-12-13.13:47:34: Vendor: NVIDIA Corporation
+2019-12-13.13:47:34: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:47:34: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:47:39: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:47:39: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:47:44: Window: Close
+2019-12-13.13:48:21: OpenGL Info:
+2019-12-13.13:48:21: Vendor: NVIDIA Corporation
+2019-12-13.13:48:21: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:48:21: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:48:27: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:48:27: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:48:33: Window: Close
+2019-12-13.13:49:13: OpenGL Info:
+2019-12-13.13:49:13: Vendor: NVIDIA Corporation
+2019-12-13.13:49:13: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:49:13: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:49:19: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:49:19: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:49:47: Window: Resized window width: 1240 height: 719
+2019-12-13.13:49:47: Window: Resized window width: 1240 height: 718
+2019-12-13.13:49:47: Window: Resized window width: 1240 height: 715
+2019-12-13.13:49:47: Window: Resized window width: 1240 height: 711
+2019-12-13.13:49:47: Window: Resized window width: 1240 height: 710
+2019-12-13.13:49:47: Window: Resized window width: 1240 height: 709
+2019-12-13.13:49:55: Window: Close
+2019-12-13.13:50:16: OpenGL Info:
+2019-12-13.13:50:16: Vendor: NVIDIA Corporation
+2019-12-13.13:50:16: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:50:16: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:50:21: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:50:21: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:50:25: Window: Close
+2019-12-13.13:50:47: OpenGL Info:
+2019-12-13.13:50:47: Vendor: NVIDIA Corporation
+2019-12-13.13:50:47: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:50:47: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:50:52: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:50:52: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:51:14: OpenGL Info:
+2019-12-13.13:51:14: Vendor: NVIDIA Corporation
+2019-12-13.13:51:14: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:51:14: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:51:18: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:51:18: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:51:25: Window: Close
+2019-12-13.13:52:20: OpenGL Info:
+2019-12-13.13:52:20: Vendor: NVIDIA Corporation
+2019-12-13.13:52:20: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:52:20: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:52:25: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:52:25: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:52:31: Window: Close
+2019-12-13.13:55:29: OpenGL Info:
+2019-12-13.13:55:29: Vendor: NVIDIA Corporation
+2019-12-13.13:55:29: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:55:29: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:55:34: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:55:34: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:55:56: Window: Close
+2019-12-13.13:56:37: OpenGL Info:
+2019-12-13.13:56:37: Vendor: NVIDIA Corporation
+2019-12-13.13:56:37: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:56:37: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:56:42: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:56:42: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:57:32: Window: Close
+2019-12-13.13:58:48: OpenGL Info:
+2019-12-13.13:58:48: Vendor: NVIDIA Corporation
+2019-12-13.13:58:48: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.13:58:48: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.13:58:53: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.13:58:53: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.13:59:29: Window: Close
+2019-12-13.14:00:46: OpenGL Info:
+2019-12-13.14:00:46: Vendor: NVIDIA Corporation
+2019-12-13.14:00:46: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.14:00:46: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.14:00:51: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.14:00:51: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.14:00:56: Window: Close
+2019-12-13.14:02:11: OpenGL Info:
+2019-12-13.14:02:11: Vendor: NVIDIA Corporation
+2019-12-13.14:02:11: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.14:02:11: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.14:02:17: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.14:02:17: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.14:02:23: Window: Close
+2019-12-13.14:04:03: OpenGL Info:
+2019-12-13.14:04:03: Vendor: NVIDIA Corporation
+2019-12-13.14:04:03: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.14:04:03: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.14:04:08: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.14:04:08: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.14:04:16: Window: Close
+2019-12-13.14:04:40: OpenGL Info:
+2019-12-13.14:04:40: Vendor: NVIDIA Corporation
+2019-12-13.14:04:40: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.14:04:40: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.14:04:46: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.14:04:46: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.14:04:56: Window: Close
+2019-12-13.14:05:12: OpenGL Info:
+2019-12-13.14:05:12: Vendor: NVIDIA Corporation
+2019-12-13.14:05:12: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.14:05:12: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.14:05:17: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.14:05:17: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.14:05:25: Window: Close
+2019-12-13.14:05:49: OpenGL Info:
+2019-12-13.14:05:49: Vendor: NVIDIA Corporation
+2019-12-13.14:05:49: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.14:05:49: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.14:05:53: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.14:05:53: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.14:05:57: Window: Close
+2019-12-13.14:06:51: OpenGL Info:
+2019-12-13.14:06:51: Vendor: NVIDIA Corporation
+2019-12-13.14:06:51: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.14:06:51: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.14:06:56: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.14:06:56: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.14:07:02: Window: Close
+2019-12-13.14:08:49: OpenGL Info:
+2019-12-13.14:08:49: Vendor: NVIDIA Corporation
+2019-12-13.14:08:49: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.14:08:49: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.14:08:54: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.14:08:54: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.14:09:17: Window: Close
+2019-12-13.14:11:11: OpenGL Info:
+2019-12-13.14:11:11: Vendor: NVIDIA Corporation
+2019-12-13.14:11:11: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-13.14:11:11: Version: 4.6.0 NVIDIA 431.36
+2019-12-13.14:11:16: Loading mesh: res/projectmodels/tree.obj
+2019-12-13.14:11:16: Loading animated mesh: res/animation/cowboy.dae
+2019-12-13.14:11:31: Window: Resized window width: 1920 height: 1017
+2019-12-13.14:11:32: Window: Close

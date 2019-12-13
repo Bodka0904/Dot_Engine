@@ -36,27 +36,17 @@ namespace Dot {
 	void Slider::Move(const glm::vec2 pos)
 	{
 		m_Position += pos;
-		glm::vec2 newPos[4] =
-		{
-			glm::vec2(m_Position),
-			glm::vec2(m_Position.x + m_Size.x,m_Position.y),
-			glm::vec2(m_Position + m_Size),
-			glm::vec2(m_Position.x,m_Position.y + m_Size.y)
-		};
-		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		;
+		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
+		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
 	}
 	void Slider::SetPosition(const glm::vec2& pos)
 	{
 		m_Position = pos;
-		glm::vec2 newPos[4] =
-		{
-			glm::vec2(m_Position),
-			glm::vec2(m_Position.x + m_Size.x,m_Position.y),
-			glm::vec2(m_Position + m_Size),
-			glm::vec2(m_Position.x,m_Position.y + m_Size.y)
-		};
-		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		
+		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
+		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
 	}
 	void Slider::ClickHandle()
@@ -71,18 +61,20 @@ namespace Dot {
 					glm::vec2(0.5 + m_TexOffset / 4,0.75),
 					glm::vec2(0.25 + m_TexOffset / 4,0.75)
 			};
-			Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
+			QuadVertex newVertex = QuadVertex(glm::vec2(0), glm::vec2(0), &texcoords[0]);
+			Gui::Get()->UpdateTexBuffer(m_Index, &newVertex);
 		}
 		else if (*m_Value <= 0.02f)
 		{
-			m_TexOffset = -*m_Value + 0.1;
+			m_TexOffset = -*m_Value;
 			glm::vec2 texcoords[4] = {
 					glm::vec2(0.25 + m_TexOffset / 4,0.5),
 					glm::vec2(0.5 + m_TexOffset / 4,0.5),
 					glm::vec2(0.5 + m_TexOffset / 4,0.75),
 					glm::vec2(0.25 + m_TexOffset / 4,0.75)
 			};
-			Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
+			QuadVertex newVertex = QuadVertex(glm::vec2(0), glm::vec2(0), &texcoords[0]);
+			Gui::Get()->UpdateTexBuffer(m_Index, &newVertex);
 		}
 		else
 		{
@@ -93,19 +85,15 @@ namespace Dot {
 					glm::vec2(0.5 + m_TexOffset / 4,0.75),
 					glm::vec2(0.25 + m_TexOffset / 4,0.75)
 			};
-			Gui::UpdateTexBuffer(m_Index, sizeof(Quad), &texcoords[0]);
+			QuadVertex newVertex = QuadVertex(glm::vec2(0), glm::vec2(0), &texcoords[0]);
+			Gui::Get()->UpdateTexBuffer(m_Index, &newVertex);
 		}
 	}
 	void Slider::Minimize()
 	{
-		glm::vec2 newPos[4] =
-		{
-			glm::vec2(0),
-			glm::vec2(0),
-			glm::vec2(0),
-			glm::vec2(0)
-		};
-		Gui::UpdatePosBuffer(m_Index, sizeof(glm::vec2) * 4, (void*)& newPos[0]);
+		
+		QuadVertex newVertex = QuadVertex(glm::vec2(0), glm::vec2(0), NULL);
+		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 		m_Label.SetPosition(glm::vec2(-100, -100));
 	}
 	const glm::vec2& Slider::GetLabelSize()
@@ -114,12 +102,12 @@ namespace Dot {
 	}
 	Slider& Slider::Get(const std::string& label)
 	{
-		Slider& slider = (Slider&)Gui::GetWidget(label);
+		Slider& slider = (Slider&)Gui::Get()->GetWidget(label);
 		return slider;
 	}
 	Slider& Slider::GetWrapped(const std::string& wrapper, const std::string& label)
 	{
-		Slider& slider = (Slider&)Gui::GetWrappeWidget(wrapper, label);
+		Slider& slider = (Slider&)Gui::Get()->GetWrappeWidget(wrapper, label);
 		return slider;
 	}
 	void Slider::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size,float *val)
@@ -130,10 +118,9 @@ namespace Dot {
 				glm::vec2(0.5, 0.75),
 				glm::vec2(0.25, 0.75)
 		};
-
-		Quad quad(position, size);
+		QuadVertex quadVertex = QuadVertex(position, size,&texCoords[0]);
 		Ref<Slider> slider = std::make_shared<Slider>(label, position, size, val);
-		Gui::AddWidget(label, slider, quad, &texCoords[0]);
+		Gui::Get()->AddWidget(label, slider,&quadVertex);
 	}
 	glm::vec4 Slider::GetCoords()
 	{

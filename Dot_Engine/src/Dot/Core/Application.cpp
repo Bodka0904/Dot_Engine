@@ -19,8 +19,9 @@ namespace Dot {
 		m_Window->vSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		
-		//Default font
-		Font::AddFont("Arial", "res/fonts/Arial/Arial.fnt", "res/fonts/Arial/Arial.png");
+		m_GuiLayer = new GuiLayer();
+		PushOverlay(m_GuiLayer);
+		
 	}
 
 
@@ -35,12 +36,6 @@ namespace Dot {
 
 	void Application::Run()
 	{
-
-		// TODO PUT BACK TO APPLICATION CONSTRUCTOR
-		m_GuiLayer = new GuiLayer();
-		PushOverlay(m_GuiLayer);
-
-
 		while (!m_Window->IsClosed())
 		{
 			
