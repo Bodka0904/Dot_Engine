@@ -2,36 +2,29 @@
 
 namespace Dot {
 
-
-	class Texture
+	class Texture2D
 	{
 	public:
-		Texture(const std::string& fileName,bool filters = true,bool flipped = true);
-		Texture(const std::vector<std::string>faces);
-		~Texture();
+		virtual ~Texture2D() = default;
+		
+		virtual uint32_t GetWidth() const = 0;
+		virtual uint32_t GetHeight() const = 0;
 
-		void Bind(unsigned int unit);
-	
-	private:
-		int CalculateMipMapCount(int width, int height);
-	
-	private:
-		unsigned int texture;
-		int textureType;
+		virtual void SetData(void* data, uint32_t size) = 0;
+		virtual void Bind(unsigned int unit) = 0;
+		
+		static Ref<Texture2D> Create(uint32_t width, uint32_t height);
+		static Ref<Texture2D> Create(const std::string& path,bool filters = false,bool flipped = true);
 	};
 
 
 	class CubeMapTexture
 	{
 	public:
-		CubeMapTexture(const std::vector<std::string>faces);
-		~CubeMapTexture();
+		virtual ~CubeMapTexture() = default;
 
-		void Bind(unsigned int unit);
+		virtual void Bind(unsigned int unit) = 0;
 
-	private:
-		unsigned int texture;
-		int textureType;
-
+		static Ref<CubeMapTexture> Create(const std::vector<std::string>faces);
 	};
 }

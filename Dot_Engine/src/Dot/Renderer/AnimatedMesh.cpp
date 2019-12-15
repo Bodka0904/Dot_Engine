@@ -2,13 +2,13 @@
 #include "AnimatedMesh.h"
 
 #include <assert.h>
-#include <GL/glew.h>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
+#include "RenderCommand.h"
 
 namespace Dot {
 	
@@ -44,10 +44,8 @@ namespace Dot {
 	AnimatedMesh::AnimatedMesh(const std::string& Filename)
 	{
 		LOG_INFO("Loading animated mesh: %s", Filename.c_str());
-		memset(m_Buffers, 0, sizeof(m_Buffers));
 		m_NumBones = 0;
 		m_pScene = NULL;
-		Clear();
 
 		m_pScene = m_Importer.ReadFile(Filename.c_str(), ImportFlags);
 
@@ -59,25 +57,11 @@ namespace Dot {
 		else {
 			printf("Error parsing '%s': '%s'\n", Filename.c_str(), m_Importer.GetErrorString());
 		}
-		
-		// Make sure the VAO is not changed from the outside
-		glBindVertexArray(0);
 	}
-
 
 	AnimatedMesh::~AnimatedMesh()
 	{
-		Clear();
 	}
-
-
-	void AnimatedMesh::Clear()
-	{
-		if (m_Buffers[0] != 0) {
-			glDeleteBuffers(NUM_VBs, m_Buffers);
-		}
-	}
-
 
 
 	bool AnimatedMesh::InitFromScene(const aiScene* pScene, const std::string& Filename)
@@ -126,37 +110,42 @@ namespace Dot {
 			m_BoneMapping.erase(i);
 		}
 		
-		m_vao = std::make_shared<ArrayBuffer>();
-		m_vao->Bind();
-
-		glGenBuffers(NUM_VBs, m_Buffers);
-
-		glBindBuffer(GL_ARRAY_BUFFER, m_Buffers[POS_VB]);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Positions[0]) * Positions.size(), &Positions[0], GL_STATIC_DRAW);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+		m_VAO = ArrayBuffer::Create();
+		m_VAO->Bind();
+		BufferLayout layoutpos = {
+			{0, ShaderDataType::Float3, "position" },
+		};
+		Ref<VertexBuffer> m_PosBuffer = VertexBuffer::Create((void*)&Positions[0], sizeof(Positions[0]) * Positions.size(),D_STATIC_DRAW);
+		m_PosBuffer->SetLayout(layoutpos);
 		
-		glBindBuffer(GL_ARRAY_BUFFER, m_Buffers[TEXCOORD_VB]);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(TexCoords[0]) * TexCoords.size(), &TexCoords[0], GL_STATIC_DRAW);
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+		BufferLayout layouttex = {
+			{1, ShaderDataType::Float2, "texcoord" },
+		};
+		Ref<VertexBuffer> m_TexCoordBuffer = VertexBuffer::Create((void*)& TexCoords[0], sizeof(TexCoords[0]) * TexCoords.size(), D_STATIC_DRAW);
+		m_TexCoordBuffer->SetLayout(layouttex);
 		
-		glBindBuffer(GL_ARRAY_BUFFER, m_Buffers[NORMAL_VB]);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Normals[0]) * Normals.size(), &Normals[0], GL_STATIC_DRAW);
-		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
+		BufferLayout layoutnormal = {
+			{2, ShaderDataType::Float3, "normal" },
+		};
+		Ref<VertexBuffer> m_NormalBuffer = VertexBuffer::Create((void*)& Normals[0], sizeof(Normals[0]) * Normals.size(), D_STATIC_DRAW);
+		m_NormalBuffer->SetLayout(layoutnormal);
+		
+		BufferLayout layoutbone = {
+			{3, ShaderDataType::Int4, "boneID" },
+			{4, ShaderDataType::Float4, "boneWeight" },
+		};
+		Ref<VertexBuffer> m_BoneBuffer = VertexBuffer::Create((void*)& Bones[0], sizeof(Bones[0]) * Bones.size(), D_STATIC_DRAW);
+		m_BoneBuffer->SetLayout(layoutbone);
+		
+		Ref<IndexBuffer> m_IndexBuffer = IndexBuffer::Create(&Indices[0], Indices.size());
 
-		glBindBuffer(GL_ARRAY_BUFFER, m_Buffers[BONE_VB]);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Bones[0]) * Bones.size(), &Bones[0], GL_STATIC_DRAW);
-		glEnableVertexAttribArray(3);
-		glVertexAttribIPointer(3, 4, GL_INT, sizeof(VertexBoneData), (const GLvoid*)0);
-		glEnableVertexAttribArray(4);
-		glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(VertexBoneData), (const GLvoid*)16);
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Buffers[INDEX_BUFFER]);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices[0]) * Indices.size(), &Indices[0], GL_STATIC_DRAW);
-
-
+		m_VAO->AddVBO(m_PosBuffer);
+		m_VAO->AddVBO(m_TexCoordBuffer);
+		m_VAO->AddVBO(m_NormalBuffer);
+		m_VAO->AddVBO(m_BoneBuffer);
+		m_VAO->AddIBO(m_IndexBuffer);
+		
+		m_VAO->UnBind();
 		return true;
 	};
 
@@ -227,17 +216,12 @@ namespace Dot {
 
 	void AnimatedMesh::Render()
 	{
-		m_vao->Bind();
-		for (unsigned int i = 0; i < m_Entries.size(); i++) {
-
-			glDrawElementsBaseVertex(GL_TRIANGLES,
-				m_Entries[i].NumIndices,
-				GL_UNSIGNED_INT,
-				(void*)(sizeof(unsigned int) * m_Entries[i].BaseIndex),
-				m_Entries[i].BaseVertex);
+		m_VAO->Bind();
+		for (unsigned int i = 0; i < m_Entries.size(); i++) 
+		{
+			RenderCommand::SubmitElementBase(m_Entries[i].NumIndices, m_Entries[i].BaseIndex, m_Entries[i].BaseVertex, D_TRIANGLES);
 		}
-
-		m_vao->UnBind();
+		m_VAO->UnBind();
 	}
 
 

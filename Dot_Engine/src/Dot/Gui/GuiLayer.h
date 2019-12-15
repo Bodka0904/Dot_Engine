@@ -4,7 +4,6 @@
 #include "Dot/Renderer/Shaders/Shader.h"
 
 #include "Dot/Renderer/Renderer2D.h"
-#include "Dot/Utils/Text/Text.h"
 #include "Dot/Utils/Text/DynamicText.h"
 
 namespace Dot {

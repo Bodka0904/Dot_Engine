@@ -15,10 +15,6 @@ namespace Dot {
 		{
 			glm::mat4 BoneOffset;
 
-			BoneInfo()
-			{
-				BoneOffset;
-			}
 		};
 	public:
 		AnimatedMesh(const std::string& Filename);
@@ -81,20 +77,8 @@ namespace Dot {
 		);
 
 		void LoadBones(unsigned int MeshIndex, const aiMesh* paiMesh, std::vector<VertexBoneData>& Bones);
-		void Clear();
-
 	private:	
-		enum VB_TYPES {
-			INDEX_BUFFER,
-			POS_VB,
-			NORMAL_VB,
-			TEXCOORD_VB,
-			BONE_VB,
-			NUM_VBs
-		};
-
-		Ref<ArrayBuffer>m_vao;
-		unsigned int m_Buffers[NUM_VBs];
+		Ref<ArrayBuffer> m_VAO;
 
 		struct MeshEntry 
 		{

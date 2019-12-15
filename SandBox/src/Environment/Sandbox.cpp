@@ -2,7 +2,7 @@
 
 #include <random>
 #include <iostream>
-
+ 
 
 
 Sandbox::Sandbox()
@@ -12,6 +12,7 @@ Sandbox::Sandbox()
 
 void Sandbox::OnAttach()
 {
+	Dot::Renderer::Init();
 	std::vector<std::string> faces{
 			"res/textures/skybox/test/right.png",
 			"res/textures/skybox/test/left.png",
@@ -30,7 +31,7 @@ void Sandbox::OnAttach()
 
 	m_CamController = std::make_shared<Dot::CameraController>(glm::perspectiveFov(glm::radians(45.0f), 1280.0f, 720.0f, 0.1f, 10000.0f));
 
-	m_StaticShader = std::make_shared<Dot::Shader>("TEST","res/shaders/Dot/StaticShader.glsl");
+	m_StaticShader = Dot::Shader::Create("TEST","res/shaders/Dot/StaticShader.glsl");
 	m_StaticShader->Bind();
 	//m_StaticShader->AddUniform("u_Texture");
 	//m_StaticShader->UploadUniformInt("u_Texture", 0);
@@ -41,10 +42,10 @@ void Sandbox::OnAttach()
 	m_StaticShader->AddUniform("u_LightColor");
 	m_StaticShader->AddUniform("u_LightStrength");
 
-	m_TreeTexture = std::make_shared<Dot::Texture>("res/projectmodels/tree.png",true);
-	m_TerrTexture = std::make_shared<Dot::Texture>("res/textures/Dot/grass.jpg",true);
+	m_TreeTexture = Dot::Texture2D::Create("res/projectmodels/tree.png",true);
+	m_TerrTexture = Dot::Texture2D::Create("res/textures/Dot/grass.jpg",true);
 
-	m_InstanceShader = std::make_shared<Dot::Shader>("InstanceShader", "res/shaders/Dot/InstanceShader.glsl");
+	m_InstanceShader = Dot::Shader::Create("InstanceShader", "res/shaders/Dot/InstanceShader.glsl");
 	m_InstanceShader->Bind();
 
 	//m_InstanceShader->AddUniform("u_Texture");
@@ -53,10 +54,10 @@ void Sandbox::OnAttach()
 	m_InstanceShader->AddUniform("u_LightColor");
 	m_InstanceShader->AddUniform("u_LightStrength");
 	
-	m_SkyShader = std::make_shared<Dot::Shader>("SkyboxShader", "res/shaders/Dot/SkyboxShader.glsl");
+	m_SkyShader = Dot::Shader::Create("SkyboxShader", "res/shaders/Dot/SkyboxShader.glsl");
 	m_SkyShader->AddUniform("u_ModelMatrix");
 	
-	m_WaterShader = std::make_shared<Dot::Shader>("WaterShader", "res/shaders/Dot/WaterShader.glsl");
+	m_WaterShader = Dot::Shader::Create("WaterShader", "res/shaders/Dot/WaterShader.glsl");
 	m_WaterShader->AddUniform("u_ModelMatrix");
 	m_WaterShader->AddUniform("u_Time");
 	m_WaterShader->AddUniform("u_LightPosition");
@@ -80,8 +81,8 @@ void Sandbox::OnAttach()
 		m_TreeTransformations[i] = m_T.GetModel();
 	}
 
-	m_ShaderForCompute = std::make_shared<Dot::Shader>("TestForCompute","res/shaders/Dot/TestForComputeShader.glsl");
-	m_ComputeShader = std::make_shared<Dot::Shader>("BasicComputShader","res/shaders/Dot/ComputeShader.glsl");
+	m_ShaderForCompute = Dot::Shader::Create("TestForCompute","res/shaders/Dot/TestForComputeShader.glsl");
+	m_ComputeShader = Dot::Shader::Create("BasicComputShader","res/shaders/Dot/ComputeShader.glsl");
 
 	m_Tree = std::make_shared<Dot::InstancedMesh>("res/projectmodels/tree.obj",m_TreeTransformations);
 	m_Player = std::make_shared<Player>("res/animation/cowboy.dae", "res/textures/Dot/cowboy.png");
@@ -102,6 +103,7 @@ void Sandbox::OnUpdate(Dot::Timestep ts)
 {
 	
 	Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0.0));
+
 	m_CamController->OnUpdate(ts.GetSeconds() * 250);
 	m_TestManager->Run();
 	m_ComputeShader->Compute(32, 32, 1);
@@ -119,11 +121,11 @@ void Sandbox::OnUpdate(Dot::Timestep ts)
 
 		m_TreeTexture->Bind(0);
 		m_InstanceShader->Bind();
-		Dot::Renderer::SubmitInstances(m_InstanceShader, m_Light, m_Tree, m_TreeTransformations.size(), D_TRIANGLES);
+		Dot::Renderer::SubmitInstances(m_InstanceShader, m_Light, m_Tree->GetVao(), m_TreeTransformations.size(), D_TRIANGLES);
 
 		m_TerrTexture->Bind(0);
 		m_StaticShader->Bind();
-		Dot::Renderer::SubmitElementsVao(m_StaticShader, m_Light, m_Terrain->GetVao(), glm::mat4(1), D_TRIANGLES);
+		Dot::Renderer::SubmitElements(m_StaticShader, m_Light, m_Terrain->GetVao(), glm::mat4(1), D_TRIANGLES);
 		
 		m_TimePassed += ts.GetSeconds();
 		if (m_TimePassed >= 1)
@@ -132,7 +134,7 @@ void Sandbox::OnUpdate(Dot::Timestep ts)
 		}
 		m_WaterShader->Bind();
 		m_WaterShader->UploadUniformFloat("u_Time", m_TimePassed/2);
-		Dot::Renderer::SubmitElementsVao(m_WaterShader,m_Light, m_Water->GetVAO(), glm::mat4(1), D_TRIANGLES);
+		Dot::Renderer::SubmitElements(m_WaterShader,m_Light, m_Water->GetVAO(), glm::mat4(1), D_TRIANGLES);
 	}
 	Dot::Renderer::EndScene(m_StaticShader);
 }

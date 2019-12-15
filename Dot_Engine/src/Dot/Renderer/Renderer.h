@@ -1,15 +1,11 @@
 #pragma once
+#include "Dot/Renderer/RenderCommand.h"
 #include "Dot/Renderer/Shaders/Shader.h"
 #include "Dot/Renderer/Camera/Camera.h"
 #include "Dot/Utils/Transform.h"
 #include "Material/Light.h"
 #include "Mesh.h"
 
-
-#define D_TRIANGLES 0x0004
-#define D_POINTS 0x0000
-#define D_QUADS 0x0007
-#define D_LINES 0x0001
 
 namespace Dot {
 
@@ -19,19 +15,18 @@ namespace Dot {
 		Renderer();
 		~Renderer();
 
+		static void Init();
 		static void Clear(glm::vec4& color);
 
 		static void BeginScene(Camera& camera);
 		static void SubmitArrays(const Ref<Shader>shader ,const Ref<ArrayBuffer>& vao, const glm::mat4& transform,int drawMod);
 		static void SubmitArraysInstanced(const Ref<Shader>shader, const Ref<Light>light, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod);
 		
-		static void SubmitElementsVao(const Ref<Shader>shader, const Ref<Light>light, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod);
-		static void SubmitElements(const Ref<Shader>shader, const Ref<Light>light, const Ref<Mesh>& mesh, const glm::mat4& transform, int drawMod);
-		static void SubmitInstances(const Ref<Shader> shader, const Ref<Light>light, const Ref<InstancedMesh>& mesh,unsigned int num, int drawMod);
+		static void SubmitElements(const Ref<Shader>shader, const Ref<Light>light, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod);
+		static void SubmitInstances(const Ref<Shader> shader, const Ref<Light>light, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod);
 		static void EndScene(const Ref<Shader>shader);
 
-
-	
+		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	private:
 		struct SceneData
 		{
@@ -41,9 +36,8 @@ namespace Dot {
 			glm::vec3 ViewPos;
 
 		};
-
-
 		static SceneData m_SceneData;
+
 	};
 
 }

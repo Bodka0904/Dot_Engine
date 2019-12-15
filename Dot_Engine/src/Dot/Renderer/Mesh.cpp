@@ -78,7 +78,7 @@ namespace Dot {
 		}
 
 		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		m_VertexBuffer = std::make_shared<VertexBuffer>((void*)m_Vertices.data(), m_Vertices.size() * sizeof(Vertex),D_STATIC_DRAW);
+		m_VertexBuffer = VertexBuffer::Create((void*)m_Vertices.data(), m_Vertices.size() * sizeof(Vertex),D_STATIC_DRAW);
 		
 		BufferLayout layout = {
 			{0, ShaderDataType::Float3, "position" },
@@ -87,7 +87,7 @@ namespace Dot {
 			{3, ShaderDataType::Float3, "binormal"},
 			{4, ShaderDataType::Float2, "texCoord" },
 		};
-		m_VAO = std::make_shared<ArrayBuffer>();
+		m_VAO = ArrayBuffer::Create();
 
 		m_VertexBuffer->SetLayout(layout);
 		m_VAO->AddVBO(m_VertexBuffer);
@@ -100,11 +100,8 @@ namespace Dot {
 			m_Indices.push_back({ mesh->mFaces[i].mIndices[0], mesh->mFaces[i].mIndices[1], mesh->mFaces[i].mIndices[2] });
 		}
 		std::shared_ptr<IndexBuffer> m_IndexBuffer;
-		m_IndexBuffer = std::make_shared<IndexBuffer>((void*)m_Indices.data(), m_Indices.size() * 3);
-
-		
+		m_IndexBuffer = IndexBuffer::Create((void*)m_Indices.data(), m_Indices.size() * 3);
 		m_VAO->AddIBO(m_IndexBuffer);
-
 	}
 
 	Mesh::~Mesh()
@@ -124,7 +121,7 @@ namespace Dot {
 				{5, Dot::ShaderDataType::Mat4, "instanceModel", 1},
 		};
 
-		m_VBO_MAT.reset((new VertexBuffer(&transforms[0], m_num * sizeof(glm::mat4), D_DYNAMIC_DRAW)));
+		m_VBO_MAT = VertexBuffer::Create(&transforms[0], m_num * sizeof(glm::mat4), D_DYNAMIC_DRAW);
 		m_VBO_MAT->SetLayout(mat4);
 		mesh->GetVao()->AddVBO(m_VBO_MAT);
 	}

@@ -23,10 +23,10 @@ layout(std140) uniform camera_data
 };
 
 
-uniform vec2 u_ClipDistance;
 const int MAX_BONES = 100;
 uniform mat4 u_gBones[MAX_BONES];
 uniform mat4 u_ModelMatrix;
+uniform vec2 u_ClipDistance;
 
 void main()
 {

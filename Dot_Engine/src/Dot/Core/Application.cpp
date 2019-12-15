@@ -1,8 +1,7 @@
 #include "stdafx.h"
 #include "Application.h"
 #include "Dot/Utils/Time/Timestep.h"
-#include "Dot/Utils/Text/Font.h"
-
+#include "Dot/Renderer/RenderCommand.h"
 #include "Dot/Debug/Timer.h"
 #include <GLFW/glfw3.h>
 
@@ -14,9 +13,9 @@ namespace Dot {
 	{
 	
 		s_Instance = this;
-		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window = Window::Create();
 
-		m_Window->vSync(false);
+		m_Window->SetVSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		
 		m_GuiLayer = new GuiLayer();
@@ -55,9 +54,6 @@ namespace Dot {
 			
 			m_Window->Update();	
 		}
-	
-		m_Window->Destroy();
-
 	}
 
 	void Application::PushLayer(Layer * layer)
@@ -92,6 +88,11 @@ namespace Dot {
 
 	void Application::OnEvent(Event & event)
 	{
+		if (event.GetEventType() == EventType::WindowResized)
+		{
+			WindowResizeEvent& resize = (WindowResizeEvent&)event;
+			RenderCommand::SetViewport(0, 0, resize.GetWidth(), resize.GetHeight());
+		}
 		for (auto it = m_Layers.end(); it != m_Layers.begin(); )
 		{
 			(*--it)->OnEvent(event);

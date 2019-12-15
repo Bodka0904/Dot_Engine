@@ -39,13 +39,13 @@ namespace Dot {
 			}
 		}
 
-		Ref<VertexBuffer>m_VBO = std::make_shared<VertexBuffer>((void*)&positions[0],positions.size()*sizeof(glm::vec3), D_STATIC_DRAW);
+		Ref<VertexBuffer>m_VBO = VertexBuffer::Create((void*)&positions[0],positions.size()*sizeof(glm::vec3), D_STATIC_DRAW);
 		m_VBO->SetLayout(layout);
 
-		m_VAO = std::make_shared<ArrayBuffer>();
+		m_VAO = ArrayBuffer::Create();
 		m_VAO->AddVBO(m_VBO);
 
-		Ref<IndexBuffer>m_IBO = std::make_shared<IndexBuffer>((void*)&indices[0], indices.size());
+		Ref<IndexBuffer>m_IBO = IndexBuffer::Create((void*)&indices[0], indices.size());
 		m_VAO->AddIBO(m_IBO);
 	}
 

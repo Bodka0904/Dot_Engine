@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 
-#include "Dot/Utils/Text/Text.h"
+#include "Dot/Utils/Text/StaticText.h"
 #include "Gui.h"
 
 namespace Dot {
@@ -28,7 +28,7 @@ namespace Dot {
 	private:
 		glm::vec4 GetCoords();
 	private:
-		Text m_Label;
+		StaticText m_Label;
 
 		glm::vec2 m_Position;
 		glm::vec2 m_Size;

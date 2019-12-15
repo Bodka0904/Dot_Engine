@@ -7,20 +7,20 @@ namespace Dot {
 	class ArrayBuffer
 	{
 	public:
-		ArrayBuffer();
-		~ArrayBuffer();
+		~ArrayBuffer() = default;
 
-		void Bind() const;
-		void UnBind() const;
+		virtual void Bind() const = 0;
+		virtual void UnBind() const = 0;
+	
+		virtual void AddVBO(const Ref<VertexBuffer>& vertexBuffer) = 0;
+		virtual void AddIBO(const Ref<IndexBuffer>& indexBuffer) = 0;
+		virtual void AddSSBO(const Ref<ShaderStorageBuffer>& shaderSBuffer) = 0;
 
-		void AddVBO(const Ref<VertexBuffer>& vertexBuffer);
-		void AddIBO(const Ref<IndexBuffer>& indexBuffer);
-		void AddSSBO(const Ref<ShaderStorageBuffer>& shaderSBuffer);
 
+		virtual Ref<VertexBuffer> GetVertexBuffer(int index) const = 0;
+		virtual Ref<IndexBuffer> GetIndexBuffer() const = 0;
 
-		Ref<VertexBuffer> GetVertexBuffer(int index) const { return m_VertexBuffers[index]; }
-		Ref<IndexBuffer> GetIndexBuffer() const { return m_IndexBuffer; }
-
+		static Ref<ArrayBuffer> Create();
 	private:
 		unsigned int m_VAO;
 		std::vector<Ref<VertexBuffer>> m_VertexBuffers;

@@ -3,24 +3,11 @@
 #include "Dot/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Renderer/Shaders/Shader.h"
 #include "Dot/Renderer/Buffers/ArrayBuffer.h"
-
+#include "Dot/Utils/Text/StaticText.h"
 #include "Dot/Renderer/Renderer2D.h"
 
 namespace Dot {
 	
-	struct Quad
-	{
-		Quad(const glm::vec2& position, const glm::vec2& size)
-		{
-			m_Vertices[0] = glm::vec2(position.x, position.y);
-			m_Vertices[1] = glm::vec2(position.x + size.x, position.y);
-			m_Vertices[2] = glm::vec2(position.x + size.x, position.y + size.y);
-			m_Vertices[3] = glm::vec2(position.x, position.y + size.y);
-
-		}
-		glm::vec2 m_Vertices[4];
-	};
-
 	class Widget
 	{
 	public:
@@ -35,12 +22,10 @@ namespace Dot {
 		virtual const glm::vec2& GetLabelSize() = 0;
 	};
 
-	
-
 	class Wrapper
 	{
 	public:
-		Wrapper(const std::string& label, const glm::vec2& position, const glm::vec2& size);
+		Wrapper(const std::string& label, const glm::vec2& position, const glm::vec2& size,float labelsize = 0.2);
 		
 		void AddWidget(const std::string& label, Ref<Widget> widget, unsigned int index);
 		bool MouseHoover(const glm::vec2& mousePos);
@@ -62,13 +47,14 @@ namespace Dot {
 		static void Create(const std::string& label, const glm::vec2& position, const glm::vec2& size);
 
 	private:
-		class ExitButton
+		class ActionButton
 		{
 		public:
-			ExitButton(const glm::vec2& position, const glm::vec2& size);
+			ActionButton(const glm::vec2& position, const glm::vec2& size);
 			bool MouseHoover(const glm::vec2& mousePos);
 			void Move(const glm::vec2& pos);
 			void SetPosition(const glm::vec2& pos);
+			void SetSize(const glm::vec2& size) { m_Size = size; };
 			void SetIndex(unsigned int index) { m_Index = index; }
 
 			const glm::vec2& GetPosition() { return m_Position; }
@@ -81,7 +67,9 @@ namespace Dot {
 
 			unsigned int m_Index;
 		};
-		ExitButton m_ExitButton;
+
+		ActionButton m_ExitButton;
+		StaticText m_Label;
 	private:
 		glm::vec4 GetCoords();
 	private:
@@ -120,7 +108,7 @@ namespace Dot {
 		static void Init(const std::string& texturePack);
 		static Gui* Get() {return s_Instance;}
 	private:
-		Ref<Texture>		m_Texture;
+		Ref<Texture2D>		m_Texture;
 		Ref<Renderer2D>		m_GuiRenderer;
 	private:
 		std::unordered_map <std::string, Ref<Widget>>  m_Widget;

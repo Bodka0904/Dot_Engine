@@ -10,7 +10,7 @@ namespace Dot {
 	{
 		//std::vector<glm::vec3> vertices;
 		//vertices.push_back(glm::vec3(0, 0, 0));
-	//	m_VAO = std::make_shared<ArrayBuffer>();
+	//	m_VAO = ArrayBuffer::Create();
 
 		//BufferLayout layout = {
 		//	{0,ShaderDataType::Float3,"positions",1},

@@ -4,7 +4,7 @@
 #include "Dot/Debug/Log.h"
 
 #include "Dot/Utils/Text/Font.h"
-#include "Dot/Utils/Text/Text.h"
+
 
 #define MAX_WIDGETS 300
 
@@ -23,9 +23,8 @@ namespace Dot {
 		m_NumWidgets = 0;
 		m_Locked = false;
 
-		m_Texture = std::make_shared<Texture>(texturePack, true);
+		m_Texture = Texture2D::Create(texturePack, true);
 		m_GuiRenderer = std::make_shared<Renderer2D>(MAX_WIDGETS);
-
 	}
 
 	Gui::~Gui()
@@ -90,12 +89,12 @@ namespace Dot {
 						m_AttachedWrapper = wrap.first;
 						return true;
 					}
-				}
-				if (wrap.second->MouseHoover(m_MousePosition))
-				{
-					m_AttachedWrapper = wrap.first;
-					return true;
-				}
+				}		
+			}
+			if (wrap.second->MouseHoover(m_MousePosition))
+			{
+				m_AttachedWrapper = wrap.first;
+				return true;
 			}
 		}
 		for (auto& it : m_Widget)
@@ -218,7 +217,7 @@ namespace Dot {
 				m_Vertices.push_back(quad[i]);
 			}
 			m_GuiRenderer->PushOffset(&m_Vertices[m_NumWidgets], 2, m_NumWidgets);
-			m_NumWidgets += 2;
+			m_NumWidgets += num;
 		}
 		else
 		{
@@ -234,12 +233,13 @@ namespace Dot {
 		m_Wrapper[m_EnabledWrapper]->SetWidgetPosition();
 		m_EnabledWrapper.clear();
 	}
-	Wrapper::Wrapper(const std::string& label, const glm::vec2& position, const glm::vec2& size)
+	Wrapper::Wrapper(const std::string& label, const glm::vec2& position, const glm::vec2& size, float labelsize)
 		:
 		m_Position(position),
 		m_Size(size),
 		m_Index(0),
-		m_ExitButton(glm::vec2(position.x + size.x - 20,position.y),glm::vec2(20,20))
+		m_ExitButton(glm::vec2(position.x + size.x - 20,position.y),glm::vec2(20,20)),
+		m_Label("Arial", label, glm::vec2(position.x, position.y - Font::GetFont("Arial")->GetData().lineHeight * labelsize), glm::vec2(labelsize, labelsize))
 	{
 	}
 	void Wrapper::AddWidget(const std::string& label, Ref<Widget> widget, unsigned int index)
@@ -280,12 +280,13 @@ namespace Dot {
 					it.second->Minimize();
 				}
 				m_Minimized = true;
-				Resize(m_Position + m_ExitButton.GetSize());
+				Resize(m_Position+m_Label.GetSize());
 			}
 			else
 			{
 				m_Minimized = false;
 				Resize(m_Position + glm::vec2(100,100));
+				m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
 				SetWidgetPosition();
 			}
 			return true;
@@ -315,6 +316,7 @@ namespace Dot {
 		
 		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
 		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
+		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
 	}
 	void Wrapper::SetPosition(const glm::vec2& pos)
 	{
@@ -332,6 +334,7 @@ namespace Dot {
 
 		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
 		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
+		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
 	}
 	void Wrapper::SetWidgetPosition()
 	{
@@ -380,12 +383,12 @@ namespace Dot {
 			m_Position.x + m_Size.x,
 			m_Position.y);
 	}
-	Wrapper::ExitButton::ExitButton(const glm::vec2& position, const glm::vec2& size)
+	Wrapper::ActionButton::ActionButton(const glm::vec2& position, const glm::vec2& size)
 		:
 		m_Position(position),m_Size(size),m_Index(0)
 	{
 	}
-	bool Wrapper::ExitButton::MouseHoover(const glm::vec2& mousePos)
+	bool Wrapper::ActionButton::MouseHoover(const glm::vec2& mousePos)
 	{
 		glm::vec4 coords = GetCoords();
 
@@ -396,25 +399,26 @@ namespace Dot {
 		}
 		return false;
 	}
-	void Wrapper::ExitButton::Move(const glm::vec2& pos)
+	void Wrapper::ActionButton::Move(const glm::vec2& pos)
 	{
 		m_Position += pos;
 		
 		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
 		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 	}
-	void Wrapper::ExitButton::SetPosition(const glm::vec2& pos)
+	void Wrapper::ActionButton::SetPosition(const glm::vec2& pos)
 	{
 		m_Position = pos;
 		
 		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
 		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 	}
-	glm::vec4 Wrapper::ExitButton::GetCoords()
+	glm::vec4 Wrapper::ActionButton::GetCoords()
 	{
 		return glm::vec4(m_Position.x,
 			m_Position.y + m_Size.y,
 			m_Position.x + m_Size.x,
 			m_Position.y);
 	}
+	
 }

@@ -48,8 +48,8 @@ namespace Dot {
 			: m_FirstBindPoint(firstBindPoint),m_SecondBindPoint(secondBindPoint), m_Layout(layout),m_VertexBuffer(vertexBuff)
 		{
 
-			m_Buffer[0] = std::make_shared<ShaderStorageBuffer>(data, size, D_STATIC_DRAW);
-			m_Buffer[1] = std::make_shared<ShaderStorageBuffer>(data, size, D_STATIC_DRAW);
+			m_Buffer[0] = ShaderStorageBuffer::Create(data, size, D_STATIC_DRAW);
+			m_Buffer[1] = ShaderStorageBuffer::Create(data, size, D_STATIC_DRAW);
 		}
 		Ref<ShaderStorageBuffer> m_Buffer[2];
 		BufferLayout m_Layout;

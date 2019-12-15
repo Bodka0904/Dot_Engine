@@ -123,9 +123,6 @@
     <ClInclude Include="src\Dot\Core\MouseButtonCodes.h">
       <Filter>src\Dot\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Core\OpenGLContext.h">
-      <Filter>src\Dot\Core</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Core\Window.h">
       <Filter>src\Dot\Core</Filter>
     </ClInclude>
@@ -232,9 +229,6 @@
       <Filter>src\Dot\Utils\Terrain</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\Text\Font.h">
-      <Filter>src\Dot\Utils\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Text\TextRenderer.h">
       <Filter>src\Dot\Utils\Text</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\Time\TimeUtils.h">
@@ -1345,23 +1339,31 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Camera\CameraController.h" />
-    <ClInclude Include="src\Dot\Utils\Text\Text.h" />
     <ClInclude Include="src\Dot\Utils\Text\DynamicText.h" />
+    <ClInclude Include="src\Dot\Utils\Text\StaticText.h" />
+    <ClInclude Include="src\Dot\Renderer\TextRenderer.h">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Api\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Dot\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Dot\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Api\OpenGL\OpenGLContext.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\APIContext.h" />
+    <ClInclude Include="src\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Windows\WindowsInput.h" />
+    <ClInclude Include="src\API\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\API\OpenGL\OpenGLArrayBuffer.h" />
+    <ClInclude Include="src\API\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\API\OpenGL\OpenGLFrameBuffer.h" />
+    <ClInclude Include="src\API\OpenGL\OpenGLTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Core\Application.cpp">
       <Filter>src\Dot\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Core\Input.cpp">
-      <Filter>src\Dot\Core</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Core\Layer.cpp">
-      <Filter>src\Dot\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Core\OpenGLContext.cpp">
-      <Filter>src\Dot\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Core\Window.cpp">
       <Filter>src\Dot\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Debug\Log.cpp">
@@ -1463,9 +1465,6 @@
     <ClCompile Include="src\Dot\Utils\Text\Font.cpp">
       <Filter>src\Dot\Utils\Text</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Text\TextRenderer.cpp">
-      <Filter>src\Dot\Utils\Text</Filter>
-    </ClCompile>
     <ClCompile Include="src\stdafx.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -1473,7 +1472,24 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Camera\CameraController.cpp" />
-    <ClCompile Include="src\Dot\Utils\Text\Text.cpp" />
     <ClCompile Include="src\Dot\Utils\Text\DynamicText.cpp" />
+    <ClCompile Include="src\Dot\Utils\Text\StaticText.cpp" />
+    <ClCompile Include="src\Dot\Renderer\TextRenderer.cpp">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Api\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Dot\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Dot\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Api\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Dot\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\APIContext.cpp" />
+    <ClCompile Include="src\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\API\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\API\OpenGL\OpenGLArrayBuffer.cpp" />
+    <ClCompile Include="src\API\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\API\OpenGL\OpenGLFrameBuffer.cpp" />
+    <ClCompile Include="src\API\OpenGL\OpenGLTexture.cpp" />
   </ItemGroup>
 </Project>

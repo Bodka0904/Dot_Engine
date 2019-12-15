@@ -21,7 +21,7 @@ namespace Dot {
 		void OnEvent(Event &e);
 
 
-		Window GetWin() { return *m_Window; }
+		Window& GetWin() { return *m_Window; }
 
 		inline static Application& Get() { return *s_Instance; }
 		static Application *Create() { return new Application(); }

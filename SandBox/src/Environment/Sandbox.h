@@ -23,8 +23,8 @@ private:
 	Dot::Ref<Dot::Shader> m_ShaderForCompute;
 	Dot::Ref<Dot::Shader> m_WaterShader;
 
-	Dot::Ref<Dot::Texture> m_TreeTexture;
-	Dot::Ref<Dot::Texture> m_TerrTexture;
+	Dot::Ref<Dot::Texture2D> m_TreeTexture;
+	Dot::Ref<Dot::Texture2D> m_TerrTexture;
 	
 	Dot::Ref<Dot::InstancedMesh> m_Tree;
 	Dot::Ref<Player> m_Player;

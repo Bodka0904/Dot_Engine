@@ -1,16 +1,16 @@
 #pragma once
 #include "stdafx.h"
-#include "Text.h"
+#include "StaticText.h"
 #include "Font.h"
 
 
 namespace Dot {
-	Ref<ArrayBuffer>		Text::s_VAO;
-	std::vector <glm::vec2> Text::s_Vertice;
-	std::vector <glm::vec2> Text::s_TexCoord;
-	unsigned int			Text::s_NumChars = 0;
+	Ref<ArrayBuffer>		StaticText::s_VAO;
+	std::vector <glm::vec2> StaticText::s_Vertice;
+	std::vector <glm::vec2> StaticText::s_TexCoord;
+	unsigned int			StaticText::s_NumChars = 0;
 
-	Text::Text(const std::string& font, std::string text, const glm::vec2 position, const glm::vec2 size)
+	StaticText::StaticText(const std::string& font, std::string text, const glm::vec2 position, const glm::vec2 size)
 		:
 		m_Position(position),
 		m_Size(glm::vec2(0, Font::GetFont(font)->GetData().lineHeight* size.y)),
@@ -56,7 +56,7 @@ namespace Dot {
 		s_VAO->GetVertexBuffer(0)->Update((void*)& s_Vertice[m_PositionInBuffer], m_Len * sizeof(glm::vec2) * 4, m_PositionInBuffer * sizeof(glm::vec2) );
 		s_VAO->GetVertexBuffer(1)->Update((void*)& s_TexCoord[m_PositionInBuffer], m_Len * sizeof(glm::vec2) * 4, m_PositionInBuffer * sizeof(glm::vec2) );
 	}
-	void Text::SetPosition(const glm::vec2& position)
+	void StaticText::SetPosition(const glm::vec2& position)
 	{
 		std::vector<glm::vec2> newVertices;
 		newVertices.resize(m_Len * 4);
@@ -70,22 +70,22 @@ namespace Dot {
 		s_VAO->GetVertexBuffer(0)->Update((void*)& newVertices[0], sizeof(glm::vec2) * m_Len * 4, m_PositionInBuffer * sizeof(glm::vec2));
 	}
 
-	void Text::Init(int numChars)
+	void StaticText::Init(int numChars)
 	{
-		s_VAO = std::make_shared<ArrayBuffer>();
+		s_VAO = ArrayBuffer::Create();
 		Ref<VertexBuffer>VBO[2];
 
 		BufferLayout layout = {
 				{0,ShaderDataType::Float2,"a_Position"},
 		};
-		VBO[0] = std::make_shared<VertexBuffer>((void*)NULL, numChars * sizeof(glm::vec2) * 4, D_DYNAMIC_DRAW);
+		VBO[0] = VertexBuffer::Create((void*)NULL, numChars * sizeof(glm::vec2) * 4, D_DYNAMIC_DRAW);
 		VBO[0]->SetLayout(layout);
 		s_VAO->AddVBO(VBO[0]);
 
 		BufferLayout layout_tex = {
 				{1,ShaderDataType::Float2,"a_TexCoord"},
 		};
-		VBO[1] = std::make_shared<VertexBuffer>((void*)NULL, numChars * sizeof(glm::vec2) * 4, D_DYNAMIC_DRAW);
+		VBO[1] = VertexBuffer::Create((void*)NULL, numChars * sizeof(glm::vec2) * 4, D_DYNAMIC_DRAW);
 		VBO[1]->SetLayout(layout_tex);
 		s_VAO->AddVBO(VBO[1]);
 	}

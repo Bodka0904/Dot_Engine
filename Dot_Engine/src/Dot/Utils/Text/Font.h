@@ -32,13 +32,13 @@ namespace Dot {
 		const Character &GetCharacter(char c) { return m_Characters[c]; }
 		const FontMetaData& GetData() { return m_MetaData; }
 
-		static void Bind(const std::string& name) { s_Fonts[name]->m_Texture.Bind(0); }
+		static void Bind(const std::string& name) { s_Fonts[name]->m_Texture->Bind(0); }
 		static const Ref<Font>& GetFont(const std::string& name) { return s_Fonts[name]; }
 		static void AddFont(const std::string& name, const std::string& filepath, const std::string& texture);
 	private:
 		std::unordered_map<char ,Character> m_Characters;
 		FontMetaData m_MetaData;
-		Texture m_Texture;
+		Ref<Texture2D> m_Texture;
 
 	private:
 		static std::unordered_map<std::string, Ref<Font> > s_Fonts;

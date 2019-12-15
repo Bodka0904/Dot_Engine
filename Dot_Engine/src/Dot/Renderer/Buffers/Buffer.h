@@ -137,58 +137,52 @@ namespace Dot {
 	class VertexBuffer
 	{
 	public:
-		VertexBuffer(const void *vertices, unsigned int size,int drawMod);
-		~VertexBuffer();
+		virtual ~VertexBuffer() = default;
 
-		void Bind() const;
-		void UnBind() const;
-		
-		unsigned int GetCount() const;
-		void Update(const void *vertices,unsigned int size, int offset);
+		virtual void Bind() const = 0;
+		virtual void UnBind() const = 0;
+		virtual void Update(const void *vertices,unsigned int size, int offset) = 0;
+		virtual void* MapBuffer() = 0;
+		virtual void  UnMapBuffer() = 0;
 
-		void SetLayout(const BufferLayout& layout) { m_layout = layout; }
-		inline const BufferLayout &GetLayout() const { return m_layout; }
+		virtual void SetCount(unsigned int count) = 0;
+		virtual void SetLayout(const BufferLayout& layout) = 0;
 
-	private:
-		unsigned int m_VBO;
-		unsigned int m_Count;
-		BufferLayout m_layout;
+		virtual unsigned int GetCount() const = 0;
+		virtual const BufferLayout &GetLayout() const = 0;
+
+		static Ref<VertexBuffer> Create(const void* vertices, unsigned int size, int drawMod);
+
 
 	};
 
 	class IndexBuffer
 	{
 	public:
-		IndexBuffer(const void* indices, unsigned int count);
-		~IndexBuffer();
+		virtual ~IndexBuffer() = default;
 
-		void Bind() const;
-		void UnBind() const;
+		virtual void Bind() const = 0;
+		virtual void UnBind() const = 0;
 
-		unsigned int GetCount() const;
+		virtual unsigned int GetCount() const = 0;
 
-	private:
-		unsigned int m_VBO;
-		unsigned int m_Count;
+		static Ref<IndexBuffer> Create(const void* indices, unsigned int count);
 	};
 
 	class ShaderStorageBuffer
 	{
 	public:
-		ShaderStorageBuffer(const void* data,unsigned int size,int drawMod);
-		~ShaderStorageBuffer();
+		virtual ~ShaderStorageBuffer() = default;
 
-		void BindBase(unsigned int point);
-		void BindRange(unsigned int index);
-		void Bind();
+		virtual void BindBase(unsigned int point) = 0;
+		virtual void BindRange(unsigned int index) = 0;
+		virtual void Bind() = 0;
 
-		void SetLayout(const BufferLayout& layout) { m_layout = layout; }
-		inline const BufferLayout& GetLayout() const { return m_layout; }
+		virtual void SetLayout(const BufferLayout& layout) = 0;
+		virtual const BufferLayout & GetLayout() const = 0;
 
-	private:
-		unsigned int m_size;
-		unsigned int m_SSBO;
-		BufferLayout m_layout;
+		static Ref<ShaderStorageBuffer> Create(const void* vertices, unsigned int size, int drawMod);
+	
 	};
 
 }

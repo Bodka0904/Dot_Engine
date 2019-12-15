@@ -13,30 +13,24 @@ namespace Dot {
 	class Framebuffer
 	{
 	public:
-		Framebuffer(uint32_t width, uint32_t height, FramebufferFormat format);
-		~Framebuffer();
+		~Framebuffer() = default;
 
-		void Resize(uint32_t width, uint32_t height);
+		virtual void Resize(uint32_t width, uint32_t height) = 0;
 
-		void Bind() const ;
-		void Unbind() const;
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
-		void BindTexture(uint32_t slot = 0) const;
+		virtual void BindTexture(uint32_t slot = 0) const = 0;
 
-		unsigned int GetFBO() const { return m_FBO; }
-		unsigned int GetColorAttachment() const { return m_ColorAttachment; }
-		unsigned int GetDepthAttachment() const { return m_DepthAttachment; }
+		virtual unsigned int GetFBO() const = 0;
+		virtual unsigned int GetColorAttachment() const = 0;
+		virtual unsigned int GetDepthAttachment() const = 0;
 
-		uint32_t GetWidth() const { return m_Width; }
-		uint32_t GetHeight() const { return m_Height; }
-		FramebufferFormat GetFormat() const { return m_Format; }
-	private:
-		unsigned int m_FBO;
-
-		uint32_t m_Width, m_Height;
-		FramebufferFormat m_Format;
-
-		unsigned int m_ColorAttachment, m_DepthAttachment;
+		virtual uint32_t GetWidth() const = 0;
+		virtual uint32_t GetHeight() const = 0;
+		virtual FramebufferFormat GetFormat() const = 0;
+		
+		Ref<Framebuffer> Create(uint32_t width, uint32_t height, FramebufferFormat format);
 	};
 
 

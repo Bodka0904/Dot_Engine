@@ -10,7 +10,7 @@ namespace Dot {
 
 	Skybox::Skybox(const std::vector<std::string> faces,int SIZE)
 	{
-		m_CubeMap = std::make_shared<CubeMapTexture>(faces);
+		m_CubeMap = CubeMapTexture::Create(faces);
 
 		float vertices[108] = {
 		-SIZE,  SIZE, -SIZE,
@@ -61,10 +61,10 @@ namespace Dot {
 		};
 
 		std::shared_ptr<VertexBuffer> m_VBO;
-		m_VBO = std::make_shared<VertexBuffer>(vertices, sizeof(vertices), D_STATIC_DRAW);
+		m_VBO = VertexBuffer::Create(vertices, sizeof(vertices), D_STATIC_DRAW);
 		m_VBO->SetLayout(layout);
 
-		m_VAO = std::make_shared<ArrayBuffer>();
+		m_VAO = ArrayBuffer::Create();
 		m_VAO->AddVBO(m_VBO);
 	}
 

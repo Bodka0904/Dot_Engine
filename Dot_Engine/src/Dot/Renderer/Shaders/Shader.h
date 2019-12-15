@@ -3,7 +3,6 @@
 #include <glm/glm.hpp>
 
 #include "Dot/Debug/Log.h"
-#include "Uniform/UniformBuffer.h"
 
 
 namespace Dot {
@@ -11,44 +10,30 @@ namespace Dot {
 	class Shader
 	{
 	public:
-		Shader(const std::string& name,const std::string & filepath);
-		~Shader();
+		~Shader() = default;
 
-		void Bind() const;
-		void Compute(unsigned int groupX, unsigned int groupY = 1, unsigned int groupZ = 1) const;
-		void Unbind() const;
-
-		const std::string& GetName() const { return m_Name; }
-
-		void AddUniformBufferObject(const std::string& name, unsigned int bindIndex, unsigned int size);
-		void AddUniform(const std::string& name);
+		virtual void Bind() const = 0;
+		virtual void Compute(unsigned int groupX, unsigned int groupY = 1, unsigned int groupZ = 1) const = 0;
+		virtual void Unbind() const = 0;
+	
+		virtual const std::string& GetName() const = 0;
+	
+		virtual void AddUniformBufferObject(const std::string& name, unsigned int bindIndex, unsigned int size) = 0;
+		virtual void AddUniform(const std::string& name) = 0;
+	
+		virtual void UpdateUniformBufferObject(const std::string& name, const void* data, unsigned int size) = 0;
+		virtual void UploadUniformInt(const std::string& name, int value) = 0;
 		
-		void UpdateUniformBufferObject(const std::string& name, const void* data, unsigned int size);
-		void UploadUniformInt(const std::string& name, int value);
-
-		void UploadUniformFloat(const std::string& name, float value);
-		void UploadUniformFloat2(const std::string& name, const glm::vec2& value);
-		void UploadUniformFloat3(const std::string& name, const glm::vec3& value);
-		void UploadUniformFloat4(const std::string& name, const glm::vec4& value);
-
-		void UploadUniformMat3(const std::string& name, const glm::mat3& matrix);
-		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
+		virtual void UploadUniformFloat(const std::string& name, float value) = 0;
+		virtual void UploadUniformFloat2(const std::string& name, const glm::vec2& value)= 0;
+		virtual void UploadUniformFloat3(const std::string& name, const glm::vec3& value)= 0;
+		virtual void UploadUniformFloat4(const std::string& name, const glm::vec4& value)= 0;
+	 
+		virtual void UploadUniformMat3(const std::string& name, const glm::mat3& matrix)= 0;
+		virtual void UploadUniformMat4(const std::string& name, const glm::mat4& matrix)= 0;
 
 		static Ref<Shader> Create(const std::string& name, const std::string& filepath);
-
-	private:
-		std::string ReadFile(const std::string& filepath);
-		std::unordered_map<unsigned int, std::string> PreProcess(const std::string& source);
-		void Compile(const std::unordered_map<unsigned int, std::string>& shaderSources);
-
-	private:
-		uint32_t m_RendererID;
-		std::string m_Name;
-
-		std::unordered_map<std::string, std::unique_ptr<UniformBuffer> > m_UBO;
-		std::unordered_map<std::string, unsigned int> m_Uniforms;
 	};
-
 
 	class ShaderLibrary
 	{

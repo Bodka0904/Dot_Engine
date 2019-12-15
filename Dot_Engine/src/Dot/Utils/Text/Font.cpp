@@ -9,9 +9,8 @@ namespace Dot {
 	std::unordered_map<std::string, Ref<Font> > Font::s_Fonts;
 
 	Font::Font(const std::string& filepath, const std::string& texture)
-		: m_Texture(texture,false,false)
 	{
-
+		m_Texture = Texture2D::Create(texture, false, false);
 		std::string line;
 		std::ifstream FILE(filepath);
 	

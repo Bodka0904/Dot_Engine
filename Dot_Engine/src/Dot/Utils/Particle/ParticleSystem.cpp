@@ -13,8 +13,8 @@ namespace Dot {
 	{
 		m_Count = layout.m_count;
 	
-		m_VAO[0] = std::make_shared<ArrayBuffer>();
-		m_VAO[1] = std::make_shared<ArrayBuffer>();
+		m_VAO[0] = ArrayBuffer::Create();
+		m_VAO[1] = ArrayBuffer::Create();
 
 		m_Buffers.resize(layout.buffers.size());
 		m_PairedBuffers.resize(layout.pairedBuffers.size());

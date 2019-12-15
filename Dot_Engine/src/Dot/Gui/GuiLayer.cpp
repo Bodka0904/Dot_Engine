@@ -10,7 +10,7 @@
 #include "Dot/Gui/GuiSystem/Slider.h"
 #include "Dot/Gui/GuiSystem/Gui.h"
 
-#include "Dot/Utils/Text/TextRenderer.h"
+#include "Dot/Renderer/TextRenderer.h"
 
 namespace Dot {
 	GuiLayer::GuiLayer()
@@ -25,7 +25,7 @@ namespace Dot {
 	{
 		//Default font
 		Font::AddFont("Arial", "res/fonts/Arial/Arial.fnt", "res/fonts/Arial/Arial.png");
-		Text::Init(1000);
+		StaticText::Init(1000);
 		Gui::Init("res/textures/Dot/Gui/DefaultTexturePack/TexturePack_black.png");
 
 		m_Camera = std::make_shared<OrthoCamera>(0, Input::GetWindowSize().first, Input::GetWindowSize().second, 0);
@@ -43,14 +43,14 @@ namespace Dot {
 		
 		
 		// GuiShader setup //
-		m_GuiShader = std::make_shared<Shader>("GuiShader", "res/shaders/Dot/GuiShader.glsl");
+		m_GuiShader = Shader::Create("GuiShader", "res/shaders/Dot/GuiShader.glsl");
 		m_GuiShader->AddUniform("u_ViewProjectionMatrix");
 		m_GuiShader->AddUniform("u_MousePos");
 		m_GuiShader->AddUniform("u_Texture");
 		m_GuiShader->UploadUniformInt("u_Texture", 0);
 		/////////////////////
 		// TextShader setup //
-		m_TextShader = std::make_shared<Shader>("TextShader", "res/shaders/Text/TextShader.glsl");
+		m_TextShader = Shader::Create("TextShader", "res/shaders/Text/TextShader.glsl");
 		m_TextShader->AddUniform("u_ViewProjectionMatrix");
 		m_TextShader->AddUniform("u_Color");
 		m_TextShader->AddUniform("u_Texture");
@@ -94,7 +94,7 @@ namespace Dot {
 			Font::Bind("Arial");
 			m_TextShader->Bind();
 			m_TextShader->UploadUniformFloat("u_Color", 1);
-			TextRenderer::Render(m_TextShader, Text::GetVAO(),Text::GetCount()*4);
+			TextRenderer::Render(m_TextShader, StaticText::GetVAO(), StaticText::GetCount()*4);
 		}
 		TextRenderer::EndRender();
 		

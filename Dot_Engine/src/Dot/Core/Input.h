@@ -3,24 +3,28 @@
 namespace Dot {
 	class Input
 	{
+	protected:
+		Input() = default;
 	public:
-		static inline bool IsKeyPressed(int keycode) { return s_Instance->IsKeyPressedImp1(keycode); }
-		static inline bool IsMouseButtonPressed(int button) { return s_Instance->IsMouseButtonPressedImp1(button); }
+		Input(const Input&) = delete;
+		Input& operator=(const Input&) = delete;
 
-		static inline float GetMouseX() { return GetMouseXImp1(); }
-		static inline float GetMouseY() { return GetMouseYImp1(); }
+		inline static bool IsKeyPressed(int keycode) { return s_Instance->IsKeyPressedImpl(keycode); }
+		inline static bool IsMouseButtonPressed(int button) { return s_Instance->IsMouseButtonPressedImpl(button); }
+		inline static std::pair<float, float> GetMousePosition() { return s_Instance->GetMousePositionImpl(); }
+		
+		inline static float GetMouseX() { return s_Instance->GetMouseXImpl(); }
+		inline static float GetMouseY() { return s_Instance->GetMouseYImpl(); }
+		inline static std::pair<int, int > GetWindowSize() { return s_Instance->GetWindowSizeImpl(); }
+	protected:
+		virtual bool IsKeyPressedImpl(int keycode) = 0;
 
-
-		static bool IsKeyPressedImp1(int keycode);
-		static bool IsMouseButtonPressedImp1(int button);
-		static std::pair<float, float>GetMousePositionImp1();
-
-		static float GetMouseXImp1();
-		static float GetMouseYImp1();
-
-		static std::pair<int, int>GetWindowSize();
+		virtual bool IsMouseButtonPressedImpl(int button) = 0;
+		virtual std::pair<float, float> GetMousePositionImpl() = 0;
+		virtual float GetMouseXImpl() = 0;
+		virtual float GetMouseYImpl() = 0;
+		virtual std::pair<int, int>GetWindowSizeImpl() = 0;
 	private:
-		static Input* s_Instance;
+		static Scope<Input> s_Instance;
 	};
-
 }

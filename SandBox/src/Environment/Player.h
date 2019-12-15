@@ -9,9 +9,9 @@ public:
 	{
 		m_Cowboy = std::make_shared<Dot::AnimatedMesh>(model);
 		m_Cowboy->AnimateBones(0);
-		m_CowBoyTex = std::make_shared<Dot::Texture>(texture,true);
+		m_CowBoyTex = Dot::Texture2D::Create(texture,true);
 
-		m_Shader = std::make_shared<Dot::Shader>("AnimationShader","res/shaders/Dot/AnimShader.glsl");
+		m_Shader = Dot::Shader::Create("AnimationShader","res/shaders/Dot/AnimShader.glsl");
 		m_Shader->AddUniform("u_ModelMatrix");
 		m_Shader->AddUniform("u_LightPosition");
 		m_Shader->AddUniform("u_LightColor");
@@ -67,7 +67,7 @@ public:
 	const glm::mat4& GetTransform() const { return m_Transform.GetModel(); }
 
 private:
-	Dot::Ref<Dot::Texture> m_CowBoyTex;
+	Dot::Ref<Dot::Texture2D> m_CowBoyTex;
 	Dot::Ref<Dot::AnimatedMesh> m_Cowboy;
 
 	Dot::Ref<Dot::Shader> m_Shader;
