@@ -89,7 +89,7 @@ namespace Dot {
 		}
 		return levels;
 	}	
-	OpenGLCubeMapTexture::OpenGLCubeMapTexture(const std::vector<std::string> faces)
+	OpenGLCubeMapTexture::OpenGLCubeMapTexture(const std::vector<std::string>& faces)
 	{
 		glGenTextures(1, &texture);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
@@ -108,7 +108,7 @@ namespace Dot {
 			}
 			else
 			{
-				std::cout << "Cubemap texture failed to load at path: " << faces[i] << std::endl;
+				LOG_ERR("Cubemap texture failed to load at path: %s",faces[i]);
 				stbi_image_free(data);
 			}
 		}

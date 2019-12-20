@@ -18,7 +18,7 @@
 
 
 #ifndef __FUNCTION__
-#define __FUNCTION__
+#define __FUNCTION__ "Function:"
 #endif
 
 #ifdef D_CUDA
@@ -44,5 +44,4 @@ namespace Dot {
 
 	template<typename T>
 	using Ref = std::shared_ptr<T>;
-
 }

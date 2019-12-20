@@ -43,19 +43,18 @@ namespace Dot {
 
 	AnimatedMesh::AnimatedMesh(const std::string& Filename)
 	{
-		LOG_INFO("Loading animated mesh: %s", Filename.c_str());
 		m_NumBones = 0;
 		m_pScene = NULL;
 
 		m_pScene = m_Importer.ReadFile(Filename.c_str(), ImportFlags);
-
 		if (m_pScene) 
 		{
 			InitFromScene(m_pScene, Filename);
 			m_InverseTransform = glm::inverse(aiMatrix4x4ToGlm(m_pScene->mRootNode->mTransformation));
 		}
-		else {
-			printf("Error parsing '%s': '%s'\n", Filename.c_str(), m_Importer.GetErrorString());
+		else 
+		{
+			LOG_ERR("Error parsing '%s': '%s'\n", Filename.c_str(), m_Importer.GetErrorString());
 		}
 	}
 
@@ -389,10 +388,10 @@ namespace Dot {
 	}
 
 
-	void AnimatedMesh::AnimateBones(float TimeInSeconds)
+	void AnimatedMesh::AnimateBones(float TimeInSeconds, unsigned int animation)
 	{
 		m_Time += TimeInSeconds;
-		if (m_Time >= m_pScene->mAnimations[0]->mDuration)
+		if (m_Time >= m_pScene->mAnimations[animation]->mDuration)
 		{
 			m_Time = 0.0f;
 		}

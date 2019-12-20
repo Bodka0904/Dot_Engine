@@ -7,9 +7,10 @@ class Player
 public:
 	Player(const std::string& model,const std::string& texture)
 	{
-		m_Cowboy = std::make_shared<Dot::AnimatedMesh>(model);
-		m_Cowboy->AnimateBones(0);
-		m_CowBoyTex = Dot::Texture2D::Create(texture,true);
+		//m_Cowboy = std::make_shared<Dot::AnimatedMesh>(model);
+		m_Cowboy = Dot::AssetManager::Get()->GetAnimMesh("Man");
+		m_Cowboy->AnimateBones(0,0);
+		m_CowBoyTex = Dot::Texture2D::Create(texture,true,false);
 
 		m_Shader = Dot::Shader::Create("AnimationShader","res/shaders/Dot/AnimShader.glsl");
 		m_Shader->AddUniform("u_ModelMatrix");
@@ -37,7 +38,7 @@ public:
 			m_Transform.GetPos().z += speed * cos(m_Transform.GetRot().y);
 			m_Transform.GetPos().x += speed * sin(m_Transform.GetRot().y);
 			m_Transform.GetPos().y = terrain.GetHeight(m_Transform.GetPos());
-			m_Cowboy->AnimateBones(dt);
+			m_Cowboy->AnimateBones(dt,0);
 		}
 		if (Dot::Input::IsKeyPressed(D_KEY_LEFT))
 		{

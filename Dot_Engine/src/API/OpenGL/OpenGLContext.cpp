@@ -23,9 +23,9 @@ namespace Dot {
 		glfwMakeContextCurrent(m_WindowHandle);
 
 		LOG_WARN("OpenGL Info:");
-		LOG_WARN("Vendor: ", (char*)glGetString(GL_VENDOR));
-		LOG_WARN("Renderer: ", (char*)glGetString(GL_RENDERER));
-		LOG_WARN("Version: ", (char*)glGetString(GL_VERSION));
+		LOG_WARN("Vendor: %s", (char*)glGetString(GL_VENDOR));
+		LOG_WARN("Renderer: %s", (char*)glGetString(GL_RENDERER));
+		LOG_WARN("Version: %s", (char*)glGetString(GL_VERSION));
 
 		if (glewInit() != GLEW_OK)
 		{

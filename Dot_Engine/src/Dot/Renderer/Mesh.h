@@ -27,28 +27,31 @@ namespace Dot {
 		~Mesh();
 
 
-		inline const std::shared_ptr<ArrayBuffer> GetVao() { return m_VAO; }
+		inline const std::shared_ptr<ArrayBuffer> GetVAO() { return m_VAO; }
 		inline const std::string& GetFilePath() const { return m_FilePath; }
+		inline const unsigned int GetNumVertices() { return m_NumVertices; }
 	private:
+		Ref<ArrayBuffer> m_VAO;
 		std::vector<Vertex> m_Vertices;
 		std::vector<Index> m_Indices;
-		Ref<ArrayBuffer> m_VAO;
-
-
+		unsigned int m_NumVertices;
+	
 		std::string m_FilePath;
 	};
 
 	class InstancedMesh
 	{
 	public:
-		InstancedMesh(const std::string& filename, const std::vector<glm::mat4> transforms);
-
-		void Update(const std::vector<glm::mat4> transforms, unsigned int num);
-		const inline unsigned int GetNum() const { return m_num; }
-		const inline std::shared_ptr<ArrayBuffer> GetVao() { return mesh->GetVao(); }
-
+		InstancedMesh(const std::string& name,int num, const std::vector<glm::mat4>& transforms);
+		void Update(const std::vector<glm::mat4>& transforms, unsigned int numInstances, unsigned int offsetInstances);
+		
+		const inline unsigned int GetNumVertices() const { return m_Mesh->GetNumVertices(); }
+		const inline unsigned int GetCapacity() const { return m_Capacity; }
+		const inline unsigned int GetNumInstance() const { return m_Instances; }
+		const inline std::shared_ptr<ArrayBuffer> GetVAO() { return m_Mesh->GetVAO(); }
 	private:
-		Ref<Mesh> mesh;
-		unsigned int m_num;
+		Ref<Mesh> m_Mesh;
+		unsigned int m_Capacity;
+		unsigned int m_Instances;
 	};
 }

@@ -2,13 +2,14 @@
 
 
 #include "Dot/Core/Application.h"
+#include "Dot/Core/AssetManager.h"
 #include "Dot/Core/Layer.h"
 #include "Dot/Debug/Log.h"
 
 #include "Dot/Core/Input.h"
 #include "Dot/Core/KeyCodes.h"
 #include "Dot/Core/MouseButtonCodes.h"
-
+#include "Dot/Core/AssetManager.h"
 
 #include "Dot/Renderer/Buffers/FrameBuffer.h"
 #include "Dot/Renderer/Renderer.h"
@@ -24,12 +25,15 @@
 #include "Dot/Utils/Time/Timestep.h"
 #include "Dot/Utils/MousePicker.h"
 #include "Dot/Utils/Text/Font.h"
-#include "Dot/Utils/Skybox.h"
 #include "Dot/utils/Transform.h"
-#include "Dot/Utils/Particle/ParticleManager.h"
-#include "Dot/Utils/Terrain/TerrainEditor.h"
-#include "Dot/Utils/Terrain/Water.h"
+#include "Dot/Utils/Random/RandomGenerator.h"
 
+#include "Dot/LevelEditor/Skybox/Skybox.h"
+#include "Dot/LevelEditor/Particle/ParticleManager.h"
+#include "Dot/LevelEditor/Terrain/TerrainEditor.h"
+#include "Dot/LevelEditor/Water/Water.h"
+#include "Dot/LevelEditor/Terrain/BrushInstance.h"
+#include "Dot/LevelEditor/Terrain/Brush.h"
 
 // --- Widgets --------------
 #include "Dot/Gui/GuiSystem/Slider.h"

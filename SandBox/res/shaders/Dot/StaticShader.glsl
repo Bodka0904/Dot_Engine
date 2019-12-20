@@ -76,6 +76,9 @@ void main()
 	vec3 diffuse = diff * u_LightColor;
 	vec3 result = (ambient + diffuse + specular);
 
-	color = texture(u_Texture, v_TexCoord) * vec4(result, 1.0);
+	vec4 texColor = texture(u_Texture, v_TexCoord) * vec4(result, 1.0);
+	if (texColor.a < 0.1)
+		discard;
+	color = texColor;
 
 }

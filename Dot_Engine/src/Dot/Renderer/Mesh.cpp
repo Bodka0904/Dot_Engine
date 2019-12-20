@@ -1,11 +1,14 @@
 #include "stdafx.h"
 #include "Mesh.h"
+#include "Dot/Core/AssetManager.h"
 
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <assimp/Importer.hpp>
 #include <assimp/DefaultLogger.hpp>
 #include <assimp/LogStream.hpp>
+
+#define MAX_INSTANCE 900
 
 namespace Dot {
 	namespace {
@@ -43,8 +46,6 @@ namespace Dot {
 	{
 		LogStream::Initialize();
 
-		LOG_INFO("Loading mesh: %s", filename.c_str());
-
 		Assimp::Importer importer;
 
 		const aiScene* scene = importer.ReadFile(filename, ImportFlags);
@@ -79,7 +80,8 @@ namespace Dot {
 
 		std::shared_ptr<VertexBuffer> m_VertexBuffer;
 		m_VertexBuffer = VertexBuffer::Create((void*)m_Vertices.data(), m_Vertices.size() * sizeof(Vertex),D_STATIC_DRAW);
-		
+		m_NumVertices = m_Vertices.size();
+
 		BufferLayout layout = {
 			{0, ShaderDataType::Float3, "position" },
 			{1, ShaderDataType::Float3, "normal" },
@@ -102,6 +104,9 @@ namespace Dot {
 		std::shared_ptr<IndexBuffer> m_IndexBuffer;
 		m_IndexBuffer = IndexBuffer::Create((void*)m_Indices.data(), m_Indices.size() * 3);
 		m_VAO->AddIBO(m_IndexBuffer);
+
+		m_Vertices.clear();
+		m_Indices.clear();
 	}
 
 	Mesh::~Mesh()
@@ -110,25 +115,32 @@ namespace Dot {
 
 
 
-	InstancedMesh::InstancedMesh(const std::string& filename, const std::vector<glm::mat4> transforms)
-		: m_num(transforms.size())
+	InstancedMesh::InstancedMesh(const std::string& name,int num, const std::vector<glm::mat4>& transforms)
+		: m_Capacity(num),m_Instances(transforms.size())
 	{
-		mesh = std::make_shared<Mesh>(filename);
-
+		if (m_Capacity > MAX_INSTANCE)
+		{
+			m_Capacity = MAX_INSTANCE;
+			LOG_WARN("Max capacity of instanced mesh is %d", MAX_INSTANCE);
+		}
+		m_Mesh = std::make_shared<Mesh>(name);
 
 		Ref<VertexBuffer> m_VBO_MAT;
 		BufferLayout mat4 = {
 				{5, Dot::ShaderDataType::Mat4, "instanceModel", 1},
 		};
 
-		m_VBO_MAT = VertexBuffer::Create(&transforms[0], m_num * sizeof(glm::mat4), D_DYNAMIC_DRAW);
+		m_VBO_MAT = VertexBuffer::Create(&transforms[0], m_Capacity * sizeof(glm::mat4), D_DYNAMIC_DRAW);
 		m_VBO_MAT->SetLayout(mat4);
-		mesh->GetVao()->AddVBO(m_VBO_MAT);
+		m_Mesh->GetVAO()->AddVBO(m_VBO_MAT);
 	}
 
-	void InstancedMesh::Update(const std::vector<glm::mat4> transforms,unsigned int num)
+
+	void InstancedMesh::Update(const std::vector<glm::mat4>& transforms,unsigned int numInstances,unsigned int offsetInstances)
 	{
-		mesh->GetVao()->GetVertexBuffer(1)->Update(&transforms[0], num * sizeof(glm::mat4), 0);
+		D_ASSERT(numInstances + offsetInstances <= m_Capacity);
+		m_Instances = numInstances + offsetInstances;
+		m_Mesh->GetVAO()->GetVertexBuffer(1)->Update(&transforms[0], numInstances * sizeof(glm::mat4), offsetInstances * sizeof(glm::mat4));
 	}
 
 

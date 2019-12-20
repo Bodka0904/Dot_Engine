@@ -25,6 +25,6 @@ namespace Dot {
 
 		virtual void Bind(unsigned int unit) = 0;
 
-		static Ref<CubeMapTexture> Create(const std::vector<std::string>faces);
+		static Ref<CubeMapTexture> Create(const std::vector<std::string>&faces);
 	};
 }

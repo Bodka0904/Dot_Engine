@@ -1,9 +1,10 @@
 #pragma once
 #include "Dot/Renderer/Texture.h"
 
+
 #include <GL/glew.h>
 namespace Dot {
-	class OpenGLTexture2D : public Texture2D
+	class OpenGLTexture2D : public Texture2D 
 	{
 	public:
 		OpenGLTexture2D(const std::string& fileName,bool filters = true,bool flipped = true);
@@ -31,7 +32,7 @@ namespace Dot {
 	class OpenGLCubeMapTexture : public CubeMapTexture
 	{
 	public:
-		OpenGLCubeMapTexture(const std::vector<std::string>faces);
+		OpenGLCubeMapTexture(const std::vector<std::string>&faces);
 		virtual ~OpenGLCubeMapTexture();
 
 		virtual void Bind(unsigned int unit) override;

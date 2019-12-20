@@ -33,6 +33,7 @@ void main()
 }
 
 #type fragment
+#version 330 core
 in vec3 v_FragPos;
 in vec2 v_TexCoord;
 in vec3 v_Normal;

@@ -19,6 +19,7 @@ private:
 	Dot::Ref<Dot::Shader> m_StaticShader;
 	Dot::Ref <Dot::Shader> m_SkyShader;
 	Dot::Ref<Dot::Shader> m_InstanceShader;
+	Dot::Ref<Dot::Shader> m_GrassShader;
 	Dot::Ref<Dot::Shader> m_ComputeShader;
 	Dot::Ref<Dot::Shader> m_ShaderForCompute;
 	Dot::Ref<Dot::Shader> m_WaterShader;
@@ -39,6 +40,11 @@ private:
 	Dot::Ref<Dot::Light> m_Light;
 
 	Dot::Ref<Dot::ParticleManager> m_TestManager;
+	Dot::Ref<Dot::Texture2D> m_GrassTexure;
+
+	Dot::Ref<Dot::MousePicker> m_Picker;
+	Dot::Ref<Dot::Brush> m_Brush;
+	Dot::Ref<Dot::BrushInstance> m_Grass;
 
 private:
 	Dot::Transform m_T;

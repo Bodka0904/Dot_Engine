@@ -18,7 +18,6 @@ namespace Dot {
 			const glm::vec2& mouse{ Input::GetMouseX(), Input::GetMouseY() };
 			glm::vec2 delta = mouse - m_InitialMousePosition;
 			m_InitialMousePosition = mouse;
-
 			delta *= ts;
 
 			if (Input::IsMouseButtonPressed(D_MOUSE_BUTTON_MIDDLE))

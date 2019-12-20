@@ -49,7 +49,7 @@ namespace Dot {
 		static std::shared_ptr<Logger> m_This;
 	};
 
-#define LOG_INFO(...) Logger::Get()->Info(__FUNCTION__,__VA_ARGS__)
+#define LOG_INFO(...)  Logger::Get()->Info(__FUNCTION__,__VA_ARGS__)
 #define LOG_WARN(...) Logger::Get()->Warn(__FUNCTION__,__VA_ARGS__)
 #define LOG_ERR(...)  Logger::Get()->Error(__FUNCTION__,__VA_ARGS__)
 }

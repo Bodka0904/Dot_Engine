@@ -3,7 +3,11 @@
 #include "Dot/Utils/Time/Timestep.h"
 #include "Dot/Renderer/RenderCommand.h"
 #include "Dot/Debug/Timer.h"
+
+#include "Dot/Core/AssetManager.h"
 #include <GLFW/glfw3.h>
+
+#include "Dot/Utils/Parser/JsonParser.h"
 
 namespace Dot {
 
@@ -21,6 +25,8 @@ namespace Dot {
 		m_GuiLayer = new GuiLayer();
 		PushOverlay(m_GuiLayer);
 		
+	
+		AssetManager::Get()->LoadAssets("Assets.json");
 	}
 
 

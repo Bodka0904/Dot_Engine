@@ -29,7 +29,7 @@ namespace Dot {
 		return nullptr;
 	}
 
-	Ref<CubeMapTexture> CubeMapTexture::Create(const std::vector<std::string> faces)
+	Ref<CubeMapTexture> CubeMapTexture::Create(const std::vector<std::string>& faces)
 	{
 		switch (Renderer::GetAPI())
 		{

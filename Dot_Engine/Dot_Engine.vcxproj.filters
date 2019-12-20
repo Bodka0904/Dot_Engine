@@ -198,35 +198,11 @@
     <ClInclude Include="src\Dot\Renderer\Texture.h">
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Bmp\BmpLoader.h">
-      <Filter>src\Dot\Utils\Bmp</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Utils\Console\Console.h">
       <Filter>src\Dot\Utils\Console</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\MousePicker.h">
       <Filter>src\Dot\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Particle\Particle.h">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Particle\ParticleManager.h">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Particle\ParticleSystem.h">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Skybox.h">
-      <Filter>src\Dot\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Terrain\Terrain.h">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Terrain\TerrainEditor.h">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Terrain\Water.h">
-      <Filter>src\Dot\Utils\Terrain</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\Text\Font.h">
       <Filter>src\Dot\Utils\Text</Filter>
@@ -1358,6 +1334,36 @@
     <ClInclude Include="src\API\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\API\OpenGL\OpenGLFrameBuffer.h" />
     <ClInclude Include="src\API\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="src\Dot\LevelEditor\Terrain\Terrain.h">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Terrain\TerrainEditor.h">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Particle\Particle.h">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Particle\ParticleManager.h">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Particle\ParticleSystem.h">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Water\Water.h">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Skybox\Skybox.h">
+      <Filter>src\Dot\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Random\RandomGenerator.h" />
+    <ClInclude Include="src\Dot\LevelEditor\LevelEditorLayer.h" />
+    <ClInclude Include="src\Dot\Utils\Image\ImageLoader.h">
+      <Filter>src\Dot\Utils\Bmp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Terrain\Brush.h" />
+    <ClInclude Include="src\Dot\LevelEditor\Terrain\BrushInstance.h" />
+    <ClInclude Include="src\Dot\Core\AssetManager.h" />
+    <ClInclude Include="src\Dot\Utils\Parser\JsonParser.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dot\Core\Application.cpp">
@@ -1432,35 +1438,11 @@
     <ClCompile Include="src\Dot\Renderer\Texture.cpp">
       <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Bmp\BmpLoader.cpp">
-      <Filter>src\Dot\Utils\Bmp</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Utils\Console\Console.cpp">
       <Filter>src\Dot\Utils\Console</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Utils\MousePicker.cpp">
       <Filter>src\Dot\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Particle\Particle.cpp">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Particle\ParticleManger.cpp">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Particle\ParticleSystem.cpp">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Skybox.cpp">
-      <Filter>src\Dot\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Terrain\Terrain.cpp">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Terrain\TerrainEditor.cpp">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Terrain\Water.cpp">
-      <Filter>src\Dot\Utils\Terrain</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Utils\Text\Font.cpp">
       <Filter>src\Dot\Utils\Text</Filter>
@@ -1491,5 +1473,35 @@
     <ClCompile Include="src\API\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\API\OpenGL\OpenGLFrameBuffer.cpp" />
     <ClCompile Include="src\API\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="src\Dot\LevelEditor\Terrain\Terrain.cpp">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Terrain\TerrainEditor.cpp">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Particle\Particle.cpp">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Particle\ParticleManger.cpp">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Particle\ParticleSystem.cpp">
+      <Filter>src\Dot\Utils\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Water\Water.cpp">
+      <Filter>src\Dot\Utils\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Skybox\Skybox.cpp">
+      <Filter>src\Dot\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Random\RandomGenerator.cpp" />
+    <ClCompile Include="src\Dot\LevelEditor\LevelEditorLayer.cpp" />
+    <ClCompile Include="src\Dot\Utils\Image\ImageLoader.cpp">
+      <Filter>src\Dot\Utils\Bmp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Terrain\Brush.cpp" />
+    <ClCompile Include="src\Dot\LevelEditor\Terrain\BrushInstance.cpp" />
+    <ClCompile Include="src\Dot\Core\AssetManager.cpp" />
+    <ClCompile Include="src\Dot\Utils\Parser\JsonParser.cpp" />
   </ItemGroup>
 </Project>
