@@ -388,22 +388,31 @@ namespace Dot {
 	}
 
 
-	void AnimatedMesh::AnimateBones(float TimeInSeconds, unsigned int animation)
+	void AnimatedMesh::AnimateBones(float TimeInSeconds)
 	{
 		m_Time += TimeInSeconds;
-		if (m_Time >= m_pScene->mAnimations[animation]->mDuration)
-		{
-			m_Time = 0.0f;
-		}
+		
 		float TicksPerSecond = (float)(m_pScene->mAnimations[0]->mTicksPerSecond != 0 ? m_pScene->mAnimations[0]->mTicksPerSecond : 25.0f);
 		float TimeInTicks = m_Time * TicksPerSecond;
 		float AnimationTime = fmod(TimeInTicks, (float)m_pScene->mAnimations[0]->mDuration);
+		if (AnimationTime >= m_pScene->mAnimations[0]->mDuration)
+			m_Time = 0;
 
 		ReadNodeHeirarchy(AnimationTime, m_pScene->mRootNode, glm::mat4(1.0));
 	}
 
+	void AnimatedMesh::SetToDefaultPosition()
+	{
+		if (m_Time > 0.0f)
+		{
+			m_Time = 0;
+			float TicksPerSecond = (float)(m_pScene->mAnimations[0]->mTicksPerSecond != 0 ? m_pScene->mAnimations[0]->mTicksPerSecond : 25.0f);
+			float TimeInTicks = m_Time * TicksPerSecond;
+			float AnimationTime = fmod(TimeInTicks, (float)m_pScene->mAnimations[0]->mDuration);
 
-
+			ReadNodeHeirarchy(AnimationTime, m_pScene->mRootNode, glm::mat4(1.0));
+		}	
+	}
 
 	const aiNodeAnim* AnimatedMesh::FindNodeAnim(const aiAnimation* pAnimation, const std::string NodeName)
 	{

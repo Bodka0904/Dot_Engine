@@ -28,7 +28,7 @@ namespace Dot {
 				m_vel[i].vx = -2.5f + rand() % 5 + (rand() % 10) / 100.0f;
 				m_vel[i].vy = -2.5f + rand() % 5 + (rand() % 10) / 100.0f;
 				m_vel[i].vz = -5.0f + rand() % 10 + (rand() % 10) / 100.0f;
-				m_vel[i].fTimeToLive = 10;
+				m_vel[i].fTimeToLive = 5;
 
 			}
 

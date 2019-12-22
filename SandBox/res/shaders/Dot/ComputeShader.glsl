@@ -47,7 +47,6 @@ void main(void)
 	vec4 particleVelocity = InVelocity[index];
 	vec4 newParticleVelocity = particleVelocity;
 
-	newParticleVelocity.xyz *= 1.02;
 	newParticleVelocity.w -= 0.05;
 
 	particlePos.x += particleVelocity.x / 500;

@@ -93,7 +93,7 @@ namespace Dot {
 	void ParticleSystem::Draw()
 	{
 		m_VAO[m_OutputIdx]->Bind();
-		glPointSize(20);
+		glPointSize(5);
 		glDrawArrays(GL_POINTS, 0, m_Count);
 	}
 

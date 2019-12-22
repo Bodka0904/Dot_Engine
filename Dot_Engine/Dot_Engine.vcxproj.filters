@@ -4,6 +4,12 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\API">
+      <UniqueIdentifier>{965E2FA9-023E-AE44-0B56-391B77B414A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\API\OpenGL">
+      <UniqueIdentifier>{0A03691B-F6D0-5C21-DF64-CD47CBD13886}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Dot">
       <UniqueIdentifier>{836F2FA9-EF4E-AE44-F866-391B64C514A6}</UniqueIdentifier>
     </Filter>
@@ -16,14 +22,38 @@
     <Filter Include="src\Dot\Debug">
       <UniqueIdentifier>{39D07DE7-A590-F91D-6ECB-429BDA4A3EFA}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Debug\OpenGL">
-      <UniqueIdentifier>{4DDFD8F2-396E-62BC-E28C-76B7CEFA7262}</UniqueIdentifier>
+    <Filter Include="src\Dot\ECS">
+      <UniqueIdentifier>{4D6DAC8A-B922-2580-4217-1F57AECB1B84}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Gui">
       <UniqueIdentifier>{577CAC8A-C331-2580-4C26-1F57B8DA1B84}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Gui\GuiSystem">
       <UniqueIdentifier>{1013916F-7C7F-4C6A-4573-E4C7B19E6ED2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\LevelEditor">
+      <UniqueIdentifier>{91CCF6EF-FD2D-D4FD-869B-1AB0F2FB0ABD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\LevelEditor\Particle">
+      <UniqueIdentifier>{B443EF6E-A0FE-DE1A-49B6-5765355029AB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\LevelEditor\Skybox">
+      <UniqueIdentifier>{807A84D1-6C8A-30A2-D543-95C0C1721F3B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\LevelEditor\Terrain">
+      <UniqueIdentifier>{F5F09840-61FE-C626-EAE4-C21156F192DD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\LevelEditor\Water">
+      <UniqueIdentifier>{632A9C06-CFEC-CF90-189D-5E1D849EA86E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\PhysicsEngine">
+      <UniqueIdentifier>{CBEC5CE2-3759-18DD-004D-B03A6C783A45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\PhysicsEngine\Collision">
+      <UniqueIdentifier>{A6DB30E5-12BF-3F25-1BC2-6D6187240676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\PhysicsEngine\Components">
+      <UniqueIdentifier>{005D19B9-ECAD-04FB-1512-F3BC01C29764}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Renderer">
       <UniqueIdentifier>{89D6EF8A-75CF-0EDD-9E01-F4618A59EEE8}</UniqueIdentifier>
@@ -49,23 +79,26 @@
     <Filter Include="src\Dot\Utils">
       <UniqueIdentifier>{23C7B9E8-8F87-351F-58C2-7E9CC4417AFB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Utils\Bmp">
-      <UniqueIdentifier>{B18DD9B0-1DA4-D746-661B-6368D270A8CE}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Dot\Utils\Console">
       <UniqueIdentifier>{45511CCB-B1BD-D7C5-7AB1-6F23E6DCF92D}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Utils\Particle">
-      <UniqueIdentifier>{8642B201-723C-DB53-5BA9-7164474241C0}</UniqueIdentifier>
+    <Filter Include="src\Dot\Utils\Image">
+      <UniqueIdentifier>{5537F24D-C198-CF5B-4A06-160EB666061B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Utils\Terrain">
-      <UniqueIdentifier>{875DAED0-F3C9-69CB-BCBD-012928E98B33}</UniqueIdentifier>
+    <Filter Include="src\Dot\Utils\Parser">
+      <UniqueIdentifier>{3F9EBD1B-2B2D-47E5-D44B-5BE0C0B9578B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Utils\Random">
+      <UniqueIdentifier>{737F6520-5F0E-EFE9-082D-03E5F49AFF8F}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Utils\Text">
       <UniqueIdentifier>{170215CC-03E6-D521-6C46-D0745849C0A3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Utils\Time">
       <UniqueIdentifier>{A11115CC-8DF5-D521-F655-D074E258C0A3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Windows">
+      <UniqueIdentifier>{6732F132-D3E7-6928-5CDC-63FFC890602C}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -93,10 +126,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\API\OpenGL\OpenGLArrayBuffer.h">
+      <Filter>src\API\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\API\OpenGL\OpenGLBuffer.h">
+      <Filter>src\API\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\API\OpenGL\OpenGLContext.h">
+      <Filter>src\API\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\API\OpenGL\OpenGLFrameBuffer.h">
+      <Filter>src\API\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\API\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\API\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\API\OpenGL\OpenGLShader.h">
+      <Filter>src\API\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\API\OpenGL\OpenGLTexture.h">
+      <Filter>src\API\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Core\Application.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Core\AssetManager.h">
       <Filter>src\Dot\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Core\ColorCodes.h">
@@ -132,6 +189,15 @@
     <ClInclude Include="src\Dot\Debug\Timer.h">
       <Filter>src\Dot\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\ECS\ComponentManager.h">
+      <Filter>src\Dot\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\ECS\ECSManager.h">
+      <Filter>src\Dot\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\ECS\EntityManager.h">
+      <Filter>src\Dot\ECS</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Gui\GuiLayer.h">
       <Filter>src\Dot\Gui</Filter>
     </ClInclude>
@@ -150,6 +216,51 @@
     <ClInclude Include="src\Dot\Gui\GuiSystem\Slider.h">
       <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\LevelEditorLayer.h">
+      <Filter>src\Dot\LevelEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Particle\Particle.h">
+      <Filter>src\Dot\LevelEditor\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Particle\ParticleManager.h">
+      <Filter>src\Dot\LevelEditor\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Particle\ParticleSystem.h">
+      <Filter>src\Dot\LevelEditor\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Skybox\Skybox.h">
+      <Filter>src\Dot\LevelEditor\Skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Terrain\Brush.h">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Terrain\BrushInstance.h">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Terrain\Terrain.h">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Terrain\TerrainEditor.h">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Water\Water.h">
+      <Filter>src\Dot\LevelEditor\Water</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\PhysicsEngine\Collision\SAP.h">
+      <Filter>src\Dot\PhysicsEngine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\PhysicsEngine\Components\AABB.h">
+      <Filter>src\Dot\PhysicsEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\PhysicsEngine\Components\Entity.h">
+      <Filter>src\Dot\PhysicsEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\PhysicsEngine\Components\Transform.h">
+      <Filter>src\Dot\PhysicsEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\APIContext.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Renderer\AnimatedMesh.h">
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
@@ -165,6 +276,9 @@
     <ClInclude Include="src\Dot\Renderer\Camera\Camera.h">
       <Filter>src\Dot\Renderer\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Camera\CameraController.h">
+      <Filter>src\Dot\Renderer\Camera</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Camera\OrthoCamera.h">
       <Filter>src\Dot\Renderer\Camera</Filter>
     </ClInclude>
@@ -174,6 +288,9 @@
     <ClInclude Include="src\Dot\Renderer\Mesh.h">
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\RenderCommand.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Renderable2D.h">
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
@@ -181,6 +298,9 @@
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Renderer2D.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\RendererAPI.h">
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\RendererFlags.h">
@@ -195,16 +315,34 @@
     <ClInclude Include="src\Dot\Renderer\Shaders\Uniform\UniformBuffer.h">
       <Filter>src\Dot\Renderer\Shaders\Uniform</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\TextRenderer.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Texture.h">
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\Console\Console.h">
       <Filter>src\Dot\Utils\Console</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Image\ImageLoader.h">
+      <Filter>src\Dot\Utils\Image</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Utils\MousePicker.h">
       <Filter>src\Dot\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Parser\JsonParser.h">
+      <Filter>src\Dot\Utils\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Random\RandomGenerator.h">
+      <Filter>src\Dot\Utils\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Text\DynamicText.h">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Utils\Text\Font.h">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Text\StaticText.h">
       <Filter>src\Dot\Utils\Text</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\Time\TimeUtils.h">
@@ -213,8 +351,11 @@
     <ClInclude Include="src\Dot\Utils\Time\Timestep.h">
       <Filter>src\Dot\Utils\Time</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Transform.h">
-      <Filter>src\Dot\Utils</Filter>
+    <ClInclude Include="src\Windows\WindowsInput.h">
+      <Filter>src\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Windows\WindowsWindow.h">
+      <Filter>src\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\stdafx.h">
       <Filter>src</Filter>
@@ -1314,59 +1455,38 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\Camera\CameraController.h" />
-    <ClInclude Include="src\Dot\Utils\Text\DynamicText.h" />
-    <ClInclude Include="src\Dot\Utils\Text\StaticText.h" />
-    <ClInclude Include="src\Dot\Renderer\TextRenderer.h">
-      <Filter>src\Dot\Utils\Text</Filter>
+    <ClInclude Include="src\Dot\ECS\Component.h">
+      <Filter>src\Dot\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="src\Api\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Dot\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\Dot\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Api\OpenGL\OpenGLContext.h">
-      <Filter>src\Dot\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\APIContext.h" />
-    <ClInclude Include="src\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\Windows\WindowsInput.h" />
-    <ClInclude Include="src\API\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\API\OpenGL\OpenGLArrayBuffer.h" />
-    <ClInclude Include="src\API\OpenGL\OpenGLShader.h" />
-    <ClInclude Include="src\API\OpenGL\OpenGLFrameBuffer.h" />
-    <ClInclude Include="src\API\OpenGL\OpenGLTexture.h" />
-    <ClInclude Include="src\Dot\LevelEditor\Terrain\Terrain.h">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Terrain\TerrainEditor.h">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Particle\Particle.h">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Particle\ParticleManager.h">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Particle\ParticleSystem.h">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Water\Water.h">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Skybox\Skybox.h">
-      <Filter>src\Dot\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Random\RandomGenerator.h" />
-    <ClInclude Include="src\Dot\LevelEditor\LevelEditorLayer.h" />
-    <ClInclude Include="src\Dot\Utils\Image\ImageLoader.h">
-      <Filter>src\Dot\Utils\Bmp</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Terrain\Brush.h" />
-    <ClInclude Include="src\Dot\LevelEditor\Terrain\BrushInstance.h" />
-    <ClInclude Include="src\Dot\Core\AssetManager.h" />
-    <ClInclude Include="src\Dot\Utils\Parser\JsonParser.h" />
+    <ClInclude Include="src\Dot\ECS\SystemManager.h" />
+    <ClInclude Include="src\Dot\ECS\Entity.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\API\OpenGL\OpenGLArrayBuffer.cpp">
+      <Filter>src\API\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\API\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\OpenGL\OpenGLContext.cpp">
+      <Filter>src\API\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\OpenGL\OpenGLFrameBuffer.cpp">
+      <Filter>src\API\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\API\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\OpenGL\OpenGLShader.cpp">
+      <Filter>src\API\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\API\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Core\Application.cpp">
+      <Filter>src\Dot\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Core\AssetManager.cpp">
       <Filter>src\Dot\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Core\Layer.cpp">
@@ -1377,6 +1497,15 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Debug\Timer.cpp">
       <Filter>src\Dot\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\ECS\ComponentManager.cpp">
+      <Filter>src\Dot\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\ECS\ECSManager.cpp">
+      <Filter>src\Dot\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\ECS\EntityManager.cpp">
+      <Filter>src\Dot\ECS</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Gui\GuiLayer.cpp">
       <Filter>src\Dot\Gui</Filter>
@@ -1396,6 +1525,45 @@
     <ClCompile Include="src\Dot\Gui\GuiSystem\Slider.cpp">
       <Filter>src\Dot\Gui\GuiSystem</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\LevelEditorLayer.cpp">
+      <Filter>src\Dot\LevelEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Particle\Particle.cpp">
+      <Filter>src\Dot\LevelEditor\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Particle\ParticleManger.cpp">
+      <Filter>src\Dot\LevelEditor\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Particle\ParticleSystem.cpp">
+      <Filter>src\Dot\LevelEditor\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Skybox\Skybox.cpp">
+      <Filter>src\Dot\LevelEditor\Skybox</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Terrain\Brush.cpp">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Terrain\BrushInstance.cpp">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Terrain\Terrain.cpp">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Terrain\TerrainEditor.cpp">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Water\Water.cpp">
+      <Filter>src\Dot\LevelEditor\Water</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\PhysicsEngine\Collision\SAP.cpp">
+      <Filter>src\Dot\PhysicsEngine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\PhysicsEngine\Components\AABB.cpp">
+      <Filter>src\Dot\PhysicsEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\APIContext.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Renderer\AnimatedMesh.cpp">
       <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
@@ -1411,6 +1579,9 @@
     <ClCompile Include="src\Dot\Renderer\Camera\Camera.cpp">
       <Filter>src\Dot\Renderer\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Camera\CameraController.cpp">
+      <Filter>src\Dot\Renderer\Camera</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Camera\OrthoCamera.cpp">
       <Filter>src\Dot\Renderer\Camera</Filter>
     </ClCompile>
@@ -1418,6 +1589,9 @@
       <Filter>src\Dot\Renderer\Material</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Mesh.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\RenderCommand.cpp">
       <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Renderable2D.cpp">
@@ -1429,11 +1603,17 @@
     <ClCompile Include="src\Dot\Renderer\Renderer2D.cpp">
       <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\RendererAPI.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Shaders\Shader.cpp">
       <Filter>src\Dot\Renderer\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Shaders\Uniform\UniformBuffer.cpp">
       <Filter>src\Dot\Renderer\Shaders\Uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\TextRenderer.cpp">
+      <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Texture.cpp">
       <Filter>src\Dot\Renderer</Filter>
@@ -1441,11 +1621,32 @@
     <ClCompile Include="src\Dot\Utils\Console\Console.cpp">
       <Filter>src\Dot\Utils\Console</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Image\ImageLoader.cpp">
+      <Filter>src\Dot\Utils\Image</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Utils\MousePicker.cpp">
       <Filter>src\Dot\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Parser\JsonParser.cpp">
+      <Filter>src\Dot\Utils\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Random\RandomGenerator.cpp">
+      <Filter>src\Dot\Utils\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Text\DynamicText.cpp">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Utils\Text\Font.cpp">
       <Filter>src\Dot\Utils\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Text\StaticText.cpp">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Windows\WindowsInput.cpp">
+      <Filter>src\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Windows\WindowsWindow.cpp">
+      <Filter>src\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\stdafx.cpp">
       <Filter>src</Filter>
@@ -1453,55 +1654,10 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\Camera\CameraController.cpp" />
-    <ClCompile Include="src\Dot\Utils\Text\DynamicText.cpp" />
-    <ClCompile Include="src\Dot\Utils\Text\StaticText.cpp" />
-    <ClCompile Include="src\Dot\Renderer\TextRenderer.cpp">
-      <Filter>src\Dot\Utils\Text</Filter>
+    <ClCompile Include="src\Dot\ECS\Component.cpp">
+      <Filter>src\Dot\ECS</Filter>
     </ClCompile>
-    <ClCompile Include="src\Api\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\Dot\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Dot\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Api\OpenGL\OpenGLContext.cpp">
-      <Filter>src\Dot\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\APIContext.cpp" />
-    <ClCompile Include="src\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\Windows\WindowsInput.cpp" />
-    <ClCompile Include="src\API\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\API\OpenGL\OpenGLArrayBuffer.cpp" />
-    <ClCompile Include="src\API\OpenGL\OpenGLShader.cpp" />
-    <ClCompile Include="src\API\OpenGL\OpenGLFrameBuffer.cpp" />
-    <ClCompile Include="src\API\OpenGL\OpenGLTexture.cpp" />
-    <ClCompile Include="src\Dot\LevelEditor\Terrain\Terrain.cpp">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Terrain\TerrainEditor.cpp">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Particle\Particle.cpp">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Particle\ParticleManger.cpp">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Particle\ParticleSystem.cpp">
-      <Filter>src\Dot\Utils\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Water\Water.cpp">
-      <Filter>src\Dot\Utils\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Skybox\Skybox.cpp">
-      <Filter>src\Dot\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Random\RandomGenerator.cpp" />
-    <ClCompile Include="src\Dot\LevelEditor\LevelEditorLayer.cpp" />
-    <ClCompile Include="src\Dot\Utils\Image\ImageLoader.cpp">
-      <Filter>src\Dot\Utils\Bmp</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Terrain\Brush.cpp" />
-    <ClCompile Include="src\Dot\LevelEditor\Terrain\BrushInstance.cpp" />
-    <ClCompile Include="src\Dot\Core\AssetManager.cpp" />
-    <ClCompile Include="src\Dot\Utils\Parser\JsonParser.cpp" />
+    <ClCompile Include="src\Dot\ECS\SystemManager.cpp" />
+    <ClCompile Include="src\Dot\ECS\Entity.cpp" />
   </ItemGroup>
 </Project>

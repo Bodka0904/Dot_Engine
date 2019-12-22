@@ -25,7 +25,7 @@
 #include "Dot/Utils/Time/Timestep.h"
 #include "Dot/Utils/MousePicker.h"
 #include "Dot/Utils/Text/Font.h"
-#include "Dot/utils/Transform.h"
+#include "Dot/PhysicsEngine/Components/Transform.h"
 #include "Dot/Utils/Random/RandomGenerator.h"
 
 #include "Dot/LevelEditor/Skybox/Skybox.h"
@@ -42,6 +42,5 @@
 #include "Dot/Gui/GuiSystem/Button.h"
 #include "Dot/Gui/GuiSystem/Gui.h"
 
-// --- Entry Point -----------------
-#include "Dot/Core/EntryPoint.h"
-// ---------------------------------
+
+#include "Dot/ECS/ECSManager.h"

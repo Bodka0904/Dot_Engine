@@ -127,7 +127,7 @@ namespace Dot {
 	}
 	void OpenGLCubeMapTexture::Bind(unsigned int unit)
 	{
-		D_ASSERT(unit >= 0 && unit <= 31);
+		D_ASSERT((unit >= 0 && unit <= 31),"Texture unit out of range");
 		glActiveTexture(GL_TEXTURE0 + unit);
 		glBindTexture(textureType, texture);
 	}

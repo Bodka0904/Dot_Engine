@@ -37,8 +37,8 @@ float PI = 3.14159265;
 void main()
 {
 	vec2 p = vec2(0.5, 0.3);
-	vec3 color1 = vec3(0.0, 0.3, 0.5);
-	vec3 color2 = vec3(0.0, 0.3, 0.3);
+	vec3 color1 = vec3(1, 0.3, 0.2);
+	vec3 color2 = vec3(1, 0.3, 0.3);
 	
 	float f = 0.0;
 	float g = 0.0;

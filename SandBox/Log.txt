@@ -1368,3 +1368,2761 @@
 2019-12-20.19:48:45: Loading mesh res/models/Dot/grass.obj
 2019-12-20.19:48:45: Loading mesh res/models/Dot/tree.obj
 2019-12-20.19:48:45: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:21:46: OpenGL Info:
+2019-12-20.20:21:46: Vendor: NVIDIA Corporation
+2019-12-20.20:21:46: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:21:46: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:21:46: Loading animated mesh res/animation/man.fbx
+2019-12-20.20:21:46: Loading texture res/textures/Dot/man.png
+2019-12-20.20:21:46: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:21:46: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:21:46: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:21:47: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:21:47: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:21:47: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:21:47: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:21:47: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:21:47: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:23:02: OpenGL Info:
+2019-12-20.20:23:02: Vendor: NVIDIA Corporation
+2019-12-20.20:23:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:23:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:23:02: Loading animated mesh res/animation/man.fbx
+2019-12-20.20:23:02: Loading texture res/textures/Dot/man.png
+2019-12-20.20:23:02: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:23:02: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:23:02: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:23:02: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:23:02: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:23:02: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:23:02: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:23:02: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:23:02: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:23:05: Window: Resized window width: 1920 height: 1017
+2019-12-20.20:35:05: OpenGL Info:
+2019-12-20.20:35:05: Vendor: NVIDIA Corporation
+2019-12-20.20:35:05: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:35:05: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:35:05: Loading animated mesh res/animation/test.fbx
+2019-12-20.20:35:05: Loading texture res/textures/Dot/man.png
+2019-12-20.20:35:05: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:35:05: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:35:05: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:35:05: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:35:05: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:35:06: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:35:06: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:35:06: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:35:06: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:35:06: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:35:06: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:35:06: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:35:06: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:35:06: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:35:06: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:35:06: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:35:06: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:35:06: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:35:09: Window: Resized window width: 1920 height: 1017
+2019-12-20.20:36:07: OpenGL Info:
+2019-12-20.20:36:07: Vendor: NVIDIA Corporation
+2019-12-20.20:36:07: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:36:07: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:36:07: Loading animated mesh res/animation/test.fbx
+2019-12-20.20:36:07: Loading texture res/textures/Dot/man.png
+2019-12-20.20:36:07: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:36:07: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:36:07: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:36:07: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:36:07: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:36:07: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:36:08: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:36:08: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:36:08: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:36:09: Window: Resized window width: 1920 height: 1017
+2019-12-20.20:37:12: OpenGL Info:
+2019-12-20.20:37:12: Vendor: NVIDIA Corporation
+2019-12-20.20:37:12: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:37:12: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:37:12: Loading animated mesh res/animation/test.fbx
+2019-12-20.20:37:12: Loading texture res/textures/Dot/man.png
+2019-12-20.20:37:12: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:37:12: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:37:12: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:37:12: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:37:12: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:37:12: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:37:13: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:37:13: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:37:13: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:39:36: OpenGL Info:
+2019-12-20.20:39:36: Vendor: NVIDIA Corporation
+2019-12-20.20:39:36: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:39:36: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:39:36: Loading animated mesh res/animation/test.fbx
+2019-12-20.20:39:36: Loading texture res/textures/Dot/man.png
+2019-12-20.20:39:36: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:39:36: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:39:36: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:39:36: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:39:36: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:39:36: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:39:36: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:39:36: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:39:36: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:40:02: OpenGL Info:
+2019-12-20.20:40:02: Vendor: NVIDIA Corporation
+2019-12-20.20:40:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:40:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:40:02: Loading animated mesh res/animation/test.fbx
+2019-12-20.20:40:02: Loading texture res/textures/Dot/man.png
+2019-12-20.20:40:02: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:40:02: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:40:02: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:40:03: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:40:03: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:40:03: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:40:03: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:40:03: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:40:03: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:41:23: OpenGL Info:
+2019-12-20.20:41:23: Vendor: NVIDIA Corporation
+2019-12-20.20:41:23: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:41:23: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:41:23: Loading animated mesh res/animation/man.fbx
+2019-12-20.20:41:23: Loading texture res/textures/Dot/man.png
+2019-12-20.20:41:23: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:41:23: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:41:23: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:41:24: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:41:24: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:41:24: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:41:24: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:41:24: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:41:24: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:41:26: Window: Resized window width: 1920 height: 1017
+2019-12-20.20:45:47: OpenGL Info:
+2019-12-20.20:45:47: Vendor: NVIDIA Corporation
+2019-12-20.20:45:47: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:45:48: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:45:48: Loading animated mesh res/animation/man.fbx
+2019-12-20.20:45:48: Loading texture res/textures/Dot/man.png
+2019-12-20.20:45:48: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:45:48: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:45:48: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:45:48: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:45:48: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:45:48: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:45:48: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:45:48: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:45:48: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:45:51: Window: Resized window width: 1920 height: 1017
+2019-12-20.20:47:15: OpenGL Info:
+2019-12-20.20:47:15: Vendor: NVIDIA Corporation
+2019-12-20.20:47:15: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:47:15: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:47:15: Loading animated mesh res/animation/man.fbx
+2019-12-20.20:47:15: Loading texture res/textures/Dot/man.png
+2019-12-20.20:47:15: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:47:15: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:47:15: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:47:16: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:47:16: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:47:16: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:47:16: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:47:16: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:47:16: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:47:18: Window: Resized window width: 1920 height: 1017
+2019-12-20.20:49:32: OpenGL Info:
+2019-12-20.20:49:32: Vendor: NVIDIA Corporation
+2019-12-20.20:49:32: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:49:32: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:49:32: Loading animated mesh res/animation/man.fbx
+2019-12-20.20:49:32: Loading texture res/textures/Dot/man.png
+2019-12-20.20:49:32: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:49:32: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:49:32: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:49:33: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:49:33: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:49:33: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:49:33: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:49:33: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:49:33: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:49:35: Window: Resized window width: 1920 height: 1017
+2019-12-20.20:51:44: OpenGL Info:
+2019-12-20.20:51:44: Vendor: NVIDIA Corporation
+2019-12-20.20:51:44: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:51:44: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:51:44: Loading animated mesh res/animation/man.fbx
+2019-12-20.20:51:44: Loading texture res/textures/Dot/man.png
+2019-12-20.20:51:44: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:51:44: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:51:44: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:51:44: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:51:44: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:51:44: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:51:44: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:51:44: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:51:44: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:58:38: OpenGL Info:
+2019-12-20.20:58:38: Vendor: NVIDIA Corporation
+2019-12-20.20:58:38: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.20:58:38: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.20:58:38: Loading animated mesh res/animation/man.fbx
+2019-12-20.20:58:38: Loading texture res/textures/Dot/man.png
+2019-12-20.20:58:38: Loading texture res/textures/Dot/grass.png
+2019-12-20.20:58:38: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.20:58:39: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.20:58:39: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.20:58:39: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.20:58:39: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.20:58:39: Loading mesh res/models/Dot/grass.obj
+2019-12-20.20:58:39: Loading mesh res/models/Dot/tree.obj
+2019-12-20.20:58:39: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.20:58:41: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:02:09: OpenGL Info:
+2019-12-20.21:02:09: Vendor: NVIDIA Corporation
+2019-12-20.21:02:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:02:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:02:09: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:02:09: Loading texture res/textures/Dot/man.png
+2019-12-20.21:02:09: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:02:09: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:02:09: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:02:10: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:02:10: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:02:10: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:02:10: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:02:10: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:02:10: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:02:14: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:02:56: OpenGL Info:
+2019-12-20.21:02:56: Vendor: NVIDIA Corporation
+2019-12-20.21:02:56: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:02:56: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:02:56: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:02:56: Loading texture res/textures/Dot/man.png
+2019-12-20.21:02:56: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:02:56: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:02:56: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:02:57: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:02:57: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:02:57: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:02:57: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:02:57: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:02:57: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:03:00: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:03:03: Window: Resized window width: 1280 height: 720
+2019-12-20.21:03:03: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:04:15: OpenGL Info:
+2019-12-20.21:04:15: Vendor: NVIDIA Corporation
+2019-12-20.21:04:15: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:04:15: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:04:15: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:04:15: Loading texture res/textures/Dot/man.png
+2019-12-20.21:04:15: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:04:15: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:04:15: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:04:15: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:04:15: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:04:15: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:04:15: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:04:15: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:04:15: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:04:19: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:05:02: OpenGL Info:
+2019-12-20.21:05:02: Vendor: NVIDIA Corporation
+2019-12-20.21:05:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:05:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:05:02: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:05:02: Loading texture res/textures/Dot/man.png
+2019-12-20.21:05:02: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:05:02: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:05:02: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:05:03: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:05:03: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:05:03: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:05:03: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:05:03: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:05:03: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:05:06: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:05:09: Window: Resized window width: 1280 height: 720
+2019-12-20.21:05:10: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:06:03: OpenGL Info:
+2019-12-20.21:06:03: Vendor: NVIDIA Corporation
+2019-12-20.21:06:03: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:06:03: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:06:03: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:06:03: Loading texture res/textures/Dot/man.png
+2019-12-20.21:06:03: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:06:03: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:06:03: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:06:03: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:06:03: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:06:03: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:06:03: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:06:03: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:06:03: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:06:07: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:07:53: OpenGL Info:
+2019-12-20.21:07:53: Vendor: NVIDIA Corporation
+2019-12-20.21:07:53: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:07:53: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:07:53: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:07:53: Loading texture res/textures/Dot/man.png
+2019-12-20.21:07:53: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:07:53: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:07:53: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:07:53: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:07:53: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:07:53: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:07:53: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:07:53: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:07:53: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:07:56: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:09:40: OpenGL Info:
+2019-12-20.21:09:40: Vendor: NVIDIA Corporation
+2019-12-20.21:09:40: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:09:40: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:09:40: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:09:40: Loading texture res/textures/Dot/man.png
+2019-12-20.21:09:40: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:09:40: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:09:40: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:09:40: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:09:40: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:09:40: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:09:40: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:09:40: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:09:40: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:09:42: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:16:04: OpenGL Info:
+2019-12-20.21:16:04: Vendor: NVIDIA Corporation
+2019-12-20.21:16:04: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:16:04: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:16:04: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:16:04: Loading texture res/textures/Dot/man.png
+2019-12-20.21:16:04: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:16:04: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:16:04: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:16:05: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:16:05: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:16:05: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:16:05: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:16:05: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:16:05: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:16:14: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:17:15: OpenGL Info:
+2019-12-20.21:17:15: Vendor: NVIDIA Corporation
+2019-12-20.21:17:15: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:17:15: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:17:15: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:17:15: Loading texture res/textures/Dot/man.png
+2019-12-20.21:17:15: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:17:16: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:17:16: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:17:16: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:17:16: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:17:16: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:17:16: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:17:16: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:17:16: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:17:28: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:18:16: OpenGL Info:
+2019-12-20.21:18:16: Vendor: NVIDIA Corporation
+2019-12-20.21:18:16: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:18:16: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:18:16: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:18:16: Loading texture res/textures/Dot/man.png
+2019-12-20.21:18:16: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:18:16: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:18:16: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:18:16: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:18:16: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:18:16: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:18:16: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:18:16: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:18:16: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:18:18: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:18:45: OpenGL Info:
+2019-12-20.21:18:45: Vendor: NVIDIA Corporation
+2019-12-20.21:18:45: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:18:45: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:18:45: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:18:45: Loading texture res/textures/Dot/man.png
+2019-12-20.21:18:45: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:18:46: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:18:46: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:18:46: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:18:46: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:18:46: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:18:46: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:18:46: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:18:46: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:19:23: OpenGL Info:
+2019-12-20.21:19:23: Vendor: NVIDIA Corporation
+2019-12-20.21:19:23: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:19:23: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:19:23: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:19:23: Loading texture res/textures/Dot/man.png
+2019-12-20.21:19:23: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:19:23: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:19:23: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:19:24: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:19:24: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:19:24: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:19:24: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:19:24: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:19:24: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:20:05: OpenGL Info:
+2019-12-20.21:20:05: Vendor: NVIDIA Corporation
+2019-12-20.21:20:05: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:20:05: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:20:05: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:20:05: Loading texture res/textures/Dot/man.png
+2019-12-20.21:20:05: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:20:05: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:20:05: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:20:05: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:20:05: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:20:05: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:20:05: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:20:06: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:20:06: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:20:07: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:20:28: OpenGL Info:
+2019-12-20.21:20:28: Vendor: NVIDIA Corporation
+2019-12-20.21:20:28: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:20:28: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:20:28: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:20:28: Loading texture res/textures/Dot/man.png
+2019-12-20.21:20:28: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:20:28: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:20:28: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:20:28: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:20:28: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:20:28: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:20:28: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:20:28: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:20:28: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:20:30: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:21:21: OpenGL Info:
+2019-12-20.21:21:21: Vendor: NVIDIA Corporation
+2019-12-20.21:21:21: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:21:21: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:21:21: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:21:21: Loading texture res/textures/Dot/man.png
+2019-12-20.21:21:21: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:21:21: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:21:21: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:21:22: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:21:22: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:21:22: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:21:22: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:21:22: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:21:22: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:21:24: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:25:25: OpenGL Info:
+2019-12-20.21:25:25: Vendor: NVIDIA Corporation
+2019-12-20.21:25:25: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:25:25: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:25:25: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:25:25: Loading texture res/textures/Dot/man.png
+2019-12-20.21:25:25: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:25:25: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:25:25: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:25:26: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:25:26: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:25:26: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:25:26: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:25:26: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:25:26: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:25:27: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:26:02: OpenGL Info:
+2019-12-20.21:26:02: Vendor: NVIDIA Corporation
+2019-12-20.21:26:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:26:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:26:02: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:26:02: Loading texture res/textures/Dot/man.png
+2019-12-20.21:26:02: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:26:02: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:26:02: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:26:02: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:26:02: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:26:02: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:26:02: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:26:02: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:26:02: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:26:33: OpenGL Info:
+2019-12-20.21:26:33: Vendor: NVIDIA Corporation
+2019-12-20.21:26:33: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:26:33: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:26:33: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:26:33: Loading texture res/textures/Dot/man.png
+2019-12-20.21:26:33: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:26:33: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:26:33: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:26:34: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:26:34: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:26:34: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:26:34: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:26:34: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:26:34: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.21:26:36: Window: Resized window width: 1920 height: 1017
+2019-12-20.21:27:06: OpenGL Info:
+2019-12-20.21:27:06: Vendor: NVIDIA Corporation
+2019-12-20.21:27:06: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.21:27:06: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.21:27:06: Loading animated mesh res/animation/man.fbx
+2019-12-20.21:27:06: Loading texture res/textures/Dot/man.png
+2019-12-20.21:27:06: Loading texture res/textures/Dot/grass.png
+2019-12-20.21:27:06: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.21:27:06: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.21:27:06: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.21:27:06: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.21:27:06: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.21:27:06: Loading mesh res/models/Dot/grass.obj
+2019-12-20.21:27:06: Loading mesh res/models/Dot/tree.obj
+2019-12-20.21:27:06: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:07:02: OpenGL Info:
+2019-12-20.22:07:02: Vendor: NVIDIA Corporation
+2019-12-20.22:07:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:07:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:07:02: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:07:02: Loading texture res/textures/Dot/man.png
+2019-12-20.22:07:02: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:07:02: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:07:03: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:07:03: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:07:03: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:07:03: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:07:03: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:07:03: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:07:03: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:07:05: Window: Resized window width: 1920 height: 1017
+2019-12-20.22:07:53: OpenGL Info:
+2019-12-20.22:07:53: Vendor: NVIDIA Corporation
+2019-12-20.22:07:53: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:07:53: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:07:53: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:07:53: Loading texture res/textures/Dot/man.png
+2019-12-20.22:07:53: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:07:53: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:07:53: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:07:54: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:07:54: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:07:54: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:07:54: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:07:54: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:07:54: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:08:26: OpenGL Info:
+2019-12-20.22:08:26: Vendor: NVIDIA Corporation
+2019-12-20.22:08:26: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:08:26: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:08:26: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:08:26: Loading texture res/textures/Dot/man.png
+2019-12-20.22:08:26: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:08:26: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:08:26: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:08:27: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:08:27: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:08:27: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:08:27: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:08:27: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:08:27: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:09:35: OpenGL Info:
+2019-12-20.22:09:35: Vendor: NVIDIA Corporation
+2019-12-20.22:09:35: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:09:35: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:09:35: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:09:35: Loading texture res/textures/Dot/man.png
+2019-12-20.22:09:35: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:09:35: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:09:35: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:09:35: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:09:35: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:09:35: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:09:35: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:09:36: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:09:36: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:09:56: OpenGL Info:
+2019-12-20.22:09:56: Vendor: NVIDIA Corporation
+2019-12-20.22:09:56: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:09:56: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:09:56: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:09:56: Loading texture res/textures/Dot/man.png
+2019-12-20.22:09:56: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:09:56: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:09:56: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:09:56: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:09:56: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:09:56: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:09:56: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:09:56: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:09:56: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:10:14: OpenGL Info:
+2019-12-20.22:10:14: Vendor: NVIDIA Corporation
+2019-12-20.22:10:14: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:10:14: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:10:14: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:10:14: Loading texture res/textures/Dot/man.png
+2019-12-20.22:10:14: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:10:14: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:10:14: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:10:14: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:10:14: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:10:14: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:10:14: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:10:14: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:10:14: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:10:37: OpenGL Info:
+2019-12-20.22:10:38: Vendor: NVIDIA Corporation
+2019-12-20.22:10:38: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:10:38: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:10:38: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:10:38: Loading texture res/textures/Dot/man.png
+2019-12-20.22:10:38: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:10:38: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:10:38: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:10:38: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:10:38: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:10:38: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:10:38: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:10:38: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:10:38: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:11:10: OpenGL Info:
+2019-12-20.22:11:10: Vendor: NVIDIA Corporation
+2019-12-20.22:11:10: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:11:10: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:11:10: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:11:10: Loading texture res/textures/Dot/man.png
+2019-12-20.22:11:10: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:11:10: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:11:10: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:11:10: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:11:11: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:11:11: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:11:11: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:11:11: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:11:11: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:11:41: OpenGL Info:
+2019-12-20.22:11:41: Vendor: NVIDIA Corporation
+2019-12-20.22:11:41: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:11:41: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:11:41: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:11:41: Loading texture res/textures/Dot/man.png
+2019-12-20.22:11:41: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:11:41: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:11:41: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:11:41: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:11:41: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:11:41: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:11:41: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:11:41: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:11:41: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:11:41: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:11:41: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:11:41: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:11:42: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:11:42: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:11:42: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:11:42: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:11:42: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:11:42: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:12:31: OpenGL Info:
+2019-12-20.22:12:31: Vendor: NVIDIA Corporation
+2019-12-20.22:12:31: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:12:31: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:12:32: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:12:32: Loading texture res/textures/Dot/man.png
+2019-12-20.22:12:32: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:12:32: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:12:32: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:12:32: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:12:32: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:12:32: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:12:32: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:12:32: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:12:32: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:12:49: OpenGL Info:
+2019-12-20.22:12:49: Vendor: NVIDIA Corporation
+2019-12-20.22:12:49: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:12:49: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:12:49: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:12:49: Loading texture res/textures/Dot/man.png
+2019-12-20.22:12:49: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:12:49: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:12:49: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:12:49: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:12:49: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:12:49: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:12:49: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:12:49: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:12:49: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:13:19: OpenGL Info:
+2019-12-20.22:13:19: Vendor: NVIDIA Corporation
+2019-12-20.22:13:19: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:13:19: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:13:20: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:13:20: Loading texture res/textures/Dot/man.png
+2019-12-20.22:13:20: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:13:20: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:13:20: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:13:20: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:13:20: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:13:20: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:13:20: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:13:20: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:13:20: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:13:40: OpenGL Info:
+2019-12-20.22:13:40: Vendor: NVIDIA Corporation
+2019-12-20.22:13:40: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:13:40: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:13:41: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:13:41: Loading texture res/textures/Dot/man.png
+2019-12-20.22:13:41: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:13:41: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:13:41: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:13:41: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:13:41: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:13:41: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:13:41: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:13:41: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:13:41: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:13:56: OpenGL Info:
+2019-12-20.22:13:56: Vendor: NVIDIA Corporation
+2019-12-20.22:13:56: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:13:56: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:13:56: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:13:56: Loading texture res/textures/Dot/man.png
+2019-12-20.22:13:56: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:13:56: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:13:56: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:13:56: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:13:56: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:13:56: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:13:56: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:13:56: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:13:56: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:14:13: OpenGL Info:
+2019-12-20.22:14:13: Vendor: NVIDIA Corporation
+2019-12-20.22:14:13: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:14:13: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:14:13: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:14:13: Loading texture res/textures/Dot/man.png
+2019-12-20.22:14:13: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:14:13: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:14:13: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:14:13: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:14:13: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:14:13: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:14:13: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:14:13: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:14:13: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:14:45: OpenGL Info:
+2019-12-20.22:14:45: Vendor: NVIDIA Corporation
+2019-12-20.22:14:45: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:14:45: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:14:45: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:14:45: Loading texture res/textures/Dot/man.png
+2019-12-20.22:14:45: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:14:45: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:14:45: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:14:46: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:14:46: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:14:46: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:14:46: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:14:46: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:14:46: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:15:14: OpenGL Info:
+2019-12-20.22:15:14: Vendor: NVIDIA Corporation
+2019-12-20.22:15:14: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:15:14: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:15:14: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:15:14: Loading texture res/textures/Dot/man.png
+2019-12-20.22:15:14: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:15:14: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:15:14: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:15:14: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:15:14: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:15:14: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:15:15: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:15:15: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:15:15: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:15:45: OpenGL Info:
+2019-12-20.22:15:45: Vendor: NVIDIA Corporation
+2019-12-20.22:15:45: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:15:45: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:15:45: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:15:45: Loading texture res/textures/Dot/man.png
+2019-12-20.22:15:45: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:15:45: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:15:45: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:15:46: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:15:46: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:15:46: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:15:46: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:15:46: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:15:46: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:16:08: OpenGL Info:
+2019-12-20.22:16:08: Vendor: NVIDIA Corporation
+2019-12-20.22:16:08: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:16:08: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:16:08: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:16:08: Loading texture res/textures/Dot/man.png
+2019-12-20.22:16:08: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:16:08: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:16:08: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:16:08: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:16:08: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:16:08: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:16:08: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:16:08: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:16:08: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:17:01: OpenGL Info:
+2019-12-20.22:17:01: Vendor: NVIDIA Corporation
+2019-12-20.22:17:01: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:17:01: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:17:01: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:17:01: Loading texture res/textures/Dot/man.png
+2019-12-20.22:17:01: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:17:01: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:17:01: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:17:01: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:17:01: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:17:02: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:17:02: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:17:02: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:17:02: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:17:02: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:17:02: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:17:02: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:17:02: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:17:02: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:17:02: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:17:02: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:17:02: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:17:02: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:23:39: OpenGL Info:
+2019-12-20.22:23:39: Vendor: NVIDIA Corporation
+2019-12-20.22:23:39: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:23:39: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:23:39: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:23:39: Loading texture res/textures/Dot/man.png
+2019-12-20.22:23:39: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:23:39: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:23:40: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:23:40: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:23:40: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:23:40: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:23:40: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:23:40: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:23:40: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:23:54: OpenGL Info:
+2019-12-20.22:23:54: Vendor: NVIDIA Corporation
+2019-12-20.22:23:54: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:23:54: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:23:54: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:23:54: Loading texture res/textures/Dot/man.png
+2019-12-20.22:23:54: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:23:54: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:23:54: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:23:55: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:23:55: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:23:55: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:23:55: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:23:55: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:23:55: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:24:40: OpenGL Info:
+2019-12-20.22:24:40: Vendor: NVIDIA Corporation
+2019-12-20.22:24:40: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:24:40: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:24:40: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:24:40: Loading texture res/textures/Dot/man.png
+2019-12-20.22:24:40: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:24:40: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:24:40: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:24:40: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:24:40: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:24:40: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:24:40: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:24:40: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:24:40: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:25:14: OpenGL Info:
+2019-12-20.22:25:14: Vendor: NVIDIA Corporation
+2019-12-20.22:25:14: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:25:14: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:25:14: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:25:14: Loading texture res/textures/Dot/man.png
+2019-12-20.22:25:14: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:25:14: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:25:14: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:25:14: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:25:14: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:25:14: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:25:14: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:25:14: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:25:14: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:25:27: OpenGL Info:
+2019-12-20.22:25:27: Vendor: NVIDIA Corporation
+2019-12-20.22:25:27: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:25:27: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:25:27: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:25:27: Loading texture res/textures/Dot/man.png
+2019-12-20.22:25:27: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:25:27: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:25:27: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:25:27: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:25:27: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:25:27: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:25:27: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:25:27: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:25:27: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:26:09: OpenGL Info:
+2019-12-20.22:26:09: Vendor: NVIDIA Corporation
+2019-12-20.22:26:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:26:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:26:09: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:26:09: Loading texture res/textures/Dot/man.png
+2019-12-20.22:26:09: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:26:09: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:26:09: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:26:10: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:26:10: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:26:10: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:26:10: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:26:10: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:26:10: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:26:16: Window: Resized window width: 1920 height: 1017
+2019-12-20.22:30:06: OpenGL Info:
+2019-12-20.22:30:06: Vendor: NVIDIA Corporation
+2019-12-20.22:30:06: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:30:06: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:30:06: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:30:06: Loading texture res/textures/Dot/man.png
+2019-12-20.22:30:06: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:30:06: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:30:06: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:30:06: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:30:06: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:30:07: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:30:07: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:30:07: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:30:07: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:30:07: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:30:07: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:30:07: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:30:07: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:30:07: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:30:07: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:30:07: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:30:07: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:30:07: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:30:22: OpenGL Info:
+2019-12-20.22:30:22: Vendor: NVIDIA Corporation
+2019-12-20.22:30:22: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:30:22: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:30:22: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:30:22: Loading texture res/textures/Dot/man.png
+2019-12-20.22:30:22: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:30:22: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:30:22: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:30:22: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:30:22: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:30:22: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:30:22: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:30:22: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:30:22: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:30:34: OpenGL Info:
+2019-12-20.22:30:34: Vendor: NVIDIA Corporation
+2019-12-20.22:30:34: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:30:34: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:30:34: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:30:34: Loading texture res/textures/Dot/man.png
+2019-12-20.22:30:34: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:30:34: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:30:34: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:30:35: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:30:35: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:30:35: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:30:35: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:30:35: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:30:35: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:30:45: OpenGL Info:
+2019-12-20.22:30:45: Vendor: NVIDIA Corporation
+2019-12-20.22:30:45: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:30:45: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:30:46: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:30:46: Loading texture res/textures/Dot/man.png
+2019-12-20.22:30:46: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:30:46: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:30:46: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:30:46: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:30:46: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:30:46: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:30:46: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:30:46: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:30:46: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:31:18: OpenGL Info:
+2019-12-20.22:31:18: Vendor: NVIDIA Corporation
+2019-12-20.22:31:18: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:31:18: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:31:18: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:31:18: Loading texture res/textures/Dot/man.png
+2019-12-20.22:31:18: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:31:18: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:31:18: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:31:19: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:31:19: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:31:19: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:31:19: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:31:19: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:31:19: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:31:39: OpenGL Info:
+2019-12-20.22:31:39: Vendor: NVIDIA Corporation
+2019-12-20.22:31:39: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:31:39: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:31:40: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:31:40: Loading texture res/textures/Dot/man.png
+2019-12-20.22:31:40: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:31:40: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:31:40: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:31:40: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:31:40: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:31:40: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:31:40: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:31:40: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:31:40: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:31:43: Window: Resized window width: 1920 height: 1017
+2019-12-20.22:32:43: OpenGL Info:
+2019-12-20.22:32:43: Vendor: NVIDIA Corporation
+2019-12-20.22:32:43: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:32:43: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:32:43: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:32:43: Loading texture res/textures/Dot/man.png
+2019-12-20.22:32:43: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:32:43: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:32:43: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:32:44: 0(63) : error C1503: undefined variable "pariclePos"
+0(66) : error C0000: syntax error, unexpected identifier, expecting ',' or ';' at token "newParticleVelocity"
+
+2019-12-20.22:32:44: (null)
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:32:44: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:32:44: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:32:44: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:32:44: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:32:44: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:32:44: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:32:44: 0(63) : error C1503: undefined variable "pariclePos"
+0(66) : error C0000: syntax error, unexpected identifier, expecting ',' or ';' at token "newParticleVelocity"
+
+2019-12-20.22:32:44: (null)
+2019-12-20.22:32:52: OpenGL Info:
+2019-12-20.22:32:52: Vendor: NVIDIA Corporation
+2019-12-20.22:32:52: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:32:52: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:32:52: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:32:52: Loading texture res/textures/Dot/man.png
+2019-12-20.22:32:52: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:32:52: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:32:52: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:32:52: 0(63) : error C1503: undefined variable "pariclePos"
+
+2019-12-20.22:32:52: (null)
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:32:52: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:32:52: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:32:52: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:32:52: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:32:52: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:32:52: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:32:53: 0(63) : error C1503: undefined variable "pariclePos"
+
+2019-12-20.22:32:53: (null)
+2019-12-20.22:34:56: OpenGL Info:
+2019-12-20.22:34:56: Vendor: NVIDIA Corporation
+2019-12-20.22:34:56: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.22:34:56: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.22:34:56: Loading animated mesh res/animation/man.fbx
+2019-12-20.22:34:56: Loading texture res/textures/Dot/man.png
+2019-12-20.22:34:56: Loading texture res/textures/Dot/grass.png
+2019-12-20.22:34:56: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.22:34:57: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.22:34:57: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.22:34:57: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.22:34:57: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.22:34:57: Loading mesh res/models/Dot/grass.obj
+2019-12-20.22:34:57: Loading mesh res/models/Dot/tree.obj
+2019-12-20.22:34:57: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.22:35:02: Window: Resized window width: 1920 height: 1017
+2019-12-20.23:23:48: OpenGL Info:
+2019-12-20.23:23:48: Vendor: NVIDIA Corporation
+2019-12-20.23:23:48: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.23:23:48: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.23:23:48: Loading animated mesh res/animation/man.fbx
+2019-12-20.23:23:48: Loading texture res/textures/Dot/man.png
+2019-12-20.23:23:48: Loading texture res/textures/Dot/grass.png
+2019-12-20.23:23:48: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.23:23:48: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.23:23:48: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.23:23:48: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.23:23:48: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.23:23:48: Loading mesh res/models/Dot/grass.obj
+2019-12-20.23:23:48: Loading mesh res/models/Dot/tree.obj
+2019-12-20.23:23:48: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.23:37:09: OpenGL Info:
+2019-12-20.23:37:09: Vendor: NVIDIA Corporation
+2019-12-20.23:37:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.23:37:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.23:37:09: Loading animated mesh res/animation/man.fbx
+2019-12-20.23:37:09: Loading texture res/textures/Dot/man.png
+2019-12-20.23:37:09: Loading texture res/textures/Dot/grass.png
+2019-12-20.23:37:09: Loading texture res/textures/Dot/terrain.jpg
+2019-12-20.23:37:09: Loading shader res/textures/Skybox/test/back.png
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/AnimShader.glsl
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/ComputeShader.glsl
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/GeometryShader.glsl
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/GrassShader.glsl
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/GuiShader.glsl
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/InstanceShader.glsl
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/SkyboxShader.glsl
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/StaticShader.glsl
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/TestForComputeShader.glsl
+2019-12-20.23:37:09: Loading shader res/shaders/Dot/WaterShader.glsl
+2019-12-20.23:37:09: Loading instanced mesh res/models/Dot/grass.obj
+2019-12-20.23:37:09: Loading instanced mesh res/models/Dot/tree.obj
+2019-12-20.23:37:09: Loading mesh res/models/Dot/grass.obj
+2019-12-20.23:37:09: Loading mesh res/models/Dot/tree.obj
+2019-12-20.23:37:09: Loading mesh res/models/Dot/rockformation.obj
+2019-12-20.23:45:57: OpenGL Info:
+2019-12-20.23:45:57: Vendor: NVIDIA Corporation
+2019-12-20.23:45:57: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-20.23:45:57: Version: 4.6.0 NVIDIA 431.36
+2019-12-20.23:45:57: Loading animated mesh res/Animations/man.fbx
+2019-12-20.23:45:57: Loading texture res/Textures/Dot/man.png
+2019-12-20.23:45:57: Loading texture res/Textures/Dot/grass.png
+2019-12-20.23:45:57: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-20.23:45:57: Loading shader res/Textures/Skybox/back.png
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-20.23:45:57: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-20.23:45:57: Loading instanced mesh res/Models/grass.obj
+2019-12-20.23:45:57: Loading instanced mesh res/Models/tree.obj
+2019-12-20.23:45:57: Loading mesh res/Models/grass.obj
+2019-12-20.23:45:57: Loading mesh res/Models/tree.obj
+2019-12-20.23:45:57: Loading mesh res/Models/rockformation.obj
+2019-12-21.22:22:02: OpenGL Info:
+2019-12-21.22:22:02: Vendor: NVIDIA Corporation
+2019-12-21.22:22:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-21.22:22:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-21.22:22:02: Loading animated mesh res/Animations/man.fbx
+2019-12-21.22:22:02: Loading texture res/Textures/Dot/man.png
+2019-12-21.22:22:02: Loading texture res/Textures/Dot/grass.png
+2019-12-21.22:22:02: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-21.22:22:02: Loading shader res/Textures/Skybox/back.png
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-21.22:22:03: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-21.22:22:03: Loading instanced mesh res/Models/grass.obj
+2019-12-21.22:22:03: Loading instanced mesh res/Models/tree.obj
+2019-12-21.22:22:03: Loading mesh res/Models/grass.obj
+2019-12-21.22:22:03: Loading mesh res/Models/tree.obj
+2019-12-21.22:22:03: Loading mesh res/Models/rockformation.obj
+2019-12-21.22:22:28: OpenGL Info:
+2019-12-21.22:22:28: Vendor: NVIDIA Corporation
+2019-12-21.22:22:28: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-21.22:22:28: Version: 4.6.0 NVIDIA 431.36
+2019-12-21.22:22:28: Loading animated mesh res/Animations/man.fbx
+2019-12-21.22:22:28: Loading texture res/Textures/Dot/man.png
+2019-12-21.22:22:28: Loading texture res/Textures/Dot/grass.png
+2019-12-21.22:22:28: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-21.22:22:28: Loading shader res/Textures/Skybox/back.png
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-21.22:22:28: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-21.22:22:28: Loading instanced mesh res/Models/grass.obj
+2019-12-21.22:22:28: Loading instanced mesh res/Models/tree.obj
+2019-12-21.22:22:28: Loading mesh res/Models/grass.obj
+2019-12-21.22:22:28: Loading mesh res/Models/tree.obj
+2019-12-21.22:22:28: Loading mesh res/Models/rockformation.obj
+2019-12-21.22:27:21: OpenGL Info:
+2019-12-21.22:27:21: Vendor: NVIDIA Corporation
+2019-12-21.22:27:21: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-21.22:27:21: Version: 4.6.0 NVIDIA 431.36
+2019-12-21.22:27:21: Loading animated mesh res/Animations/man.fbx
+2019-12-21.22:27:21: Loading texture res/Textures/Dot/man.png
+2019-12-21.22:27:21: Loading texture res/Textures/Dot/grass.png
+2019-12-21.22:27:21: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-21.22:27:21: Loading shader res/Textures/Skybox/back.png
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-21.22:27:21: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-21.22:27:21: Loading instanced mesh res/Models/grass.obj
+2019-12-21.22:27:21: Loading instanced mesh res/Models/tree.obj
+2019-12-21.22:27:21: Loading mesh res/Models/grass.obj
+2019-12-21.22:27:21: Loading mesh res/Models/tree.obj
+2019-12-21.22:27:21: Loading mesh res/Models/rockformation.obj
+2019-12-21.22:27:24: Window: Resized window width: 1920 height: 1017
+2019-12-22.00:46:40: OpenGL Info:
+2019-12-22.00:46:40: Vendor: NVIDIA Corporation
+2019-12-22.00:46:40: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.00:46:40: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.00:46:40: Loading animated mesh res/Animations/man.fbx
+2019-12-22.00:46:40: Loading texture res/Textures/Dot/man.png
+2019-12-22.00:46:40: Loading texture res/Textures/Dot/grass.png
+2019-12-22.00:46:40: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.00:46:40: Loading shader res/Textures/Skybox/back.png
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.00:46:41: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.00:46:41: Loading instanced mesh res/Models/grass.obj
+2019-12-22.00:46:41: Loading instanced mesh res/Models/tree.obj
+2019-12-22.00:46:41: Loading mesh res/Models/grass.obj
+2019-12-22.00:46:41: Loading mesh res/Models/tree.obj
+2019-12-22.00:46:41: Loading mesh res/Models/rockformation.obj
+2019-12-22.02:53:33: OpenGL Info:
+2019-12-22.02:53:33: Vendor: NVIDIA Corporation
+2019-12-22.02:53:33: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.02:53:33: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.02:53:33: Loading animated mesh res/Animations/man.fbx
+2019-12-22.02:53:33: Loading texture res/Textures/Dot/man.png
+2019-12-22.02:53:34: Loading texture res/Textures/Dot/grass.png
+2019-12-22.02:53:34: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.02:53:34: Loading shader res/Textures/Skybox/back.png
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.02:53:34: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.02:53:34: Loading instanced mesh res/Models/grass.obj
+2019-12-22.02:53:34: Loading instanced mesh res/Models/tree.obj
+2019-12-22.02:53:34: Loading mesh res/Models/grass.obj
+2019-12-22.02:53:34: Loading mesh res/Models/tree.obj
+2019-12-22.02:53:34: Loading mesh res/Models/rockformation.obj
+2019-12-22.03:03:18: OpenGL Info:
+2019-12-22.03:03:18: Vendor: NVIDIA Corporation
+2019-12-22.03:03:18: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.03:03:18: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.03:03:18: Loading animated mesh res/Animations/man.fbx
+2019-12-22.03:03:18: Loading texture res/Textures/Dot/man.png
+2019-12-22.03:03:18: Loading texture res/Textures/Dot/grass.png
+2019-12-22.03:03:18: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.03:03:18: Loading shader res/Textures/Skybox/back.png
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.03:03:18: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.03:03:18: Loading instanced mesh res/Models/grass.obj
+2019-12-22.03:03:18: Loading instanced mesh res/Models/tree.obj
+2019-12-22.03:03:18: Loading mesh res/Models/grass.obj
+2019-12-22.03:03:18: Loading mesh res/Models/tree.obj
+2019-12-22.03:03:18: Loading mesh res/Models/rockformation.obj
+2019-12-22.03:12:35: OpenGL Info:
+2019-12-22.03:12:35: Vendor: NVIDIA Corporation
+2019-12-22.03:12:35: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.03:12:35: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.03:12:35: Loading animated mesh res/Animations/man.fbx
+2019-12-22.03:12:35: Loading texture res/Textures/Dot/man.png
+2019-12-22.03:12:35: Loading texture res/Textures/Dot/grass.png
+2019-12-22.03:12:35: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.03:12:35: Loading shader res/Textures/Skybox/back.png
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.03:12:36: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.03:12:36: Loading instanced mesh res/Models/grass.obj
+2019-12-22.03:12:36: Loading instanced mesh res/Models/tree.obj
+2019-12-22.03:12:36: Loading mesh res/Models/grass.obj
+2019-12-22.03:12:36: Loading mesh res/Models/tree.obj
+2019-12-22.03:12:36: Loading mesh res/Models/rockformation.obj
+2019-12-22.03:13:17: OpenGL Info:
+2019-12-22.03:13:17: Vendor: NVIDIA Corporation
+2019-12-22.03:13:17: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.03:13:17: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.03:13:17: Loading animated mesh res/Animations/man.fbx
+2019-12-22.03:13:17: Loading texture res/Textures/Dot/man.png
+2019-12-22.03:13:17: Loading texture res/Textures/Dot/grass.png
+2019-12-22.03:13:17: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.03:13:17: Loading shader res/Textures/Skybox/back.png
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.03:13:17: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.03:13:17: Loading instanced mesh res/Models/grass.obj
+2019-12-22.03:13:17: Loading instanced mesh res/Models/tree.obj
+2019-12-22.03:13:17: Loading mesh res/Models/grass.obj
+2019-12-22.03:13:17: Loading mesh res/Models/tree.obj
+2019-12-22.03:13:17: Loading mesh res/Models/rockformation.obj
+2019-12-22.03:30:25: OpenGL Info:
+2019-12-22.03:30:25: Vendor: NVIDIA Corporation
+2019-12-22.03:30:25: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.03:30:25: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.03:30:25: Loading animated mesh res/Animations/man.fbx
+2019-12-22.03:30:25: Loading texture res/Textures/Dot/man.png
+2019-12-22.03:30:25: Loading texture res/Textures/Dot/grass.png
+2019-12-22.03:30:25: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.03:30:25: Loading shader res/Textures/Skybox/back.png
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.03:30:25: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.03:30:25: Loading instanced mesh res/Models/grass.obj
+2019-12-22.03:30:25: Loading instanced mesh res/Models/tree.obj
+2019-12-22.03:30:25: Loading mesh res/Models/grass.obj
+2019-12-22.03:30:25: Loading mesh res/Models/tree.obj
+2019-12-22.03:30:25: Loading mesh res/Models/rockformation.obj
+2019-12-22.03:41:09: OpenGL Info:
+2019-12-22.03:41:09: Vendor: NVIDIA Corporation
+2019-12-22.03:41:09: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.03:41:09: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.03:41:09: Loading animated mesh res/Animations/man.fbx
+2019-12-22.03:41:09: Loading texture res/Textures/Dot/man.png
+2019-12-22.03:41:09: Loading texture res/Textures/Dot/grass.png
+2019-12-22.03:41:09: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.03:41:09: Loading shader res/Textures/Skybox/back.png
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.03:41:09: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.03:41:09: Loading instanced mesh res/Models/grass.obj
+2019-12-22.03:41:09: Loading instanced mesh res/Models/tree.obj
+2019-12-22.03:41:09: Loading mesh res/Models/grass.obj
+2019-12-22.03:41:09: Loading mesh res/Models/tree.obj
+2019-12-22.03:41:09: Loading mesh res/Models/rockformation.obj
+2019-12-22.03:44:27: OpenGL Info:
+2019-12-22.03:44:27: Vendor: NVIDIA Corporation
+2019-12-22.03:44:27: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.03:44:27: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.03:44:27: Loading animated mesh res/Animations/man.fbx
+2019-12-22.03:44:27: Loading texture res/Textures/Dot/man.png
+2019-12-22.03:44:27: Loading texture res/Textures/Dot/grass.png
+2019-12-22.03:44:27: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.03:44:27: Loading shader res/Textures/Skybox/back.png
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.03:44:27: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.03:44:27: Loading instanced mesh res/Models/grass.obj
+2019-12-22.03:44:27: Loading instanced mesh res/Models/tree.obj
+2019-12-22.03:44:27: Loading mesh res/Models/grass.obj
+2019-12-22.03:44:27: Loading mesh res/Models/tree.obj
+2019-12-22.03:44:27: Loading mesh res/Models/rockformation.obj
+2019-12-22.03:47:44: OpenGL Info:
+2019-12-22.03:47:44: Vendor: NVIDIA Corporation
+2019-12-22.03:47:44: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.03:47:44: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.03:47:44: Loading animated mesh res/Animations/man.fbx
+2019-12-22.03:47:44: Loading texture res/Textures/Dot/man.png
+2019-12-22.03:47:44: Loading texture res/Textures/Dot/grass.png
+2019-12-22.03:47:44: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.03:47:44: Loading shader res/Textures/Skybox/back.png
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.03:47:44: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.03:47:44: Loading instanced mesh res/Models/grass.obj
+2019-12-22.03:47:44: Loading instanced mesh res/Models/tree.obj
+2019-12-22.03:47:44: Loading mesh res/Models/grass.obj
+2019-12-22.03:47:44: Loading mesh res/Models/tree.obj
+2019-12-22.03:47:44: Loading mesh res/Models/rockformation.obj
+2019-12-22.14:21:25: OpenGL Info:
+2019-12-22.14:21:25: Vendor: NVIDIA Corporation
+2019-12-22.14:21:25: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:21:25: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:21:25: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:21:25: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:21:25: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:21:25: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:21:25: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:21:25: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:21:25: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:21:25: Loading instanced mesh res/Models/tree.obj
+2019-12-22.14:21:25: Loading mesh res/Models/grass.obj
+2019-12-22.14:21:25: Loading mesh res/Models/tree.obj
+2019-12-22.14:21:25: Loading mesh res/Models/rockformation.obj
+2019-12-22.14:50:02: OpenGL Info:
+2019-12-22.14:50:02: Vendor: NVIDIA Corporation
+2019-12-22.14:50:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:50:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:50:03: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:50:03: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:50:03: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:50:03: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:50:03: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:50:04: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:50:04: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:50:47: OpenGL Info:
+2019-12-22.14:50:47: Vendor: NVIDIA Corporation
+2019-12-22.14:50:47: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:50:47: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:50:47: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:50:47: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:50:48: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:50:48: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:50:48: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:50:49: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:50:49: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:55:35: OpenGL Info:
+2019-12-22.14:55:35: Vendor: NVIDIA Corporation
+2019-12-22.14:55:35: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:55:35: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:55:35: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:55:35: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:55:35: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:55:36: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:55:36: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:55:37: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:55:37: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:56:56: OpenGL Info:
+2019-12-22.14:56:56: Vendor: NVIDIA Corporation
+2019-12-22.14:56:56: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:56:56: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:56:56: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:56:56: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:56:56: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:56:56: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:56:56: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:56:57: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:56:57: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:57:32: OpenGL Info:
+2019-12-22.14:57:32: Vendor: NVIDIA Corporation
+2019-12-22.14:57:32: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:57:32: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:57:32: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:57:32: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:57:32: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:57:32: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:57:32: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:57:34: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:57:34: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:58:07: OpenGL Info:
+2019-12-22.14:58:07: Vendor: NVIDIA Corporation
+2019-12-22.14:58:07: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:58:07: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:58:07: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:58:07: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:58:07: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:58:08: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:58:08: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:58:09: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:58:09: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:58:43: OpenGL Info:
+2019-12-22.14:58:43: Vendor: NVIDIA Corporation
+2019-12-22.14:58:44: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:58:44: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:58:44: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:58:44: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:58:44: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:58:44: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:58:44: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:58:45: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:58:45: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:59:11: OpenGL Info:
+2019-12-22.14:59:11: Vendor: NVIDIA Corporation
+2019-12-22.14:59:11: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:59:11: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:59:11: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:59:11: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:59:11: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:59:11: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:59:11: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:59:12: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:59:12: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:59:39: OpenGL Info:
+2019-12-22.14:59:40: Vendor: NVIDIA Corporation
+2019-12-22.14:59:40: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:59:40: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:59:40: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:59:40: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:59:40: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:59:40: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:59:40: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.14:59:41: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.14:59:41: Loading instanced mesh res/Models/grass.obj
+2019-12-22.14:59:58: OpenGL Info:
+2019-12-22.14:59:58: Vendor: NVIDIA Corporation
+2019-12-22.14:59:58: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.14:59:58: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.14:59:58: Loading animated mesh res/Animations/man.fbx
+2019-12-22.14:59:58: Loading texture res/Textures/Dot/man.png
+2019-12-22.14:59:58: Loading texture res/Textures/Dot/grass.png
+2019-12-22.14:59:58: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.14:59:58: Loading shader res/Textures/Skybox/back.png
+2019-12-22.14:59:59: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.14:59:59: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.14:59:59: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:00:00: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:00:00: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:00:00: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:00:00: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:00:00: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:00:00: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:00:00: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:00:00: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:00:31: OpenGL Info:
+2019-12-22.15:00:31: Vendor: NVIDIA Corporation
+2019-12-22.15:00:31: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:00:31: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:00:31: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:00:31: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:00:31: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:00:31: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:00:31: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:00:31: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:00:31: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:00:31: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:00:31: Loading mesh res/Models/grass.obj
+2019-12-22.15:00:31: Loading mesh res/Models/tree.obj
+2019-12-22.15:00:31: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:00:54: OpenGL Info:
+2019-12-22.15:00:54: Vendor: NVIDIA Corporation
+2019-12-22.15:00:54: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:00:54: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:00:54: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:00:54: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:00:55: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:00:55: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:00:55: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:00:56: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:00:56: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:01:51: OpenGL Info:
+2019-12-22.15:01:51: Vendor: NVIDIA Corporation
+2019-12-22.15:01:51: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:01:51: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:01:51: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:01:51: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:01:51: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:01:51: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:01:51: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:01:52: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:01:52: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:02:17: OpenGL Info:
+2019-12-22.15:02:17: Vendor: NVIDIA Corporation
+2019-12-22.15:02:17: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:02:17: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:02:17: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:02:17: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:02:17: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:02:17: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:02:17: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:02:18: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:02:18: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:02:18: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:02:18: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:02:18: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:02:18: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:02:18: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:02:19: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:02:19: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:02:19: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:02:19: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:03:36: OpenGL Info:
+2019-12-22.15:03:36: Vendor: NVIDIA Corporation
+2019-12-22.15:03:36: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:03:36: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:04:24: OpenGL Info:
+2019-12-22.15:04:24: Vendor: NVIDIA Corporation
+2019-12-22.15:04:24: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:04:24: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:04:24: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:04:24: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:04:24: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:04:24: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:04:24: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:04:25: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:04:25: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:05:07: OpenGL Info:
+2019-12-22.15:05:07: Vendor: NVIDIA Corporation
+2019-12-22.15:05:07: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:05:07: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:05:08: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:05:08: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:05:08: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:05:08: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:05:08: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:05:09: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:05:09: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:06:44: OpenGL Info:
+2019-12-22.15:06:44: Vendor: NVIDIA Corporation
+2019-12-22.15:06:44: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:06:44: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:06:45: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:06:45: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:06:45: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:06:45: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:06:45: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:06:46: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:06:46: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:07:05: OpenGL Info:
+2019-12-22.15:07:05: Vendor: NVIDIA Corporation
+2019-12-22.15:07:05: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:07:05: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:07:05: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:07:05: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:07:05: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:07:05: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:07:06: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:07:07: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:07:07: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:08:25: OpenGL Info:
+2019-12-22.15:08:25: Vendor: NVIDIA Corporation
+2019-12-22.15:08:25: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:08:25: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:08:26: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:08:26: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:08:26: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:08:26: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:08:26: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:08:26: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:08:26: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:08:26: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:08:26: Loading mesh res/Models/grass.obj
+2019-12-22.15:08:26: Loading mesh res/Models/tree.obj
+2019-12-22.15:08:26: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:09:10: OpenGL Info:
+2019-12-22.15:09:10: Vendor: NVIDIA Corporation
+2019-12-22.15:09:10: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:09:10: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:09:10: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:09:10: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:09:10: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:09:10: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:09:10: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:09:12: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:09:12: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:09:59: OpenGL Info:
+2019-12-22.15:09:59: Vendor: NVIDIA Corporation
+2019-12-22.15:09:59: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:09:59: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:09:59: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:09:59: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:09:59: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:09:59: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:09:59: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:10:00: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:10:00: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:10:32: OpenGL Info:
+2019-12-22.15:10:32: Vendor: NVIDIA Corporation
+2019-12-22.15:10:32: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:10:32: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:10:32: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:10:32: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:10:32: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:10:32: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:10:32: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:10:33: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:10:33: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:10:33: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:10:33: Loading mesh res/Models/grass.obj
+2019-12-22.15:10:33: Loading mesh res/Models/tree.obj
+2019-12-22.15:10:33: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:11:48: OpenGL Info:
+2019-12-22.15:11:48: Vendor: NVIDIA Corporation
+2019-12-22.15:11:48: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:11:48: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:11:48: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:11:48: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:11:48: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:11:48: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:11:49: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:11:50: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:11:50: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:11:50: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:11:50: Loading mesh res/Models/grass.obj
+2019-12-22.15:11:50: Loading mesh res/Models/tree.obj
+2019-12-22.15:11:50: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:12:18: OpenGL Info:
+2019-12-22.15:12:18: Vendor: NVIDIA Corporation
+2019-12-22.15:12:18: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:12:18: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:12:18: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:12:18: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:12:18: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:12:18: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:12:18: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:12:20: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:12:20: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:12:20: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:12:20: Loading mesh res/Models/grass.obj
+2019-12-22.15:12:20: Loading mesh res/Models/tree.obj
+2019-12-22.15:12:20: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:12:40: OpenGL Info:
+2019-12-22.15:12:40: Vendor: NVIDIA Corporation
+2019-12-22.15:12:40: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:12:40: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:12:40: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:12:40: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:12:40: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:12:40: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:12:41: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:12:42: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:12:42: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:12:42: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:12:42: Loading mesh res/Models/grass.obj
+2019-12-22.15:12:42: Loading mesh res/Models/tree.obj
+2019-12-22.15:12:42: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:13:12: OpenGL Info:
+2019-12-22.15:13:12: Vendor: NVIDIA Corporation
+2019-12-22.15:13:12: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:13:12: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:13:12: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:13:12: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:13:12: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:13:12: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:13:12: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:13:13: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:13:13: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:13:13: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:13:13: Loading mesh res/Models/grass.obj
+2019-12-22.15:13:14: Loading mesh res/Models/tree.obj
+2019-12-22.15:13:14: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:14:02: OpenGL Info:
+2019-12-22.15:14:02: Vendor: NVIDIA Corporation
+2019-12-22.15:14:02: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:14:02: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:14:02: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:14:02: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:14:02: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:14:03: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:14:03: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:14:04: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:14:04: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:14:04: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:14:04: Loading mesh res/Models/grass.obj
+2019-12-22.15:14:04: Loading mesh res/Models/tree.obj
+2019-12-22.15:14:04: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:14:43: OpenGL Info:
+2019-12-22.15:14:43: Vendor: NVIDIA Corporation
+2019-12-22.15:14:43: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:14:43: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:14:43: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:14:43: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:14:43: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:14:43: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:14:43: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:14:44: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:14:44: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:14:44: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:14:44: Loading mesh res/Models/grass.obj
+2019-12-22.15:14:44: Loading mesh res/Models/tree.obj
+2019-12-22.15:14:44: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:15:40: OpenGL Info:
+2019-12-22.15:15:40: Vendor: NVIDIA Corporation
+2019-12-22.15:15:40: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:15:40: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:15:40: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:15:40: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:15:40: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:15:40: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:15:40: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:15:41: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:15:41: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:15:41: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:15:41: Loading mesh res/Models/grass.obj
+2019-12-22.15:15:41: Loading mesh res/Models/tree.obj
+2019-12-22.15:15:41: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:16:14: OpenGL Info:
+2019-12-22.15:16:14: Vendor: NVIDIA Corporation
+2019-12-22.15:16:14: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:16:14: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:16:14: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:16:14: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:16:14: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:16:15: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:16:15: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:16:16: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:16:16: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:16:16: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:16:16: Loading mesh res/Models/grass.obj
+2019-12-22.15:16:16: Loading mesh res/Models/tree.obj
+2019-12-22.15:16:16: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:16:32: OpenGL Info:
+2019-12-22.15:16:32: Vendor: NVIDIA Corporation
+2019-12-22.15:16:32: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:16:32: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:16:32: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:16:32: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:16:32: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:16:32: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:16:32: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:16:33: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:16:33: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:16:33: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:16:33: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:16:33: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:16:33: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:16:33: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:16:33: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:16:33: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:16:34: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:16:34: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:16:34: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:16:34: Loading mesh res/Models/grass.obj
+2019-12-22.15:16:34: Loading mesh res/Models/tree.obj
+2019-12-22.15:16:34: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:20:53: OpenGL Info:
+2019-12-22.15:20:53: Vendor: NVIDIA Corporation
+2019-12-22.15:20:53: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:20:53: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:20:54: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:20:54: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:20:54: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:20:54: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:20:54: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:20:55: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:20:55: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:20:55: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:20:55: Loading mesh res/Models/grass.obj
+2019-12-22.15:20:55: Loading mesh res/Models/tree.obj
+2019-12-22.15:20:55: Loading mesh res/Models/rockformation.obj
+2019-12-22.15:22:57: OpenGL Info:
+2019-12-22.15:22:57: Vendor: NVIDIA Corporation
+2019-12-22.15:22:57: Renderer: GeForce 940M/PCIe/SSE2
+2019-12-22.15:22:57: Version: 4.6.0 NVIDIA 431.36
+2019-12-22.15:22:57: Loading animated mesh res/Animations/man.fbx
+2019-12-22.15:22:57: Loading texture res/Textures/Dot/man.png
+2019-12-22.15:22:57: Loading texture res/Textures/Dot/grass.png
+2019-12-22.15:22:57: Loading texture res/Textures/Dot/terrain.jpg
+2019-12-22.15:22:57: Loading shader res/Textures/Skybox/back.png
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/AnimShader.glsl
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/ComputeShader.glsl
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/GeometryShader.glsl
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/GrassShader.glsl
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/GuiShader.glsl
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/InstanceShader.glsl
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/SkyboxShader.glsl
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/StaticShader.glsl
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/TestForComputeShader.glsl
+2019-12-22.15:22:59: Loading shader res/Shaders/Dot/WaterShader.glsl
+2019-12-22.15:22:59: Loading instanced mesh res/Models/grass.obj
+2019-12-22.15:22:59: Loading instanced mesh res/Models/tree.obj
+2019-12-22.15:22:59: Loading mesh res/Models/grass.obj
+2019-12-22.15:22:59: Loading mesh res/Models/tree.obj
+2019-12-22.15:22:59: Loading mesh res/Models/rockformation.obj

@@ -61,11 +61,32 @@ namespace Dot {
 		m_Vertices.reserve(mesh->mNumVertices);
 
 		// Extract vertices from model
+		m_Min.x = mesh->mVertices[0].x;
+		m_Min.y = mesh->mVertices[0].y;
+		m_Min.z = mesh->mVertices[0].z;
+		
+		m_Max.x = mesh->mVertices[0].x;
+		m_Max.y = mesh->mVertices[0].y;
+		m_Max.z = mesh->mVertices[0].z;
 		for (size_t i = 0; i < m_Vertices.capacity(); i++)
 		{
 			Vertex vertex;
 			vertex.Position = { mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z };
 			vertex.Normal = { mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z };
+
+			if (vertex.Position.x < m_Min.x)
+				m_Min.x = vertex.Position.x;
+			if (vertex.Position.y < m_Min.y)
+				m_Min.y = vertex.Position.y;
+			if (vertex.Position.z < m_Min.z)
+				m_Min.z = vertex.Position.z;
+			
+			if (vertex.Position.x > m_Max.x)
+				m_Max.x = vertex.Position.x;
+			if (vertex.Position.y > m_Max.y)
+				m_Max.y = vertex.Position.y;
+			if (vertex.Position.z > m_Max.z)
+				m_Max.z = vertex.Position.z;
 
 			if (mesh->HasTangentsAndBitangents())
 			{
@@ -138,7 +159,7 @@ namespace Dot {
 
 	void InstancedMesh::Update(const std::vector<glm::mat4>& transforms,unsigned int numInstances,unsigned int offsetInstances)
 	{
-		D_ASSERT(numInstances + offsetInstances <= m_Capacity);
+		D_ASSERT((numInstances + offsetInstances <= m_Capacity),"Instanced mesh out of capacity");
 		m_Instances = numInstances + offsetInstances;
 		m_Mesh->GetVAO()->GetVertexBuffer(1)->Update(&transforms[0], numInstances * sizeof(glm::mat4), offsetInstances * sizeof(glm::mat4));
 	}

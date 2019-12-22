@@ -48,7 +48,6 @@ namespace Dot {
 						}
 						if (std::strstr(line.c_str(), "}"))
 						{
-							std::cout << tmpObject.m_Attribute[1].m_Value.second << std::endl;
 							json.m_Object[keywords[i]].push_back(tmpObject);
 							tmpObject.m_Attribute.clear();
 						}

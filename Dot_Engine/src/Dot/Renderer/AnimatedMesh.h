@@ -21,7 +21,8 @@ namespace Dot {
 		~AnimatedMesh();
 
 		void Render();
-		void AnimateBones(float TimeInSeconds,unsigned int animation);
+		void AnimateBones(float TimeInSeconds);
+		void SetToDefaultPosition();
 
 		glm::mat4 GetInverse() { return m_InverseTransform; }
 		const float GetDuration() const { return (float)m_pScene->mAnimations[0]->mDuration; }

@@ -11,6 +11,7 @@ namespace Dot {
 		m_Texture = AssetManager::Get()->GetTexture(texture);
 		
 		std::vector<glm::mat4> transforms;
+		transforms.resize(1);
 		// Requires to create own copy
 		Ref<InstancedMesh> instance = std::make_shared<InstancedMesh>(model,capacity,transforms);
 		m_Instance.push_back(instance);

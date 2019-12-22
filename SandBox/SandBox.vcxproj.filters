@@ -6,20 +6,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Environment\Player.h">
-      <Filter>Environment</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Environment\Sandbox.h">
-      <Filter>Environment</Filter>
-    </ClInclude>
+    <ClInclude Include="src\GameLayer.h" />
+    <ClInclude Include="src\Player.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Environment\Sandbox.cpp">
-      <Filter>Environment</Filter>
-    </ClCompile>
+    <ClCompile Include="src\SandboxApp.cpp" />
+    <ClCompile Include="src\GameLayer.cpp" />
+    <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Dot\GrassShader.glsl" />
-    <None Include="res\shaders\Dot\Grass\GrassShader.glsl" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
+
+#include "Dot/PhysicsEngine/Components/AABB.h"
 #include "Buffers/ArrayBuffer.h"
 
 namespace Dot {
@@ -37,6 +39,9 @@ namespace Dot {
 		unsigned int m_NumVertices;
 	
 		std::string m_FilePath;
+	private:
+		glm::vec3 m_Min;
+		glm::vec3 m_Max;
 	};
 
 	class InstancedMesh

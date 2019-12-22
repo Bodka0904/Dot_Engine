@@ -93,20 +93,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Environment\Player.h" />
-    <ClInclude Include="src\Environment\Sandbox.h" />
+    <ClInclude Include="src\GameLayer.h" />
+    <ClInclude Include="src\Player.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Environment\Sandbox.cpp" />
+    <ClCompile Include="src\GameLayer.cpp" />
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\SandboxApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dot_Engine\Dot_Engine.vcxproj">
       <Project>{21301712-0DE8-585F-76EF-31BB62C6F34F}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\shaders\Dot\GrassShader.glsl" />
-    <None Include="res\shaders\Dot\Grass\GrassShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

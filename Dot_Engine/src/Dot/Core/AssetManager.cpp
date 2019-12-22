@@ -27,9 +27,10 @@ namespace Dot {
 		for (auto& it : json.m_Object)
 		{
 			if (it.first == "Textures")
-			{	
+			{
 				for (int i = 0; i < it.second.size(); ++i)
 				{
+					
 					TextureAsset asset;
 
 					asset.name = it.second[i].m_Attribute[0].m_Value.second;
@@ -72,14 +73,15 @@ namespace Dot {
 
 					asset.name = it.second[i].m_Attribute[0].m_Value.second;
 					for (int j = 1; j < it.second[i].m_Attribute.size(); ++j)
+					{	
 						asset.face.push_back(it.second[i].m_Attribute[j].m_Value.second);
-
+					}
 					LOG_INFO("Loading shader %s", asset.face[0].c_str());
 					m_CubeMap[asset.name] = CubeMapTexture::Create(asset.face);
 				}
 			}
 			else if (it.first == "AnimatedMeshes")
-			{		
+			{
 				for (int i = 0; i < it.second.size(); ++i)
 				{
 					AnimatedMeshAsset asset;
@@ -104,6 +106,7 @@ namespace Dot {
 			}
 			else if (it.first == "InstancedMeshes")
 			{
+
 				for (int i = 0; i < it.second.size(); ++i)
 				{
 					InstancedMeshAsset asset;
@@ -112,6 +115,7 @@ namespace Dot {
 					asset.capacity = atoi(it.second[i].m_Attribute[2].m_Value.second.c_str());
 
 					std::vector<glm::mat4>transforms;
+					transforms.resize(1);
 
 					LOG_INFO("Loading instanced mesh %s", asset.path.c_str());
 					m_InstancedMesh[asset.name] = std::make_shared<InstancedMesh>(asset.path,asset.capacity,transforms);
