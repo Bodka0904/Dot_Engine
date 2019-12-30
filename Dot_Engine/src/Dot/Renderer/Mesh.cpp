@@ -64,7 +64,7 @@ namespace Dot {
 		m_Min.x = mesh->mVertices[0].x;
 		m_Min.y = mesh->mVertices[0].y;
 		m_Min.z = mesh->mVertices[0].z;
-		
+
 		m_Max.x = mesh->mVertices[0].x;
 		m_Max.y = mesh->mVertices[0].y;
 		m_Max.z = mesh->mVertices[0].z;
@@ -80,7 +80,7 @@ namespace Dot {
 				m_Min.y = vertex.Position.y;
 			if (vertex.Position.z < m_Min.z)
 				m_Min.z = vertex.Position.z;
-			
+
 			if (vertex.Position.x > m_Max.x)
 				m_Max.x = vertex.Position.x;
 			if (vertex.Position.y > m_Max.y)
@@ -100,7 +100,7 @@ namespace Dot {
 		}
 
 		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		m_VertexBuffer = VertexBuffer::Create((void*)m_Vertices.data(), m_Vertices.size() * sizeof(Vertex),D_STATIC_DRAW);
+		m_VertexBuffer = VertexBuffer::Create((void*)m_Vertices.data(), m_Vertices.size() * sizeof(Vertex), D_STATIC_DRAW);
 		m_NumVertices = m_Vertices.size();
 
 		BufferLayout layout = {
@@ -136,8 +136,8 @@ namespace Dot {
 
 
 
-	InstancedMesh::InstancedMesh(const std::string& name,int num, const std::vector<glm::mat4>& transforms)
-		: m_Capacity(num),m_Instances(transforms.size())
+	InstancedMesh::InstancedMesh(const std::string& name, int num, const std::vector<glm::mat4>& transforms)
+		: m_Capacity(num), m_Instances(transforms.size())
 	{
 		if (m_Capacity > MAX_INSTANCE)
 		{
@@ -157,9 +157,9 @@ namespace Dot {
 	}
 
 
-	void InstancedMesh::Update(const std::vector<glm::mat4>& transforms,unsigned int numInstances,unsigned int offsetInstances)
+	void InstancedMesh::Update(const std::vector<glm::mat4>& transforms, unsigned int numInstances, unsigned int offsetInstances)
 	{
-		D_ASSERT((numInstances + offsetInstances <= m_Capacity),"Instanced mesh out of capacity");
+		D_ASSERT((numInstances + offsetInstances <= m_Capacity), "Instanced mesh out of capacity");
 		m_Instances = numInstances + offsetInstances;
 		m_Mesh->GetVAO()->GetVertexBuffer(1)->Update(&transforms[0], numInstances * sizeof(glm::mat4), offsetInstances * sizeof(glm::mat4));
 	}

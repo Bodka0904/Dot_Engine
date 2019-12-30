@@ -43,8 +43,14 @@ namespace Dot {
 		
 		RenderCommand::SubmitArrays(vao, drawMod);
 	}
+	void Renderer::SubmitArraysCount(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform,int count, int drawMod)
+	{
+		shader->Bind();
+		shader->UploadUniformMat4("u_ModelMatrix", transform);
 
-	void Renderer::SubmitArraysInstanced(const Ref<Shader> shader, const Ref<Light>light, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod)
+		RenderCommand::SubmitArraysCount(vao,count, drawMod);
+	}
+	void Renderer::SubmitArraysInstanced(const Ref<Shader> shader, const Ref<Light>&light, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod)
 	{
 		shader->Bind();
 		shader->UploadUniformFloat3("u_LightPosition", light->GetPosition());
@@ -55,7 +61,7 @@ namespace Dot {
 	}
 
 
-	void Renderer::SubmitElements(const Ref<Shader> shader, const Ref<Light>light, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod)
+	void Renderer::SubmitElements(const Ref<Shader> shader, const Ref<Light>&light, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod)
 	{
 		shader->Bind();
 
@@ -69,7 +75,7 @@ namespace Dot {
 
 
 
-	void Renderer::SubmitInstances(const Ref<Shader> shader, const Ref<Light>light, const Ref<ArrayBuffer>& vao, unsigned int num, int drawMod)
+	void Renderer::SubmitInstances(const Ref<Shader> shader, const Ref<Light>&light, const Ref<ArrayBuffer>& vao, unsigned int num, int drawMod)
 	{
 
 		shader->Bind();

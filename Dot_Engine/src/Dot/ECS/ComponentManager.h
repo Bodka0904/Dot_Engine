@@ -35,7 +35,7 @@ namespace Dot {
 		{
 			const char* typeName = typeid(T).name();
 
-			assert(m_ComponentTypes.find(typeName) != m_ComponentTypes.end(),"Component not registered before use.");
+			D_ASSERT(m_ComponentTypes.find(typeName) != m_ComponentTypes.end(),"Component not registered before use.");
 
 			// Return this component's type - used for creating signatures
 			return m_ComponentTypes[typeName];
@@ -72,7 +72,7 @@ namespace Dot {
 		{
 			const char* typeName = typeid(T).name();
 
-			assert(m_Components.find(typeName) != m_Components.end() && "Component not registered before use.");
+			D_ASSERT(m_Components.find(typeName) != m_Components.end() , "Component not registered before use.");
 
 			return std::static_pointer_cast<Component<T>>(m_Components[typeName]);
 		}

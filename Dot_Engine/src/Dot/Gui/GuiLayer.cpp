@@ -28,19 +28,7 @@ namespace Dot {
 		StaticText::Init(1000);
 		Gui::Init("res/Textures/Gui/TexturePack_black.png");
 
-		m_Camera = std::make_shared<OrthoCamera>(0, Input::GetWindowSize().first, Input::GetWindowSize().second, 0);
-		
-		Wrapper::Create("wrapper", glm::vec2(300, 50), glm::vec2(300, 500));
-		Gui::Get()->EnableWrapper("wrapper");
-		{
-			Button::Create("button", glm::vec2(300, 50), glm::vec2(50, 50));
-			Checkbox::Create("checkbox", glm::vec2(300, 50), glm::vec2(50, 50));
-			Slider::Create("slider", glm::vec2(50, 50), glm::vec2(200, 20), &value);
-			Button::Create("button2", glm::vec2(300, 50), glm::vec2(50, 50));	
-				
-		}Gui::Get()->DisableWrapper();	
-		
-		
+		m_Camera = std::make_shared<OrthoCamera>(0, Input::GetWindowSize().first, Input::GetWindowSize().second, 0);	
 		
 		// GuiShader setup //
 		m_GuiShader = Shader::Create("GuiShader", "res/Shaders/Dot/GuiShader.glsl");
@@ -66,26 +54,7 @@ namespace Dot {
 	}
 
 	void GuiLayer::OnUpdate(Timestep ts)
-	{
-		if (Button::GetWrapped("wrapper", "button").GetClicked())
-		{
-			std::cout << "Click!" << std::endl;
-			m_Text->Update(" AKra");
-			m_Renderer->PushOffset(m_Text->GetVertice(5),5);
-			m_Renderer->ClearBuffer();
-			m_Renderer->Push(m_Text->GetVertice(0), m_Text->GetNumChar());
-			m_Renderer->PrepareForRender();
-		}
-		if (Checkbox::GetWrapped("wrapper", "checkbox").GetClicked())
-		{
-			std::cout << "Checked!" << std::endl;
-		}
-		if (Button::GetWrapped("wrapper", "button2").GetClicked())
-		{
-			m_Text->RestartCurserX();
-			m_Text->SetPositionInBuffer(0);
-		}
-		
+	{	
 		Gui::Get()->Update();
 		Gui::Get()->Render(m_GuiShader, m_Camera);
 		

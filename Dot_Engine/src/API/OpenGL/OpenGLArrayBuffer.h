@@ -18,7 +18,7 @@ namespace Dot {
 
 		virtual Ref<VertexBuffer> GetVertexBuffer(int index) const override { return m_VertexBuffers[index]; };
 		virtual Ref<IndexBuffer> GetIndexBuffer() const override { return m_IndexBuffer; }
-
+		virtual Ref<ShaderStorageBuffer> GetStorageBuffer(int index) const override { return m_ShaderBuffers[index]; }
 	private:
 		unsigned int m_VAO;
 		Ref<IndexBuffer> m_IndexBuffer;

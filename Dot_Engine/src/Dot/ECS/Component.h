@@ -14,7 +14,6 @@ namespace Dot {
 	class Component : public IComponent
 	{
 	public:	
-		
 		bool Contains(Entity entity)
 		{
 			return m_Lookup.find(entity) != m_Lookup.end();
@@ -61,7 +60,7 @@ namespace Dot {
 		}
 	
 	private:
-		std::array<T,MAX_ENTITIES> m_Component;
+		std::array<T, MAX_ENTITIES> m_Component;
 		std::unordered_map<Entity, size_t> m_Lookup;
 
 		size_t m_Num = 0;

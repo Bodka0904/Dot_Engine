@@ -54,7 +54,7 @@ namespace Dot {
 		}
 		else 
 		{
-			LOG_ERR("Error parsing '%s': '%s'\n", Filename.c_str(), m_Importer.GetErrorString());
+			LOG_ERR("Error parsing '%s': '%s'", Filename.c_str(), m_Importer.GetErrorString());
 		}
 	}
 

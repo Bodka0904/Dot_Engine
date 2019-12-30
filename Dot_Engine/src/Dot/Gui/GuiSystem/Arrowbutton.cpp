@@ -84,7 +84,7 @@ namespace Dot {
 	}
 	Arrbutton& Arrbutton::GetWrapped(const std::string& wrapper, const std::string& label)
 	{	
-		return (Arrbutton&)Gui::Get()->GetWrappeWidget(wrapper, label);;
+		return (Arrbutton&)Gui::Get()->GetWrappedWidget(wrapper, label);;
 	}
 	void Arrbutton::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size)
 	{

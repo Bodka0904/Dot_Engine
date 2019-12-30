@@ -9,6 +9,8 @@ namespace Dot {
 		m_Radius(radius),
 		m_Density(density)
 	{
+		m_Transform.m_Rot = glm::vec3(0, 0, 0);
+		m_Transform.m_Scale = glm::vec3(1, 1, 1);
 	}
 	Brush::~Brush()
 	{
@@ -18,15 +20,13 @@ namespace Dot {
 		std::vector<glm::mat4> transforms;
 		transforms.resize(m_Intensity);
 
-		m_Transform.SetPos(position);
+		m_Transform.m_Pos = position;
 		for (int i = 0; i < m_Intensity; ++i)
 		{
-			glm::vec2 nextPos = CalcNextPosition(m_Transform.GetPos(), position);
-			m_Transform.SetPos(glm::vec3(nextPos.x, terrain->GetHeight(glm::vec3(nextPos.x, 0, nextPos.y)), nextPos.y));
-			m_Transform.GetRot().y = RandomGenerator::Random(0, 90);
-			m_Transform.UpdateModel();
+			glm::vec2 nextPos = CalcNextPosition(m_Transform.m_Pos, position);
+			m_Transform.m_Pos = glm::vec3(nextPos.x, terrain->GetHeight(glm::vec3(nextPos.x, 0, nextPos.y)), nextPos.y);
+			m_Transform.m_Rot.y = RandomGenerator::Random(0, 90);
 			transforms[i] = m_Transform.GetModel();
-
 		}
 		instance->Update(transforms);
 	}
@@ -63,7 +63,7 @@ namespace Dot {
 		{
 			z = RandomGenerator::Random(previousPosition.z - m_Density, previousPosition.z);
 		}
-		else if (m_Transform.GetPos().z - m_Density < emitPlace.z - m_Radius)
+		else if (previousPosition.z - m_Density < emitPlace.z - m_Radius)
 		{
 			z = RandomGenerator::Random(previousPosition.z, previousPosition.z + m_Density);
 		}

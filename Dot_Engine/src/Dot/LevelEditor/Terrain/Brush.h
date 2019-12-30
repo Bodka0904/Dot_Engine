@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/PhysicsEngine/Components/Transform.h"
+#include "Dot/PhysicsEngine/Components/ComponentData.h"
 #include "Dot/LevelEditor/Terrain/Terrain.h"
 #include "Dot/LevelEditor/Terrain/BrushInstance.h"
 

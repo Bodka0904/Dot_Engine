@@ -103,7 +103,7 @@ namespace Dot {
 		void Render(const Ref<Shader> shader,const Ref<OrthoCamera> camera);
 		
 		const Widget& GetWidget(const std::string& label) { return *m_Widget[label]; }
-		const Widget& GetWrappeWidget(const std::string& wrapper,const std::string widget) { return m_Wrapper[wrapper]->GetWidget(widget); }
+		const Widget& GetWrappedWidget(const std::string& wrapper,const std::string widget) { return m_Wrapper[wrapper]->GetWidget(widget); }
 		
 		static void Init(const std::string& texturePack);
 		static Gui* Get() {return s_Instance;}

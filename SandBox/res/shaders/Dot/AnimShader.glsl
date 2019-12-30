@@ -44,7 +44,7 @@ void main()
 	gl_Position = Position;
 
 	v_FragPos = Position.xyz;
-	v_Normal = (ViewProjectionMatrix * u_ModelMatrix * BoneTransform * vec4(a_Normal, 0.0)).xyz;
+	v_Normal = mat3(transpose(inverse(u_ModelMatrix))) * a_Normal;
 	v_TexCoord = a_TexCoord;
 	v_ViewPos = ViewPos;
 }
@@ -61,28 +61,58 @@ in vec3 v_ViewPos;
 uniform vec3 u_LightPosition;
 uniform vec3 u_LightColor;
 uniform float u_LightStrength;
-uniform float u_AmbientStrength;
 
 uniform sampler2D u_Texture;
 
 out vec4 color;
 
-void main()
+float c_AmbientStrength = 0.3;
+float c_SpecularStrength = 0.5;
+float c_Constant = 1.0f;
+float c_Linear = 0.09f;
+float c_Quadratic = 0.032f;
+
+
+
+float CalcPointLight()
+{
+	float distance = length(u_LightPosition - v_FragPos);
+	float attenuation = 1.0 / (c_Constant + c_Linear * distance +
+		c_Quadratic * (distance * distance));
+
+	return attenuation;
+}
+
+
+vec3 CalcDirLight()
 {
 	vec3 norm = normalize(v_Normal);
 	vec3 lightDir = normalize(u_LightPosition - v_FragPos);
 
-	vec3 ambient = u_LightStrength * u_LightColor;
+	vec3 ambient = c_AmbientStrength * u_LightColor;
 	vec3 viewDir = normalize(v_ViewPos - v_FragPos);
 	vec3 reflectDir = reflect(-lightDir, norm);
 
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
 	float diff = max(dot(norm, lightDir), 0.0);
 
-	vec3 specular = u_LightStrength * spec * u_LightColor;
+	vec3 specular = c_SpecularStrength * spec * u_LightColor;
 	vec3 diffuse = diff * u_LightColor;
-	vec3 result =  (ambient + diffuse + specular);
 
+	float attenuation = CalcPointLight();
+	ambient *= attenuation;
+	diffuse *= attenuation;
+	specular *= attenuation;
+
+	vec3 result = (ambient + diffuse + specular) * u_LightStrength;
+
+	return result;
+}
+
+
+void main()
+{
+	vec3 result = CalcDirLight();
 	color = texture(u_Texture, v_TexCoord) * vec4(result, 1.0);
 }
 

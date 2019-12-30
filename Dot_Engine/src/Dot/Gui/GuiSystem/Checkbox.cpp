@@ -73,7 +73,7 @@ namespace Dot {
 
 	Checkbox& Checkbox::GetWrapped(const std::string& wrapper, const std::string& label)
 	{
-		Checkbox& button = (Checkbox&)Gui::Get()->GetWrappeWidget(wrapper, label);
+		Checkbox& button = (Checkbox&)Gui::Get()->GetWrappedWidget(wrapper, label);
 		return button;
 	}
 

@@ -54,21 +54,24 @@ uniform sampler2D u_Texture;
 
 out vec4 color;
 
+float c_AmbientStrength = 0.1;
+float c_SpecularStrength = 0.5;
+
 void main()
 {
 	vec3 norm = normalize(v_Normal);
 	vec3 lightDir = normalize(u_LightPosition - v_FragPos);
 
-	vec3 ambient = u_LightStrength * u_LightColor;
+	vec3 ambient = c_AmbientStrength * u_LightColor;
 	vec3 viewDir = normalize(v_ViewPos - v_FragPos);
 	vec3 reflectDir = reflect(-lightDir, norm);
 
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
 	float diff = max(dot(norm, lightDir), 0.0);
 
-	vec3 specular = u_LightStrength * spec * u_LightColor;
+	vec3 specular = c_SpecularStrength * spec * u_LightColor;
 	vec3 diffuse = diff * u_LightColor;
-	vec3 result = (ambient + diffuse + specular);
+	vec3 result = (ambient + diffuse + specular) * u_LightStrength;
 
 	vec4 texColor = texture(u_Texture, v_TexCoord) * vec4(result, 1.0);
 	if (texColor.a < 0.1)

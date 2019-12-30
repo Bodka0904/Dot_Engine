@@ -14,7 +14,11 @@ namespace Dot {
 			m_EntityManager = std::make_unique<EntityManager>();
 			m_SystemManager = std::make_unique<SystemManager>();
 		}
-
+		template<typename T>
+		std::shared_ptr<T> RegisterSystem()
+		{
+			return m_SystemManager->RegisterSystem<T>();
+		}
 		template<typename T>
 		void RegisterComponent()
 		{
@@ -24,6 +28,12 @@ namespace Dot {
 		void AddComponent(Entity entity,T component)
 		{
 			m_ComponentManager->AddComponent<T>(entity,component);
+
+			auto signature = m_EntityManager->GetSignature(entity);
+			signature.set(m_ComponentManager->GetComponentType<T>(), 1);
+
+			m_EntityManager->SetSignature(entity, signature);
+			m_SystemManager->AddEntity(entity, signature);
 		}
 		template<typename T>
 		void RemoveComponent(Entity entity)
@@ -68,9 +78,12 @@ namespace Dot {
 			return m_EntityManager->CreateEntity();
 		}
 
+		static Scope<ECSManager>& Get() { return m_This; }
 	private:
 		std::unique_ptr<ComponentManager> m_ComponentManager;
 		std::unique_ptr<EntityManager>	  m_EntityManager;
 		std::unique_ptr<SystemManager>	  m_SystemManager;
+
+		static Scope<ECSManager>m_This;
 	};
 }

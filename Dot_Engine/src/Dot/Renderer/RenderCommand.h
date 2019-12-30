@@ -48,7 +48,14 @@ namespace Dot {
 		{
 			s_RendererAPI->DisableBlend();
 		}
-
+		inline static void EnableAdditiveBlend()
+		{
+			s_RendererAPI->EnableAdditiveBlend();
+		}
+		inline static void DisableAdditiveBlend()
+		{
+			s_RendererAPI->DisableAdditiveBlend();
+		}
 		// Render options
 		inline static void SubmitElement(const Ref<ArrayBuffer>& vao, int drawMod)
 		{
@@ -61,6 +68,10 @@ namespace Dot {
 		inline static void SubmitArrays(const Ref<ArrayBuffer>& vao, int drawmod)
 		{
 			s_RendererAPI->SubmitArrays(vao, drawmod);
+		}
+		inline static void SubmitArraysCount(const Ref<ArrayBuffer>& vao,int count, int drawmod)
+		{
+			s_RendererAPI->SubmitArraysCount(vao,count, drawmod);
 		}
 		inline static void SubmitArraysInstanced(const Ref<ArrayBuffer>& vao, unsigned int num, int drawMod)
 		{

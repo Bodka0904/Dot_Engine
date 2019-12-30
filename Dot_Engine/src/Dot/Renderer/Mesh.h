@@ -1,7 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
 
-#include "Dot/PhysicsEngine/Components/AABB.h"
 #include "Buffers/ArrayBuffer.h"
 
 namespace Dot {
@@ -28,8 +27,9 @@ namespace Dot {
 		Mesh(const std::string& filename);
 		~Mesh();
 
-
-		inline const std::shared_ptr<ArrayBuffer> GetVAO() { return m_VAO; }
+		inline const glm::vec3& GetMin() const { return m_Min; }
+		inline const glm::vec3& GetMax() const { return m_Max; }
+		inline const Ref<ArrayBuffer>& GetVAO() { return m_VAO; }
 		inline const std::string& GetFilePath() const { return m_FilePath; }
 		inline const unsigned int GetNumVertices() { return m_NumVertices; }
 	private:
@@ -53,7 +53,7 @@ namespace Dot {
 		const inline unsigned int GetNumVertices() const { return m_Mesh->GetNumVertices(); }
 		const inline unsigned int GetCapacity() const { return m_Capacity; }
 		const inline unsigned int GetNumInstance() const { return m_Instances; }
-		const inline std::shared_ptr<ArrayBuffer> GetVAO() { return m_Mesh->GetVAO(); }
+		const inline Ref<Mesh>& GetMesh() { return m_Mesh; }
 	private:
 		Ref<Mesh> m_Mesh;
 		unsigned int m_Capacity;

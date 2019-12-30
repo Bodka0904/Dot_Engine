@@ -13,7 +13,7 @@ namespace Dot {
 	{
 	}
 
-	void MousePicker::CalculateMouseRay(Camera& camera)
+	void MousePicker::CalculateMouseRay(const Camera& camera)
 	{
 
 		Application& app = Application::Get();
@@ -35,14 +35,13 @@ namespace Dot {
 		m_CurrentRay = rayWorld;
 	}
 
-	bool MousePicker::TestIntersection(Terrain& terrain, Camera& camera, glm::vec3& pos)
+	bool MousePicker::TestIntersection(const Camera& camera, glm::vec3& pos, float height)
 	{		
-		float terrHeight = terrain.GetHeight(m_CurrentRay);
 		glm::vec3 startPoint = getPointOnRay(m_CurrentRay, 0, camera.GetPosition());
 		glm::vec3 endPoint = getPointOnRay(m_CurrentRay, RAY_RANGE, camera.GetPosition());
-		if (startPoint.y >= terrHeight && endPoint.y < terrHeight)
+		if (startPoint.y >= height && endPoint.y < height)
 		{
-			pos = binarySearch(camera.GetPosition(), terrHeight, 0, RAY_RANGE, 0);
+			pos = binarySearch(camera.GetPosition(), height, 0, RAY_RANGE, 0);
 			return true;
 		}
 		return false;

@@ -18,18 +18,16 @@
 #include "Dot/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Renderer/Shaders/Shader.h"
 #include "Dot/Renderer/Mesh.h"
-#include "Dot/Renderer/Material/Light.h"
+#include "Dot/Renderer/Light/LightController.h"
 #include "Dot/Renderer/Texture.h"
 #include "Dot/Renderer/AnimatedMesh.h"
 
 #include "Dot/Utils/Time/Timestep.h"
 #include "Dot/Utils/MousePicker.h"
 #include "Dot/Utils/Text/Font.h"
-#include "Dot/PhysicsEngine/Components/Transform.h"
 #include "Dot/Utils/Random/RandomGenerator.h"
 
 #include "Dot/LevelEditor/Skybox/Skybox.h"
-#include "Dot/LevelEditor/Particle/ParticleManager.h"
 #include "Dot/LevelEditor/Terrain/TerrainEditor.h"
 #include "Dot/LevelEditor/Water/Water.h"
 #include "Dot/LevelEditor/Terrain/BrushInstance.h"
@@ -44,3 +42,7 @@
 
 
 #include "Dot/ECS/ECSManager.h"
+#include "Dot/PhysicsEngine/CollisionSystem.h"
+#include "Dot/PhysicsEngine/PhysicsSystem.h"
+#include "Dot/PhysicsEngine/Components/ComponentData.h"
+#include "Dot/ParticleEngine/ParticleEngine.h"

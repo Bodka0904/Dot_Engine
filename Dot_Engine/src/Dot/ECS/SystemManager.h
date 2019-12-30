@@ -11,7 +11,14 @@ namespace Dot {
 	class System
 	{
 	public:
-		std::set<Entity> m_Entities;
+		System() {};
+		virtual void Update(float dt) = 0;
+		virtual void Remove(Entity entity);
+	public:
+		std::vector<Entity> m_Entities;
+
+	private:
+		virtual int binarySearch(int start, int end, Entity entity);
 	};
 
 
@@ -44,7 +51,23 @@ namespace Dot {
 			// Erase a destroyed entity from all system lists
 			for (auto const& it : m_Systems)
 			{
-				it.second->m_Entities.erase(entity);
+				it.second->Remove(entity);
+			}
+		}
+
+		void AddEntity(Entity entity, Signature entitySignature)
+		{
+			for (auto const& pair : m_Systems)
+			{
+				auto const& type = pair.first;
+				auto const& system = pair.second;
+				auto const& systemSignature = m_Signatures[type];
+
+				// Entity signature matches system signature - insert into set
+				if ((entitySignature & systemSignature) == systemSignature)
+				{
+					system->m_Entities.push_back(entity);
+				}
 			}
 		}
 
@@ -59,16 +82,23 @@ namespace Dot {
 				// Entity signature matches system signature - insert into set
 				if ((entitySignature & systemSignature) == systemSignature)
 				{
-					system->m_Entities.insert(entity);
+					system->m_Entities.push_back(entity);
 				}
 				// Entity signature does not match system signature - erase from set
 				else
 				{
-					system->m_Entities.erase(entity);
+					system->Remove(entity);
+					std::cout << "Got here " <<system->m_Entities.size()<< std::endl;
 				}
 			}
 		}
-
+		void Update(float dt)
+		{
+			for (auto& it : m_Systems)
+			{
+				it.second->Update(dt);
+			}
+		}
 
 	private:
 		std::unordered_map<const char*, Signature> m_Signatures;

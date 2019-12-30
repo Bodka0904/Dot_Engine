@@ -4,9 +4,28 @@
 
 #include "Dot/Debug/Log.h"
 
-
 namespace Dot {
+	struct ShaderElement
+	{
+		ShaderElement(unsigned int Index, const std::string& Name)
+			:index(Index), name(Name)
+		{}
+		std::string name;
+		unsigned int index;
+	};
 
+	class ShaderQueue
+	{
+	public:
+		ShaderQueue() {};
+		ShaderQueue(const std::initializer_list<ShaderElement>& elements)
+			: m_Elements(elements)
+		{}
+
+
+	private:
+		std::vector<ShaderElement> m_Elements;
+	};
 	class Shader
 	{
 	public:

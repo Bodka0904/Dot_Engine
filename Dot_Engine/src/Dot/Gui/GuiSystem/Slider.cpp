@@ -107,7 +107,7 @@ namespace Dot {
 	}
 	Slider& Slider::GetWrapped(const std::string& wrapper, const std::string& label)
 	{
-		Slider& slider = (Slider&)Gui::Get()->GetWrappeWidget(wrapper, label);
+		Slider& slider = (Slider&)Gui::Get()->GetWrappedWidget(wrapper, label);
 		return slider;
 	}
 	void Slider::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size,float *val)

@@ -219,15 +219,6 @@
     <ClInclude Include="src\Dot\LevelEditor\LevelEditorLayer.h">
       <Filter>src\Dot\LevelEditor</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Particle\Particle.h">
-      <Filter>src\Dot\LevelEditor\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Particle\ParticleManager.h">
-      <Filter>src\Dot\LevelEditor\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Particle\ParticleSystem.h">
-      <Filter>src\Dot\LevelEditor\Particle</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\LevelEditor\Skybox\Skybox.h">
       <Filter>src\Dot\LevelEditor\Skybox</Filter>
     </ClInclude>
@@ -245,18 +236,6 @@
     </ClInclude>
     <ClInclude Include="src\Dot\LevelEditor\Water\Water.h">
       <Filter>src\Dot\LevelEditor\Water</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\PhysicsEngine\Collision\SAP.h">
-      <Filter>src\Dot\PhysicsEngine\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\PhysicsEngine\Components\AABB.h">
-      <Filter>src\Dot\PhysicsEngine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\PhysicsEngine\Components\Entity.h">
-      <Filter>src\Dot\PhysicsEngine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\PhysicsEngine\Components\Transform.h">
-      <Filter>src\Dot\PhysicsEngine\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\APIContext.h">
       <Filter>src\Dot\Renderer</Filter>
@@ -281,9 +260,6 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Camera\OrthoCamera.h">
       <Filter>src\Dot\Renderer\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\Material\Light.h">
-      <Filter>src\Dot\Renderer\Material</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Mesh.h">
       <Filter>src\Dot\Renderer</Filter>
@@ -1460,6 +1436,19 @@
     </ClInclude>
     <ClInclude Include="src\Dot\ECS\SystemManager.h" />
     <ClInclude Include="src\Dot\ECS\Entity.h" />
+    <ClInclude Include="src\Dot\PhysicsEngine\CollisionSystem.h" />
+    <ClInclude Include="src\Dot\PhysicsEngine\PhysicsSystem.h" />
+    <ClInclude Include="src\Dot\PhysicsEngine\Components\ComponentData.h" />
+    <ClInclude Include="src\Dot\Core\SceneManager.h" />
+    <ClInclude Include="src\Dot\Core\Scene.h" />
+    <ClInclude Include="src\Dot\Renderer\Light\LightController.h" />
+    <ClInclude Include="src\Dot\Renderer\Light\Light.h">
+      <Filter>src\Dot\Renderer\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Math\Transform.h" />
+    <ClInclude Include="src\Dot\Renderer\Buffers\GBuffer.h" />
+    <ClInclude Include="src\API\OpenGL\OpenGLGBuffer.h" />
+    <ClInclude Include="src\Dot\ParticleEngine\ParticleEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\API\OpenGL\OpenGLArrayBuffer.cpp">
@@ -1528,15 +1517,6 @@
     <ClCompile Include="src\Dot\LevelEditor\LevelEditorLayer.cpp">
       <Filter>src\Dot\LevelEditor</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Particle\Particle.cpp">
-      <Filter>src\Dot\LevelEditor\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Particle\ParticleManger.cpp">
-      <Filter>src\Dot\LevelEditor\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Particle\ParticleSystem.cpp">
-      <Filter>src\Dot\LevelEditor\Particle</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\LevelEditor\Skybox\Skybox.cpp">
       <Filter>src\Dot\LevelEditor\Skybox</Filter>
     </ClCompile>
@@ -1554,12 +1534,6 @@
     </ClCompile>
     <ClCompile Include="src\Dot\LevelEditor\Water\Water.cpp">
       <Filter>src\Dot\LevelEditor\Water</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\PhysicsEngine\Collision\SAP.cpp">
-      <Filter>src\Dot\PhysicsEngine\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\PhysicsEngine\Components\AABB.cpp">
-      <Filter>src\Dot\PhysicsEngine\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\APIContext.cpp">
       <Filter>src\Dot\Renderer</Filter>
@@ -1584,9 +1558,6 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Camera\OrthoCamera.cpp">
       <Filter>src\Dot\Renderer\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\Material\Light.cpp">
-      <Filter>src\Dot\Renderer\Material</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Mesh.cpp">
       <Filter>src\Dot\Renderer</Filter>
@@ -1659,5 +1630,16 @@
     </ClCompile>
     <ClCompile Include="src\Dot\ECS\SystemManager.cpp" />
     <ClCompile Include="src\Dot\ECS\Entity.cpp" />
+    <ClCompile Include="src\Dot\PhysicsEngine\CollisionSystem.cpp" />
+    <ClCompile Include="src\Dot\PhysicsEngine\PhysicsSystem.cpp" />
+    <ClCompile Include="src\Dot\PhysicsEngine\Components\ComponentData.cpp" />
+    <ClCompile Include="src\Dot\Core\SceneManager.cpp" />
+    <ClCompile Include="src\Dot\Renderer\Light\LightController.cpp" />
+    <ClCompile Include="src\Dot\Renderer\Light\Light.cpp">
+      <Filter>src\Dot\Renderer\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Buffers\GBuffer.cpp" />
+    <ClCompile Include="src\API\OpenGL\OpenGLGBuffer.cpp" />
+    <ClCompile Include="src\Dot\ParticleEngine\ParticleEngine.cpp" />
   </ItemGroup>
 </Project>

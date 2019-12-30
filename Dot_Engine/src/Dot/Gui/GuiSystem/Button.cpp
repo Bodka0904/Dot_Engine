@@ -67,7 +67,7 @@ namespace Dot {
 	}
 	Button& Button::GetWrapped(const std::string& wrapper, const std::string& label)
 	{
-		Button& button = (Button&)Gui::Get()->GetWrappeWidget(wrapper,label);
+		Button& button = (Button&)Gui::Get()->GetWrappedWidget(wrapper,label);
 		return button;
 	}
 	void Button::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size)

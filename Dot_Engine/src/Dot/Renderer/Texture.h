@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace Dot {
 
 	class Texture2D

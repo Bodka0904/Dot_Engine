@@ -19,6 +19,7 @@ namespace Dot {
 
 		virtual Ref<VertexBuffer> GetVertexBuffer(int index) const = 0;
 		virtual Ref<IndexBuffer> GetIndexBuffer() const = 0;
+		virtual Ref<ShaderStorageBuffer> GetStorageBuffer(int index) const = 0;
 
 		static Ref<ArrayBuffer> Create();
 	private:

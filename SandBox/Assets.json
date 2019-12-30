@@ -2,22 +2,28 @@
     "Textures":
     [
         {
-            "Name":"Man",
-            "Path":"res/Textures/Dot/man.png",
-            "Filters":"true",
-            "Flipped":"false"
+            "Name":"ManTexture",
+            "Path":"res/Textures/Models/man.png",
+            "Filters":true,
+            "Flipped":false
         },
         {
-            "Name":"Grass",
-            "Path":"res/Textures/Dot/grass.png",
+            "Name":"GrassTexture",
+            "Path":"res/Textures/Models/grass.png",
             "Filters": true,
             "Flipped": false
         },
         {
-            "Name":"Terrain",
-            "Path":"res/Textures/Dot/terrain.jpg",
+            "Name":"TerrainTexture",
+            "Path":"res/Textures/Models/terrain.jpg",
             "Filters":true,
             "Flipped":false
+        },
+        {
+            "Name":"FireTexture",
+            "Path":"res/Textures/Particle/fire.png",
+            "Filters":true,
+            "Flipped":true
         }
     ],
     "CubeMaps":
@@ -39,8 +45,8 @@
            "Path":"res/Shaders/Dot/AnimShader.glsl" 
         },
         {
-            "Name":"ComputeShader",
-            "Path":"res/Shaders/Dot/ComputeShader.glsl" 
+            "Name":"ParticleComputeShader",
+            "Path":"res/Shaders/Particle/ParticleComputeShader.glsl" 
         },
         {
             "Name":"GeometryShader",
@@ -67,12 +73,16 @@
             "Path":"res/Shaders/Dot/StaticShader.glsl" 
         },
         {
-            "Name":"ComputeShader",
-            "Path":"res/Shaders/Dot/TestForComputeShader.glsl" 
+            "Name":"ParticleShader",
+            "Path":"res/Shaders/Particle/ParticleShader.glsl" 
         },
         {
             "Name":"WaterShader",
             "Path":"res/Shaders/Dot/WaterShader.glsl" 
+        },
+        {
+            "Name":"LightShader",
+            "Path":"res/Shaders/Dot/LightShader.glsl"
         }
     ],
     "AnimatedMeshes":

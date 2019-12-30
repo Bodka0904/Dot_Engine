@@ -32,6 +32,15 @@ namespace Dot {
 		glDisable(GL_BLEND);
 		glBlendFunc(GL_SRC_COLOR, GL_SRC_COLOR);
 	}
+	void OpenGLRendererAPI::EnableAdditiveBlend()
+	{
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	}
+	void OpenGLRendererAPI::DisableAdditiveBlend()
+	{
+		glDisable(GL_BLEND);
+		glBlendFunc(GL_SRC_COLOR, GL_SRC_COLOR);
+	}
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)
 	{
 		glClearColor(color.r, color.g, color.b, color.a);
@@ -44,6 +53,11 @@ namespace Dot {
 	{
 		vao->Bind();
 		glDrawArrays(drawMod, 0, vao->GetVertexBuffer(0)->GetCount());
+	}
+	void OpenGLRendererAPI::SubmitArraysCount(const Ref<ArrayBuffer>& vao,int count, int drawMod)
+	{
+		vao->Bind();
+		glDrawArrays(drawMod, 0, count);
 	}
 	void OpenGLRendererAPI::SubmitArraysInstanced(const Ref<ArrayBuffer>& vao, unsigned int num, int drawMod)
 	{
