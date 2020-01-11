@@ -1,6 +1,5 @@
 #pragma once
-
-#include "Entity.h"
+#include "Types.h"
 
 namespace Dot {
 	class IComponent

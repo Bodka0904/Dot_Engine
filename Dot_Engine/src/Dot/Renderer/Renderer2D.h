@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/Renderer/Shaders/Shader.h"
+#include "Dot/Renderer/Shader/Shader.h"
 #include "Dot/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Renderer/Buffers/ArrayBuffer.h"
 #include "Dot/Renderer/Texture.h"
@@ -13,11 +13,12 @@ namespace Dot {
 		Renderer2D(unsigned int batchSize);
 
 		void ClearBuffer();
+		void RestartBuffer();
 		void Push(const QuadVertex* data,int len);
 		void PushOffset(const QuadVertex* data, int len, int offsetElements=0);
 
 		void PrepareForRender();
-		void BeginScene(const Ref<Shader> shader, const Ref<OrthoCamera> camera);
+		void BeginScene(const Ref<Shader>& shader, const Ref<OrthoCamera>& camera);
 		void Render();
 		void EndScene();
 

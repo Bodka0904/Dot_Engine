@@ -24,6 +24,18 @@
             "Path":"res/Textures/Particle/fire.png",
             "Filters":true,
             "Flipped":true
+        },
+        {
+            "Name":"FlameTexture",
+            "Path":"res/Textures/Particle/flame.png",
+            "Filters":true,
+            "Flipped":true
+        },
+        {
+            "Name":"SmokeTexture",
+            "Path":"res/Textures/Particle/smoke.png",
+            "Filters":true,
+            "Flipped":false
         }
     ],
     "CubeMaps":
@@ -106,7 +118,7 @@
         }
     ],
     "Meshes":
-    [
+    [  
         {
             "Name":"Grass",
             "Path":"res/Models/grass.obj"

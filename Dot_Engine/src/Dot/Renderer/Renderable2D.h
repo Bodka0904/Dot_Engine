@@ -11,7 +11,19 @@ namespace Dot {
 	
 	struct QuadVertex
 	{
-		QuadVertex() {};
+		QuadVertex()
+		{
+			m_Vertices[0].position = glm::vec2(0);
+			m_Vertices[1].position = glm::vec2(0);
+			m_Vertices[2].position = glm::vec2(0);
+			m_Vertices[3].position = glm::vec2(0);
+			
+			m_Vertices[0].texCoord = glm::vec2(0);
+			m_Vertices[1].texCoord = glm::vec2(0);
+			m_Vertices[2].texCoord = glm::vec2(0);
+			m_Vertices[3].texCoord = glm::vec2(0);
+			
+		}
 		QuadVertex(const glm::vec2& position, const glm::vec2& size,const glm::vec2* texCoord)
 		{
 			m_Vertices[0].position = glm::vec2(position.x, position.y);

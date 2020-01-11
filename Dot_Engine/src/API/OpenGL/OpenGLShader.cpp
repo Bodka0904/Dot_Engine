@@ -6,6 +6,8 @@
 #include <GL/glew.h>
 
 namespace Dot {
+	
+	std::unordered_map<std::string, std::shared_ptr<OpenGLUniformBuffer> > OpenGLShader::s_UBO;
 	static GLenum ShaderTypeFromString(const std::string& type)
 	{
 		if (type == "vertex")
@@ -21,12 +23,12 @@ namespace Dot {
 		return 0;
 	}
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& filepath)
+		: m_Name(name),m_UniformsSize(0)
 	{
 		std::string source = ReadFile(filepath);
 		auto shaderSources = PreProcess(source);
 		Compile(shaderSources);
-
-		m_Name = name;
+		Parse();	
 	}
 	OpenGLShader::~OpenGLShader()
 	{
@@ -38,7 +40,6 @@ namespace Dot {
 	}
 	void OpenGLShader::Compute(unsigned int groupX, unsigned int groupY, unsigned int groupZ) const
 	{
-		glUseProgram(m_RendererID);
 		glDispatchCompute(groupX, groupY, groupZ);
 		glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);
 	}
@@ -50,47 +51,90 @@ namespace Dot {
 	{
 		return m_Name;
 	}
-	void OpenGLShader::AddUniformBufferObject(const std::string& name, unsigned int bindIndex, unsigned int size)
+	const uint32_t OpenGLShader::GetRendererID() const
 	{
-		m_UBO[name].reset(new UniformBuffer(NULL, size, bindIndex));
-		m_UBO[name]->GetBlockIndex() = glGetUniformBlockIndex(m_RendererID, name.c_str());
-		glUniformBlockBinding(m_RendererID, m_UBO[name]->GetBlockIndex(), m_UBO[name]->GetIndex());
+		return m_RendererID;
 	}
-	void OpenGLShader::AddUniform(const std::string& name)
+	const Uniform* OpenGLShader::FindUniform(const std::string& name)
 	{
-		m_Uniforms[name] = glGetUniformLocation(m_RendererID, name.c_str());
+		if (m_Uniforms.find(name) != m_Uniforms.end())
+		{
+			return &m_Uniforms[name];
+		}
+		return nullptr;
 	}
-	void OpenGLShader::UpdateUniformBufferObject(const std::string& name, const void* data, unsigned int size)
+	void OpenGLShader::LinkUniformBufferObject(const std::string& name, unsigned int bindIndex, unsigned int size)
 	{
-		m_UBO[name]->Update(data, size);
+		unsigned int blockIndex = glGetUniformBlockIndex(m_RendererID, name.c_str());
+		glUniformBlockBinding(m_RendererID, blockIndex, bindIndex);
+	}
+	void OpenGLShader::AddUniform(UniformDataType type, unsigned int size, unsigned int offset, const std::string& name)
+	{
+		int id = glGetUniformLocation(m_RendererID, name.c_str());
+		if (id != -1)
+		{
+			m_Uniforms[name].size = size;
+			m_Uniforms[name].offset = offset;
+			m_Uniforms[name].type = type;
+			m_Uniforms[name].ID = id;
+		}
+	}
+	void OpenGLShader::SetUniform(const std::string& name, unsigned char* data)
+	{
+		auto uniform = m_Uniforms[name];
+		switch (uniform.type)
+		{
+		case UniformDataType::FLOAT:
+			UploadUniformFloat(name, *(float*)& data[uniform.offset]);
+			break;
+		case UniformDataType::FLOAT_VEC2:
+			UploadUniformFloat2(name,*(glm::vec2*)&data[uniform.offset]);
+			break;
+		case UniformDataType::FLOAT_VEC3:
+			UploadUniformFloat3(name,*(glm::vec3*)&data[uniform.offset]);
+			break;
+		case UniformDataType::FLOAT_VEC4:
+			UploadUniformFloat4(name,*(glm::vec4*)&data[uniform.offset]);
+			break;
+		case UniformDataType::INT:
+			UploadUniformInt(name,*(int*)&data[uniform.offset]);
+			break;
+		case UniformDataType::FLOAT_MAT4:
+			UploadUniformMat4(name,*(glm::mat4*)&data[uniform.offset]);
+			break;
+		};
+	}
+	void OpenGLShader::UpdateUniformBufferObject(const std::string& name, const void* data, unsigned int size, int offset)
+	{
+		s_UBO[name]->Update(data, size, offset);
 	}
 	void OpenGLShader::UploadUniformInt(const std::string& name, int value)
 	{
-		glUniform1i(m_Uniforms[name], value);
+		glUniform1i(m_Uniforms[name].ID, value);
 	}
 	void OpenGLShader::UploadUniformFloat(const std::string& name, float value)
 	{
-		glUniform1f(m_Uniforms[name], value);
+		glUniform1f(m_Uniforms[name].ID, value);
 	}
 	void OpenGLShader::UploadUniformFloat2(const std::string& name, const glm::vec2& value)
 	{
-		glUniform2f(m_Uniforms[name], value.x, value.y);
+		glUniform2f(m_Uniforms[name].ID, value.x, value.y);
 	}
 	void OpenGLShader::UploadUniformFloat3(const std::string& name, const glm::vec3& value)
 	{
-		glUniform3f(m_Uniforms[name], value.x, value.y, value.z);
+		glUniform3f(m_Uniforms[name].ID, value.x, value.y, value.z);
 	}
 	void OpenGLShader::UploadUniformFloat4(const std::string& name, const glm::vec4& value)
 	{
-		glUniform4f(m_Uniforms[name], value.x, value.y, value.z, value.w);
+		glUniform4f(m_Uniforms[name].ID, value.x, value.y, value.z, value.w);
 	}
 	void OpenGLShader::UploadUniformMat3(const std::string& name, const glm::mat3& matrix)
 	{
-		glUniformMatrix3fv(m_Uniforms[name], 1, GL_FALSE, glm::value_ptr(matrix));
+		glUniformMatrix3fv(m_Uniforms[name].ID, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
 	{
-		glUniformMatrix4fv(m_Uniforms[name], 1, GL_FALSE, glm::value_ptr(matrix));
+		glUniformMatrix4fv(m_Uniforms[name].ID, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
@@ -175,7 +219,7 @@ namespace Dot {
 		}
 
 		m_RendererID = program;
-
+		
 		// Link our program
 		glLinkProgram(program);
 
@@ -204,5 +248,96 @@ namespace Dot {
 
 		for (auto id : glShaderIDs)
 			glDetachShader(program, id);
+	}
+	void OpenGLShader::Parse()
+	{
+		GLint count;
+		GLint size;
+		GLenum type;
+		const GLsizei bufSize = 50;
+		GLchar name[bufSize];
+		GLsizei length;
+		GLint blockSize;
+		GLint blockBind;
+		// Parse uniforms
+		glGetProgramiv(m_RendererID, GL_ACTIVE_UNIFORMS, &count);
+		int offset = 0;
+		for (int i = 0; i < count; i++)
+		{
+			int sizeUni = 0;
+			glGetActiveUniform(m_RendererID, (GLuint)i, bufSize, &length, &size, &type, name);
+			UniformDataType uniType = UniformDataType::NONE;
+			switch (type)
+			{
+			case GL_FLOAT:	    uniType = UniformDataType::FLOAT;
+				sizeUni = sizeof(float);
+				break;
+			case GL_FLOAT_VEC2: uniType = UniformDataType::FLOAT_VEC2;
+				sizeUni = 2 * sizeof(float);
+				break;
+			case GL_FLOAT_VEC3: uniType = UniformDataType::FLOAT_VEC3;
+				sizeUni = 3 * sizeof(float);
+				break;
+			case GL_FLOAT_VEC4: uniType = UniformDataType::FLOAT_VEC4;
+				sizeUni = 4 * sizeof(float);
+				break;
+			case GL_INT:	    uniType = UniformDataType::INT;
+				sizeUni = sizeof(int);
+				break;
+			case GL_INT_VEC2:	uniType = UniformDataType::INT_VEC2;
+				sizeUni = 2 * sizeof(int);
+				break;
+			case GL_INT_VEC3:	uniType = UniformDataType::INT_VEC3;
+				sizeUni = 3 * sizeof(int);
+				break;
+			case GL_INT_VEC4:	uniType = UniformDataType::INT_VEC4;
+				sizeUni = 4 * sizeof(int);
+				break;
+			case GL_FLOAT_MAT4:	uniType = UniformDataType::FLOAT_MAT4;
+				sizeUni = sizeof(glm::mat4);
+				break;
+			}
+			
+			if (size > 1)
+			{
+				for (size_t i = 0; i < size; i++)
+				{
+					std::string nameStr(name);
+					std::size_t pos = nameStr.find("[");
+					std::string subStr = nameStr.substr(0, pos + 1);
+					std::string uniformName = subStr + std::to_string(i) + std::string("]");
+					AddUniform(uniType, sizeUni, offset, uniformName);
+					offset += sizeUni;
+				}
+			}
+			else
+			{	
+				AddUniform(uniType, sizeUni, offset, name);
+				offset += sizeUni;
+			}
+			
+			m_UniformsSize += sizeUni;
+		}
+			
+		//Parse buffer objects and link them with shader
+		glGetProgramiv(m_RendererID, GL_ACTIVE_UNIFORM_BLOCKS, &count);
+		for (int i = 0; i < count; i++)
+		{		
+			glGetActiveUniformBlockName(m_RendererID, (GLuint)i, bufSize, &size, name);
+			glGetActiveUniformBlockiv(m_RendererID, (GLuint)i, GL_UNIFORM_BLOCK_DATA_SIZE, &blockSize);
+			glGetActiveUniformBlockiv(m_RendererID, (GLuint)i, GL_UNIFORM_BLOCK_BINDING, &blockBind);
+			
+			if (s_UBO.find(name) == s_UBO.end())
+			{
+				s_UBO[name] = std::make_shared<OpenGLUniformBuffer>((void*)NULL, blockSize, blockBind);
+				LinkUniformBufferObject(name, blockBind, blockSize);
+			}
+			else
+			{
+				LinkUniformBufferObject(name, blockBind, blockSize);
+			}
+			
+		}
+
 	}
 }

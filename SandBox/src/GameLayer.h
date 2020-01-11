@@ -13,7 +13,10 @@ public:
 	virtual void OnEvent(Dot::Event& event) override;
 	virtual void OnDetach() override;
 
-
+	virtual void OnGuiAttach() override {}
+	virtual void OnGuiUpdate() override {}
+	virtual void OnGuiDetach() override {}
+	virtual void OnGuiEvent(Dot::Event& event) override {}
 private:
 	Dot::Ref<Dot::Shader> m_StaticShader;
 	Dot::Ref<Dot::Shader> m_SkyShader;
@@ -46,17 +49,21 @@ private:
 	Dot::Ref<Dot::MousePicker> m_Picker;
 	Dot::Ref<Dot::Brush> m_Brush;
 	Dot::Ref<Dot::BrushInstance> m_Grass;
+
 	Dot::Ref<Dot::CollisionSystem> m_CollisionSystem;
 	Dot::Ref<Dot::PhysicsSystem> m_PhysicsSystem;
-	Dot::Ref<Dot::ParticleEngine> m_ParticleEngine;
+	Dot::Ref<Dot::RenderSystem> m_RenderSystem;
+	Dot::Ref<Dot::ParticleSystem> m_ParticleSystem;
 
+	Dot::Ref<Dot::Material> m_Material;
 private:
 	Dot::Transform m_Transform;
 	std::vector<glm::mat4> m_TreeTransformations;
 
 private:
 	float m_TimePassed = 0.0f;
-	float m_ParticleTime = 1.0f;
+	float m_ParticleTime = 0.0f;
+
 
 };
 

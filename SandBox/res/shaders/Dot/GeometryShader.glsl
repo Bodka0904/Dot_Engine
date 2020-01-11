@@ -1,5 +1,5 @@
 #type vertex
-#version 330 core
+#version 430 core
 
 layout(location = 0) in vec3 a_Position;
 layout(location = 1) in vec3 a_Normal;
@@ -10,7 +10,7 @@ out VS_OUT{
 	vec3 normals;
 } vs_out;
 
-layout(std140) uniform camera_data
+layout(std140, binding = 0) uniform o_CameraData
 {
 	mat4 ViewProjectionMatrix;
 	mat4 ViewMatrix;
@@ -33,7 +33,7 @@ void main()
 }
 
 #type fragment
-#version 330 core
+#version 430 core
 in vec3 v_FragPos;
 in vec2 v_TexCoord;
 in vec3 v_Normal;

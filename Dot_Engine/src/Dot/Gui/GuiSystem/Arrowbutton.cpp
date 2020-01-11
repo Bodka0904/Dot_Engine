@@ -4,11 +4,10 @@
 #include "Dot/Utils/Text/Font.h"
 namespace Dot {
 
-	Arrbutton::Arrbutton(const std::string& label, const glm::vec2& position, const glm::vec2& size,float labelsize)
+	Arrbutton::Arrbutton(const glm::vec2& position, const glm::vec2& size,float labelsize)
 		:
 		m_Position(position),
-		m_Size(size),
-		m_Label("Arial", label, glm::vec2(position.x, position.y - Font::GetFont("Arial")->GetData().lineHeight * labelsize), glm::vec2(labelsize, labelsize))
+		m_Size(size)
 	{
 		m_LeftClick = false;
 		m_RightClick = false;
@@ -16,7 +15,7 @@ namespace Dot {
 	}
 	bool Arrbutton::MouseHoover(const glm::vec2& mousePos)
 	{
-		glm::vec4 coords = GetCoords();
+		glm::vec4 coords = getCoords();
 		if (mousePos.x >= coords.x && mousePos.x <= coords.z
 			&& mousePos.y <= coords.y && mousePos.y >= coords.w)
 		{
@@ -32,32 +31,32 @@ namespace Dot {
 		}
 		return false;
 	}
-	void Arrbutton::Move(const glm::vec2 pos)
+	
+	void Arrbutton::UpdateData()
 	{
-		m_Position += pos;
-		
-		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
-		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
-		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
-	}
-	void Arrbutton::SetPosition(const glm::vec2& pos)
-	{
-		m_Position = pos;
-		
 		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
 		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 
-		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
+		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
+		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
+
 	}
-	void Arrbutton::Minimize()
+	void Arrbutton::Exit()
 	{
 		QuadVertex newVertex = QuadVertex(glm::vec2(0), glm::vec2(0), NULL);
 		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
-		m_Label.SetPosition(glm::vec2(-100, -100));
+		
+		m_Label->SetPosition(glm::vec2(-100, -100));
+		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
+	}
+	void Arrbutton::SetLabel(const Ref<Text> label)
+	{
+		m_Label = label;
+		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
 	}
 	const glm::vec2& Arrbutton::GetLabelSize()
 	{
-		return m_Label.GetSize();
+		return m_Label->GetSize();
 	}
 	const bool Arrbutton::LeftClicked()
 	{
@@ -83,23 +82,31 @@ namespace Dot {
 		return arrbutton;
 	}
 	Arrbutton& Arrbutton::GetWrapped(const std::string& wrapper, const std::string& label)
-	{	
-		return (Arrbutton&)Gui::Get()->GetWrappedWidget(wrapper, label);;
+	{		
+		return (Arrbutton&)Gui::Get()->GetWrappedWidget(wrapper, label);;	
 	}
-	void Arrbutton::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size)
+	void Arrbutton::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size,float labelsize)
 	{
-		glm::vec2 texCoords[4] = {
-				glm::vec2(0.25, 0),
-				glm::vec2(0.5, 0),
-				glm::vec2(0.5, 0.25),
-				glm::vec2(0.25, 0.25)
-		};
+		if (Gui::Get())
+		{
+			glm::vec2 texCoords[4] = {
+					glm::vec2(0.25, 0),
+					glm::vec2(0.5, 0),
+					glm::vec2(0.5, 0.25),
+					glm::vec2(0.25, 0.25)
+			};
 
-		QuadVertex quadVertex = QuadVertex(position, size, &texCoords[0]);
-		Ref<Arrbutton> arrbutton = std::make_shared<Arrbutton>(label, position, size);
-		Gui::Get()->AddWidget(label, arrbutton, &quadVertex);
+			QuadVertex quadVertex = QuadVertex(position, size, &texCoords[0]);
+			D_ASSERT(label.size() < MAX_CHAR_PER_LABEL, "Max len of label is %d", MAX_CHAR_PER_LABEL);
+			Ref<Text> labelText = std::make_shared<Text>("Arial", label, glm::vec2(position.x, position.y - Font::GetFont("Arial")->GetData().lineHeight * labelsize), glm::vec2(labelsize, labelsize), MAX_CHAR_PER_LABEL);
+			Ref<Arrbutton> arrbutton = std::make_shared<Arrbutton>(position, size);
+			unsigned int index = Gui::Get()->AddWidget(label, arrbutton, &quadVertex);
+
+			arrbutton->SetIndex(index);
+			arrbutton->SetLabel(labelText);
+		}
 	}
-	glm::vec4 Arrbutton::GetCoords()
+	glm::vec4 Arrbutton::getCoords()
 	{
 		return glm::vec4(m_Position.x,
 						 m_Position.y + m_Size.y,

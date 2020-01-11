@@ -48,6 +48,10 @@ namespace Dot {
 	}
 	void Renderer2D::ClearBuffer()
 	{
+		m_VAO->GetVertexBuffer(0)->ClearBuffer();
+	}
+	void Renderer2D::RestartBuffer()
+	{
 		m_NumDataStored = 0;
 		m_Buffer = (Vertex*)m_VAO->GetVertexBuffer(0)->MapBuffer();
 	}
@@ -56,11 +60,11 @@ namespace Dot {
 	{
 		m_VAO->GetVertexBuffer(0)->UnMapBuffer();
 	}
-	void Renderer2D::BeginScene(const Ref<Shader> shader, const Ref<OrthoCamera> camera)
+	void Renderer2D::BeginScene(const Ref<Shader>& shader, const Ref<OrthoCamera>& camera)
 	{
 		shader->Bind();
 		shader->UploadUniformMat4("u_ViewProjectionMatrix", camera->GetViewProjectionMatrix());
-		RenderCommand::DisableDepthTest();
+
 	}
 	void Renderer2D::Render()
 	{	
@@ -68,6 +72,5 @@ namespace Dot {
 	}
 	void Renderer2D::EndScene()
 	{
-		RenderCommand::EnableDepthTest();
 	}
 }

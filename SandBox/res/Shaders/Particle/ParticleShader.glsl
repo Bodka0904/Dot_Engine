@@ -1,83 +1,65 @@
 #type vertex
-#version 330 core
-layout(location = 0) in vec4 a_Position;
+#version 430 core
 
-out VS_OUT{
-	 vec4 position;
-} vs_out;
+layout(location = 0) in vec4 a_Offset;
+layout(location = 1) in vec3 a_Position;
+layout(location = 2) in vec2 a_TexCoord;
 
-layout(std140) uniform camera_data
+out vec2 v_TexCoord;
+out float v_Transparent;
+
+layout(std140,binding = 0) uniform o_CameraData
 {
 	mat4 ViewProjectionMatrix;
 	mat4 ViewMatrix;
 	mat4 ProjectionMatrix;
+	vec3 ViewPos;
 };
-
 uniform mat4 u_ModelMatrix;
+
+
+float c_Stages = 64;
+float c_Row = 8;
 
 void main()
 {
-	vec4 pos = ViewProjectionMatrix * u_ModelMatrix* vec4(a_Position.xyz, 1);
-	gl_Position = pos;
+	//vec2 texCoord = a_TexCoord;
+	//
+	//float atlasProgression = a_Offset.w * c_Stages;
+	//int index = int(floor(atlasProgression));
+	//int column = int(mod(index, c_Row));
+	//int row = int(index / c_Row);
+	//
+	//texCoord.x += float(column)/c_Row;
+	//texCoord.y += float(row)/c_Row;
+
+	v_TexCoord = a_TexCoord;
+	v_Transparent = a_Offset.w;
+
+	gl_Position = ViewProjectionMatrix * u_ModelMatrix * vec4( (a_Position * a_Offset.w) + a_Offset.xyz, 1);
 }
 
 
 #type fragment
-#version 330 core
+#version 430 core
 
 in vec2 v_TexCoord;
-in vec4 v_Position;
-uniform sampler2D u_Texture;
+in float v_Transparent;
 
 out vec4 FragColor;
 
+uniform float u_Time;
+uniform vec3 u_Color;
+uniform sampler2D t_Texture;
+
+
 void main()
-{
-	vec4 texColor = texture(u_Texture, v_TexCoord) * vec4(0.8, 0.3, 0, 0.2);
-	if (texColor.w < 0.1)
+{	
+	vec4 color = vec4(v_Transparent,v_Transparent,v_Transparent,1);
+	vec4 texColor = texture(t_Texture, v_TexCoord) * vec4(0.7,0.3,0,v_Transparent) * color;
+	
+	if(texColor.a == 0.0)
 		discard;
-
-	FragColor = texColor ;
+	gl_FragColor = texColor;
 }
 
-
-#type geometry
-#version 330 core
-
-layout(points) in;
-layout(triangle_strip, max_vertices = 4) out;
-
-in VS_OUT{
-	 vec4 position;
-} gs_in[];
-
-out vec2 v_TexCoord;
-out vec4 v_Position;
-
-uniform float u_Size;
-
-void generate_quad(vec4 position)
-{
-	gl_Position = position + vec4(-u_Size, -u_Size, 0.0, 0.0);    // 1:bottom-left
-	v_TexCoord = vec2(0, 0);
-	v_Position = gl_Position;
-	EmitVertex();
-	gl_Position = position + vec4(u_Size, -u_Size, 0.0, 0.0);    // 2:bottom-right
-	v_TexCoord = vec2(1, 0);
-	v_Position = gl_Position;
-	EmitVertex();
-	gl_Position = position + vec4(-u_Size, u_Size*2, 0.0, 0.0);    // 3:top-left
-	v_TexCoord = vec2(0, 1);
-	v_Position = gl_Position;
-	EmitVertex();
-	gl_Position = position + vec4(u_Size, u_Size*2, 0.0, 0.0);    // 4:top-right
-	v_TexCoord = vec2(1, 1);
-	v_Position = gl_Position;
-	EmitVertex();
-	EndPrimitive();
-}
-
-void main() 
-{
-	generate_quad(gl_in[0].gl_Position);
-}

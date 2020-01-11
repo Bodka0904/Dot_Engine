@@ -1,6 +1,5 @@
 #pragma once
 #include "Dot/Debug/Log.h"
-#include "Dot/Renderer/RendererFlags.h"
 #include <glm/glm.hpp>
 
 #define D_STATIC_DRAW 0x88E4
@@ -144,6 +143,8 @@ namespace Dot {
 		virtual void Update(const void *vertices,unsigned int size, int offset) = 0;
 		virtual void* MapBuffer() = 0;
 		virtual void  UnMapBuffer() = 0;
+		virtual void ClearBuffer() = 0;
+		virtual void Resize(const void* vertices, unsigned int size) = 0;
 
 		virtual void SetCount(unsigned int count) = 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
@@ -177,7 +178,8 @@ namespace Dot {
 		virtual void BindBase(unsigned int point) = 0;
 		virtual void BindRange(unsigned int index) = 0;
 		virtual void Bind() = 0;
-
+		virtual void Update(const void* vertices, unsigned int size, int offset) = 0;
+		virtual void Resize(const void* vertices, unsigned int size) = 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 		virtual const BufferLayout & GetLayout() const = 0;
 

@@ -1,12 +1,12 @@
 #pragma once
-#include "Dot/Renderer/Buffers/ArrayBuffer.h"
+#include "Dot/Renderer/Renderable.h"
 
 #include <glm/glm.hpp>
 
 namespace Dot {
 
 
-	class Water
+	class Water : public Renderable
 	{
 	public:
 		Water(const glm::vec3& position,const glm::vec3& color,const glm::vec2& size, const float vertnum);
@@ -16,6 +16,8 @@ namespace Dot {
 		void SetWaveLen(float len) { m_WaveLength = len; }
 		void SetWaveAmpl(float ampl) { m_WaveAmplitude = ampl; }
 		void SetColor(const glm::vec3& color) { m_Color = color; }
+
+		virtual void Render(const Ref<Shader>& shader) override;
 
 		const float &GetWaveLen() const { return m_WaveLength; }
 		const float &GetWaveAmpl() const { return m_WaveAmplitude; }	

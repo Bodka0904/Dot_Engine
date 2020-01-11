@@ -17,5 +17,6 @@
   <ItemGroup>
     <None Include="res\Shaders\Dot\LightShader.glsl" />
     <None Include="res\Shaders\Dot\Particle\ParticleCompute.glsl" />
+    <None Include="res\Shaders\Particle\ParticleShader.glsl" />
   </ItemGroup>
 </Project>

@@ -4,9 +4,7 @@
 #include "Dot/Debug/Log.h"
 
 #include "Dot/Utils/Text/Font.h"
-
-
-#define MAX_WIDGETS 300
+#include "Dot/Renderer/RenderCommand.h"
 
 namespace Dot {
 
@@ -21,10 +19,19 @@ namespace Dot {
 	Gui::Gui(const std::string& texturePack)
 	{
 		m_NumWidgets = 0;
-		m_Locked = false;
-
 		m_Texture = Texture2D::Create(texturePack, true);
 		m_GuiRenderer = std::make_shared<Renderer2D>(MAX_WIDGETS);
+		m_LabelRenderer = std::make_shared<Renderer2D>(MAX_WIDGETS * MAX_CHAR_PER_LABEL);
+		m_TextRenderer = std::make_shared<Renderer2D>(MAX_WIDGETS * MAX_TEXT_CHAR);
+
+		m_Vertices.resize(MAX_WIDGETS);
+		m_LabelVertices.resize(MAX_WIDGETS * MAX_CHAR_PER_LABEL);
+		m_TextVertices.resize(MAX_WIDGETS * MAX_TEXT_CHAR);
+
+		for (unsigned int index = 0; index < MAX_WIDGETS; ++index)
+		{
+			m_AvailableIndex.push(index);
+		}
 	}
 
 	Gui::~Gui()
@@ -37,30 +44,23 @@ namespace Dot {
 	{
 		m_MousePosition = glm::vec2(Input::GetMouseX(), Input::GetMouseY());
 		for (auto& wrap : m_Wrapper)
-		{
-			if (wrap.second->Minimize(m_MousePosition))
+		{	
+			if (wrap.second->MouseResize(m_MousePosition))
 			{
+				m_ResizedWrapper = wrap.first;
 				return true;
 			}
-			if (!wrap.second->IsMinimized())
+			else
 			{
-				if (wrap.second->MouseResize(m_MousePosition))
+				for (auto& widg : wrap.second->GetWidgets())
 				{
-					m_ResizedWrapper = wrap.first;
-					return true;
-				}
-				else
-				{
-					for (auto& widg : wrap.second->GetWidgets())
+					if (widg.second->MouseHoover(m_MousePosition))
 					{
-						if (widg.second->MouseHoover(m_MousePosition))
-						{
-							widg.second->ClickHandle();
-							return true;
-						}
+						widg.second->ClickHandle();
+						return true;
 					}
 				}
-			}
+			}	
 		}
 		for (auto& widg : m_Widget)
 		{
@@ -78,19 +78,17 @@ namespace Dot {
 	{
 		m_MousePosition = glm::vec2(Input::GetMouseX(), Input::GetMouseY());
 		for (auto& wrap : m_Wrapper)
-		{
-			if (!wrap.second->IsMinimized())
+		{		
+			for (auto& widg : wrap.second->GetWidgets())
 			{
-				for (auto& widg : wrap.second->GetWidgets())
+				if (widg.second->MouseHoover(m_MousePosition))
 				{
-					if (widg.second->MouseHoover(m_MousePosition))
-					{
-						m_AttachedWidget = widg.first;
-						m_AttachedWrapper = wrap.first;
-						return true;
-					}
-				}		
-			}
+					m_AttachedWidget = widg.first;
+					m_AttachedWrapper = wrap.first;
+					return true;
+				}
+			}		
+			
 			if (wrap.second->MouseHoover(m_MousePosition))
 			{
 				m_AttachedWrapper = wrap.first;
@@ -127,7 +125,7 @@ namespace Dot {
 		}
 		m_GuiRenderer->PushOffset(&m_Vertices[index], len,index);
 	}
-	void Gui::UpdateTexBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len)
+	void Gui::UpdateTextureBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len)
 	{
 		int counter = 0;
 		for (int i = index; i < index + len; ++i)
@@ -139,6 +137,29 @@ namespace Dot {
 			counter++;
 		}
 		m_GuiRenderer->PushOffset(&m_Vertices[index], len, index);
+	}
+
+	void Gui::UpdateTextBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len)
+	{
+		int counter = 0;
+		for (int i = index * MAX_TEXT_CHAR; i < (index * MAX_TEXT_CHAR) + len; ++i)
+		{
+			m_TextVertices[i] = vertices[counter];
+			counter++;
+		}
+		m_TextRenderer->PushOffset(&m_TextVertices[index * MAX_TEXT_CHAR], len, index * MAX_TEXT_CHAR);
+	}
+
+	void Gui::UpdateLabelBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len)
+	{
+		int counter = 0;
+		for (int i = index * MAX_CHAR_PER_LABEL; i < (index * MAX_CHAR_PER_LABEL) + len; ++i)
+		{
+			m_LabelVertices[i] = vertices[counter];
+			counter++;
+		}
+		
+		m_LabelRenderer->PushOffset(&m_LabelVertices[index * MAX_CHAR_PER_LABEL], len, index * MAX_CHAR_PER_LABEL);
 	}
 	
 	void Gui::Update()
@@ -152,10 +173,12 @@ namespace Dot {
 		if (!m_AttachedWrapper.empty() && !m_AttachedWidget.empty())
 		{
 			m_Wrapper[m_AttachedWrapper]->GetWidget(m_AttachedWidget).Move(dif);
+			m_Wrapper[m_AttachedWrapper]->GetWidget(m_AttachedWidget).UpdateData();
 		}
 		else if (!m_AttachedWidget.empty())
 		{
 			m_Widget[m_AttachedWidget]->Move(dif);
+			m_Widget[m_AttachedWidget]->UpdateData();
 		}
 		else if (!m_AttachedWrapper.empty())
 		{
@@ -167,8 +190,9 @@ namespace Dot {
 		}
 	}
 
-	void Gui::Render(const Ref<Shader> shader, const Ref<OrthoCamera> camera)
+	void Gui::Render(const Ref<Shader>& shader,const Ref<Shader>& textShader, const Ref<OrthoCamera> camera)
 	{
+		RenderCommand::Disable(D_DEPTH_TEST);
 		m_GuiRenderer->BeginScene(shader, camera);
 		{
 			m_Texture->Bind(0);
@@ -176,119 +200,220 @@ namespace Dot {
 			shader->UploadUniformFloat2("u_MousePos", glm::vec2(Input::GetMouseX(), Input::GetMouseY()));
 			m_GuiRenderer->Render();
 		}
-		m_GuiRenderer->EndScene();
+		m_GuiRenderer->EndScene();	
+		m_TextRenderer->BeginScene(textShader, camera);
+		{
+			Font::Bind("Arial");
+			textShader->UploadUniformFloat3("u_Color", glm::vec3(0.2, 1, 0.5));
+			m_TextRenderer->Render();
+		}
+		m_TextRenderer->EndScene();
+
+		m_LabelRenderer->BeginScene(textShader, camera);
+		{
+			Font::Bind("Arial");
+			textShader->UploadUniformFloat3("u_Color", glm::vec3(0.2, 1, 0.5));
+			m_LabelRenderer->Render();
+		}
+		m_LabelRenderer->EndScene();
+		RenderCommand::Enable(D_DEPTH_TEST);
 	}
 
 	
-	void Gui::AddWidget(const std::string& label, Ref<Widget> widget, const QuadVertex* quad, int num)
+	int Gui::AddWidget(const std::string& label, Ref<Widget> widget, const QuadVertex* quad)
 	{
 		if (m_NumWidgets < MAX_WIDGETS)
 		{
+			unsigned int index = m_AvailableIndex.top();
+			m_AvailableIndex.pop();
+
 			if (!m_EnabledWrapper.empty())
 			{
-				m_Wrapper[m_EnabledWrapper]->AddWidget(label, widget, m_NumWidgets);
+				m_Wrapper[m_EnabledWrapper]->AddWidget(label, widget);
 			}
 			else
 			{
 				m_Widget[label] = widget;
-				m_Widget[label]->SetIndex(m_NumWidgets);
 			}
 
-			for (int i = 0; i < num; ++i)
-			{
-				m_Vertices.push_back(quad[i]);
-			}
-			m_GuiRenderer->PushOffset(&m_Vertices[m_NumWidgets], 1, m_NumWidgets);
+			m_Vertices[index] = quad[0];
+			
+			m_GuiRenderer->PushOffset(&m_Vertices[index], 1,index);
 			m_NumWidgets++;
+
+			return index;
 		}
 		else
 		{
 			LOG_WARN("Reached maximum of widgets, not possible to add!");
 		}
+		return -1;
 	}
-	void Gui::AddWrapper(const std::string label, Ref<Wrapper> wrapper, const QuadVertex* quad, int num)
+	std::pair<unsigned int, unsigned int> Gui::AddWrapper(const std::string label, Ref<Wrapper> wrapper, const QuadVertex* quad)
 	{
 		if (m_NumWidgets < MAX_WIDGETS)
 		{
-			wrapper->SetIndex(m_NumWidgets);
+			unsigned int index1 = m_AvailableIndex.top();
+			m_AvailableIndex.pop();
+			unsigned int index2 = m_AvailableIndex.top();
+			m_AvailableIndex.pop();
+
 			m_Wrapper[label] = wrapper;
-			for (int i = 0; i < num; ++i)
-			{
-				m_Vertices.push_back(quad[i]);
-			}
-			m_GuiRenderer->PushOffset(&m_Vertices[m_NumWidgets], 2, m_NumWidgets);
-			m_NumWidgets += num;
+
+			m_Vertices[index1] = quad[0];	
+			D_ASSERT(&quad[1], "Wrapper has only one quad");
+			m_Vertices[index2] = quad[1];
+			
+			m_GuiRenderer->PushOffset(&m_Vertices[index1], 1, index1);
+			m_GuiRenderer->PushOffset(&m_Vertices[index2], 1, index2);
+			m_NumWidgets += 2;
+
+			return std::pair<unsigned int, unsigned int>(index1, index2);
 		}
 		else
 		{
 			LOG_WARN("Reached maximum of widgets, not possible to add!");
 		}
+		return std::pair<unsigned int, unsigned int>(-1,-1);
 	}
+	
+	void Gui::RemoveWidget(const std::string& label)
+	{
+		
+	}
+	void Gui::RemoveWrapper(const std::string& label)
+	{
+		for (auto& it : m_Wrapper[label]->GetWidgets())
+		{
+			m_AvailableIndex.push(it.second->GetIndex());
+			UpdatePosBuffer(it.second->GetIndex(), &QuadVertex(), 1);
+			UpdateTextureBuffer(it.second->GetIndex(), &QuadVertex(), 1);
+			UpdateTextBuffer(it.second->GetIndex(), &QuadVertex(), 1);
+			UpdateLabelBuffer(it.second->GetIndex(), &QuadVertex(), MAX_CHAR_PER_LABEL);
+			UpdateTextBuffer(it.second->GetIndex(), &QuadVertex(), MAX_TEXT_CHAR);
+			m_NumWidgets--;
+		}
+		m_Wrapper[label]->RemoveWidgets();
+		m_AvailableIndex.push(m_Wrapper[label]->GetIndex().first);
+		m_AvailableIndex.push(m_Wrapper[label]->GetIndex().second);
+		
+		UpdatePosBuffer(m_Wrapper[label]->GetIndex().first, &QuadVertex(), 1);
+		UpdatePosBuffer(m_Wrapper[label]->GetIndex().second, &QuadVertex(), 1);
+		UpdateTextureBuffer(m_Wrapper[label]->GetIndex().first, &QuadVertex(), 1);
+		UpdateTextureBuffer(m_Wrapper[label]->GetIndex().second, &QuadVertex(), 1);
+		UpdateLabelBuffer(m_Wrapper[label]->GetIndex().first, &QuadVertex(), MAX_CHAR_PER_LABEL);
+	
+	
+		m_Wrapper.erase(label);
+		m_NumWidgets -= 2;
+
+	}
+	
 	void Gui::EnableWrapper(const std::string& label)
 	{
-		m_EnabledWrapper = label;
+		if (s_Instance)
+			m_EnabledWrapper = label;
 	}
 	void Gui::DisableWrapper()
 	{
-		m_Wrapper[m_EnabledWrapper]->SetWidgetPosition();
-		m_EnabledWrapper.clear();
+		if (s_Instance)
+		{
+			for (auto& it : m_Wrapper[m_EnabledWrapper]->GetWidgets())
+			{
+				it.second->Move(glm::vec2(0, it.second->GetLabelSize().y));
+				it.second->UpdateData();
+			}
+			m_EnabledWrapper.clear();
+		}
 	}
-	Wrapper::Wrapper(const std::string& label, const glm::vec2& position, const glm::vec2& size, float labelsize)
+	Wrapper::Wrapper(const glm::vec2& position, const glm::vec2& size, int widgetPerCol,bool locked, float labelsize)
 		:
 		m_Position(position),
+		test(position),
 		m_Size(size),
 		m_Index(0),
 		m_ExitButton(glm::vec2(position.x + size.x - 20,position.y),glm::vec2(20,20)),
-		m_Label("Arial", label, glm::vec2(position.x, position.y - Font::GetFont("Arial")->GetData().lineHeight * labelsize), glm::vec2(labelsize, labelsize))
+		m_WidgetPerCol(widgetPerCol),
+		m_Locked(locked)
 	{
 	}
-	void Wrapper::AddWidget(const std::string& label, Ref<Widget> widget, unsigned int index)
+	void Wrapper::AddWidget(const std::string& label, Ref<Widget> widget)
 	{
+		glm::vec2 offset(10, 0);
+		glm::vec2 newPos = m_Position;
+		int counter = 1;
+		for (auto& it : m_Widget)
+		{
+			if (m_WidgetPerCol <= counter )
+			{
+				counter = 0;
+				newPos.y = m_Position.y;
+				newPos.x += it.second->GetLabelSize().x + it.second->GetSize().x + offset.x;
+			}
+			else
+			{
+				newPos.y += it.second->GetLabelSize().y + it.second->GetSize().y;		
+			}
+
+			if (m_Position.x + m_Size.x < newPos.x + it.second->GetSize().x + offset.x)
+			{
+				m_Size.x += it.second->GetSize().x + offset.x + 20;
+				m_ExitButton.SetPosition(glm::vec2(m_Position.x + m_Size.x - m_ExitButton.GetSize().x, m_Position.y));
+				QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
+				Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
+			}
+			if (m_Position.y + m_Size.y < newPos.y + it.second->GetSize().y + offset.y)
+			{
+				m_Size.y += it.second->GetSize().y + offset.y + 20;
+				m_ExitButton.SetPosition(glm::vec2(m_Position.x + m_Size.x - m_ExitButton.GetSize().x, m_Position.y));
+				QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
+				Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
+			}
+
+			counter++;		
+		}
+	
 		m_Widget[label] = widget;
-		m_Widget[label]->SetIndex(index);
+		m_Widget[label]->SetPosition(newPos);
 	}
+
+	void Wrapper::RemoveWidgets()
+	{
+		m_Widget.clear();
+	}
+	
 	bool Wrapper::MouseHoover(const glm::vec2& mousePos)
 	{
-		glm::vec4 coords = GetCoords();
-
-		if (mousePos.x >= coords.x && mousePos.x <= coords.z
-			&& mousePos.y <= coords.y && mousePos.y >= coords.w)
+		if (!m_Locked)
 		{
-			return true;
+			glm::vec4 coords = getCoords();
+
+			if (mousePos.x >= coords.x && mousePos.x <= coords.z
+				&& mousePos.y <= coords.y && mousePos.y >= coords.w)
+			{
+				return true;
+			}
 		}
 		return false;
 	}
 	bool Wrapper::MouseResize(const glm::vec2& mousePos)
 	{
-		int offset = 20;
-		if (mousePos.x < m_Position.x + m_Size.x && mousePos.x > m_Position.x + m_Size.x - offset // BOTTOM RIGHT CORNER
-			&& mousePos.y < m_Position.y + m_Size.y && mousePos.y > m_Position.y + m_Size.y - offset)
+		if (!m_Locked)
 		{
-			return true;
+			int offset = 20;
+			if (mousePos.x < m_Position.x + m_Size.x && mousePos.x > m_Position.x + m_Size.x - offset // BOTTOM RIGHT CORNER
+				&& mousePos.y < m_Position.y + m_Size.y && mousePos.y > m_Position.y + m_Size.y - offset)
+			{
+				return true;
+			}
 		}
 		return false;
 	}
 	
-	bool Wrapper::Minimize(const glm::vec2& mousePos)
+	bool Wrapper::Exit(const glm::vec2& mousePos)
 	{
 		if (m_ExitButton.MouseHoover(mousePos))
 		{
-			if (!m_Minimized)
-			{
-				for (auto& it : m_Widget)
-				{
-					it.second->Minimize();
-				}
-				m_Minimized = true;
-				Resize(m_Position+m_Label.GetSize());
-			}
-			else
-			{
-				m_Minimized = false;
-				Resize(m_Position + glm::vec2(100,100));
-				m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
-				SetWidgetPosition();
-			}
 			return true;
 		}
 		return false;
@@ -305,36 +430,40 @@ namespace Dot {
 	void Wrapper::Move(const glm::vec2& pos)
 	{
 		m_Position += pos;
-		if (!m_Minimized)
+		for (auto& it : m_Widget)
 		{
-			for (auto& it : m_Widget)
-			{
-				it.second->Move(pos);
-			}
+			it.second->Move(pos);
+			it.second->UpdateData();
 		}
 		m_ExitButton.Move(pos);
 		
 		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
 		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
-		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
+
+		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
+		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
 	}
 	void Wrapper::SetPosition(const glm::vec2& pos)
 	{
 		m_Position = pos;
-		if (!m_Minimized)
+		for (auto& it : m_Widget)
 		{
-			for (auto& it : m_Widget)
-			{
-				glm::vec2 posDif = it.second->GetPosition() - m_Position;
-				it.second->SetPosition(posDif);
-			}
+			it.second->Move(pos);
+			it.second->UpdateData();
 		}
 		glm::vec2 posDif = m_ExitButton.GetPosition() - m_Position;
 		m_ExitButton.SetPosition(posDif);
 
 		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
 		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
-		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label.GetSize().y));
+		
+		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
+		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
+	}
+	void Wrapper::SetLabel(const Ref<Text> label)
+	{
+		m_Label = label;
+		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
 	}
 	void Wrapper::SetWidgetPosition()
 	{
@@ -355,28 +484,35 @@ namespace Dot {
 			Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 		}
 	}
-	void Wrapper::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size)
+	void Wrapper::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size, int widgetPerCol,bool locked,float labelsize)
 	{
-		glm::vec2 texCoords[8] = {
-			   glm::vec2(0, 0.75),
-			   glm::vec2(0.25, 0.75),
-			   glm::vec2(0.25, 1),
-			   glm::vec2(0, 1),
-			   // Exit button
-			   glm::vec2(0.5, 0.75),
-			   glm::vec2(0.75, 0.75),
-			   glm::vec2(0.75, 1),
-			   glm::vec2(0.5,  1)
-		};
-		QuadVertex quadVertex[2] = {
-			QuadVertex(position,size,&texCoords[0]),
-			QuadVertex(glm::vec2(position.x + size.x - 20,position.y),glm::vec2(20,20),&texCoords[4])
-		};
-		
-		Ref<Wrapper> wrapper = std::make_shared<Wrapper>(label, position, size);
-		Gui::Get()->AddWrapper(label, wrapper, &quadVertex[0]);
+		if (Gui::Get())
+		{
+			glm::vec2 texCoords[8] = {
+				   glm::vec2(0, 0.75),
+				   glm::vec2(0.25, 0.75),
+				   glm::vec2(0.25, 1),
+				   glm::vec2(0, 1),
+				   // Exit button
+				   glm::vec2(0.5, 0.75),
+				   glm::vec2(0.75, 0.75),
+				   glm::vec2(0.75, 1),
+				   glm::vec2(0.5,  1)
+			};
+			QuadVertex quadVertex[2] = {
+				QuadVertex(position,size,&texCoords[0]),
+				QuadVertex(glm::vec2(position.x + size.x - 20,position.y),glm::vec2(20,20),&texCoords[4])
+			};
+			D_ASSERT(label.size() < MAX_CHAR_PER_LABEL, "Max len of label is %d", MAX_CHAR_PER_LABEL);
+			Ref<Text> labelText = std::make_shared<Text>("Arial", label, glm::vec2(position.x, position.y - Font::GetFont("Arial")->GetData().lineHeight * labelsize), glm::vec2(labelsize, labelsize), MAX_CHAR_PER_LABEL);
+			Ref<Wrapper> wrapper = std::make_shared<Wrapper>(position, size, widgetPerCol, locked);
+			auto index = Gui::Get()->AddWrapper(label, wrapper, &quadVertex[0]);
+
+			wrapper->SetIndex(index.first, index.second);
+			wrapper->SetLabel(labelText);
+		}
 	}
-	glm::vec4 Wrapper::GetCoords()
+	glm::vec4 Wrapper::getCoords()
 	{
 		return glm::vec4(  m_Position.x,
 			m_Position.y + m_Size.y,
@@ -390,7 +526,7 @@ namespace Dot {
 	}
 	bool Wrapper::ActionButton::MouseHoover(const glm::vec2& mousePos)
 	{
-		glm::vec4 coords = GetCoords();
+		glm::vec4 coords = getCoords();
 
 		if (mousePos.x >= coords.x && mousePos.x <= coords.z
 			&& mousePos.y <= coords.y && mousePos.y >= coords.w)
@@ -409,11 +545,10 @@ namespace Dot {
 	void Wrapper::ActionButton::SetPosition(const glm::vec2& pos)
 	{
 		m_Position = pos;
-		
 		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
 		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
 	}
-	glm::vec4 Wrapper::ActionButton::GetCoords()
+	glm::vec4 Wrapper::ActionButton::getCoords()
 	{
 		return glm::vec4(m_Position.x,
 			m_Position.y + m_Size.y,

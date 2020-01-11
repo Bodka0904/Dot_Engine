@@ -1,10 +1,39 @@
 #pragma once
 #include "RendererAPI.h"
 
+#define D_BLEND 0x0BE2
+#define D_DEPTH_TEST 0x0B71
+
 #define D_TRIANGLES 0x0004
 #define D_POINTS 0x0000
 #define D_QUADS 0x0007
 #define D_LINES 0x0001
+
+
+#define D_SRC_COLOR  0x0300
+#define D_ONE_MINUS_SRC_COLOR 0x0301
+#define D_SRC_ALPHA 0x0302
+#define D_ONE_MINUS_SRC_ALPHA 0x0303
+
+
+#define D_DST_ALPHA 0x0304
+#define D_ONE_MINUS_DST_ALPHA 0x0305
+#define D_DST_COLOR 0x0306
+#define D_ONE_MINUS_DST_COLOR 0x0307
+
+
+#define D_ZERO 0
+#define D_FALSE 0
+#define D_LOGIC_OP 0x0BF1
+#define D_NONE 0
+#define D_TEXTURE_COMPONENTS 0x1003
+#define D_NO_ERROR 0
+#define D_POINTS 0x0000
+#define D_CURRENT_BIT 0x00000001
+#define D_TRUE 1
+#define D_ONE 1
+
+#define D_FUNC_ADD 0x8006
 
 namespace Dot {
 
@@ -31,30 +60,21 @@ namespace Dot {
 			s_RendererAPI->Clear();
 		}
 
-		// Render setup
-		inline static void EnableDepthTest()
+		inline static void Enable(int32_t state)
 		{
-			s_RendererAPI->EnableDepthTest();
+			s_RendererAPI->Enable(state);
 		}
-		inline static void DisableDepthTest()
+		inline static void Disable(int32_t state)
 		{
-			s_RendererAPI->DisableDepthTest();
+			s_RendererAPI->Disable(state);
 		}
-		inline static void EnableBlend()
+		inline static void SetBlendFunc(int32_t sFactor, int32_t dFactor)
 		{
-			s_RendererAPI->EnableBlend();
+			s_RendererAPI->SetBlendFunc(sFactor, dFactor);
 		}
-		inline static void DisableBlend()
+		inline static void SetBlendEquation(int32_t eq)
 		{
-			s_RendererAPI->DisableBlend();
-		}
-		inline static void EnableAdditiveBlend()
-		{
-			s_RendererAPI->EnableAdditiveBlend();
-		}
-		inline static void DisableAdditiveBlend()
-		{
-			s_RendererAPI->DisableAdditiveBlend();
+			s_RendererAPI->SetBlendEquation(eq);
 		}
 		// Render options
 		inline static void SubmitElement(const Ref<ArrayBuffer>& vao, int drawMod)

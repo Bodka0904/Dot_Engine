@@ -12,14 +12,14 @@
 
 namespace Dot {
 
-	Terrain::Terrain(float size, unsigned int numvertex)
+	Terrain::Terrain(float size, int numvertex)
 		: m_Size(size), m_NumVertex(numvertex)
 	{
 		// Num vertices
 		int count = m_NumVertex * m_NumVertex;
 		
 		// Temporary vectors 
-		std::vector<unsigned int> indices;
+		std::vector<int> indices;
 		std::vector<glm::vec2> texcoords;
 		std::vector<glm::vec3> normals;
 
@@ -107,7 +107,7 @@ namespace Dot {
 		// Temporary vectors 
 		std::vector<glm::vec2> texcoords;
 		std::vector<glm::vec3> normals;
-		std::vector<unsigned int > indices;
+		std::vector<int > indices;
 
 		texcoords.resize(count);
 		normals.resize(count);

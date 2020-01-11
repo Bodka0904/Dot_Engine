@@ -1,12 +1,12 @@
 #type vertex
-#version 330 core
+#version 430 core
 
 layout(location = 0) in vec3 a_Position;
 layout(location = 1) in vec3 a_Normal;
 layout(location = 4) in vec2 a_TexCoord;
 layout(location = 5) in mat4 a_InstanceModel;
 
-layout(std140) uniform camera_data
+layout(std140, binding = 0) uniform o_CameraData
 {
 	mat4 ViewProjectionMatrix;
 	mat4 ViewMatrix;
@@ -14,7 +14,6 @@ layout(std140) uniform camera_data
 	vec3 ViewPos;
 };
 
-uniform vec2 u_ClipDistance;
 
 out vec3 v_FragPos;
 out vec3 v_Normal;
@@ -23,10 +22,8 @@ out vec3 v_ViewPos;
 
 void main()
 {
-	vec4 plane = vec4(0, u_ClipDistance.x, 0, u_ClipDistance.y);
 	vec4 WorldPos = a_InstanceModel * vec4(a_Position, 1.0);
 
-	gl_ClipDistance[0] = dot(WorldPos, plane);
 	
 	vec4 Position = ViewProjectionMatrix * WorldPos;
 
@@ -40,16 +37,19 @@ void main()
 
 
 #type fragment
-#version 330 core
+#version 430 core
 
 in vec3 v_FragPos;
 in vec3 v_Normal;
 in vec2 v_TexCoord;
 in vec3 v_ViewPos;
 
-uniform vec3 u_LightPosition;
-uniform vec3 u_LightColor;
-uniform float u_LightStrength;
+layout(std140, binding = 1) uniform o_Light
+{
+	vec4 LightPosition;
+	vec4 LightColor;
+	float LightStrength;
+};
 
 uniform sampler2D u_Texture;
 
@@ -65,7 +65,7 @@ float c_Quadratic = 0.0002f;
 
 float CalcPointLight()
 {
-	float distance = length(u_LightPosition - v_FragPos);
+	float distance = length(LightPosition.xyz - v_FragPos);
 	float attenuation = 1.0 / (c_Constant + c_Linear * distance +
 		c_Quadratic * (distance * distance));
 
@@ -76,24 +76,24 @@ float CalcPointLight()
 vec3 CalcDirLight()
 {
 	vec3 norm = normalize(v_Normal);
-	vec3 lightDir = normalize(u_LightPosition - v_FragPos);
+	vec3 lightDir = normalize(LightPosition.xyz - v_FragPos);
 
-	vec3 ambient = c_AmbientStrength * u_LightColor;
+	vec3 ambient = c_AmbientStrength * LightColor.xyz;
 	vec3 viewDir = normalize(v_ViewPos - v_FragPos);
 	vec3 reflectDir = reflect(-lightDir, norm);
 
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
 	float diff = max(dot(norm, lightDir), 0.0);
 
-	vec3 specular = c_SpecularStrength * spec * u_LightColor;
-	vec3 diffuse = diff * u_LightColor;
+	vec3 specular = c_SpecularStrength * spec * LightColor.xyz;
+	vec3 diffuse = diff * LightColor.xyz;
 
 	float attenuation = CalcPointLight();
 	ambient *= attenuation;
 	diffuse *= attenuation;
 	specular *= attenuation;
 
-	vec3 result = (ambient + diffuse + specular) * u_LightStrength;
+	vec3 result = (ambient + diffuse + specular) * LightStrength;
 
 	return result;
 }

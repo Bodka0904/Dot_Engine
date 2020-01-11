@@ -4,7 +4,6 @@
 #include "Events/Event.h"
 #include "Dot/Gui/GuiLayer.h"
 
-
 namespace Dot {
 	class Application
 	{

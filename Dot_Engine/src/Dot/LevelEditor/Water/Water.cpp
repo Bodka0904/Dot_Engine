@@ -2,6 +2,7 @@
 #include "Water.h"
 
 
+#include "Dot/Renderer/RenderCommand.h"
 
 namespace Dot {
 
@@ -56,6 +57,11 @@ namespace Dot {
 			m_TimePass = -1;
 		}
 		m_TimePass += dt;
+	}
+
+	void Water::Render(const Ref<Shader>& shader) 
+	{
+		RenderCommand::SubmitElement(m_VAO, D_TRIANGLES);
 	}
 	
 }

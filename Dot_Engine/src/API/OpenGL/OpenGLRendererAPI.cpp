@@ -1,11 +1,10 @@
 #include "stdafx.h"
 #include "OpenGLRendererAPI.h"
-
 #include <GL/glew.h>
 
 namespace Dot {
 	void OpenGLRendererAPI::Init()
-	{
+	{	
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_DEPTH_TEST);
@@ -14,33 +13,24 @@ namespace Dot {
 	{
 		glViewport(x, y, width, height);
 	}
-	void OpenGLRendererAPI::EnableDepthTest()
-	{	
-		glEnable(GL_DEPTH_TEST);
-	}
-	void OpenGLRendererAPI::DisableDepthTest()
+	void OpenGLRendererAPI::Enable(int32_t state)
 	{
-		glDisable(GL_DEPTH_TEST);
+		glEnable(state);
 	}
-	void OpenGLRendererAPI::EnableBlend()
+	void OpenGLRendererAPI::Disable(int32_t state)
 	{
-		glEnable(GL_DEPTH_TEST);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glDisable(state);
 	}
-	void OpenGLRendererAPI::DisableBlend()
+	void OpenGLRendererAPI::SetBlendFunc(int32_t sFactor, int32_t dFactor)
 	{
-		glDisable(GL_BLEND);
-		glBlendFunc(GL_SRC_COLOR, GL_SRC_COLOR);
+		glBlendFunc(sFactor, dFactor);
 	}
-	void OpenGLRendererAPI::EnableAdditiveBlend()
+
+	void OpenGLRendererAPI::SetBlendEquation(int32_t eq)
 	{
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+		glBlendEquation(eq);
 	}
-	void OpenGLRendererAPI::DisableAdditiveBlend()
-	{
-		glDisable(GL_BLEND);
-		glBlendFunc(GL_SRC_COLOR, GL_SRC_COLOR);
-	}
+
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)
 	{
 		glClearColor(color.r, color.g, color.b, color.a);
@@ -62,7 +52,8 @@ namespace Dot {
 	void OpenGLRendererAPI::SubmitArraysInstanced(const Ref<ArrayBuffer>& vao, unsigned int num, int drawMod)
 	{
 		vao->Bind();
-		glDrawArraysInstanced(drawMod, 0, 1, num);
+		
+		glDrawArraysInstanced(drawMod, 0, 4, num);
 	}
 	void OpenGLRendererAPI::SubmitElement(const Ref<ArrayBuffer>& vao, int drawMod)
 	{

@@ -11,11 +11,13 @@ namespace Dot {
 
 		virtual void OnAttach() {} //Init
 		virtual void OnDetach() {} //Destroy
-
 		virtual void OnUpdate(Timestep ts) {} //Update
-		virtual void OnGuiRender() {}
-
 		virtual void OnEvent(Event& event) {}
+		
+		virtual void OnGuiAttach(){}
+		virtual void OnGuiUpdate() {}
+		virtual void OnGuiDetach(){}
+		virtual void OnGuiEvent(Event& event){}
 
 	};
 

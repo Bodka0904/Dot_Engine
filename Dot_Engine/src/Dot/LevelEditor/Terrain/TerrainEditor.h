@@ -9,10 +9,8 @@ namespace Dot {
 	{
 
 	public:
-		TerrainEditor();
-		
+		TerrainEditor();	
 		void UpdateTerrain(Ref<Terrain> terrain);
-
 
 	private:
 		float m_Amplitude = 0.0f;

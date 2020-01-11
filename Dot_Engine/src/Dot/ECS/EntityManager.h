@@ -1,5 +1,5 @@
 #pragma once
-#include "Entity.h"
+#include "Types.h"
 
 #include <bitset>
 #include <queue>

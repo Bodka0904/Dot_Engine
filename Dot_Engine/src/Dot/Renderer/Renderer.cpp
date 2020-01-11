@@ -4,18 +4,8 @@
 
 
 namespace Dot {
-
 	Renderer::SceneData Renderer::m_SceneData;
 
-	Renderer::Renderer()
-	{
-	}
-
-
-	Renderer::~Renderer()
-	{
-	
-	}
 
 	void Renderer::Init()
 	{
@@ -88,7 +78,7 @@ namespace Dot {
 
 	void Renderer::EndScene(const Ref<Shader>shader)
 	{
-		shader->UpdateUniformBufferObject("camera_data", &m_SceneData, (sizeof(glm::mat4) * 3) + sizeof(glm::vec3));
+		shader->UpdateUniformBufferObject("o_CameraData", &m_SceneData, (sizeof(glm::mat4) * 3) + sizeof(glm::vec3));
 	}
 
 }

@@ -11,7 +11,7 @@
 #include "RenderCommand.h"
 
 namespace Dot {
-	
+
 	static glm::mat4 aiMatrix4x4ToGlm(const aiMatrix4x4& from)
 	{
 		glm::mat4 to;
@@ -30,29 +30,86 @@ namespace Dot {
 			aiProcess_JoinIdenticalVertices;
 	}
 
-	void AnimatedMesh::VertexBoneData::AddBoneData(unsigned int BoneID, float Weight)
+	void VertexBoneData::AddBoneData(unsigned int BoneID, float Weight)
 	{
-		for (unsigned int i = 0; i < NUM_BONES_PER_VERTEX; i++) {
-			if (Weights[i] == 0.0) {
+		for (unsigned int i = 0; i < NUM_BONES_PER_VERTEX; i++) 
+		{
+			if (Weights[i] == 0.0) 
+			{
 				IDs[i] = BoneID;
 				Weights[i] = Weight;
 				return;
 			}
 		}
+		LOG_WARN("Vertex has more than four bones/weights per vertex, discarded BoneID=%d, Weight=%f", BoneID, Weight);
 	}
 
 	AnimatedMesh::AnimatedMesh(const std::string& Filename)
 	{
 		m_NumBones = 0;
 		m_pScene = NULL;
-
 		m_pScene = m_Importer.ReadFile(Filename.c_str(), ImportFlags);
-		if (m_pScene) 
+
+		if (m_pScene)
 		{
-			InitFromScene(m_pScene, Filename);
+			m_IsAnimated = m_pScene->mAnimations != nullptr;
+			m_SubMesh.resize(m_pScene->mNumMeshes);
+
+			std::vector<AnimatedVertex> vertices;
+			std::vector<unsigned int> indices;
+
+			unsigned int NumVertices = 0;
+			unsigned int NumIndices = 0;
+
+			// Count the number of vertices and indices
+			for (unsigned int i = 0; i < m_SubMesh.size(); i++)
+			{
+				m_SubMesh[i].NumIndices = m_pScene->mMeshes[i]->mNumFaces * 3;
+				m_SubMesh[i].BaseVertex = NumVertices;
+				m_SubMesh[i].BaseIndex = NumIndices;
+
+				NumVertices += m_pScene->mMeshes[i]->mNumVertices;
+				NumIndices += m_SubMesh[i].NumIndices;
+			}
+
+			vertices.resize(NumVertices);
+			indices.reserve(NumIndices);
+
+			// Initialize the meshes in the scene one by one
+			for (unsigned int i = 0; i < m_SubMesh.size(); i++)
+			{
+				const aiMesh* paiMesh = m_pScene->mMeshes[i];
+				initMesh(i, paiMesh, vertices, indices);
+			}
+
+			// Delete BoneMapping elements that we do not need
+			std::vector<std::string> DeleteBone;
+			loadHierarchy(m_pScene->mRootNode, DeleteBone);
+			for (auto i : DeleteBone)
+			{
+				m_BoneMapping.erase(i);
+			}
+
+
+			m_VAO = ArrayBuffer::Create();
+			m_VAO->Bind();
+			BufferLayout layout{
+				{0, ShaderDataType::Float3, "position" },
+				{1, ShaderDataType::Float3, "normal" },
+				{2, ShaderDataType::Float2, "texcoord" },
+				{3, ShaderDataType::Int4,	"boneID" },
+				{4, ShaderDataType::Float4, "boneWeight" }
+			};
+			Ref<VertexBuffer> VBO = VertexBuffer::Create((void*)& vertices[0], vertices.size() * sizeof(AnimatedVertex), D_STATIC_DRAW);
+			VBO->SetLayout(layout);	
+			m_VAO->AddVBO(VBO);
+			
+			Ref<IndexBuffer> IBO = IndexBuffer::Create(&indices[0], indices.size());
+			
+			m_VAO->AddIBO(IBO);
 			m_InverseTransform = glm::inverse(aiMatrix4x4ToGlm(m_pScene->mRootNode->mTransformation));
 		}
-		else 
+		else
 		{
 			LOG_ERR("Error parsing '%s': '%s'", Filename.c_str(), m_Importer.GetErrorString());
 		}
@@ -63,117 +120,55 @@ namespace Dot {
 	}
 
 
-	bool AnimatedMesh::InitFromScene(const aiScene* pScene, const std::string& Filename)
-	{
-		m_Entries.resize(pScene->mNumMeshes);
-	
-		
-		std::vector<glm::vec3> Positions;
-		std::vector<glm::vec3> Normals;
-		std::vector<glm::vec2> TexCoords;
-		std::vector<VertexBoneData> Bones;
-		
-		std::vector<unsigned int> Indices;
-
-		unsigned int NumVertices = 0;
-		unsigned int NumIndices = 0;
-
-		// Count the number of vertices and indices
-		for (unsigned int i = 0; i < m_Entries.size(); i++) {
-			m_Entries[i].NumIndices = pScene->mMeshes[i]->mNumFaces * 3;
-			m_Entries[i].BaseVertex = NumVertices;
-			m_Entries[i].BaseIndex = NumIndices;
-
-			NumVertices += pScene->mMeshes[i]->mNumVertices;
-			NumIndices += m_Entries[i].NumIndices;
-		}
-
-		// Reserve space in the vectors for the vertex attributes and indices
-		Positions.reserve(NumVertices);
-		Normals.reserve(NumVertices);
-		TexCoords.reserve(NumVertices);
-		Bones.resize(NumVertices);
-		Indices.reserve(NumIndices);
-
-		// Initialize the meshes in the scene one by one
-		for (unsigned int i = 0; i < m_Entries.size(); i++) {
-			const aiMesh* paiMesh = pScene->mMeshes[i];
-			InitMesh(i, paiMesh, Positions, Normals, TexCoords, Bones, Indices);
-		}
-
-		// Delete BoneMapping elements that we do not need
-		std::vector<std::string> DeleteBone;
-		LoadHierarchy(m_pScene->mRootNode,DeleteBone);
-		for (auto i : DeleteBone)
-		{
-			m_BoneMapping.erase(i);
-		}
-		
-		m_VAO = ArrayBuffer::Create();
-		m_VAO->Bind();
-		BufferLayout layoutpos = {
-			{0, ShaderDataType::Float3, "position" },
-		};
-		Ref<VertexBuffer> m_PosBuffer = VertexBuffer::Create((void*)&Positions[0], sizeof(Positions[0]) * Positions.size(),D_STATIC_DRAW);
-		m_PosBuffer->SetLayout(layoutpos);
-		
-		BufferLayout layouttex = {
-			{1, ShaderDataType::Float2, "texcoord" },
-		};
-		Ref<VertexBuffer> m_TexCoordBuffer = VertexBuffer::Create((void*)& TexCoords[0], sizeof(TexCoords[0]) * TexCoords.size(), D_STATIC_DRAW);
-		m_TexCoordBuffer->SetLayout(layouttex);
-		
-		BufferLayout layoutnormal = {
-			{2, ShaderDataType::Float3, "normal" },
-		};
-		Ref<VertexBuffer> m_NormalBuffer = VertexBuffer::Create((void*)& Normals[0], sizeof(Normals[0]) * Normals.size(), D_STATIC_DRAW);
-		m_NormalBuffer->SetLayout(layoutnormal);
-		
-		BufferLayout layoutbone = {
-			{3, ShaderDataType::Int4, "boneID" },
-			{4, ShaderDataType::Float4, "boneWeight" },
-		};
-		Ref<VertexBuffer> m_BoneBuffer = VertexBuffer::Create((void*)& Bones[0], sizeof(Bones[0]) * Bones.size(), D_STATIC_DRAW);
-		m_BoneBuffer->SetLayout(layoutbone);
-		
-		Ref<IndexBuffer> m_IndexBuffer = IndexBuffer::Create(&Indices[0], Indices.size());
-
-		m_VAO->AddVBO(m_PosBuffer);
-		m_VAO->AddVBO(m_TexCoordBuffer);
-		m_VAO->AddVBO(m_NormalBuffer);
-		m_VAO->AddVBO(m_BoneBuffer);
-		m_VAO->AddIBO(m_IndexBuffer);
-		
-		m_VAO->UnBind();
-		return true;
-	};
-
-
-	void AnimatedMesh::InitMesh(unsigned int MeshIndex,
+	void AnimatedMesh::initMesh(unsigned int MeshIndex,
 		const aiMesh* paiMesh,
-		std::vector<glm::vec3>& Positions,
-		std::vector<glm::vec3>& Normals,
-		std::vector<glm::vec2>& TexCoords,
-		std::vector<VertexBoneData>& Bones,
+		std::vector<AnimatedVertex>& vertices,
 		std::vector<unsigned int>& Indices
-		)
+	)
 	{
 		// Populate the vertex attribute vectors
-		for (unsigned int i = 0; i < paiMesh->mNumVertices; i++) {
-			
+		for (unsigned int i = 0; i < paiMesh->mNumVertices; i++)
+		{
 			if (paiMesh->HasTextureCoords(0))
 			{
-				TexCoords.push_back(glm::vec2(paiMesh->mTextureCoords[0][i].x, paiMesh->mTextureCoords[0][i].y));
+				vertices[i].texcoord = glm::vec2(paiMesh->mTextureCoords[0][i].x, paiMesh->mTextureCoords[0][i].y);
 			}
-			Positions.push_back(glm::vec3(paiMesh->mVertices[i].x, paiMesh->mVertices[i].y, paiMesh->mVertices[i].z));
-			Normals.push_back(glm::vec3(paiMesh->mNormals[i].x, paiMesh->mNormals[i].y, paiMesh->mNormals[i].z));
-			
+
+			vertices[i].position = glm::vec3(paiMesh->mVertices[i].x, paiMesh->mVertices[i].y, paiMesh->mVertices[i].z);
+			vertices[i].normal = glm::vec3(paiMesh->mNormals[i].x, paiMesh->mNormals[i].y, paiMesh->mNormals[i].z);	
 		}
 
-		LoadBones(MeshIndex, paiMesh, Bones);
+		// Load Bones
+		m_BoneInfo.resize(paiMesh->mNumBones);
+		for (unsigned int i = 0; i < paiMesh->mNumBones; i++)
+		{
+			unsigned int BoneIndex = 0;
+			std::string BoneName(paiMesh->mBones[i]->mName.data);
+
+			if (m_BoneMapping.find(BoneName) == m_BoneMapping.end()) 
+			{
+				BoneIndex = m_NumBones;
+				m_NumBones++;
+
+				m_BoneInfo[BoneIndex].BoneOffset = aiMatrix4x4ToGlm(paiMesh->mBones[i]->mOffsetMatrix);
+				m_BoneMapping[BoneName] = BoneIndex;
+			}
+			else
+			{
+				BoneIndex = m_BoneMapping[BoneName];
+			}
+
+			for (unsigned int j = 0; j < paiMesh->mBones[i]->mNumWeights; j++)
+			{
+				unsigned int VertexID = m_SubMesh[MeshIndex].BaseVertex + paiMesh->mBones[i]->mWeights[j].mVertexId;
+				float Weight = paiMesh->mBones[i]->mWeights[j].mWeight;
+				vertices[VertexID].boneData.AddBoneData(BoneIndex, Weight);
+			}
+		}
 
 		// Populate the index buffer
-		for (unsigned int i = 0; i < paiMesh->mNumFaces; i++) {
+		for (unsigned int i = 0; i < paiMesh->mNumFaces; i++) 
+		{
 			const aiFace& Face = paiMesh->mFaces[i];
 			assert(Face.mNumIndices == 3);
 			Indices.push_back(Face.mIndices[0]);
@@ -183,10 +178,11 @@ namespace Dot {
 	}
 
 
-	void AnimatedMesh::LoadBones(unsigned int MeshIndex, const aiMesh* pMesh, std::vector<VertexBoneData>& Bones)
+	void AnimatedMesh::loadBones(unsigned int MeshIndex, const aiMesh* pMesh, std::vector<VertexBoneData>& Bones)
 	{
-		m_FinalTransformation.resize(pMesh->mNumBones);
-		for (unsigned int i = 0; i < pMesh->mNumBones; i++) {
+		m_BoneInfo.resize(pMesh->mNumBones);
+		for (unsigned int i = 0; i < pMesh->mNumBones; i++) 
+		{
 			unsigned int BoneIndex = 0;
 			std::string BoneName(pMesh->mBones[i]->mName.data);
 
@@ -194,18 +190,18 @@ namespace Dot {
 				// Allocate an index for a new bone
 				BoneIndex = m_NumBones;
 				m_NumBones++;
-				BoneInfo bi;
-				m_BoneInfo.push_back(bi);
+				
 				m_BoneInfo[BoneIndex].BoneOffset = aiMatrix4x4ToGlm(pMesh->mBones[i]->mOffsetMatrix);
 				m_BoneMapping[BoneName] = BoneIndex;
-				
 			}
-			else {
+			else
+			{
 				BoneIndex = m_BoneMapping[BoneName];
 			}
 
-			for (unsigned int j = 0; j < pMesh->mBones[i]->mNumWeights; j++) {
-				unsigned int VertexID = m_Entries[MeshIndex].BaseVertex + pMesh->mBones[i]->mWeights[j].mVertexId;
+			for (unsigned int j = 0; j < pMesh->mBones[i]->mNumWeights; j++) 
+			{
+				unsigned int VertexID = m_SubMesh[MeshIndex].BaseVertex + pMesh->mBones[i]->mWeights[j].mVertexId;
 				float Weight = pMesh->mBones[i]->mWeights[j].mWeight;
 				Bones[VertexID].AddBoneData(BoneIndex, Weight);
 			}
@@ -213,21 +209,29 @@ namespace Dot {
 	}
 
 
-	void AnimatedMesh::Render()
+	void AnimatedMesh::Render(const Ref<Shader>& shader)
 	{
 		m_VAO->Bind();
-		for (unsigned int i = 0; i < m_Entries.size(); i++) 
+		for (unsigned int i = 0; i < m_SubMesh.size(); i++)
 		{
-			RenderCommand::SubmitElementBase(m_Entries[i].NumIndices, m_Entries[i].BaseIndex, m_Entries[i].BaseVertex, D_TRIANGLES);
+			for (size_t i = 0; i < m_BoneInfo.size(); i++)
+			{
+				std::string uniformName = std::string("u_gBones[") + std::to_string(i) + std::string("]");
+				shader->UploadUniformMat4(uniformName, m_BoneInfo[i].FinalTransformation);
+			}
+
+			RenderCommand::SubmitElementBase(m_SubMesh[i].NumIndices, m_SubMesh[i].BaseIndex, m_SubMesh[i].BaseVertex, D_TRIANGLES);
 		}
 		m_VAO->UnBind();
 	}
 
 
-	unsigned int AnimatedMesh::FindPosition(float AnimationTime, const aiNodeAnim* pNodeAnim)
+	unsigned int AnimatedMesh::findPosition(float AnimationTime, const aiNodeAnim* pNodeAnim)
 	{
-		for (unsigned int i = 0; i < pNodeAnim->mNumPositionKeys - 1; i++) {
-			if (AnimationTime < (float)pNodeAnim->mPositionKeys[i + 1].mTime) {
+		for (unsigned int i = 0; i < pNodeAnim->mNumPositionKeys - 1; i++) 
+		{
+			if (AnimationTime < (float)pNodeAnim->mPositionKeys[i + 1].mTime) 
+			{
 				return i;
 			}
 		}
@@ -238,12 +242,14 @@ namespace Dot {
 	}
 
 
-	unsigned int AnimatedMesh::FindRotation(float AnimationTime, const aiNodeAnim* pNodeAnim)
+	unsigned int AnimatedMesh::findRotation(float AnimationTime, const aiNodeAnim* pNodeAnim)
 	{
 		assert(pNodeAnim->mNumRotationKeys > 0);
 
-		for (unsigned int i = 0; i < pNodeAnim->mNumRotationKeys - 1; i++) {
-			if (AnimationTime < (float)pNodeAnim->mRotationKeys[i + 1].mTime) {
+		for (unsigned int i = 0; i < pNodeAnim->mNumRotationKeys - 1; i++) 
+		{
+			if (AnimationTime < (float)pNodeAnim->mRotationKeys[i + 1].mTime) 
+			{
 				return i;
 			}
 		}
@@ -254,12 +260,14 @@ namespace Dot {
 	}
 
 
-	unsigned int AnimatedMesh::FindScaling(float AnimationTime, const aiNodeAnim* pNodeAnim)
+	unsigned int AnimatedMesh::findScaling(float AnimationTime, const aiNodeAnim* pNodeAnim)
 	{
 		assert(pNodeAnim->mNumScalingKeys > 0);
 
-		for (unsigned int i = 0; i < pNodeAnim->mNumScalingKeys - 1; i++) {
-			if (AnimationTime < (float)pNodeAnim->mScalingKeys[i + 1].mTime) {
+		for (unsigned int i = 0; i < pNodeAnim->mNumScalingKeys - 1; i++) 
+		{
+			if (AnimationTime < (float)pNodeAnim->mScalingKeys[i + 1].mTime) 
+			{
 				return i;
 			}
 		}
@@ -270,21 +278,21 @@ namespace Dot {
 	}
 
 
-	glm::vec3 AnimatedMesh::CalcInterpolatedPosition(float AnimationTime, const aiNodeAnim* pNodeAnim)
+	glm::vec3 AnimatedMesh::calcInterpolatedPosition(float AnimationTime, const aiNodeAnim* pNodeAnim)
 	{
 		if (pNodeAnim->mNumPositionKeys == 1) {
 			auto v = pNodeAnim->mPositionKeys[0].mValue;
 			return { v.x, v.y, v.z };
 		}
 
-		unsigned int PositionIndex = FindPosition(AnimationTime, pNodeAnim);
+		unsigned int PositionIndex = findPosition(AnimationTime, pNodeAnim);
 		unsigned int NextPositionIndex = (PositionIndex + 1);
 		assert(NextPositionIndex < pNodeAnim->mNumPositionKeys);
 
 		float DeltaTime = (float)(pNodeAnim->mPositionKeys[NextPositionIndex].mTime - pNodeAnim->mPositionKeys[PositionIndex].mTime);
 		float Factor = (AnimationTime - (float)pNodeAnim->mPositionKeys[PositionIndex].mTime) / DeltaTime;
 		//assert(Factor >= 0.0f && Factor <= 1.0f);
-		
+
 		const aiVector3D& Start = pNodeAnim->mPositionKeys[PositionIndex].mValue;
 		const aiVector3D& End = pNodeAnim->mPositionKeys[NextPositionIndex].mValue;
 		aiVector3D Delta = End - Start;
@@ -294,7 +302,7 @@ namespace Dot {
 	}
 
 
-	glm::quat AnimatedMesh::CalcInterpolatedRotation(float AnimationTime, const aiNodeAnim* pNodeAnim)
+	glm::quat AnimatedMesh::calcInterpolatedRotation(float AnimationTime, const aiNodeAnim* pNodeAnim)
 	{
 		// we need at least two values to interpolate...
 		if (pNodeAnim->mNumRotationKeys == 1) {
@@ -302,7 +310,7 @@ namespace Dot {
 			return glm::quat(v.w, v.x, v.y, v.z);
 		}
 
-		unsigned int RotationIndex = FindRotation(AnimationTime, pNodeAnim);
+		unsigned int RotationIndex = findRotation(AnimationTime, pNodeAnim);
 		unsigned int NextRotationIndex = (RotationIndex + 1);
 		assert(NextRotationIndex < pNodeAnim->mNumRotationKeys);
 		float DeltaTime = (float)(pNodeAnim->mRotationKeys[NextRotationIndex].mTime - pNodeAnim->mRotationKeys[RotationIndex].mTime);
@@ -316,18 +324,18 @@ namespace Dot {
 		return glm::quat(q.w, q.x, q.y, q.z);
 
 	}
-	
 
-	
 
-	glm::vec3 AnimatedMesh::CalcInterpolatedScaling(float AnimationTime, const aiNodeAnim* pNodeAnim)
+
+
+	glm::vec3 AnimatedMesh::calcInterpolatedScaling(float AnimationTime, const aiNodeAnim* pNodeAnim)
 	{
 		if (pNodeAnim->mNumScalingKeys == 1) {
 			auto v = pNodeAnim->mScalingKeys[0].mValue;
 			return { v.x, v.y, v.z };
 		}
 
-		unsigned int ScalingIndex = FindScaling(AnimationTime, pNodeAnim);
+		unsigned int ScalingIndex = findScaling(AnimationTime, pNodeAnim);
 		unsigned int NextScalingIndex = (ScalingIndex + 1);
 		//assert(NextScalingIndex < pNodeAnim->mNumScalingKeys);
 		float DeltaTime = (float)(pNodeAnim->mScalingKeys[NextScalingIndex].mTime - pNodeAnim->mScalingKeys[ScalingIndex].mTime);
@@ -341,49 +349,50 @@ namespace Dot {
 		return { aiVec.x, aiVec.y, aiVec.z };
 	}
 
-	void AnimatedMesh::LoadHierarchy(const aiNode* pNode, std::vector<std::string>& boneMappingDelete)
+	void AnimatedMesh::loadHierarchy(const aiNode* pNode, std::vector<std::string>& boneMappingDelete)
 	{
 
-		m_NodeAnim[pNode->mName.data] = FindNodeAnim(m_pScene->mAnimations[0], pNode->mName.data);
-		
+		m_NodeAnim[pNode->mName.data] = findNodeAnim(m_pScene->mAnimations[0], pNode->mName.data);
+
 		if (m_BoneMapping.find(pNode->mName.data) == m_BoneMapping.end())
 		{
 			boneMappingDelete.push_back(pNode->mName.data);
 		}
 		for (unsigned int i = 0; i < pNode->mNumChildren; i++) {
-			LoadHierarchy(pNode->mChildren[i],boneMappingDelete);
+			loadHierarchy(pNode->mChildren[i], boneMappingDelete);
 		}
-		
-		
+
+
 
 	}
 
-	void AnimatedMesh::ReadNodeHeirarchy(float AnimationTime, const aiNode* pNode, const glm::mat4& ParentTransform)
+	void AnimatedMesh::readNodeHeirarchy(float AnimationTime, const aiNode* pNode, const glm::mat4& ParentTransform)
 	{
 
 		glm::mat4 NodeTransformation(aiMatrix4x4ToGlm(pNode->mTransformation));
 		glm::mat4 GlobalTransformation = ParentTransform * NodeTransformation;
 
-		if (m_NodeAnim[pNode->mName.data]) 
-		{	
-			glm::quat RotationQ = CalcInterpolatedRotation(AnimationTime, m_NodeAnim[pNode->mName.data]);
+		if (m_NodeAnim[pNode->mName.data])
+		{
+			glm::quat RotationQ = calcInterpolatedRotation(AnimationTime, m_NodeAnim[pNode->mName.data]);
 			glm::mat4 RotationM = glm::toMat4(RotationQ);
-			
-			glm::vec3 Translation = CalcInterpolatedPosition(AnimationTime, m_NodeAnim[pNode->mName.data]);
+
+			glm::vec3 Translation = calcInterpolatedPosition(AnimationTime, m_NodeAnim[pNode->mName.data]);
 			glm::mat4 TranslationM = glm::translate(glm::mat4(1.0f), glm::vec3(Translation.x, Translation.y, Translation.z));;
-			
+
 
 			NodeTransformation = TranslationM * RotationM;
-			
+
 			GlobalTransformation = ParentTransform * NodeTransformation;
 
 			unsigned int BoneIndex = m_BoneMapping[pNode->mName.data];
-			m_FinalTransformation[BoneIndex] = GlobalTransformation * m_BoneInfo[BoneIndex].BoneOffset;
+			m_BoneInfo[BoneIndex].FinalTransformation = GlobalTransformation * m_BoneInfo[BoneIndex].BoneOffset;
 
 		}
 
-		for (unsigned int i = 0; i < pNode->mNumChildren; i++) {
-			ReadNodeHeirarchy(AnimationTime, pNode->mChildren[i], GlobalTransformation);
+		for (unsigned int i = 0; i < pNode->mNumChildren; i++) 
+		{
+			readNodeHeirarchy(AnimationTime, pNode->mChildren[i], GlobalTransformation);
 		}
 	}
 
@@ -391,14 +400,14 @@ namespace Dot {
 	void AnimatedMesh::AnimateBones(float TimeInSeconds)
 	{
 		m_Time += TimeInSeconds;
-		
+
 		float TicksPerSecond = (float)(m_pScene->mAnimations[0]->mTicksPerSecond != 0 ? m_pScene->mAnimations[0]->mTicksPerSecond : 25.0f);
 		float TimeInTicks = m_Time * TicksPerSecond;
 		float AnimationTime = fmod(TimeInTicks, (float)m_pScene->mAnimations[0]->mDuration);
 		if (AnimationTime >= m_pScene->mAnimations[0]->mDuration)
 			m_Time = 0;
 
-		ReadNodeHeirarchy(AnimationTime, m_pScene->mRootNode, glm::mat4(1.0));
+		readNodeHeirarchy(AnimationTime, m_pScene->mRootNode, glm::mat4(1.0));
 	}
 
 	void AnimatedMesh::SetToDefaultPosition()
@@ -410,11 +419,11 @@ namespace Dot {
 			float TimeInTicks = m_Time * TicksPerSecond;
 			float AnimationTime = fmod(TimeInTicks, (float)m_pScene->mAnimations[0]->mDuration);
 
-			ReadNodeHeirarchy(AnimationTime, m_pScene->mRootNode, glm::mat4(1.0));
-		}	
+			readNodeHeirarchy(AnimationTime, m_pScene->mRootNode, glm::mat4(1.0));
+		}
 	}
 
-	const aiNodeAnim* AnimatedMesh::FindNodeAnim(const aiAnimation* pAnimation, const std::string NodeName)
+	const aiNodeAnim* AnimatedMesh::findNodeAnim(const aiAnimation* pAnimation, const std::string NodeName)
 	{
 		for (unsigned int i = 0; i < pAnimation->mNumChannels; i++) {
 			const aiNodeAnim* pNodeAnim = pAnimation->mChannels[i];

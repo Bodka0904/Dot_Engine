@@ -1,9 +1,9 @@
 #type vertex
-#version 330 core
+#version 430 core
 
 layout(location = 0) in vec3 a_Position;
 
-layout(std140) uniform camera_data
+layout(std140, binding = 0) uniform o_CameraData
 {
 	mat4 ViewProjectionMatrix;
 	mat4 ViewMatrix;
@@ -19,7 +19,7 @@ void main()
 }
 
 #type fragment
-#version 330 core
+#version 430 core
 
 
 out vec4 FragColor;

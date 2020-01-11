@@ -6,11 +6,11 @@ namespace Dot {
 	class Skybox
 	{
 	public:
-		Skybox(const std::vector<std::string> faces,int SIZE);
+		Skybox(const std::vector<std::string> faces,float SIZE);
 		~Skybox();
 
 		Ref<CubeMapTexture>& GetTexture() { return m_CubeMap; }
-		Ref<ArrayBuffer> GetVao() { return m_VAO; }
+		Ref<ArrayBuffer> GetVAO() { return m_VAO; }
 
 	private:	
 		Ref<CubeMapTexture> m_CubeMap;

@@ -15,7 +15,7 @@
 //1th must be called because it is class member function,
 //2th is placeholder for agument
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
-
+#define BIT(x) 1 << x
 
 #ifndef __FUNCTION__
 #define __FUNCTION__ "Function:"

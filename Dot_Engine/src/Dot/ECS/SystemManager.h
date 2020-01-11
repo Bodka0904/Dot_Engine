@@ -1,6 +1,5 @@
 #pragma once
-
-#include "Entity.h"
+#include "Types.h"
 
 #include <set>
 #include <bitset>
@@ -12,13 +11,9 @@ namespace Dot {
 	{
 	public:
 		System() {};
-		virtual void Update(float dt) = 0;
-		virtual void Remove(Entity entity);
-	public:
-		std::vector<Entity> m_Entities;
-
-	private:
-		virtual int binarySearch(int start, int end, Entity entity);
+		virtual void Add(Entity entity)=0;
+		virtual void Remove(Entity entity) = 0;
+	
 	};
 
 
@@ -46,12 +41,19 @@ namespace Dot {
 			m_Signatures[typeName] = signature;
 		}
 
-		void EntityDestroyed(Entity entity)
+		void EntityDestroyed(Entity entity, Signature entitySignature)
 		{
 			// Erase a destroyed entity from all system lists
 			for (auto const& it : m_Systems)
 			{
-				it.second->Remove(entity);
+				auto const& type = it.first;
+				auto const& system = it.second;
+				auto const& systemSignature = m_Signatures[type];
+
+				if ((entitySignature & systemSignature) == systemSignature)
+				{
+					it.second->Remove(entity);
+				}
 			}
 		}
 
@@ -66,7 +68,7 @@ namespace Dot {
 				// Entity signature matches system signature - insert into set
 				if ((entitySignature & systemSignature) == systemSignature)
 				{
-					system->m_Entities.push_back(entity);
+					system->Add(entity);
 				}
 			}
 		}
@@ -82,23 +84,16 @@ namespace Dot {
 				// Entity signature matches system signature - insert into set
 				if ((entitySignature & systemSignature) == systemSignature)
 				{
-					system->m_Entities.push_back(entity);
+					system->Add(entity);
 				}
 				// Entity signature does not match system signature - erase from set
 				else
 				{
 					system->Remove(entity);
-					std::cout << "Got here " <<system->m_Entities.size()<< std::endl;
 				}
 			}
 		}
-		void Update(float dt)
-		{
-			for (auto& it : m_Systems)
-			{
-				it.second->Update(dt);
-			}
-		}
+		
 
 	private:
 		std::unordered_map<const char*, Signature> m_Signatures;

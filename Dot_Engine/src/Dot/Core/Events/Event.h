@@ -61,14 +61,15 @@ namespace Dot {
 	class KeyPressedEvent : public Event
 	{
 	public:
-		KeyPressedEvent(int key)
-			:m_key(key)
+		KeyPressedEvent(int key,int mod)
+			:m_key(key),m_mod(mod)
 		{}
 		virtual EventType GetEventType() const override { return type; }
 		virtual int GetKey() const { return m_key; }
-
+		virtual int GetMod() const { return m_mod; }
 	private:
 		int m_key;
+		int m_mod;
 		EventType type = EventType::KeyPressed;
 	};
 

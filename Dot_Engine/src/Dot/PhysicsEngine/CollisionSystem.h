@@ -11,11 +11,14 @@ namespace Dot {
 		CollisionSystem();
 
 		// Simple swap and prune algorithm
-		virtual void Update(float dt) override;
-
+		virtual void Update();
+		virtual void Add(Entity entity) override;
+		virtual void Remove(Entity entity) override;
 	private:
-		void ProcessInteractions(float dt);
-		bool Intersect(AABB& aabb1, AABB& aabb2);
+		void processInteractions();
+		bool intersect(AABB& aabb1, AABB& aabb2);
+		int binarySearch(int start, int end, Entity entity);
+
 
 		struct InteractionCompare
 		{
@@ -32,5 +35,9 @@ namespace Dot {
 			}
 		};
 		InteractionCompare m_Cmp;
+
+	private:
+		std::vector<Entity>m_Entities;
+
 	};
 }

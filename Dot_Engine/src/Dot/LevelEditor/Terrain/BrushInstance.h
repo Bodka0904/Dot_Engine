@@ -1,6 +1,8 @@
 #pragma once
 #include "Dot/Renderer/Texture.h"
-#include "Dot/Renderer/Mesh.h"
+
+#include <glm/glm.hpp>
+#include "Dot/Renderer/InstancedMesh.h"
 
 namespace Dot {
 	class BrushInstance
@@ -12,7 +14,7 @@ namespace Dot {
 		std::vector<Ref<InstancedMesh>>& GetInstances() { return m_Instance; }
 	private:
 		unsigned int m_CapacityPerInstance;
-		unsigned int m_CurrentCount;
+		size_t m_CurrentCount;
 		std::vector<Ref<InstancedMesh>> m_Instance;
 		Ref<Texture2D> m_Texture;
 

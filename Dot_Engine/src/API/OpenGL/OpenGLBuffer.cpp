@@ -4,7 +4,7 @@
 #include <GL/glew.h>
 namespace Dot {
 	OpenGLVertexBuffer::OpenGLVertexBuffer(const void* vertices, unsigned int size, int drawMod)
-		: m_Count(size / sizeof(float))
+		: m_Count(size / sizeof(float)),m_Size(size),m_DrawMod(drawMod)
 	{
 		glCreateBuffers(1, &m_VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
@@ -36,6 +36,18 @@ namespace Dot {
 	{
 		glUnmapBuffer(GL_ARRAY_BUFFER);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+	void OpenGLVertexBuffer::ClearBuffer()
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+		glBufferData(GL_ARRAY_BUFFER, m_Size, NULL, m_DrawMod);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+	void OpenGLVertexBuffer::Resize(const void* vertices, unsigned int size)
+	{
+		m_Size = size;
+		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+		glBufferData(GL_ARRAY_BUFFER, size, vertices, D_DYNAMIC_DRAW);
 	}
 	void OpenGLVertexBuffer::SetCount(unsigned int count)
 	{
@@ -100,6 +112,16 @@ namespace Dot {
 	void OpenGLShaderStorageBuffer::Bind()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_SSBO);
+	}
+	void OpenGLShaderStorageBuffer::Update(const void* vertices, unsigned int size, int offset)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_SSBO);
+		glBufferSubData(GL_ARRAY_BUFFER, offset, size, vertices);
+	}
+	void OpenGLShaderStorageBuffer::Resize(const void* vertices, unsigned int size)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_SSBO);
+		glBufferData(GL_ARRAY_BUFFER, size, vertices,D_DYNAMIC_DRAW);
 	}
 	void OpenGLShaderStorageBuffer::SetLayout(const BufferLayout& layout)
 	{

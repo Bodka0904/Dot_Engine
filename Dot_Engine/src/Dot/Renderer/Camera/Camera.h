@@ -23,6 +23,7 @@ namespace Dot {
 		glm::vec3 GetUpDirection();
 		glm::vec3 GetRightDirection();
 		glm::vec3 GetForwardDirection();
+		glm::vec3& GetRotation() { return m_Rotation; };
 		const glm::vec3& GetPosition() const { return m_Position; }
 		
 	

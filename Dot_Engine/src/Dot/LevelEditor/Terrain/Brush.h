@@ -24,7 +24,7 @@ namespace Dot {
 		glm::vec2 CalcNextPosition(const glm::vec3& previousPosition, const glm::vec3& emitPlace);
 	private:
 		unsigned int m_Intensity;
-		unsigned int m_Radius;
+		float		 m_Radius;
 		double		 m_Density;
 
 		Transform m_Transform;

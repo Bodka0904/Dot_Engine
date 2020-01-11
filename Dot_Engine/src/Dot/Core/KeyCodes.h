@@ -124,4 +124,10 @@ namespace Dot {
 #define D_KEY_RIGHT_SUPER        347
 #define D_KEY_MENU               348
 
+
+	/* Mods */
+#define D_MOD_SHIFT   0x0001
+#define D_MOD_CAPS_LOCK   0x0010
+
+
 }

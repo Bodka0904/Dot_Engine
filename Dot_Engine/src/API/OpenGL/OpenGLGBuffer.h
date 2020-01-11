@@ -6,7 +6,7 @@ namespace Dot {
 	{
 	public:
 		OpenGLGBuffer(uint32_t width, uint32_t height);
-
+		virtual void Resize(uint32_t width, uint32_t height);
 		virtual void Bind() const;
 		virtual void Unbind() const;
 		virtual void BindTexture(unsigned int unit, unsigned int index);

@@ -10,9 +10,8 @@ namespace Dot {
 	{
 	}
 	
-	void CollisionSystem::ProcessInteractions(float dt)
+	void CollisionSystem::processInteractions()
 	{
-		
 		// Sort AABBs by min on highest variance of axis
 		std::sort(m_Entities.begin(), m_Entities.end()-1, m_Cmp);
 		
@@ -35,13 +34,13 @@ namespace Dot {
 				{
 					break;
 				}
-				if (Intersect(aabb, aabbother))
+				if (intersect(aabb, aabbother))
 				{
 					auto& rigidBody1 = ECSManager::Get()->GetComponent<RigidBody>(m_Entities[i]);
-					rigidBody1.m_Velocity = glm::vec3(0, 0, 0);
+					rigidBody1.velocity = glm::vec3(0, 0, 0);
 
 					auto& rigidBody2 = ECSManager::Get()->GetComponent<RigidBody>(m_Entities[j]);
-					rigidBody2.m_Velocity = glm::vec3(0, 0, 0);
+					rigidBody2.velocity = glm::vec3(0, 0, 0);
 				}
 
 
@@ -67,15 +66,48 @@ namespace Dot {
 		m_Cmp.m_Axis = axis;
 
 	}
-	void CollisionSystem::Update(float dt)
+	void CollisionSystem::Update()
 	{
-		ProcessInteractions(dt);
+		processInteractions();
+	}
+
+	void CollisionSystem::Add(Entity entity)
+	{
+		m_Entities.push_back(entity);
+	}
+
+	void CollisionSystem::Remove(Entity entity)
+	{
+		std::sort(m_Entities.begin(), m_Entities.end());
+
+		int position = binarySearch(0, m_Entities.size() - 1, entity);
+		if (position != -1 && !m_Entities.empty())
+		{
+			m_Entities[position] = m_Entities[m_Entities.size() - 1];
+			m_Entities.pop_back();
+		}
 	}
 	
-	bool CollisionSystem::Intersect(AABB& aabb1, AABB& aabb2)
+	bool CollisionSystem::intersect(AABB& aabb1, AABB& aabb2)
 	{
 		return  (aabb1.m_Min[0] <= aabb2.m_Max[0] && aabb1.m_Max[0] >= aabb2.m_Min[0]) &&
 				(aabb1.m_Min[1] <= aabb2.m_Max[1] && aabb1.m_Max[1] >= aabb2.m_Min[1]) &&
 				(aabb1.m_Min[2] <= aabb2.m_Max[2] && aabb1.m_Max[2] >= aabb2.m_Min[2]);
+	}
+	int CollisionSystem::binarySearch(int start, int end, Entity entity)
+	{
+		if (end >= start)
+		{
+			int mid = start + (end - start) / 2;
+			if (m_Entities[mid] == entity)
+				return mid;
+
+			if (m_Entities[mid] > entity)
+				return binarySearch(start, mid - 1, entity);
+
+
+			return binarySearch(mid + 1, end, entity);
+		}
+		return -1;
 	}
 }

@@ -106,10 +106,6 @@
       <Project>{21301712-0DE8-585F-76EF-31BB62C6F34F}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="res\Shaders\Dot\LightShader.glsl" />
-    <None Include="res\Shaders\Dot\Particle\ParticleCompute.glsl" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

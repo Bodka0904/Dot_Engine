@@ -16,6 +16,12 @@ namespace Dot {
 
 	void AssetManager::LoadAssets(const std::string& file)
 	{
+		m_Texture["Default"].name = "Default";
+		m_Texture["Default"].asset = Texture2D::Create(1, 1);
+		uint32_t defaultTextureData = 0xffffffff;
+		m_Texture["Default"].asset->SetData(&defaultTextureData, sizeof(defaultTextureData));
+
+
 		JsonParser parser;
 		Json json;
 
@@ -28,6 +34,7 @@ namespace Dot {
 		keywords.push_back("Meshes");
 
 		json = parser.ParseJson(file, keywords);
+
 
 		for (auto& it : json.m_Object)
 		{
@@ -74,7 +81,7 @@ namespace Dot {
 					{
 						LOG_WARN("Asset with the same name, asset %s overriden", asset.name);
 					}
-					m_Shader[asset.name].asset = Shader::Create(asset.name, asset.path);
+					m_Shader[asset.name].asset = Shader::Create(asset.name, asset.path);	
 					m_Shader[asset.name].path = asset.path;
 				}
 
@@ -130,7 +137,7 @@ namespace Dot {
 					{
 						LOG_WARN("Asset with the same name, asset %s overriden", asset.name);
 					}
-					m_Mesh[asset.name].asset = std::make_shared<Mesh>(asset.path.c_str());
+					m_Mesh[asset.name].asset = std::make_shared<StaticMesh>(asset.path.c_str());
 					m_Mesh[asset.name].path = asset.path;
 				}
 			}
@@ -211,11 +218,11 @@ namespace Dot {
 		}
 	}
 
-	void AssetManager::LoadMesh(const std::string& name)
+	void AssetManager::LoadStaticMesh(const std::string& name)
 	{
 		if (!m_Mesh[name].path.empty())
 		{
-			m_Mesh[name].asset = std::make_shared<Mesh>(m_Mesh[name].path);
+			m_Mesh[name].asset = std::make_shared<StaticMesh>(m_Mesh[name].path);
 		}
 		else
 		{
@@ -272,43 +279,48 @@ namespace Dot {
 		if (m_Texture.find(asset) != m_Texture.end())
 			return m_Texture[asset].asset;
 		else
-			D_ASSERT("Texture %s is not loaded!", asset);
+		{
+			LOG_ERR("Texture %s is not loaded!", asset.c_str());
+			return m_Texture["Default"].asset;
+		}
 	}
 	Ref<CubeMapTexture> AssetManager::GetCubeMap(const std::string& asset)
 	{
 		if (m_CubeMap.find(asset) != m_CubeMap.end())
 			return m_CubeMap[asset].asset;
 		else
-			D_ASSERT("Cubemap %s is not loaded!", asset);
+			LOG_ERR("Cubemap %s is not loaded!", asset.c_str());
+
+		
 	}
 	Ref<AnimatedMesh> AssetManager::GetAnimMesh(const std::string& asset)
 	{
 		if (m_AnimatedMesh.find(asset) != m_AnimatedMesh.end())
 			return m_AnimatedMesh[asset].asset;
 		else
-			D_ASSERT("Animated mesh %s is not loaded!", asset);
+			LOG_ERR("Animated mesh %s is not loaded!", asset.c_str());
 
 	}
-	Ref<Mesh> AssetManager::GetMesh(const std::string& asset)
+	Ref<StaticMesh> AssetManager::GetStaticMesh(const std::string& asset)
 	{
 		if (m_Mesh.find(asset) != m_Mesh.end())
 			return m_Mesh[asset].asset;
 		else
-			D_ASSERT("Mesh %s is not loaded!", asset);
+			LOG_ERR("Mesh %s is not loaded!", asset.c_str());
 	}
 	Ref<InstancedMesh> AssetManager::GetInstancedMesh(const std::string& asset)
 	{
 		if (m_InstancedMesh.find(asset) != m_InstancedMesh.end())
 			return m_InstancedMesh[asset].asset;
 		else
-			D_ASSERT("Instanced mesh %s is not loaded!", asset);
+			LOG_ERR("Instanced mesh %s is not loaded!", asset.c_str());
 	}
 	Ref<Shader> AssetManager::GetShader(const std::string& asset)
 	{
 		if (m_Shader.find(asset) != m_Shader.end())
 			return m_Shader[asset].asset;
 		else
-			D_ASSERT("Shader %s is not loaded!", asset);
+			LOG_ERR("Shader %s is not loaded!", asset.c_str());
 	}
 	
 

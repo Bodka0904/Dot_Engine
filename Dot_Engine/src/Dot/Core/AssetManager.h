@@ -1,8 +1,9 @@
 #pragma once
 #include "Dot/Renderer/Texture.h"
 #include "Dot/Renderer/AnimatedMesh.h"
-#include "Dot/Renderer/Mesh.h"
-#include "Dot/Renderer/Shaders/Shader.h"
+#include "Dot/Renderer/StaticMesh.h"
+#include "Dot/Renderer/InstancedMesh.h"
+#include "Dot/Renderer/Shader/Shader.h"
 
 
 namespace Dot {
@@ -18,7 +19,7 @@ namespace Dot {
 		void LoadShader(const std::string& name);
 		void LoadAnimatedMesh(const std::string& name);
 		void LoadInstancedMesh(const std::string& name);
-		void LoadMesh(const std::string& name);
+		void LoadStaticMesh(const std::string& name);
 		void LoadCubeMap(const std::string& name);
 
 		void UnLoadTexture(const std::string& name);
@@ -31,7 +32,7 @@ namespace Dot {
 		Ref<Texture2D>		GetTexture(const std::string& asset);
 		Ref<CubeMapTexture> GetCubeMap(const std::string& asset);
 		Ref<AnimatedMesh>	GetAnimMesh(const std::string& asset);
-		Ref<Mesh>			GetMesh(const std::string& asset);
+		Ref<StaticMesh>		GetStaticMesh(const std::string& asset);
 		Ref<InstancedMesh>  GetInstancedMesh(const std::string& asset);
 		Ref<Shader>			GetShader(const std::string& asset);
 
@@ -75,7 +76,7 @@ namespace Dot {
 		};
 		struct MeshAsset
 		{
-			Ref<Mesh> asset;
+			Ref<StaticMesh> asset;
 			std::string name;
 			std::string path;
 		};

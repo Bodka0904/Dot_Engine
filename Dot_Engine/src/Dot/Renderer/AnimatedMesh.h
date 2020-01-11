@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/Renderer/Buffers/ArrayBuffer.h"
+#include "Renderable.h""
 
 #include <assimp/Importer.hpp>      
 #include <assimp/scene.h>       
@@ -8,96 +8,86 @@
 #include <map>
 
 namespace Dot {
-	class AnimatedMesh
+	struct VertexBoneData
 	{
-	public:
-		struct BoneInfo
+		#define NUM_BONES_PER_VERTEX 4
+		VertexBoneData()
 		{
-			glm::mat4 BoneOffset;
-
+			Reset();
 		};
+
+		void Reset()
+		{
+			memset(IDs, 0, sizeof(IDs));
+			memset(Weights, 0, sizeof(Weights));
+		}
+
+		void AddBoneData(unsigned int BoneID, float Weight);
+
+		unsigned int IDs[NUM_BONES_PER_VERTEX];
+		float Weights[NUM_BONES_PER_VERTEX];
+	};
+
+	struct AnimatedVertex
+	{
+		glm::vec3 position;
+		glm::vec3 normal;
+		glm::vec2 texcoord;
+		VertexBoneData boneData;
+	};
+
+	struct BoneInfo
+	{
+		glm::mat4 BoneOffset;
+		glm::mat4 FinalTransformation;
+	};
+
+	struct SubMesh
+	{
+		SubMesh()
+		{
+			NumIndices = 0;
+			BaseVertex = 0;
+			BaseIndex = 0;
+		}
+		unsigned int NumIndices;
+		unsigned int BaseVertex;
+		unsigned int BaseIndex;
+
+	};
+
+	class AnimatedMesh : public Renderable
+	{
 	public:
 		AnimatedMesh(const std::string& Filename);
 		~AnimatedMesh();
 
-		void Render();
+		virtual void Render(const Ref<Shader>& shader) override;
+
 		void AnimateBones(float TimeInSeconds);
 		void SetToDefaultPosition();
 
-		glm::mat4 GetInverse() { return m_InverseTransform; }
-		const float GetDuration() const { return (float)m_pScene->mAnimations[0]->mDuration; }
 		unsigned int GetNumBones() const { return m_NumBones; }
-		const std::vector<BoneInfo>& GetBonesInfo() { return m_BoneInfo; }
-		const std::vector<glm::mat4>& GetBoneTransformations() { return m_FinalTransformation; }
-
 	private:
-		struct VertexBoneData
-		{
-			#define NUM_BONES_PER_VERTEX 4
+		glm::vec3 calcInterpolatedScaling(float AnimationTime, const aiNodeAnim* pNodeAnim);
+		glm::quat calcInterpolatedRotation(float AnimationTime, const aiNodeAnim* pNodeAnim);
+		glm::vec3 calcInterpolatedPosition(float AnimationTime, const aiNodeAnim* pNodeAnim);
 
-			VertexBoneData()
-			{
-				Reset();
-			};
+		unsigned int findScaling(float AnimationTime, const aiNodeAnim* pNodeAnim);
+		unsigned int findRotation(float AnimationTime, const aiNodeAnim* pNodeAnim);
+		unsigned int findPosition(float AnimationTime, const aiNodeAnim* pNodeAnim);
+		const aiNodeAnim* findNodeAnim(const aiAnimation* pAnimation, const std::string NodeName);
 
-			void Reset()
-			{
-				memset(IDs, 0, sizeof(IDs));
-				memset(Weights, 0, sizeof(Weights));
-			}
+		void loadHierarchy(const aiNode* pNode, std::vector<std::string>& boneMappingDelete);
+		void readNodeHeirarchy(float AnimationTime, const aiNode* pNode, const glm::mat4& ParentTransform);
 
-			void AddBoneData(unsigned int BoneID, float Weight);
-
-			unsigned int IDs[NUM_BONES_PER_VERTEX];
-			float Weights[NUM_BONES_PER_VERTEX];
-
-		};
-
+		void initMesh(unsigned int MeshIndex,const aiMesh* paiMesh,std::vector<AnimatedVertex>& vertices,std::vector<unsigned int>& Indices);
+		void loadBones(unsigned int MeshIndex, const aiMesh* paiMesh, std::vector<VertexBoneData>& Bones);
 	private:
-		glm::vec3 CalcInterpolatedScaling(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		glm::quat CalcInterpolatedRotation(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		glm::vec3 CalcInterpolatedPosition(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		
-		unsigned int FindScaling(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		unsigned int FindRotation(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		unsigned int FindPosition(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		const aiNodeAnim* FindNodeAnim(const aiAnimation* pAnimation, const std::string NodeName);
-		
-		void LoadHierarchy(const aiNode* pNode,std::vector<std::string>& boneMappingDelete);
-		void ReadNodeHeirarchy(float AnimationTime, const aiNode* pNode, const glm::mat4& ParentTransform);
-		
-		bool InitFromScene(const aiScene* pScene, const std::string& Filename);
-		void InitMesh(
-			unsigned int MeshIndex,
-			const aiMesh* paiMesh,
-			std::vector<glm::vec3>& Positions,
-			std::vector<glm::vec3>& Normals,
-			std::vector<glm::vec2>& TexCoords,
-			std::vector<VertexBoneData>& Bones,
-			std::vector<unsigned int>& Indices
-		);
-
-		void LoadBones(unsigned int MeshIndex, const aiMesh* paiMesh, std::vector<VertexBoneData>& Bones);
-	private:	
 		Ref<ArrayBuffer> m_VAO;
 
-		struct MeshEntry 
-		{
-			MeshEntry()
-			{
-				NumIndices = 0;
-				BaseVertex = 0;
-				BaseIndex = 0;
-			}
-			unsigned int NumIndices;
-			unsigned int BaseVertex;
-			unsigned int BaseIndex;
-
-		};
-
 		std::vector<BoneInfo> m_BoneInfo;
-		std::vector<glm::mat4> m_FinalTransformation;
-		std::vector<MeshEntry> m_Entries;
+		std::vector<SubMesh> m_SubMesh;
 
 
 		std::map<std::string, unsigned int> m_BoneMapping; // maps a bone name to its index
@@ -108,11 +98,11 @@ namespace Dot {
 
 		const aiScene* m_pScene;
 		Assimp::Importer m_Importer;
-	
+
 		float m_Time = 0.0f;
+		bool m_IsAnimated = false;
 	};
 
 
 
 }
-

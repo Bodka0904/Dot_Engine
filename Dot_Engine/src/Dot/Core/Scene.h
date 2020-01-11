@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/ECS/Entity.h"
+#include "Dot/ECS/Types.h"
 
 namespace Dot {
 	class Scene

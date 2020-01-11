@@ -45,9 +45,26 @@ namespace Dot {
 			D_ASSERT(success, "Could not initialize GLFW!");
 			GLFWInitialized = true;
 		}
-		m_Window = glfwCreateWindow(props.Width, props.Height, props.Title.c_str(), NULL, NULL);
+
+
+		const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+		int width = mode->width;
+		int height = mode->height;
+
+		if (props.Maximized)
+		{
+			glfwWindowHint(GLFW_MAXIMIZED, true);
+			m_Window = glfwCreateWindow(width, height, props.Title.c_str(), NULL, NULL);
+		}
+		else if (props.FullScreen)
+			m_Window = glfwCreateWindow(width, height, props.Title.c_str(), glfwGetPrimaryMonitor(), NULL);
+		else
+			m_Window = glfwCreateWindow(props.Width, props.Height, props.Title.c_str(), NULL, NULL);
+
+
 		m_Context = APIContext::Create(m_Window);
 		m_Context->Init();
+		
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
@@ -71,7 +88,7 @@ namespace Dot {
 			{
 			case GLFW_PRESS:
 			{
-				KeyPressedEvent ev(key);
+				KeyPressedEvent ev(key,mods);
 				data.EventCallback(ev);
 				break;
 			}

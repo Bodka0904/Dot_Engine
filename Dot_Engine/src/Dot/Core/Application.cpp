@@ -5,9 +5,13 @@
 #include "Dot/Debug/Timer.h"
 
 #include "Dot/Core/AssetManager.h"
+#include "Dot/Utils/Parser/JsonParser.h"
+#include "Dot/ECS/ECSManager.h"
 #include <GLFW/glfw3.h>
 
-#include "Dot/Utils/Parser/JsonParser.h"
+#include "Dot/ParticleEngine/ParticleEffect.h"
+#include "Dot/Renderer/Renderable.h"
+#include "Dot/Gui/GuiSystem/Gui.h"
 
 namespace Dot {
 
@@ -24,19 +28,27 @@ namespace Dot {
 		
 		m_GuiLayer = new GuiLayer();
 		PushOverlay(m_GuiLayer);
-		
 	
+
+		Dot::ECSManager::Get()->Init();
+		Dot::ECSManager::Get()->RegisterComponent<AABB>();
+		Dot::ECSManager::Get()->RegisterComponent<RigidBody>();
+		Dot::ECSManager::Get()->RegisterComponent<Transform>();
+		Dot::ECSManager::Get()->RegisterComponent<RenderComponent>();
+		Dot::ECSManager::Get()->RegisterComponent<ParticleComponent>();
+		Dot::ECSManager::Get()->RegisterComponent<Ref<ParticleEffect>>();
+
 		AssetManager::Get()->LoadAssets("Assets.json");
 	}
 
 
 	Application::~Application()
 	{
-
 		for (Layer* layer : m_Layers)
+		{
+			layer->OnDetach();
 			delete layer;
-
-
+		}
 	}
 
 	void Application::Run()
@@ -53,6 +65,7 @@ namespace Dot {
 				{	
 					//Timer timer;
 					layer->OnUpdate(timestep);
+					layer->OnGuiUpdate();
 					
 				}
 			}
@@ -67,12 +80,16 @@ namespace Dot {
 		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
 		m_LayerInsertIndex++;
 		layer->OnAttach();
+		if (Gui::Get())
+			layer->OnGuiAttach();
 	}
 
 	void Application::PushOverlay(Layer * overlay)
 	{
 		m_Layers.emplace_back(overlay);
 		overlay->OnAttach();
+		if (Gui::Get())
+			overlay->OnGuiAttach();
 	}
 
 	void Application::PopLayer(Layer * layer)
@@ -80,6 +97,9 @@ namespace Dot {
 		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
 		if (it != m_Layers.end())
 		{
+			if (Gui::Get())
+				(*it)->OnGuiDetach();
+			(*it)->OnDetach();
 			m_Layers.erase(it);
 			m_LayerInsertIndex--;
 		}
@@ -99,9 +119,16 @@ namespace Dot {
 			WindowResizeEvent& resize = (WindowResizeEvent&)event;
 			RenderCommand::SetViewport(0, 0, resize.GetWidth(), resize.GetHeight());
 		}
-		for (auto it = m_Layers.end(); it != m_Layers.begin(); )
+		for (auto it = m_Layers.end()-1; it != m_Layers.begin(); )
 		{
-			(*--it)->OnEvent(event);
+			if (Gui::Get())
+			{
+				(*it)->OnGuiEvent(event);
+				if (event.IsHandled())
+					break;
+			}
+			(*it)->OnEvent(event);
+			--it;
 			if (event.IsHandled())
 				break;
 		}

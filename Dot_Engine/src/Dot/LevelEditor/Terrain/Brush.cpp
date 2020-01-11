@@ -9,8 +9,8 @@ namespace Dot {
 		m_Radius(radius),
 		m_Density(density)
 	{
-		m_Transform.m_Rot = glm::vec3(0, 0, 0);
-		m_Transform.m_Scale = glm::vec3(1, 1, 1);
+		m_Transform.rot = glm::vec3(0, 0, 0);
+		m_Transform.scale = glm::vec3(1, 1, 1);
 	}
 	Brush::~Brush()
 	{
@@ -20,13 +20,14 @@ namespace Dot {
 		std::vector<glm::mat4> transforms;
 		transforms.resize(m_Intensity);
 
-		m_Transform.m_Pos = position;
-		for (int i = 0; i < m_Intensity; ++i)
+		m_Transform.pos = position;
+		for (size_t i = 0; i < m_Intensity; ++i)
 		{
-			glm::vec2 nextPos = CalcNextPosition(m_Transform.m_Pos, position);
-			m_Transform.m_Pos = glm::vec3(nextPos.x, terrain->GetHeight(glm::vec3(nextPos.x, 0, nextPos.y)), nextPos.y);
-			m_Transform.m_Rot.y = RandomGenerator::Random(0, 90);
-			transforms[i] = m_Transform.GetModel();
+			glm::vec2 nextPos = CalcNextPosition(m_Transform.pos, position);
+			m_Transform.pos = glm::vec3(nextPos.x, terrain->GetHeight(glm::vec3(nextPos.x, 0, nextPos.y)), nextPos.y);
+			m_Transform.rot.y = (float)RandomGenerator::Random(0, 90);
+			m_Transform.UpdateModel();
+			transforms[i] = m_Transform.model;
 		}
 		instance->Update(transforms);
 	}

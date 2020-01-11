@@ -13,12 +13,10 @@ namespace Dot {
 	public:
 		virtual void Init() = 0;
 		virtual void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height) = 0;
-		virtual void EnableDepthTest() = 0;
-		virtual void DisableDepthTest() = 0;
-		virtual void EnableBlend() = 0;
-		virtual void DisableBlend() = 0;
-		virtual void EnableAdditiveBlend() =0;
-		virtual void DisableAdditiveBlend()=0;
+		virtual void Enable(int32_t state) = 0;
+		virtual void Disable(int32_t state) = 0;
+		virtual void SetBlendFunc(int32_t sFactor, int32_t dFactor) = 0;
+		virtual void SetBlendEquation(int32_t eq) = 0;
 		virtual void SetClearColor(const glm::vec4& color) = 0;
 		virtual void Clear() = 0;
 

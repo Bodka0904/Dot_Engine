@@ -66,13 +66,24 @@ namespace Dot {
 			return *m_ComponentManager->GetComponent<T>(entity);
 		}
 
-		void DestroyEntity(Entity entity)
+		template<typename T>
+		std::shared_ptr<T> GetSystem()
 		{
-			m_EntityManager->DestroyEntity(entity);
-			m_ComponentManager->EntityDestroyed(entity);
-			m_SystemManager->EntityDestroyed(entity);
+			const char* typeName = typeid(T).name();
+			return m_SystemManager->m_Systems[typeName];
 		}
 
+		void DestroyEntity(Entity entity)
+		{
+			auto signature = GetEntitySignature(entity);
+			m_SystemManager->EntityDestroyed(entity,signature);
+			m_ComponentManager->EntityDestroyed(entity);
+			m_EntityManager->DestroyEntity(entity);
+		}
+		Signature GetEntitySignature(Entity entity)
+		{
+			return m_EntityManager->GetSignature(entity);
+		}
 		Entity CreateEntity()
 		{
 			return m_EntityManager->CreateEntity();

@@ -385,13 +385,13 @@ struct aiAnimMesh
 
 #ifdef __cplusplus
 
-    aiAnimMesh()
-        : mVertices( NULL )
-        , mNormals( NULL )
-        , mTangents( NULL )
-        , mBitangents( NULL )
-        , mNumVertices( 0 )
-        , mWeight( 0.0f )
+	aiAnimMesh()
+		: mVertices(NULL)
+		, mNormals(NULL)
+		, mTangents(NULL)
+		, mBitangents(NULL)
+		, mNumVertices(0)
+		, mWeight(0.0f)
     {
         // fixme consider moving this to the ctor initializer list as well
         for( unsigned int a = 0; a < AI_MAX_NUMBER_OF_TEXTURECOORDS; a++){

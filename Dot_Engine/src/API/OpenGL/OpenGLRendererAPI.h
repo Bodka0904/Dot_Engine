@@ -8,12 +8,10 @@ namespace Dot {
 	public:
 		virtual void Init() override;
 		virtual void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height) override;
-		virtual void EnableDepthTest() override;
-		virtual void DisableDepthTest() override;
-		virtual void EnableBlend()override;
-		virtual void DisableBlend()override;
-		virtual void EnableAdditiveBlend() override;
-		virtual void DisableAdditiveBlend() override;
+		virtual void Enable(int32_t state) override;
+		virtual void Disable(int32_t state) override;
+		virtual void SetBlendFunc(int32_t sFactor, int32_t dFactor) override;
+		virtual void SetBlendEquation(int32_t eq) override;
 		virtual void SetClearColor(const glm::vec4& color) override;
 		virtual void Clear() override;
 

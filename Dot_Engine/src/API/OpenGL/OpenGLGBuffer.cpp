@@ -5,8 +5,19 @@
 
 namespace Dot {
 	OpenGLGBuffer::OpenGLGBuffer(uint32_t width, uint32_t height)
-		: m_Width(width),m_Height(height)
 	{
+		Resize(width, height);
+	}
+	void OpenGLGBuffer::Resize(uint32_t width, uint32_t height)
+	{
+		m_Width = width;
+		m_Height = height;
+		if (m_GBuffer)
+		{
+			glDeleteFramebuffers(1, &m_GBuffer);
+			glDeleteTextures(1, &m_TextureAttachment[POSITION]);
+			glDeleteTextures(1, &m_TextureAttachment[NORMAL]);
+		}
 		glGenFramebuffers(1, &m_GBuffer);
 		glBindFramebuffer(GL_FRAMEBUFFER, m_GBuffer);
 
@@ -26,7 +37,7 @@ namespace Dot {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, m_TextureAttachment[NORMAL], 0);
 
-		unsigned int attachments[2] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1};
+		unsigned int attachments[2] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
 		glDrawBuffers(2, attachments);
 
 
@@ -37,7 +48,7 @@ namespace Dot {
 		// finally check if framebuffer is complete
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 			LOG_ERR("GBuffer not complete!");
-		
+
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 	void OpenGLGBuffer::Bind() const

@@ -17,7 +17,8 @@ namespace Dot {
 	private:
 		glm::vec3 m_Position;
 		glm::vec3 m_Color;
-		float m_Strength = 0.0f;
+		float m_Strength = 0.7f;
+
 	};
 
 }

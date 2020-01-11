@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/Renderer/Mesh.h"
+#include "Dot/Renderer/StaticMesh.h"
 #include "Light.h"
 
 namespace Dot {
@@ -13,7 +13,7 @@ namespace Dot {
 		const Ref<ArrayBuffer>& GetVAO()const { return m_Mesh->GetVAO(); }
 		const Ref<Light>& GetLight()const { return m_Light; }
 	private:
-		Ref<Mesh> m_Mesh;
+		Ref<StaticMesh> m_Mesh;
 		Ref<Light> m_Light;
 
 		glm::mat4 m_Model;

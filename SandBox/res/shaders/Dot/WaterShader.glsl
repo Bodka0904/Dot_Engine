@@ -1,19 +1,19 @@
 #type vertex
-#version 330
+#version 430 core
 #define PI 3.1415926535897932384626433832795
 
 layout(location = 0) in vec3 a_Position;
 
 
 
-layout(std140) uniform camera_data
+layout(std140, binding = 0) uniform o_CameraData
 {
 	mat4 ViewProjectionMatrix;
 	mat4 ViewMatrix;
 	mat4 ProjectionMatrix;
 	vec3 ViewPos;
 };
-uniform mat4 u_ModelMatrix;
+
 uniform float u_Time;
 
 const float c_WaveLength = 3;
@@ -62,16 +62,19 @@ void main()
 
 
 #type fragment
-#version 330 core
+#version 430 core
 
 
 in vec3 v_FragPos;
 in vec3 v_ViewPos;
 in vec3 v_Normal;
 
-uniform vec3 u_LightPosition;
-uniform vec3 u_LightColor;
-uniform float u_LightStrength;
+layout(std140, binding = 1) uniform o_Light
+{
+	vec4 LightPosition;
+	vec4 LightColor;
+	float LightStrength;
+};
 
 
 out vec4 color;
@@ -82,18 +85,18 @@ float c_SpecularStrength = 0.5;
 void main()
 {
 	vec3 norm = normalize(v_Normal);
-	vec3 lightDir = normalize(u_LightPosition - v_FragPos);
+	vec3 lightDir = normalize(LightPosition.xyz - v_FragPos);
 
-	vec3 ambient = c_AmbientStrength * u_LightColor;
+	vec3 ambient = c_AmbientStrength * LightColor.xyz;
 	vec3 viewDir = normalize(v_ViewPos - v_FragPos);
 	vec3 reflectDir = reflect(-lightDir, norm);
 
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
 	float diff = max(dot(norm, lightDir), 0.0);
 
-	vec3 specular = c_SpecularStrength * spec * u_LightColor;
-	vec3 diffuse = diff * u_LightColor;
-	vec3 result = (ambient + diffuse + specular) * u_LightStrength;
+	vec3 specular = c_SpecularStrength * spec * LightColor.xyz;
+	vec3 diffuse = diff * LightColor.xyz;
+	vec3 result = (ambient + diffuse + specular) * LightStrength;
 
 	color = vec4(0,0.3,0.7,0.5) * vec4(result,1.0);
 }

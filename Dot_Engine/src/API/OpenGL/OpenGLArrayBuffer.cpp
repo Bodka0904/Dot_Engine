@@ -71,7 +71,6 @@ namespace Dot {
 				(const void*)element.offset);
 
 			glVertexAttribDivisor(element.index, element.divisor);
-
 		}
 		m_ShaderBuffers.push_back(shaderSBuffer);
 	}

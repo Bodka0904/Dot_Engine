@@ -9,7 +9,7 @@ namespace Dot {
 	class Terrain
 	{
 	public:
-		Terrain(float size, unsigned int numvertex);
+		Terrain(float size, int numvertex);
 		Terrain(const std::string& heightMap,float size,float height);
 		~Terrain();
 	
@@ -31,7 +31,7 @@ namespace Dot {
 		const float& GetRoughness() const { return m_Roughness;}
 		const float& GetSize() const { return m_Size; }
 		
-		const Ref<ArrayBuffer>& GetVao() const { return m_VAO; }
+		const Ref<ArrayBuffer>& GetVAO() const { return m_VAO; }
 
 		// Get height of surface in the position
 		float GetHeight(const glm::vec3& position);
@@ -66,7 +66,7 @@ namespace Dot {
 		
 		int m_Seed;
 		float m_Size;
-		unsigned int m_NumVertex;
+		int m_NumVertex;
 			
 	};
 

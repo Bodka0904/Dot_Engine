@@ -3,36 +3,45 @@
 //Size of compute shader local work group - x=32, y=32, z=1(default)
 layout(local_size_x = 32, local_size_y = 32, local_size_z = 1) in;
 
-const int c_MaxParticles = 1000;
+const int c_MaxParticles = 10000;
 
-layout(binding = 0) buffer
+
+struct ParticleAttributeData
+{
+	vec4  velocity;
+	int changeSize;
+	float lifeSpan;
+	float gravity;
+	float unused;
+};
+
+layout(std430,binding = 0) buffer
 buffer_InPos
 {
 	vec4 InPos[];
 };
 
-layout(binding = 1) buffer
+layout(std430,binding = 1) buffer
 buffer_InAttribute
 {
-	vec4 InAttribute[];
+	ParticleAttributeData InAttribute[];
 };
 
-layout(binding = 2) buffer
+layout(std430,binding = 2) buffer
 buffer_OutPos
 {
 	vec4 OutPos[];
 };
 
-layout(binding = 3) buffer
+layout(std430,binding = 3) buffer
 buffer_OutAttribute
 {
-	vec4 OutAttribute[];
+	ParticleAttributeData OutAttribute[];
 };
 
 
 uniform float u_Time;
 uniform float u_Speed;
-
 
 
 float rand(vec2 co)
@@ -48,19 +57,35 @@ void main(void)
 		return;
 
 	vec4 particlePos = InPos[index];
-	vec4 particleVel = InAttribute[index];
+	vec4 particleVel = InAttribute[index].velocity;
 
-	particlePos.x += (particleVel.x/600) * u_Speed;
-	particlePos.y += (particleVel.y/600) * u_Speed;
-	particlePos.z += (particleVel.z/600) * u_Speed;
+	float particleLifeSpan = InAttribute[index].lifeSpan;
+	float particleGravity = InAttribute[index].gravity;
+	int particleChangeSize = InAttribute[index].changeSize;
 
-	particlePos.w -= u_Time;
+	
+	particlePos.x += (particleVel.x / 600) * u_Speed ;
+	particlePos.y += (particleVel.y / 600) * u_Speed ;
+	particlePos.z += (particleVel.z / 600) * u_Speed ;
 
-	if (particlePos.w < 0)
+	
+	particleVel.w += u_Time;
+		
+	if (particleChangeSize > 1)
+		particlePos.w = 1;
+	else
+		particlePos.w = particleChangeSize - (particleVel.w / particleLifeSpan);
+
+	if (particleVel.w > particleLifeSpan)
 	{
-		particlePos.w = particleVel.w;
-		particlePos.xyz = vec3(0, 0, 10);
+		particleVel.w = 0;
+		if (particleChangeSize > 1)
+			particlePos = vec4(0, 0, 0, 1);
+		else
+			particlePos = vec4(0, 0, 0, particleChangeSize);
+		
 	}
 
 	OutPos[index] = particlePos;
+	OutAttribute[index].velocity = particleVel;
 }

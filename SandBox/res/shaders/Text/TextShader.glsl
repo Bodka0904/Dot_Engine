@@ -26,14 +26,11 @@ in vec2 v_TexCoord;
 
 out vec4 FragColor;
 
-uniform float u_Color;
+uniform vec3 u_Color;
 uniform sampler2D u_Texture;
 
 void main()
 {	
-	vec4 texColor = texture(u_Texture, v_TexCoord) * u_Color;
-	if (texColor.a < 0.1)
-		discard;
-
+	vec4 texColor = texture(u_Texture, v_TexCoord) * vec4(u_Color,1) ;
 	FragColor = texColor;
 }
