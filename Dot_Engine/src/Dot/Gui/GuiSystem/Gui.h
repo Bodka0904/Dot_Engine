@@ -8,9 +8,9 @@
 #include "Dot/Renderer/Renderer2D.h"
 
 namespace Dot {
-	#define MAX_WIDGETS 300
-	#define MAX_TEXT_CHAR 16
-	#define MAX_CHAR_PER_LABEL 16
+#define MAX_QUADS 300
+#define MAX_TEXT_CHAR 32
+#define MAX_CHAR_PER_LABEL 32
 
 	class Widget
 	{
@@ -18,42 +18,37 @@ namespace Dot {
 		virtual bool MouseHoover(const glm::vec2& mousePos) = 0;
 		virtual void Move(const glm::vec2 pos) = 0;
 		virtual void ClickHandle() = 0;
-		virtual void UpdateData() = 0;
 		virtual void SetPosition(const glm::vec2& pos) = 0;
-		virtual void SetIndex(const unsigned int index) = 0;
 		virtual void Exit() = 0;
 		virtual const glm::vec2& GetPosition() = 0;
 		virtual const glm::vec2& GetSize() = 0;
 		virtual const glm::vec2& GetLabelSize() = 0;
 		virtual const unsigned int GetIndex() = 0;
-		virtual void SetLabel(const Ref<Text> label) = 0;		
 	};
 
 	class Wrapper
 	{
 	public:
-		Wrapper(const glm::vec2& position, const glm::vec2& size,int widgetPerCol,bool locked,float labelsize = 0.2);
-		
-		void AddWidget(const std::string& label, Ref<Widget> widget);
+		Wrapper(const std::string& label,const glm::vec2& position, const glm::vec2& size, int widgetPerCol, bool locked, float labelsize = 0.2);
+
+		void AddWidget(const std::string& label, Ref<Widget> widget,bool start = false);
 		void RemoveWidgets();
 		bool MouseHoover(const glm::vec2& mousePos);
 		bool MouseResize(const glm::vec2& mousePos);
 		bool Exit(const glm::vec2& mousePos);
-		
+
 		void Resize(const glm::vec2& mousePos);
 		void Move(const glm::vec2& pos);
 		void SetPosition(const glm::vec2& pos);
-		void SetLabel(const Ref<Text> label);
 		void SetWidgetPosition();
-		void SetIndex(const unsigned int index, const unsigned int index2) { m_Index = index; m_ExitButton.SetIndex(index2); }
-
+		
 
 		const glm::vec2& GetPosition() { return m_Position; }
 		std::pair<unsigned int, unsigned int>& GetIndex() { return std::pair<unsigned int, unsigned int>(m_Index, m_ExitButton.GetIndex()); }
 		Widget& GetWidget(const std::string& label) { return *m_Widget[label]; }
-		const std::unordered_map <std::string, Ref<Widget> >& GetWidgets() { return m_Widget; }
-		static void Create(const std::string& label, const glm::vec2& position, const glm::vec2& size,int widgetPerCol,bool locked = false,float labelsize = 0.2f);
-	
+		const std::map <std::string, Ref<Widget> >& GetWidgets() { return m_Widget; }
+		static void Create(const std::string& label, const glm::vec2& position, const glm::vec2& size, int widgetPerCol, bool locked = false, float labelsize = 0.2f);
+
 	private:
 		class ActionButton
 		{
@@ -68,7 +63,7 @@ namespace Dot {
 			const glm::vec2& GetPosition() { return m_Position; }
 			const glm::vec2& GetSize() { return m_Size; }
 			unsigned int GetIndex() { return m_Index; }
- 		private:
+		private:
 			glm::vec4 getCoords();
 		private:
 			glm::vec2 m_Position;
@@ -82,12 +77,13 @@ namespace Dot {
 	private:
 		glm::vec4 getCoords();
 	private:
-		std::unordered_map<std::string, Ref<Widget>> m_Widget;
+		std::map<std::string, Ref<Widget>> m_Widget;
 
 	private:
+		QuadVertex m_Quad[2];
 		glm::vec2 m_Position;
 		glm::vec2 m_Size;
-		glm::vec2 test;
+		
 		unsigned int m_Index;
 
 		int m_WidgetPerCol;
@@ -97,36 +93,39 @@ namespace Dot {
 
 	class Gui
 	{
-	public:	
+	public:
 		Gui(const std::string& texturePack);
 		~Gui();
-		std::pair<unsigned int,unsigned int>AddWrapper(const std::string label, Ref<Wrapper> wrapper, const QuadVertex* quad);
-		int  AddWidget(const std::string& label, Ref<Widget> widget, const QuadVertex* quad);
+		void AddWrapper(const std::string label, Ref<Wrapper> wrapper);
+		void AddWidget(const std::string& label, Ref<Widget> widget, bool start = false);
 		void RemoveWidget(const std::string& label);
 		void RemoveWrapper(const std::string& label);
-		
-	
+
+		int PopIndex();
 		void EnableWrapper(const std::string& label);
 		void DisableWrapper();
 
 		bool HandleLeftClick();
 		bool HandleRightClick();
-		
 		void HandleRelease();
-		void UpdatePosBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len = 1);
-		void UpdateTextureBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len = 1);
+
+		void UpdateVertexBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len = 1);
 		void UpdateTextBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len);
 		void UpdateLabelBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len);
-		
+
+
+		void SetLabelColor(const glm::vec3& color) { m_LabelColor = color; }
+		void SetTextColor(const glm::vec3& color) { m_TextColor = color; }
+
 		void Update();
-		void Render(const Ref<Shader>& shader,const Ref<Shader>& textShader,const Ref<OrthoCamera> camera);
-		
+		void Render(const Ref<Shader>& shader, const Ref<Shader>& textShader, const Ref<OrthoCamera> camera);
+
 		const Widget& GetWidget(const std::string& label) { return *m_Widget[label]; }
-		const Widget& GetWrappedWidget(const std::string& wrapper,const std::string widget) { return m_Wrapper[wrapper]->GetWidget(widget); }
+		const Widget& GetWrappedWidget(const std::string& wrapper, const std::string widget) { return m_Wrapper[wrapper]->GetWidget(widget); }
 		Wrapper& GetWrapper(const std::string& label) { return *m_Wrapper[label]; }
 
 		static void Init(const std::string& texturePack);
-		static Gui* Get() {return s_Instance;}
+		static Gui* Get() { return s_Instance; }
 	private:
 		Ref<Renderer2D>		m_GuiRenderer;
 		Ref<Renderer2D>		m_TextRenderer;
@@ -134,14 +133,10 @@ namespace Dot {
 
 		Ref<Texture2D>		m_Texture;
 	private:
-		std::unordered_map <std::string, Ref<Widget>>  m_Widget;
 		std::unordered_map <std::string, Ref<Wrapper>> m_Wrapper;
-		
-	private:
-		std::vector<QuadVertex> m_Vertices;
-		std::vector<QuadVertex> m_LabelVertices;
-		std::vector<QuadVertex> m_TextVertices;
+		std::map <std::string, Ref<Widget>>  m_Widget;
 
+	private:
 		std::priority_queue<unsigned int, std::vector<unsigned int>, std::greater<unsigned int>> m_AvailableIndex{};
 		unsigned int m_NumWidgets;
 
@@ -152,11 +147,13 @@ namespace Dot {
 	private:
 		glm::vec2 m_MousePosition;
 
+	private:
+		glm::vec3 m_LabelColor;
+		glm::vec3 m_TextColor;
 
 	private:
 		static Gui* s_Instance;
 
 	};
 }
-
 

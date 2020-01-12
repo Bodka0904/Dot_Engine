@@ -3,16 +3,43 @@
 
 #include "Dot/Utils/Text/Font.h"
 #include "Dot/Core/KeyCodes.h"
+#include "Dot/Core/MouseButtonCodes.h"
 #include "Dot/Core/Input.h"
 
 namespace Dot {
-	TextArea::TextArea(const glm::vec2& position, const glm::vec2& size, TYPE type, float labelsize)
+	TextArea::TextArea(const std::string& label, const glm::vec2& position, const glm::vec2& size, TYPE type, float labelsize)
 		:
 		m_Position(position),
 		m_Size(size),
 		m_Type(type)
 	{
-		
+		glm::vec2 texCoords[4] = {
+				glm::vec2(0.75, 0.5),
+				glm::vec2(0.5, 0.5),
+				glm::vec2(0.5, 0.75),
+				glm::vec2(0.75, 0.75)
+		};
+		m_Quad = QuadVertex(position, size, &texCoords[0]);
+		m_Index = Gui::Get()->PopIndex();
+		m_Label = std::make_shared<Text>("Arial", label, glm::vec2(position.x, position.y - Font::GetFont("Arial")->GetData().lineHeight * labelsize), glm::vec2(labelsize, labelsize), MAX_CHAR_PER_LABEL);
+	
+		glm::vec2 offset = glm::vec2(5, 2);
+		m_Text = std::make_shared<Text>("Arial", "", position + offset, glm::vec2(labelsize, labelsize), MAX_TEXT_CHAR);
+		switch (type)
+		{
+		case Dot::TextArea::TYPE::INT:
+			m_Text->Push("0");
+			break;
+		case Dot::TextArea::TYPE::FLOAT:
+			m_Text->Push("0");
+			break;
+		case Dot::TextArea::TYPE::TEXT:
+			break;
+		}
+
+		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
+		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
+		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 	}
 	bool TextArea::MouseHoover(const glm::vec2& mousePos)
 	{
@@ -23,54 +50,57 @@ namespace Dot {
 		{
 			return true;
 		}
+		if (m_Clicked)
+			ClickHandle();
+		
 		return false;
 	}
 	
-	void TextArea::UpdateData()
-	{
-		QuadVertex newVertex = QuadVertex(m_Position, m_Size, NULL);
-		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
-		
-		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
-		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
-		
-		glm::vec2 offset = glm::vec2(5, 2);
-		m_Text->SetPosition(m_Position + offset);
-		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
-	}
 	void TextArea::ClickHandle()
-	{
-		m_Clicked = !m_Clicked;	
+	{	
+		m_Clicked = !m_Clicked;
 		m_TexOffset = !m_TexOffset;
-
-		glm::vec2 texcoords[4] = {
-				glm::vec2(0.75, 0.5),
-				glm::vec2(0.5+ float(m_TexOffset) / 2, 0.5),
-				glm::vec2(0.5+ float(m_TexOffset) / 2, 0.75),
-				glm::vec2(0.75, 0.75)
-		};
-		QuadVertex newVertex = QuadVertex(glm::vec2(0), glm::vec2(0), &texcoords[0]);
-		Gui::Get()->UpdateTextureBuffer(m_Index, &newVertex);
+		
+		m_Quad.vertices[0].texCoord=glm::vec2(0.75, 0.5);
+		m_Quad.vertices[1].texCoord=glm::vec2(0.5 + float(m_TexOffset) / 2, 0.5);
+		m_Quad.vertices[2].texCoord=glm::vec2(0.5 + float(m_TexOffset) / 2, 0.75);
+		m_Quad.vertices[3].texCoord=glm::vec2(0.75, 0.75);
+		
+		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 	}
 	void TextArea::Exit()
 	{
-		QuadVertex newVertex = QuadVertex(glm::vec2(0), glm::vec2(0), NULL);
-		Gui::Get()->UpdatePosBuffer(m_Index, &newVertex);
+		m_Quad.SetPosition(glm::vec2(0), glm::vec2(0));
+		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 		
 		m_Label->SetPosition(glm::vec2(-100, -100));
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
 
 		m_Text->SetPosition(glm::vec2(-100, -100));
-		Gui::Get()->UpdateLabelBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
+		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
 	}
-	void TextArea::SetLabel(const Ref<Text> label)
+	void TextArea::SetPosition(const glm::vec2& pos)
 	{
-		m_Label = label;
+		m_Position = pos;
+		m_Quad.SetPosition(pos,m_Size);
+		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
+		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
+
+		glm::vec2 offset = glm::vec2(5, 2);
+		m_Text->SetPosition(m_Position + offset);
+		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
 	}
-	void TextArea::SetTextHandle(const Ref<Text> text)
+	void TextArea::Move(const glm::vec2 pos)
 	{
-		m_Text = text;
+		m_Position += pos;
+		m_Quad.Move(pos);
+		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
+		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
+		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
+
+		glm::vec2 offset = glm::vec2(5, 2);
+		m_Text->SetPosition(m_Position + offset);
 		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
 	}
 	void TextArea::SetText(const std::string& text)
@@ -189,11 +219,9 @@ namespace Dot {
 		return false;
 	}
 	TextArea& TextArea::Get(const std::string& label)
-	{
-		
+	{	
 		TextArea& textarea = (TextArea&)Gui::Get()->GetWidget(label);
 		return textarea;
-	
 	}
 	TextArea& TextArea::GetWrapped(const std::string& wrapper, const std::string& label)
 	{	
@@ -204,36 +232,9 @@ namespace Dot {
 	{
 		if (Gui::Get())
 		{
-			glm::vec2 texCoords[4] = {
-					glm::vec2(0.75, 0.5),
-					glm::vec2(0.5, 0.5),
-					glm::vec2(0.5, 0.75),
-					glm::vec2(0.75, 0.75)
-			};
-
-			QuadVertex quadVertex = QuadVertex(position, size, &texCoords[0]);
-			D_ASSERT(label.size() < MAX_CHAR_PER_LABEL, "Max len of label is %d", MAX_CHAR_PER_LABEL);
-			Ref<Text> labelText = std::make_shared<Text>("Arial", label, glm::vec2(position.x, position.y - Font::GetFont("Arial")->GetData().lineHeight * labelsize), glm::vec2(labelsize, labelsize), MAX_CHAR_PER_LABEL);
-			Ref<TextArea> textarea = std::make_shared<TextArea>(position, size, type);
-			unsigned int index = Gui::Get()->AddWidget(label, textarea, &quadVertex);
-
-			glm::vec2 offset = glm::vec2(5, 2);
-			Ref<Text> text = std::make_shared<Text>("Arial", "", position + offset, glm::vec2(labelsize, labelsize), MAX_TEXT_CHAR);
-			switch (type)
-			{
-			case Dot::TextArea::TYPE::INT:
-				text->Push("0");
-				break;
-			case Dot::TextArea::TYPE::FLOAT:
-				text->Push("0");
-				break;
-			case Dot::TextArea::TYPE::TEXT:
-				break;
-			}
-
-			textarea->SetIndex(index);
-			textarea->SetLabel(labelText);
-			textarea->SetTextHandle(text);
+			D_ASSERT(label.size() < MAX_CHAR_PER_LABEL, "Max len of label is %d", MAX_CHAR_PER_LABEL);	
+			Ref<TextArea> textarea = std::make_shared<TextArea>(label,position, size, type,labelsize);
+			Gui::Get()->AddWidget(label, textarea,true);
 		}
 	}
 	glm::vec4 TextArea::getCoords()
@@ -254,4 +255,5 @@ namespace Dot {
 		ss >> num;
 		return num;
 	}
+	
 }

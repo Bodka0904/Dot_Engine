@@ -17,17 +17,13 @@ namespace Dot {
 			TEXT,
 		};
 
-		TextArea(const glm::vec2& position, const glm::vec2& size, TYPE type, float labelsize = 0.2f);
+		TextArea(const std::string& label,const glm::vec2& position, const glm::vec2& size, TYPE type, float labelsize);
 		virtual bool MouseHoover(const glm::vec2& mousePos) override;
-		virtual void UpdateData() override;
 	
 		virtual void ClickHandle() override;
 		virtual void Exit()override;
-		virtual void SetIndex(const unsigned int index) override { m_Index = index; };
-		virtual void SetPosition(const glm::vec2& pos) override { m_Position = pos; };
-		virtual void Move(const glm::vec2 pos) override { m_Position += pos; };
-		virtual void SetLabel(const Ref<Text> label)override;
-		void SetTextHandle(const Ref<Text> text);
+		virtual void SetPosition(const glm::vec2& pos) override;
+		virtual void Move(const glm::vec2 pos) override;
 		void SetText(const std::string& text);
 
 		virtual const glm::vec2& GetPosition() override { return m_Position; }
@@ -38,36 +34,37 @@ namespace Dot {
 		const void TakeInput(KeyPressedEvent& event);
 		const bool& GetClicked() const;
 		
-		const std::string GetText()
-		{
-			std::stringstream ss(m_Text->GetText());
-			std::string val;
-			ss >> val;
-			return val;
-		}
-		
 		template<typename T>
-		const T GetValue()
+		const T GetValue();
+
+		template <>
+		const float GetValue<float>()
 		{
-			switch (m_Type)
-			{
-			case Dot::TextArea::TYPE::INT:
-				return (T)convertToInt();
-			case Dot::TextArea::TYPE::FLOAT:
-				return (T)convertToFloat();
-			}
+			return convertToFloat();
 		}
+		template <>
+		const int GetValue<int>()
+		{
+			return convertToInt();
+		}
+		template <>
+		const std::string GetValue<std::string>()
+		{
+			return m_Text->GetText();
+		}	
 
 		static TextArea& Get(const std::string& label);
 		static TextArea& GetWrapped(const std::string& wrapper, const std::string& label);
-		static void Create(const std::string& label, const glm::vec2& position, const glm::vec2& size, TYPE type,float labelsize = 0.2f);
+		static void Create(const std::string& label, const glm::vec2& position, const glm::vec2& size, TYPE type,float labelsize = 0.18f);
 	private:
 		glm::vec4 getCoords();
 		float convertToFloat();
 		int	  convertToInt();
 	private:
+		TYPE m_Type;
 		Ref<Text> m_Label;
 		Ref<Text> m_Text;
+		QuadVertex m_Quad;
 
 		glm::vec2 m_Position;
 		glm::vec2 m_Size;
@@ -75,7 +72,5 @@ namespace Dot {
 		bool m_Clicked = false;
 		int m_TexOffset = 0;
 		unsigned int m_Index = 0;
-		TYPE m_Type;
-
 	};
 }

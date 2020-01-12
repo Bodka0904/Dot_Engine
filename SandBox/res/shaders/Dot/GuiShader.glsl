@@ -88,6 +88,7 @@ vec4 ColorizeBlackPixels()
 	return color;
 }
 
+
 void main()
 {
 	float diff = 0;
@@ -101,6 +102,7 @@ void main()
 	vec3 result = ambient + diffuse;
 
 	vec4 color = ColorizeBlackPixels();
+	
 	FragColor = color * vec4(result, 0.7);
 
 }

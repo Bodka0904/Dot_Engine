@@ -11,6 +11,8 @@
 #include "Dot/Gui/GuiSystem/TextArea.h"
 #include "Dot/Gui/GuiSystem/Gui.h"
 
+
+
 namespace Dot {
 	GuiLayer::GuiLayer()
 	{
@@ -34,6 +36,14 @@ namespace Dot {
 		/////////////////////
 		m_Camera = std::make_shared<OrthoCamera>(0,Input::GetWindowSize().first,Input::GetWindowSize().second,0);
 	
+		Wrapper::Create("Layers", glm::vec2(0, 0), glm::vec2(150, 300),5);
+		Gui::Get()->EnableWrapper("Layers");
+		{
+			Button::Create("Particle Editor", glm::vec2(0, 0), glm::vec2(75, 40));
+			Button::Create("Pop Particle Editor", glm::vec2(0, 0), glm::vec2(75, 40));
+
+		}Gui::Get()->DisableWrapper();
+
 	}
 
 	void GuiLayer::OnUpdate(Timestep ts)
@@ -56,7 +66,17 @@ namespace Dot {
 			{	
 				if (Gui::Get()->HandleLeftClick())
 				{
-					e.IsHandled() = true;			
+					e.IsHandled() = true;
+					if (Button::GetWrapped("Layers", "Particle Editor").GetClicked())
+					{
+						layer = new ParticleEditorLayer();
+						Application::Get().PushLayer(layer);
+					}
+					else if (Button::GetWrapped("Layers", "Pop Particle Editor").GetClicked())
+					{
+						Application::Get().PopLayer(layer);
+						layer = NULL;
+					}
 				}
 			
 			}

@@ -7,6 +7,7 @@ Player::Player(const std::string& model, const std::string& texture)
 	
 	m_Material = std::make_shared<Dot::Material>(Dot::AssetManager::Get()->GetShader("AnimShader"));
 	m_Material->Set(Dot::AssetManager::Get()->GetTexture(texture));
+	m_Material->Set(Dot::RenderMode::OPAQUE);
 	m_Player = Dot::ECSManager::Get()->CreateEntity();
 
 	Dot::ECSManager::Get()->AddComponent(m_Player, Dot::Transform{ glm::vec3(0, 0, 0),glm::vec3(0, 0, 0), glm::vec3(1, 1, 1)});

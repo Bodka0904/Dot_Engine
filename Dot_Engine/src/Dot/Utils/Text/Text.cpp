@@ -56,9 +56,9 @@ namespace Dot {
 	{
 		for (size_t i = 0; i < m_PositionInBuffer; ++i)
 		{
-			for (size_t j = 0; j < sizeof(m_Vertice[i].m_Vertices) / sizeof(Vertex); ++j)
+			for (size_t j = 0; j < sizeof(m_Vertice[i].vertices) / sizeof(Vertex); ++j)
 			{
-				m_Vertice[i].m_Vertices[j].position += (pos - m_Position);
+				m_Vertice[i].vertices[j].position += (pos - m_Position);
 			}
 		}
 		m_CurserX += pos.x - m_Position.x;

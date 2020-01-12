@@ -64,8 +64,8 @@ namespace Dot {
 			{
 				{	
 					//Timer timer;
-					layer->OnUpdate(timestep);
 					layer->OnGuiUpdate();
+					layer->OnUpdate(timestep);
 					
 				}
 			}
@@ -94,12 +94,13 @@ namespace Dot {
 
 	void Application::PopLayer(Layer * layer)
 	{
-		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
-		if (it != m_Layers.end())
+		auto it = std::find(m_Layers.begin(), m_Layers.begin() + m_LayerInsertIndex, layer);
+		if (it != m_Layers.begin() + m_LayerInsertIndex)
 		{
 			if (Gui::Get())
 				(*it)->OnGuiDetach();
 			(*it)->OnDetach();
+			
 			m_Layers.erase(it);
 			m_LayerInsertIndex--;
 		}
@@ -107,7 +108,7 @@ namespace Dot {
 
 	void Application::PopOverlay(Layer * overlay)
 	{
-		auto it = std::find(m_Layers.begin(), m_Layers.end(), overlay);
+		auto it = std::find(m_Layers.begin() + m_LayerInsertIndex, m_Layers.end(), overlay);
 		if (it != m_Layers.end())
 			m_Layers.erase(it);
 	}
@@ -119,16 +120,15 @@ namespace Dot {
 			WindowResizeEvent& resize = (WindowResizeEvent&)event;
 			RenderCommand::SetViewport(0, 0, resize.GetWidth(), resize.GetHeight());
 		}
-		for (auto it = m_Layers.end()-1; it != m_Layers.begin(); )
+		for (auto it = m_Layers.rbegin(); it != m_Layers.rend(); ++it )
 		{
 			if (Gui::Get())
 			{
 				(*it)->OnGuiEvent(event);
 				if (event.IsHandled())
 					break;
-			}
+			}					
 			(*it)->OnEvent(event);
-			--it;
 			if (event.IsHandled())
 				break;
 		}

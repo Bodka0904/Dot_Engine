@@ -10,7 +10,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new GameLayer());
-		PushLayer(new Dot::ParticleEditorLayer());
 	}
 
 	~Sandbox()

@@ -12,6 +12,7 @@ namespace Dot {
 	public:
 		Renderer2D(unsigned int batchSize);
 
+
 		void ClearBuffer();
 		void RestartBuffer();
 		void Push(const QuadVertex* data,int len);

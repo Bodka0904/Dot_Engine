@@ -20,6 +20,7 @@ namespace Dot {
 		m_NumDataStored = 0;
 		VBO->SetLayout(layout);
 		m_VAO->AddVBO(VBO);
+
 	}
 	void Renderer2D::Push(const QuadVertex* data, int len)
 	{
@@ -28,8 +29,8 @@ namespace Dot {
 		{
 			for (int j = 0; j < 4; ++j)
 			{
-				m_Buffer->position = data[i].m_Vertices[j].position;
-				m_Buffer->texCoord = data[i].m_Vertices[j].texCoord;
+				m_Buffer->position = data[i].vertices[j].position;
+				m_Buffer->texCoord = data[i].vertices[j].texCoord;
 				m_Buffer++;
 			}
 			m_NumDataStored++;
@@ -46,6 +47,8 @@ namespace Dot {
 
 		m_VAO->GetVertexBuffer(0)->SetCount(m_NumDataStored * 4);
 	}
+
+	
 	void Renderer2D::ClearBuffer()
 	{
 		m_VAO->GetVertexBuffer(0)->ClearBuffer();

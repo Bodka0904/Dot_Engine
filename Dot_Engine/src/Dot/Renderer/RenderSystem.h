@@ -52,9 +52,19 @@ namespace Dot {
 		void EndScene(const Ref<Shader>& shader);
 	private:
 		void setRenderStates(int32_t states);
-		
+		void removeFromContainer(std::vector<Entity>& container,Entity entity);
 	private:	
-		std::unordered_map<std::pair<uint32_t,int32_t>, RenderBatch, hash_pair> m_Batch;
+		enum RenderMod
+		{
+			OPAQUE_MOD,
+			TRANSPARENT_MOD,
+			NUM_RENDER_MOD
+		};
+		std::array<RenderBatch, NUM_RENDER_MOD> m_Entities;
+
+		std::map<std::pair<uint32_t, int32_t>, RenderBatch> m_BatchOpaque;
+		std::map<std::pair<uint32_t, int32_t>, RenderBatch> m_BatchTransparent;
+
 
 		struct SceneData
 		{

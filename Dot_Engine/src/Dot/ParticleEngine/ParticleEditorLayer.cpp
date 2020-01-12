@@ -61,7 +61,6 @@ namespace Dot {
 	{
 		glm::vec2 winSize(Input::GetWindowSize().first, Input::GetWindowSize().second);
 		glm::vec2 wrapSizeEffect(300, 450);
-
 		Dot::Wrapper::Create("Particle Effect", winSize - wrapSizeEffect, wrapSizeEffect, 8);
 		Gui::Get()->EnableWrapper("Particle Effect");
 		{
@@ -115,7 +114,7 @@ namespace Dot {
 		if (Button::GetWrapped("Particle Effect", "Save").GetClicked())
 		{
 			m_Effect->UpdateParticleData(*m_ParComponent);
-			std::string texture = TextArea::GetWrapped("Particle Effect", "Texture").GetText();
+			std::string texture = TextArea::GetWrapped("Particle Effect", "Texture").GetValue<std::string>();
 			auto& component = ECSManager::Get()->GetComponent<Dot::RenderComponent>(m_Entity.second);
 			component.material->Set(AssetManager::Get()->GetTexture(texture));
 		}
@@ -134,8 +133,10 @@ namespace Dot {
 	}
 	void Dot::ParticleEditorLayer::OnGuiDetach()
 	{
+		ECSManager::Get()->DestroyEntity(m_Entity.second);
 		Gui::Get()->RemoveWrapper("Particle Effect");
 		Gui::Get()->RemoveWrapper("Transform");
+		Gui::Get()->RemoveWrapper("Values Time");	
 	}
 	void Dot::ParticleEditorLayer::OnGuiEvent(Event& event)
 	{
@@ -162,7 +163,7 @@ namespace Dot {
 			if (m_Name.GetClicked())
 			{
 				m_Name.TakeInput(e);
-				m_Entity.first = m_Name.GetText();
+				m_Entity.first = m_Name.GetValue<std::string>();
 				e.IsHandled() = true;
 			}
 			else if (m_Texture.GetClicked())
@@ -245,7 +246,7 @@ namespace Dot {
 	std::pair<std::string, Entity> Dot::ParticleEditorLayer::GetEntity()
 	{
 		m_Effect->UpdateParticleData(*m_ParComponent);
-		std::string texture = TextArea::GetWrapped("Particle Effect", "Texture").GetText();
+		std::string texture = TextArea::GetWrapped("Particle Effect", "Texture").GetValue<std::string>();
 		auto& comp = ECSManager::Get()->GetComponent<Dot::RenderComponent>(m_Entity.second);
 		comp.material->Set(AssetManager::Get()->GetTexture(texture));
 
