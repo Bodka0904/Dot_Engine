@@ -4,13 +4,15 @@
 #include "Dot/Renderer/Texture.h"
 #include "Dot/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Renderer/Shader/Shader.h"
-#include "Dot/Renderer/Buffers/ArrayBuffer.h"
 #include "Dot/Renderer/Renderer2D.h"
 
+#include "Console.h"
+
 namespace Dot {
-#define MAX_QUADS 300
+#define MAX_QUADS 400
 #define MAX_TEXT_CHAR 32
 #define MAX_CHAR_PER_LABEL 32
+#define MAX_CHAR_PER_CONSOLE 1000
 
 	class Widget
 	{
@@ -98,8 +100,11 @@ namespace Dot {
 		~Gui();
 		void AddWrapper(const std::string label, Ref<Wrapper> wrapper);
 		void AddWidget(const std::string& label, Ref<Widget> widget, bool start = false);
+		void AddConsole(const std::string& label, Ref<Console> console);
+
 		void RemoveWidget(const std::string& label);
 		void RemoveWrapper(const std::string& label);
+		void RemoveConsole(const std::string& label);
 
 		int PopIndex();
 		void EnableWrapper(const std::string& label);
@@ -113,7 +118,6 @@ namespace Dot {
 		void UpdateTextBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len);
 		void UpdateLabelBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len);
 
-
 		void SetLabelColor(const glm::vec3& color) { m_LabelColor = color; }
 		void SetTextColor(const glm::vec3& color) { m_TextColor = color; }
 
@@ -123,7 +127,7 @@ namespace Dot {
 		const Widget& GetWidget(const std::string& label) { return *m_Widget[label]; }
 		const Widget& GetWrappedWidget(const std::string& wrapper, const std::string widget) { return m_Wrapper[wrapper]->GetWidget(widget); }
 		Wrapper& GetWrapper(const std::string& label) { return *m_Wrapper[label]; }
-
+		Console& GetConsole(const std::string& label) { return *m_Console[label]; }
 		static void Init(const std::string& texturePack);
 		static Gui* Get() { return s_Instance; }
 	private:
@@ -134,6 +138,7 @@ namespace Dot {
 		Ref<Texture2D>		m_Texture;
 	private:
 		std::unordered_map <std::string, Ref<Wrapper>> m_Wrapper;
+		std::unordered_map<std::string, Ref<Console>> m_Console;
 		std::map <std::string, Ref<Widget>>  m_Widget;
 
 	private:
@@ -142,6 +147,7 @@ namespace Dot {
 
 		std::string	 m_AttachedWidget;
 		std::string	 m_AttachedWrapper;
+		std::string  m_AttachedConsole;
 		std::string  m_ResizedWrapper;
 		std::string	 m_EnabledWrapper;
 	private:

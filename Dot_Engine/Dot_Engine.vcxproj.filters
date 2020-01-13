@@ -1466,6 +1466,9 @@
     <ClInclude Include="src\Dot\ParticleEngine\ParticleEditorLayer.h" />
     <ClInclude Include="src\Dot\ParticleEngine\ParticleEffect.h" />
     <ClInclude Include="src\Dot\Renderer\Material.h" />
+    <ClInclude Include="src\Dot\Core\Editor.h" />
+    <ClInclude Include="src\Dot\Interface\EditorLayer.h" />
+    <ClInclude Include="src\Dot\Gui\GuiSystem\Console.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\API\OpenGL\OpenGLArrayBuffer.cpp">
@@ -1681,5 +1684,7 @@
     <ClCompile Include="src\Dot\Utils\Text\Text.cpp" />
     <ClCompile Include="src\Dot\ParticleEngine\ParticleEditorLayer.cpp" />
     <ClCompile Include="src\Dot\Renderer\Material.cpp" />
+    <ClCompile Include="src\Dot\Interface\EditorLayer.cpp" />
+    <ClCompile Include="src\Dot\Gui\GuiSystem\Console.cpp" />
   </ItemGroup>
 </Project>

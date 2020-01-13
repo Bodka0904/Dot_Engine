@@ -111,6 +111,7 @@
     <ClInclude Include="src\Dot\Core\AssetManager.h" />
     <ClInclude Include="src\Dot\Core\ColorCodes.h" />
     <ClInclude Include="src\Dot\Core\Core.h" />
+    <ClInclude Include="src\Dot\Core\Editor.h" />
     <ClInclude Include="src\Dot\Core\EntryPoint.h" />
     <ClInclude Include="src\Dot\Core\Events\Event.h" />
     <ClInclude Include="src\Dot\Core\Input.h" />
@@ -132,9 +133,11 @@
     <ClInclude Include="src\Dot\Gui\GuiSystem\Arrowbutton.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Button.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Checkbox.h" />
+    <ClInclude Include="src\Dot\Gui\GuiSystem\Console.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Gui.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Slider.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\TextArea.h" />
+    <ClInclude Include="src\Dot\Interface\EditorLayer.h" />
     <ClInclude Include="src\Dot\LevelEditor\LevelEditorLayer.h" />
     <ClInclude Include="src\Dot\LevelEditor\Skybox\Skybox.h" />
     <ClInclude Include="src\Dot\LevelEditor\Terrain\Brush.h" />
@@ -575,9 +578,11 @@
     <ClCompile Include="src\Dot\Gui\GuiSystem\Arrowbutton.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Button.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Checkbox.cpp" />
+    <ClCompile Include="src\Dot\Gui\GuiSystem\Console.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Gui.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Slider.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\TextArea.cpp" />
+    <ClCompile Include="src\Dot\Interface\EditorLayer.cpp" />
     <ClCompile Include="src\Dot\LevelEditor\LevelEditorLayer.cpp" />
     <ClCompile Include="src\Dot\LevelEditor\Skybox\Skybox.cpp" />
     <ClCompile Include="src\Dot\LevelEditor\Terrain\Brush.cpp" />

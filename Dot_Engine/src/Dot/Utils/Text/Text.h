@@ -6,7 +6,7 @@ namespace Dot {
 	class Text
 	{
 	public:
-		Text(const std::string& font, std::string text, const glm::vec2 position, const glm::vec2 size, int maxCharacter);
+		Text(const std::string& font, std::string text, const glm::vec2 position, const glm::vec2 size, int maxCharacter,int lineSize = 300);
 
 		void SetPosition(const glm::vec2 pos);
 		void Push(std::string text);
@@ -19,16 +19,18 @@ namespace Dot {
 		const std::string& GetText() const { return m_Text; }
 		const glm::vec2& GetSize() const { return m_SizeText; }
 		const std::string& GetFont() const { return m_Font; }
-		const int GetNumChar() const { return m_NumChars; };
+		const int GetNumChar() const { return m_Text.size(); };
 		const QuadVertex* GetVertice(int index) { return &m_Vertice[index]; }
 	private:
 		std::string m_Font;
 		glm::vec2 m_Position;
 		glm::vec2 m_SizeText;
 		glm::vec2 m_Size;
+
 		unsigned int m_MaxChar = 0;
 		unsigned int m_PositionInBuffer = 0;
-		unsigned int m_NumChars = 0;
+		int m_LineSize;
+		float m_LineHeight;
 
 		double m_CurserX;
 		double m_CurserY;

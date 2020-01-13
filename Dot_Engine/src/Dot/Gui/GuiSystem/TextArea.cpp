@@ -113,7 +113,7 @@ namespace Dot {
 	{
 		return m_Label->GetSize();
 	}
-	const void TextArea::TakeInput(KeyPressedEvent& event)
+	void TextArea::TakeInput(KeyPressedEvent& event)
 	{	
 		int deletedChar = 0;
 		switch (m_Type)

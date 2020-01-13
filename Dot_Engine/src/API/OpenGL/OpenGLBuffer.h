@@ -11,6 +11,7 @@ namespace Dot {
 		virtual void Bind() const;
 		virtual void UnBind() const;
 		virtual void Update(const void* vertices, unsigned int size, int offset);
+		virtual void Invalidate(unsigned int size, int offset);
 		virtual void* MapBuffer();
 		virtual void  UnMapBuffer();
 		virtual void ClearBuffer();

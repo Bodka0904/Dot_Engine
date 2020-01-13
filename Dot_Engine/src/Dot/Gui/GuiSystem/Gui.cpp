@@ -61,6 +61,14 @@ namespace Dot {
 				}
 			}
 		}
+		for (auto& console : m_Console)
+		{
+			if (console.second->MouseHoover(m_MousePosition))
+			{
+				console.second->ClickHandle();
+				return true;
+			}
+		}
 		for (auto& widg : m_Widget)
 		{
 			if (widg.second->MouseHoover(m_MousePosition))
@@ -94,6 +102,14 @@ namespace Dot {
 				return true;
 			}
 		}
+		for (auto& console : m_Console)
+		{
+			if (console.second->MouseHoover(m_MousePosition))
+			{
+				m_AttachedConsole = console.first;
+				return true;
+			}
+		}
 		for (auto& it : m_Widget)
 		{
 			if (it.second->MouseHoover(m_MousePosition))
@@ -110,6 +126,7 @@ namespace Dot {
 		m_AttachedWidget.clear();
 		m_AttachedWrapper.clear();
 		m_ResizedWrapper.clear();
+		m_AttachedConsole.clear();
 	}
 	void Gui::UpdateVertexBuffer(unsigned int index, const QuadVertex* vertices, unsigned int len)
 	{
@@ -150,6 +167,10 @@ namespace Dot {
 		{
 			m_Wrapper[m_ResizedWrapper]->Resize(m_MousePosition);
 		}
+		else if (!m_AttachedConsole.empty())
+		{
+			m_Console[m_AttachedConsole]->Move(dif);
+		}
 	}
 
 	void Gui::Render(const Ref<Shader>& shader, const Ref<Shader>& textShader, const Ref<OrthoCamera> camera)
@@ -178,6 +199,11 @@ namespace Dot {
 			m_LabelRenderer->Render();
 		}
 		m_LabelRenderer->EndScene();
+		
+		for (auto it : m_Console)
+		{
+			it.second->Render(textShader, camera);
+		}
 		RenderCommand::Enable(D_DEPTH_TEST);
 	}
 
@@ -203,6 +229,18 @@ namespace Dot {
 		}
 		
 	}
+	void Gui::AddConsole(const std::string& label, Ref<Console> console)
+	{
+		if (m_NumWidgets < MAX_QUADS)
+		{
+			m_Console[label] = console;
+			m_NumWidgets += 2;
+		}
+		else
+		{
+			LOG_WARN("Reached maximum of widgets, not possible to add!");
+		}
+	}
 	void Gui::AddWrapper(const std::string label, Ref<Wrapper> wrapper)
 	{
 		if (m_NumWidgets < MAX_QUADS)
@@ -222,26 +260,37 @@ namespace Dot {
 	}
 	void Gui::RemoveWrapper(const std::string& label)
 	{
+		std::vector<QuadVertex> quadLabel;
+		quadLabel.resize(MAX_CHAR_PER_LABEL);
+		std::vector<QuadVertex> quadText;
+		quadText.resize(MAX_TEXT_CHAR);
+
 		for (auto& it : m_Wrapper[label]->GetWidgets())
 		{
 			m_AvailableIndex.push(it.second->GetIndex());
-			UpdateVertexBuffer(it.second->GetIndex(), &QuadVertex(), 1);
-			UpdateTextBuffer(it.second->GetIndex(), &QuadVertex(), 1);
-			UpdateLabelBuffer(it.second->GetIndex(), &QuadVertex(), MAX_CHAR_PER_LABEL);
-			UpdateTextBuffer(it.second->GetIndex(), &QuadVertex(), MAX_TEXT_CHAR);
+
+			UpdateVertexBuffer(it.second->GetIndex(), &QuadVertex(), 1);		
+			UpdateLabelBuffer(it.second->GetIndex(), &quadLabel[0], MAX_CHAR_PER_LABEL);
+			UpdateTextBuffer(it.second->GetIndex(), &quadText[0], MAX_TEXT_CHAR);
+
 			m_NumWidgets--;
 		}
 		m_Wrapper[label]->RemoveWidgets();
 		m_AvailableIndex.push(m_Wrapper[label]->GetIndex().first);
 		m_AvailableIndex.push(m_Wrapper[label]->GetIndex().second);
 
+	
 		UpdateVertexBuffer(m_Wrapper[label]->GetIndex().first, &QuadVertex(), 1);
 		UpdateVertexBuffer(m_Wrapper[label]->GetIndex().second, &QuadVertex(), 1);
-		UpdateLabelBuffer(m_Wrapper[label]->GetIndex().first, &QuadVertex(), MAX_CHAR_PER_LABEL);
+		UpdateLabelBuffer(m_Wrapper[label]->GetIndex().first, &quadLabel[0], MAX_CHAR_PER_LABEL);
 
 		m_Wrapper.erase(label);
 		m_NumWidgets -= 2;
 
+	}
+
+	void Gui::RemoveConsole(const std::string& label)
+	{
 	}
 
 	int Gui::PopIndex()
@@ -292,7 +341,7 @@ namespace Dot {
 	
 		m_Index = Gui::Get()->PopIndex();
 		m_ExitButton.SetIndex(Gui::Get()->PopIndex());
-		m_Label = std::make_shared<Text>("Arial", label, glm::vec2(position.x, position.y - Font::GetFont("Arial")->GetData().lineHeight * labelsize), glm::vec2(labelsize, labelsize), MAX_CHAR_PER_LABEL);
+		m_Label = std::make_shared<Text>("Arial", label, glm::vec2(position.x, position.y ), glm::vec2(labelsize, labelsize), MAX_CHAR_PER_LABEL);
 	
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad[0]);
 		Gui::Get()->UpdateVertexBuffer(m_ExitButton.GetIndex(), &m_Quad[1]);
@@ -301,14 +350,14 @@ namespace Dot {
 	void Wrapper::AddWidget(const std::string& label, Ref<Widget> widget, bool start)
 	{
 		glm::vec2 offset(10, 0);
-		glm::vec2 newPos = m_Position;
+		glm::vec2 newPos = glm::vec2(m_Position.x,m_Position.y + m_Label->GetSize().y);
 		int counter = 1;
 		for (auto& it : m_Widget)
 		{
 			if (m_WidgetPerCol <= counter)
 			{
 				counter = 0;
-				newPos.y = m_Position.y;
+				newPos.y = m_Position.y + m_Label->GetSize().y;
 				newPos.x += it.second->GetLabelSize().x + it.second->GetSize().x + offset.x;
 			}
 			else
@@ -404,7 +453,7 @@ namespace Dot {
 		m_Quad[0].SetPosition(m_Position, m_Size);
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad[0]);
 
-		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
+		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y));
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
 	}
 	void Wrapper::SetPosition(const glm::vec2& pos)
@@ -420,7 +469,7 @@ namespace Dot {
 		m_Quad[0].SetPosition(m_Position, m_Size);
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad[0]);
 
-		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
+		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y));
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
 	}
 	

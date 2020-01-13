@@ -27,6 +27,11 @@ namespace Dot {
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 		glBufferSubData(GL_ARRAY_BUFFER, offset, size, vertices);
 	}
+	void OpenGLVertexBuffer::Invalidate(unsigned int size, int offset)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+		glInvalidateBufferSubData(GL_ARRAY_BUFFER, offset, size);
+	}
 	void* OpenGLVertexBuffer::MapBuffer()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);

@@ -4,15 +4,15 @@
 
 
 namespace Dot {
-	Text::Text(const std::string& font, std::string text, const glm::vec2 position, const glm::vec2 size, int maxCharacter)
+	Text::Text(const std::string& font, std::string text, const glm::vec2 position, const glm::vec2 size, int maxCharacter, int lineSize)
 		:
 		m_Font(font),
 		m_Position(position),
+		m_LineHeight(Font::GetFont(font)->GetData().lineHeight* size.y),
 		m_SizeText(glm::vec2(0, Font::GetFont(font)->GetData().lineHeight* size.y)),
 		m_Size(size),
-		m_NumChars(0),
 		m_MaxChar(maxCharacter),
-		m_Text(text)
+		m_LineSize(lineSize)
 	{
 		m_Vertice.resize(m_MaxChar);
 		m_CurserX = position.x;
@@ -23,10 +23,13 @@ namespace Dot {
 		{
 			if (c == '\n')
 			{
-				m_CurserY += m_Size.y; m_CurserX = position.x;
+				m_CurserY += m_LineHeight; 
+				m_CurserX = position.x;
+				m_SizeText.y += m_LineHeight;
 			}
 			else
 			{
+				m_Text += c;
 				tmp = Font::GetFont(font)->GetCharacter(c);
 
 				tmp.sizeX *= size.x;
@@ -41,12 +44,18 @@ namespace Dot {
 					glm::vec2(tmp.xTextureCoord, tmp.yMaxTextureCoord)
 				};
 
-				m_Vertice[m_NumChars] = QuadVertex(glm::vec2(m_CurserX + tmp.xOffset, m_CurserY + position.y + tmp.yOffset),
+				m_Vertice[m_PositionInBuffer] = QuadVertex(glm::vec2(m_CurserX + tmp.xOffset, m_CurserY + position.y + tmp.yOffset),
 					glm::vec2(tmp.sizeX, tmp.sizeY), &texCoords[0]);
 
 				m_CurserX += tmp.xAdvance * size.x;
-				m_NumChars++;
+				if (m_CurserX >= m_LineSize+m_Position.x)
+				{
+					m_CurserY += m_LineHeight;
+					m_CurserX = position.x;
+					m_SizeText.y += m_LineHeight;
+				}
 				m_PositionInBuffer++;
+			
 			}
 		}
 
@@ -66,18 +75,20 @@ namespace Dot {
 	}
 
 	void Text::Push(std::string text)
-	{
-		m_Text.append(text);
+	{	
 		for (char& c : text)
 		{
 			if (m_PositionInBuffer < m_MaxChar)
 			{
 				if (c == '\n')
 				{
-					m_CurserY += m_Size.y;
+					m_CurserY += m_LineHeight;
+					m_CurserX = m_Position.x;
+					m_SizeText.y += m_LineHeight;
 				}
 				else
 				{
+					m_Text += c;
 					Character tmp = Font::GetFont(m_Font)->GetCharacter(c);
 
 					tmp.sizeX *= m_Size.x;
@@ -96,15 +107,18 @@ namespace Dot {
 						glm::vec2(tmp.sizeX, tmp.sizeY), &texCoords[0]);
 
 					m_CurserX += tmp.xAdvance * m_Size.x;
-					m_PositionInBuffer++;
+					if (m_CurserX >= m_LineSize + m_Position.x)
+					{
+						m_CurserY += m_LineHeight;
+						m_CurserX = m_Position.x;
+						m_SizeText.y += m_LineHeight;
+					}
 
-					if (m_PositionInBuffer > m_NumChars)
-						m_NumChars++;
+					m_PositionInBuffer++;
 				}
 			}
 			else
 			{
-				m_NumChars = m_MaxChar - 1;
 				LOG_WARN("Buffer for dynamic text is full!");
 				break;
 			}
@@ -119,7 +133,6 @@ namespace Dot {
 			Character tmp = Font::GetFont(m_Font)->GetCharacter(m_Text.c_str()[m_PositionInBuffer - 1]);
 			m_CurserX -= tmp.xAdvance * m_Size.x;
 			m_PositionInBuffer--;
-			m_NumChars--;
 			m_Text.pop_back();
 		}
 	}
@@ -128,10 +141,14 @@ namespace Dot {
 	{
 		m_PositionInBuffer = 0;
 		m_CurserX = m_Position.x;
+		m_CurserY = 0;
 		m_Vertice.clear();
+		m_Text.clear();
+		m_Vertice.resize(m_MaxChar);
+		m_SizeText.y = m_LineHeight;
 		for (int i = 0; i < m_MaxChar;++i)
 		{
-			m_Vertice.push_back(QuadVertex(glm::vec2(0),glm::vec2(0),NULL));
+			m_Vertice[i] = QuadVertex();
 		}
 	}
 

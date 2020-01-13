@@ -49,9 +49,15 @@ namespace Dot {
 	}
 
 	
+
+	
 	void Renderer2D::ClearBuffer()
 	{
 		m_VAO->GetVertexBuffer(0)->ClearBuffer();
+	}
+	void Renderer2D::ClearBufferOffset(int offset, int size)
+	{
+		m_VAO->GetVertexBuffer(0)->Invalidate(size*sizeof(QuadVertex), offset*sizeof(QuadVertex));
 	}
 	void Renderer2D::RestartBuffer()
 	{

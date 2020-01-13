@@ -57,8 +57,17 @@ namespace Dot {
 	{
 				
 	}
+	void Test()
+	{
+		std::cout << "Test" << std::endl;
+	}
 	void Dot::ParticleEditorLayer::OnGuiAttach()
 	{
+		
+		Console::Create("Console", glm::vec2(300, 300), glm::vec2(300, 300));
+		Gui::Get()->GetConsole("Console").PushText("Hola hop krava opica retard dement haha");
+		Gui::Get()->GetConsole("Console").RegisterCommand("Test",Test);
+
 		glm::vec2 winSize(Input::GetWindowSize().first, Input::GetWindowSize().second);
 		glm::vec2 wrapSizeEffect(300, 450);
 		Dot::Wrapper::Create("Particle Effect", winSize - wrapSizeEffect, wrapSizeEffect, 8);
@@ -142,6 +151,7 @@ namespace Dot {
 	{
 		if (event.GetEventType() == EventType::KeyPressed)
 		{
+			
 			TextArea& m_Name = TextArea::GetWrapped("Particle Effect", "Name");
 			TextArea& m_Texture = TextArea::GetWrapped("Particle Effect", "Texture");
 			TextArea& m_NumPar = TextArea::GetWrapped("Particle Effect", "Num Particles");
@@ -160,6 +170,11 @@ namespace Dot {
 			TextArea& m_ScaleZ = TextArea::GetWrapped("Transform", "Scale z");
 
 			KeyPressedEvent& e = (KeyPressedEvent&)event;
+	
+			if (Gui::Get()->GetConsole("Console").GetClicked())
+			{
+				Gui::Get()->GetConsole("Console").TakeInput(e);
+			}
 			if (m_Name.GetClicked())
 			{
 				m_Name.TakeInput(e);

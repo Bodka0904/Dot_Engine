@@ -34,11 +34,11 @@ namespace Dot {
 			&& mousePos.y <= coords.y && mousePos.y >= coords.w)
 		{
 			m_TempStorage = ((mousePos.x - m_Position.x) / m_Size.x);
-			if (m_TempStorage <= 0.02f)
+			if (m_TempStorage <= 0.01f)
 			{
 				m_TempStorage = 0.0f;
 			}
-			else if (m_TempStorage >= 0.96f)
+			else if (m_TempStorage >= 0.99f)
 			{
 				m_TempStorage = 1.0f;
 			}
@@ -52,43 +52,18 @@ namespace Dot {
 	void Slider::ClickHandle()
 	{
 		*m_Value = m_TempStorage * m_Range;
-		if (m_TempStorage >= 0.98f)
-		{
-			m_TexOffset = -m_TempStorage - 0.1f;	
-			m_Quad.vertices[0].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.5f);
-			m_Quad.vertices[1].texCoord = glm::vec2(0.5f + m_TexOffset / 4, 0.5f);
-			m_Quad.vertices[2].texCoord = glm::vec2(0.5f + m_TexOffset / 4, 0.75f);
-			m_Quad.vertices[3].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.75f);
-			
-			Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
-		}
-		else if (m_TempStorage <= 0.02f)
-		{
-			m_TexOffset = -m_TempStorage;
-
-			m_Quad.vertices[0].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.5f);
-			m_Quad.vertices[1].texCoord = glm::vec2(0.5f + m_TexOffset / 4, 0.5f);
-			m_Quad.vertices[2].texCoord = glm::vec2(0.5f + m_TexOffset / 4, 0.75f);
-			m_Quad.vertices[3].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.75f);
-			
-			Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
-		}
-		else
-		{
-			m_TexOffset = -m_TempStorage;
-			
-			m_Quad.vertices[0].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.5f);
-			m_Quad.vertices[1].texCoord = glm::vec2(0.5f + m_TexOffset / 4, 0.5f);
-			m_Quad.vertices[2].texCoord = glm::vec2(0.5f + m_TexOffset / 4, 0.75f);
-			m_Quad.vertices[3].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.75f);
-			
-			Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
-		}
-
+		
+		m_TexOffset = -m_TempStorage;	
+		m_Quad.vertices[0].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.5f);
+		m_Quad.vertices[1].texCoord = glm::vec2(0.5f + m_TexOffset / 4, 0.5f);
+		m_Quad.vertices[2].texCoord = glm::vec2(0.5f + m_TexOffset / 4, 0.75f);
+		m_Quad.vertices[3].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.75f);
+		
 		m_Text->SetPositionInBuffer(0);
 		m_Text->RestartCurserX();
-
 		m_Text->Push(std::to_string(*m_Value));
+		
+		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
 	}
 	void Slider::Exit()

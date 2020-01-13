@@ -12,12 +12,11 @@ namespace Dot {
 	public:
 		Renderer2D(unsigned int batchSize);
 
-
 		void ClearBuffer();
+		void ClearBufferOffset(int offset,int size);
 		void RestartBuffer();
 		void Push(const QuadVertex* data,int len);
 		void PushOffset(const QuadVertex* data, int len, int offsetElements=0);
-
 		void PrepareForRender();
 		void BeginScene(const Ref<Shader>& shader, const Ref<OrthoCamera>& camera);
 		void Render();

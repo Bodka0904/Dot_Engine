@@ -31,7 +31,7 @@ namespace Dot {
 		virtual const glm::vec2& GetLabelSize() override;
 		virtual const unsigned int GetIndex() override { return m_Index; }
 
-		const void TakeInput(KeyPressedEvent& event);
+		void TakeInput(KeyPressedEvent& event);
 		const bool& GetClicked() const;
 		
 		template<typename T>

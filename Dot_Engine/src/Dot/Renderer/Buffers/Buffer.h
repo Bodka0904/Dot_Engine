@@ -140,6 +140,7 @@ namespace Dot {
 
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;
+		virtual void Invalidate(unsigned int size, int offset)=0;
 		virtual void Update(const void *vertices,unsigned int size, int offset) = 0;
 		virtual void* MapBuffer() = 0;
 		virtual void  UnMapBuffer() = 0;
