@@ -22,6 +22,11 @@ namespace Dot {
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 	}
 
+	Button::~Button()
+	{
+		Gui::Get()->PushIndex(m_Index);
+	}
+
 	bool Button::MouseHoover(const glm::vec2& mousePos)
 	{
 		glm::vec4 coords = getCoords();
@@ -34,7 +39,7 @@ namespace Dot {
 		return false;
 	}
 	
-	void Button::Exit()
+	void Button::Minimize()
 	{
 		m_Quad.SetPosition(glm::vec2(0), glm::vec2(0));
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
@@ -46,7 +51,7 @@ namespace Dot {
 	void Button::Move(const glm::vec2 pos)
 	{
 		m_Position += pos;
-		m_Quad.Move(pos);
+		m_Quad.SetPosition(m_Position,m_Size);
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());

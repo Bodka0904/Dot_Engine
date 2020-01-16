@@ -47,7 +47,7 @@ private:
 	
 
 	Dot::Ref<Dot::MousePicker> m_Picker;
-	Dot::Ref<Dot::Brush> m_Brush;
+	Dot::Ref<Dot::TerrainBrush> m_Brush;
 	Dot::Ref<Dot::BrushInstance> m_Grass;
 
 	Dot::Ref<Dot::CollisionSystem> m_CollisionSystem;
@@ -63,7 +63,6 @@ private:
 private:
 	float m_TimePassed = 0.0f;
 	float m_ParticleTime = 0.0f;
-
 
 };
 

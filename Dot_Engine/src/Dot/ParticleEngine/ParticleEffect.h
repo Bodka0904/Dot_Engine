@@ -97,7 +97,7 @@ namespace Dot {
 		void SetRenderCount(unsigned int numParticles);
 		void SwapBuffers();		
 
-		virtual void Render(const Ref<Shader>& shader) override;		
+		virtual void Render(const Ref<Shader>& shader, int drawMod) override;
 
 		const unsigned int GetMaxParticles() const { return m_MaxParticles; }
 	private:

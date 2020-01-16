@@ -88,10 +88,10 @@ vec3 CalcDirLight()
 	vec3 specular = c_SpecularStrength * spec * LightColor.xyz;
 	vec3 diffuse = diff * LightColor.xyz;
 
-	float attenuation = CalcPointLight();
-	ambient *= attenuation;
-	diffuse *= attenuation;
-	specular *= attenuation;
+	//float attenuation = CalcPointLight();
+	//ambient *= attenuation;
+	//diffuse *= attenuation;
+	//specular *= attenuation;
 
 	vec3 result = (ambient + diffuse + specular) * LightStrength;
 

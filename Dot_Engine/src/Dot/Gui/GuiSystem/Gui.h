@@ -14,6 +14,7 @@ namespace Dot {
 #define MAX_CHAR_PER_LABEL 32
 #define MAX_CHAR_PER_CONSOLE 1000
 
+
 	class Widget
 	{
 	public:
@@ -21,24 +22,82 @@ namespace Dot {
 		virtual void Move(const glm::vec2 pos) = 0;
 		virtual void ClickHandle() = 0;
 		virtual void SetPosition(const glm::vec2& pos) = 0;
-		virtual void Exit() = 0;
+		virtual void Minimize() = 0;
 		virtual const glm::vec2& GetPosition() = 0;
 		virtual const glm::vec2& GetSize() = 0;
 		virtual const glm::vec2& GetLabelSize() = 0;
 		virtual const unsigned int GetIndex() = 0;
 	};
 
+	struct Panel
+	{
+		QuadVertex Quad[2];
+		glm::vec2 Position;
+		glm::vec2 Size;
+		
+		glm::vec2 PositionButton;
+		glm::vec2 SizeButton;
+		unsigned int Index;
+		unsigned int IndexButton;
+
+		Panel() = default;
+		Panel(const glm::vec2& pos,const glm::vec2& size)
+			:
+			Position(pos),
+			Size(size),
+			SizeButton(glm::vec2(size.y,size.y)),
+			PositionButton(glm::vec2(pos.x + size.x - size.y,pos.y)),
+			Index(-1),
+			IndexButton(-1)
+		{
+			glm::vec2 texCoordsPanel[8] = {
+						 glm::vec2(0.76f, 0.75f),
+						 glm::vec2(1.0f,  0.75f),
+						 glm::vec2(1.0f,  1.0f),
+						 glm::vec2(0.76f, 1.0f),
+
+						 glm::vec2(0.5f, 0.75f),
+						 glm::vec2(0.75f,0.75f),
+						 glm::vec2(0.75f,1.0f),
+						 glm::vec2(0.5f, 1.0f),
+			};
+			Quad[0] = QuadVertex(Position, Size, &texCoordsPanel[0]);
+			Quad[1] = QuadVertex(PositionButton, SizeButton, &texCoordsPanel[4]);
+		}
+
+		void SetPosition(const glm::vec2& pos)
+		{
+			Position = pos;
+			PositionButton =  glm::vec2(pos.x + Size.x - SizeButton.y, Position.y);
+			Quad[0].SetPosition(Position, Size);
+			Quad[1].SetPosition(PositionButton, SizeButton);
+		}
+		void Move(const glm::vec2& pos)
+		{
+			Position += pos;
+			PositionButton += pos;
+			Quad[0].Move(pos);
+			Quad[1].Move(pos);
+		}
+		bool ButtonClicked(const glm::vec2& pos)
+		{
+			if (pos.y < PositionButton.y + SizeButton.y && pos.x > PositionButton.x)
+				return true;
+		
+			return false;
+		}
+	};
+
 	class Wrapper
 	{
 	public:
 		Wrapper(const std::string& label,const glm::vec2& position, const glm::vec2& size, int widgetPerCol, bool locked, float labelsize = 0.2);
-
+		~Wrapper();
 		void AddWidget(const std::string& label, Ref<Widget> widget,bool start = false);
-		void RemoveWidgets();
 		bool MouseHoover(const glm::vec2& mousePos);
 		bool MouseResize(const glm::vec2& mousePos);
-		bool Exit(const glm::vec2& mousePos);
 
+		void Minimize();
 		void Resize(const glm::vec2& mousePos);
 		void Move(const glm::vec2& pos);
 		void SetPosition(const glm::vec2& pos);
@@ -46,51 +105,29 @@ namespace Dot {
 		
 
 		const glm::vec2& GetPosition() { return m_Position; }
-		std::pair<unsigned int, unsigned int>& GetIndex() { return std::pair<unsigned int, unsigned int>(m_Index, m_ExitButton.GetIndex()); }
+		unsigned int GetIndex() { return m_Index; }
 		Widget& GetWidget(const std::string& label) { return *m_Widget[label]; }
 		const std::map <std::string, Ref<Widget> >& GetWidgets() { return m_Widget; }
 		static void Create(const std::string& label, const glm::vec2& position, const glm::vec2& size, int widgetPerCol, bool locked = false, float labelsize = 0.2f);
-
-	private:
-		class ActionButton
-		{
-		public:
-			ActionButton(const glm::vec2& position, const glm::vec2& size);
-			bool MouseHoover(const glm::vec2& mousePos);
-			void Move(const glm::vec2& pos);
-			void SetPosition(const glm::vec2& pos);
-			void SetSize(const glm::vec2& size) { m_Size = size; };
-			void SetIndex(unsigned int index) { m_Index = index; }
-
-			const glm::vec2& GetPosition() { return m_Position; }
-			const glm::vec2& GetSize() { return m_Size; }
-			unsigned int GetIndex() { return m_Index; }
-		private:
-			glm::vec4 getCoords();
-		private:
-			glm::vec2 m_Position;
-			glm::vec2 m_Size;
-
-			unsigned int m_Index;
-		};
-
-		ActionButton m_ExitButton;
-		Ref<Text> m_Label;
+	
 	private:
 		glm::vec4 getCoords();
 	private:
 		std::map<std::string, Ref<Widget>> m_Widget;
+		QuadVertex m_Quad;
+		Panel m_Panel;
+		Ref<Text> m_Label;
 
-	private:
-		QuadVertex m_Quad[2];
 		glm::vec2 m_Position;
 		glm::vec2 m_Size;
-		
+		glm::vec2 m_CachedSize = glm::vec2(0);
+		glm::vec2 m_CachedPosition = glm::vec2(0);
 		unsigned int m_Index;
 
 		int m_WidgetPerCol;
 		bool m_Resizing = false;
 		bool m_Locked = false;
+		bool m_Minimized = false;
 	};
 
 	class Gui
@@ -107,6 +144,7 @@ namespace Dot {
 		void RemoveConsole(const std::string& label);
 
 		int PopIndex();
+		void PushIndex(unsigned int index);
 		void EnableWrapper(const std::string& label);
 		void DisableWrapper();
 
@@ -143,7 +181,7 @@ namespace Dot {
 
 	private:
 		std::priority_queue<unsigned int, std::vector<unsigned int>, std::greater<unsigned int>> m_AvailableIndex{};
-		unsigned int m_NumWidgets;
+		unsigned int m_NumQuads;
 
 		std::string	 m_AttachedWidget;
 		std::string	 m_AttachedWrapper;

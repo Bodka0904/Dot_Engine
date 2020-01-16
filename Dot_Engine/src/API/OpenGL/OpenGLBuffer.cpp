@@ -4,7 +4,7 @@
 #include <GL/glew.h>
 namespace Dot {
 	OpenGLVertexBuffer::OpenGLVertexBuffer(const void* vertices, unsigned int size, int drawMod)
-		: m_Count(size / sizeof(float)),m_Size(size),m_DrawMod(drawMod)
+		: m_Size(size),m_DrawMod(drawMod)
 	{
 		glCreateBuffers(1, &m_VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
@@ -27,11 +27,7 @@ namespace Dot {
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 		glBufferSubData(GL_ARRAY_BUFFER, offset, size, vertices);
 	}
-	void OpenGLVertexBuffer::Invalidate(unsigned int size, int offset)
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glInvalidateBufferSubData(GL_ARRAY_BUFFER, offset, size);
-	}
+	
 	void* OpenGLVertexBuffer::MapBuffer()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
@@ -54,18 +50,12 @@ namespace Dot {
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, D_DYNAMIC_DRAW);
 	}
-	void OpenGLVertexBuffer::SetCount(unsigned int count)
-	{
-		m_Count = count;
-	}
+
 	void OpenGLVertexBuffer::SetLayout(const BufferLayout& layout)
 	{
 		m_Layout = layout;
 	}
-	unsigned int OpenGLVertexBuffer::GetCount() const
-	{
-		return m_Count;
-	}
+	
 	const BufferLayout& OpenGLVertexBuffer::GetLayout() const
 	{
 		return m_Layout;

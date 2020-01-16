@@ -22,12 +22,11 @@ out vec3 v_FragPos;
 out vec3 v_Normal;
 out vec2 v_TexCoord;
 out vec3 v_ViewPos;
-
+out vec3 v_WorldPos;
 
 void main()
 {
 	vec4 WorldPos = u_ModelMatrix * vec4(a_Position, 1.0);
-
 	vec4 Position = ViewProjectionMatrix * WorldPos;
 
 	gl_Position = Position;
@@ -36,6 +35,7 @@ void main()
 	v_Normal = mat3(transpose(inverse(u_ModelMatrix))) * a_Normal;
 	v_TexCoord = a_TexCoord;
 	v_ViewPos = ViewPos;
+	v_WorldPos = WorldPos.xyz;
 }
 
 
@@ -46,6 +46,7 @@ in vec3 v_FragPos;
 in vec3 v_Normal;
 in vec2 v_TexCoord;
 in vec3 v_ViewPos;
+in vec3 v_WorldPos;
 
 layout(std140, binding = 1) uniform o_Light
 {
@@ -54,12 +55,18 @@ layout(std140, binding = 1) uniform o_Light
 	float LightStrength;
 };
 
+
+uniform float u_Radius;
+uniform vec2 u_BrushPosition;
+
 uniform sampler2D u_Texture;
 
 out vec4 color;
 
-float c_AmbientStrength = 0.1;
+const vec3 c_BrushColor = vec3(0.2, 0.7, 1.0);
+float c_AmbientStrength = 0.8;
 float c_SpecularStrength = 0.5;
+
 
 void main()
 {
@@ -75,11 +82,14 @@ void main()
 
 	vec3 specular = c_SpecularStrength * spec * LightColor.xyz;
 	vec3 diffuse = diff * LightColor.xyz;
+
 	vec3 result = (ambient + diffuse + specular) * LightStrength;
 
-	vec4 texColor = texture(u_Texture, v_TexCoord) * vec4(result, 1.0);
-	if (texColor.a < 0.1)
-		discard;
-	color = texColor;
+	float dist = length(u_BrushPosition - v_WorldPos.xz);
 
+	if (dist < u_Radius)
+		result += c_BrushColor;
+
+	color = texture(u_Texture, v_TexCoord) * vec4(result, 1.0);
+	
 }

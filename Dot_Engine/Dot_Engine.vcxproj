@@ -134,6 +134,7 @@
     <ClInclude Include="src\Dot\Gui\GuiSystem\Button.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Checkbox.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Console.h" />
+    <ClInclude Include="src\Dot\Gui\GuiSystem\Dropdown.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Gui.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Slider.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\TextArea.h" />
@@ -579,6 +580,7 @@
     <ClCompile Include="src\Dot\Gui\GuiSystem\Button.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Checkbox.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Console.cpp" />
+    <ClCompile Include="src\Dot\Gui\GuiSystem\Dropdown.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Gui.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Slider.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\TextArea.cpp" />

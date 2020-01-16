@@ -13,6 +13,37 @@ GameLayer::GameLayer()
 void GameLayer::OnAttach()
 {
 	Dot::Renderer::Init();
+	
+	
+	
+	Dot::Signature collisionSignature;
+	collisionSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::AABB>());
+	collisionSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RigidBody>());
+	m_CollisionSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::CollisionSystem>();
+	Dot::ECSManager::Get()->SetSystemSignature<Dot::CollisionSystem>(collisionSignature);
+
+
+	Dot::Signature physicsSignature;
+	physicsSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Transform>());
+	physicsSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RigidBody>());
+	m_PhysicsSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::PhysicsSystem>();
+	Dot::ECSManager::Get()->SetSystemSignature<Dot::PhysicsSystem>(physicsSignature);
+
+	Dot::Signature renderSignature;
+	renderSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RenderComponent>());
+	renderSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Transform>());
+	m_RenderSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::RenderSystem>();
+	Dot::ECSManager::Get()->SetSystemSignature<Dot::RenderSystem>(renderSignature);
+
+	Dot::Signature particleSignature;
+	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Transform>());
+	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RenderComponent>());
+	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::ParticleComponent>());
+	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Ref<Dot::ParticleEffect>>());
+	m_ParticleSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::ParticleSystem>();
+	Dot::ECSManager::Get()->SetSystemSignature<Dot::ParticleSystem>(particleSignature);
+	
+	
 	std::vector<std::string> faces{
 			"res/textures/Skybox/right.png",
 			"res/textures/Skybox/left.png",
@@ -23,10 +54,11 @@ void GameLayer::OnAttach()
 	};
 	m_SkyBox = std::make_shared<Dot::Skybox>(faces, 500.0f);
 
-	//m_Terrain = std::make_shared<Dot::Terrain>(500, 100);
-	m_Terrain = std::make_shared<Dot::Terrain>("res/heightmaps/test.bmp", 500, 40);
-	//m_Terrain->ApplyHeightsValueNoise(15.0f);
-	//m_Terrain->Update();
+	m_Terrain = std::make_shared<Dot::Terrain>(300, 129);
+	//m_Terrain = std::make_shared<Dot::Terrain>("res/heightmaps/test.bmp", 100, 2.0f);
+	//m_Terrain->HeightsValueNoise();
+	m_Terrain->DiamondSquare();
+	m_Terrain->ApplyHeights();
 	m_Terrain->ApplyNormals();
 
 
@@ -64,7 +96,7 @@ void GameLayer::OnAttach()
 	m_Tree = Dot::AssetManager::Get()->GetInstancedMesh("InstancedTree");
 	m_Tree->Update(m_TreeTransformations, m_TreeTransformations.size(), 0);
 
-	m_LightController = std::make_shared<Dot::LightController>(glm::vec3(0, 10, 0), glm::vec3(0.7, 0.7, 0.7));
+	m_LightController = std::make_shared<Dot::LightController>(glm::vec3(0, 200, 0), glm::vec3(0.8, 0.8, 0.8));
 	
 	
 	//m_ParticleEffect = std::make_shared<Dot::ParticleEffect>();
@@ -75,38 +107,9 @@ void GameLayer::OnAttach()
 
 
 	m_GrassTexure = Dot::Texture2D::Create("res/Textures/Models/grass.png");
-	m_Brush = std::make_shared<Dot::Brush>(100, 20, 2.0f);
+	m_Brush = std::make_shared<Dot::TerrainBrush>(20,m_Terrain);
 	m_Grass = std::make_shared<Dot::BrushInstance>("res/Models/grass.obj", "GrassTexture", 300);
 	m_Picker = std::make_shared<Dot::MousePicker>();
-
-
-	
-	Dot::Signature collisionSignature;
-	collisionSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::AABB>());
-	collisionSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RigidBody>());
-	m_CollisionSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::CollisionSystem>();
-	Dot::ECSManager::Get()->SetSystemSignature<Dot::CollisionSystem>(collisionSignature);
-	
-
-	Dot::Signature physicsSignature;
-	physicsSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Transform>());
-	physicsSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RigidBody>());
-	m_PhysicsSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::PhysicsSystem>();
-	Dot::ECSManager::Get()->SetSystemSignature<Dot::PhysicsSystem>(physicsSignature);
-	
-	Dot::Signature renderSignature;
-	renderSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RenderComponent>());
-	renderSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Transform>());
-	m_RenderSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::RenderSystem>();
-	Dot::ECSManager::Get()->SetSystemSignature<Dot::RenderSystem>(renderSignature);
-
-	Dot::Signature particleSignature;
-	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Transform>());
-	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RenderComponent>());
-	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::ParticleComponent>());
-	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Ref<Dot::ParticleEffect>>());
-	m_ParticleSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::ParticleSystem>();
-	Dot::ECSManager::Get()->SetSystemSignature<Dot::ParticleSystem>(particleSignature);
 
 	
 	Dot::Entity entity = Dot::ECSManager::Get()->CreateEntity();
@@ -156,10 +159,12 @@ void GameLayer::OnUpdate(Dot::Timestep ts)
 		Dot::RenderCommand::SetBlendFunc(D_SRC_ALPHA, D_ONE_MINUS_SRC_ALPHA);
 		m_TreeTexture->Bind(0);
 		m_InstanceShader->Bind();
-		m_Tree->Render(m_InstanceShader);
+		//m_Tree->Render(m_InstanceShader);
 		
 		m_TerrTexture->Bind(0);
 		m_StaticShader->Bind();
+		m_StaticShader->UploadUniformFloat("u_Radius", m_Brush->GetRadius());
+		m_StaticShader->UploadUniformFloat2("u_BrushPosition",glm::vec2(m_Brush->GetPosition().x,m_Brush->GetPosition().z));
 		Dot::Renderer::SubmitElements(m_StaticShader, m_LightController->GetLight(), m_Terrain->GetVAO(), glm::mat4(1), D_TRIANGLES);
 		
 		m_TimePassed += ts.GetSeconds();
@@ -169,13 +174,12 @@ void GameLayer::OnUpdate(Dot::Timestep ts)
 			m_TimePassed = 0;
 		}
 		m_WaterShader->Bind();
-		//m_WaterShader->UploadUniformFloat("u_Time", m_TimePassed);
 		
 		m_Material->Set("u_Time", m_TimePassed);
 		m_Material->Bind();
 		m_Material->Update();
 		m_WaterShader->UploadUniformMat4("u_ModelMatrix", glm::mat4(1));
-		m_Water->Render(m_WaterShader);
+		//m_Water->Render(m_WaterShader);
 		
 		
 		m_GrassShader->Bind();
@@ -183,7 +187,7 @@ void GameLayer::OnUpdate(Dot::Timestep ts)
 		m_GrassShader->UploadUniformFloat("u_Time", m_TimePassed);
 		for (int i = 0; i < m_Grass->GetInstances().size(); ++i)
 		{	
-			m_Grass->GetInstances()[i]->Render(m_GrassShader);
+			m_Grass->GetInstances()[i]->Render(m_GrassShader,D_TRIANGLES);
 		}
 		
 		m_LightShader->Bind();
@@ -191,6 +195,10 @@ void GameLayer::OnUpdate(Dot::Timestep ts)
 	}
 	Dot::Renderer::EndScene(m_StaticShader);
 
+	glm::vec3 pos = glm::vec3(0);
+	m_Picker->CalculateMouseRay(m_CamController->GetCamera());
+	pos = m_Picker->TestIntersectionTerr(m_CamController->GetCamera(), m_Terrain);
+	m_Brush->SetPosition(pos);
 }
 
 void GameLayer::OnEvent(Dot::Event& event)
@@ -205,13 +213,8 @@ void GameLayer::OnEvent(Dot::Event& event)
 		{
 			if (e.GetButton() == D_MOUSE_BUTTON_LEFT)
 			{
-				m_Picker->CalculateMouseRay(m_CamController->GetCamera());
-				glm::vec3 pos;
-				float height = m_Terrain->GetHeight(m_Picker->GetRay());
-				if (m_Picker->TestIntersection(m_CamController->GetCamera(), pos,height))
-				{
-					m_Brush->Place(pos, m_Grass, m_Terrain);
-				}
+				//m_Brush->Place(m_Grass);
+				m_Brush->ApplyBrush();
 			}
 		}
 	}

@@ -62,7 +62,7 @@ namespace Dot {
 		AnimatedMesh(const std::string& Filename);
 		~AnimatedMesh();
 
-		virtual void Render(const Ref<Shader>& shader) override;
+		virtual void Render(const Ref<Shader>& shader,int drawMod) override;
 
 		void AnimateBones(float TimeInSeconds);
 		void SetToDefaultPosition();

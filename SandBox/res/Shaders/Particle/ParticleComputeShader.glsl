@@ -71,7 +71,7 @@ void main(void)
 	
 	particleVel.w += u_Time;
 		
-	if (particleChangeSize > 1)
+	if (particleChangeSize == 0)
 		particlePos.w = 1;
 	else
 		particlePos.w = particleChangeSize - (particleVel.w / particleLifeSpan);

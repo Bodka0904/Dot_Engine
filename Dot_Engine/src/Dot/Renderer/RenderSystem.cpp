@@ -36,7 +36,7 @@ namespace Dot {
 				shader->UploadUniformMat4("u_ModelMatrix",transform.model);
 				auto& component = ECSManager::Get()->GetComponent<RenderComponent>(it.second.entities[i]);
 				comp.material->Update();
-				component.mesh->Render(shader);
+				component.mesh->Render(shader,comp.drawMod);
 			}
 		}
 		for (auto& it : m_BatchTransparent)
@@ -51,7 +51,7 @@ namespace Dot {
 				shader->UploadUniformMat4("u_ModelMatrix", transform.model);
 				auto& component = ECSManager::Get()->GetComponent<RenderComponent>(it.second.entities[i]);
 				comp.material->Update();
-				component.mesh->Render(shader);
+				component.mesh->Render(shader,comp.drawMod);
 			}
 		}
 		

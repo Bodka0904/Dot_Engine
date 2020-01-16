@@ -21,6 +21,11 @@ namespace Dot {
 		m_Label = std::make_shared<Text>("Arial", label, glm::vec2(position.x, position.y - Font::GetFont("Arial")->GetData().lineHeight * labelsize), glm::vec2(labelsize, labelsize), MAX_CHAR_PER_LABEL);
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
 	}
+
+	Checkbox::~Checkbox()
+	{
+		Gui::Get()->PushIndex(m_Index);
+	}
 	
 	bool Checkbox::MouseHoover(const glm::vec2& mousePos)
 	{
@@ -47,7 +52,7 @@ namespace Dot {
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 	}
 
-	void Checkbox::Exit()
+	void Checkbox::Minimize()
 	{	
 		m_Quad.SetPosition(glm::vec2(0), glm::vec2(0));
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
@@ -59,7 +64,7 @@ namespace Dot {
 	void Checkbox::Move(const glm::vec2 pos)
 	{
 		m_Position += pos;
-		m_Quad.Move(pos);
+		m_Quad.SetPosition(m_Position, m_Size);
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
@@ -68,7 +73,7 @@ namespace Dot {
 	void Checkbox::SetPosition(const glm::vec2& pos)
 	{
 		m_Position = pos;
-		m_Quad.Move(pos);
+		m_Quad.SetPosition(m_Position, m_Size);
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());

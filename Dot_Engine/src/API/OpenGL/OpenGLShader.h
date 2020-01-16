@@ -42,6 +42,7 @@ namespace Dot {
 		uint32_t m_RendererID;
 		std::string m_Name;
 
+		unsigned int m_Textures;
 		unsigned int m_UniformsSize;
 		std::unordered_map<std::string, Uniform> m_Uniforms;
 		static std::unordered_map<std::string, std::shared_ptr<OpenGLUniformBuffer> > s_UBO;

@@ -1469,6 +1469,7 @@
     <ClInclude Include="src\Dot\Core\Editor.h" />
     <ClInclude Include="src\Dot\Interface\EditorLayer.h" />
     <ClInclude Include="src\Dot\Gui\GuiSystem\Console.h" />
+    <ClInclude Include="src\Dot\Gui\GuiSystem\Dropdown.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\API\OpenGL\OpenGLArrayBuffer.cpp">
@@ -1686,5 +1687,6 @@
     <ClCompile Include="src\Dot\Renderer\Material.cpp" />
     <ClCompile Include="src\Dot\Interface\EditorLayer.cpp" />
     <ClCompile Include="src\Dot\Gui\GuiSystem\Console.cpp" />
+    <ClCompile Include="src\Dot\Gui\GuiSystem\Dropdown.cpp" />
   </ItemGroup>
 </Project>

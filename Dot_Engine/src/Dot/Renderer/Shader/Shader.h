@@ -11,6 +11,7 @@ namespace Dot {
 	enum class UniformDataType
 	{
 		NONE,
+		SAMPLER2D,
 		FLOAT,FLOAT_VEC2,FLOAT_VEC3,FLOAT_VEC4,
 		INT,INT_VEC2,INT_VEC3,INT_VEC4,
 		FLOAT_MAT4,

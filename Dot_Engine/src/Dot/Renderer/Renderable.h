@@ -3,6 +3,7 @@
 #include "Buffers/ArrayBuffer.h"
 #include "Dot/Renderer/Shader/Shader.h"
 #include "Dot/Renderer/Material.h"
+#include "Dot/Renderer/Renderer.h"
 
 #include <glm/glm.hpp>
 #include <bitset>
@@ -30,13 +31,14 @@ namespace Dot {
 	class Renderable
 	{
 	public:
-		virtual void Render(const Ref<Shader>& shader) = 0;
+		virtual void Render(const Ref<Shader>& shader,int drawMod) = 0;
 	};
 
 	struct RenderComponent
 	{
 		Ref<Renderable> mesh;
 		Ref<Material> material;
+		int drawMod = D_TRIANGLES;
 	};
 
 }

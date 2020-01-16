@@ -9,6 +9,7 @@ namespace Dot {
 	Water::Water(const glm::vec3& position,const glm::vec3& color,const glm::vec2& size,const float vertnum)
 		:m_Height(position.y),m_Color(color)
 	{
+		Ref<ArrayBuffer>VAO;
 		std::vector<glm::vec3> positions;
 		std::vector<unsigned int> indices;
 
@@ -43,11 +44,13 @@ namespace Dot {
 		Ref<VertexBuffer>m_VBO = VertexBuffer::Create((void*)&positions[0],positions.size()*sizeof(glm::vec3), D_STATIC_DRAW);
 		m_VBO->SetLayout(layout);
 
-		m_VAO = ArrayBuffer::Create();
-		m_VAO->AddVBO(m_VBO);
+		VAO = ArrayBuffer::Create();
+		VAO->AddVBO(m_VBO);
 
 		Ref<IndexBuffer>m_IBO = IndexBuffer::Create((void*)&indices[0], indices.size());
-		m_VAO->AddIBO(m_IBO);
+		VAO->AddIBO(m_IBO);
+
+		m_Mesh = std::make_shared<Mesh>(VAO);
 	}
 
 	void Water::Update(float dt)
@@ -61,7 +64,7 @@ namespace Dot {
 
 	void Water::Render(const Ref<Shader>& shader) 
 	{
-		RenderCommand::SubmitElement(m_VAO, D_TRIANGLES);
+		m_Mesh->Render(shader, D_TRIANGLES);
 	}
 	
 }

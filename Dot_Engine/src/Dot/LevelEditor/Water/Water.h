@@ -1,12 +1,12 @@
 #pragma once
 #include "Dot/Renderer/Renderable.h"
-
+#include "Dot/Renderer/StaticMesh.h"
 #include <glm/glm.hpp>
 
 namespace Dot {
 
 
-	class Water : public Renderable
+	class Water
 	{
 	public:
 		Water(const glm::vec3& position,const glm::vec3& color,const glm::vec2& size, const float vertnum);
@@ -17,15 +17,13 @@ namespace Dot {
 		void SetWaveAmpl(float ampl) { m_WaveAmplitude = ampl; }
 		void SetColor(const glm::vec3& color) { m_Color = color; }
 
-		virtual void Render(const Ref<Shader>& shader) override;
+		void Render(const Ref<Shader>& shader);
 
 		const float &GetWaveLen() const { return m_WaveLength; }
 		const float &GetWaveAmpl() const { return m_WaveAmplitude; }	
-		const float& GetHeight() const { return m_Height; }
-		const Ref<ArrayBuffer>& GetVAO() const { return m_VAO; }
-		
+		const float& GetHeight() const { return m_Height; }	
 	private:
-		Ref<ArrayBuffer>m_VAO;
+		Ref<Mesh>m_Mesh;
 		float m_Height;
 
 	private:

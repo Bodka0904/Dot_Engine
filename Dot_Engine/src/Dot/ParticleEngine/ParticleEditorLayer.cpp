@@ -7,6 +7,7 @@
 #include "Dot/Gui/GuiSystem/Checkbox.h"
 #include "Dot/Gui/GuiSystem/Slider.h"
 #include "Dot/Gui/GuiSystem/Textarea.h"
+#include "Dot/Gui/GuiSystem/Dropdown.h"
 
 #include "Dot/Core/Input.h"
 #include "Dot/Renderer/RenderSystem.h"
@@ -62,11 +63,18 @@ namespace Dot {
 		std::cout << "Test" << std::endl;
 	}
 	void Dot::ParticleEditorLayer::OnGuiAttach()
-	{
-		
+	{		
 		Console::Create("Console", glm::vec2(300, 300), glm::vec2(300, 300));
 		Gui::Get()->GetConsole("Console").PushText("Hola hop krava opica retard dement haha");
 		Gui::Get()->GetConsole("Console").RegisterCommand("Test",Test);
+
+		Dropdown::Create("Dropdown", glm::vec2(50, 50), glm::vec2(200, 20));
+		Dropdown::Get("Dropdown").AddDropbox("test");
+		Dropdown::Get("Dropdown").AddDropbox("test1");
+		Dropdown::Get("Dropdown").AddDropbox("test2");
+		Dropdown::Get("Dropdown").AddDropbox("test3");
+		Dropdown::Get("Dropdown").AddDropbox("test4");
+		Dropdown::Get("Dropdown").AddDropbox("test5");
 
 		glm::vec2 winSize(Input::GetWindowSize().first, Input::GetWindowSize().second);
 		glm::vec2 wrapSizeEffect(300, 450);
@@ -77,8 +85,8 @@ namespace Dot {
 			TextArea::Create("Texture", glm::vec2(50, 50), glm::vec2(200, 20), TextArea::TYPE::TEXT);
 			TextArea::Create("Max Particles", glm::vec2(50, 50), glm::vec2(200, 20), TextArea::TYPE::INT);
 			TextArea::Create("Num Particles", glm::vec2(50, 50), glm::vec2(200, 20), TextArea::TYPE::INT);
-			Slider::Create("Gravity", glm::vec2(50, 50), glm::vec2(200, 20), &m_ParComponent->gravity, 10);
-			Slider::Create("Speed", glm::vec2(50, 50), glm::vec2(200, 20), &m_ParComponent->speed, 10);
+			Slider::Create("Gravity", glm::vec2(50, 50), glm::vec2(200, 20), &m_ParComponent->gravity,0, 10);
+			Slider::Create("Speed", glm::vec2(50, 50), glm::vec2(200, 20), &m_ParComponent->speed,0, 10);
 			Button::Create("Save", glm::vec2(300, 300), glm::vec2(50, 50));
 
 		}Gui::Get()->DisableWrapper();
@@ -175,7 +183,7 @@ namespace Dot {
 			{
 				Gui::Get()->GetConsole("Console").TakeInput(e);
 			}
-			if (m_Name.GetClicked())
+			else if (m_Name.GetClicked())
 			{
 				m_Name.TakeInput(e);
 				m_Entity.first = m_Name.GetValue<std::string>();

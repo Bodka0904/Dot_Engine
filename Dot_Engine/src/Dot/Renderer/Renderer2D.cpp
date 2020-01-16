@@ -35,7 +35,7 @@ namespace Dot {
 			}
 			m_NumDataStored++;
 		}
-		m_VAO->GetVertexBuffer(0)->SetCount(m_NumDataStored * 4);
+		
 	}
 	void Renderer2D::PushOffset(const QuadVertex* data, int len,int offsetElements)
 	{
@@ -44,8 +44,6 @@ namespace Dot {
 			m_NumDataStored = offsetElements + len;
 		else
 			m_NumDataStored += len;
-
-		m_VAO->GetVertexBuffer(0)->SetCount(m_NumDataStored * 4);
 	}
 
 	
@@ -57,7 +55,7 @@ namespace Dot {
 	}
 	void Renderer2D::ClearBufferOffset(int offset, int size)
 	{
-		m_VAO->GetVertexBuffer(0)->Invalidate(size*sizeof(QuadVertex), offset*sizeof(QuadVertex));
+		
 	}
 	void Renderer2D::RestartBuffer()
 	{
@@ -77,7 +75,7 @@ namespace Dot {
 	}
 	void Renderer2D::Render()
 	{	
-		RenderCommand::SubmitArrays(m_VAO, D_QUADS);
+		RenderCommand::SubmitArraysCount(m_VAO,m_NumDataStored*4, D_QUADS);
 	}
 	void Renderer2D::EndScene()
 	{

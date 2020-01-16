@@ -8,7 +8,7 @@ namespace Dot {
 		InstancedMesh(const std::string& filename, int num, const std::vector<glm::mat4>& transforms);
 		void Update(const std::vector<glm::mat4>& transforms, unsigned int numInstances, unsigned int offsetInstances);
 
-		virtual void Render(const Ref<Shader>& shader) override;
+		virtual void Render(const Ref<Shader>& shader, int drawMod) override;
 
 		const inline unsigned int GetNumVertices() const { return m_NumVertices; }
 		const inline unsigned int GetCapacity() const { return m_Capacity; }

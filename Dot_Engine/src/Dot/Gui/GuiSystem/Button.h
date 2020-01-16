@@ -9,10 +9,10 @@ namespace Dot {
 	{
 	public:
 		Button(const std::string& label,const glm::vec2& position, const glm::vec2& size,float labelsize);
-		
+		~Button();
 		virtual bool MouseHoover(const glm::vec2& mousePos) override;
 		virtual void ClickHandle() override { m_Clicked = true; }
-		virtual void Exit()override;
+		virtual void Minimize()override;
 		virtual void Move(const glm::vec2 pos) override;
 		virtual void SetPosition(const glm::vec2& pos)override;
 

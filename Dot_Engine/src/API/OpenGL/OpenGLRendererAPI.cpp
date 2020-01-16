@@ -8,6 +8,7 @@ namespace Dot {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_DEPTH_TEST);
+		glPointSize(20);
 	}
 	void OpenGLRendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
 	{
@@ -39,11 +40,12 @@ namespace Dot {
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
-	void OpenGLRendererAPI::SubmitArrays(const Ref<ArrayBuffer>& vao, int drawMod)
+
+	void OpenGLRendererAPI::ClearBuffer()
 	{
-		vao->Bind();
-		glDrawArrays(drawMod, 0, vao->GetVertexBuffer(0)->GetCount());
+		glClear(GL_DEPTH_BUFFER_BIT);
 	}
+	
 	void OpenGLRendererAPI::SubmitArraysCount(const Ref<ArrayBuffer>& vao,int count, int drawMod)
 	{
 		vao->Bind();
@@ -52,7 +54,6 @@ namespace Dot {
 	void OpenGLRendererAPI::SubmitArraysInstanced(const Ref<ArrayBuffer>& vao, unsigned int num, int drawMod)
 	{
 		vao->Bind();
-		
 		glDrawArraysInstanced(drawMod, 0, 4, num);
 	}
 	void OpenGLRendererAPI::SubmitElement(const Ref<ArrayBuffer>& vao, int drawMod)

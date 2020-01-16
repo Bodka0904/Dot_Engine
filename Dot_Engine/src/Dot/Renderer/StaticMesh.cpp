@@ -132,10 +132,20 @@ namespace Dot {
 	{
 	}
 
-	void StaticMesh::Render(const Ref<Shader>& shader)
+	void StaticMesh::Render(const Ref<Shader>& shader, int drawMod)
 	{
-		RenderCommand::SubmitElement(m_VAO, D_TRIANGLES);
+		RenderCommand::SubmitElement(m_VAO, drawMod);
 	}
 
+
+	Mesh::Mesh(const Ref<ArrayBuffer> vao)
+	{
+		m_VAO = vao;
+	}
+
+	void Mesh::Render(const Ref<Shader>& shader, int drawMod)
+	{
+		RenderCommand::SubmitElement(m_VAO, drawMod);
+	}
 
 }

@@ -11,22 +11,17 @@ namespace Dot {
 		virtual void Bind() const;
 		virtual void UnBind() const;
 		virtual void Update(const void* vertices, unsigned int size, int offset);
-		virtual void Invalidate(unsigned int size, int offset);
 		virtual void* MapBuffer();
 		virtual void  UnMapBuffer();
 		virtual void ClearBuffer();
 		virtual void Resize(const void* vertices, unsigned int size);
-
-		virtual void SetCount(unsigned int count);
 		virtual void SetLayout(const BufferLayout& layout);
 
-		virtual unsigned int GetCount() const;
 		virtual const BufferLayout& GetLayout() const;
 	private:
 		int m_DrawMod;
 		unsigned int m_Size;
 		unsigned int m_VBO;
-		unsigned int m_Count;
 		BufferLayout m_Layout;
 
 	};

@@ -50,13 +50,13 @@ out vec4 FragColor;
 
 uniform float u_Time;
 uniform vec3 u_Color;
-uniform sampler2D t_Texture;
 
+uniform sampler2D u_Texture;
 
 void main()
 {	
 	vec4 color = vec4(v_Transparent,v_Transparent,v_Transparent,1);
-	vec4 texColor = texture(t_Texture, v_TexCoord) * vec4(0.7,0.3,0,v_Transparent) * color;
+	vec4 texColor = texture(u_Texture, v_TexCoord) * vec4(0.7,0.3,0,v_Transparent) * color;
 	
 	if(texColor.a == 0.0)
 		discard;

@@ -18,10 +18,11 @@ namespace Dot {
 		};
 
 		TextArea(const std::string& label,const glm::vec2& position, const glm::vec2& size, TYPE type, float labelsize);
+		~TextArea();
 		virtual bool MouseHoover(const glm::vec2& mousePos) override;
 	
 		virtual void ClickHandle() override;
-		virtual void Exit()override;
+		virtual void Minimize()override;
 		virtual void SetPosition(const glm::vec2& pos) override;
 		virtual void Move(const glm::vec2 pos) override;
 		void SetText(const std::string& text);

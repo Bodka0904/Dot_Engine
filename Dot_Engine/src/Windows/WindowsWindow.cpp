@@ -51,6 +51,8 @@ namespace Dot {
 		int width = mode->width;
 		int height = mode->height;
 
+		m_Data.Width = width;
+		m_Data.Height = height;
 		if (props.Maximized)
 		{
 			glfwWindowHint(GLFW_MAXIMIZED, true);

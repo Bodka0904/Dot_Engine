@@ -16,7 +16,6 @@ namespace Dot {
 
 		static void BeginScene(Camera& camera);
 		// Probably temporary //
-		static void SubmitArrays(const Ref<Shader>shader ,const Ref<ArrayBuffer>& vao, const glm::mat4& transform,int drawMod);
 		static void SubmitArraysCount(const Ref<Shader>shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform,int count, int drawMod);
 		static void SubmitArraysInstanced(const Ref<Shader>shader, const Ref<Light>&light, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod);
 		////////////////////////

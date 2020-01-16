@@ -3,12 +3,13 @@
 
 #include "Dot/Utils/Text/Font.h"
 namespace Dot {
-	Slider::Slider(const std::string& label,const glm::vec2& position, const glm::vec2& size,float * value, float range,float labelsize)
+	Slider::Slider(const std::string& label,const glm::vec2& position, const glm::vec2& size,float * value,float rangeStart, float rangeEnd,float labelsize)
 		:
 		m_Position(position),
 		m_Size(size),
 		m_Value(value),
-		m_Range(range)
+		m_RangeStart(rangeStart),
+		m_RangeEnd(rangeEnd)
 	{
 		glm::vec2 texCoords[4] = {
 					   glm::vec2(0.25f, 0.5f),
@@ -25,6 +26,10 @@ namespace Dot {
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
 		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
+	}
+	Slider::~Slider()
+	{
+		Gui::Get()->PushIndex(m_Index);
 	}
 	bool Slider::MouseHoover(const glm::vec2& mousePos)
 	{
@@ -51,7 +56,8 @@ namespace Dot {
 	
 	void Slider::ClickHandle()
 	{
-		*m_Value = m_TempStorage * m_Range;
+		float range = m_RangeEnd - m_RangeStart;
+		*m_Value = m_RangeStart + (m_TempStorage * range);
 		
 		m_TexOffset = -m_TempStorage;	
 		m_Quad.vertices[0].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.5f);
@@ -59,14 +65,12 @@ namespace Dot {
 		m_Quad.vertices[2].texCoord = glm::vec2(0.5f + m_TexOffset / 4, 0.75f);
 		m_Quad.vertices[3].texCoord = glm::vec2(0.25f + m_TexOffset / 4, 0.75f);
 		
-		m_Text->SetPositionInBuffer(0);
-		m_Text->RestartCurserX();
+		m_Text->Clear();
 		m_Text->Push(std::to_string(*m_Value));
-		
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
-		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
+		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), MAX_TEXT_CHAR);
 	}
-	void Slider::Exit()
+	void Slider::Minimize()
 	{	
 		m_Quad.SetPosition(glm::vec2(0), glm::vec2(0));
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
@@ -81,7 +85,7 @@ namespace Dot {
 	void Slider::Move(const glm::vec2 pos)
 	{
 		m_Position += pos;
-		m_Quad.Move(pos);
+		m_Quad.SetPosition(m_Position, m_Size);
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
@@ -119,12 +123,12 @@ namespace Dot {
 		Slider& slider = (Slider&)Gui::Get()->GetWrappedWidget(wrapper, label);
 		return slider;
 	}
-	void Slider::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size,float *val,float range,float labelsize)
+	void Slider::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size,float *val, float rangeStart, float rangeEnd,float labelsize)
 	{
 		if (Gui::Get())
 		{
 			D_ASSERT(label.size() < MAX_CHAR_PER_LABEL, "Max len of label is %d", MAX_CHAR_PER_LABEL);
-			Ref<Slider> slider = std::make_shared<Slider>(label,position, size, val, range,labelsize);
+			Ref<Slider> slider = std::make_shared<Slider>(label,position, size, val, rangeStart,rangeEnd,labelsize);
 			Gui::Get()->AddWidget(label, slider);
 		}
 	}

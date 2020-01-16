@@ -23,7 +23,7 @@ namespace Dot {
 		return 0;
 	}
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& filepath)
-		: m_Name(name),m_UniformsSize(0)
+		: m_Name(name),m_UniformsSize(0),m_Textures(0)
 	{
 		std::string source = ReadFile(filepath);
 		auto shaderSources = PreProcess(source);
@@ -296,8 +296,10 @@ namespace Dot {
 			case GL_FLOAT_MAT4:	uniType = UniformDataType::FLOAT_MAT4;
 				sizeUni = sizeof(glm::mat4);
 				break;
+			case GL_SAMPLER_2D: uniType = UniformDataType::SAMPLER2D;
+				sizeUni = 0;
+				break;
 			}
-			
 			if (size > 1)
 			{
 				for (size_t i = 0; i < size; i++)
@@ -311,11 +313,16 @@ namespace Dot {
 				}
 			}
 			else
-			{	
+			{
+			
 				AddUniform(uniType, sizeUni, offset, name);
 				offset += sizeUni;
 			}
-			
+			if (uniType == UniformDataType::SAMPLER2D)
+			{
+				UploadUniformInt(name, m_Textures);
+				m_Textures++;
+			}
 			m_UniformsSize += sizeUni;
 		}
 			

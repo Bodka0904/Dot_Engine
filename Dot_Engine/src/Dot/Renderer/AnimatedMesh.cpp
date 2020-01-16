@@ -209,7 +209,7 @@ namespace Dot {
 	}
 
 
-	void AnimatedMesh::Render(const Ref<Shader>& shader)
+	void AnimatedMesh::Render(const Ref<Shader>& shader, int drawMod)
 	{
 		m_VAO->Bind();
 		for (unsigned int i = 0; i < m_SubMesh.size(); i++)
@@ -220,7 +220,7 @@ namespace Dot {
 				shader->UploadUniformMat4(uniformName, m_BoneInfo[i].FinalTransformation);
 			}
 
-			RenderCommand::SubmitElementBase(m_SubMesh[i].NumIndices, m_SubMesh[i].BaseIndex, m_SubMesh[i].BaseVertex, D_TRIANGLES);
+			RenderCommand::SubmitElementBase(m_SubMesh[i].NumIndices, m_SubMesh[i].BaseIndex, m_SubMesh[i].BaseVertex, drawMod);
 		}
 		m_VAO->UnBind();
 	}

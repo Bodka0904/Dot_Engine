@@ -134,9 +134,9 @@ namespace Dot {
 			m_ParticlesRender = numParticles;
 	}
 
-	void ParticleEffect::Render(const Ref<Shader>& shader)
+	void ParticleEffect::Render(const Ref<Shader>& shader, int drawMod)
 	{
-		RenderCommand::SubmitElementInstanced(m_VAO[m_OutputIdx], m_ParticlesRender, D_TRIANGLES);
+		RenderCommand::SubmitElementInstanced(m_VAO[m_OutputIdx], m_ParticlesRender, drawMod);
 	}
 
 

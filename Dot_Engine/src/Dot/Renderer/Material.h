@@ -26,7 +26,6 @@ namespace Dot {
 		{
 			m_RenderFlags = renderFlags;
 		}
-
 		const uint32_t GetID() { return m_Shader->GetRendererID(); }
 		const int32_t GetRenderFlag() { return m_RenderFlags; }
 

@@ -133,8 +133,8 @@ namespace Dot {
 		m_VAO->GetVertexBuffer(1)->Update(&transforms[0], numInstances * sizeof(glm::mat4), offsetInstances * sizeof(glm::mat4));
 	}
 
-	void InstancedMesh::Render(const Ref<Shader>& shader)
+	void InstancedMesh::Render(const Ref<Shader>& shader, int drawMod)
 	{
-		RenderCommand::SubmitElementInstanced(m_VAO, m_Instances, D_TRIANGLES);
+		RenderCommand::SubmitElementInstanced(m_VAO, m_Instances, drawMod);
 	}
 }

@@ -13,11 +13,13 @@ namespace Dot {
 		m_Size(size),
 		m_Type(type)
 	{
+		
+
 		glm::vec2 texCoords[4] = {
-				glm::vec2(0.75, 0.5),
-				glm::vec2(0.5, 0.5),
-				glm::vec2(0.5, 0.75),
-				glm::vec2(0.75, 0.75)
+				glm::vec2(0.0f, 0.5f),
+				glm::vec2(0.25f, 0.5f),
+			    glm::vec2(0.25f, 0.75f),
+			    glm::vec2(0.0f, 0.75f)
 		};
 		m_Quad = QuadVertex(position, size, &texCoords[0]);
 		m_Index = Gui::Get()->PopIndex();
@@ -41,6 +43,10 @@ namespace Dot {
 		Gui::Get()->UpdateTextBuffer(m_Index, m_Text->GetVertice(0), m_Text->GetNumChar());
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 	}
+	TextArea::~TextArea()
+	{
+		Gui::Get()->PushIndex(m_Index);
+	}
 	bool TextArea::MouseHoover(const glm::vec2& mousePos)
 	{
 		glm::vec4 coords = getCoords();
@@ -61,14 +67,14 @@ namespace Dot {
 		m_Clicked = !m_Clicked;
 		m_TexOffset = !m_TexOffset;
 		
-		m_Quad.vertices[0].texCoord=glm::vec2(0.75, 0.5);
-		m_Quad.vertices[1].texCoord=glm::vec2(0.5 + float(m_TexOffset) / 2, 0.5);
-		m_Quad.vertices[2].texCoord=glm::vec2(0.5 + float(m_TexOffset) / 2, 0.75);
-		m_Quad.vertices[3].texCoord=glm::vec2(0.75, 0.75);
+		m_Quad.vertices[0].texCoord = glm::vec2(0.0f + float(m_TexOffset) / 4, 0.5f);
+		m_Quad.vertices[1].texCoord = glm::vec2(0.25f + float(m_TexOffset) / 4, 0.5f);
+		m_Quad.vertices[2].texCoord = glm::vec2(0.25f + float(m_TexOffset) / 4, 0.75f);
+		m_Quad.vertices[3].texCoord = glm::vec2(0.0f + float(m_TexOffset) / 4, 0.75f);
 		
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 	}
-	void TextArea::Exit()
+	void TextArea::Minimize()
 	{
 		m_Quad.SetPosition(glm::vec2(0), glm::vec2(0));
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
@@ -94,7 +100,7 @@ namespace Dot {
 	void TextArea::Move(const glm::vec2 pos)
 	{
 		m_Position += pos;
-		m_Quad.Move(pos);
+		m_Quad.SetPosition(m_Position, m_Size);
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 		m_Label->SetPosition(glm::vec2(m_Position.x, m_Position.y - m_Label->GetSize().y));
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());

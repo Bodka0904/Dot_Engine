@@ -19,8 +19,8 @@ namespace Dot {
 		virtual void SetBlendEquation(int32_t eq) = 0;
 		virtual void SetClearColor(const glm::vec4& color) = 0;
 		virtual void Clear() = 0;
+		virtual void ClearBuffer() = 0;
 
-		virtual void SubmitArrays(const Ref<ArrayBuffer>& vao, int drawMod) = 0;
 		virtual void SubmitArraysCount(const Ref<ArrayBuffer>& vao,int count, int drawMod) = 0;
 		virtual void SubmitArraysInstanced(const Ref<ArrayBuffer>& vao, unsigned int num, int drawMod) = 0;
 		virtual void SubmitElement(const Ref<ArrayBuffer>& vao, int drawMod) = 0;

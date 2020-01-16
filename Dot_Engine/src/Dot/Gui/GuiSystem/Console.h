@@ -22,6 +22,7 @@ namespace Dot {
 
 	public:
 		Console(const std::string& label, const glm::vec2& position, const glm::vec2& size, float labelsize, float textSize);
+		~Console();
 		bool MouseHoover(const glm::vec2& mousePos);
 
 		void RegisterCommand(const std::string& cmd,std::function<void()> func);

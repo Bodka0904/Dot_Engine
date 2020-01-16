@@ -59,7 +59,10 @@ namespace Dot {
 		{
 			s_RendererAPI->Clear();
 		}
-
+		inline static void ClearBuffer()
+		{
+			s_RendererAPI->ClearBuffer();
+		}
 		inline static void Enable(int32_t state)
 		{
 			s_RendererAPI->Enable(state);
@@ -84,10 +87,6 @@ namespace Dot {
 		inline static void SubmitElementInstanced(const Ref<ArrayBuffer>& vao, unsigned int num, int drawMod)
 		{
 			s_RendererAPI->SubmitElementInstanced(vao, num, drawMod);
-		}
-		inline static void SubmitArrays(const Ref<ArrayBuffer>& vao, int drawmod)
-		{
-			s_RendererAPI->SubmitArrays(vao, drawmod);
 		}
 		inline static void SubmitArraysCount(const Ref<ArrayBuffer>& vao,int count, int drawmod)
 		{

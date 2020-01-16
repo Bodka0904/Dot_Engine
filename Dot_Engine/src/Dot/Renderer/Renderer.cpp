@@ -26,13 +26,6 @@ namespace Dot {
 		m_SceneData.ViewPos = camera.GetPosition();
 	}
 
-	void Renderer::SubmitArrays(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform, int drawMod)
-	{
-		shader->Bind();
-		shader->UploadUniformMat4("u_ModelMatrix", transform);
-		
-		RenderCommand::SubmitArrays(vao, drawMod);
-	}
 	void Renderer::SubmitArraysCount(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform,int count, int drawMod)
 	{
 		shader->Bind();

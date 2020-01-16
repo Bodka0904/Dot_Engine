@@ -140,17 +140,14 @@ namespace Dot {
 
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;
-		virtual void Invalidate(unsigned int size, int offset)=0;
 		virtual void Update(const void *vertices,unsigned int size, int offset) = 0;
 		virtual void* MapBuffer() = 0;
 		virtual void  UnMapBuffer() = 0;
 		virtual void ClearBuffer() = 0;
 		virtual void Resize(const void* vertices, unsigned int size) = 0;
 
-		virtual void SetCount(unsigned int count) = 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 
-		virtual unsigned int GetCount() const = 0;
 		virtual const BufferLayout &GetLayout() const = 0;
 
 		static Ref<VertexBuffer> Create(const void* vertices, unsigned int size, int drawMod);

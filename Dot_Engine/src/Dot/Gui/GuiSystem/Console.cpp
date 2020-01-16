@@ -22,13 +22,13 @@ namespace Dot {
 		};
 		m_Quad = QuadVertex(position, size, &texCoords[0]);
 		
-		m_CmdLine.Size = glm::vec2(200, 20);
+		m_CmdLine.Size = glm::vec2(m_Size.x, 20);
 		m_CmdLine.Position = glm::vec2(position.x, position.y + size.y - m_CmdLine.Size.y);
 		glm::vec2 texCoordsCmd[4] = {
-			glm::vec2(0.75, 0.5),
-			glm::vec2(0.5, 0.5),
-			glm::vec2(0.5, 0.75),
-			glm::vec2(0.75, 0.75)
+			glm::vec2(0.0f, 0.5f),
+			glm::vec2(0.25f, 0.5f),
+			glm::vec2(0.25f, 0.75f),
+			glm::vec2(0.0f, 0.75f)
 		};
 
 		m_CmdLine.Quad = QuadVertex(m_CmdLine.Position,m_CmdLine.Size,&texCoordsCmd[0]);
@@ -38,7 +38,7 @@ namespace Dot {
 
 		glm::vec2 offset = glm::vec2(5, 2);
 		m_CmdLine.Command = std::make_shared<Text>("Arial", "", m_CmdLine.Position + offset, glm::vec2(labelsize, labelsize), MAX_TEXT_CHAR);
-		
+
 		m_Label = std::make_shared<Text>("Arial", label, glm::vec2(position.x, position.y), glm::vec2(labelsize, labelsize), MAX_CHAR_PER_LABEL);
 		m_Text = std::make_shared<Text>("Arial", "", glm::vec2(position.x, position.y + m_Label->GetSize().y), glm::vec2(textSize, textSize), MAX_CHAR_PER_CONSOLE, m_Size.x - 30);
 		m_TextRenderer = std::make_shared<Renderer2D>(MAX_CHAR_PER_CONSOLE);
@@ -46,8 +46,13 @@ namespace Dot {
 		Gui::Get()->UpdateVertexBuffer(m_Index, &m_Quad);
 		Gui::Get()->UpdateVertexBuffer(m_CmdLine.Index, &m_CmdLine.Quad);
 		Gui::Get()->UpdateLabelBuffer(m_Index, m_Label->GetVertice(0), m_Label->GetNumChar());
-
+		
 		m_Command["clear"] = [&] {Clear(); };
+	}
+
+	Console::~Console()
+	{
+		Gui::Get()->PushIndex(m_Index);
 	}
 
 	bool Console::MouseHoover(const glm::vec2& mousePos)
@@ -239,10 +244,10 @@ namespace Dot {
 		m_Clicked = !m_Clicked;
 		m_TexOffset = !m_TexOffset;
 
-		m_CmdLine.Quad.vertices[0].texCoord = glm::vec2(0.75, 0.5);
-		m_CmdLine.Quad.vertices[1].texCoord = glm::vec2(0.5 + float(m_TexOffset) / 2, 0.5);
-		m_CmdLine.Quad.vertices[2].texCoord = glm::vec2(0.5 + float(m_TexOffset) / 2, 0.75);
-		m_CmdLine.Quad.vertices[3].texCoord = glm::vec2(0.75, 0.75);
+		m_CmdLine.Quad.vertices[0].texCoord = glm::vec2(0.0f + float(m_TexOffset) / 4, 0.5f);
+		m_CmdLine.Quad.vertices[1].texCoord = glm::vec2(0.25f + float(m_TexOffset) / 4, 0.5f);
+		m_CmdLine.Quad.vertices[2].texCoord = glm::vec2(0.25f + float(m_TexOffset) / 4, 0.75f);
+		m_CmdLine.Quad.vertices[3].texCoord = glm::vec2(0.0f + float(m_TexOffset) / 4, 0.75f);
 
 		Gui::Get()->UpdateVertexBuffer(m_CmdLine.Index, &m_CmdLine.Quad);
 	}
