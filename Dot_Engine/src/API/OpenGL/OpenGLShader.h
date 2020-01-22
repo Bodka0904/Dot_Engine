@@ -20,7 +20,6 @@ namespace Dot {
 	
 		virtual void UpdateUniformBufferObject(const std::string& name, const void* data, unsigned int size,int offset = 0);
 		virtual void UploadUniformInt(const std::string& name, int value);
-
 		virtual void UploadUniformFloat(const std::string& name, float value);
 		virtual void UploadUniformFloat2(const std::string& name, const glm::vec2& value);
 		virtual void UploadUniformFloat3(const std::string& name, const glm::vec3& value);

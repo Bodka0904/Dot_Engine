@@ -15,7 +15,7 @@ namespace Dot {
 		bool Maximized;
 
 		WindowProps(const std::string& title = "Dot Engine",
-			unsigned int width = 1280,
+			unsigned int width = 1024,
 			unsigned int height = 720,
 			bool maximized = true,
 			bool fullScreen = false)

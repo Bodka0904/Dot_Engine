@@ -1,7 +1,7 @@
 #type vertex
 #version 430 core
 
-layout(location = 0) in vec4 a_Offset;
+layout(location = 0) in vec4 a_ParticlePosition;
 layout(location = 1) in vec3 a_Position;
 layout(location = 2) in vec2 a_TexCoord;
 
@@ -34,9 +34,9 @@ void main()
 	//texCoord.y += float(row)/c_Row;
 
 	v_TexCoord = a_TexCoord;
-	v_Transparent = a_Offset.w;
+	v_Transparent = a_ParticlePosition.w;
 
-	gl_Position = ViewProjectionMatrix * u_ModelMatrix * vec4( (a_Position * a_Offset.w) + a_Offset.xyz, 1);
+	gl_Position = ViewProjectionMatrix * u_ModelMatrix * vec4( (a_Position * a_ParticlePosition.w) + a_ParticlePosition.xyz, 1);
 }
 
 

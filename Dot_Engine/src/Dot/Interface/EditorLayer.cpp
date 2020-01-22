@@ -1,11 +1,6 @@
 #include "stdafx.h"
 #include "EditorLayer.h"
 
-#include "Dot/Gui/GuiSystem/Button.h"
-#include "Dot/Gui/GuiSystem/Arrowbutton.h"
-#include "Dot/Gui/GuiSystem/Checkbox.h"
-#include "Dot/Gui/GuiSystem/Slider.h"
-#include "Dot/Gui/GuiSystem/Textarea.h"
 
 namespace Dot {
 	EditorLayer::EditorLayer()

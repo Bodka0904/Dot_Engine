@@ -6,16 +6,17 @@ namespace Dot {
 	{
 		for (int i = 0; i < m_Entities.size(); ++i)
 		{
-			auto& transform = ECSManager::Get()->GetComponent<Transform>(m_Entities[i]);
+			auto transform = &ECSManager::Get()->GetComponent<Transform>(m_Entities[i]);
 			auto& rigidBody = ECSManager::Get()->GetComponent<RigidBody>(m_Entities[i]);
 
-			transform.pos += rigidBody.velocity * dt;
+			transform->pos += rigidBody.velocity * dt;
 
-			transform.UpdateModel();
+			transform->UpdateModel();
 		}
 	}
 	void PhysicsSystem::Add(Entity entity)
 	{
+		LOG_INFO("Entity with ID %d added",entity);
 		m_Entities.push_back(entity);
 	}
 	void PhysicsSystem::Remove(Entity entity)
@@ -25,6 +26,7 @@ namespace Dot {
 		int position = binarySearch(0, m_Entities.size() - 1, entity);
 		if (position != -1 && !m_Entities.empty())
 		{
+			LOG_INFO("Entity with ID %d removed",entity);
 			m_Entities[position] = m_Entities[m_Entities.size() - 1];
 			m_Entities.erase(m_Entities.end() - 1);
 		}

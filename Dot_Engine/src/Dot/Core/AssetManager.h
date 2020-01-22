@@ -1,8 +1,8 @@
 #pragma once
 #include "Dot/Renderer/Texture.h"
-#include "Dot/Renderer/AnimatedMesh.h"
-#include "Dot/Renderer/StaticMesh.h"
-#include "Dot/Renderer/InstancedMesh.h"
+#include "Dot/Renderer/Renderable/AnimatedMesh.h"
+#include "Dot/Renderer/Renderable/StaticMesh.h"
+#include "Dot/Renderer/Renderable/InstancedMesh.h"
 #include "Dot/Renderer/Shader/Shader.h"
 
 
@@ -15,12 +15,12 @@ namespace Dot {
 		AssetManager();
 		void LoadAssets(const std::string& file);
 
-		void LoadTexture(const std::string& name);
-		void LoadShader(const std::string& name);
-		void LoadAnimatedMesh(const std::string& name);
-		void LoadInstancedMesh(const std::string& name);
-		void LoadStaticMesh(const std::string& name);
-		void LoadCubeMap(const std::string& name);
+		void LoadTexture(const std::string& path,const std::string& name);
+		void LoadShader(const std::string& path, const std::string& name);
+		void LoadAnimatedMesh(const std::string& path, const std::string& name);
+		void LoadInstancedMesh(const std::string& path, const std::string& name,int capacity);
+		void LoadStaticMesh(const std::string& path, const std::string& name);
+		void LoadCubeMap(const std::vector<std::string>& face, const std::string& name);
 
 		void UnLoadTexture(const std::string& name);
 		void UnLoadShader(const std::string& name);
@@ -35,6 +35,12 @@ namespace Dot {
 		Ref<StaticMesh>		GetStaticMesh(const std::string& asset);
 		Ref<InstancedMesh>  GetInstancedMesh(const std::string& asset);
 		Ref<Shader>			GetShader(const std::string& asset);
+
+
+
+		Ref<AnimatedMesh>	GetCopyAnimMesh(const std::string& asset);
+		Ref<StaticMesh>		GetCopyStaticMesh(const std::string& asset);
+		Ref<InstancedMesh>  GetCopyInstancedMesh(const std::string& asset);
 
 		static Scope<AssetManager>& Get() { return s_Instance; }	
 	private:

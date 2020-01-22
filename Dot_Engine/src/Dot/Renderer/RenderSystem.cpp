@@ -8,7 +8,7 @@ namespace Dot {
 
 	RenderSystem::RenderSystem()
 	{
-		
+		MaterialStack::Init();
 	}
 	void RenderSystem::BeginScene(const Camera& camera, const Ref<Light>& light)
 	{
@@ -24,67 +24,39 @@ namespace Dot {
 
 	void RenderSystem::Render()
 	{
-		for (auto& it : m_BatchOpaque)
+		for (auto& it : m_Batch.material)
 		{
-			setRenderStates(it.first.second);
-			auto comp = ECSManager::Get()->GetComponent<RenderComponent>(it.second.entities[0]);
-			auto shader = comp.material->GetShader();
+			auto material = MaterialStack::Get()->GetMaterial(it.first);
+			setRenderStates(material->GetRenderFlag());
+
+			auto shader = material->GetShader();
 			shader->Bind();
-			for (int i = 0; i < it.second.entities.size(); ++i)
+			for (int i = 0; i < it.second.size(); ++i)
 			{
-				auto& transform = ECSManager::Get()->GetComponent<Transform>(it.second.entities[i]);
-				shader->UploadUniformMat4("u_ModelMatrix",transform.model);
-				auto& component = ECSManager::Get()->GetComponent<RenderComponent>(it.second.entities[i]);
-				comp.material->Update();
-				component.mesh->Render(shader,comp.drawMod);
+				auto transform = &ECSManager::Get()->GetComponent<Transform>(it.second[i]);
+				shader->UploadUniformMat4("u_ModelMatrix", transform->model);
+				auto& component = ECSManager::Get()->GetComponent<RenderComponent>(it.second[i]);
+				material->Update();
+				component.renderable->Render(shader, component.drawMod);
 			}
 		}
-		for (auto& it : m_BatchTransparent)
-		{
-			setRenderStates(it.first.second);
-			auto comp = ECSManager::Get()->GetComponent<RenderComponent>(it.second.entities[0]);
-			auto shader = comp.material->GetShader();
-			shader->Bind();
-			for (int i = 0; i < it.second.entities.size(); ++i)
-			{
-				auto& transform = ECSManager::Get()->GetComponent<Transform>(it.second.entities[i]);
-				shader->UploadUniformMat4("u_ModelMatrix", transform.model);
-				auto& component = ECSManager::Get()->GetComponent<RenderComponent>(it.second.entities[i]);
-				comp.material->Update();
-				component.mesh->Render(shader,comp.drawMod);
-			}
-		}
-		
 	}
 	void RenderSystem::Add(Entity entity)
 	{
 		auto& component = ECSManager::Get()->GetComponent<RenderComponent>(entity);
-		std::pair<uint32_t, int32_t> key(component.material->GetID(), component.material->GetRenderFlag());
 		
-		if (component.material->GetRenderFlag() | OPAQUE)
-			m_BatchOpaque[key].entities.push_back(entity);
-		else
-			m_BatchTransparent[key].entities.push_back(entity);
-	
-		
-
+		LOG_INFO("Entity with ID %d and MaterialID %d pushed to render stack", entity, component.materialID);
+		m_Batch.material[component.materialID].push_back(entity);
 	}
 	void RenderSystem::Remove(Entity entity)
 	{
-		auto& component = ECSManager::Get()->GetComponent<RenderComponent>(entity);
-		std::pair<uint32_t, int32_t> key(component.material->GetID(), component.material->GetRenderFlag());
-		
-		if (component.material->GetRenderFlag() | OPAQUE)
+		auto& component = ECSManager::Get()->GetComponent<RenderComponent>(entity);	
+		if (m_Batch.material.find(component.materialID) != m_Batch.material.end())
 		{
-			removeFromContainer(m_BatchOpaque[key].entities, entity);
-			if (m_BatchOpaque[key].entities.empty())
-				m_BatchOpaque.erase(key);
-		}
-		else
-		{
-			removeFromContainer(m_BatchTransparent[key].entities, entity);
-			if (m_BatchOpaque[key].entities.empty())
-				m_BatchOpaque.erase(key);
+			LOG_INFO("Entity with ID %d removed from render stack", entity);
+			removeFromContainer(m_Batch.material[component.materialID], entity);
+			if (m_Batch.material[component.materialID].empty())
+				m_Batch.material.erase(component.materialID);
 		}
 	}
 
@@ -107,7 +79,7 @@ namespace Dot {
 		}
 	}
 
-	void RenderSystem::removeFromContainer(std::vector<Entity>& container,Entity entity)
+	void RenderSystem::removeFromContainer(std::vector<Entity>& container, Entity entity)
 	{
 		std::sort(container.begin(), container.end(), m_Cmp);
 		// get the range in 2*log2(N), N=vec.size()
@@ -118,6 +90,7 @@ namespace Dot {
 		std::swap_ranges(bounds.first, bounds.second, last);
 		// erase the victims O(equals)
 		container.erase(last, container.end());
+
 	}
 
 }

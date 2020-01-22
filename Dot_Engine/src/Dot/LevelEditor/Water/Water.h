@@ -1,6 +1,6 @@
 #pragma once
-#include "Dot/Renderer/Renderable.h"
-#include "Dot/Renderer/StaticMesh.h"
+#include "Dot/Renderer/Renderable/Renderable.h"
+#include "Dot/Renderer/Renderable/StaticMesh.h"
 #include <glm/glm.hpp>
 
 namespace Dot {

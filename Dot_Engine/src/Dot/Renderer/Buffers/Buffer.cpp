@@ -7,7 +7,7 @@
 
 namespace Dot {
 
-	Ref<VertexBuffer> VertexBuffer::Create(const void* vertices, unsigned int size, int drawMod)
+	Ref<VertexBuffer> VertexBuffer::Create(float* vertices, unsigned int size, int drawMod)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -34,7 +34,7 @@ namespace Dot {
 
 
 
-	Ref<ShaderStorageBuffer> ShaderStorageBuffer::Create(const void* vertices, unsigned int size, int drawMod)
+	Ref<ShaderStorageBuffer> ShaderStorageBuffer::Create(float* vertices, unsigned int size, int drawMod)
 	{
 		switch (Renderer::GetAPI())
 		{

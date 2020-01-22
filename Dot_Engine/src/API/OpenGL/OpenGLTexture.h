@@ -16,6 +16,7 @@ namespace Dot {
 
 		virtual void SetData(void* data, uint32_t size) override;
 		virtual void Bind(unsigned int unit) override;
+		virtual void BindID(unsigned int ID) override;
 	private:
 		int CalculateMipMapCount(int width, int height);
 

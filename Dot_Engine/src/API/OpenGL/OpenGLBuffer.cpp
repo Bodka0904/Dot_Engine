@@ -3,7 +3,7 @@
 
 #include <GL/glew.h>
 namespace Dot {
-	OpenGLVertexBuffer::OpenGLVertexBuffer(const void* vertices, unsigned int size, int drawMod)
+	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, unsigned int size, int drawMod)
 		: m_Size(size),m_DrawMod(drawMod)
 	{
 		glCreateBuffers(1, &m_VBO);
@@ -84,7 +84,7 @@ namespace Dot {
 	{
 		return m_Count;
 	}
-	OpenGLShaderStorageBuffer::OpenGLShaderStorageBuffer(const void* data, unsigned int size, int drawMod)
+	OpenGLShaderStorageBuffer::OpenGLShaderStorageBuffer(float* data, unsigned int size, int drawMod)
 		:m_Size(size)
 	{
 		glGenBuffers(1, &m_SSBO);
@@ -100,9 +100,9 @@ namespace Dot {
 	{
 		glBindBufferBase(GL_SHADER_STORAGE_BUFFER, point, m_SSBO);
 	}
-	void OpenGLShaderStorageBuffer::BindRange(unsigned int index)
+	void OpenGLShaderStorageBuffer::BindRange(int offset,int size,unsigned int index)
 	{
-		glBindBufferRange(GL_SHADER_STORAGE_BUFFER, index, m_SSBO, 0, m_Size);
+		glBindBufferRange(GL_SHADER_STORAGE_BUFFER, index, m_SSBO, offset, size);
 	}
 	void OpenGLShaderStorageBuffer::Bind()
 	{

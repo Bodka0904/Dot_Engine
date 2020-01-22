@@ -53,6 +53,10 @@
     "Shaders":
     [
         {
+            "Name":"TerrainShader",
+            "Path":"res/Shaders/Dot/TerrainShader.glsl"
+        },
+        {
            "Name":"AnimShader",
            "Path":"res/Shaders/Dot/AnimShader.glsl" 
         },

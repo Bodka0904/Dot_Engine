@@ -21,7 +21,7 @@
 #define D_DST_COLOR 0x0306
 #define D_ONE_MINUS_DST_COLOR 0x0307
 
-
+#define D_SCISSOR_TEST 0x0C11
 #define D_ZERO 0
 #define D_FALSE 0
 #define D_LOGIC_OP 0x0BF1

@@ -28,8 +28,14 @@
     <Filter Include="src\Dot\Gui">
       <UniqueIdentifier>{577CAC8A-C331-2580-4C26-1F57B8DA1B84}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Dot\Gui\GuiSystem">
-      <UniqueIdentifier>{1013916F-7C7F-4C6A-4573-E4C7B19E6ED2}</UniqueIdentifier>
+    <Filter Include="src\Dot\Gui\Gui">
+      <UniqueIdentifier>{2BD3CBCA-975E-398F-A06F-BC830C7A958F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Gui\Gui\Widgets">
+      <UniqueIdentifier>{91FD2F0D-FD34-78A4-063F-DCC772F59E9D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Dot\Interface">
+      <UniqueIdentifier>{2357F2EF-8F6D-F085-D8E4-7BA7443AC10D}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\LevelEditor">
       <UniqueIdentifier>{91CCF6EF-FD2D-D4FD-869B-1AB0F2FB0ABD}</UniqueIdentifier>
@@ -64,14 +70,14 @@
     <Filter Include="src\Dot\Renderer\Light">
       <UniqueIdentifier>{F0EC1F96-DCE6-48E8-C553-DFF8B1ECAE54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Dot\Renderer\Renderable">
+      <UniqueIdentifier>{CC6C4360-387A-7146-C160-6D312D6D3DFD}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Dot\Renderer\Shader">
       <UniqueIdentifier>{0F325C6A-7B69-A401-8473-0825F029CBFA}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Utils">
       <UniqueIdentifier>{23C7B9E8-8F87-351F-58C2-7E9CC4417AFB}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Dot\Utils\Console">
-      <UniqueIdentifier>{45511CCB-B1BD-D7C5-7AB1-6F23E6DCF92D}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Dot\Utils\Image">
       <UniqueIdentifier>{5537F24D-C198-CF5B-4A06-160EB666061B}</UniqueIdentifier>
@@ -162,6 +168,9 @@
     <ClInclude Include="src\Dot\Core\Core.h">
       <Filter>src\Dot\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Core\Editor.h">
+      <Filter>src\Dot\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Core\EntryPoint.h">
       <Filter>src\Dot\Core</Filter>
     </ClInclude>
@@ -204,6 +213,9 @@
     <ClInclude Include="src\Dot\ECS\ECSManager.h">
       <Filter>src\Dot\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\ECS\EntityEditor.h">
+      <Filter>src\Dot\ECS</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\ECS\EntityManager.h">
       <Filter>src\Dot\ECS</Filter>
     </ClInclude>
@@ -213,26 +225,35 @@
     <ClInclude Include="src\Dot\ECS\Types.h">
       <Filter>src\Dot\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\Gui\Gui\GuiApplication.h">
+      <Filter>src\Dot\Gui\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Gui\Gui\GuiBlock.h">
+      <Filter>src\Dot\Gui\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\Button.h">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\CheckBox.h">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\Slider.h">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\TextArea.h">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\Widget.h">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\Gui\GuiLayer.h">
       <Filter>src\Dot\Gui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Gui\GuiSystem\Arrowbutton.h">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
+    <ClInclude Include="src\Dot\Interface\EditorLayer.h">
+      <Filter>src\Dot\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Gui\GuiSystem\Button.h">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Gui\GuiSystem\Checkbox.h">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Gui\GuiSystem\Gui.h">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Gui\GuiSystem\Slider.h">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Gui\GuiSystem\TextArea.h">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
+    <ClInclude Include="src\Dot\Interface\InterfaceLayer.h">
+      <Filter>src\Dot\Interface</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\LevelEditor\LevelEditorLayer.h">
       <Filter>src\Dot\LevelEditor</Filter>
@@ -252,8 +273,20 @@
     <ClInclude Include="src\Dot\LevelEditor\Terrain\TerrainEditor.h">
       <Filter>src\Dot\LevelEditor\Terrain</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\LevelEditor\Terrain\TerrainSystem.h">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\LevelEditor\Water\Water.h">
       <Filter>src\Dot\LevelEditor\Water</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\ParticleEngine\EmitterEditor.h">
+      <Filter>src\Dot\ParticleEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\ParticleEngine\ParticleComponent.h">
+      <Filter>src\Dot\ParticleEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\ParticleEngine\ParticleEditor.h">
+      <Filter>src\Dot\ParticleEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\ParticleEngine\ParticleSystem.h">
       <Filter>src\Dot\ParticleEngine</Filter>
@@ -264,13 +297,13 @@
     <ClInclude Include="src\Dot\PhysicsEngine\Components\ComponentData.h">
       <Filter>src\Dot\PhysicsEngine\Components</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dot\PhysicsEngine\PhysicsEditor.h">
+      <Filter>src\Dot\PhysicsEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dot\PhysicsEngine\PhysicsSystem.h">
       <Filter>src\Dot\PhysicsEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\APIContext.h">
-      <Filter>src\Dot\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\AnimatedMesh.h">
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Buffers\ArrayBuffer.h">
@@ -294,14 +327,17 @@
     <ClInclude Include="src\Dot\Renderer\Camera\OrthoCamera.h">
       <Filter>src\Dot\Renderer\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\InstancedMesh.h">
-      <Filter>src\Dot\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Light\Light.h">
       <Filter>src\Dot\Renderer\Light</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Light\LightController.h">
       <Filter>src\Dot\Renderer\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Material.h">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\MaterialStack.h">
+      <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\RenderCommand.h">
       <Filter>src\Dot\Renderer</Filter>
@@ -309,8 +345,26 @@
     <ClInclude Include="src\Dot\Renderer\RenderSystem.h">
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\Renderable2D.h">
-      <Filter>src\Dot\Renderer</Filter>
+    <ClInclude Include="src\Dot\Renderer\Renderable\AnimatedMesh.h">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Renderable\InstancedMesh.h">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Renderable\ParticleMesh.h">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Renderable\Renderable.h">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Renderable\Renderable2D.h">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Renderable\RenderableEditor.h">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Renderer\Renderable\StaticMesh.h">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Renderer.h">
       <Filter>src\Dot\Renderer</Filter>
@@ -326,9 +380,6 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Shader\UniformBuffer.h">
       <Filter>src\Dot\Renderer\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\StaticMesh.h">
-      <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Texture.h">
       <Filter>src\Dot\Renderer</Filter>
@@ -349,6 +400,9 @@
       <Filter>src\Dot\Utils\Random</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\Text\Font.h">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dot\Utils\Text\Text.h">
       <Filter>src\Dot\Utils\Text</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Utils\Time\TimeUtils.h">
@@ -1461,15 +1515,11 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Utils\Text\Text.h" />
-    <ClInclude Include="src\Dot\Renderer\Renderable.h" />
-    <ClInclude Include="src\Dot\ParticleEngine\ParticleEditorLayer.h" />
-    <ClInclude Include="src\Dot\ParticleEngine\ParticleEffect.h" />
-    <ClInclude Include="src\Dot\Renderer\Material.h" />
-    <ClInclude Include="src\Dot\Core\Editor.h" />
-    <ClInclude Include="src\Dot\Interface\EditorLayer.h" />
-    <ClInclude Include="src\Dot\Gui\GuiSystem\Console.h" />
-    <ClInclude Include="src\Dot\Gui\GuiSystem\Dropdown.h" />
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\Console.h" />
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\Panel.h" />
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\ArrowButton.h" />
+    <ClInclude Include="src\Dot\Gui\Gui\GuiLayout.h" />
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\GuiWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\API\OpenGL\OpenGLArrayBuffer.cpp">
@@ -1526,32 +1576,44 @@
     <ClCompile Include="src\Dot\ECS\ECSManager.cpp">
       <Filter>src\Dot\ECS</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\ECS\EntityEditor.cpp">
+      <Filter>src\Dot\ECS</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\ECS\EntityManager.cpp">
       <Filter>src\Dot\ECS</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\ECS\SystemManager.cpp">
       <Filter>src\Dot\ECS</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Gui\Gui\GuiApplication.cpp">
+      <Filter>src\Dot\Gui\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Gui\Gui\GuiBlock.cpp">
+      <Filter>src\Dot\Gui\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\Button.cpp">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\CheckBox.cpp">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\Slider.cpp">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\TextArea.cpp">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\Widget.cpp">
+      <Filter>src\Dot\Gui\Gui\Widgets</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\Gui\GuiLayer.cpp">
       <Filter>src\Dot\Gui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Gui\GuiSystem\Arrowbutton.cpp">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
+    <ClCompile Include="src\Dot\Interface\EditorLayer.cpp">
+      <Filter>src\Dot\Interface</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Gui\GuiSystem\Button.cpp">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Gui\GuiSystem\Checkbox.cpp">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Gui\GuiSystem\Gui.cpp">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Gui\GuiSystem\Slider.cpp">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Gui\GuiSystem\TextArea.cpp">
-      <Filter>src\Dot\Gui\GuiSystem</Filter>
+    <ClCompile Include="src\Dot\Interface\InterfaceLayer.cpp">
+      <Filter>src\Dot\Interface</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\LevelEditor\LevelEditorLayer.cpp">
       <Filter>src\Dot\LevelEditor</Filter>
@@ -1571,10 +1633,16 @@
     <ClCompile Include="src\Dot\LevelEditor\Terrain\TerrainEditor.cpp">
       <Filter>src\Dot\LevelEditor\Terrain</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\LevelEditor\Terrain\TerrainSystem.cpp">
+      <Filter>src\Dot\LevelEditor\Terrain</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\LevelEditor\Water\Water.cpp">
       <Filter>src\Dot\LevelEditor\Water</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\ParticleEngine\ParticleEffect.cpp">
+    <ClCompile Include="src\Dot\ParticleEngine\EmitterEditor.cpp">
+      <Filter>src\Dot\ParticleEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\ParticleEngine\ParticleEditor.cpp">
       <Filter>src\Dot\ParticleEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\ParticleEngine\ParticleSystem.cpp">
@@ -1586,13 +1654,13 @@
     <ClCompile Include="src\Dot\PhysicsEngine\Components\ComponentData.cpp">
       <Filter>src\Dot\PhysicsEngine\Components</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\PhysicsEngine\PhysicsEditor.cpp">
+      <Filter>src\Dot\PhysicsEngine</Filter>
+    </ClCompile>
     <ClCompile Include="src\Dot\PhysicsEngine\PhysicsSystem.cpp">
       <Filter>src\Dot\PhysicsEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\APIContext.cpp">
-      <Filter>src\Dot\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\AnimatedMesh.cpp">
       <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Buffers\ArrayBuffer.cpp">
@@ -1616,14 +1684,17 @@
     <ClCompile Include="src\Dot\Renderer\Camera\OrthoCamera.cpp">
       <Filter>src\Dot\Renderer\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\InstancedMesh.cpp">
-      <Filter>src\Dot\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Light\Light.cpp">
       <Filter>src\Dot\Renderer\Light</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Light\LightController.cpp">
       <Filter>src\Dot\Renderer\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Material.cpp">
+      <Filter>src\Dot\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\MaterialStack.cpp">
+      <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\RenderCommand.cpp">
       <Filter>src\Dot\Renderer</Filter>
@@ -1631,8 +1702,23 @@
     <ClCompile Include="src\Dot\Renderer\RenderSystem.cpp">
       <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\Renderable2D.cpp">
-      <Filter>src\Dot\Renderer</Filter>
+    <ClCompile Include="src\Dot\Renderer\Renderable\AnimatedMesh.cpp">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Renderable\InstancedMesh.cpp">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Renderable\ParticleMesh.cpp">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Renderable\Renderable2D.cpp">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Renderable\RenderableEditor.cpp">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dot\Renderer\Renderable\StaticMesh.cpp">
+      <Filter>src\Dot\Renderer\Renderable</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Renderer.cpp">
       <Filter>src\Dot\Renderer</Filter>
@@ -1648,9 +1734,6 @@
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Shader\UniformBuffer.cpp">
       <Filter>src\Dot\Renderer\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\StaticMesh.cpp">
-      <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Texture.cpp">
       <Filter>src\Dot\Renderer</Filter>
@@ -1670,6 +1753,9 @@
     <ClCompile Include="src\Dot\Utils\Text\Font.cpp">
       <Filter>src\Dot\Utils\Text</Filter>
     </ClCompile>
+    <ClCompile Include="src\Dot\Utils\Text\Text.cpp">
+      <Filter>src\Dot\Utils\Text</Filter>
+    </ClCompile>
     <ClCompile Include="src\Windows\WindowsInput.cpp">
       <Filter>src\Windows</Filter>
     </ClCompile>
@@ -1682,11 +1768,10 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Utils\Text\Text.cpp" />
-    <ClCompile Include="src\Dot\ParticleEngine\ParticleEditorLayer.cpp" />
-    <ClCompile Include="src\Dot\Renderer\Material.cpp" />
-    <ClCompile Include="src\Dot\Interface\EditorLayer.cpp" />
-    <ClCompile Include="src\Dot\Gui\GuiSystem\Console.cpp" />
-    <ClCompile Include="src\Dot\Gui\GuiSystem\Dropdown.cpp" />
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\Console.cpp" />
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\Panel.cpp" />
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\ArrowButton.cpp" />
+    <ClCompile Include="src\Dot\Gui\Gui\GuiLayout.cpp" />
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\GuiWindow.cpp" />
   </ItemGroup>
 </Project>

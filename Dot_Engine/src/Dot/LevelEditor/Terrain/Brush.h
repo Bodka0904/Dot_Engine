@@ -2,7 +2,7 @@
 #include "Dot/PhysicsEngine/Components/ComponentData.h"
 #include "Dot/LevelEditor/Terrain/Terrain.h"
 #include "Dot/LevelEditor/Terrain/BrushInstance.h"
-#include "Dot/Renderer/StaticMesh.h"
+#include "Dot/Renderer/Renderable/StaticMesh.h"
 #include "Dot/ECS/ECSManager.h"
 #include <glm/glm.hpp>
 

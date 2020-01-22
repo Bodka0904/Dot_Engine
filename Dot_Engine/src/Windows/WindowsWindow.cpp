@@ -79,6 +79,7 @@ namespace Dot {
 			data.Height = height;
 
 			WindowResizeEvent e(width, height);
+			
 			data.EventCallback(e);
 		});
 

@@ -16,8 +16,9 @@ namespace Dot {
 	private:
 		glm::vec3 binarySearch(const glm::vec3& camPos, const Ref<Terrain>& terr,float start, float finish, int count);
 		glm::vec3 getPointOnRay(const glm::vec3& ray, float distance, const glm::vec3& camPos);
-	
+		
 	private:
 		glm::vec3 m_CurrentRay;
+		float m_RayRange;
 	};
 }

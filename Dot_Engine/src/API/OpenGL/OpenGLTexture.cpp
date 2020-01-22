@@ -82,6 +82,10 @@ namespace Dot {
 	{
 		glBindTextureUnit(unit, m_RendererID);
 	}
+	void OpenGLTexture2D::BindID(unsigned int ID)
+	{
+		glBindTextureUnit(0, ID);
+	}
 	int OpenGLTexture2D::CalculateMipMapCount(int width, int height)
 	{
 		int levels = 1;

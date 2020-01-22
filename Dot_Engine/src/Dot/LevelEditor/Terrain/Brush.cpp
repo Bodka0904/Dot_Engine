@@ -32,8 +32,7 @@ namespace Dot {
 		tmpTransform.pos = m_Transform->pos;
 		tmpTransform.scale = glm::vec3(1, 1, 1);
 		tmpTransform.rot = glm::vec3(0, 0, 0);
-
-
+	
 		float step = m_Radius / m_Intensity;
 		for (size_t i = 0; i < m_Intensity; ++i)
 		{

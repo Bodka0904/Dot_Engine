@@ -6,40 +6,45 @@
 #include <glm/gtx/transform.hpp>
 
 #define RAY_RECURSION_COUNT 200
-#define RAY_RANGE 600
+#define RAY_RANGE 400
 
 namespace Dot {
 	MousePicker::MousePicker()
 		: m_CurrentRay(glm::vec3(0))
 	{
+		m_RayRange = 400;
 	}
 
 	void MousePicker::CalculateMouseRay(const Camera& camera)
 	{
-
 		Application& app = Application::Get();
 	
 		float mouseX = Input::GetMouseX();
 		float mouseY = Input::GetMouseY();;
 		float mouseZ = 1.0f;
 
-		mouseX = (2.0f * mouseX) / app.GetWin().GetWidth() - 1.0f;
-		mouseY = 1.0f - (2.0f * mouseY) / app.GetWin().GetHeight();
+		mouseX = mouseX / (app.GetWin().GetWidth() * 0.5) - 1.0f;
+		mouseY = mouseY / (app.GetWin().GetHeight() * 0.5)- 1.0f;
 		
-		glm::vec4 clipCoords = glm::vec4(mouseX, mouseY, -1.0f, 1.0f);
-		glm::vec4 rayEye = glm::inverse(camera.GetProjectionMatrix()) * clipCoords;
-		rayEye = glm::vec4(rayEye.x, rayEye.y,-1.0f, 0.0f);
+		glm::mat4 invVP = glm::inverse(camera.GetProjectionMatrix() * camera.GetViewMatrix());
+		glm::vec4 screenPos = glm::vec4(mouseX, -mouseY, 1.0f, 1.0f);
+		glm::vec4 worldPos = invVP * screenPos;
+		glm::vec3 dir = glm::normalize(glm::vec3(worldPos));
+		m_CurrentRay = dir;
 
-		glm::vec3 rayWorld = glm::inverse(camera.GetViewMatrix()) * rayEye;
-		rayWorld = glm::normalize(rayWorld);
-		m_CurrentRay = rayWorld;
+		//glm::vec4 clipCoords = glm::vec4(mouseX, -mouseY, -1.0f, 1.0f);
+		//glm::vec4 rayEye = glm::inverse(camera.GetProjectionMatrix()) * clipCoords;
+		//rayEye = glm::vec4(rayEye.x, rayEye.y,-1.0f, 0.0f);
+		//
+		//glm::vec3 rayWorld = glm::inverse(camera.GetViewMatrix()) * rayEye;
+		//rayWorld = glm::normalize(rayWorld);
+		//m_CurrentRay = rayWorld;
 	}
 
 	const glm::vec3& MousePicker::TestIntersectionTerr(const Camera& camera, const Ref<Terrain>& terr)
 	{		
-		glm::vec3 startPoint = getPointOnRay(m_CurrentRay, 0, camera.GetPosition());
-		glm::vec3 endPoint = getPointOnRay(m_CurrentRay, RAY_RANGE, camera.GetPosition());	
-		return binarySearch(camera.GetPosition(), terr, 0, RAY_RANGE, 0);
+		m_RayRange = RAY_RANGE + camera.GetPosition().y;
+		return binarySearch(camera.GetPosition(), terr, 0, m_RayRange, 0);
 	}
 
 	glm::vec3 MousePicker::binarySearch(const glm::vec3& camPos, const Ref<Terrain>& terr, float start, float finish, int count)
@@ -71,7 +76,4 @@ namespace Dot {
 		glm::vec3 result = glm::vec3(camPos.x + scaledRay.x, camPos.y + scaledRay.y, camPos.z + scaledRay.z);
 		return result;
 	}
-
-	
-
 }

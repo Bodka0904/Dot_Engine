@@ -17,7 +17,6 @@ namespace Dot {
 		// Take an ID from the front of the queue
 		Entity id = m_AvailableEntities.front();
 		m_AvailableEntities.pop();
-		
 		m_EntitiesInUse++;
 		return id;
 	}
@@ -33,7 +32,6 @@ namespace Dot {
 		// Put the destroyed ID at the back of the queue
 		//Restart bitset to zero;
 		m_Signatures[entity].reset();
-		
 		m_AvailableEntities.push(entity);
 		m_EntitiesInUse--;
 	}

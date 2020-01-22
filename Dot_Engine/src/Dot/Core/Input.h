@@ -1,4 +1,5 @@
 #pragma once
+#include <glm/glm.hpp>
 
 namespace Dot {
 	class Input
@@ -15,7 +16,7 @@ namespace Dot {
 		
 		inline static float GetMouseX() { return s_Instance->GetMouseXImpl(); }
 		inline static float GetMouseY() { return s_Instance->GetMouseYImpl(); }
-		inline static std::pair<int, int > GetWindowSize() { return s_Instance->GetWindowSizeImpl(); }
+		inline static glm::vec2 GetWindowSize() { return s_Instance->GetWindowSizeImpl(); }
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) = 0;
 
@@ -23,7 +24,7 @@ namespace Dot {
 		virtual std::pair<float, float> GetMousePositionImpl() = 0;
 		virtual float GetMouseXImpl() = 0;
 		virtual float GetMouseYImpl() = 0;
-		virtual std::pair<int, int>GetWindowSizeImpl() = 0;
+		virtual glm::vec2 GetWindowSizeImpl() = 0;
 	private:
 		static Scope<Input> s_Instance;
 	};

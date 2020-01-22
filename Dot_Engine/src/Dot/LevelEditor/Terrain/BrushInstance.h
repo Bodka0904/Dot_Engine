@@ -2,7 +2,7 @@
 #include "Dot/Renderer/Texture.h"
 
 #include <glm/glm.hpp>
-#include "Dot/Renderer/InstancedMesh.h"
+#include "Dot/Renderer/Renderable/InstancedMesh.h"
 
 namespace Dot {
 	class BrushInstance

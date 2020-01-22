@@ -11,7 +11,7 @@ namespace Dot {
 		virtual void OnDeactivate()= 0;
 		virtual void Update(float dt) = 0;
 		virtual void Draw() = 0;
-
+		virtual void AddEntity(Entity entity) = 0;
 	private:
 		std::vector<Entity> m_Entities;
 	};

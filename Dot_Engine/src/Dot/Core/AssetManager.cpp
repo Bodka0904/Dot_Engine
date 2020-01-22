@@ -168,78 +168,46 @@ namespace Dot {
 	}
 	
 
-	void AssetManager::LoadTexture(const std::string& name)
-	{
-		if (!m_Texture[name].path.empty())
-		{
-			m_Texture[name].asset = Texture2D::Create(m_Texture[name].path,m_Texture[name].filters,m_Texture[name].flipped);
-		}
-		else
-		{
-			LOG_ERR("Asset was not load, no path specified!");
-		}
+	void AssetManager::LoadTexture(const std::string& path,const std::string& name)
+	{	
+		m_Texture[name].path = path;
+		m_Texture[name].asset = Texture2D::Create(path,m_Texture[name].filters,m_Texture[name].flipped);
 	}
 
-	void AssetManager::LoadShader(const std::string& name)
-	{
-		if (!m_Shader[name].path.empty())
-		{
-			m_Shader[name].asset = Shader::Create(name, m_Shader[name].path);
-		}
-		else
-		{
-			LOG_ERR("Asset was not load, no path specified!");
-		}
+	void AssetManager::LoadShader(const std::string& path, const std::string& name)
+	{	
+		LOG_INFO("Loading shader %s", path.c_str());
+		m_Shader[name].path = path;
+		m_Shader[name].asset = Shader::Create(name, path);
 	}
 
-	void AssetManager::LoadAnimatedMesh(const std::string& name)
+	void AssetManager::LoadAnimatedMesh(const std::string& path, const std::string& name)
 	{
-		if (!m_AnimatedMesh[name].path.empty())
-		{
-			m_AnimatedMesh[name].asset = std::make_shared<AnimatedMesh>(m_AnimatedMesh[name].path);
-		}
-		else
-		{
-			LOG_ERR("Asset was not load, no path specified!");
-		}
+		m_AnimatedMesh[name].path = path;
+		m_AnimatedMesh[name].asset = std::make_shared<AnimatedMesh>(path);
 	}
 
-	void AssetManager::LoadInstancedMesh(const std::string& name)
+	void AssetManager::LoadInstancedMesh(const std::string& path, const std::string& name,int capacity)
 	{
-		if (!m_InstancedMesh[name].path.empty())
-		{
-			std::vector<glm::mat4>transforms;
-			transforms.resize(1);
-			m_InstancedMesh[name].asset = std::make_shared<InstancedMesh>(m_InstancedMesh[name].path, m_InstancedMesh[name].capacity,transforms);
-		}
-		else
-		{
-			LOG_ERR("Asset was not load, no path specified!");
-		}
+		
+		std::vector<glm::mat4>transforms;
+		transforms.resize(1);
+		m_InstancedMesh[name].capacity = capacity;
+		m_InstancedMesh[name].path = path;
+		m_InstancedMesh[name].asset = std::make_shared<InstancedMesh>(path, capacity,transforms);
 	}
 
-	void AssetManager::LoadStaticMesh(const std::string& name)
-	{
-		if (!m_Mesh[name].path.empty())
-		{
-			m_Mesh[name].asset = std::make_shared<StaticMesh>(m_Mesh[name].path);
-		}
-		else
-		{
-			LOG_ERR("Asset was not load, no path specified!");
-		}
+	void AssetManager::LoadStaticMesh(const std::string& path, const std::string& name)
+	{	
+		m_Mesh[name].path = path;
+		m_Mesh[name].asset = std::make_shared<StaticMesh>(path);
 	}
 
-	void AssetManager::LoadCubeMap(const std::string& name)
+	void AssetManager::LoadCubeMap(const std::vector<std::string>& face, const std::string& name)
 	{
-		if (!m_CubeMap[name].face.empty())
-		{
-			m_CubeMap[name].asset = CubeMapTexture::Create(m_CubeMap[name].face);
-		}
-		else
-		{
-			LOG_ERR("Asset was not load, no path specified!");
-		}
+		LOG_INFO("Loading cubemap %s", face[0].c_str());
+		m_CubeMap[name].face = face;
+		m_CubeMap[name].asset = CubeMapTexture::Create(m_CubeMap[name].face);
 	}
 
 	void AssetManager::UnLoadTexture(const std::string& name)
@@ -322,7 +290,32 @@ namespace Dot {
 		else
 			LOG_ERR("Shader %s is not loaded!", asset.c_str());
 	}
-	
+
+
+	Ref<AnimatedMesh> AssetManager::GetCopyAnimMesh(const std::string& asset)
+	{
+		if (m_AnimatedMesh.find(asset) != m_AnimatedMesh.end())
+			return std::make_shared<AnimatedMesh>(*m_AnimatedMesh[asset].asset);
+		else
+			LOG_ERR("Animated mesh %s is not loaded!", asset.c_str());
+	}
+
+	Ref<StaticMesh> AssetManager::GetCopyStaticMesh(const std::string& asset)
+	{
+		if (m_Mesh.find(asset) != m_Mesh.end())
+			return std::make_shared <StaticMesh>(*m_Mesh[asset].asset);
+		else
+			LOG_ERR("Mesh %s is not loaded!", asset.c_str());
+	}
+
+	Ref<InstancedMesh> AssetManager::GetCopyInstancedMesh(const std::string& asset)
+	{
+		if (m_InstancedMesh.find(asset) != m_InstancedMesh.end())
+			return std::make_shared<InstancedMesh>(*m_InstancedMesh[asset].asset);
+		else
+			LOG_ERR("Instanced mesh %s is not loaded!", asset.c_str());
+	}
+
 
 	std::vector<std::string> AssetManager::TokenizeString(const std::string& str, const std::string& delimiter)
 	{

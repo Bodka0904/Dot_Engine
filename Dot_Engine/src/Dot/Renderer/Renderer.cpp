@@ -14,8 +14,8 @@ namespace Dot {
 
 	void Renderer::Clear(glm::vec4& color)
 	{
-		RenderCommand::SetClearColor(color);
 		RenderCommand::Clear();
+		RenderCommand::SetClearColor(color);
 	}
 
 	void Renderer::BeginScene(Camera& camera)

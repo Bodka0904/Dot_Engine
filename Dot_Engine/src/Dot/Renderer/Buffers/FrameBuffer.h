@@ -30,7 +30,7 @@ namespace Dot {
 		virtual uint32_t GetHeight() const = 0;
 		virtual FramebufferFormat GetFormat() const = 0;
 		
-		Ref<Framebuffer> Create(uint32_t width, uint32_t height, FramebufferFormat format);
+		static Ref<Framebuffer> Create(uint32_t width, uint32_t height, FramebufferFormat format);
 	};
 
 

@@ -5,7 +5,7 @@ namespace Dot {
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
-		OpenGLVertexBuffer(const void *vertices, unsigned int size,int drawMod);
+		OpenGLVertexBuffer(float *vertices, unsigned int size,int drawMod);
 		~OpenGLVertexBuffer();
 
 		virtual void Bind() const;
@@ -44,11 +44,11 @@ namespace Dot {
 	class OpenGLShaderStorageBuffer : public ShaderStorageBuffer
 	{
 	public:
-		OpenGLShaderStorageBuffer(const void* data,unsigned int size,int drawMod);
+		OpenGLShaderStorageBuffer(float* data,unsigned int size,int drawMod);
 		~OpenGLShaderStorageBuffer();
 
 		virtual void BindBase(unsigned int point);
-		virtual void BindRange(unsigned int index);
+		virtual void BindRange(int offset,int size,unsigned int index);
 		virtual void Bind();
 		virtual void Update(const void* vertices, unsigned int size, int offset);
 		virtual void Resize(const void* vertices, unsigned int size);

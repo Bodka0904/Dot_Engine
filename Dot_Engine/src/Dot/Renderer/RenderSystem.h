@@ -3,6 +3,7 @@
 #include "Dot/Renderer/Shader/Shader.h"
 #include "Dot/Renderer/Camera/Camera.h"
 #include "Dot/Renderer/Light/Light.h"
+#include "Dot/Renderer/MaterialStack.h"
 
 namespace Dot {
 
@@ -54,18 +55,20 @@ namespace Dot {
 		void setRenderStates(int32_t states);
 		void removeFromContainer(std::vector<Entity>& container,Entity entity);
 	private:	
+
 		enum RenderMod
 		{
 			OPAQUE_MOD,
 			TRANSPARENT_MOD,
 			NUM_RENDER_MOD
 		};
-		std::array<RenderBatch, NUM_RENDER_MOD> m_Entities;
+		struct Batch
+		{
+			std::unordered_map<MaterialID, std::vector<Entity> > material;
+		};
 
-		std::map<std::pair<uint32_t, int32_t>, RenderBatch> m_BatchOpaque;
-		std::map<std::pair<uint32_t, int32_t>, RenderBatch> m_BatchTransparent;
-
-
+		Batch m_Batch;
+		
 		struct SceneData
 		{
 			glm::mat4 ViewProjectionMatrix;

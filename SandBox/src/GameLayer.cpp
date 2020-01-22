@@ -4,6 +4,86 @@
 #include <iostream>
 
 
+void GameLayer::ExampleGuiBlock::OnAttach()
+{
+	glm::vec2 winSize = Dot::Input::GetWindowSize();
+	Dot::GuiLayout layout {
+		{Dot::ElementPosition::LEFT,Dot::ElementType::PANEL,glm::vec2(0.2,0.3),"Panel"},
+		{Dot::ElementPosition::LEFT,Dot::ElementType::PANEL,glm::vec2(0.2,0.3),"Panel1"},
+		{Dot::ElementPosition::LEFT,Dot::ElementType::PANEL,glm::vec2(0.2,0.4),"Panel2"},
+
+		{Dot::ElementPosition::RIGHT,Dot::ElementType::PANEL,glm::vec2(0.2,0.3),"Panel3"},
+		{Dot::ElementPosition::RIGHT,Dot::ElementType::PANEL,glm::vec2(0.2,0.3),"Panel4"},
+		{Dot::ElementPosition::RIGHT,Dot::ElementType::PANEL,glm::vec2(0.2,0.4),"Panel5"},
+		
+		{Dot::ElementPosition::BOTTOM,Dot::ElementType::PANEL,glm::vec2(0.2,0.4),"Panel6"},
+		{Dot::ElementPosition::BOTTOM,Dot::ElementType::CONSOLE,glm::vec2(0.6,0.4),"Console"},
+	};
+
+	SetLayout(layout);
+	GetPanel("Panel")->AddWidget("Button1", Dot::Button::Create("test", glm::vec2(0), glm::vec2(50, 50), glm::vec3(1, 1, 1)));
+	GetPanel("Panel")->AddWidget("Button2", Dot::Button::Create("test", glm::vec2(0), glm::vec2(50, 50), glm::vec3(1, 1, 1)));
+	GetPanel("Panel")->AddWidget("Button3", Dot::Button::Create("test", glm::vec2(0), glm::vec2(50, 50), glm::vec3(1, 1, 1)));
+	GetPanel("Panel")->AddWidget("Slider", Dot::Slider::Create("slider", glm::vec2(0), glm::vec2(200, 30), glm::vec3(1, 1, 1), &m_Value, -10, 20));	
+	GetPanel("Panel")->AddWidget("Checkbox", Dot::CheckBox::Create("checkbox", glm::vec2(0), glm::vec2(50, 50), glm::vec3(1, 1, 1)));
+	GetPanel("Panel")->AddWidget("TextArea", Dot::TextArea::Create("textarea", glm::vec2(0), glm::vec2(200, 20), glm::vec3(1, 1, 1), glm::vec3(0, 0, 0)));
+	GetPanel("Panel")->AddWidget("TextArea1", Dot::TextArea::Create("textarea1", glm::vec2(0), glm::vec2(200, 20), glm::vec3(1, 1, 1), glm::vec3(0, 0, 0)));
+	GetPanel("Panel")->AddWidget("TextArea2", Dot::TextArea::Create("textarea2", glm::vec2(0), glm::vec2(200, 20), glm::vec3(1, 1, 1), glm::vec3(0, 0, 0)));
+	GetPanel("Panel")->AddWidget("TextArea3", Dot::TextArea::Create("textarea3", glm::vec2(0), glm::vec2(200, 20), glm::vec3(1, 1, 1), glm::vec3(0, 0, 0)));
+	
+	//GetPanel("Panel1")->AddWidget("TextArea3", Dot::TextArea::Create("textarea3", glm::vec2(0), glm::vec2(200, 20), glm::vec3(1, 1, 1), glm::vec3(0, 0, 0)));
+	//GetPanel("Panel1")->AddWidget("TextArea4", Dot::TextArea::Create("textarea3", glm::vec2(0), glm::vec2(200, 20), glm::vec3(1, 1, 1), glm::vec3(0, 0, 0)));
+	//GetPanel("Panel1")->AddWidget("ArrButton", Dot::ArrowButton::Create("arrbutton", glm::vec2(0), glm::vec2(50, 50), glm::vec3(1, 1, 1)));
+	//GetPanel("Panel1")->AddWidget("ArrButton2", Dot::ArrowButton::Create("arrbutton", glm::vec2(0), glm::vec2(50, 50), glm::vec3(1, 1, 1)));
+
+	Dot::Logger::Get()->ConnectConsole(GetConsole("Console"));
+	
+	AddWindow("Test Window", Dot::GuiWindow::Create(glm::vec2(400, 0), glm::vec2(1100, 600), glm::vec3(0, 7, 2), "Test Window"));
+}
+
+void GameLayer::ExampleGuiBlock::OnDetach()
+{
+
+}
+
+void GameLayer::ExampleGuiBlock::OnUpdate()
+{
+	//if (GetPanel("Panel1")->GetWidget<Dot::ArrowButton>("ArrButton").LeftClicked())
+	//{
+	//	std::cout << "Left Clicked" << std::endl;
+	//}
+	//else if (GetPanel("Panel1")->GetWidget<Dot::ArrowButton>("ArrButton").RightClicked())
+	//{
+	//	std::cout << "Right Clicked" << std::endl;
+	//}
+	if (GetPanel("Panel")->GetWidget<Dot::Button>("Button1").Clicked())
+	{
+		std::cout << "Clicked" << std::endl;
+	}
+	if (GetPanel("Panel")->GetWidget<Dot::CheckBox>("Checkbox").Clicked())
+	{
+		std::cout << "Checked" << std::endl;
+	}
+	GetPanel("Panel")->GetWidget<Dot::Slider>("Slider").Active(glm::vec2(Dot::Input::GetMousePosition().first, Dot::Input::GetMousePosition().second));
+}
+
+void GameLayer::ExampleGuiBlock::OnEvent(Dot::Event& event)
+{
+	if (event.GetEventType() == Dot::EventType::KeyPressed)
+	{
+		Dot::KeyPressedEvent& e = (Dot::KeyPressedEvent&)event;
+		GetPanel("Panel")->GetWidget<Dot::TextArea>("TextArea").TakeInput(e, Dot::TextArea::TYPE::INT);		
+	}
+	//if (event.GetEventType() == Dot::EventType::KeyPressed)
+	//{
+	//	Dot::KeyPressedEvent& e = (Dot::KeyPressedEvent&)event;
+	//	GetPanel("Panel1")->GetWidget<Dot::TextArea>("TextArea3").TakeInput(e, Dot::TextArea::TYPE::INT);
+	//}
+}
+
+
+
+
 GameLayer::GameLayer()
 	: Dot::Layer()
 {
@@ -13,33 +93,29 @@ GameLayer::GameLayer()
 void GameLayer::OnAttach()
 {
 	Dot::Renderer::Init();
-	
-	
-	
 	Dot::Signature collisionSignature;
 	collisionSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::AABB>());
 	collisionSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RigidBody>());
 	m_CollisionSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::CollisionSystem>();
 	Dot::ECSManager::Get()->SetSystemSignature<Dot::CollisionSystem>(collisionSignature);
 
-
 	Dot::Signature physicsSignature;
-	physicsSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Transform>());
+	physicsSignature.set(Dot::ECSManager::Get()->GetComponentType< Dot::Transform>());
 	physicsSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RigidBody>());
 	m_PhysicsSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::PhysicsSystem>();
 	Dot::ECSManager::Get()->SetSystemSignature<Dot::PhysicsSystem>(physicsSignature);
 
 	Dot::Signature renderSignature;
 	renderSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RenderComponent>());
-	renderSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Transform>());
+	renderSignature.set(Dot::ECSManager::Get()->GetComponentType <Dot::Transform>());
 	m_RenderSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::RenderSystem>();
 	Dot::ECSManager::Get()->SetSystemSignature<Dot::RenderSystem>(renderSignature);
 
 	Dot::Signature particleSignature;
 	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Transform>());
+	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::ComputeComponent>());
 	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::RenderComponent>());
-	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::ParticleComponent>());
-	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::Ref<Dot::ParticleEffect>>());
+	particleSignature.set(Dot::ECSManager::Get()->GetComponentType<Dot::ParticleEmitter>());
 	m_ParticleSystem = Dot::ECSManager::Get()->RegisterSystem<Dot::ParticleSystem>();
 	Dot::ECSManager::Get()->SetSystemSignature<Dot::ParticleSystem>(particleSignature);
 	
@@ -54,15 +130,11 @@ void GameLayer::OnAttach()
 	};
 	m_SkyBox = std::make_shared<Dot::Skybox>(faces, 500.0f);
 
-	m_Terrain = std::make_shared<Dot::Terrain>(300, 129);
+	m_Terrain = std::make_shared<Dot::Terrain>(1, 100);
 	//m_Terrain = std::make_shared<Dot::Terrain>("res/heightmaps/test.bmp", 100, 2.0f);
-	//m_Terrain->HeightsValueNoise();
-	m_Terrain->DiamondSquare();
-	m_Terrain->ApplyHeights();
-	m_Terrain->ApplyNormals();
+	
 
-
-	m_CamController = std::make_shared<Dot::CameraController>(glm::perspectiveFov(glm::radians(45.0f), 1280.0f, 720.0f, 0.1f, 10000.0f));
+	m_CamController = std::make_shared<Dot::CameraController>(glm::perspectiveFov(glm::radians(45.0f), Dot::Input::GetWindowSize().x / 2.0f, Dot::Input::GetWindowSize().y / 2.0f, 0.1f, 10000.0f));
 
 	m_StaticShader = Dot::AssetManager::Get()->GetShader("StaticShader");
 	m_InstanceShader = Dot::AssetManager::Get()->GetShader("InstanceShader");
@@ -103,87 +175,133 @@ void GameLayer::OnAttach()
 	m_ParticleTexture = Dot::AssetManager::Get()->GetTexture("FireTexture");
 
 	m_Water = std::make_shared<Dot::Water>(glm::vec3(0, 1, 0), glm::vec3(0, 0, 1), glm::vec2(10, 10), 50);
-	m_Editor = std::make_shared<Dot::TerrainEditor>();
-
+	
+	m_TerrainEntity = Dot::ECSManager::Get()->CreateEntity();
+	//m_Editor = std::make_shared<Dot::TerrainEditor>();
+	//m_Editor->OnCreate(m_TerrainEntity);
+	Dot::ECSManager::Get()->SaveEntity(m_TerrainEntity);
 
 	m_GrassTexure = Dot::Texture2D::Create("res/Textures/Models/grass.png");
-	m_Brush = std::make_shared<Dot::TerrainBrush>(20,m_Terrain);
 	m_Grass = std::make_shared<Dot::BrushInstance>("res/Models/grass.obj", "GrassTexture", 300);
 	m_Picker = std::make_shared<Dot::MousePicker>();
-
-	
-	Dot::Entity entity = Dot::ECSManager::Get()->CreateEntity();
-	Dot::ECSManager::Get()->AddComponent(entity, Dot::AABB{ 1,1,1,2,2,2 });
-	Dot::ECSManager::Get()->AddComponent(entity, Dot::RigidBody{ glm::vec3(0,1,0) });
-
-	Dot::Entity entity2 = Dot::ECSManager::Get()->CreateEntity();
-	Dot::ECSManager::Get()->AddComponent(entity2, Dot::AABB{ 1,1,1,5,5,5 });
-	Dot::ECSManager::Get()->AddComponent(entity2, Dot::RigidBody{ glm::vec3(0,1,0) });
+	//m_Brush = std::make_shared<Dot::Brush>(20,20,0.2,m_Editor->GetTerrain());
 	
 	m_Player = std::make_shared<Player>("Man", "ManTexture");
 
 	m_Material = Dot::Material::Create(m_WaterShader);	
+	Dot::MaterialStack::Get()->RegisterMaterial("Material",m_Material);
+	//m_ParticleEditor = std::make_shared<Dot::ParticleEditor>();
 
+	Dot::Entity entity = Dot::ECSManager::Get()->CreateEntity();
+	//m_ParticleEditor->OnCreate(entity);
+
+	//m_RenderableEditor = std::make_shared<Dot::RenderableEditor>();
+	//m_RenderableEditor->OnCreate(entity);
+	
+	m_FrameBuffer = Dot::Framebuffer::Create(1024,720,Dot::FramebufferFormat::RGBA16F);
+
+
+
+	example = new ExampleGuiBlock;
+	Dot::GuiApplication::Get()->PushBlock(example);
 }
 
 void GameLayer::OnUpdate(Dot::Timestep ts)
 {
+	example->OnUpdate();
+
+	//m_ParticleEditor->OnUpdate();
+	//m_RenderableEditor->OnUpdate();
 
 	m_CollisionSystem->Update();
 	m_PhysicsSystem->Update(ts);
 	m_ParticleSystem->Update(m_CamController->GetCamera(),ts);
 	
+	//m_Editor->OnUpdate();
+	//m_Editor->UpdateBrush(m_CamController->GetCamera());
+	
 	
 	m_CamController->OnUpdate(ts.GetSeconds() * 250);
 	m_LightController->Update(ts);
-	m_Editor->UpdateTerrain(m_Terrain);
 
-
-
-	Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0.0));	
 	
+	Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0));
 	Dot::Renderer::BeginScene(m_CamController->GetCamera());
 	{	
+		example->GetWindow("Test Window")->GetFBO()->Bind();
+		Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0));
 		// Must be rendered first to create background for transparent parts
 		m_SkyBox->GetTexture()->Bind(0);
 		Dot::Renderer::SubmitElements(m_SkyShader, m_LightController->GetLight(), m_SkyBox->GetVAO(), glm::mat4(1), D_QUADS);
 		
+		if (m_TimePassed >= glm::pi<float>())
+		{
+			m_Swap = true;
+		}
+		if (m_TimePassed <= -glm::pi<float>())
+		{
+			m_Swap = false;
+		}
+
+		if (!m_Swap)
+		{
+			m_TimePassed += ts.GetSeconds();
+		}
+		else
+		{
+			m_TimePassed -= ts.GetSeconds();
+		}
+		
+		
+		
+		
+		m_WaterShader->Bind();
+		m_Material->Set("u_Time", m_TimePassed);
+		m_Material->Bind();
+		m_Material->Update();
+		m_WaterShader->UploadUniformMat4("u_ModelMatrix", glm::mat4(1));
+		m_Water->Render(m_WaterShader);
 		
 		m_Player->Update(5, 2, ts.GetSeconds(), *m_Terrain);
 		m_RenderSystem->BeginScene(m_CamController->GetCamera(), m_LightController->GetLight());
-		{	
+		{
 			m_RenderSystem->Render();
 		}
 		m_RenderSystem->EndScene(m_StaticShader);
+		example->GetWindow("Test Window")->GetFBO()->Unbind();
+		
+		
+		m_SkyBox->GetTexture()->Bind(0);
+		Dot::Renderer::SubmitElements(m_SkyShader, m_LightController->GetLight(), m_SkyBox->GetVAO(), glm::mat4(1), D_QUADS);
+
+		m_WaterShader->Bind();
+		m_Material->Set("u_Time", m_TimePassed);
+		m_Material->Bind();
+		m_Material->Update();
+		m_WaterShader->UploadUniformMat4("u_ModelMatrix", glm::mat4(1));
+		m_Water->Render(m_WaterShader);
+
+		m_Player->Update(5, 2, ts.GetSeconds(), *m_Terrain);
+		m_RenderSystem->BeginScene(m_CamController->GetCamera(), m_LightController->GetLight());
+		{
+			m_RenderSystem->Render();
+		}
+		m_RenderSystem->EndScene(m_StaticShader);
+
+
 
 		Dot::RenderCommand::SetBlendFunc(D_SRC_ALPHA, D_ONE_MINUS_SRC_ALPHA);
 		m_TreeTexture->Bind(0);
 		m_InstanceShader->Bind();
 		//m_Tree->Render(m_InstanceShader);
 		
-		m_TerrTexture->Bind(0);
-		m_StaticShader->Bind();
-		m_StaticShader->UploadUniformFloat("u_Radius", m_Brush->GetRadius());
-		m_StaticShader->UploadUniformFloat2("u_BrushPosition",glm::vec2(m_Brush->GetPosition().x,m_Brush->GetPosition().z));
-		Dot::Renderer::SubmitElements(m_StaticShader, m_LightController->GetLight(), m_Terrain->GetVAO(), glm::mat4(1), D_TRIANGLES);
-		
-		m_TimePassed += ts.GetSeconds();
-		
-		if (m_TimePassed >= glm::pi<float>())
-		{
-			m_TimePassed = 0;
-		}
-		m_WaterShader->Bind();
-		
-		m_Material->Set("u_Time", m_TimePassed);
-		m_Material->Bind();
-		m_Material->Update();
-		m_WaterShader->UploadUniformMat4("u_ModelMatrix", glm::mat4(1));
-		//m_Water->Render(m_WaterShader);
-		
-		
+		//m_StaticShader->Bind();
+		//m_StaticShader->UploadUniformMat4("u_ModelMatrix", glm::mat4(1));
+		//m_Terrain->Render(m_StaticShader, D_TRIANGLES);
+	
 		m_GrassShader->Bind();
 		m_GrassTexure->Bind(0);
+		m_Transform.FaceCamera(m_CamController->GetCamera());
 		m_GrassShader->UploadUniformFloat("u_Time", m_TimePassed);
 		for (int i = 0; i < m_Grass->GetInstances().size(); ++i)
 		{	
@@ -191,33 +309,34 @@ void GameLayer::OnUpdate(Dot::Timestep ts)
 		}
 		
 		m_LightShader->Bind();
-		//Dot::Renderer::SubmitElements(m_LightShader, m_LightController->GetLight(), m_LightController->GetVAO(),m_LightController->GetModel(), D_TRIANGLES);
+		Dot::Renderer::SubmitElements(m_LightShader, m_LightController->GetLight(), m_LightController->GetVAO(),m_LightController->GetModel(), D_TRIANGLES);
 	}
 	Dot::Renderer::EndScene(m_StaticShader);
-
-	glm::vec3 pos = glm::vec3(0);
-	m_Picker->CalculateMouseRay(m_CamController->GetCamera());
-	pos = m_Picker->TestIntersectionTerr(m_CamController->GetCamera(), m_Terrain);
-	m_Brush->SetPosition(pos);
 }
 
 void GameLayer::OnEvent(Dot::Event& event)
 {
+	//m_ParticleEditor->OnEvent(event);
+	//m_RenderableEditor->OnEvent(event);
 	m_CamController->OnEvent(event);
 
 	if (event.GetEventType() == Dot::EventType::MouseButtonPressed)
 	{
 		Dot::MouseButtonPressEvent& e = (Dot::MouseButtonPressEvent&)event;
 
-		if (Dot::Input::IsKeyPressed(D_KEY_LEFT_SHIFT))
+		if (Dot::Input::IsKeyPressed(D_KEY_LEFT_CONTROL))
 		{
 			if (e.GetButton() == D_MOUSE_BUTTON_LEFT)
 			{
+				m_Picker->CalculateMouseRay(m_CamController->GetCamera());
+				//glm::vec3 pos = m_Picker->TestIntersectionTerr(m_CamController->GetCamera(), m_Editor->GetTerrain());
+				//m_Brush->SetPosition(pos);
 				//m_Brush->Place(m_Grass);
-				m_Brush->ApplyBrush();
 			}
 		}
 	}
+
+	//m_Editor->OnEvent(event);
 }
 
 void GameLayer::OnDetach()

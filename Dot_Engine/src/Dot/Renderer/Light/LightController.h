@@ -1,5 +1,5 @@
 #pragma once
-#include "Dot/Renderer/StaticMesh.h"
+#include "Dot/Renderer/Renderable/StaticMesh.h"
 #include "Light.h"
 
 namespace Dot {

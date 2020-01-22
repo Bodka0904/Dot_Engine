@@ -7,11 +7,13 @@
 #include "Dot/Core/AssetManager.h"
 #include "Dot/Utils/Parser/JsonParser.h"
 #include "Dot/ECS/ECSManager.h"
-#include <GLFW/glfw3.h>
 
-#include "Dot/ParticleEngine/ParticleEffect.h"
-#include "Dot/Renderer/Renderable.h"
-#include "Dot/Gui/GuiSystem/Gui.h"
+
+#include "Dot/Renderer/Renderable/Renderable.h"
+#include "Dot/LevelEditor/Terrain/Terrain.h"
+#include "Dot/ParticleEngine/ParticleComponent.h"
+
+#include <GLFW/glfw3.h>
 
 namespace Dot {
 
@@ -35,8 +37,10 @@ namespace Dot {
 		Dot::ECSManager::Get()->RegisterComponent<RigidBody>();
 		Dot::ECSManager::Get()->RegisterComponent<Transform>();
 		Dot::ECSManager::Get()->RegisterComponent<RenderComponent>();
-		Dot::ECSManager::Get()->RegisterComponent<ParticleComponent>();
-		Dot::ECSManager::Get()->RegisterComponent<Ref<ParticleEffect>>();
+		Dot::ECSManager::Get()->RegisterComponent<ParticleEmitter>();
+		Dot::ECSManager::Get()->RegisterComponent<SizeOverLifeTime>();
+		Dot::ECSManager::Get()->RegisterComponent<VelocityOverLifeTime>();
+		Dot::ECSManager::Get()->RegisterComponent<ComputeComponent>();
 
 		AssetManager::Get()->LoadAssets("Assets.json");
 	}
@@ -46,16 +50,17 @@ namespace Dot {
 	{
 		for (Layer* layer : m_Layers)
 		{
+			layer->OnGuiDetach();
 			layer->OnDetach();
 			delete layer;
 		}
+
 	}
 
 	void Application::Run()
 	{
 		while (!m_Window->IsClosed())
 		{
-			
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
@@ -65,12 +70,9 @@ namespace Dot {
 				{	
 					//Timer timer;
 					layer->OnGuiUpdate();
-					layer->OnUpdate(timestep);
-					
+					layer->OnUpdate(timestep);				
 				}
 			}
-			
-			
 			m_Window->Update();	
 		}
 	}
@@ -80,16 +82,15 @@ namespace Dot {
 		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
 		m_LayerInsertIndex++;
 		layer->OnAttach();
-		if (Gui::Get())
-			layer->OnGuiAttach();
+		layer->OnGuiAttach();
 	}
 
 	void Application::PushOverlay(Layer * overlay)
 	{
 		m_Layers.emplace_back(overlay);
 		overlay->OnAttach();
-		if (Gui::Get())
-			overlay->OnGuiAttach();
+		
+		overlay->OnGuiAttach();
 	}
 
 	void Application::PopLayer(Layer * layer)
@@ -97,8 +98,8 @@ namespace Dot {
 		auto it = std::find(m_Layers.begin(), m_Layers.begin() + m_LayerInsertIndex, layer);
 		if (it != m_Layers.begin() + m_LayerInsertIndex)
 		{
-			if (Gui::Get())
-				(*it)->OnGuiDetach();
+			
+			(*it)->OnGuiDetach();
 			(*it)->OnDetach();
 			
 			m_Layers.erase(it);
@@ -121,13 +122,7 @@ namespace Dot {
 			RenderCommand::SetViewport(0, 0, resize.GetWidth(), resize.GetHeight());
 		}
 		for (auto it = m_Layers.rbegin(); it != m_Layers.rend(); ++it )
-		{
-			if (Gui::Get())
-			{
-				(*it)->OnGuiEvent(event);
-				if (event.IsHandled())
-					break;
-			}					
+		{					
 			(*it)->OnEvent(event);
 			if (event.IsHandled())
 				break;

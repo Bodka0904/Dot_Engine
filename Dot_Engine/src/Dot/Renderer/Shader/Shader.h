@@ -12,7 +12,7 @@ namespace Dot {
 	{
 		NONE,
 		SAMPLER2D,
-		FLOAT,FLOAT_VEC2,FLOAT_VEC3,FLOAT_VEC4,
+		BOOL,FLOAT,FLOAT_VEC2,FLOAT_VEC3,FLOAT_VEC4,
 		INT,INT_VEC2,INT_VEC3,INT_VEC4,
 		FLOAT_MAT4,
 		STRUCT
@@ -43,7 +43,6 @@ namespace Dot {
 	
 		virtual void UpdateUniformBufferObject(const std::string& name, const void* data, unsigned int size, int offset = 0) = 0;
 		virtual void UploadUniformInt(const std::string& name, int value) = 0;
-		
 		virtual void UploadUniformFloat(const std::string& name, float value) = 0;
 		virtual void UploadUniformFloat2(const std::string& name, const glm::vec2& value)= 0;
 		virtual void UploadUniformFloat3(const std::string& name, const glm::vec3& value)= 0;

@@ -2,6 +2,7 @@
 #include "WindowsInput.h"
 
 #include "Dot/Core/Application.h"
+#include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
 namespace Dot {
@@ -42,11 +43,11 @@ namespace Dot {
 		return y;
 	}
 
-	std::pair<int, int> WindowsInput::GetWindowSizeImpl()
+	glm::vec2 WindowsInput::GetWindowSizeImpl()
 	{
 		int width, height;
 		GLFWwindow* window = (GLFWwindow*)Application::Get().GetWin().GetNativeWindow();
 		glfwGetWindowSize(window, &width, &height);
-		return std::pair<int, int>(width, height);
+		return glm::vec2(width, height);
 	}
 }

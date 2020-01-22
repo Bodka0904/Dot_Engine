@@ -41,7 +41,7 @@ namespace Dot {
 			}
 		}
 
-		Ref<VertexBuffer>m_VBO = VertexBuffer::Create((void*)&positions[0],positions.size()*sizeof(glm::vec3), D_STATIC_DRAW);
+		Ref<VertexBuffer>m_VBO = VertexBuffer::Create((float*)positions.data(),positions.size()*sizeof(glm::vec3), D_STATIC_DRAW);
 		m_VBO->SetLayout(layout);
 
 		VAO = ArrayBuffer::Create();

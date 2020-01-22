@@ -150,7 +150,7 @@ namespace Dot {
 
 		virtual const BufferLayout &GetLayout() const = 0;
 
-		static Ref<VertexBuffer> Create(const void* vertices, unsigned int size, int drawMod);
+		static Ref<VertexBuffer> Create(float* vertices, unsigned int size, int drawMod);
 
 
 	};
@@ -174,14 +174,14 @@ namespace Dot {
 		virtual ~ShaderStorageBuffer() = default;
 
 		virtual void BindBase(unsigned int point) = 0;
-		virtual void BindRange(unsigned int index) = 0;
+		virtual void BindRange(int offset,int size,unsigned int index) = 0;
 		virtual void Bind() = 0;
 		virtual void Update(const void* vertices, unsigned int size, int offset) = 0;
 		virtual void Resize(const void* vertices, unsigned int size) = 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 		virtual const BufferLayout & GetLayout() const = 0;
 
-		static Ref<ShaderStorageBuffer> Create(const void* vertices, unsigned int size, int drawMod);
+		static Ref<ShaderStorageBuffer> Create(float* vertices, unsigned int size, int drawMod);
 	
 	};
 

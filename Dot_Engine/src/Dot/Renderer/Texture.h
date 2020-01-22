@@ -13,7 +13,8 @@ namespace Dot {
 
 		virtual void SetData(void* data, uint32_t size) = 0;
 		virtual void Bind(unsigned int unit) = 0;
-		
+		virtual void BindID(unsigned int ID) = 0;
+
 		static Ref<Texture2D> Create(uint32_t width, uint32_t height);
 		static Ref<Texture2D> Create(const std::string& path,bool filters = false,bool flipped = true);
 	};

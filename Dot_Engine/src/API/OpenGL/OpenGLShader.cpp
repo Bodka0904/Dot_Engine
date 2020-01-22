@@ -112,6 +112,7 @@ namespace Dot {
 	{
 		glUniform1i(m_Uniforms[name].ID, value);
 	}
+	
 	void OpenGLShader::UploadUniformFloat(const std::string& name, float value)
 	{
 		glUniform1f(m_Uniforms[name].ID, value);
@@ -298,6 +299,9 @@ namespace Dot {
 				break;
 			case GL_SAMPLER_2D: uniType = UniformDataType::SAMPLER2D;
 				sizeUni = 0;
+				break;
+			case GL_BOOL:	uniType = UniformDataType::BOOL;
+				sizeUni = sizeof(bool);
 				break;
 			}
 			if (size > 1)

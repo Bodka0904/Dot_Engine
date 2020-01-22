@@ -6,6 +6,7 @@
 #include <string>
 #include <fstream>
 
+
 namespace Dot {
 	struct ANSI
 	{
@@ -24,7 +25,7 @@ namespace Dot {
 		TRACE
 	};	
 
-
+	class Console;
 	class Logger
 	{
 	public:
@@ -35,7 +36,7 @@ namespace Dot {
 		void Error(const char* fncname, const char* format, ...);
 
 		void SetLogLevel(LogLevel level) {m_LogLevel = level; };
-
+		void ConnectConsole(Ref<Console> console);
 
 		static void SetLogFile(const std::string& logfile);
 		static std::shared_ptr<Logger> Get();
@@ -47,6 +48,8 @@ namespace Dot {
 		static std::ofstream m_LogFile;
 		static std::string m_FileName;
 		static std::shared_ptr<Logger> m_This;
+
+		Ref<Console> m_Console;
 	};
 
 #define LOG_INFO(...)  Logger::Get()->Info(__FUNCTION__,__VA_ARGS__)

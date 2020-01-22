@@ -68,11 +68,13 @@ namespace Dot {
 	}
 	void CollisionSystem::Update()
 	{
-		processInteractions();
+		if (!m_Entities.empty())
+			processInteractions();
 	}
 
 	void CollisionSystem::Add(Entity entity)
 	{
+		LOG_INFO("Entity with ID % added", entity);
 		m_Entities.push_back(entity);
 	}
 
@@ -83,6 +85,7 @@ namespace Dot {
 		int position = binarySearch(0, m_Entities.size() - 1, entity);
 		if (position != -1 && !m_Entities.empty())
 		{
+			LOG_INFO("Entity with ID % removed", entity);
 			m_Entities[position] = m_Entities[m_Entities.size() - 1];
 			m_Entities.pop_back();
 		}

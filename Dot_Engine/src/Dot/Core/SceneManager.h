@@ -14,8 +14,9 @@ namespace Dot {
 		unsigned int Add(Ref<Scene> scene);
 		void SwitchScene(unsigned int id);
 		void RemoveScene(unsigned int id);
-
-		static Ref<SceneManager> Get() { return m_Manager; }
+		
+		Ref<Scene>& GetCurretScene() { return m_CurrentScene; }
+		static Ref<SceneManager>& Get() { return m_Manager; }
 	private:
 		static Ref<SceneManager> m_Manager;
 

@@ -33,7 +33,7 @@ namespace Dot {
 			signature.set(m_ComponentManager->GetComponentType<T>(), 1);
 
 			m_EntityManager->SetSignature(entity, signature);
-			m_SystemManager->AddEntity(entity, signature);
+	
 		}
 		template<typename T>
 		void RemoveComponent(Entity entity)
@@ -69,10 +69,13 @@ namespace Dot {
 		template<typename T>
 		std::shared_ptr<T> GetSystem()
 		{
-			const char* typeName = typeid(T).name();
-			return m_SystemManager->m_Systems[typeName];
+			return std::static_pointer_cast<T>(m_SystemManager->GetSystem<T>());
 		}
-
+		void SaveEntity(Entity entity)
+		{
+			auto signature = m_EntityManager->GetSignature(entity);
+			m_SystemManager->AddEntity(entity, signature);
+		}
 		void DestroyEntity(Entity entity)
 		{
 			auto signature = GetEntitySignature(entity);
@@ -85,9 +88,9 @@ namespace Dot {
 			return m_EntityManager->GetSignature(entity);
 		}
 		Entity CreateEntity()
-		{
+		{	
 			return m_EntityManager->CreateEntity();
-		}
+		} 
 
 		static Scope<ECSManager>& Get() { return m_This; }
 	private:

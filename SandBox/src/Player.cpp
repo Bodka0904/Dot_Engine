@@ -9,16 +9,19 @@ Player::Player(const std::string& model, const std::string& texture)
 	m_Material->Set(Dot::AssetManager::Get()->GetTexture(texture));
 	m_Material->Set(Dot::RenderMode::OPAQUE);
 	m_Player = Dot::ECSManager::Get()->CreateEntity();
+	Dot::MaterialStack::Get()->RegisterMaterial("Player", m_Material);
 
-	Dot::ECSManager::Get()->AddComponent(m_Player, Dot::Transform{ glm::vec3(0, 0, 0),glm::vec3(0, 0, 0), glm::vec3(1, 1, 1)});
+	Dot::ECSManager::Get()->AddComponent(m_Player, Dot::Transform{});
 	Dot::ECSManager::Get()->AddComponent(m_Player, Dot::RigidBody{ glm::vec3{0, 0, 0} });
 	Dot::ECSManager::Get()->AddComponent(m_Player, Dot::RenderComponent{ 
 		Dot::AssetManager::Get()->GetAnimMesh(model), 
-		m_Material
+		Dot::MaterialStack::Get()->GetMaterialID("Player")
 		});
 	
-	m_RigidBody = &Dot::ECSManager::Get()->GetComponent<Dot::RigidBody>(m_Player);
 	m_Transform = &Dot::ECSManager::Get()->GetComponent<Dot::Transform>(m_Player);
+	m_RigidBody = &Dot::ECSManager::Get()->GetComponent<Dot::RigidBody>(m_Player);
+
+	Dot::ECSManager::Get()->SaveEntity(m_Player);
 }
 
 Player::~Player()

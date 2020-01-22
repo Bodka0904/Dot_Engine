@@ -11,8 +11,9 @@ namespace Dot {
 	{
 	public:
 		System() {};
-		virtual void Add(Entity entity)=0;
+		virtual void Add(Entity entity) = 0;
 		virtual void Remove(Entity entity) = 0;
+		virtual void EntityUpdated(Entity entity) {};
 	
 	};
 
@@ -40,7 +41,13 @@ namespace Dot {
 
 			m_Signatures[typeName] = signature;
 		}
-
+		template<typename T>
+		Ref<System> GetSystem()
+		{
+			const char* typeName = typeid(T).name();
+			D_ASSERT(m_Systems.find(typeName) != m_Systems.end(), "System is not registered!");
+			return m_Systems[typeName];
+		}
 		void EntityDestroyed(Entity entity, Signature entitySignature)
 		{
 			// Erase a destroyed entity from all system lists

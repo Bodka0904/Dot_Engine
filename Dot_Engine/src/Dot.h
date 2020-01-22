@@ -19,9 +19,9 @@
 #include "Dot/Renderer/Shader/Shader.h"
 #include "Dot/Renderer/Light/LightController.h"
 #include "Dot/Renderer/Texture.h"
-#include "Dot/Renderer/StaticMesh.h"
-#include "Dot/Renderer/InstancedMesh.h"
-#include "Dot/Renderer/AnimatedMesh.h"
+#include "Dot/Renderer/Renderable/StaticMesh.h"
+#include "Dot/Renderer/Renderable/InstancedMesh.h"
+#include "Dot/Renderer/Renderable/AnimatedMesh.h"
 #include "Dot/Renderer/RenderSystem.h"
 #include "Dot/Renderer/Material.h"
 
@@ -36,13 +36,6 @@
 #include "Dot/LevelEditor/Terrain/BrushInstance.h"
 #include "Dot/LevelEditor/Terrain/Brush.h"
 
-// --- Widgets --------------
-#include "Dot/Gui/GuiSystem/Slider.h"
-#include "Dot/Gui/GuiSystem/Checkbox.h"
-#include "Dot/Gui/GuiSystem/ArrowButton.h"
-#include "Dot/Gui/GuiSystem/Button.h"
-#include "Dot/Gui/GuiSystem/Gui.h"
-
 
 #include "Dot/ECS/ECSManager.h"
 #include "Dot/PhysicsEngine/CollisionSystem.h"
@@ -50,5 +43,18 @@
 #include "Dot/ParticleEngine/ParticleSystem.h"
 
 #include "Dot/PhysicsEngine/Components/ComponentData.h"
-#include "Dot/ParticleEngine/ParticleEffect.h"
-#include "Dot/ParticleEngine/ParticleEditorLayer.h"
+#include "Dot/ParticleEngine/ParticleComponent.h"
+#include "Dot/ParticleEngine/ParticleEditor.h"
+#include "Dot/Renderer/Renderable/RenderableEditor.h"
+
+#include "Dot/Gui/Gui/GuiApplication.h"
+#include "Dot/Gui/Gui/GuiBlock.h"
+#include "Dot/Gui/Gui/Widgets/Button.h"
+#include "Dot/Gui/Gui/Widgets/ArrowButton.h"
+#include "Dot/Gui/Gui/Widgets/CheckBox.h"
+#include "Dot/Gui/Gui/Widgets/Slider.h"
+#include "Dot/Gui/Gui/Widgets/TextArea.h"
+#include "Dot/Gui/Gui/Widgets/Console.h"
+#include "Dot/Gui/Gui/Widgets/Panel.h"
+#include "Dot/Gui/Gui/Widgets/GuiWindow.h"
+#include "Dot/Gui/Gui/GuiLayout.h"

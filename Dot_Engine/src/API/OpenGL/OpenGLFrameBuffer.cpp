@@ -59,9 +59,12 @@ namespace Dot {
 
 		glGenTextures(1, &m_DepthAttachment);
 		glBindTexture(GL_TEXTURE_2D, m_DepthAttachment);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32, m_Width, m_Height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
-		glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, m_DepthAttachment, 0);
-
+		glTexImage2D(
+			GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, m_Width, m_Height, 0,
+			GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL
+		);
+		
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D,m_DepthAttachment, 0);
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
 			LOG_ERR("Framebuffer is incomplete!");
@@ -70,7 +73,7 @@ namespace Dot {
 	}
 	void OpenGLFramebuffer::Bind() const
 	{
-		glBindTexture(GL_TEXTURE_2D, 0);
+		//glBindTexture(GL_TEXTURE_2D, 0);
 		glBindFramebuffer(GL_FRAMEBUFFER, m_FBO);
 		glViewport(0, 0, m_Width, m_Height);
 	}
@@ -78,7 +81,7 @@ namespace Dot {
 	{
 		auto WinSize = Input::GetWindowSize();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		glViewport(0, 0, WinSize.first, WinSize.second);
+		glViewport(0, 0, WinSize.x, WinSize.y);
 	}
 	void OpenGLFramebuffer::BindTexture(uint32_t slot) const
 	{
