@@ -7560,7 +7560,7 @@ typedef void (GLAPIENTRY * PFNGLTEXTURESTORAGE3DMULTISAMPLEEXTPROC) (GLuint text
 #define GL_TEXTURE_VIEW_MIN_LEVEL 0x82DB
 #define GL_TEXTURE_VIEW_NUM_LEVELS 0x82DC
 #define GL_TEXTURE_VIEW_MIN_LAYER 0x82DD
-#define GL_TEXTURE_VIEW_NUM_LAYERS 0x82DE
+#define GL_TEXTURE_VIEW_NUm_LayoutERS 0x82DE
 #define GL_TEXTURE_IMMUTABLE_LEVELS 0x82DF
 
 typedef void (GLAPIENTRY * PFNGLTEXTUREVIEWPROC) (GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
@@ -12726,7 +12726,7 @@ typedef void (GLAPIENTRY * PFNGLTEXTURESTORAGE3DEXTPROC) (GLuint texture, GLenum
 #define GL_TEXTURE_VIEW_MIN_LEVEL_EXT 0x82DB
 #define GL_TEXTURE_VIEW_NUM_LEVELS_EXT 0x82DC
 #define GL_TEXTURE_VIEW_MIN_LAYER_EXT 0x82DD
-#define GL_TEXTURE_VIEW_NUM_LAYERS_EXT 0x82DE
+#define GL_TEXTURE_VIEW_NUm_LayoutERS_EXT 0x82DE
 #define GL_TEXTURE_IMMUTABLE_LEVELS 0x82DF
 
 typedef void (GLAPIENTRY * PFNGLTEXTUREVIEWEXTPROC) (GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);

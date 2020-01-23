@@ -874,7 +874,7 @@ typedef EGLBoolean  ( * PFNEGLQUERYDMABUFMODIFIERSEXTPROC) (EGLDisplay  dpy, EGL
 #define EGL_BAD_OUTPUT_PORT_EXT 0x322E
 #define EGL_SWAP_INTERVAL_EXT 0x322F
 
-typedef EGLBoolean  ( * PFNEGLGETOUTPUTLAYERSEXTPROC) (EGLDisplay  dpy, const EGLAttrib * attrib_list, EGLOutputLayerEXT * layers, EGLint  max_layers, EGLint * num_layers);
+typedef EGLBoolean  ( * PFNEGLGETOUTPUTLAYERSEXTPROC) (EGLDisplay  dpy, const EGLAttrib * attrib_list, EGLOutputLayerEXT * layers, EGLint  max_layers, EGLint * num_Layouters);
 typedef EGLBoolean  ( * PFNEGLGETOUTPUTPORTSEXTPROC) (EGLDisplay  dpy, const EGLAttrib * attrib_list, EGLOutputPortEXT * ports, EGLint  max_ports, EGLint * num_ports);
 typedef EGLBoolean  ( * PFNEGLOUTPUTLAYERATTRIBEXTPROC) (EGLDisplay  dpy, EGLOutputLayerEXT  layer, EGLint  attribute, EGLAttrib  value);
 typedef EGLBoolean  ( * PFNEGLOUTPUTPORTATTRIBEXTPROC) (EGLDisplay  dpy, EGLOutputPortEXT  port, EGLint  attribute, EGLAttrib  value);

@@ -17,8 +17,6 @@ namespace Dot {
 		virtual void StopRender() = 0;
 
 		virtual bool OnLeftClick(const glm::vec2& mousePos) { return false; };
-		virtual bool OnRightClick(const glm::vec2& mousePos) { return false; };
-
 		virtual const glm::vec2& GetSize() = 0;
 	};
 }

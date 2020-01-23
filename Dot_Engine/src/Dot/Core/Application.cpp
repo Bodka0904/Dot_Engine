@@ -48,7 +48,7 @@ namespace Dot {
 
 	Application::~Application()
 	{
-		for (Layer* layer : m_Layers)
+		for (Layer* layer : m_Layouters)
 		{
 			layer->OnGuiDetach();
 			layer->OnDetach();
@@ -65,7 +65,7 @@ namespace Dot {
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			for (Layer* layer : m_Layers)
+			for (Layer* layer : m_Layouters)
 			{
 				{	
 					//Timer timer;
@@ -79,15 +79,15 @@ namespace Dot {
 
 	void Application::PushLayer(Layer * layer)
 	{
-		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
-		m_LayerInsertIndex++;
+		m_Layouters.emplace(m_Layouters.begin() + m_LayouterInsertIndex, layer);
+		m_LayouterInsertIndex++;
 		layer->OnAttach();
 		layer->OnGuiAttach();
 	}
 
 	void Application::PushOverlay(Layer * overlay)
 	{
-		m_Layers.emplace_back(overlay);
+		m_Layouters.emplace_back(overlay);
 		overlay->OnAttach();
 		
 		overlay->OnGuiAttach();
@@ -95,23 +95,23 @@ namespace Dot {
 
 	void Application::PopLayer(Layer * layer)
 	{
-		auto it = std::find(m_Layers.begin(), m_Layers.begin() + m_LayerInsertIndex, layer);
-		if (it != m_Layers.begin() + m_LayerInsertIndex)
+		auto it = std::find(m_Layouters.begin(), m_Layouters.begin() + m_LayouterInsertIndex, layer);
+		if (it != m_Layouters.begin() + m_LayouterInsertIndex)
 		{
 			
 			(*it)->OnGuiDetach();
 			(*it)->OnDetach();
 			
-			m_Layers.erase(it);
-			m_LayerInsertIndex--;
+			m_Layouters.erase(it);
+			m_LayouterInsertIndex--;
 		}
 	}
 
 	void Application::PopOverlay(Layer * overlay)
 	{
-		auto it = std::find(m_Layers.begin() + m_LayerInsertIndex, m_Layers.end(), overlay);
-		if (it != m_Layers.end())
-			m_Layers.erase(it);
+		auto it = std::find(m_Layouters.begin() + m_LayouterInsertIndex, m_Layouters.end(), overlay);
+		if (it != m_Layouters.end())
+			m_Layouters.erase(it);
 	}
 
 	void Application::OnEvent(Event & event)
@@ -121,7 +121,7 @@ namespace Dot {
 			WindowResizeEvent& resize = (WindowResizeEvent&)event;
 			RenderCommand::SetViewport(0, 0, resize.GetWidth(), resize.GetHeight());
 		}
-		for (auto it = m_Layers.rbegin(); it != m_Layers.rend(); ++it )
+		for (auto it = m_Layouters.rbegin(); it != m_Layouters.rend(); ++it )
 		{					
 			(*it)->OnEvent(event);
 			if (event.IsHandled())

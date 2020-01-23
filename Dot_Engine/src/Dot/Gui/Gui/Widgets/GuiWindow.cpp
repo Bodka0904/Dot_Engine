@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GuiWindow.h"
 #include "Dot/Gui/Gui/GuiApplication.h"
+#include "Dot/Core/Input.h"
 
 namespace Dot {
 	GuiWindow::GuiWindow(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label)
@@ -29,7 +30,7 @@ namespace Dot {
 
 		m_PanelSize = glm::vec2(size.x, Font::GetFont("Arial")->GetData().lineHeight * 0.2f + 5);
 		m_PanelQuad = QuadVertex2D(glm::vec2(position), m_PanelSize, glm::vec3(0.5, 0.5, 0.5), &panelCoords[0]);
-		m_Quad = QuadVertex2D(glm::vec2(position.x,position.y + m_PanelSize.y), size, glm::vec3(1, 1, 1), &coords[0]);
+		m_Quad = QuadVertex2D(glm::vec2(position.x,position.y + m_PanelSize.y),glm::vec2(size.x,size.y - m_PanelSize.y), glm::vec3(1, 1, 1), &coords[0]);
 
 		m_Index = GuiApplication::Get()->PopIndex();
 
@@ -58,6 +59,12 @@ namespace Dot {
 		m_FrameBuffer->BindTexture(0);
 		m_Renderer->Render();
 	}
+	void GuiWindow::Set(float pos, float size)
+	{
+		m_Position.x = pos;
+		m_Size.x = size;
+		updateBuffers();
+	}
 	void GuiWindow::OnWindowResize(WindowResizeEvent& event)
 	{
 		m_FrameBuffer->Resize(event.GetWidth(),event.GetHeight());
@@ -70,7 +77,7 @@ namespace Dot {
 	void GuiWindow::updateBuffers()
 	{
 		m_Label.SetPosition(glm::vec2(m_Position.x, m_Position.y + 4));
-		m_Quad.SetPosition(glm::vec2(m_Position.x,m_Position.y + m_PanelSize.y), m_Size);
+		m_Quad.SetPosition(glm::vec2(m_Position.x,m_Position.y + m_PanelSize.y), glm::vec2(m_Size.x, m_Size.y - m_PanelSize.y));
 		m_PanelQuad.SetPosition(m_Position, glm::vec2(m_Size.x, Font::GetFont("Arial")->GetData().lineHeight * 0.2f + 5));
 
 		GuiApplication::Get()->UpdateVertexBuffer(m_Index, &m_PanelQuad);

@@ -53,12 +53,12 @@ namespace Dot {
 
 	void OpenGLVertexBuffer::SetLayout(const BufferLayout& layout)
 	{
-		m_Layout = layout;
+		m_Layoutout = layout;
 	}
 	
 	const BufferLayout& OpenGLVertexBuffer::GetLayout() const
 	{
-		return m_Layout;
+		return m_Layoutout;
 	}
 	OpenGLIndexBuffer::OpenGLIndexBuffer(const void* indices, unsigned int count)
 		:m_Count(count)
@@ -120,10 +120,10 @@ namespace Dot {
 	}
 	void OpenGLShaderStorageBuffer::SetLayout(const BufferLayout& layout)
 	{
-		m_Layout = layout;
+		m_Layoutout = layout;
 	}
 	inline const BufferLayout& OpenGLShaderStorageBuffer::GetLayout() const
 	{
-		return m_Layout;
+		return m_Layoutout;
 	}
 }

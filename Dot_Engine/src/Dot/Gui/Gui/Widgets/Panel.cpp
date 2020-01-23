@@ -3,13 +3,12 @@
 #include "Dot/Gui/Gui/GuiApplication.h"
 
 namespace Dot {
-	Dot::Panel::Panel(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label, ElementPosition pos)
+	Dot::Panel::Panel(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label)
 		:
 		m_Label("Arial", label, glm::vec2(position.x, position.y + 4), glm::vec2(0.2f), labelColor, MAX_CHAR_PER_LABEL),
 		m_Position(position),
 		m_Size(size),
-		m_MaxSize(size),
-		m_Pos(pos)
+		m_MaxSize(size)
 	{
 		yOffset = 2*m_Label.GetSize().y;
 
@@ -69,15 +68,6 @@ namespace Dot {
 		updateBuffers();
 	}
 
-	void Panel::SetSize(const glm::vec2& size)
-	{
-		m_Size = size;
-		
-		m_PanelQuad.SetPosition(m_Position, glm::vec2(m_Size.x, Font::GetFont("Arial")->GetData().lineHeight * 0.2f));
-		m_Quad.SetPosition(m_Position, m_Size);
-		m_Label.SetPosition(glm::vec2(m_Position.x + m_Size.x, m_Size.y));
-		updateBuffers();
-	}
 
 	void Panel::AddWidget(const std::string& name, Ref<Widget> widget)
 	{
@@ -104,40 +94,6 @@ namespace Dot {
 		m_Widget[name] = widget;
 	}
 
-	void Panel::Update(const glm::vec2& mousePos)
-	{
-		if (m_Clicked)
-		{
-			switch (m_Pos)
-			{
-			case ElementPosition::LEFT:
-				m_Size.x = abs(mousePos.x - m_Position.x);
-				if (m_Position.x + m_Size.x > Input::GetWindowSize().x/2)
-					m_Size.x = Input::GetWindowSize().x/2;
-				break;
-			case ElementPosition::RIGHT:
-				m_Size.x += m_Position.x - mousePos.x;
-				m_Position.x = mousePos.x;
-				if (m_Position.x < Input::GetWindowSize().x / 2)
-				{
-					m_Position.x = Input::GetWindowSize().x / 2;
-					m_Size.x = Input::GetWindowSize().x / 2;
-				}
-				break;
-			case ElementPosition::BOTTOM:
-				m_Size.y += m_Position.y - mousePos.y;
-				m_Position.y = mousePos.y;
-				if (m_Position.y < Input::GetWindowSize().y/2)
-				{
-					m_Position.y = Input::GetWindowSize().y / 2;
-					m_Size.y = Input::GetWindowSize().y / 2;
-				}
-				break;
-			}		
-			updateBuffers();
-		}
-	}
-
 	bool Panel::OnLeftClick(const glm::vec2& mousePos)
 	{
 		for (auto& widg : m_Widget)
@@ -147,42 +103,11 @@ namespace Dot {
 				return true;
 			}
 		}
-		glm::vec4 coords = getCoords();
-		if (mousePos.x >= coords.x && mousePos.x <= coords.z
-			&& mousePos.y <= coords.y && mousePos.y >= coords.w)
-		{
-			updateBuffers();
-			m_Clicked = true;
-			return true;
-		}
-		return false;
-	}
-
-	bool Panel::OnRightClick(const glm::vec2& mousePos)
-	{
-		for (auto& widg : m_Widget)
-		{
-			if (widg.second->OnRightClick(mousePos))
-			{
-				return true;
-			}
-		}
-		glm::vec4 coords = getCoords();
-		if (mousePos.x >= coords.x && mousePos.x <= coords.z
-			&& mousePos.y <= coords.y && mousePos.y >= coords.w)
-		{
-			return false;
-		}
 		return false;
 	}
 
 	bool Panel::OnRelease()
 	{
-		if (m_Clicked)
-		{
-			handleResize();
-			return true;
-		}
 		for (auto& widg : m_Widget)
 		{	
 			if (widg.second->Release())
@@ -191,16 +116,17 @@ namespace Dot {
 		return false;
 	}
 
-	void Panel::Set(const glm::vec2& pos, const glm::vec2& size)
+	void Panel::Set(float pos, float size)
 	{
-		m_Position = pos;
-		m_Size = size;
+		m_Position.x = pos;
+		m_Size.x = size;
+		handleResize();
 		updateBuffers();
 	}
 	
-	Ref<Panel> Panel::Create(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label, ElementPosition pos)
+	Ref<Panel> Panel::Create(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label)
 	{
-		Ref<Panel> window = std::make_shared<Panel>(position, size, labelColor, label,pos);
+		Ref<Panel> window = std::make_shared<Panel>(position, size, labelColor, label);
 		return window;
 	}
 
@@ -221,30 +147,6 @@ namespace Dot {
 		xOffset = 10;
 		yOffset = 2 * m_Label.GetSize().y;
 
-		if (m_Size.x < m_Label.GetSize().x)
-		{
-			switch (m_Pos)
-			{
-			case ElementPosition::LEFT:
-				m_Size.x = m_Label.GetSize().x;
-				break;
-			case ElementPosition::RIGHT:
-				m_Position.x -= m_Label.GetSize().x - m_Size.x;
-				m_Size.x += m_Label.GetSize().x - m_Size.x;
-				break;
-			}
-			updateBuffers();
-		}
-		else if (m_Size.y < m_Label.GetSize().y)
-		{
-			switch (m_Pos)
-			{
-			case ElementPosition::BOTTOM:
-				m_Position.y = Input::GetWindowSize().y - m_Label.GetSize().y;
-				m_Size.y = m_Label.GetSize().y;
-			}
-			updateBuffers();
-		}
 		for (auto& widget : m_Widget)
 		{
 			if (widget.second->GetSize().y > rowSize)
@@ -267,34 +169,15 @@ namespace Dot {
 			}
 			xOffset += widget.second->GetSize().x + 10;
 			rowCount++;
-		}
-		m_Clicked = false;
-		
+		}	
 	}
 
 	glm::vec4 Panel::getCoords()
 	{
-		switch (m_Pos)
-		{
-		case ElementPosition::LEFT:
-			return glm::vec4(m_Position.x + m_Size.x - m_PanelSize.y,
-				m_Position.y + m_Size.y,
-				m_Position.x + m_Size.x,
-				m_Position.y);
-			break;
-		case ElementPosition::RIGHT:
-			return glm::vec4(m_Position.x,
-				m_Position.y + m_Size.y,
-				m_Position.x + m_PanelSize.y,
-				m_Position.y);
-			break;
-		case ElementPosition::BOTTOM:
-			return glm::vec4(m_Position.x,
-				m_Position.y + m_PanelSize.y,
-				m_Position.x + m_Size.x,
-				m_Position.y);
-			break;
-		}		
+		return glm::vec4(m_Position.x,
+			m_Position.y + m_Size.y,
+			m_Position.x + m_Size.x,
+			m_Position.y);
 	}
 
 }

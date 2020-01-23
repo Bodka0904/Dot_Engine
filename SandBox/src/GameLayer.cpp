@@ -7,17 +7,22 @@
 void GameLayer::ExampleGuiBlock::OnAttach()
 {
 	glm::vec2 winSize = Dot::Input::GetWindowSize();
-	Dot::GuiLayout layout {
-		{Dot::ElementPosition::LEFT,Dot::ElementType::PANEL,glm::vec2(0.2,0.3),"Panel"},
-		{Dot::ElementPosition::LEFT,Dot::ElementType::PANEL,glm::vec2(0.2,0.3),"Panel1"},
-		{Dot::ElementPosition::LEFT,Dot::ElementType::PANEL,glm::vec2(0.2,0.4),"Panel2"},
-
-		{Dot::ElementPosition::RIGHT,Dot::ElementType::PANEL,glm::vec2(0.2,0.3),"Panel3"},
-		{Dot::ElementPosition::RIGHT,Dot::ElementType::PANEL,glm::vec2(0.2,0.3),"Panel4"},
-		{Dot::ElementPosition::RIGHT,Dot::ElementType::PANEL,glm::vec2(0.2,0.4),"Panel5"},
+	Dot::Layout layout{
+		{glm::vec2(0,0),glm::vec2(0.2,1),{
+			{Dot::ElementType::PANEL,0.3,"Panel"},
+			{Dot::ElementType::PANEL,0.3,"Panel1"},
+			{Dot::ElementType::PANEL,0.4,"Panel2"}
+		}},
+		{glm::vec2(0.2,0),glm::vec2(0.6,1),{
+			{Dot::ElementType::WINDOW,0.6,"WINDOW"},
+			{Dot::ElementType::PANEL,0.1,"Panel5"},
+			{Dot::ElementType::CONSOLE,0.3,"Console"},
+		}},
+		{glm::vec2(0.8,0),glm::vec2(0.2,1),{
+			{Dot::ElementType::PANEL,0.5,"Panel3"},
+			{Dot::ElementType::PANEL,0.5,"Panel4"},
+		}}
 		
-		{Dot::ElementPosition::BOTTOM,Dot::ElementType::PANEL,glm::vec2(0.2,0.4),"Panel6"},
-		{Dot::ElementPosition::BOTTOM,Dot::ElementType::CONSOLE,glm::vec2(0.6,0.4),"Console"},
 	};
 
 	SetLayout(layout);
@@ -38,7 +43,7 @@ void GameLayer::ExampleGuiBlock::OnAttach()
 
 	Dot::Logger::Get()->ConnectConsole(GetConsole("Console"));
 	
-	AddWindow("Test Window", Dot::GuiWindow::Create(glm::vec2(400, 0), glm::vec2(1100, 600), glm::vec3(0, 7, 2), "Test Window"));
+	//AddWindow("Test Window", Dot::GuiWindow::Create(glm::vec2(400, 0), glm::vec2(1100, 600), glm::vec3(0, 7, 2), "Test Window"));
 }
 
 void GameLayer::ExampleGuiBlock::OnDetach()
@@ -56,15 +61,15 @@ void GameLayer::ExampleGuiBlock::OnUpdate()
 	//{
 	//	std::cout << "Right Clicked" << std::endl;
 	//}
-	if (GetPanel("Panel")->GetWidget<Dot::Button>("Button1").Clicked())
-	{
-		std::cout << "Clicked" << std::endl;
-	}
-	if (GetPanel("Panel")->GetWidget<Dot::CheckBox>("Checkbox").Clicked())
-	{
-		std::cout << "Checked" << std::endl;
-	}
-	GetPanel("Panel")->GetWidget<Dot::Slider>("Slider").Active(glm::vec2(Dot::Input::GetMousePosition().first, Dot::Input::GetMousePosition().second));
+	//if (GetPanel("Panel")->GetWidget<Dot::Button>("Button1").Clicked())
+	//{
+	//	std::cout << "Clicked" << std::endl;
+	//}
+	//if (GetPanel("Panel")->GetWidget<Dot::CheckBox>("Checkbox").Clicked())
+	//{
+	//	std::cout << "Checked" << std::endl;
+	//}
+	//GetPanel("Panel")->GetWidget<Dot::Slider>("Slider").Active(glm::vec2(Dot::Input::GetMousePosition().first, Dot::Input::GetMousePosition().second));
 }
 
 void GameLayer::ExampleGuiBlock::OnEvent(Dot::Event& event)
@@ -228,7 +233,9 @@ void GameLayer::OnUpdate(Dot::Timestep ts)
 	Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0));
 	Dot::Renderer::BeginScene(m_CamController->GetCamera());
 	{	
-		example->GetWindow("Test Window")->GetFBO()->Bind();
+		example->GetWindow("WINDOW")->GetFBO()->Bind();
+
+
 		Dot::Renderer::Clear(glm::vec4(1, 1, 1, 0));
 		// Must be rendered first to create background for transparent parts
 		m_SkyBox->GetTexture()->Bind(0);
@@ -268,28 +275,7 @@ void GameLayer::OnUpdate(Dot::Timestep ts)
 			m_RenderSystem->Render();
 		}
 		m_RenderSystem->EndScene(m_StaticShader);
-		example->GetWindow("Test Window")->GetFBO()->Unbind();
 		
-		
-		m_SkyBox->GetTexture()->Bind(0);
-		Dot::Renderer::SubmitElements(m_SkyShader, m_LightController->GetLight(), m_SkyBox->GetVAO(), glm::mat4(1), D_QUADS);
-
-		m_WaterShader->Bind();
-		m_Material->Set("u_Time", m_TimePassed);
-		m_Material->Bind();
-		m_Material->Update();
-		m_WaterShader->UploadUniformMat4("u_ModelMatrix", glm::mat4(1));
-		m_Water->Render(m_WaterShader);
-
-		m_Player->Update(5, 2, ts.GetSeconds(), *m_Terrain);
-		m_RenderSystem->BeginScene(m_CamController->GetCamera(), m_LightController->GetLight());
-		{
-			m_RenderSystem->Render();
-		}
-		m_RenderSystem->EndScene(m_StaticShader);
-
-
-
 		Dot::RenderCommand::SetBlendFunc(D_SRC_ALPHA, D_ONE_MINUS_SRC_ALPHA);
 		m_TreeTexture->Bind(0);
 		m_InstanceShader->Bind();
@@ -312,6 +298,7 @@ void GameLayer::OnUpdate(Dot::Timestep ts)
 		Dot::Renderer::SubmitElements(m_LightShader, m_LightController->GetLight(), m_LightController->GetVAO(),m_LightController->GetModel(), D_TRIANGLES);
 	}
 	Dot::Renderer::EndScene(m_StaticShader);
+	example->GetWindow("WINDOW")->GetFBO()->Unbind();
 }
 
 void GameLayer::OnEvent(Dot::Event& event)

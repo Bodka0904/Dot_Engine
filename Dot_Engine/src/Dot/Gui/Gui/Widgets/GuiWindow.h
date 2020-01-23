@@ -18,6 +18,8 @@ namespace Dot {
 		void Move(const glm::vec2& pos);
 		void Update(const glm::vec2& mousePos);
 		void Render();
+		void Set(float pos, float size);
+
 
 		void OnWindowResize(WindowResizeEvent& event);
 		const Ref<Framebuffer>& GetFBO() { return m_FrameBuffer; }

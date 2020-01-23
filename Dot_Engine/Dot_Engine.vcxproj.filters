@@ -1518,8 +1518,8 @@
     <ClInclude Include="src\Dot\Gui\Gui\Widgets\Console.h" />
     <ClInclude Include="src\Dot\Gui\Gui\Widgets\Panel.h" />
     <ClInclude Include="src\Dot\Gui\Gui\Widgets\ArrowButton.h" />
-    <ClInclude Include="src\Dot\Gui\Gui\GuiLayout.h" />
     <ClInclude Include="src\Dot\Gui\Gui\Widgets\GuiWindow.h" />
+    <ClInclude Include="src\Dot\Gui\Gui\Layout.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\API\OpenGL\OpenGLArrayBuffer.cpp">
@@ -1771,7 +1771,7 @@
     <ClCompile Include="src\Dot\Gui\Gui\Widgets\Console.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\Widgets\Panel.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\Widgets\ArrowButton.cpp" />
-    <ClCompile Include="src\Dot\Gui\Gui\GuiLayout.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\Widgets\GuiWindow.cpp" />
+    <ClCompile Include="src\Dot\Gui\Gui\Layout.cpp" />
   </ItemGroup>
 </Project>

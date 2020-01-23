@@ -57,4 +57,4 @@
 #include "Dot/Gui/Gui/Widgets/Console.h"
 #include "Dot/Gui/Gui/Widgets/Panel.h"
 #include "Dot/Gui/Gui/Widgets/GuiWindow.h"
-#include "Dot/Gui/Gui/GuiLayout.h"
+#include "Dot/Gui/Gui/Layout.h"

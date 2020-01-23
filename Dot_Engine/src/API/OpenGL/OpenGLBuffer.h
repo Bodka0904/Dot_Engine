@@ -22,7 +22,7 @@ namespace Dot {
 		int m_DrawMod;
 		unsigned int m_Size;
 		unsigned int m_VBO;
-		BufferLayout m_Layout;
+		BufferLayout m_Layoutout;
 
 	};
 
@@ -59,6 +59,6 @@ namespace Dot {
 	private:
 		unsigned int m_Size;
 		unsigned int m_SSBO;
-		BufferLayout m_Layout;
+		BufferLayout m_Layoutout;
 	};
 }

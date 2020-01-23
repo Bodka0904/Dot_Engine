@@ -6,17 +6,8 @@
 
 
 namespace Dot {
-	GuiBlock::GuiBlock()	
+	GuiBlock::GuiBlock()
 	{
-		glm::vec2 winSize = Input::GetWindowSize();
-		m_LayoutBlock[LayoutBlock::LEFT].Size = glm::vec2(0.2 * winSize.x, winSize.y);
-		m_LayoutBlock[LayoutBlock::LEFT].Position = glm::vec2(0, 0);
-		
-		m_LayoutBlock[LayoutBlock::MIDDLE].Size = glm::vec2(0.6 * winSize.x, winSize.y);
-		m_LayoutBlock[LayoutBlock::MIDDLE].Position = glm::vec2(0.2*winSize.x, 0);
-
-		m_LayoutBlock[LayoutBlock::RIGHT].Size = glm::vec2(0.2 * winSize.x, winSize.y);
-		m_LayoutBlock[LayoutBlock::RIGHT].Position = glm::vec2(0.8*winSize.x, winSize.y);
 	}
 	GuiBlock::~GuiBlock()
 	{
@@ -24,139 +15,69 @@ namespace Dot {
 
 	bool GuiBlock::OnLeftClick(const glm::vec2& mousePos)
 	{
-		glm::vec4 coordsLeft = m_LayoutBlock[LayoutBlock::LEFT].getCoords();
-		if (mousePos.x >= coordsLeft.x &&
-			(mousePos.x <= coordsLeft.z - 10
-				|| mousePos.x <= coordsLeft.z + 10)
-			&& mousePos.y <= coordsLeft.y && mousePos.y >= coordsLeft.w)
-		{
-			std::cout << "RESIZE LEFT" << std::endl;
-			m_ResizeLeft = true;
-			return true;
-		}
-		m_ResizeLeft = false;
+		m_Layout.OnLeftClick(mousePos);
 
-		glm::vec4 coordsRight = m_LayoutBlock[LayoutBlock::RIGHT].getCoords();
-		if (mousePos.x >= coordsRight.x &&
-			(mousePos.x <= coordsRight.z - 10
-				|| mousePos.x <= coordsRight.z + 10)
-			&& mousePos.y <= coordsRight.y && mousePos.y >= coordsRight.w)
+		for (auto& it : m_Panel)
 		{
-			m_ResizeRight = true;
-			return true;
+			if (it.second->OnLeftClick(mousePos))
+				return true;			
 		}
-		m_ResizeRight = false;
-		return false;
-		
-		
-		
 		for (auto& it : m_Console)
 		{
 			if (it.second->OnLeftClick(mousePos))
-			{
-				break;
-			}
-		}
-
-		for (auto& it : m_Panel)
-		{
-			if (it.second->OnLeftClick(mousePos))
-			{
-				break;
-			}
+				return true;
+			
 		}
 		for (auto& it : m_Widget)
 		{
 			if (it.second->OnLeftClick(mousePos))
-			{					
-				break;
-			}
+				return true;		
 		}
-	}
 
-	void GuiBlock::OnRightClick()
-	{
-		glm::vec2 mousePos(Input::GetMouseX(), Input::GetMouseY());
-		for (auto& it : m_Panel)
-		{
-			if (it.second->OnRightClick(mousePos))
-			{
-				break;
-			}
-		}
-		for (auto& it : m_Widget)
-		{
-			if (it.second->OnRightClick(mousePos))
-			{
-				break;
-			}
-		}
+		return false;
 	}
 
 	void GuiBlock::OnLeftRelease()
 	{
-		m_ResizeLeft = false;
-		m_ResizeRight = false;
-		glm::vec2 mousePos(Input::GetMouseX(), Input::GetMouseY());
-		for (auto& it : m_Console)
-		{
-			if (it.second->OnRelease())
-			{
-				break;
-			}
-		}
-		for (auto& it : m_Panel)
-		{
-			if (it.second->OnRelease())
-			{
-				break;
-			}
-		}
+		m_Layout.OnLeftRelease();
 		for (auto& it : m_Widget)
 		{
 			if (it.second->Release())
-			{
 				break;
-			}
+			
 		}
 	}
 
-	void GuiBlock::SetLayout(GuiLayout& layout)
-	{		
+	void GuiBlock::SetLayout(Layout& layout)
+	{
 		m_Layout = layout;
-		glm::vec2 winSize = Input::GetWindowSize();
-		for (auto& element : layout.Elements)
+		for (auto& lay : m_Layout.m_Layout)
 		{
-			if (element.TYPE == ElementType::PANEL)
+			glm::vec2 newPos = lay.position;
+			for (auto& el : lay.elements)
 			{
-				m_Panel[element.Name] = Panel::Create(element.Position, element.Size, glm::vec3(1, 1, 1), element.Name, element.POS);
-				m_LayoutBlock[LayoutBlock::LEFT].Panel[element.Name] = m_Panel[element.Name];
+				if (el.type == ElementType::PANEL)
+				{
+					m_Panel[el.name] = Panel::Create(newPos, glm::vec2(lay.size.x, el.height), glm::vec3(1, 1, 1), el.name);
+					lay.m_Panel.push_back(m_Panel[el.name].get());
+				}
+				else if (el.type == ElementType::WINDOW)
+				{
+					m_Window[el.name] = GuiWindow::Create(newPos, glm::vec2(lay.size.x, el.height), glm::vec3(1, 1, 1), el.name);
+					lay.m_Window.push_back(m_Window[el.name].get());
+				}
+				else
+				{
+					m_Console[el.name] = Console::Create(newPos, glm::vec2(lay.size.x, el.height), glm::vec3(1, 1, 1), el.name);
+					lay.m_Console.push_back(m_Console[el.name].get());
+				}
+				newPos.y += el.height;
 			}
-			else if (element.TYPE == ElementType::CONSOLE)
-				m_Console[element.Name] = Console::Create(element.Position, element.Size, glm::vec3(1, 1, 1), element.Name, element.POS);
-		}	
+		}
 	}
 	void GuiBlock::HandleResize(const glm::vec2& mousePos)
 	{
-		if (m_ResizeLeft)
-		{
-			m_LayoutBlock[LayoutBlock::LEFT].Size.x = abs(mousePos.x - m_LayoutBlock[LayoutBlock::LEFT].Position.x);
-			m_LayoutBlock[LayoutBlock::MIDDLE].Size.x = m_LayoutBlock[LayoutBlock::MIDDLE].Position.x - mousePos.x;
-			m_LayoutBlock[LayoutBlock::MIDDLE].Position.x = mousePos.x;
-			
-			for (auto& panel : m_LayoutBlock[LayoutBlock::LEFT].Panel)
-				panel.second->Set(m_LayoutBlock[LayoutBlock::LEFT].Position, m_LayoutBlock[LayoutBlock::LEFT].Size);
-			for (auto& panel : m_LayoutBlock[LayoutBlock::MIDDLE].Panel)
-				panel.second->Set(m_LayoutBlock[LayoutBlock::MIDDLE].Position, m_LayoutBlock[LayoutBlock::MIDDLE].Size);
-
-		}
-		else if (m_ResizeRight)
-		{
-			std::cout << "RESIZE RIGHT" << std::endl;
-			m_LayoutBlock[LayoutBlock::MIDDLE].Size.x = abs(mousePos.x - m_LayoutBlock[LayoutBlock::MIDDLE].Position.x);
-			m_LayoutBlock[LayoutBlock::RIGHT].Size.x = m_LayoutBlock[LayoutBlock::RIGHT].Position.x - mousePos.x;
-			m_LayoutBlock[LayoutBlock::RIGHT].Position.x = mousePos.x;
-		}
+		m_Layout.HandleResize(mousePos);
 	}
 	void GuiBlock::AddWidget(const std::string& name, const Ref<Widget> widget)
 	{
@@ -164,53 +85,5 @@ namespace Dot {
 		m_Widget[name] = widget;
 	}
 
-	void GuiBlock::AddPanel(const std::string& name, Ref<Panel> panel)
-	{
-		D_ASSERT(m_Panel.find(name) == m_Panel.end(), "Panel with name %s already exists", name.c_str());
-		m_Panel[name] = panel;
-	}
-
-	void GuiBlock::AddConsole(const std::string& name, Ref<Console> console)
-	{
-		D_ASSERT(m_Console.find(name) == m_Console.end(), "Console with name %s already exists", name.c_str());
-		m_Console[name] = console;
-	}
-
-	void GuiBlock::AddWindow(const std::string& name, Ref<GuiWindow> window)
-	{
-		D_ASSERT(m_Window.find(name) == m_Window.end(), "Window with name %s already exists", name.c_str());
-		m_Window[name] = window;
-	}
-
-	bool GuiBlock::MouseHoover(glm::vec2& mousePos)
-	{ 
-		glm::vec4 coords = getCoords();
-
-		if (mousePos.x >= coords.x && mousePos.x <= coords.z
-			&& mousePos.y <= coords.y && mousePos.y >= coords.w)
-		{
-			return true;
-		}
-		return false;
-	}
-
-	glm::vec4 GuiBlock::getCoords()
-	{
-		return glm::vec4();
-	}
-
-	GuiBlock::LayoutBlock::LayoutBlock(const glm::vec2& position, const glm::vec2& size)
-		: Size(size),Position(position)
-	{
-	}
-
-
-	glm::vec4 GuiBlock::LayoutBlock::getCoords()
-	{
-		return glm::vec4(Position.x,
-			Position.y + Size.y,
-			Position.x + Size.x,
-			Position.y);
-	}
 
 }

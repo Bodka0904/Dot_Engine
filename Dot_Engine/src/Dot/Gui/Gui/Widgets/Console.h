@@ -5,7 +5,7 @@
 #include "Dot/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Renderer/Shader/Shader.h"
 #include "Dot/Renderer/Renderer2D.h"
-#include "Dot/Gui/Gui/GuiLayout.h"
+
 
 namespace Dot {
 	class ConsoleText
@@ -15,6 +15,7 @@ namespace Dot {
 		ConsoleText(const glm::vec2& position, const glm::vec2& size, float maxRowLen, int maxRows);
 
 		void Push(std::string& text,Ref<Renderer2D>& renderer, const glm::vec3& color);
+		void SetMaxRowLen(float len);
 		void RecalculateNumberOfRows(float height);
 	private:
 		Text Text;
@@ -40,31 +41,30 @@ namespace Dot {
 			glm::vec2 Size;
 		};
 	public:
-		Console(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label, ElementPosition pos);
+		Console(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label);
 		~Console();
 
 		bool MouseHoover(const glm::vec2& mousePos);
 		void RegisterCommand(const std::string& cmd, std::function<void()> func);
-		void Update(const glm::vec2& mousePos);
 		void Render();
 
 		void SetPosition(const glm::vec2& pos);
 		void Move(const glm::vec2& pos);
 		void PushText(std::string& text, const glm::vec3& color);
 		bool OnLeftClick(const glm::vec2& mousePos);
-		bool OnRelease();
+
+		void Set(float pos, float size);
 
 		void SubmitCommand();
 		bool TakeInput(KeyPressedEvent& event);
 		const bool Clicked() { return m_Clicked; }
 
-		static Ref<Console> Create(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label, ElementPosition pos);
+		static Ref<Console> Create(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label);
 	private:
 		glm::vec4 getCoords();
 		void updateBuffers();
 		void clearConsole();
 	private:
-		ElementPosition m_Pos;
 		Ref<Renderer2D> m_TextRenderer;
 		Ref<ConsoleText> m_Text;
 		CommandLine m_CmdLine;
@@ -77,7 +77,6 @@ namespace Dot {
 
 		unsigned int m_Index;
 		bool m_Clicked;
-		bool m_Resize;
 	private:
 		std::unordered_map<std::string, std::function<void()>> m_Command;
 	};

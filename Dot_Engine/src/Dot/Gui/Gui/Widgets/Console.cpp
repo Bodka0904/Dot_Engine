@@ -33,8 +33,11 @@ namespace Dot {
 		int counter = 0;
 		for (char c : text)
 		{
-			if (CurrentRowSize >= MaxRowLength || c == '\n')
+			if (c == '\n')
+				RowCount++;
+			if (CurrentRowSize >= MaxRowLength)
 			{
+				Text.PushChar('\n', color);
 				RowCount++;
 				CurrentRowSize = 0;
 				if (RowCount >= MaxRows)
@@ -43,7 +46,7 @@ namespace Dot {
 					renderer->RestartBuffer();
 					renderer->Push(Text.GetVertice(0), MAX_CHAR_PER_CONSOLE);
 					renderer->PrepareForRender();
-					
+
 					oldNum = 0;
 					RowCount = 0;
 					// Push characters that were deleted;
@@ -53,7 +56,23 @@ namespace Dot {
 						CurrentRowSize += CharSize;
 					}
 				}
-			}	
+			}
+			if (RowCount >= MaxRows)
+			{
+				Text.Clear();
+				renderer->RestartBuffer();
+				renderer->Push(Text.GetVertice(0), MAX_CHAR_PER_CONSOLE);
+				renderer->PrepareForRender();
+
+				oldNum = 0;
+				RowCount = 0;
+				// Push characters that were deleted;
+				for (int i = 0; i < counter; ++i)
+				{
+					Text.PushChar(text.c_str()[i], color);
+					CurrentRowSize += CharSize;
+				}
+			}
 			counter++;
 			CurrentRowSize += CharSize;
 			Text.PushChar(c, color);
@@ -61,20 +80,25 @@ namespace Dot {
 		renderer->PushOffset(Text.GetVertice(oldNum), text.size(), oldNum);
 	}
 
+	void ConsoleText::SetMaxRowLen(float len)
+	{
+		MaxRowLength = len;
+	}
+
 	void ConsoleText::RecalculateNumberOfRows(float height)
 	{
 		MaxRows = int((height) / (Font::GetFont("Arial")->GetData().lineHeight * 0.2f));
 	}
+
 	
 	
-	Console::Console(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label, ElementPosition pos)
+	
+	Console::Console(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label)
 		:
 		m_Label("Arial", label, glm::vec2(position.x, position.y + 4), glm::vec2(0.2f), labelColor, MAX_CHAR_PER_LABEL),
 		m_Position(position),
 		m_Size(size),
-		m_Clicked(false),
-		m_Resize(false),
-		m_Pos(pos)
+		m_Clicked(false)
 	{
 		m_Index = GuiApplication::Get()->PopIndex();
 		m_CmdLine.Index = GuiApplication::Get()->PopIndex();
@@ -135,25 +159,6 @@ namespace Dot {
 		if (mousePos.x >= coords.x && mousePos.x <= coords.z
 			&& mousePos.y <= coords.y && mousePos.y >= coords.w)
 		{
-			switch (m_Pos)
-			{
-			case Dot::ElementPosition::LEFT:
-				break;
-			case Dot::ElementPosition::RIGHT:
-				break;
-			case Dot::ElementPosition::TOP:
-				break;
-			case Dot::ElementPosition::BOTTOM:
-				if (mousePos.y <= m_Position.y + m_Label.GetSize().y)
-				{
-					m_Resize = true;
-					return true;
-				}
-				break;
-			default:
-				break;
-			}
-
 			if (mousePos.y >= coords.y - m_CmdLine.Size.y)
 			{
 				m_Clicked = !m_Clicked;
@@ -165,16 +170,17 @@ namespace Dot {
 		}
 		return false;
 	}
-	bool Console::OnRelease()
+
+	void Console::Set(float pos, float size)
 	{
-		if (m_Resize)
-		{
-			clearConsole();
-			m_Resize = false;
-			return true;
-		}
-		return false;
+		m_Position.x = pos;
+		m_Size.x = size;
+		m_CmdLine.Position.x = pos;
+		m_CmdLine.Size.x = size;
+		m_Text->SetMaxRowLen(m_Size.x);
+		updateBuffers();
 	}
+	
 	void Console::SetPosition(const glm::vec2& pos)
 	{
 		m_Position = pos;
@@ -265,45 +271,7 @@ namespace Dot {
 		return false;
 	}
 
-	void Console::Update(const glm::vec2& mousePos)
-	{
-		if (m_Resize)
-		{
-			switch (m_Pos)
-			{
-			case ElementPosition::LEFT:
-				m_Size.x = abs(mousePos.x - m_Position.x);
-				if (m_Position.x + m_Size.x > Input::GetWindowSize().x / 2)
-					m_Size.x = Input::GetWindowSize().x / 2;
-				break;
-			case ElementPosition::RIGHT:
-				m_Size.x += m_Position.x - mousePos.x;
-				m_Position.x = mousePos.x;
-				if (m_Position.x < Input::GetWindowSize().x / 2)
-				{
-					m_Position.x = Input::GetWindowSize().x / 2;
-					m_Size.x = Input::GetWindowSize().x / 2;
-				}
-				break;
-			case ElementPosition::BOTTOM:
-				m_Size.y += m_Position.y - mousePos.y;
-				m_Position.y = mousePos.y;
-				if (m_Position.y < Input::GetWindowSize().y / 2)
-				{
-					m_Position.y = Input::GetWindowSize().y / 2;
-					m_Size.y = Input::GetWindowSize().y / 2;
-				}
-				if (m_Size.y < m_Label.GetSize().y)
-				{
-					m_Position.y = Input::GetWindowSize().y - m_Label.GetSize().y;
-					m_Size.y = m_Label.GetSize().y;
-				}
-				break;
-			}
-			m_Text->RecalculateNumberOfRows(m_Size.y);
-			updateBuffers();
-		}	
-	}
+	
 	void Console::Render()
 	{
 		m_TextRenderer->Render();
@@ -337,9 +305,9 @@ namespace Dot {
 		m_TextRenderer->PrepareForRender();
 	}
 
-	Ref<Console> Console::Create(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label, ElementPosition pos)
+	Ref<Console> Console::Create(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label)
 	{
-		Ref<Console> console = std::make_shared<Console>(position, size, labelColor, label,pos);
+		Ref<Console> console = std::make_shared<Console>(position, size, labelColor, label);
 		return console;
 	}
 

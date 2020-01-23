@@ -132,7 +132,7 @@
     <ClInclude Include="src\Dot\ECS\Types.h" />
     <ClInclude Include="src\Dot\Gui\Gui\GuiApplication.h" />
     <ClInclude Include="src\Dot\Gui\Gui\GuiBlock.h" />
-    <ClInclude Include="src\Dot\Gui\Gui\GuiLayout.h" />
+    <ClInclude Include="src\Dot\Gui\Gui\Layout.h" />
     <ClInclude Include="src\Dot\Gui\Gui\Widgets\ArrowButton.h" />
     <ClInclude Include="src\Dot\Gui\Gui\Widgets\Button.h" />
     <ClInclude Include="src\Dot\Gui\Gui\Widgets\CheckBox.h" />
@@ -590,7 +590,7 @@
     <ClCompile Include="src\Dot\ECS\SystemManager.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\GuiApplication.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\GuiBlock.cpp" />
-    <ClCompile Include="src\Dot\Gui\Gui\GuiLayout.cpp" />
+    <ClCompile Include="src\Dot\Gui\Gui\Layout.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\Widgets\ArrowButton.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\Widgets\Button.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\Widgets\CheckBox.cpp" />

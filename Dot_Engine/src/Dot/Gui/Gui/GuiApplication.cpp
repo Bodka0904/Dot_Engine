@@ -56,24 +56,19 @@ namespace Dot {
 		m_GuiShader->UploadUniformMat4("u_ViewProjectionMatrix", m_Camera->GetViewProjectionMatrix());
 		m_Texture->Bind(0);
 		m_GuiRenderer->Render();
-		
+			
 		glm::vec2 mousePos = glm::vec2(Input::GetMousePosition().first, Input::GetMousePosition().second);
 		for (int i = 0; i < m_Blocks.size(); ++i)
 		{
-		
 			m_Blocks[i]->HandleResize(mousePos);
 			m_Blocks[i]->OnUpdate();
-			for (auto& console : m_Blocks[i]->m_Console)
-				console.second->Update(mousePos);
-			for (auto& panel : m_Blocks[i]->m_Panel)
-				panel.second->Update(mousePos);	
+		
 			for (auto& win : m_Blocks[i]->m_Window)
 			{
 				win.second->Update(mousePos);
 				win.second->Render();
 			}
 		}
-
 
 		Font::Bind("Arial");
 		for (int i = 0; i < m_Blocks.size(); ++i)
@@ -113,10 +108,10 @@ namespace Dot {
 			for (int i = 0; i < m_Blocks.size(); ++i)
 			{
 			
-				for (auto& win : m_Blocks[i]->m_Window)
-				{
-					win.second->OnWindowResize(event);
-				}
+				//for (auto& win : m_Blocks[i]->m_Window)
+				//{
+				//	win.second->OnWindowResize(event);
+				//}
 			}
 		}
 		else if (e.GetEventType() == EventType::MouseButtonPressed)
@@ -134,7 +129,7 @@ namespace Dot {
 			{
 				for (int i = 0; i < m_Blocks.size(); ++i)
 				{
-					m_Blocks[i]->OnRightClick();
+					//m_Blocks[i]->OnRightClick();
 				}
 			}
 		}
@@ -154,14 +149,14 @@ namespace Dot {
 			Dot::KeyPressedEvent& event = (Dot::KeyPressedEvent&)e;
 			for (int i = 0; i < m_Blocks.size(); ++i)
 			{
-				for (auto& console : m_Blocks[i]->m_Console)
-				{
-					if (console.second->TakeInput(event))
-					{
-						e.IsHandled() = true;
-						break;
-					}
-				}
+				//for (auto& console : m_Blocks[i]->m_Console)
+				//{
+				//	if (console.second->TakeInput(event))
+				//	{
+				//		e.IsHandled() = true;
+				//		break;
+				//	}
+				//}
 			}
 		}
 		for (int i = 0; i < m_Blocks.size(); ++i)
