@@ -23,8 +23,8 @@ namespace Dot {
 		float mouseY = Input::GetMouseY();;
 		float mouseZ = 1.0f;
 
-		mouseX = mouseX / (app.GetWin().GetWidth() * 0.5) - 1.0f;
-		mouseY = mouseY / (app.GetWin().GetHeight() * 0.5)- 1.0f;
+		mouseX = mouseX / (app.GetWin().GetWidth() * 0.5f) - 1.0f;
+		mouseY = mouseY / (app.GetWin().GetHeight() * 0.5f)- 1.0f;
 		
 		glm::mat4 invVP = glm::inverse(camera.GetProjectionMatrix() * camera.GetViewMatrix());
 		glm::vec4 screenPos = glm::vec4(mouseX, -mouseY, 1.0f, 1.0f);
@@ -52,8 +52,8 @@ namespace Dot {
 		float half = start + ((finish - start) / 2.0f);
 		glm::vec3 startPoint = getPointOnRay(m_CurrentRay, start, camPos);
 		glm::vec3 endPoint = getPointOnRay(m_CurrentRay, half, camPos);
-		float height = terr->GetHeight(endPoint);
-			
+		//float height = terr->GetHeight(endPoint);
+		float height = 0.0f;
 		if (count >= RAY_RECURSION_COUNT)
 		{
 			glm::vec3 result = getPointOnRay(m_CurrentRay, half, camPos);

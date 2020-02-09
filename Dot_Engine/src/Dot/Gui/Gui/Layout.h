@@ -13,12 +13,13 @@ namespace Dot {
 
 	struct Element
 	{
-		Element(ElementType Type,float Height,const std::string& Name)
-			:type(Type),height(Height),name(Name)
+		Element(ElementType Type,float Height,const std::string& Name,bool Visible = true)
+			:type(Type),height(Height),name(Name),visible(Visible)
 		{}
 
 		std::string name;
 		float height;
+		bool visible;
 		ElementType type;
 	};
 
@@ -35,7 +36,12 @@ namespace Dot {
 		std::vector<Console*> m_Console;
 
 		bool MouseHoover(const glm::vec2 mousePos);
+		void Restart();
 		glm::vec4 getCoords();
+
+	private:
+		glm::vec2 defaultPosition;
+		glm::vec2 defaultSize;
 	};
 
 	class Layout
@@ -59,5 +65,7 @@ namespace Dot {
 			}
 		};
 		cmp m_Cmp;
+
+		static constexpr float s_MinSize = 100;
 	};
 }

@@ -26,7 +26,7 @@ namespace Dot {
 		LOG_WARN("Vendor: %s", (char*)glGetString(GL_VENDOR));
 		LOG_WARN("Renderer: %s", (char*)glGetString(GL_RENDERER));
 		LOG_WARN("Version: %s", (char*)glGetString(GL_VERSION));
-
+		
 		if (glewInit() != GLEW_OK)
 		{
 			LOG_ERR("OpenGLContext: Could not initialize glew");

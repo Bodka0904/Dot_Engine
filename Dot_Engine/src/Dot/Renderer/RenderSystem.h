@@ -4,6 +4,7 @@
 #include "Dot/Renderer/Camera/Camera.h"
 #include "Dot/Renderer/Light/Light.h"
 #include "Dot/Renderer/MaterialStack.h"
+#include "Dot/Renderer/Buffers/FrameBuffer.h"
 
 namespace Dot {
 
@@ -47,6 +48,9 @@ namespace Dot {
 		void BeginScene(const Camera& camera, const Ref<Light>& light);
 
 		void Render();
+		void AddFBO(Ref<Framebuffer> fbo);
+		void RemoveFBO(Ref<Framebuffer> fbo);
+
 		virtual void Add(Entity entity) override;
 		virtual void Remove(Entity entity) override;
 
@@ -55,6 +59,8 @@ namespace Dot {
 		void setRenderStates(int32_t states);
 		void removeFromContainer(std::vector<Entity>& container,Entity entity);
 	private:	
+		std::vector<Ref<Framebuffer>> m_FBOs;
+		unsigned int m_FboIndex = 0;
 
 		enum RenderMod
 		{
@@ -83,6 +89,7 @@ namespace Dot {
 			glm::vec4 LightColor;
 			float	  LightStrength;
 		};
+
 		LightData m_LightData;
 		SceneData m_SceneData;
 		

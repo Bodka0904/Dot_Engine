@@ -37,6 +37,11 @@ namespace Dot {
 
 	Slider::~Slider()
 	{
+		Clean();
+	}
+
+	void Slider::Clean()
+	{
 		GuiApplication::Get()->PushIndex(m_Index);
 		GuiApplication::Get()->PushIndex(m_Grab.index);
 
@@ -48,6 +53,7 @@ namespace Dot {
 		quad.resize(MAX_TEXT_CHAR);
 		GuiApplication::Get()->UpdateTextBuffer(m_Index, &quad[0], MAX_TEXT_CHAR);
 	}
+	
 	bool Slider::OnLeftClick(const glm::vec2& mousePos)
 	{
 		if (MouseHoover(mousePos))
@@ -105,7 +111,7 @@ namespace Dot {
 
 	void Slider::StopRender()
 	{
-		m_Grab.position = glm::vec2(-100,-100);
+		m_Grab.position = glm::vec2(-100.0f,-100.0f) + m_Size;
 		updateBuffers();
 	}
 	

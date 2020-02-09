@@ -12,7 +12,7 @@ namespace Dot {
 		m_Density(density)
 	{
 		m_Terrain = terrain;
-		
+
 
 		m_Entity = ECSManager::Get()->CreateEntity();
 		ECSManager::Get()->AddComponent(m_Entity, Transform{ glm::vec3(0, 0, 0),glm::vec3(0, 0, 0), glm::vec3(1, 1, 1) });
@@ -32,15 +32,15 @@ namespace Dot {
 		tmpTransform.pos = m_Transform->pos;
 		tmpTransform.scale = glm::vec3(1, 1, 1);
 		tmpTransform.rot = glm::vec3(0, 0, 0);
-	
+
 		float step = m_Radius / m_Intensity;
 		for (size_t i = 0; i < m_Intensity; ++i)
 		{
 			glm::vec2 nextPos;
-			nextPos.x = step * (i+1) * cos(i) + m_Transform->pos.x + RandomGenerator::Random(0,m_Density);
-			nextPos.y = step * (i+1) * sin(i) + m_Transform->pos.z + RandomGenerator::Random(0,m_Density);;
+			nextPos.x = step * (i + 1) * cos(i) + m_Transform->pos.x + (float)RandomGenerator::Random(0.0, (double)m_Density);
+			nextPos.y = step * (i + 1) * sin(i) + m_Transform->pos.z + (float)RandomGenerator::Random(0.0, (double)m_Density);
 
-			tmpTransform.pos = glm::vec3(nextPos.x, m_Terrain->GetHeight(glm::vec3(nextPos.x, 0, nextPos.y)), nextPos.y);
+			//tmpTransform.pos = glm::vec3(nextPos.x, m_Terrain->GetHeight(glm::vec3(nextPos.x, 0, nextPos.y)), nextPos.y);
 			tmpTransform.rot.y = (float)RandomGenerator::Random(0, 90);
 			tmpTransform.UpdateModel();
 			transforms[i] = tmpTransform.model;
@@ -55,11 +55,11 @@ namespace Dot {
 	{
 		m_Intensity = intensity;
 	}
-	void Brush::SetRadius(unsigned int radius)
+	void Brush::SetRadius(float radius)
 	{
 		m_Radius = radius;
 	}
-	void Brush::SetDensity(double density)
+	void Brush::SetDensity(float density)
 	{
 		m_Density = density;
 	}

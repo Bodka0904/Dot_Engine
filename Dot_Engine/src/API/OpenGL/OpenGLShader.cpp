@@ -71,6 +71,13 @@ namespace Dot {
 	void OpenGLShader::AddUniform(UniformDataType type, unsigned int size, unsigned int offset, const std::string& name)
 	{
 		int id = glGetUniformLocation(m_RendererID, name.c_str());
+		if (type == UniformDataType::SAMPLER2D)
+		{
+			glUseProgram(m_RendererID);
+			glUniform1i(id, m_Textures);
+			m_Uniforms[name].slot = m_Textures;
+			m_Textures++;
+		}
 		if (id != -1)
 		{
 			m_Uniforms[name].size = size;
@@ -300,6 +307,9 @@ namespace Dot {
 			case GL_SAMPLER_2D: uniType = UniformDataType::SAMPLER2D;
 				sizeUni = 0;
 				break;
+			case GL_SAMPLER_CUBE: uniType = UniformDataType::SAMPLERCUBE;
+				sizeUni = 0;
+				break;
 			case GL_BOOL:	uniType = UniformDataType::BOOL;
 				sizeUni = sizeof(bool);
 				break;
@@ -312,8 +322,10 @@ namespace Dot {
 					std::size_t pos = nameStr.find("[");
 					std::string subStr = nameStr.substr(0, pos + 1);
 					std::string uniformName = subStr + std::to_string(i) + std::string("]");
+
 					AddUniform(uniType, sizeUni, offset, uniformName);
 					offset += sizeUni;
+					m_UniformsSize += sizeUni;
 				}
 			}
 			else
@@ -321,11 +333,6 @@ namespace Dot {
 			
 				AddUniform(uniType, sizeUni, offset, name);
 				offset += sizeUni;
-			}
-			if (uniType == UniformDataType::SAMPLER2D)
-			{
-				UploadUniformInt(name, m_Textures);
-				m_Textures++;
 			}
 			m_UniformsSize += sizeUni;
 		}

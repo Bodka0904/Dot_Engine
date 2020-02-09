@@ -43,11 +43,11 @@ namespace Dot {
 		return y;
 	}
 
-	glm::vec2 WindowsInput::GetWindowSizeImpl()
+	std::pair<int, int> WindowsInput::GetWindowSizeImpl()
 	{
 		int width, height;
 		GLFWwindow* window = (GLFWwindow*)Application::Get().GetWin().GetNativeWindow();
 		glfwGetWindowSize(window, &width, &height);
-		return glm::vec2(width, height);
+		return std::pair<int, int>(width,height);
 	}
 }

@@ -27,6 +27,10 @@ namespace Dot {
 	}
 	TextArea::~TextArea()
 	{
+		Clean();
+	}
+	void TextArea::Clean()
+	{
 		GuiApplication::Get()->PushIndex(m_Index);
 		GuiApplication::Get()->UpdateVertexBuffer(m_Index, &QuadVertex2D());
 
@@ -89,7 +93,7 @@ namespace Dot {
 	}
 	void TextArea::StopRender()
 	{
-		m_Position = glm::vec2(-100);
+		m_Position = glm::vec2(-100) + m_Size;
 		updateBuffers();
 	}
 	void TextArea::TakeInput(KeyPressedEvent& event, TYPE type)

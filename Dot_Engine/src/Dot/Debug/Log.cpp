@@ -35,8 +35,9 @@ namespace Dot {
 			vsprintf_s(log, length, format, args);
 
 			std::string date = Dot::CurrentDateTime();
+		
 			m_LogFile << date << ": " << log << std::endl;
-			if (m_Console.get())
+			if (m_Console)
 				m_Console->PushText(date + ": " + log + "\n",glm::vec3(0.2,1,0.4));
 			
 			std::cout << ANSI(ANSI_COLOR_GREEN_F)<< "INFO: " << date << ": " << fncname << ": " << log << ANSI(ANSI_COLOR_WHITE_F) << std::endl;
@@ -65,7 +66,7 @@ namespace Dot {
 
 			std::string date = Dot::CurrentDateTime();
 			m_LogFile << date << ": " << log << std::endl;
-			if (m_Console.get())
+			if (m_Console)
 				m_Console->PushText(date + ": " + log + "\n",glm::vec3(0.6,0.7,0));
 			std::cout << ANSI(ANSI_COLOR_YELLOW_F) << "WARN: " << date << ": " << fncname << ": " << log << ANSI(ANSI_COLOR_WHITE_F) << std::endl;
 
@@ -93,7 +94,7 @@ namespace Dot {
 
 			std::string date = Dot::CurrentDateTime();
 			m_LogFile << date << ": " << log << std::endl;
-			if (m_Console.get())
+			if (m_Console)
 				m_Console->PushText(date + ": " + log + "\n",glm::vec3(1, 0.3, 0.1));
 
 			std::cout << ANSI(ANSI_COLOR_RED_F) << "ERROR: " << date << ": " << fncname << ": " << log << ANSI(ANSI_COLOR_WHITE_F) << std::endl;
@@ -107,7 +108,7 @@ namespace Dot {
 
 	void Logger::ConnectConsole(Ref<Console> console)
 	{
-		m_Console = console;
+		m_Console = console.get();
 	}
 
 	void Logger::SetLogFile(const std::string& logfile)

@@ -9,6 +9,7 @@ namespace Dot {
 	public:
 		CheckBox(const std::string& label, const glm::vec2& position, const glm::vec2& size, const glm::vec3& color);
 		~CheckBox();
+		virtual void Clean() override;
 		virtual bool MouseHoover(const glm::vec2& mousePos)override;
 		virtual bool OnLeftClick(const glm::vec2& mousePos) override;
 		virtual void Move(const glm::vec2& pos)override;
@@ -30,7 +31,7 @@ namespace Dot {
 		glm::vec2 m_Position;
 		glm::vec2 m_Size;
 
-		unsigned int m_Index;
+		int m_Index;
 		bool m_Clicked = false;
 
 	};

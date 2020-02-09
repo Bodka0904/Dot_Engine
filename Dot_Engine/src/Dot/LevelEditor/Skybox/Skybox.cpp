@@ -5,20 +5,20 @@
 namespace Dot {
 
 
-	Skybox::Skybox(const std::vector<std::string> faces,float SIZE)
+	Skybox::Skybox(float Size)
+		: size(Size)
 	{
-		m_CubeMap = CubeMapTexture::Create(faces);
-		m_VAO = ArrayBuffer::Create();
+		vao = ArrayBuffer::Create();
 
 		float vertices[24]{
-			-SIZE,  SIZE,  SIZE,
-			-SIZE, -SIZE,  SIZE,
-			 SIZE, -SIZE,  SIZE,
-			 SIZE,  SIZE,  SIZE,
-			-SIZE,  SIZE, -SIZE,
-			-SIZE, -SIZE, -SIZE,
-			 SIZE, -SIZE, -SIZE,
-			 SIZE,  SIZE, -SIZE,
+			-size,  size,  size,
+			-size, -size,  size,
+			 size, -size,  size,
+			 size,  size,  size,
+			-size,  size, -size,
+			-size, -size, -size,
+			 size, -size, -size,
+			 size,  size, -size,
 		};
 
 		unsigned int indices[24] = {
@@ -35,15 +35,20 @@ namespace Dot {
 		};
 		std::shared_ptr<VertexBuffer> VBO = VertexBuffer::Create(vertices, sizeof(vertices), D_STATIC_DRAW);
 		VBO->SetLayout(layout);
-		m_VAO->AddVBO(VBO);
+		vao->AddVBO(VBO);
 
 		std::shared_ptr<IndexBuffer> IBO = IndexBuffer::Create(indices, 24);
-		m_VAO->AddIBO(IBO);
+		vao->AddIBO(IBO);
 	}
 
 	Skybox::~Skybox()
 	{
 		
+	}
+
+	void Skybox::Render(const Ref<Shader>& shader, int drawMod)
+	{
+		RenderCommand::SubmitElement(vao, drawMod);
 	}
 
 }

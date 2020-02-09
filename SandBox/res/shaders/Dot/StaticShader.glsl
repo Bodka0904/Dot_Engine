@@ -18,35 +18,30 @@ layout(std140, binding = 0) uniform o_CameraData
 
 uniform mat4 u_ModelMatrix;
 
-out vec3 v_FragPos;
-out vec3 v_Normal;
 out vec2 v_TexCoord;
-out vec3 v_ViewPos;
-out vec3 v_WorldPos;
+out vec3 v_SurfaceNormal;
+out vec3 v_CameraVector;
+out vec4 v_WorldPos;
 
 void main()
 {
 	vec4 WorldPos = u_ModelMatrix * vec4(a_Position, 1.0);
-	vec4 Position = ViewProjectionMatrix * WorldPos;
+	gl_Position = ViewProjectionMatrix * WorldPos;
 
-	gl_Position = Position;
-
-	v_FragPos = Position.xyz;
-	v_Normal = mat3(transpose(inverse(u_ModelMatrix))) * a_Normal;
 	v_TexCoord = a_TexCoord;
-	v_ViewPos = ViewPos;
-	v_WorldPos = WorldPos.xyz;
+	v_SurfaceNormal = vec4(u_ModelMatrix * vec4(a_Normal, 0.0)).xyz;
+	v_WorldPos = WorldPos;
+	v_CameraVector = vec4(inverse(ViewMatrix) * vec4(0.0, 0.0, 0.0, 1.0)).xyz - WorldPos.xyz;
 }
 
 
 #type fragment
 #version 430 core
 
-in vec3 v_FragPos;
-in vec3 v_Normal;
 in vec2 v_TexCoord;
-in vec3 v_ViewPos;
-in vec3 v_WorldPos;
+in vec3 v_SurfaceNormal;
+in vec3 v_CameraVector;
+in vec4 v_WorldPos;
 
 layout(std140, binding = 1) uniform o_Light
 {
@@ -54,42 +49,48 @@ layout(std140, binding = 1) uniform o_Light
 	vec4 LightColor;
 	float LightStrength;
 };
-
+uniform float u_Shininess;
+uniform float u_Reflectivity;
 
 uniform float u_Radius;
 uniform vec2 u_BrushPosition;
 
 uniform sampler2D u_Texture;
+const vec3 c_BrushColor = vec3(0.2, 0.7, 1.0);
 
 out vec4 color;
 
-const vec3 c_BrushColor = vec3(0.2, 0.7, 1.0);
-float c_AmbientStrength = 0.8;
-float c_SpecularStrength = 0.5;
+vec4 CalculateLight()
+{
+	// Diffuse
+	vec3 lightVector = LightPosition.xyz - v_WorldPos.xyz;
+	vec3 unitNormal = normalize(v_SurfaceNormal);
+	vec3 unitLightVector = normalize(lightVector);
 
+	float result = dot(unitNormal, unitLightVector);
+	float brightness = max(result, 0.0);
+	vec3 diffuse = brightness * LightColor.xyz;
+
+	// Specular
+	vec3 unitCameraVector = normalize(v_CameraVector);
+	vec3 lightDirection = -unitLightVector;
+	vec3 reflectLightDirection = reflect(lightDirection,unitNormal);
+	
+	float specFactor = dot(reflectLightDirection, unitCameraVector);
+	specFactor = max(specFactor, 0.0);
+	float dampFactor = pow(specFactor, u_Shininess);
+	vec3 specular = dampFactor * u_Reflectivity * LightColor.xyz;
+
+	return vec4(diffuse + specular, 1.0);
+}
 
 void main()
 {
-	vec3 norm = normalize(v_Normal);
-	vec3 lightDir = normalize(LightPosition.xyz - v_FragPos);
-
-	vec3 ambient = c_AmbientStrength * LightColor.xyz;
-	vec3 viewDir = normalize(v_ViewPos - v_FragPos);
-	vec3 reflectDir = reflect(-lightDir, norm);
-
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
-	float diff = max(dot(norm, lightDir), 0.0);
-
-	vec3 specular = c_SpecularStrength * spec * LightColor.xyz;
-	vec3 diffuse = diff * LightColor.xyz;
-
-	vec3 result = (ambient + diffuse + specular) * LightStrength;
-
 	float dist = length(u_BrushPosition - v_WorldPos.xz);
-
+	vec3 result = CalculateLight().xyz;
 	if (dist < u_Radius)
 		result += c_BrushColor;
 
-	color = texture(u_Texture, v_TexCoord) * vec4(result, 1.0);
+	color = texture(u_Texture, v_TexCoord) * vec4(result,1.0);
 	
 }

@@ -10,7 +10,7 @@ namespace Dot {
 		m_Position(position),
 		m_Size(size)
 	{
-		m_FrameBuffer = Framebuffer::Create(Input::GetWindowSize().x, Input::GetWindowSize().y, FramebufferFormat::RGBA16F);
+		m_FrameBuffer = Framebuffer::Create(Input::GetWindowSize().first, Input::GetWindowSize().second, FramebufferFormat::RGBA16F);
 		glm::vec2 panelCoords[4] = {
 					glm::vec2(0.0f ,	   1.0f / 8.0f),
 					glm::vec2(1.0f / 8.0f, 1.0f / 8.0f),
@@ -38,6 +38,10 @@ namespace Dot {
 	}
 	GuiWindow::~GuiWindow()
 	{
+		Clean();
+	}
+	void GuiWindow::Clean()
+	{
 		GuiApplication::Get()->PushIndex(m_Index);
 	}
 	void GuiWindow::SetPosition(const glm::vec2& pos)
@@ -54,15 +58,25 @@ namespace Dot {
 	{
 		
 	}
+	void GuiWindow::ActivateRenderTarget()
+	{
+		m_FrameBuffer->Bind();
+	}
 	void GuiWindow::Render()
 	{
 		m_FrameBuffer->BindTexture(0);
 		m_Renderer->Render();
 	}
-	void GuiWindow::Set(float pos, float size)
+	void GuiWindow::SetX(float pos, float size)
 	{
 		m_Position.x = pos;
 		m_Size.x = size;
+		updateBuffers();
+	}
+	void GuiWindow::SetY(float pos, float height)
+	{
+		m_Position.y = pos;
+		m_Size.y = height;
 		updateBuffers();
 	}
 	void GuiWindow::OnWindowResize(WindowResizeEvent& event)

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Renderable.h""
 
 #include <assimp/Importer.hpp>      
@@ -10,7 +11,7 @@
 namespace Dot {
 	struct VertexBoneData
 	{
-		#define NUM_BONES_PER_VERTEX 4
+#define NUM_BONES_PER_VERTEX 4
 		VertexBoneData()
 		{
 			Reset();
@@ -56,53 +57,50 @@ namespace Dot {
 
 	};
 
-	class AnimatedMesh : public Renderable
+	struct Animation
 	{
-	public:
-		AnimatedMesh(const std::string& Filename);
-		~AnimatedMesh();
+		Animation(const std::string& filename);
+	
+		const aiScene* pScene;
+		std::map<std::string, const aiNodeAnim*> nodeAnim;
+		std::map<std::string, unsigned int> boneMapping; 
+		std::vector<BoneInfo> boneInfo;
+		
 
-		virtual void Render(const Ref<Shader>& shader, int drawMod) override;
-		virtual Ref<ArrayBuffer>& GetVAO() { return m_VAO; }
-
-		void AnimateBones(float TimeInSeconds);
-		void SetToDefaultPosition();
-		unsigned int GetNumBones() const { return m_NumBones; }
+		glm::mat4 inverseTransform;
+		unsigned int numBones;
+		float time = 0.0f;
 	private:
-		glm::vec3 calcInterpolatedScaling(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		glm::quat calcInterpolatedRotation(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		glm::vec3 calcInterpolatedPosition(float AnimationTime, const aiNodeAnim* pNodeAnim);
-
-		unsigned int findScaling(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		unsigned int findRotation(float AnimationTime, const aiNodeAnim* pNodeAnim);
-		unsigned int findPosition(float AnimationTime, const aiNodeAnim* pNodeAnim);
 		const aiNodeAnim* findNodeAnim(const aiAnimation* pAnimation, const std::string NodeName);
-
 		void loadHierarchy(const aiNode* pNode, std::vector<std::string>& boneMappingDelete);
-		void readNodeHeirarchy(float AnimationTime, const aiNode* pNode, const glm::mat4& ParentTransform);
 
-		void initMesh(unsigned int MeshIndex,const aiMesh* paiMesh,std::vector<AnimatedVertex>& vertices,std::vector<unsigned int>& Indices);
-		void loadBones(unsigned int MeshIndex, const aiMesh* paiMesh, std::vector<VertexBoneData>& Bones);
-	private:
-		Ref<ArrayBuffer> m_VAO;
-
-		std::vector<BoneInfo> m_BoneInfo;
-		std::vector<SubMesh> m_SubMesh;
-
-
-		std::map<std::string, unsigned int> m_BoneMapping; // maps a bone name to its index
-		std::map<std::string, const aiNodeAnim*> m_NodeAnim;
-
-		unsigned int m_NumBones;
-		glm::mat4 m_InverseTransform;
-
-		const aiScene* m_pScene;
-		Assimp::Importer m_Importer;
-
-		float m_Time = 0.0f;
-		bool m_IsAnimated = false;
+		Assimp::Importer importer;
 	};
 
-	
+	class AnimationComponent
+	{
+	public:
+		std::map<std::string,Ref<Animation>> animation;
+		bool isAnimating;
+	};
+
+	class SkinnedMesh : public Renderable
+	{
+	public:
+		SkinnedMesh(const std::string& filename);
+		void SetAnimation(Ref<Animation> animation);
+
+		virtual void Render(const Ref<Shader>& shader, int drawMod)override;
+
+		Ref<ArrayBuffer> vao;
+		Ref<Material> material;
+		std::vector<SubMesh> subMesh;
+		std::vector<AnimatedVertex> vertices;
+	private:
+		void initMesh(unsigned int MeshIndex, const aiMesh* paiMesh, std::vector<AnimatedVertex>& vertices, std::vector<unsigned int>& Indices);
+		void initAnimation(unsigned int MeshIndex, const aiMesh* paiMesh);
+		Animation *skeleton;
+		Assimp::Importer importer;
+	};
 
 }

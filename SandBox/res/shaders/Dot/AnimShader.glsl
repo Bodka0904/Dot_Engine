@@ -9,10 +9,11 @@ layout(location = 4) in vec4 a_Weights;
 
 
 out vec2 v_TexCoord;
-out vec3 v_FragPos;
+out vec3 v_SurfaceNormal;
+out vec3 v_CameraVector;
+out vec4 v_WorldPos;
+
 out vec3 v_Normal;
-out vec3 v_WorldPos;
-out vec3 v_ViewPos;
 
 layout(std140, binding = 0) uniform o_CameraData
 {
@@ -27,7 +28,6 @@ const int MAX_BONES = 100;
 uniform mat4 u_gBones[MAX_BONES];
 uniform mat4 u_ModelMatrix;
 
-
 void main()
 {
 	mat4 BoneTransform = u_gBones[a_BoneIDs[0]] * a_Weights[0];
@@ -35,27 +35,30 @@ void main()
 	BoneTransform += u_gBones[a_BoneIDs[2]] * a_Weights[2];
 	BoneTransform += u_gBones[a_BoneIDs[3]] * a_Weights[3];
 
+	mat4 Model = u_ModelMatrix * BoneTransform;
+	vec4 WorldPos = Model * vec4(a_Position, 1.0);
 
-	vec4 WorldPos = u_ModelMatrix * BoneTransform * vec4(a_Position, 1.0);
+	gl_Position = ViewProjectionMatrix * WorldPos;
 
-	vec4 Position = ViewProjectionMatrix * WorldPos;
-
-	gl_Position = Position;
-
-	v_FragPos = Position.xyz;
-	v_Normal = mat3(transpose(inverse(u_ModelMatrix))) * a_Normal;
 	v_TexCoord = a_TexCoord;
-	v_ViewPos = ViewPos;
+	v_SurfaceNormal = vec4(u_ModelMatrix * vec4(a_Normal, 0.0)).xyz;
+	v_WorldPos = WorldPos;
+	v_CameraVector = vec4(inverse(ViewMatrix) * vec4(0.0, 0.0, 0.0, 1.0)).xyz - WorldPos.xyz;
+
+
+	v_Normal = mat3(transpose(inverse(Model))) * a_Normal;
 }
 
 
 #type fragment
 #version 430 core
 
-in vec3 v_FragPos;
-in vec3 v_Normal;
 in vec2 v_TexCoord;
-in vec3 v_ViewPos;
+in vec3 v_SurfaceNormal;
+in vec3 v_CameraVector;
+in vec4 v_WorldPos;
+
+in vec3 v_Normal;
 
 layout(std140, binding = 1) uniform o_Light
 {
@@ -63,55 +66,36 @@ layout(std140, binding = 1) uniform o_Light
 	vec4 LightColor;
 	float LightStrength;
 };
+uniform float u_Reflectivity;
 
 uniform sampler2D u_Texture;
 
 out vec4 color;
 
-float c_AmbientStrength = 0.1;
-float c_SpecularStrength = 0.5;
-
-float c_Constant = 1.0f;
-float c_Linear = 0.09f;
-float c_Quadratic = 0.032f;
-
-
-
-float CalcPointLight()
+vec3 CalculateLight()
 {
-	float distance = length(LightPosition.xyz - v_FragPos);
-	float attenuation = 1.0 / (c_Constant + c_Linear * distance +
-		c_Quadratic * (distance * distance));
+	float ambientStrength = LightStrength;
+	vec3 ambient = ambientStrength * LightColor.xyz;
 
-	return attenuation;
-}
-
-
-vec3 CalcDirLight()
-{
+	// diffuse 
 	vec3 norm = normalize(v_Normal);
-	vec3 lightDir = normalize(LightPosition.xyz - v_FragPos);
-
-	vec3 ambient = c_AmbientStrength * LightColor.xyz;
-	vec3 viewDir = normalize(v_ViewPos - v_FragPos);
-	vec3 reflectDir = reflect(-lightDir, norm);
-
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+	vec3 lightDir = normalize(LightPosition.xyz - v_WorldPos.xyz);
 	float diff = max(dot(norm, lightDir), 0.0);
-
-	vec3 specular = c_SpecularStrength * spec * LightColor.xyz;
 	vec3 diffuse = diff * LightColor.xyz;
 
-	vec3 result = (ambient + diffuse + specular) * LightStrength;
+	// specular
+	float specularStrength = 0.5;
+	vec3 viewDir = normalize(v_CameraVector);
+	vec3 reflectDir = reflect(-lightDir, norm);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+	vec3 specular = u_Reflectivity * spec * LightColor.xyz;
 
-	return result;
+	return (ambient + diffuse + specular);
 }
-
 
 void main()
 {
-	vec3 result = CalcDirLight();
-	color = texture(u_Texture, v_TexCoord) * vec4(result, 1.0);
+	color = texture(u_Texture, v_TexCoord) * vec4(CalculateLight(),1.0);
 }
 
 

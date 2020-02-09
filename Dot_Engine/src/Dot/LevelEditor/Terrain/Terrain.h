@@ -1,37 +1,43 @@
 #pragma once
 #include "Dot/Renderer/Buffers/ArrayBuffer.h"
 #include "Dot/PhysicsEngine/Components/ComponentData.h"
-#include "Dot/Renderer/Renderable/StaticMesh.h"
 #include "Dot/ECS/ECSManager.h"
+#include "Dot/Renderer/Shader/Shader.h"
+#include "Dot/Renderer/Renderable/Renderable.h"
 #include <glm/glm.hpp>
 
 namespace Dot {
-	class TerrainEditor;
+	class TerrainCollider
+	{
+	public:
+		TerrainCollider();
+		
+		float GetHeight(const glm::vec3& position);
+		void UpdateHeights(Entity entity);
+
+		std::vector<std::vector<float> > heights;
+		int numVertex = 0;
+		float size = 0.0f;
+
+	private:
+		float barryCentric(const glm::vec3& p1, const glm::vec3& p2, const glm::vec3& p3, const glm::vec2& pos);
+	};
+
 	class Terrain : public Renderable
 	{
-		friend class TerrainEditor;
 	public:
-		Terrain(float size, int numvertex);
+		Terrain(float Size,int NumVertex);
 		~Terrain();
 
 		virtual void Render(const Ref<Shader>& shader, int drawMod) override;
 
-		float GetSize() const { return m_Size; }
-		float GetHeight(const glm::vec3& position);
-		virtual Ref<ArrayBuffer>& GetVAO() { return m_VAO; }
-	private:
-		float barryCentric(const glm::vec3& p1, const glm::vec3& p2, const glm::vec3& p3, const glm::vec2& pos);
-	
-	private:
-		Ref<ArrayBuffer> m_VAO;
-		std::vector<glm::vec4> m_Vertices;
-		std::vector<glm::vec4> m_Normals;
-		std::vector<glm::vec2> m_TexCoords;
-		std::vector<std::vector<float> > m_Heights;
+		Ref<ArrayBuffer> vao;
+		std::vector<glm::vec4> vertices;
+		std::vector<glm::vec4> normals;
+		std::vector<glm::vec2> texCoords;
 
-		int m_NumVertex = 0;
-		float m_Size = 0.0f;			
+		int numVertex;
+		float size;
 	};
 
 }
-

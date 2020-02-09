@@ -18,12 +18,13 @@ namespace Dot {
 		RenderCommand::SetClearColor(color);
 	}
 
-	void Renderer::BeginScene(Camera& camera)
+	void Renderer::BeginScene(const Ref<Shader>shader,Camera& camera)
 	{
 		m_SceneData.ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 		m_SceneData.ViewMatrix = camera.GetViewMatrix();
 		m_SceneData.ProjectionMatrix = camera.GetProjectionMatrix();
 		m_SceneData.ViewPos = camera.GetPosition();
+		shader->UpdateUniformBufferObject("o_CameraData", &m_SceneData, (sizeof(glm::mat4) * 3) + sizeof(glm::vec3));
 	}
 
 	void Renderer::SubmitArraysCount(const Ref<Shader> shader, const Ref<ArrayBuffer>& vao, const glm::mat4& transform,int count, int drawMod)
@@ -36,9 +37,9 @@ namespace Dot {
 	void Renderer::SubmitArraysInstanced(const Ref<Shader> shader, const Ref<Light>&light, const Ref<ArrayBuffer>& vao,unsigned int num, int drawMod)
 	{
 		shader->Bind();
-		shader->UploadUniformFloat3("u_LightPosition", light->GetPosition());
-		shader->UploadUniformFloat3("u_LightColor", light->GetColor());
-		shader->UploadUniformFloat("u_LightStrength", light->GetStrength());
+		shader->UploadUniformFloat3("u_LightPosition", light->position);
+		shader->UploadUniformFloat3("u_LightColor", light->color);
+		shader->UploadUniformFloat("u_LightStrength", light->strength);
 
 		RenderCommand::SubmitArraysInstanced(vao, num, drawMod);
 	}
@@ -49,9 +50,9 @@ namespace Dot {
 		shader->Bind();
 
 		shader->UploadUniformMat4("u_ModelMatrix", transform);
-		shader->UploadUniformFloat3("u_LightPosition", light->GetPosition());
-		shader->UploadUniformFloat3("u_LightColor", light->GetColor());
-		shader->UploadUniformFloat("u_LightStrength", light->GetStrength());
+		shader->UploadUniformFloat3("u_LightPosition", light->position);
+		shader->UploadUniformFloat3("u_LightColor", light->color);
+		shader->UploadUniformFloat("u_LightStrength", light->strength);
 
 		RenderCommand::SubmitElement(vao, drawMod);
 	}
@@ -62,9 +63,9 @@ namespace Dot {
 	{
 
 		shader->Bind();
-		shader->UploadUniformFloat3("u_LightPosition", light->GetPosition());
-		shader->UploadUniformFloat3("u_LightColor", light->GetColor());
-		shader->UploadUniformFloat("u_LightStrength", light->GetStrength());
+		shader->UploadUniformFloat3("u_LightPosition", light->position);
+		shader->UploadUniformFloat3("u_LightColor", light->color);
+		shader->UploadUniformFloat("u_LightStrength", light->strength);
 		
 		RenderCommand::SubmitElementInstanced(vao, num, drawMod);
 	}

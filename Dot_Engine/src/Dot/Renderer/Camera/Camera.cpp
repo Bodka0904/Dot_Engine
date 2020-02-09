@@ -13,7 +13,7 @@
 namespace Dot {
 
 	Camera::Camera(const glm::mat4& projectionMatrix)
-		: m_ProjectionMatrix(projectionMatrix)
+		: m_ProjectionMatrix(projectionMatrix),m_ViewMatrix(glm::mat4(1))
 	{
 		// Sensible defaults
 		m_PanSpeed = 0.00045f;

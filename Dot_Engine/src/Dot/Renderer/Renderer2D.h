@@ -15,7 +15,7 @@ namespace Dot {
 		void ClearBufferOffset(int offset, int size);
 		void RestartBuffer();
 		void Push(const QuadVertex2D* data, int len);
-		void PushOffset(const QuadVertex2D* data, int len, int offsetElements = 0);
+		void PushOffset(const QuadVertex2D* data, unsigned int len, unsigned int offsetElements = 0);
 		void PrepareForRender();
 		void BeginScene();
 		void Render();

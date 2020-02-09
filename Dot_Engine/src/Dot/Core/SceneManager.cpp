@@ -10,12 +10,9 @@ namespace Dot {
 	}
 	void SceneManager::Update(float dt)
 	{
-		m_CurrentScene->Update(dt);
+		m_CurrentScene->OnUpdate(dt);
 	}
-	void SceneManager::Draw()
-	{
-		m_CurrentScene->Draw();
-	}
+	
 	unsigned int SceneManager::Add(Ref<Scene> scene)
 	{
 		scene->OnActivate();

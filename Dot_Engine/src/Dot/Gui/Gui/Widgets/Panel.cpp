@@ -34,8 +34,17 @@ namespace Dot {
 
 	Dot::Panel::~Panel()
 	{
+		Clean();
+	}
+
+	void Panel::Clean()
+	{
 		GuiApplication::Get()->PushIndex(m_PanelIndex);
 		GuiApplication::Get()->PushIndex(m_Index);
+		for (auto& widg : m_Widget)
+		{
+			widg.second->Clean();
+		}
 	}
 
 	void Panel::Move(const glm::vec2& pos)
@@ -116,10 +125,18 @@ namespace Dot {
 		return false;
 	}
 
-	void Panel::Set(float pos, float size)
+	void Panel::SetX(float pos, float size)
 	{
 		m_Position.x = pos;
 		m_Size.x = size;
+		handleResize();
+		updateBuffers();
+	}
+
+	void Panel::SetY(float pos,float height)
+	{
+		m_Position.y = pos;
+		m_Size.y = height;
 		handleResize();
 		updateBuffers();
 	}

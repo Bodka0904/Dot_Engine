@@ -17,6 +17,7 @@ namespace Dot {
 
 		TextArea(const std::string& label, const glm::vec2& position, const glm::vec2& size, const glm::vec3& color,const glm::vec3& textColor);
 		~TextArea();
+		virtual void Clean() override;
 		virtual bool OnLeftClick(const glm::vec2& mousePos) override;
 		virtual bool MouseHoover(const glm::vec2& mousePos);
 		virtual bool Release() override;
@@ -62,7 +63,7 @@ namespace Dot {
 		glm::vec2 m_Size;
 		glm::vec3 m_TextColor;
 
-		unsigned int m_Index;
+		int m_Index;
 		bool m_Clicked = false;
 	};
 }

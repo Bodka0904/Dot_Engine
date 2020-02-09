@@ -41,7 +41,7 @@ namespace Dot {
 			}
 		}
 	}
-	void Renderer2D::PushOffset(const QuadVertex2D* data, int len, int offsetElements)
+	void Renderer2D::PushOffset(const QuadVertex2D* data, unsigned int len, unsigned int offsetElements)
 	{
 		m_VAO->GetVertexBuffer(0)->Update(data, len * sizeof(QuadVertex2D), offsetElements * sizeof(QuadVertex2D));
 		if (offsetElements > m_NumDataStored)

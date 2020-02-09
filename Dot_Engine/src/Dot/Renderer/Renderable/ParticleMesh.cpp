@@ -13,7 +13,7 @@ namespace Dot {
 			{1,ShaderDataType::Float3,"position"},
 			{2,ShaderDataType::Float2,"texcoord"}
 		};
-		Ref<VertexBuffer> VBO = VertexBuffer::Create((float*)&quad.vertex[0], sizeof(Vertex3D) * 4, D_DYNAMIC_DRAW);
+		Ref<VertexBuffer> VBO = VertexBuffer::Create((float*)& quad.vertex[0], sizeof(Vertex3D) * 4, D_DYNAMIC_DRAW);
 		VBO->SetLayout(vbolayout);
 		m_VAO->AddVBO(VBO);
 

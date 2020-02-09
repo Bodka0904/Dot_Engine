@@ -59,10 +59,13 @@ namespace Dot {
 			m_Window = glfwCreateWindow(width, height, props.Title.c_str(), NULL, NULL);
 		}
 		else if (props.FullScreen)
+		{
 			m_Window = glfwCreateWindow(width, height, props.Title.c_str(), glfwGetPrimaryMonitor(), NULL);
+		}
 		else
+		{
 			m_Window = glfwCreateWindow(props.Width, props.Height, props.Title.c_str(), NULL, NULL);
-
+		}
 
 		m_Context = APIContext::Create(m_Window);
 		m_Context->Init();

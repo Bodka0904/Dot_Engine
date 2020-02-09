@@ -9,6 +9,7 @@ namespace Dot {
 	public:
 		ArrowButton(const std::string& label, const glm::vec2& position, const glm::vec2& size, const glm::vec3& color);
 		~ArrowButton();
+		virtual void Clean() override;
 		virtual bool OnLeftClick(const glm::vec2& mousePos) override;
 		virtual bool MouseHoover(const glm::vec2& mousePos);
 		virtual bool Release() override;

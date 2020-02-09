@@ -15,7 +15,6 @@
     <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\Shaders\Terrain\TerrainBrushCompute.glsl" />
-    <None Include="res\Shaders\Dot\TerrainShader.glsl" />
+    <None Include="res\Shaders\Dot\WaterTileShader.glsl" />
   </ItemGroup>
 </Project>

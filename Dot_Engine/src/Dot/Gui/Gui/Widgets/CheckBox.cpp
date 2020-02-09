@@ -23,6 +23,11 @@ namespace Dot {
 	}
 	CheckBox::~CheckBox()
 	{
+		Clean();
+	}
+
+	void CheckBox::Clean()
+	{
 		GuiApplication::Get()->PushIndex(m_Index);
 		GuiApplication::Get()->UpdateVertexBuffer(m_Index, &QuadVertex2D());
 
@@ -32,6 +37,7 @@ namespace Dot {
 		quad.resize(MAX_TEXT_CHAR);
 		GuiApplication::Get()->UpdateTextBuffer(m_Index, &quad[0], MAX_TEXT_CHAR);
 	}
+	
 	bool CheckBox::MouseHoover(const glm::vec2& mousePos)
 	{
 		glm::vec4 coords = getCoords();

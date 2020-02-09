@@ -1,7 +1,5 @@
 #pragma once
 #include "Dot/Core/Editor.h"
-#include "Dot/Renderer/Renderable/Renderable.h"
-#include "Dot/Renderer/Renderable/AnimatedMesh.h"
 #include "Dot/Renderer/Renderable/ParticleMesh.h"
 
 
@@ -137,8 +135,7 @@ namespace Dot {
 		virtual void OnDestroy();
 	
 	private:
-		Ref<Renderable> m_Renderable;
-		Ref<Material> m_Material;
+	
 
 		//GuiAnimation* m_GuiAnim = NULL;
 		//GuiParticle* m_GuiParticle = NULL;

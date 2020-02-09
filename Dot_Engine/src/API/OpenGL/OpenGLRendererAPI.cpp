@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "OpenGLRendererAPI.h"
+#include "Dot/Core/Input.h"
+
 #include <GL/glew.h>
 
 namespace Dot {
@@ -8,6 +10,7 @@ namespace Dot {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_CLIP_DISTANCE0);
 	}
 	void OpenGLRendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
 	{
@@ -44,6 +47,13 @@ namespace Dot {
 	void OpenGLRendererAPI::ClearBuffer()
 	{
 		glClear(GL_DEPTH_BUFFER_BIT);
+	}
+
+	void OpenGLRendererAPI::SetDefaultRenderTarget()
+	{
+		auto WinSize = Input::GetWindowSize();
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glViewport(0, 0, WinSize.first, WinSize.second);
 	}
 	
 	void OpenGLRendererAPI::SubmitArraysCount(const Ref<ArrayBuffer>& vao,int count, int drawMod)

@@ -12,6 +12,7 @@ namespace Dot {
 	{
 		NONE,
 		SAMPLER2D,
+		SAMPLERCUBE,
 		BOOL,FLOAT,FLOAT_VEC2,FLOAT_VEC3,FLOAT_VEC4,
 		INT,INT_VEC2,INT_VEC3,INT_VEC4,
 		FLOAT_MAT4,
@@ -24,6 +25,7 @@ namespace Dot {
 		int ID;
 		unsigned int offset;
 		unsigned int size;
+		unsigned int slot; // only textures
 	};
 
 	class Shader

@@ -16,7 +16,7 @@ layout(std140, binding = 0) uniform o_CameraData
 
 uniform float u_Time;
 
-const float c_WaveLength = 3;
+const float c_WaveLength = 5;
 const float c_WaveAmplitude = 2;
 const vec3 RandSeed = vec3(12.9898, 78.233, 43758.5453);
 

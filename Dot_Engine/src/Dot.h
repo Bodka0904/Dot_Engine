@@ -17,9 +17,8 @@
 #include "Dot/Renderer/Camera/CameraController.h"
 #include "Dot/Renderer/Camera/OrthoCamera.h"
 #include "Dot/Renderer/Shader/Shader.h"
-#include "Dot/Renderer/Light/LightController.h"
 #include "Dot/Renderer/Texture.h"
-#include "Dot/Renderer/Renderable/StaticMesh.h"
+#include "Dot/Renderer/Renderable/Mesh.h"
 #include "Dot/Renderer/Renderable/InstancedMesh.h"
 #include "Dot/Renderer/Renderable/AnimatedMesh.h"
 #include "Dot/Renderer/RenderSystem.h"
@@ -32,7 +31,7 @@
 
 #include "Dot/LevelEditor/Skybox/Skybox.h"
 #include "Dot/LevelEditor/Terrain/TerrainEditor.h"
-#include "Dot/LevelEditor/Water/Water.h"
+#include "Dot/LevelEditor/Water/WaterTile.h"
 #include "Dot/LevelEditor/Terrain/BrushInstance.h"
 #include "Dot/LevelEditor/Terrain/Brush.h"
 
@@ -41,6 +40,7 @@
 #include "Dot/PhysicsEngine/CollisionSystem.h"
 #include "Dot/PhysicsEngine/PhysicsSystem.h"
 #include "Dot/ParticleEngine/ParticleSystem.h"
+#include "Dot/Renderer/AnimationSystem.h"
 
 #include "Dot/PhysicsEngine/Components/ComponentData.h"
 #include "Dot/ParticleEngine/ParticleComponent.h"
@@ -57,4 +57,8 @@
 #include "Dot/Gui/Gui/Widgets/Console.h"
 #include "Dot/Gui/Gui/Widgets/Panel.h"
 #include "Dot/Gui/Gui/Widgets/GuiWindow.h"
+#include "Dot/Gui/Gui/Widgets/Dropdown.h"
 #include "Dot/Gui/Gui/Layout.h"
+
+
+#include "Dot/LevelEditor/LevelEditor.h"

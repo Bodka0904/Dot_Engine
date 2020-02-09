@@ -10,9 +10,8 @@ public:
 	void Update(float speed, float rot, float dt, Dot::Terrain& terrain);
 
 private:
-	Dot::Ref<Dot::AnimatedMesh> m_Model;
 	Dot::Ref<Dot::Material> m_Material;
-
+	Dot::AnimationComponent* m_Animation;
 	Dot::RigidBody* m_RigidBody;
 	Dot::Transform* m_Transform;
 	Dot::Entity m_Player;

@@ -249,15 +249,6 @@
     <ClInclude Include="src\Dot\Gui\GuiLayer.h">
       <Filter>src\Dot\Gui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Interface\EditorLayer.h">
-      <Filter>src\Dot\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Interface\InterfaceLayer.h">
-      <Filter>src\Dot\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\LevelEditorLayer.h">
-      <Filter>src\Dot\LevelEditor</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\LevelEditor\Skybox\Skybox.h">
       <Filter>src\Dot\LevelEditor\Skybox</Filter>
     </ClInclude>
@@ -272,12 +263,6 @@
     </ClInclude>
     <ClInclude Include="src\Dot\LevelEditor\Terrain\TerrainEditor.h">
       <Filter>src\Dot\LevelEditor\Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Terrain\TerrainSystem.h">
-      <Filter>src\Dot\LevelEditor\Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\LevelEditor\Water\Water.h">
-      <Filter>src\Dot\LevelEditor\Water</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\ParticleEngine\EmitterEditor.h">
       <Filter>src\Dot\ParticleEngine</Filter>
@@ -330,9 +315,6 @@
     <ClInclude Include="src\Dot\Renderer\Light\Light.h">
       <Filter>src\Dot\Renderer\Light</Filter>
     </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\Light\LightController.h">
-      <Filter>src\Dot\Renderer\Light</Filter>
-    </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Material.h">
       <Filter>src\Dot\Renderer</Filter>
     </ClInclude>
@@ -344,9 +326,6 @@
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\RenderSystem.h">
       <Filter>src\Dot\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\Renderable\AnimatedMesh.h">
-      <Filter>src\Dot\Renderer\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Renderable\InstancedMesh.h">
       <Filter>src\Dot\Renderer\Renderable</Filter>
@@ -361,9 +340,6 @@
       <Filter>src\Dot\Renderer\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Renderable\RenderableEditor.h">
-      <Filter>src\Dot\Renderer\Renderable</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Dot\Renderer\Renderable\StaticMesh.h">
       <Filter>src\Dot\Renderer\Renderable</Filter>
     </ClInclude>
     <ClInclude Include="src\Dot\Renderer\Renderer.h">
@@ -1520,6 +1496,14 @@
     <ClInclude Include="src\Dot\Gui\Gui\Widgets\ArrowButton.h" />
     <ClInclude Include="src\Dot\Gui\Gui\Widgets\GuiWindow.h" />
     <ClInclude Include="src\Dot\Gui\Gui\Layout.h" />
+    <ClInclude Include="src\Dot\Gui\Gui\PopBlock.h" />
+    <ClInclude Include="src\Dot\Renderer\Renderable\AnimatedMesh.h" />
+    <ClInclude Include="src\Dot\Renderer\AnimationSystem.h" />
+    <ClInclude Include="src\Dot\Renderer\Renderable\Mesh.h" />
+    <ClInclude Include="src\Dot\LevelEditor\Water\WaterTile.h" />
+    <ClInclude Include="src\Dot\Gui\Gui\Widgets\Dropdown.h" />
+    <ClInclude Include="src\Dot\LevelEditor\LevelEditor.h" />
+    <ClInclude Include="src\Dot\Core\Scene3D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\API\OpenGL\OpenGLArrayBuffer.cpp">
@@ -1609,15 +1593,6 @@
     <ClCompile Include="src\Dot\Gui\GuiLayer.cpp">
       <Filter>src\Dot\Gui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Interface\EditorLayer.cpp">
-      <Filter>src\Dot\Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Interface\InterfaceLayer.cpp">
-      <Filter>src\Dot\Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\LevelEditorLayer.cpp">
-      <Filter>src\Dot\LevelEditor</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\LevelEditor\Skybox\Skybox.cpp">
       <Filter>src\Dot\LevelEditor\Skybox</Filter>
     </ClCompile>
@@ -1632,12 +1607,6 @@
     </ClCompile>
     <ClCompile Include="src\Dot\LevelEditor\Terrain\TerrainEditor.cpp">
       <Filter>src\Dot\LevelEditor\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Terrain\TerrainSystem.cpp">
-      <Filter>src\Dot\LevelEditor\Terrain</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\LevelEditor\Water\Water.cpp">
-      <Filter>src\Dot\LevelEditor\Water</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\ParticleEngine\EmitterEditor.cpp">
       <Filter>src\Dot\ParticleEngine</Filter>
@@ -1687,9 +1656,6 @@
     <ClCompile Include="src\Dot\Renderer\Light\Light.cpp">
       <Filter>src\Dot\Renderer\Light</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\Light\LightController.cpp">
-      <Filter>src\Dot\Renderer\Light</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Material.cpp">
       <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
@@ -1702,9 +1668,6 @@
     <ClCompile Include="src\Dot\Renderer\RenderSystem.cpp">
       <Filter>src\Dot\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\Renderable\AnimatedMesh.cpp">
-      <Filter>src\Dot\Renderer\Renderable</Filter>
-    </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Renderable\InstancedMesh.cpp">
       <Filter>src\Dot\Renderer\Renderable</Filter>
     </ClCompile>
@@ -1715,9 +1678,6 @@
       <Filter>src\Dot\Renderer\Renderable</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Renderable\RenderableEditor.cpp">
-      <Filter>src\Dot\Renderer\Renderable</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dot\Renderer\Renderable\StaticMesh.cpp">
       <Filter>src\Dot\Renderer\Renderable</Filter>
     </ClCompile>
     <ClCompile Include="src\Dot\Renderer\Renderer.cpp">
@@ -1773,5 +1733,13 @@
     <ClCompile Include="src\Dot\Gui\Gui\Widgets\ArrowButton.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\Widgets\GuiWindow.cpp" />
     <ClCompile Include="src\Dot\Gui\Gui\Layout.cpp" />
+    <ClCompile Include="src\Dot\Gui\Gui\PopBlock.cpp" />
+    <ClCompile Include="src\Dot\Renderer\Renderable\AnimatedMesh.cpp" />
+    <ClCompile Include="src\Dot\Renderer\AnimationSystem.cpp" />
+    <ClCompile Include="src\Dot\Renderer\Renderable\Mesh.cpp" />
+    <ClCompile Include="src\Dot\LevelEditor\Water\WaterTile.cpp" />
+    <ClCompile Include="src\Dot\Gui\Gui\Widgets\Dropdown.cpp" />
+    <ClCompile Include="src\Dot\LevelEditor\LevelEditor.cpp" />
+    <ClCompile Include="src\Dot\Core\Scene3D.cpp" />
   </ItemGroup>
 </Project>

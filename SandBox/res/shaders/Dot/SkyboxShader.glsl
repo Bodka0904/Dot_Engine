@@ -13,6 +13,7 @@ layout(std140, binding = 0) uniform o_CameraData
 	vec3 ViewPos;
 };
 
+uniform mat4 u_ModelMatrix;
 
 void main()
 {

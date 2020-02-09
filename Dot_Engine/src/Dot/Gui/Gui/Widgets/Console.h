@@ -12,20 +12,15 @@ namespace Dot {
 	{
 		friend class Console;
 	public:
-		ConsoleText(const glm::vec2& position, const glm::vec2& size, float maxRowLen, int maxRows);
+		ConsoleText(const glm::vec2& position, const glm::vec2& size);
 
 		void Push(std::string& text,Ref<Renderer2D>& renderer, const glm::vec3& color);
-		void SetMaxRowLen(float len);
-		void RecalculateNumberOfRows(float height);
+		void SetSize(const glm::vec2& size);
 	private:
 		Text Text;
-		float MaxRowLength;
-		float CurrentRowSize;
-		float CharSize;
-		int MaxRows;
-		int RowCount;
-
 		glm::vec2 Size;
+		float CharSize;
+		float LineHeight;
 	};
 
 
@@ -43,7 +38,7 @@ namespace Dot {
 	public:
 		Console(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label);
 		~Console();
-
+		void Clean();
 		bool MouseHoover(const glm::vec2& mousePos);
 		void RegisterCommand(const std::string& cmd, std::function<void()> func);
 		void Render();
@@ -53,7 +48,8 @@ namespace Dot {
 		void PushText(std::string& text, const glm::vec3& color);
 		bool OnLeftClick(const glm::vec2& mousePos);
 
-		void Set(float pos, float size);
+		void SetX(float pos, float size);
+		void SetY(float pos, float height);
 
 		void SubmitCommand();
 		bool TakeInput(KeyPressedEvent& event);
@@ -75,7 +71,7 @@ namespace Dot {
 		glm::vec2 m_Position;
 		glm::vec2 m_Size;
 
-		unsigned int m_Index;
+		int m_Index;
 		bool m_Clicked;
 	private:
 		std::unordered_map<std::string, std::function<void()>> m_Command;

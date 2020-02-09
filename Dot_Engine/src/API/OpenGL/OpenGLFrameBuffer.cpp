@@ -55,7 +55,7 @@ namespace Dot {
 		}
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, m_ColorAttachment, 0);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D, m_ColorAttachment, 0);
 
 		glGenTextures(1, &m_DepthAttachment);
 		glBindTexture(GL_TEXTURE_2D, m_DepthAttachment);
@@ -81,7 +81,7 @@ namespace Dot {
 	{
 		auto WinSize = Input::GetWindowSize();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		glViewport(0, 0, WinSize.x, WinSize.y);
+		glViewport(0, 0, WinSize.first, WinSize.second);
 	}
 	void OpenGLFramebuffer::BindTexture(uint32_t slot) const
 	{

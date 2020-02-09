@@ -1,13 +1,13 @@
 #pragma once
 #include "Dot/Renderer/Texture.h"
+#include "Dot/Renderer/Renderable/Mesh.h"
 #include "Dot/Renderer/Renderable/AnimatedMesh.h"
-#include "Dot/Renderer/Renderable/StaticMesh.h"
 #include "Dot/Renderer/Renderable/InstancedMesh.h"
 #include "Dot/Renderer/Shader/Shader.h"
 
 
 namespace Dot {
-	
+
 	// Very simple Asset Manager
 	class AssetManager
 	{
@@ -15,10 +15,10 @@ namespace Dot {
 		AssetManager();
 		void LoadAssets(const std::string& file);
 
-		void LoadTexture(const std::string& path,const std::string& name);
+		void LoadTexture(const std::string& path, const std::string& name);
 		void LoadShader(const std::string& path, const std::string& name);
 		void LoadAnimatedMesh(const std::string& path, const std::string& name);
-		void LoadInstancedMesh(const std::string& path, const std::string& name,int capacity);
+		void LoadInstancedMesh(const std::string& path, const std::string& name, int capacity);
 		void LoadStaticMesh(const std::string& path, const std::string& name);
 		void LoadCubeMap(const std::vector<std::string>& face, const std::string& name);
 
@@ -31,18 +31,18 @@ namespace Dot {
 
 		Ref<Texture2D>		GetTexture(const std::string& asset);
 		Ref<CubeMapTexture> GetCubeMap(const std::string& asset);
-		Ref<AnimatedMesh>	GetAnimMesh(const std::string& asset);
-		Ref<StaticMesh>		GetStaticMesh(const std::string& asset);
+		Ref<SkinnedMesh>	GetAnimMesh(const std::string& asset);
+		Ref<Mesh>			GetMesh(const std::string& asset);
 		Ref<InstancedMesh>  GetInstancedMesh(const std::string& asset);
 		Ref<Shader>			GetShader(const std::string& asset);
 
 
 
-		Ref<AnimatedMesh>	GetCopyAnimMesh(const std::string& asset);
-		Ref<StaticMesh>		GetCopyStaticMesh(const std::string& asset);
+		Ref<SkinnedMesh>	GetCopyAnimMesh(const std::string& asset);
+		Ref<Mesh>			GetCopyMesh(const std::string& asset);
 		Ref<InstancedMesh>  GetCopyInstancedMesh(const std::string& asset);
 
-		static Scope<AssetManager>& Get() { return s_Instance; }	
+		static Scope<AssetManager>& Get() { return s_Instance; }
 	private:
 		std::vector<std::string> TokenizeString(const std::string& str, const std::string& delimiter);
 
@@ -69,7 +69,7 @@ namespace Dot {
 		};
 		struct AnimatedMeshAsset
 		{
-			Ref<AnimatedMesh> asset;
+			Ref<SkinnedMesh> asset;
 			std::string name;
 			std::string path;
 		};
@@ -82,12 +82,12 @@ namespace Dot {
 		};
 		struct MeshAsset
 		{
-			Ref<StaticMesh> asset;
+			Ref<Mesh> asset;
 			std::string name;
 			std::string path;
 		};
 
-	private:	
+	private:
 		std::unordered_map <std::string, TextureAsset>		 m_Texture;
 		std::unordered_map <std::string, CubeMapAsset>		 m_CubeMap;
 		std::unordered_map <std::string, AnimatedMeshAsset>  m_AnimatedMesh;

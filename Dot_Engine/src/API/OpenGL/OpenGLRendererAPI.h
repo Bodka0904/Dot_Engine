@@ -15,6 +15,7 @@ namespace Dot {
 		virtual void SetClearColor(const glm::vec4& color) override;
 		virtual void Clear() override;
 		virtual void ClearBuffer() override;
+		virtual void SetDefaultRenderTarget()override;
 
 		virtual void SubmitArraysCount(const Ref<ArrayBuffer>& vao,int count, int drawMod) override;
 		virtual void SubmitArraysInstanced(const Ref<ArrayBuffer>& vao, unsigned int num, int drawMod) override;

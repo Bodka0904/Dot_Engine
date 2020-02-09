@@ -54,8 +54,8 @@ namespace Dot {
 	class Renderable
 	{
 	public:
-		virtual void Render(const Ref<Shader>& shader,int drawMod) = 0;
-		virtual Ref<ArrayBuffer>& GetVAO() = 0;
+		virtual void Render(const Ref<Shader>& shader, int drawMod) = 0;
+		virtual Ref<ArrayBuffer>& GetVAO() { return ArrayBuffer::Create(); };
 	};
 
 	struct RenderComponent

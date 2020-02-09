@@ -3,6 +3,7 @@
 //Size of compute shader local work group - x=32, y=32, z=1(default)
 layout(local_size_x = 32, local_size_y = 32, local_size_z = 1) in;
 
+
 layout(std430, binding = 0) buffer
 buffer_InPos
 {
@@ -28,7 +29,8 @@ bool IsInRadius(vec4 pos)
 	if ((pos.x - u_BrushPosition.x) * (pos.x - u_BrushPosition.x) +
 		(pos.z - u_BrushPosition.y) * (pos.z - u_BrushPosition.y) <= u_Radius * u_Radius)
 		return true;
-	else return false;
+	else 
+		return false;
 }
 
 float SmoothPoint(uint index)

@@ -42,8 +42,6 @@ namespace Dot {
 					auto& rigidBody2 = ECSManager::Get()->GetComponent<RigidBody>(m_Entities[j]);
 					rigidBody2.velocity = glm::vec3(0, 0, 0);
 				}
-
-
 			}
 		}
 		centerSum /= m_Entities.size();
@@ -82,7 +80,7 @@ namespace Dot {
 	{
 		std::sort(m_Entities.begin(), m_Entities.end());
 
-		int position = binarySearch(0, m_Entities.size() - 1, entity);
+		int position = binarySearch(0, (int)m_Entities.size() - 1, entity);
 		if (position != -1 && !m_Entities.empty())
 		{
 			LOG_INFO("Entity with ID % removed", entity);

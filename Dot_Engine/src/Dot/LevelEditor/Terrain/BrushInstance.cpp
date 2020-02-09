@@ -10,24 +10,22 @@ namespace Dot {
 	{
 		m_Texture = AssetManager::Get()->GetTexture(texture);
 		
-		std::vector<glm::mat4> transforms;
-		transforms.resize(1);
 		// Requires to create own copy
-		Ref<InstancedMesh> instance = std::make_shared<InstancedMesh>(model,capacity,transforms);
+		Ref<InstancedMesh> instance = std::make_shared<InstancedMesh>(model,capacity);
 		m_Instance.push_back(instance);
 	}
 	void BrushInstance::Update(const std::vector<glm::mat4>& transforms)
 	{
 		if ((m_CurrentCount + transforms.size()) > m_CapacityPerInstance)
 		{
-			Ref<InstancedMesh> instance = std::make_shared<InstancedMesh>(m_Model, m_CapacityPerInstance, transforms);
+			Ref<InstancedMesh> instance = std::make_shared<InstancedMesh>(m_Model, m_CapacityPerInstance);
 			m_Instance.push_back(instance);
-			m_Instance[m_Instance.size() - 1]->Update(transforms, transforms.size(), 0);
+			m_Instance[m_Instance.size() - 1]->UpdateBuffer();
 			m_CurrentCount = transforms.size();
 		}
 		else
 		{
-			m_Instance[m_Instance.size() - 1]->Update(transforms, transforms.size(), m_CurrentCount);
+			m_Instance[m_Instance.size() - 1]->UpdateBuffer();
 			m_CurrentCount += transforms.size();		
 		}
 	}

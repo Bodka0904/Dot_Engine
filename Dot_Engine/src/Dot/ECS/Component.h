@@ -64,6 +64,6 @@ namespace Dot {
 		std::array<T, MAX_ENTITIES> m_Component;
 		std::unordered_map<Entity, size_t> m_Lookup;
 
-		size_t m_Num = 0;
+		unsigned int m_Num = 0;
 	};
 }

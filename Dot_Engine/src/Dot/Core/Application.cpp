@@ -24,10 +24,9 @@ namespace Dot {
 	
 		s_Instance = this;
 		m_Window = Window::Create();
-
 		m_Window->SetVSync(false);
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
-		
+
 		m_GuiLayer = new GuiLayer();
 		PushOverlay(m_GuiLayer);
 	
@@ -41,6 +40,8 @@ namespace Dot {
 		Dot::ECSManager::Get()->RegisterComponent<SizeOverLifeTime>();
 		Dot::ECSManager::Get()->RegisterComponent<VelocityOverLifeTime>();
 		Dot::ECSManager::Get()->RegisterComponent<ComputeComponent>();
+		Dot::ECSManager::Get()->RegisterComponent<AnimationComponent>();
+		Dot::ECSManager::Get()->RegisterComponent<TerrainCollider>();
 
 		AssetManager::Get()->LoadAssets("Assets.json");
 	}
@@ -48,9 +49,8 @@ namespace Dot {
 
 	Application::~Application()
 	{
-		for (Layer* layer : m_Layouters)
+		for (Layer* layer : m_Layers)
 		{
-			layer->OnGuiDetach();
 			layer->OnDetach();
 			delete layer;
 		}
@@ -65,53 +65,47 @@ namespace Dot {
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			for (Layer* layer : m_Layouters)
+			for (Layer* layer : m_Layers)
 			{
 				{	
 					//Timer timer;
-					layer->OnGuiUpdate();
 					layer->OnUpdate(timestep);				
 				}
 			}
-			m_Window->Update();	
+			m_Window->Update();
 		}
 	}
 
 	void Application::PushLayer(Layer * layer)
 	{
-		m_Layouters.emplace(m_Layouters.begin() + m_LayouterInsertIndex, layer);
+		m_Layers.emplace(m_Layers.begin() + m_LayouterInsertIndex, layer);
 		m_LayouterInsertIndex++;
 		layer->OnAttach();
-		layer->OnGuiAttach();
 	}
 
 	void Application::PushOverlay(Layer * overlay)
 	{
-		m_Layouters.emplace_back(overlay);
+		m_Layers.emplace_back(overlay);
 		overlay->OnAttach();
-		
-		overlay->OnGuiAttach();
 	}
 
 	void Application::PopLayer(Layer * layer)
 	{
-		auto it = std::find(m_Layouters.begin(), m_Layouters.begin() + m_LayouterInsertIndex, layer);
-		if (it != m_Layouters.begin() + m_LayouterInsertIndex)
+		auto it = std::find(m_Layers.begin(), m_Layers.begin() + m_LayouterInsertIndex, layer);
+		if (it != m_Layers.begin() + m_LayouterInsertIndex)
 		{
-			
-			(*it)->OnGuiDetach();
 			(*it)->OnDetach();
 			
-			m_Layouters.erase(it);
+			m_Layers.erase(it);
 			m_LayouterInsertIndex--;
 		}
 	}
 
 	void Application::PopOverlay(Layer * overlay)
 	{
-		auto it = std::find(m_Layouters.begin() + m_LayouterInsertIndex, m_Layouters.end(), overlay);
-		if (it != m_Layouters.end())
-			m_Layouters.erase(it);
+		auto it = std::find(m_Layers.begin() + m_LayouterInsertIndex, m_Layers.end(), overlay);
+		if (it != m_Layers.end())
+			m_Layers.erase(it);
 	}
 
 	void Application::OnEvent(Event & event)
@@ -121,7 +115,7 @@ namespace Dot {
 			WindowResizeEvent& resize = (WindowResizeEvent&)event;
 			RenderCommand::SetViewport(0, 0, resize.GetWidth(), resize.GetHeight());
 		}
-		for (auto it = m_Layouters.rbegin(); it != m_Layouters.rend(); ++it )
+		for (auto it = m_Layers.rbegin(); it != m_Layers.rend(); ++it )
 		{					
 			(*it)->OnEvent(event);
 			if (event.IsHandled())

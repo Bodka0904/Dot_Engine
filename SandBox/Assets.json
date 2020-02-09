@@ -42,12 +42,12 @@
     [
         {
             "Name":"Skybox",
-            "Face1":"res/Textures/Skybox/back.png",
-            "Face2":"res/Textures/Skybox/bottom.png",
-            "Face3":"res/Textures/Skybox/front.png",
-            "Face4":"res/Textures/Skybox/left.png",
-            "Face5":"res/Textures/Skybox/right.png",
-            "Face6":"res/Textures/Skybox/top.png"
+            "Face1":"res/Textures/Skybox/right.png",
+            "Face2":"res/Textures/Skybox/left.png",
+            "Face3":"res/Textures/Skybox/top.png",
+            "Face4":"res/Textures/Skybox/bottom.png",
+            "Face5":"res/Textures/Skybox/back.png",
+            "Face6":"res/Textures/Skybox/front.png"
         }
     ],
     "Shaders":

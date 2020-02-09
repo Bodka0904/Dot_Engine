@@ -39,13 +39,13 @@ namespace Dot {
 		auto emitter = &ECSManager::Get()->GetComponent<ParticleEmitter>(entity);
 		auto render = &ECSManager::Get()->GetComponent<RenderComponent>(entity);
 		auto transform = &ECSManager::Get()->GetComponent<Transform>(entity);
-		
+
 		effect.entity = entity;
 		std::vector<ParticleVertexData> vertexData;
 		std::vector<ParticleData> velocityData;
 		vertexData.resize(emitter->maxCount);
 		velocityData.resize(emitter->maxCount);
-		
+
 		if (emitter->maxCount > MAX_PARTICLES)
 		{
 			LOG_ERR("Max number of particles per efect is %d", MAX_PARTICLES);
@@ -58,22 +58,22 @@ namespace Dot {
 			velocityData[i].velocity.y = (float)RandomGenerator::Random(4, 7);
 			velocityData[i].velocity.z = (float)RandomGenerator::Random(-2, 2);
 			velocityData[i].velocity.w = 0;
-		
+
 			velocityData[i].lifeSpan = (float)RandomGenerator::Random(emitter->minLifeSpan, emitter->maxLifeSpan);
 		}
-		
+
 		BufferLayout buflayout = {
 			{0, ShaderDataType::Float4, "a_ParticlePosition", 1},
 		};
 		effect.BufferVertex.first = 0;
-		effect.BufferVertex.second = ShaderStorageBuffer::Create((float*)vertexData.data(), vertexData.size() * sizeof(ParticleVertexData), D_DYNAMIC_DRAW);
+		effect.BufferVertex.second = ShaderStorageBuffer::Create((float*)vertexData.data(), (unsigned int)vertexData.size() * sizeof(ParticleVertexData), D_DYNAMIC_DRAW);
 		effect.BufferVertex.second->SetLayout(buflayout);
 		render->renderable->GetVAO()->AddSSBO(effect.BufferVertex.second);
-		
-		
+
+
 		effect.BufferData.first = 1;
-		effect.BufferData.second = ShaderStorageBuffer::Create((float*)velocityData.data(), velocityData.size() * sizeof(ParticleData), D_DYNAMIC_DRAW);
-		
+		effect.BufferData.second = ShaderStorageBuffer::Create((float*)velocityData.data(), (unsigned int)velocityData.size() * sizeof(ParticleData), D_DYNAMIC_DRAW);
+
 		m_Effect[compute->shader].push_back(effect);
 	}
 	void ParticleSystem::Remove(Entity entity)
@@ -82,7 +82,7 @@ namespace Dot {
 		if (m_Effect.find(compute.shader) != m_Effect.end())
 		{
 			std::sort(m_Effect[compute.shader].begin(), m_Effect[compute.shader].end(), m_Cmp);
-			int position = binarySearch(0, m_Effect.size() - 1, m_Effect[compute.shader], entity);
+			int position = binarySearch(0, (int)m_Effect.size() - 1, m_Effect[compute.shader], entity);
 			if (position != -1 && !m_Effect[compute.shader].empty())
 			{
 				LOG_INFO("Entity with ID %d removed", entity);
@@ -103,11 +103,11 @@ namespace Dot {
 		auto compute = ECSManager::Get()->GetComponent<ComputeComponent>(entity);
 		auto emitter = &ECSManager::Get()->GetComponent<ParticleEmitter>(entity);
 		auto transform = &ECSManager::Get()->GetComponent<Transform>(entity);
-		
+
 		if (m_Effect.find(compute.shader) != m_Effect.end())
 		{
 			std::sort(m_Effect[compute.shader].begin(), m_Effect[compute.shader].end(), m_Cmp);
-			int position = binarySearch(0, m_Effect.size() - 1, m_Effect[compute.shader], entity);
+			int position = binarySearch(0, (int)m_Effect.size() - 1, m_Effect[compute.shader], entity);
 			if (position != -1 && !m_Effect[compute.shader].empty())
 			{
 				std::vector<ParticleVertexData> vertexData;
@@ -144,14 +144,14 @@ namespace Dot {
 				return mid;
 
 			if (container[mid].entity > entity)
-				return binarySearch(start, mid - 1,container, entity);
+				return binarySearch(start, mid - 1, container, entity);
 
 
-			return binarySearch(mid + 1, end,container, entity);
+			return binarySearch(mid + 1, end, container, entity);
 		}
 		return -1;
 	}
 
-	
+
 
 }

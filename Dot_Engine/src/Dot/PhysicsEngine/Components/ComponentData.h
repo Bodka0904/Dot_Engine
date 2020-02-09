@@ -82,6 +82,7 @@ namespace Dot {
 	struct RigidBody
 	{
 		glm::vec3 velocity;
+		bool terraiCollision = false;
 		//Probably add weight and so on
 	};
 

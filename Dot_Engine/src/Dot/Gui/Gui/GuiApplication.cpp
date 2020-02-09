@@ -7,7 +7,7 @@
 #include "Dot/Renderer/Renderer.h"
 
 namespace Dot {
-	GuiApplication* GuiApplication::s_Instance = NULL;
+	GuiApplication *GuiApplication::s_Instance;
 	void GuiApplication::Init(const std::string& texturePath)
 	{
 		if (!s_Instance)
@@ -17,14 +17,10 @@ namespace Dot {
 	}
 	GuiApplication::GuiApplication(const std::string& texturePath)	
 	{	
-		m_WindowSize = Input::GetWindowSize();
+		glm::vec2 winSize = glm::vec2(float(Input::GetWindowSize().first), float(Input::GetWindowSize().second));
 		m_Texture = Texture2D::Create(texturePath, true,false);
 		m_GuiShader = Shader::Create("GuiShader", "res/Shaders/Dot/GuiShader.glsl");
-		m_Camera = std::make_shared<OrthoCamera>(0, Input::GetWindowSize().x, Input::GetWindowSize().y, 0);
-
-		m_GuiRenderer = std::make_shared<Renderer2D>(MAX_QUADS);
-		m_LabelRenderer = std::make_shared<Renderer2D>(MAX_QUADS * MAX_CHAR_PER_LABEL);
-		m_TextRenderer = std::make_shared<Renderer2D>(MAX_QUADS * MAX_TEXT_CHAR);
+		m_Camera = std::make_shared<OrthoCamera>(0.0f, float(Input::GetWindowSize().first), float(Input::GetWindowSize().second), 0.0f);
 
 
 		glm::vec2 texCoords[4] = {
@@ -33,174 +29,178 @@ namespace Dot {
 				glm::vec2(2.0f / 8.0f, 2.0f / 8.0f),
 				glm::vec2(1.0f / 8.0f, 2.0f / 8.0f)
 		};
-		m_BackGroundQuad = QuadVertex2D(glm::vec2(0,0),Input::GetWindowSize(), glm::vec3(1, 1, 1), &texCoords[0]);
-		m_GuiRenderer->PushOffset(&m_BackGroundQuad, 1,0);
-		for (int i = 1; i < MAX_QUADS; ++i)
-		{
-			m_AvailableIndex.push(i);
-		}
+		m_BackGroundQuad = QuadVertex2D(glm::vec2(0,0), glm::vec2(float(Input::GetWindowSize().first), float(Input::GetWindowSize().second)), glm::vec3(1, 1, 1), &texCoords[0]);
+		m_Layers[BACK].guiRenderer->PushOffset(&m_BackGroundQuad, 1,0);
+		PopIndex(BACK);
 	}
 	GuiApplication::~GuiApplication()
 	{
-		for (GuiBlock* block : m_Blocks)
-		{
-			block->OnDetach();
-			delete block;
-		}
-		delete s_Instance;
+		
 	}
 	void GuiApplication::Update()
 	{
-		RenderCommand::Disable(D_DEPTH_TEST);
-		m_GuiShader->Bind();
-		m_GuiShader->UploadUniformMat4("u_ViewProjectionMatrix", m_Camera->GetViewProjectionMatrix());
-		m_Texture->Bind(0);
-		m_GuiRenderer->Render();
-			
-		glm::vec2 mousePos = glm::vec2(Input::GetMousePosition().first, Input::GetMousePosition().second);
-		for (int i = 0; i < m_Blocks.size(); ++i)
+		if (m_CurrentBlock)
 		{
-			m_Blocks[i]->HandleResize(mousePos);
-			m_Blocks[i]->OnUpdate();
-		
-			for (auto& win : m_Blocks[i]->m_Window)
+			RenderCommand::Disable(D_DEPTH_TEST);
+			m_GuiShader->Bind();
+			m_GuiShader->UploadUniformMat4("u_ViewProjectionMatrix", m_Camera->GetViewProjectionMatrix());
+			m_Texture->Bind(0);
+			m_Layers[BACK].guiRenderer->Render();
+
+			glm::vec2 mousePos = glm::vec2(Input::GetMousePosition().first, Input::GetMousePosition().second);
+
+			m_CurrentBlock->HandleResize(mousePos);
+			m_CurrentBlock->OnUpdate();
+
+			for (auto& win : m_CurrentBlock->m_Window)
 			{
 				win.second->Update(mousePos);
 				win.second->Render();
 			}
-		}
 
-		Font::Bind("Arial");
-		for (int i = 0; i < m_Blocks.size(); ++i)
-		{
-			for (auto& console : m_Blocks[i]->m_Console)
+
+			Font::Bind("Arial");
+
+			for (auto& console : m_CurrentBlock->m_Console)
 				console.second->Render();
+
+			m_Layers[BACK].labelRenderer->Render();
+			m_Layers[BACK].textRenderer->Render();
+
+
+			m_Texture->Bind(0);
+			m_Layers[FRONT].guiRenderer->Render();
+			Font::Bind("Arial");
+			m_Layers[FRONT].labelRenderer->Render();
+			m_Layers[FRONT].textRenderer->Render();
+
+			RenderCommand::Enable(D_DEPTH_TEST);
 		}
-		m_LabelRenderer->Render();
-		m_TextRenderer->Render();
-		RenderCommand::Enable(D_DEPTH_TEST);
 	}
-	void GuiApplication::PushBlock(GuiBlock* block)
+
+	unsigned int GuiApplication::AddBlock(Ref<GuiBlock> block)
 	{
-		m_Blocks.emplace(m_Blocks.begin() + m_BlockInsertIndex, block);
-		m_BlockInsertIndex++;
-		block->OnAttach();
+		m_Blocks[m_InsertedBlockID] = block;
+		m_InsertedBlockID++;
+
+		return m_InsertedBlockID - 1;
 	}
-	void GuiApplication::PopBlock(GuiBlock* block)
+
+	void GuiApplication::SwitchBlock(unsigned int ID)
 	{
-		auto it = std::find(m_Blocks.begin(), m_Blocks.begin() + m_BlockInsertIndex, block);
-		if (it != m_Blocks.begin() + m_BlockInsertIndex)
+		auto it = m_Blocks.find(ID);
+		if (it != m_Blocks.end())
 		{
-			(*it)->OnDetach();
-			m_Blocks.erase(it);
-			m_BlockInsertIndex--;
+			if (m_CurrentBlock)
+			{
+				m_CurrentBlock->OnDetach();
+			}
+			m_CurrentBlock = it->second;
+			m_CurrentBlock->OnAttach();
 		}
 	}
+	
 	void GuiApplication::OnEvent(Event& e)
 	{
-		glm::vec2 mousePos = glm::vec2(Input::GetMousePosition().first, Input::GetMousePosition().second);
-		if (e.GetEventType() == EventType::WindowResized)
+		if (m_CurrentBlock)
 		{
-			WindowResizeEvent& event = (WindowResizeEvent&)e;
-			m_Camera->SetProjectionMatrix(0, event.GetWidth(), event.GetHeight(), 0);
-			m_WindowSize.x = event.GetWidth();
-			m_WindowSize.y = event.GetHeight();
-			for (int i = 0; i < m_Blocks.size(); ++i)
+			glm::vec2 mousePos = glm::vec2(Input::GetMousePosition().first, Input::GetMousePosition().second);
+			if (e.GetEventType() == EventType::WindowResized)
 			{
-			
-				//for (auto& win : m_Blocks[i]->m_Window)
-				//{
-				//	win.second->OnWindowResize(event);
-				//}
-			}
-		}
-		else if (e.GetEventType() == EventType::MouseButtonPressed)
-		{
-			MouseButtonPressEvent& event = (MouseButtonPressEvent&)e;
-			if (event.GetButton() == D_MOUSE_BUTTON_LEFT)
-			{
-				for (int i = 0; i < m_Blocks.size(); ++i)
+				WindowResizeEvent& event = (WindowResizeEvent&)e;
+				m_Camera->SetProjectionMatrix(0, float(event.GetWidth()), float(event.GetHeight()), 0);
+				m_WindowSize.x = float(event.GetWidth());
+				m_WindowSize.y = float(event.GetHeight());
+
+				m_CurrentBlock->OnWindowResize();
+				for (auto& win : m_CurrentBlock->m_Window)
 				{
-					if (m_Blocks[i]->OnLeftClick(mousePos))
+					win.second->OnWindowResize(event);
+				}
+			}
+			else if (e.GetEventType() == EventType::MouseButtonPressed)
+			{
+				MouseButtonPressEvent& event = (MouseButtonPressEvent&)e;
+				if (event.GetButton() == D_MOUSE_BUTTON_LEFT)
+				{
+					if (m_CurrentBlock->OnLeftClick(mousePos))
+						e.IsHandled() = true;
+				}
+				else if (event.GetButton() == D_MOUSE_BUTTON_RIGHT)
+				{
+
+				}
+			}
+			else if (e.GetEventType() == EventType::MouseButtonReleased)
+			{
+				MouseButtonReleaseEvent& event = (MouseButtonReleaseEvent&)e;
+				if (event.GetButton() == D_MOUSE_BUTTON_LEFT)
+				{
+					if (m_CurrentBlock->OnLeftRelease())
+						e.IsHandled() = true;
+				}
+			}
+			else if (e.GetEventType() == EventType::KeyPressed)
+			{
+				Dot::KeyPressedEvent& event = (Dot::KeyPressedEvent&)e;
+
+				for (auto& console : m_CurrentBlock->m_Console)
+				{
+					if (console.second->TakeInput(event))
+					{
+						e.IsHandled() = true;
 						break;
+					}
 				}
 			}
-			else if (event.GetButton() == D_MOUSE_BUTTON_RIGHT)
-			{
-				for (int i = 0; i < m_Blocks.size(); ++i)
-				{
-					//m_Blocks[i]->OnRightClick();
-				}
-			}
-		}
-		else if (e.GetEventType() == EventType::MouseButtonReleased)
-		{
-			MouseButtonReleaseEvent& event = (MouseButtonReleaseEvent&)e;
-			if (event.GetButton() == D_MOUSE_BUTTON_LEFT)
-			{
-				for (int i = 0; i < m_Blocks.size(); ++i)
-				{
-					m_Blocks[i]->OnLeftRelease();
-				}
-			}
-		}
-		else if (e.GetEventType() == EventType::KeyPressed)
-		{
-			Dot::KeyPressedEvent& event = (Dot::KeyPressedEvent&)e;
-			for (int i = 0; i < m_Blocks.size(); ++i)
-			{
-				//for (auto& console : m_Blocks[i]->m_Console)
-				//{
-				//	if (console.second->TakeInput(event))
-				//	{
-				//		e.IsHandled() = true;
-				//		break;
-				//	}
-				//}
-			}
-		}
-		for (int i = 0; i < m_Blocks.size(); ++i)
-		{
-			m_Blocks[i]->OnEvent(e);
-			if (e.IsHandled())
-				break;
+			m_CurrentBlock->OnEvent(e);
 		}
 	}
 
 
-	void GuiApplication::PushIndex(unsigned int index)
+	void GuiApplication::PushIndex(int index, int layer)
 	{
-		m_AvailableIndex.push(index);
-		m_NumQuads--;
+		if (s_Instance != NULL)
+		{
+			D_ASSERT(layer < NUM_GUI_LAYERS, "");
+			D_ASSERT(index < MAX_QUADS, "");
+			m_Layers[layer].availableIndex.push(index);
+			m_Layers[layer].numQuads--;
+		}
 	}
 
-	unsigned int GuiApplication::PopIndex()
+	
+
+	int GuiApplication::PopIndex(int layer)
 	{
-		if (m_NumQuads < MAX_QUADS)
+		D_ASSERT(layer < NUM_GUI_LAYERS, "");
+		if (m_Layers[layer].numQuads < MAX_QUADS)
 		{
-			m_NumQuads++;
-			unsigned int index = m_AvailableIndex.top();
-			m_AvailableIndex.pop();
+			int index = m_Layers[layer].availableIndex.top();
+			m_Layers[layer].availableIndex.pop();
+			m_Layers[layer].numQuads++;
 			return index;
 		}
 		return 0;
 	}
 
-	void GuiApplication::UpdateVertexBuffer(unsigned int index, const QuadVertex2D* vertices, unsigned int len)
+
+
+	void GuiApplication::UpdateVertexBuffer(unsigned int index, const QuadVertex2D* vertices, unsigned int len, int layer)
 	{
-		m_GuiRenderer->PushOffset(vertices, len, index);
+		D_ASSERT(layer < NUM_GUI_LAYERS, "");
+		m_Layers[layer].guiRenderer->PushOffset(vertices, len, index);
 	}
 
-	void GuiApplication::UpdateTextBuffer(unsigned int index, const QuadVertex2D* vertices, unsigned int len)
+	void GuiApplication::UpdateTextBuffer(unsigned int index, const QuadVertex2D* vertices, unsigned int len, int layer)
 	{
-		m_TextRenderer->PushOffset(&vertices[0], len, index * MAX_TEXT_CHAR);
+		D_ASSERT(layer < NUM_GUI_LAYERS, "");
+		m_Layers[layer].textRenderer->PushOffset(&vertices[0], len, index * MAX_TEXT_CHAR);
 	}
 
-	void GuiApplication::UpdateLabelBuffer(unsigned int index, const QuadVertex2D* vertices, unsigned int len)
+	void GuiApplication::UpdateLabelBuffer(unsigned int index, const QuadVertex2D* vertices, unsigned int len, int layer)
 	{
-		m_LabelRenderer->PushOffset(&vertices[0], len, index * MAX_CHAR_PER_LABEL);
+		D_ASSERT(layer < NUM_GUI_LAYERS, "");
+		m_Layers[layer].labelRenderer->PushOffset(&vertices[0], len, index * MAX_CHAR_PER_LABEL);
 	}
-
-	
-	
 }

@@ -11,7 +11,7 @@ namespace Dot {
 		void SetRenderCount(int count) { m_Count = count; }
 
 		virtual void Render(const Ref<Shader>& shader, int drawMod)override;
-		virtual Ref<ArrayBuffer>& GetVAO() { return m_VAO; }
+		virtual Ref<ArrayBuffer>& GetVAO() override { return m_VAO; }
 	private:
 		Ref<ArrayBuffer>m_VAO;
 		int m_Count;

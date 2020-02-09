@@ -10,6 +10,7 @@ namespace Dot {
 	public:
 		Panel(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label);
 		~Panel();
+		void Clean();
 		void Move(const glm::vec2& pos);
 		void SetPosition(const glm::vec2& pos);
 		void SetColor(const glm::vec3& color);
@@ -19,7 +20,8 @@ namespace Dot {
 		bool OnRelease();
 
 
-		void Set(float pos,float size);
+		void SetX(float pos,float size);
+		void SetY(float pos,float height);
 
 		template<typename T>
 		T& GetWidget(const std::string& name)
@@ -35,8 +37,8 @@ namespace Dot {
 	private:
 		std::map<std::string, Ref<Widget>> m_Widget;
 
-		unsigned int m_PanelIndex;
-		unsigned int m_Index;
+		int m_PanelIndex;
+		int m_Index;
 
 		Text m_Label;
 		QuadVertex2D m_PanelQuad;

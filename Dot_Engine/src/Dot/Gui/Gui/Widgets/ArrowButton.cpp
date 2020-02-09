@@ -37,6 +37,11 @@ namespace Dot {
 
 	Dot::ArrowButton::~ArrowButton()
 	{
+		Clean();
+	}
+
+	void ArrowButton::Clean()
+	{
 		GuiApplication::Get()->PushIndex(m_Left.index);
 		GuiApplication::Get()->UpdateVertexBuffer(m_Left.index, &QuadVertex2D());
 
@@ -120,7 +125,7 @@ namespace Dot {
 
 	void Dot::ArrowButton::StopRender()
 	{
-		m_Position = glm::vec2(-100);
+		m_Position = glm::vec2(-100) + m_Size;
 		updateBuffers();
 	}
 
@@ -152,8 +157,7 @@ namespace Dot {
 
 	Ref<Widget> Dot::ArrowButton::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size, const glm::vec3& color)
 	{
-		Ref<ArrowButton> button = std::make_shared<ArrowButton>(label, position, size, color);
-		return button;
+		return std::make_shared<ArrowButton>(label, position, size, color);
 	}
 
 

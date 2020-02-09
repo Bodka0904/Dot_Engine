@@ -15,8 +15,9 @@ namespace Dot {
 		virtual void SetColor(const glm::vec3& color) = 0;
 		virtual void SetSize(const glm::vec2& size) = 0;
 		virtual void StopRender() = 0;
-
 		virtual bool OnLeftClick(const glm::vec2& mousePos) { return false; };
+		virtual void Clean() = 0;
 		virtual const glm::vec2& GetSize() = 0;
+
 	};
 }

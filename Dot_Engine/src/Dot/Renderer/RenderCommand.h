@@ -63,6 +63,10 @@ namespace Dot {
 		{
 			s_RendererAPI->ClearBuffer();
 		}
+		inline static void SetDefaultRenderTarget()
+		{
+			s_RendererAPI->SetDefaultRenderTarget();
+		}
 		inline static void Enable(int32_t state)
 		{
 			s_RendererAPI->Enable(state);

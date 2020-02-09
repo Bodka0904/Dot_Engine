@@ -11,7 +11,7 @@ namespace Dot {
 
 	AssetManager::AssetManager()
 	{
-		
+
 	}
 
 	void AssetManager::LoadAssets(const std::string& file)
@@ -81,7 +81,7 @@ namespace Dot {
 					{
 						LOG_WARN("Asset with the same name, asset %s overriden", asset.name);
 					}
-					m_Shader[asset.name].asset = Shader::Create(asset.name, asset.path);	
+					m_Shader[asset.name].asset = Shader::Create(asset.name, asset.path);
 					m_Shader[asset.name].path = asset.path;
 				}
 
@@ -119,8 +119,8 @@ namespace Dot {
 					{
 						LOG_WARN("Asset with the same name, asset %s overriden", asset.name);
 					}
-					
-					m_AnimatedMesh[asset.name].asset = std::make_shared<AnimatedMesh>(asset.path);
+
+					m_AnimatedMesh[asset.name].asset = std::make_shared<SkinnedMesh>(asset.path);
 					m_AnimatedMesh[asset.name].path = asset.path;
 				}
 			}
@@ -137,7 +137,7 @@ namespace Dot {
 					{
 						LOG_WARN("Asset with the same name, asset %s overriden", asset.name);
 					}
-					m_Mesh[asset.name].asset = std::make_shared<StaticMesh>(asset.path.c_str());
+					m_Mesh[asset.name].asset = std::make_shared<Mesh>(asset.path.c_str());
 					m_Mesh[asset.name].path = asset.path;
 				}
 			}
@@ -151,31 +151,29 @@ namespace Dot {
 					asset.path = it.second[i].m_Attribute[1].m_Value.second;
 					asset.capacity = atoi(it.second[i].m_Attribute[2].m_Value.second.c_str());
 
-					std::vector<glm::mat4>transforms;
-					transforms.resize(1);
 
 					LOG_INFO("Loading instanced mesh %s", asset.path.c_str());
 					if (m_InstancedMesh.find(asset.name) != m_InstancedMesh.end())
 					{
 						LOG_WARN("Asset with the same name, asset %s overriden", asset.name);
 					}
-					m_InstancedMesh[asset.name].asset = std::make_shared<InstancedMesh>(asset.path, asset.capacity, transforms);
+					m_InstancedMesh[asset.name].asset = std::make_shared<InstancedMesh>(asset.path, asset.capacity);
 					m_InstancedMesh[asset.name].path = asset.path;
 				}
 			}
 
 		}
 	}
-	
 
-	void AssetManager::LoadTexture(const std::string& path,const std::string& name)
-	{	
+
+	void AssetManager::LoadTexture(const std::string& path, const std::string& name)
+	{
 		m_Texture[name].path = path;
-		m_Texture[name].asset = Texture2D::Create(path,m_Texture[name].filters,m_Texture[name].flipped);
+		m_Texture[name].asset = Texture2D::Create(path, m_Texture[name].filters, m_Texture[name].flipped);
 	}
 
 	void AssetManager::LoadShader(const std::string& path, const std::string& name)
-	{	
+	{
 		LOG_INFO("Loading shader %s", path.c_str());
 		m_Shader[name].path = path;
 		m_Shader[name].asset = Shader::Create(name, path);
@@ -184,23 +182,20 @@ namespace Dot {
 	void AssetManager::LoadAnimatedMesh(const std::string& path, const std::string& name)
 	{
 		m_AnimatedMesh[name].path = path;
-		m_AnimatedMesh[name].asset = std::make_shared<AnimatedMesh>(path);
+		m_AnimatedMesh[name].asset = std::make_shared<SkinnedMesh>(path);
 	}
 
-	void AssetManager::LoadInstancedMesh(const std::string& path, const std::string& name,int capacity)
+	void AssetManager::LoadInstancedMesh(const std::string& path, const std::string& name, int capacity)
 	{
-		
-		std::vector<glm::mat4>transforms;
-		transforms.resize(1);
 		m_InstancedMesh[name].capacity = capacity;
 		m_InstancedMesh[name].path = path;
-		m_InstancedMesh[name].asset = std::make_shared<InstancedMesh>(path, capacity,transforms);
+		m_InstancedMesh[name].asset = std::make_shared<InstancedMesh>(path, capacity);
 	}
 
 	void AssetManager::LoadStaticMesh(const std::string& path, const std::string& name)
-	{	
+	{
 		m_Mesh[name].path = path;
-		m_Mesh[name].asset = std::make_shared<StaticMesh>(path);
+		m_Mesh[name].asset = std::make_shared<Mesh>(path);
 	}
 
 	void AssetManager::LoadCubeMap(const std::vector<std::string>& face, const std::string& name)
@@ -240,7 +235,7 @@ namespace Dot {
 		m_CubeMap[name].asset.~shared_ptr();
 	}
 
-	
+
 
 	Ref<Texture2D> AssetManager::GetTexture(const std::string& asset)
 	{
@@ -259,9 +254,9 @@ namespace Dot {
 		else
 			LOG_ERR("Cubemap %s is not loaded!", asset.c_str());
 
-		
+
 	}
-	Ref<AnimatedMesh> AssetManager::GetAnimMesh(const std::string& asset)
+	Ref<SkinnedMesh> AssetManager::GetAnimMesh(const std::string& asset)
 	{
 		if (m_AnimatedMesh.find(asset) != m_AnimatedMesh.end())
 			return m_AnimatedMesh[asset].asset;
@@ -269,7 +264,7 @@ namespace Dot {
 			LOG_ERR("Animated mesh %s is not loaded!", asset.c_str());
 
 	}
-	Ref<StaticMesh> AssetManager::GetStaticMesh(const std::string& asset)
+	Ref<Mesh> AssetManager::GetMesh(const std::string& asset)
 	{
 		if (m_Mesh.find(asset) != m_Mesh.end())
 			return m_Mesh[asset].asset;
@@ -292,18 +287,18 @@ namespace Dot {
 	}
 
 
-	Ref<AnimatedMesh> AssetManager::GetCopyAnimMesh(const std::string& asset)
+	Ref<SkinnedMesh> AssetManager::GetCopyAnimMesh(const std::string& asset)
 	{
 		if (m_AnimatedMesh.find(asset) != m_AnimatedMesh.end())
-			return std::make_shared<AnimatedMesh>(*m_AnimatedMesh[asset].asset);
+			return std::make_shared<SkinnedMesh>(*m_AnimatedMesh[asset].asset);
 		else
 			LOG_ERR("Animated mesh %s is not loaded!", asset.c_str());
 	}
 
-	Ref<StaticMesh> AssetManager::GetCopyStaticMesh(const std::string& asset)
+	Ref<Mesh> AssetManager::GetCopyMesh(const std::string& asset)
 	{
 		if (m_Mesh.find(asset) != m_Mesh.end())
-			return std::make_shared <StaticMesh>(*m_Mesh[asset].asset);
+			return std::make_shared <Mesh>(*m_Mesh[asset].asset);
 		else
 			LOG_ERR("Mesh %s is not loaded!", asset.c_str());
 	}
@@ -322,7 +317,7 @@ namespace Dot {
 		std::vector<std::string> strings;
 		std::string::size_type pos = 0;
 		std::string::size_type prev = 0;
-		while ((pos = str.find(delimiter, prev)) != std::string::npos) 
+		while ((pos = str.find(delimiter, prev)) != std::string::npos)
 		{
 			strings.push_back(str.substr(prev, pos - prev));
 			prev = pos + 1;
@@ -332,5 +327,5 @@ namespace Dot {
 		strings.push_back(str.substr(prev));
 		return strings;
 	}
-	
+
 }

@@ -49,7 +49,7 @@ namespace Dot {
 		static std::string m_FileName;
 		static std::shared_ptr<Logger> m_This;
 
-		Ref<Console> m_Console;
+		Console *m_Console;
 	};
 
 #define LOG_INFO(...)  Logger::Get()->Info(__FUNCTION__,__VA_ARGS__)

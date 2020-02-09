@@ -9,7 +9,6 @@ namespace Dot {
 		SceneManager();
 
 		void Update(float dt);
-		void Draw();
 
 		unsigned int Add(Ref<Scene> scene);
 		void SwitchScene(unsigned int id);

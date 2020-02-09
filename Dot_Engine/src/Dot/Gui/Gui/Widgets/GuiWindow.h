@@ -13,16 +13,17 @@ namespace Dot {
 	public:
 		GuiWindow(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label);
 		~GuiWindow();
-		
+		void ActivateRenderTarget();
+		void Clean();
 		void SetPosition(const glm::vec2& pos);
 		void Move(const glm::vec2& pos);
 		void Update(const glm::vec2& mousePos);
 		void Render();
-		void Set(float pos, float size);
 
+		void SetX(float pos, float size);
+		void SetY(float pos, float height);
 
 		void OnWindowResize(WindowResizeEvent& event);
-		const Ref<Framebuffer>& GetFBO() { return m_FrameBuffer; }
 		static Ref<GuiWindow> Create(const glm::vec2& position, const glm::vec2& size, const glm::vec3& labelColor, const std::string& label);
 	private:
 		void updateBuffers();
@@ -36,6 +37,6 @@ namespace Dot {
 		glm::vec2 m_Position;
 		glm::vec2 m_Size;
 		glm::vec2 m_PanelSize;
-		unsigned int m_Index;
+		int m_Index;
 	};
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include "Dot/Core/Events/Event.h"
 #include "Dot/Renderer/Renderer2D.h"
-#include "Dot/Renderer/Renderer2D.h"
 #include "Widgets/Widget.h"
 #include "Widgets/Panel.h"
 #include "Widgets/Console.h"
@@ -20,19 +19,25 @@ namespace Dot {
 		virtual ~GuiBlock();
 		
 		virtual void OnAttach() {};
-		virtual void OnDetach() {};
 		virtual void OnUpdate() {};
 		virtual void OnEvent(Event& event) {};
-
-
-		virtual bool OnLeftClick(const glm::vec2& mousePos);
-		virtual void OnLeftRelease();
-		virtual void SetLayout(Layout& layout);
-
-		void HandleResize(const glm::vec2& mousePos);
-		void AddWidget(const std::string& name, const Ref<Widget> widget);
+		virtual void OnRender() {};
 	
+		void OnDetach();
+		void RestartLayout();
+		void SetLayout(const Layout& layout);	
+		void AddWidget(const std::string& name, const Ref<Widget> widget);
+		void AddPanel(const std::string& name, const Ref<Panel> panel);
+		void AddConsole(const std::string& name, const Ref<Console>console);
+		void AddWindow(const std::string& name, const Ref<GuiWindow>window);
 
+	private:
+		void HandleResize(const glm::vec2& mousePos);
+		bool OnLeftClick(const glm::vec2& mousePos);
+		bool OnLeftRelease();
+		void OnWindowResize();
+
+	public:
 		Ref<GuiWindow> GetWindow(const std::string& name)
 		{
 			return m_Window[name];

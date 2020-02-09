@@ -44,13 +44,19 @@ namespace Dot {
 		}
 	};
 
-	InstancedMesh::InstancedMesh(const std::string& filename, int num, const std::vector<glm::mat4>& transforms)
-		:m_Capacity(num), m_Instances(transforms.size())
+	
+	InstancedMesh::InstancedMesh(const std::string& filename, int num)
+		:capacity(num), instances(0),numVertices(0)
 	{
-		if (m_Capacity > MAX_INSTANCE)
+		if (capacity > MAX_INSTANCE)
 		{
-			m_Capacity = MAX_INSTANCE;
+			capacity = MAX_INSTANCE;
 			LOG_WARN("Max capacity of instanced mesh is %d", MAX_INSTANCE);
+		}
+		models.resize(capacity);
+		for (int i = 0; i < (int)capacity; ++i)
+		{
+			models[i] = glm::mat4(1);		
 		}
 		LogStream::Initialize();
 
@@ -66,9 +72,9 @@ namespace Dot {
 		D_ASSERT(mesh->HasPositions(), "Meshes require positions.");
 		D_ASSERT(mesh->HasNormals(), "Meshes require normals.");
 
-		m_Vertices.reserve(mesh->mNumVertices);
+		vertices.reserve(mesh->mNumVertices);
 
-		for (size_t i = 0; i < m_Vertices.capacity(); i++)
+		for (size_t i = 0; i < vertices.capacity(); i++)
 		{
 			StaticVertex vertex;
 			vertex.Position = { mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z };
@@ -82,12 +88,12 @@ namespace Dot {
 
 			if (mesh->HasTextureCoords(0))
 				vertex.Texcoord = { mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y };
-			m_Vertices.push_back(vertex);
+			vertices.push_back(vertex);
 		}
 
 		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		m_VertexBuffer = VertexBuffer::Create((float*)m_Vertices.data(), m_Vertices.size() * sizeof(StaticVertex), D_STATIC_DRAW);
-		m_NumVertices = m_Vertices.size();
+		m_VertexBuffer = VertexBuffer::Create((float*)vertices.data(), (unsigned int)vertices.size() * sizeof(StaticVertex), D_STATIC_DRAW);
+		numVertices = (unsigned int)vertices.size();
 
 		BufferLayout layout = {
 			{0, ShaderDataType::Float3, "position" },
@@ -96,45 +102,39 @@ namespace Dot {
 			{3, ShaderDataType::Float3, "binormal"},
 			{4, ShaderDataType::Float2, "texCoord" },
 		};
-		m_VAO = ArrayBuffer::Create();
+		vao = ArrayBuffer::Create();
 
 		m_VertexBuffer->SetLayout(layout);
-		m_VAO->AddVBO(m_VertexBuffer);
+		vao->AddVBO(m_VertexBuffer);
 
 		// Extract indices from model
-		m_Indices.reserve(mesh->mNumFaces);
-		for (size_t i = 0; i < m_Indices.capacity(); i++)
+		indices.reserve(mesh->mNumFaces);
+		for (size_t i = 0; i < indices.capacity(); i++)
 		{
 			D_ASSERT(mesh->mFaces[i].mNumIndices == 3, "Must have 3 indices.");
-			m_Indices.push_back({ mesh->mFaces[i].mIndices[0], mesh->mFaces[i].mIndices[1], mesh->mFaces[i].mIndices[2] });
+			indices.push_back({ mesh->mFaces[i].mIndices[0], mesh->mFaces[i].mIndices[1], mesh->mFaces[i].mIndices[2] });
 		}
 		std::shared_ptr<IndexBuffer> m_IndexBuffer;
-		m_IndexBuffer = IndexBuffer::Create((void*)m_Indices.data(), m_Indices.size() * 3);
-		m_VAO->AddIBO(m_IndexBuffer);
+		m_IndexBuffer = IndexBuffer::Create((void*)indices.data(), (unsigned int)indices.size() * (unsigned int)3);
+		vao->AddIBO(m_IndexBuffer);
 
-		m_Vertices.clear();
-		m_Indices.clear();
+
 
 		Ref<VertexBuffer> m_VBO_MAT;
 		BufferLayout mat4 = {
 				{5, Dot::ShaderDataType::Mat4, "instanceModel", 1},
 		};
 
-		m_VBO_MAT = VertexBuffer::Create((float*)transforms.data(), m_Capacity * sizeof(glm::mat4), D_DYNAMIC_DRAW);
+		m_VBO_MAT = VertexBuffer::Create((float*)models.data(), capacity * sizeof(glm::mat4), D_DYNAMIC_DRAW);
 		m_VBO_MAT->SetLayout(mat4);
-		m_VAO->AddVBO(m_VBO_MAT);
+		vao->AddVBO(m_VBO_MAT);
 	}
-
-
-	void InstancedMesh::Update(const std::vector<glm::mat4>& transforms, unsigned int numInstances, unsigned int offsetInstances)
-	{
-		D_ASSERT((numInstances + offsetInstances <= m_Capacity), "Instanced mesh out of capacity");
-		m_Instances = numInstances + offsetInstances;
-		m_VAO->GetVertexBuffer(1)->Update(&transforms[0], numInstances * sizeof(glm::mat4), offsetInstances * sizeof(glm::mat4));
-	}
-
 	void InstancedMesh::Render(const Ref<Shader>& shader, int drawMod)
 	{
-		RenderCommand::SubmitElementInstanced(m_VAO, m_Instances, drawMod);
+		RenderCommand::SubmitElementInstanced(vao, instances, drawMod);
+	}
+	void InstancedMesh::UpdateBuffer()
+	{
+		vao->GetVertexBuffer(1)->Update((float*)models.data(), capacity * sizeof(glm::mat4), 0);
 	}
 }

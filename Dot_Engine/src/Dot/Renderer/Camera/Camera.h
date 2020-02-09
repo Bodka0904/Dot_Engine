@@ -14,6 +14,8 @@ namespace Dot {
 
 		inline void SetDistance(float distance) { m_Distance = distance; }
 		inline void SetProjectionMatrix(const glm::mat4& projectionMatrix) { m_ProjectionMatrix = projectionMatrix; }
+		inline void SetPosition(const glm::vec3& pos) { m_Position = pos; }
+		inline void InvertPitch() { m_Pitch = -m_Pitch; }
 
 		inline float GetDistance() const { return m_Distance; }
 		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }

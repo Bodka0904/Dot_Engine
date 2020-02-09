@@ -20,11 +20,15 @@ out vec3 v_Normal;
 out vec2 v_TexCoord;
 out vec3 v_ViewPos;
 
+
+uniform vec4 u_ClipPlane;
+
 void main()
 {
 	vec4 WorldPos = a_InstanceModel * vec4(a_Position, 1.0);
-
 	
+	gl_ClipDistance[0] = dot(WorldPos, u_ClipPlane);
+
 	vec4 Position = ViewProjectionMatrix * WorldPos;
 
 	gl_Position = Position;

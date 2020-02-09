@@ -7,7 +7,6 @@ namespace Dot {
 	{
 		m_Shader = shader;
 		m_Buffer = new unsigned char[shader->GetUniformSize()];
-		m_Texture = AssetManager::Get()->GetTexture("Default");
 	}
 	Material::~Material()
 	{
@@ -19,7 +18,10 @@ namespace Dot {
 	}
 	void Material::Update()
 	{
-		m_Texture->Bind(0);
+		for (int i = 0; i < m_Textures.size(); ++i)
+			m_Textures[i]->Bind(i);
+		if (m_HasCubemap)
+			m_Cubemap->Bind(0);
 		for (auto i = 0; i < m_UpdatedValues.size(); ++i)
 		{
 			m_Shader->SetUniform(m_UpdatedValues[i], m_Buffer);
@@ -30,4 +32,5 @@ namespace Dot {
 	{
 		return std::make_shared<Material>(shader);
 	}
+	
 }

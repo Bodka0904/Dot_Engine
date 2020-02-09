@@ -27,7 +27,7 @@ namespace Dot {
 
 	private:
 		std::unique_ptr<Window> m_Window;
-		std::vector<Layer*> m_Layouters;
+		std::vector<Layer*> m_Layers;
 		GuiLayer *m_GuiLayer;
 
 		unsigned int m_LayouterInsertIndex = 0;

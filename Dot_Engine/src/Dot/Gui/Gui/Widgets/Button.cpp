@@ -23,7 +23,12 @@ namespace Dot {
 	}
 	Button::~Button()
 	{
-		GuiApplication::Get()->PushIndex(m_Index);		
+		Clean();
+	}
+
+	void Button::Clean()
+	{
+		GuiApplication::Get()->PushIndex(m_Index);
 		GuiApplication::Get()->UpdateVertexBuffer(m_Index, &QuadVertex2D());
 
 		std::vector<QuadVertex2D> quad;
@@ -32,6 +37,7 @@ namespace Dot {
 		quad.resize(MAX_TEXT_CHAR);
 		GuiApplication::Get()->UpdateTextBuffer(m_Index, &quad[0], MAX_TEXT_CHAR);
 	}
+	
 	bool Button::OnLeftClick(const glm::vec2& mousePos)
 	{
 		if (MouseHoover(mousePos))
@@ -86,7 +92,7 @@ namespace Dot {
 	}
 	void Button::StopRender()
 	{
-		m_Position = glm::vec2(-100);
+		m_Position = glm::vec2(-100 )+m_Size;
 		updateBuffers();
 	}
 	const glm::vec2& Button::GetSize()
@@ -105,8 +111,7 @@ namespace Dot {
 
 	Ref<Widget> Button::Create(const std::string& label, const glm::vec2& position, const glm::vec2& size, const glm::vec3& color)
 	{
-		Ref<Button> button = std::make_shared<Button>(label, position, size, color);
-		return button;
+		return std::make_shared<Button>(label, position, size, color);
 	}
 	
 	void Button::updateBuffers()

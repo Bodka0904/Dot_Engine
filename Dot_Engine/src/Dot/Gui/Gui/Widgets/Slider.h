@@ -9,16 +9,17 @@ namespace Dot {
 	public:
 		Slider(const std::string& label, const glm::vec2& position, const glm::vec2& size, const glm::vec3& color,float* value,float rangeStart,float rangeEnd);
 		~Slider();
+		virtual void Clean() override;
 		virtual bool OnLeftClick(const glm::vec2& mousePos) override;
-		virtual bool MouseHoover(const glm::vec2& mousePos);
+		virtual bool MouseHoover(const glm::vec2& mousePos) override;
 		virtual bool Release() override;
-		virtual void Move(const glm::vec2& pos);
-		virtual void SetPosition(const glm::vec2& pos);
-		virtual void SetColor(const glm::vec3& color);
+		virtual void Move(const glm::vec2& pos) override;
+		virtual void SetPosition(const glm::vec2& pos)override;
+		virtual void SetColor(const glm::vec3& color)override;
 		virtual void SetSize(const glm::vec2& size);
 		virtual void StopRender() override;
 		void Active(const glm::vec2& mousePos);
-		virtual const glm::vec2& GetSize();
+		virtual const glm::vec2& GetSize()override;
 
 		static Ref<Widget> Create(const std::string& label, const glm::vec2& position, const glm::vec2& size, const glm::vec3& color, float* value, float rangeStart, float rangeEnd);
 	private:
@@ -42,7 +43,7 @@ namespace Dot {
 		glm::vec2 m_Position;
 		glm::vec2 m_Size;
 
-		unsigned int m_Index;
+		int m_Index;
 		float* m_Value;
 		float m_Start;
 		float m_End;

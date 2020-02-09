@@ -23,7 +23,7 @@ namespace Dot {
 	{
 		std::sort(m_Entities.begin(), m_Entities.end());
 
-		int position = binarySearch(0, m_Entities.size() - 1, entity);
+		int position = binarySearch(0, (int)m_Entities.size() - 1, entity);
 		if (position != -1 && !m_Entities.empty())
 		{
 			LOG_INFO("Entity with ID %d removed",entity);
